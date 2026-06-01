@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSET-AI-System — Núcleo Cognitivo</title>
+
+  <!-- ============================================================
+       PRIVACIDAD / BLOQUEO DE INDEXACIÓN
+       Página privada e interna. Sin indexación. Sin rastreo.
+       Sin recolección de datos para conjuntos de entrenamiento IA.
+  ============================================================ -->
+  <meta name="robots"        content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="googlebot"     content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="bingbot"       content="noindex,nofollow">
+  <meta name="msnbot"        content="noindex,nofollow">
+  <meta name="slurp"         content="noindex,nofollow">
+  <meta name="Applebot"      content="noindex,nofollow">
+  <meta name="GPTBot"        content="noai,noindex">
+  <meta name="ChatGPT-User"  content="noai,noindex">
+  <meta name="anthropic-ai"  content="noai,noindex">
+  <meta name="Claude-Web"    content="noai,noindex">
+  <meta name="CCBot"         content="noai,noindex">
+  <meta name="PerplexityBot" content="noai,noindex">
+  <meta name="Bytespider"    content="noindex,nofollow">
+  <meta name="PetalBot"      content="noindex,nofollow">
+  <meta name="Amazonbot"     content="noindex,nofollow">
+  <meta name="Diffbot"       content="noindex,nofollow">
+  <!-- Sin descripción, sin etiquetas OG, sin Twitter card — intencional -->
+
+  <style>
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ============================================================
+       BASE — terminal de investigación, no sitio web
+    ============================================================ */
+    body {
+      background: #030306;
+      color: #c4c8dc;
+      font-family: 'JetBrains Mono','Fira Code','Cascadia Code',Consolas,'Courier New',monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+       CANVAS — fijo, siempre en ejecución detrás de todo
+    ============================================================ */
+    #cognitive-core {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      transition: opacity 0.18s linear;
+    }
+
+    /* ============================================================
+       HERO — 100vh superpuesto al canvas
+    ============================================================ */
+    #hero {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px 30px 26px;
+      pointer-events: none;
+      /* Velo oscuro en la parte inferior para legibilidad del título */
+      background: linear-gradient(
+        to top,
+        rgba(3,3,6,0.75) 0%,
+        rgba(3,3,6,0.20) 30%,
+        rgba(3,3,6,0.00) 58%
+      );
+    }
+
+    /* Barra superior */
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    /* Columna izquierda: ID del sistema */
+    .top-left {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sys-id {
+      font-size: 9px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(0,210,255,0.52);
+      line-height: 1.8;
+    }
+
+    .sys-private {
+      display: block;
+      font-size: 8px;
+      color: rgba(0,210,255,0.25);
+      letter-spacing: 0.16em;
+      margin-top: 2px;
+    }
+
+    /* ── PANEL: NUEVA SINAPSIS FORMADA ── */
+    .synapse-panel {
+      border-left: 1px solid rgba(255,170,0,0.18);
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .synapse-badge {
+      font-size: 8px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(255,170,0,0.65);
+    }
+
+    .synapse-phase {
+      font-size: 11px;
+      color: rgba(0,210,255,0.80);
+      letter-spacing: 0.04em;
+    }
+
+    .synapse-event {
+      font-size: 10px;
+      color: rgba(160,180,210,0.50);
+      max-width: 260px;
+      line-height: 1.5;
+    }
+
+    .synapse-rec {
+      font-size: 9.5px;
+      color: rgba(0,255,136,0.42);
+      letter-spacing: 0.04em;
+    }
+
+    .synapse-commit {
+      font-size: 8.5px;
+      color: rgba(100,120,155,0.38);
+      margin-top: 1px;
+    }
+
+    /* Columna derecha: madurez + botón */
+    .top-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    .maturity-block {
+      text-align: right;
+    }
+
+    .mat-num {
+      display: block;
+      font-size: clamp(32px, 5.5vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: #00d4ff;
+    }
+
+    .mat-unit {
+      font-size: 0.42em;
+      opacity: 0.55;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .mat-label {
+      display: block;
+      font-size: 8px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(0,210,255,0.30);
+      margin-top: 3px;
+    }
+
+    /* ── BOTÓN: REPRODUCIR EVOLUCIÓN ── */
+    #replay-btn {
+      font-family: 'JetBrains Mono','Fira Code',Consolas,monospace;
+      font-size: 8.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(0,210,255,0.68);
+      background: rgba(0,210,255,0.05);
+      border: 1px solid rgba(0,210,255,0.22);
+      padding: 7px 13px;
+      border-radius: 2px;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    #replay-btn:hover:not(:disabled) {
+      background: rgba(0,210,255,0.10);
+      border-color: rgba(0,210,255,0.45);
+      color: rgba(0,210,255,0.95);
+    }
+
+    #replay-btn:disabled {
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    /* ── OVERLAY: REPRODUCIENDO EVOLUCIÓN ── */
+    #replay-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+
+    #replay-overlay.activo { opacity: 1; }
+
+    .replay-phase-label {
+      font-size: clamp(11px, 2vw, 16px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #00d4ff;
+      text-shadow: 0 0 24px rgba(0,212,255,0.75), 0 0 60px rgba(0,212,255,0.25);
+      text-align: center;
+      margin-bottom: 10px;
+      padding: 0 20px;
+    }
+
+    .replay-phase-desc {
+      font-size: clamp(9px, 1.2vw, 11px);
+      color: rgba(0,210,255,0.42);
+      text-align: center;
+      max-width: 480px;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+
+    /* Indicador de desplazamiento */
+    .scroll-hint {
+      position: absolute;
+      bottom: 22px;
+      right: 30px;
+      font-size: 8px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(0,210,255,0.25);
+      pointer-events: none;
+      animation: hintFloat 3.2s ease-in-out infinite;
+    }
+
+    @keyframes hintFloat {
+      0%,100% { opacity: 0.25; transform: translateY(0); }
+      50%      { opacity: 0.52; transform: translateY(-5px); }
+    }
+
+    /* Grupo inferior: nombre y estado */
+    .hero-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .sys-name {
+      font-size: clamp(24px, 5vw, 58px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      background: linear-gradient(128deg, #ffffff 0%, rgba(0,210,255,0.62) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sys-desc {
+      font-size: clamp(9.5px, 1.4vw, 12.5px);
+      color: rgba(175,192,220,0.58);
+      letter-spacing: 0.04em;
+      font-weight: 400;
+    }
+
+    .sys-status {
+      font-size: 9px;
+      letter-spacing: 0.13em;
+      color: rgba(0,210,255,0.46);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .status-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #00ff88;
+      flex-shrink: 0;
+      animation: parpadeo 2.4s ease-in-out infinite;
+    }
+
+    @keyframes parpadeo { 0%,100%{opacity:1} 50%{opacity:0.12} }
+
+    /* ============================================================
+       SECCIONES — se deslizan sobre el canvas fijo
+    ============================================================ */
+    main { position: relative; z-index: 1; }
+
+    .arch-section {
+      background: rgba(3,3,6,0.935);
+      border-top: 1px solid rgba(255,255,255,0.042);
+      padding: 78px 0;
+    }
+
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    .sec-eye {
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(0,210,255,0.38);
+      margin-bottom: 42px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .sec-eye::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: rgba(0,210,255,0.30);
+    }
+
+    /* ============================================================
+       TABLA DE SUBSISTEMAS
+    ============================================================ */
+    .sys-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .sys-table thead th {
+      font-size: 8px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(0,210,255,0.28);
+      font-weight: 400;
+      text-align: left;
+      padding: 0 0 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.055);
+    }
+
+    .sys-table thead th:last-child { text-align: right; }
+
+    .sys-table tbody td {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.025);
+      color: rgba(155,170,198,0.68);
+      vertical-align: top;
+    }
+
+    .sys-table tbody td:first-child { color: rgba(210,222,242,0.86); }
+
+    .col-path  { color: rgba(0,188,228,0.38) !important; font-size: 11px; }
+    .col-layer { color: rgba(130,148,180,0.42) !important; }
+
+    .col-status { text-align: right; font-size: 9.5px; letter-spacing: 0.10em; }
+    .col-status.active  { color: #00ff88; }
+    .col-status.gated   { color: #ffaa00; }
+    .col-status.dormant { color: rgba(65,88,120,0.58); }
+
+    /* ============================================================
+       TERMINAL DE GOBERNANZA
+    ============================================================ */
+    .gov-terminal {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gov-line {
+      display: flex;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.022);
+    }
+
+    .gov-key {
+      color: rgba(188,202,225,0.62);
+      min-width: 230px;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+
+    /* Línea punteada flexible entre clave y valor */
+    .gov-fill {
+      flex: 1;
+      height: 1px;
+      margin: 0 10px;
+      background-image: repeating-linear-gradient(
+        to right,
+        rgba(255,255,255,0.07) 0,
+        rgba(255,255,255,0.07) 3px,
+        transparent 3px,
+        transparent 10px
+      );
+      align-self: center;
+    }
+
+    .gov-val {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #00ff88;
+      font-weight: 700;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      min-width: 155px;
+      justify-content: flex-end;
+      flex-shrink: 0;
+    }
+
+    .gov-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00ff88;
+      box-shadow: 0 0 6px rgba(0,255,136,0.7);
+      flex-shrink: 0;
+    }
+
+    .gov-note {
+      margin-top: 30px;
+      font-size: 9.5px;
+      color: rgba(0,210,255,0.24);
+      line-height: 1.85;
+      border-left: 1px solid rgba(0,210,255,0.12);
+      padding-left: 14px;
+    }
+
+    /* ============================================================
+       SECTORES DORMIDOS
+    ============================================================ */
+    .dormant-list { display: flex; flex-direction: column; }
+
+    .dorm-row {
+      display: flex;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.022);
+      gap: 18px;
+    }
+
+    .dorm-sector {
+      font-size: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(55,78,118,0.52);
+      min-width: 85px;
+      flex-shrink: 0;
+    }
+
+    .dorm-name {
+      flex: 1;
+      font-size: 12px;
+      color: rgba(85,108,148,0.50);
+    }
+
+    .dorm-bar {
+      width: 36px;
+      height: 1px;
+      background: rgba(35,52,80,0.50);
+      flex-shrink: 0;
+    }
+
+    .dorm-label {
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(50,72,112,0.50);
+      min-width: 82px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .dorm-note {
+      margin-top: 34px;
+      font-size: 9.5px;
+      color: rgba(55,78,118,0.42);
+      line-height: 1.9;
+    }
+
+    /* ============================================================
+       PIE DE PÁGINA
+    ============================================================ */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(3,3,6,0.97);
+      border-top: 1px solid rgba(255,255,255,0.032);
+      padding: 34px 0;
+    }
+
+    .foot {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .foot-l {
+      font-size: 9.5px;
+      color: rgba(75,92,128,0.52);
+      line-height: 1.95;
+    }
+
+    .foot-r {
+      font-size: 8px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(58,75,112,0.42);
+      text-align: right;
+      line-height: 1.95;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 640px) {
+      #hero { padding: 16px 18px 22px; }
+      .wrap { padding: 0 18px; }
+      .arch-section { padding: 52px 0; }
+      .synapse-panel { display: none; }
+      .col-path, .col-layer { display: none; }
+      .gov-key { min-width: 165px; }
+      .gov-fill { display: none; }
+      .dorm-bar { display: none; }
+      .foot { flex-direction: column; align-items: flex-start; }
+      .foot-r { text-align: left; }
+    }
+
+    @media (max-width: 420px) {
+      .sys-name { font-size: 22px; }
+      .mat-num  { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- El núcleo cognitivo — siempre en ejecución -->
+<canvas id="cognitive-core"></canvas>
+
+<!-- ============================================================
+     HERO — 100vh superpuesto sobre el canvas
+============================================================ -->
+<div id="hero">
+
+  <div class="hero-top">
+
+    <!-- Columna izquierda: ID + panel de última sinapsis -->
+    <div class="top-left">
+      <div class="sys-id">
+        WSET-AI-SISTEMA &nbsp;·&nbsp; NÚCLEO COGNITIVO
+        <span class="sys-private">PRIVADO &nbsp;·&nbsp; NO INDEXADO &nbsp;·&nbsp; NO DESPLEGADO</span>
+      </div>
+
+      <div class="synapse-panel">
+        <div class="synapse-badge">Nueva Sinapsis Formada</div>
+        <div class="synapse-phase" id="synapse-phase">Phase 3A.5</div>
+        <div class="synapse-event" id="synapse-event">Medición de deltas de puntuación en cadenas causales del Planner</div>
+        <div class="synapse-rec"   id="synapse-rec">Influencia del Planner: en compuerta</div>
+        <div class="synapse-commit" id="synapse-commit">&middot;&nbsp;<span id="synapse-commit-hash">5481624</span></div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: madurez + botón de evolución -->
+    <div class="top-right">
+      <div class="maturity-block">
+        <span class="mat-num" id="mat-num">41<span class="mat-unit">%</span></span>
+        <span class="mat-label">Madurez<br>Cognitiva</span>
+      </div>
+      <button id="replay-btn">REPRODUCIR EVOLUCIÓN</button>
+    </div>
+
+  </div>
+
+  <!-- Overlay de reproducción (oculto por defecto) -->
+  <div id="replay-overlay">
+    <div class="replay-phase-label" id="replay-phase-label"></div>
+    <div class="replay-phase-desc"  id="replay-phase-desc"></div>
+  </div>
+
+  <div class="scroll-hint">↓ &nbsp; EXPLORAR ARQUITECTURA</div>
+
+  <!-- Título e indicadores de estado -->
+  <div class="hero-bottom">
+    <div class="sys-name">WSET-AI-System</div>
+    <div class="sys-desc">Arquitectura Cognitiva Determinística para WSET Nivel&nbsp;3</div>
+    <div class="sys-status">
+      <span class="status-dot"></span>
+      NÚCLEO COGNITIVO: EN EVOLUCIÓN
+      &nbsp;·&nbsp; <span id="test-count">600</span>&nbsp;PRUEBAS VERIFICADAS
+      &nbsp;·&nbsp; <span id="snap-count">35</span>/35&nbsp;SNAPSHOTS
+      &nbsp;·&nbsp; SIN LLM EN TIEMPO REAL
+      &nbsp;·&nbsp; GOBERNANZA INTACTA
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     SECCIONES — desplazamiento sobre el canvas fijo
+============================================================ -->
+<main>
+
+  <!-- ── Subsistemas Activos ── -->
+  <section class="arch-section">
+    <div class="wrap">
+      <div class="sec-eye">SUBSISTEMAS_ACTIVOS :: Módulos Cognitivos Operativos</div>
+      <table class="sys-table">
+        <thead>
+          <tr>
+            <th>Subsistema</th>
+            <th class="col-path">Módulo</th>
+            <th class="col-layer">Capa</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sentinel de Gobernanza</td>
+            <td class="col-path">tools/constants.py</td>
+            <td class="col-layer">Constantes</td>
+            <td class="col-status active">ACTIVO</td>
+          </tr>
+          <tr>
+            <td>Sandbox de Recuperación</td>
+            <td class="col-path">tools/retrieval/tutor_retrieval_sandbox.py</td>
+            <td class="col-layer">Recuperación</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Motor de Cadenas Causales</td>
+            <td class="col-path">knowledge/causal-chains/ &middot; 32 nodos</td>
+            <td class="col-layer">Recuperación</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Razonador SAT</td>
+            <td class="col-path">tools/tutor/sat_reasoner.py</td>
+            <td class="col-layer">Razonamiento</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Preproceso de Errores Conceptuales</td>
+            <td class="col-path">tools/orchestrator/misconception_prepass.py</td>
+            <td class="col-layer">Razonamiento</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Orquestador</td>
+            <td class="col-path">tools/orchestrator/orchestrator.py</td>
+            <td class="col-layer">Control</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Planner Estratégico</td>
+            <td class="col-path">tools/orchestrator/strategic_planner.py</td>
+            <td class="col-layer">Planificación</td>
+            <td class="col-status gated">EN COMPUERTA</td>
+          </tr>
+          <tr>
+            <td>Constructor de Respuestas</td>
+            <td class="col-path">tools/tutor/answer_builder.py</td>
+            <td class="col-layer">Generación</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Ledger de Sesión</td>
+            <td class="col-path">tools/orchestrator/session_ledger.py</td>
+            <td class="col-layer">Telemetría</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Resumen del Ledger</td>
+            <td class="col-path">tools/orchestrator/ledger_summary.py</td>
+            <td class="col-layer">Telemetría</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Arnés de Auto-Evaluación</td>
+            <td class="col-path">tools/self_eval/</td>
+            <td class="col-layer">Evaluación</td>
+            <td class="col-status active">OPERATIVO</td>
+          </tr>
+          <tr>
+            <td>Analizador de Sugerencias del Planner</td>
+            <td class="col-path">tools/retrieval/ &middot; compuerta</td>
+            <td class="col-layer">Compuerta de Influencia</td>
+            <td class="col-status gated">COMP. DESACT.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── Sentinel de Gobernanza ── -->
+  <section class="arch-section">
+    <div class="wrap">
+      <div class="sec-eye">SENTINEL_GOBERNANZA :: Capa de Restricciones Inmutables &middot; tools/constants.py</div>
+      <div class="gov-terminal">
+
+        <div class="gov-line">
+          <span class="gov-key">safe_for_examiner</span>
+          <span class="gov-fill"></span>
+          <span class="gov-val"><span class="gov-dot"></span>BLOQUEADO&nbsp;FALSO</span>
+        </div>
+        <div class="gov-line">
+          <span class="gov-key">examiner_scoring_allowed</span>
+          <span class="gov-fill"></span>
+          <span class="gov-val"><span class="gov-dot"></span>BLOQUEADO&nbsp;FALSO</span>
+        </div>
+        <div class="gov-line">
+          <span class="gov-key">uses_llm</span>
+          <span class="gov-fill"></span>
+          <span class="gov-val"><span class="gov-dot"></span>BLOQUEADO&nbsp;FALSO</span>
+        </div>
+        <div class="gov-line">
+          <span class="gov-key">uses_api</span>
+          <span class="gov-fill"></span>
+          <span class="gov-val"><span class="gov-dot"></span>BLOQUEADO&nbsp;FALSO</span>
+        </div>
+        <div class="gov-line">
+          <span class="gov-key">uses_embeddings</span>
+          <span class="gov-fill"></span>
+          <span class="gov-val"><span class="gov-dot"></span>BLOQUEADO&nbsp;FALSO</span>
+        </div>
+        <div class="gov-line">
+          <span class="gov-key">uses_vector_db</span>
+          <span class="gov-fill"></span>
+          <span class="gov-val"><span class="gov-dot"></span>BLOQUEADO&nbsp;FALSO</span>
+        </div>
+        <div class="gov-line">
+          <span class="gov-key">cloud_services_active</span>
+          <span class="gov-fill"></span>
+          <span class="gov-val"><span class="gov-dot"></span>BLOQUEADO&nbsp;FALSO</span>
+        </div>
+
+      </div>
+      <div class="gov-note">
+        Cadena de cumplimiento: tools/constants.py &rarr; filtro de recuperación &rarr; validación Tutor &rarr; auto-evaluación &rarr; razonador SAT &rarr; regresión de Snapshots<br>
+        Cualquier violación truthy falla de forma segura. Restricciones no configurables en tiempo de ejecución. Ningún módulo puede otorgarse autoridad de examinador.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Sectores Dormidos ── -->
+  <section class="arch-section">
+    <div class="wrap">
+      <div class="sec-eye">SECTORES_DORMIDOS :: Regiones Neurales Futuras — Sin Activar</div>
+      <div class="dormant-list">
+
+        <div class="dorm-row">
+          <div class="dorm-sector">SECTOR 4-A</div>
+          <div class="dorm-name">Evaluador de Respuestas Abiertas</div>
+          <div class="dorm-bar"></div>
+          <div class="dorm-label">Hibernando</div>
+        </div>
+        <div class="dorm-row">
+          <div class="dorm-sector">SECTOR 5-A</div>
+          <div class="dorm-name">Sesiones Adaptativas</div>
+          <div class="dorm-bar"></div>
+          <div class="dorm-label">Hibernando</div>
+        </div>
+        <div class="dorm-row">
+          <div class="dorm-sector">SECTOR 6-A</div>
+          <div class="dorm-name">Runtime del Tutor Local</div>
+          <div class="dorm-bar"></div>
+          <div class="dorm-label">Hibernando</div>
+        </div>
+        <div class="dorm-row">
+          <div class="dorm-sector">SECTOR 7-A</div>
+          <div class="dorm-name">Capa de Experiencia Frontend</div>
+          <div class="dorm-bar"></div>
+          <div class="dorm-label">Hibernando</div>
+        </div>
+        <div class="dorm-row">
+          <div class="dorm-sector">SECTOR 8-A</div>
+          <div class="dorm-name">Despliegue Controlado &middot; epistemiclab.dpdns.org</div>
+          <div class="dorm-bar"></div>
+          <div class="dorm-label">Hibernando</div>
+        </div>
+
+      </div>
+      <div class="dorm-note">
+        Los sectores dormidos requieren validación de gobernanza antes de activarse.<br>
+        Secuencia de activación: Fase 4 &rarr; 5 &rarr; 6 &rarr; 7 &rarr; 8. No se permiten atajos entre fases.<br>
+        Ningún sector se otorga autoridad de examinador en ninguna etapa de activación.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     PIE DE PÁGINA
+============================================================ -->
+<footer>
+  <div class="foot">
+    <div class="foot-l">
+      WSET-AI-System &nbsp;&middot;&nbsp; Estado de Arquitectura Cognitiva<br>
+      Privado &nbsp;&middot;&nbsp; No Indexado &nbsp;&middot;&nbsp; No Desplegado<br>
+      epistemiclab.dpdns.org &nbsp;&middot;&nbsp; DNS reservado vía Cloudflare
+    </div>
+    <div class="foot-r">
+      NO ES UN SISTEMA DE EVALUACIÓN WSET<br>
+      NO ES UN EXAMINADOR<br>
+      SIN AUTORIDAD OFICIAL DE PUNTUACIÓN<br>
+      PRIVADO &nbsp;&middot;&nbsp; NO APTO PARA USO PÚBLICO
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     MOTOR DEL NÚCLEO COGNITIVO
+     Sin dependencias externas. Sin importaciones del backend.
+     Sin API. Sin rastreo. Sin análisis.
+============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ================================================================
+     ESTADO DEL SISTEMA
+  ================================================================ */
+  var STATE = {
+    maturity: 41,
+    tests: 600,
+    snapshots: 35,
+    phases_completed: [
+      'governance','retrieval','causal_chains','sat_reasoning',
+      'misconception_prepass','orchestrator','answer_builder',
+      'strategic_planner','session_ledger','ledger_summary',
+      'self_eval','question_bank','planner_hint_parser','planner_gate'
+    ],
+    latest_phase:  'Phase 3A.5',
+    latest_event:  'Medición de deltas de puntuación en cadenas causales del Planner',
+    latest_commit: '5481624',
+    current_recommendation: 'Mantener influencia experimental detrás de compuertas'
+  };
+
+  /* Carga del archivo externo — fallback silencioso */
+  fetch('./system_state.json')
+    .then(function (r) { return r.json(); })
+    .then(function (d) { STATE = d; syncHero(); syncSynapse(); initParticles(); })
+    .catch(function () {});
+
+  /* ── Sincronización del DOM con STATE ── */
+  function syncHero() {
+    var mn = document.getElementById('mat-num');
+    var tc = document.getElementById('test-count');
+    var sc = document.getElementById('snap-count');
+    if (mn) mn.innerHTML = STATE.maturity + '<span class="mat-unit">%</span>';
+    if (tc) tc.textContent = STATE.tests;
+    if (sc) sc.textContent = STATE.snapshots;
+  }
+
+  function syncSynapse() {
+    var ph  = document.getElementById('synapse-phase');
+    var ev  = document.getElementById('synapse-event');
+    var rec = document.getElementById('synapse-rec');
+    var cmt = document.getElementById('synapse-commit-hash');
+    if (ph  && STATE.latest_phase)              ph.textContent  = STATE.latest_phase;
+    if (ev  && STATE.latest_event)              ev.textContent  = STATE.latest_event;
+    if (rec && STATE.current_recommendation)    rec.textContent = STATE.current_recommendation;
+    if (cmt && STATE.latest_commit)             cmt.textContent = STATE.latest_commit;
+  }
+
+  /* ================================================================
+     CANVAS
+  ================================================================ */
+  var canvas = document.getElementById('cognitive-core');
+  var ctx    = canvas.getContext('2d');
+  var W = 0, H = 0, CX = 0, CY = 0, BASE_R = 0;
+  var time  = 0;
+  var frame = 0;
+
+  /* ================================================================
+     GRAFO COGNITIVO
+     5 anillos orbitales. TILT comprime el eje Y para simular
+     inclinación orbital en 3D sin WebGL.
+  ================================================================ */
+  var TILT       = 0.68;
+  var RING_R     = [0, 0.195, 0.338, 0.455, 0.598];
+  var RING_SPEED = [0, 0.000138, -0.000090, 0.000072, -0.000050];
+
+  var NODES = [
+    /* Anillo 0 — Sentinel de Gobernanza (centro) */
+    { id:'gov',  lines:['GOBERNANZA','SENTINEL'],          ring:0, a:0.000, phase:'governance',            sz:1.00, col:'#ffaa00', special:true },
+
+    /* Anillo 1 — Núcleo cognitivo */
+    { id:'ret',  lines:['SANDBOX DE','RECUPERACIÓN'],      ring:1, a:0.000, phase:'retrieval',             sz:0.70, col:'#00d4ff' },
+    { id:'caus', lines:['CADENAS','CAUSALES'],             ring:1, a:1.571, phase:'causal_chains',         sz:0.70, col:'#00d4ff' },
+    { id:'sat',  lines:['RAZONADOR','SAT'],                ring:1, a:3.141, phase:'sat_reasoning',         sz:0.65, col:'#00d4ff' },
+    { id:'misc', lines:['ERRORES','CONCEPTUALES'],         ring:1, a:4.712, phase:'misconception_prepass', sz:0.65, col:'#00d4ff' },
+
+    /* Anillo 2 — Orquestación */
+    { id:'orch', lines:['ORQUESTADOR'],                    ring:2, a:0.628, phase:'orchestrator',          sz:0.76, col:'#00ffcc' },
+    { id:'plan', lines:['PLANNER','ESTRATÉGICO'],          ring:2, a:2.356, phase:'strategic_planner',     sz:0.70, col:'#00ffcc' },
+    { id:'ans',  lines:['CONSTRUCTOR','RESPUESTAS'],       ring:2, a:3.927, phase:'answer_builder',        sz:0.70, col:'#00ffcc' },
+    { id:'kmap', lines:['GRAFO DE','CONOCIMIENTO'],        ring:2, a:5.498, phase:'governance',            sz:0.64, col:'#00ffcc' },
+
+    /* Anillo 3 — Telemetría */
+    { id:'led',  lines:['LEDGER DE','SESIÓN'],             ring:3, a:0.314, phase:'session_ledger',        sz:0.58, col:'#9977ee' },
+    { id:'sum',  lines:['RESUMEN','LEDGER'],               ring:3, a:1.885, phase:'ledger_summary',        sz:0.58, col:'#9977ee' },
+    { id:'sev',  lines:['AUTO-','EVALUACIÓN'],             ring:3, a:3.456, phase:'self_eval',             sz:0.58, col:'#9977ee' },
+    { id:'qbk',  lines:['BANCO DE','PREGUNTAS'],           ring:3, a:5.027, phase:'question_bank',         sz:0.52, col:'#9977ee' },
+
+    /* Anillo 4 — Sectores dormidos (futuro) */
+    { id:'evl',  lines:['EVALUADOR','RESPUESTAS'],         ring:4, a:0.000, phase:'open_response',         sz:0.48, col:'#243348', dorm:true },
+    { id:'adp',  lines:['SESIONES','ADAPTATIVAS'],         ring:4, a:1.257, phase:'adaptive_sessions',     sz:0.48, col:'#243348', dorm:true },
+    { id:'trt',  lines:['TUTOR','RUNTIME'],                ring:4, a:2.513, phase:'local_tutor',           sz:0.48, col:'#243348', dorm:true },
+    { id:'fe',   lines:['FRONTEND','CAPA'],                ring:4, a:3.770, phase:'frontend',              sz:0.44, col:'#243348', dorm:true },
+    { id:'dep',  lines:['DESPLIEGUE','CONTROLADO'],        ring:4, a:5.027, phase:'deployment',            sz:0.40, col:'#243348', dorm:true },
+  ];
+
+  var EDGES = [
+    /* Gobernanza → anillo 1 + orquestador */
+    ['gov','ret'],['gov','caus'],['gov','sat'],['gov','misc'],['gov','orch'],
+    /* Orquestador como eje */
+    ['orch','ret'],['orch','misc'],['orch','plan'],['orch','ans'],
+    /* Grafo de conocimiento */
+    ['kmap','ret'],['kmap','caus'],
+    /* Núcleo interno */
+    ['ret','caus'],['ret','sat'],
+    /* Planner → telemetría */
+    ['plan','led'],['plan','sum'],
+    /* Constructor → evaluación */
+    ['ans','sev'],['sev','qbk'],['led','sum'],
+    /* Conexiones dormidas */
+    ['ans','evl'],['plan','adp'],['orch','trt'],['trt','fe'],['fe','dep'],
+  ];
+
+  var nodeMap = {};
+  NODES.forEach(function (n) { nodeMap[n.id] = n; });
+
+  /* ================================================================
+     FACTORES DE MADUREZ
+     La densidad visual aumenta con STATE.maturity (0–100).
+  ================================================================ */
+  function matFactors() {
+    var m = Math.min(100, Math.max(0, STATE.maturity)) / 100;
+    return {
+      m:          m,
+      glow:       0.55 + m * 0.45,   /* intensidad del halo */
+      edgeAlpha:  0.45 + m * 0.55,   /* opacidad de conexiones */
+      ringAlpha:  0.45 + m * 0.55,   /* brillo de anillos orbitales */
+      pulse:      0.06  + m * 0.22,  /* amplitud de pulso */
+      particles:  0.35  + m * 0.65,  /* fracción de partículas activas */
+    };
+  }
+
+  /* ================================================================
+     PARTÍCULAS
+  ================================================================ */
+  var particles = [];
+
+  function initParticles() {
+    initParticlesFor(null);
+  }
+
+  function initParticlesFor(activeIds) {
+    particles = [];
+    var MF = matFactors();
+    EDGES.forEach(function (e) {
+      var fn = nodeMap[e[0]], tn = nodeMap[e[1]];
+      if (!fn || !tn || fn.dorm || tn.dorm) return;
+      var fActive = activeIds ? activeIds.indexOf(e[0]) !== -1 : isActive(fn);
+      var tActive = activeIds ? activeIds.indexOf(e[1]) !== -1 : isActive(tn);
+      if (!fActive || !tActive) return;
+
+      /* Número de partículas escala con madurez */
+      var base  = 2 + (Math.random() > 0.40 ? 1 : 0);
+      var count = Math.max(1, Math.round(base * MF.particles));
+
+      for (var i = 0; i < count; i++) {
+        particles.push({
+          from:  e[0],
+          to:    e[1],
+          t:     (i / count) + Math.random() * 0.12,
+          speed: 0.0016 + Math.random() * 0.0028
+        });
+      }
+    });
+  }
+
+  /* ================================================================
+     ESTRELLAS DE FONDO
+  ================================================================ */
+  var stars = [];
+
+  function initStars() {
+    stars = [];
+    for (var i = 0; i < 230; i++) {
+      stars.push({
+        x:  Math.random(),
+        y:  Math.random(),
+        r:  Math.random() * 1.05 + 0.18,
+        op: Math.random() * 0.28 + 0.04,
+        dx: (Math.random() - 0.5) * 0.000014,
+        dy: (Math.random() - 0.5) * 0.000010,
+      });
+    }
+  }
+
+  /* ================================================================
+     MODO REPRODUCCIÓN DE EVOLUCIÓN
+  ================================================================ */
+  var replayMode      = false;
+  var replayActiveIds = null;   /* null = usar STATE */
+  var replayTimers    = [];
+
+  /* Fases de la evolución del sistema */
+  var EVOLUTION_REPLAY = [
+    {
+      label: 'Gobernanza Establecida',
+      desc:  'Sentinel de Gobernanza activo. Restricciones inmutables bloqueadas.',
+      ids:   ['gov','kmap'],
+      dur:   1600
+    },
+    {
+      label: 'Fase 1 · Núcleo de Recuperación',
+      desc:  'Sandbox de recuperación determinística, cadenas causales y razonador SAT activados.',
+      ids:   ['gov','kmap','ret','caus','sat','misc'],
+      dur:   1600
+    },
+    {
+      label: 'Fase 1 · Orquestación y Construcción',
+      desc:  'Orquestador y Constructor de Respuestas conectados. Grafo de conocimiento enlazado.',
+      ids:   ['gov','kmap','ret','caus','sat','misc','orch','ans'],
+      dur:   1500
+    },
+    {
+      label: 'Fase 1 · Planner Estratégico',
+      desc:  'Planner integrado y aislado. Efecto cero sobre recuperación. Compuerta desactivada por defecto.',
+      ids:   ['gov','kmap','ret','caus','sat','misc','orch','ans','plan'],
+      dur:   1600
+    },
+    {
+      label: 'Fase 2 · Telemetría Cognitiva',
+      desc:  'Ledger de sesión y resumen de telemetría activos. Escritura unidireccional. Sin datos crudos.',
+      ids:   ['gov','kmap','ret','caus','sat','misc','orch','ans','plan','led','sum'],
+      dur:   1500
+    },
+    {
+      label: 'Fase 3 · Evaluación y Banco de Preguntas',
+      desc:  'Arnés de auto-evaluación y banco de preguntas estructurado operativos.',
+      ids:   ['gov','kmap','ret','caus','sat','misc','orch','ans','plan','led','sum','sev','qbk'],
+      dur:   1600
+    },
+    {
+      label: 'Fase 3A · Compuertas de Influencia del Planner',
+      desc:  'Analizador de sugerencias causales activo. Compuerta de influencia: DESACTIVADA por defecto. Estado actual.',
+      ids:   null,   /* estado real del sistema */
+      dur:   2200
+    },
+  ];
+
+  function startReplay() {
+    if (replayMode) return;
+    replayMode = true;
+
+    var btn     = document.getElementById('replay-btn');
+    var overlay = document.getElementById('replay-overlay');
+    var label   = document.getElementById('replay-phase-label');
+    var desc    = document.getElementById('replay-phase-desc');
+
+    btn.disabled    = true;
+    btn.textContent = 'REPRODUCIENDO...';
+    overlay.classList.add('activo');
+
+    var delay = 0;
+    EVOLUTION_REPLAY.forEach(function (phase) {
+      var t = setTimeout(function () {
+        replayActiveIds = phase.ids;
+        label.textContent = phase.label;
+        desc.textContent  = phase.desc;
+        initParticlesFor(phase.ids || getStateActiveIds());
+      }, delay);
+      replayTimers.push(t);
+      delay += phase.dur;
+    });
+
+    /* Finalizar la reproducción */
+    var endT = setTimeout(function () {
+      replayMode      = false;
+      replayActiveIds = null;
+      overlay.classList.remove('activo');
+      btn.disabled    = false;
+      btn.textContent = 'REPRODUCIR EVOLUCIÓN';
+      initParticles();
+    }, delay);
+    replayTimers.push(endT);
+  }
+
+  function getStateActiveIds() {
+    return NODES
+      .filter(function (n) { return isActive(n) && !n.dorm; })
+      .map(function (n) { return n.id; });
+  }
+
+  /* ================================================================
+     AYUDANTES
+  ================================================================ */
+  function isActive(node) {
+    return STATE.phases_completed.indexOf(node.phase) !== -1;
+  }
+
+  function isActiveForDraw(node) {
+    if (node.dorm) return false;
+    if (replayMode) {
+      return replayActiveIds !== null
+        ? replayActiveIds.indexOf(node.id) !== -1
+        : isActive(node);
+    }
+    return isActive(node);
+  }
+
+  function nodePos(node) {
+    if (node.ring === 0) return { x: CX, y: CY };
+    var r   = BASE_R * RING_R[node.ring];
+    var ang = node.a + time * RING_SPEED[node.ring];
+    return {
+      x: CX + Math.cos(ang) * r,
+      y: CY + Math.sin(ang) * r * TILT
+    };
+  }
+
+  function hexRgba(hex, a) {
+    var r = parseInt(hex.slice(1, 3), 16);
+    var g = parseInt(hex.slice(3, 5), 16);
+    var b = parseInt(hex.slice(5, 7), 16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+
+  /* ================================================================
+     ESCUDO DE GOBERNANZA
+     El sentinel central tiene: 3 arcos giratorios, hexágono lento,
+     pulso ámbar periódico y aura intensificada por madurez.
+  ================================================================ */
+  var govPulse = 0;   /* fotogramas restantes del pulso ámbar */
+
+  function drawGovernanceShield(px, py, bR, MF) {
+    /* Pulso periódico: cada ~260 fotogramas */
+    if (frame % 260 === 0 && govPulse === 0) govPulse = 55;
+
+    /* Arco 1: radio medio, giro rápido en sentido horario */
+    var a1R = bR * 3.0;
+    var a1S = time * 0.00080;
+    ctx.beginPath();
+    ctx.arc(px, py, a1R, a1S, a1S + Math.PI * 1.72);
+    ctx.strokeStyle = hexRgba('#ffaa00', 0.28 * MF.glow);
+    ctx.lineWidth   = 1.2;
+    ctx.stroke();
+
+    /* Arco 2: radio interno, giro lento antihorario */
+    var a2R = bR * 2.3;
+    var a2S = -(time * 0.00048);
+    ctx.beginPath();
+    ctx.arc(px, py, a2R, a2S, a2S + Math.PI * 1.25);
+    ctx.strokeStyle = hexRgba('#ffaa00', 0.20 * MF.glow);
+    ctx.lineWidth   = 0.8;
+    ctx.stroke();
+
+    /* Arco 3: radio externo, giro muy lento antihorario */
+    var a3R = bR * 4.2;
+    var a3S = -(time * 0.00030);
+    ctx.beginPath();
+    ctx.arc(px, py, a3R, a3S, a3S + Math.PI * 1.05);
+    ctx.strokeStyle = hexRgba('#ffaa00', 0.12 * MF.glow);
+    ctx.lineWidth   = 0.6;
+    ctx.stroke();
+
+    /* Hexágono escudo — rotación muy lenta */
+    var hexR   = bR * 5.0;
+    var hexRot = time * 0.000288;
+    ctx.beginPath();
+    for (var i = 0; i < 6; i++) {
+      var angle = hexRot + i * (Math.PI / 3);
+      var hx = px + Math.cos(angle) * hexR;
+      var hy = py + Math.sin(angle) * hexR;
+      if (i === 0) ctx.moveTo(hx, hy); else ctx.lineTo(hx, hy);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = hexRgba('#ffaa00', 0.09 * MF.glow);
+    ctx.lineWidth   = 0.8;
+    ctx.stroke();
+
+    /* Pulso ámbar expansivo */
+    if (govPulse > 0) {
+      var pf     = 1 - govPulse / 55;   /* 0→1 durante el pulso */
+      var pulseR = bR * (2.5 + pf * 10);
+      var pulseA = 0.50 * (1 - pf) * MF.glow;
+      ctx.beginPath();
+      ctx.arc(px, py, pulseR, 0, Math.PI * 2);
+      ctx.strokeStyle = hexRgba('#ffaa00', pulseA);
+      ctx.lineWidth   = 1.8 * (1 - pf * 0.7);
+      ctx.stroke();
+      govPulse--;
+    }
+  }
+
+  /* ================================================================
+     HALO CONGELADO — nodos dormidos
+     Arco segmentado + marcas de bloqueo cruzadas.
+  ================================================================ */
+  function drawDormantEffects(px, py, bR) {
+    var numSeg  = 10;
+    var segSpan = (Math.PI * 2) / numSeg;
+    var fRot    = time * 0.000022;  /* deriva ultralenta */
+    var haloR   = bR * 2.55;
+
+    for (var s = 0; s < numSeg; s++) {
+      var sA = fRot + s * segSpan;
+      var eA = sA + segSpan * 0.40;
+      ctx.beginPath();
+      ctx.arc(px, py, haloR, sA, eA);
+      ctx.strokeStyle = 'rgba(32,52,85,0.20)';
+      ctx.lineWidth   = 0.6;
+      ctx.stroke();
+    }
+
+    /* Cruces de bloqueo — 4 posiciones en la periferia */
+    var crossR = bR + 4.5;
+    var cLen   = 2.4;
+    for (var qi = 0; qi < 4; qi++) {
+      var qa = qi * (Math.PI / 2) + time * 0.000040;
+      var qx = px + Math.cos(qa) * crossR;
+      var qy = py + Math.sin(qa) * crossR;
+      ctx.beginPath();
+      ctx.moveTo(qx - cLen, qy); ctx.lineTo(qx + cLen, qy);
+      ctx.moveTo(qx, qy - cLen); ctx.lineTo(qx, qy + cLen);
+      ctx.strokeStyle = 'rgba(38,60,100,0.30)';
+      ctx.lineWidth   = 0.8;
+      ctx.stroke();
+    }
+  }
+
+  /* ================================================================
+     CICLO DE DIBUJO
+  ================================================================ */
+  function draw() {
+    var MF = matFactors();
+
+    ctx.clearRect(0, 0, W, H);
+
+    /* ── Fondo ── */
+    ctx.fillStyle = '#030306';
+    ctx.fillRect(0, 0, W, H);
+
+    /* Destello radial desde el centro — escala con madurez */
+    var bloom = ctx.createRadialGradient(CX, CY * 0.50, 0, CX, CY, BASE_R * 1.40);
+    bloom.addColorStop(0,   'rgba(0,26,70,' + (0.18 * MF.glow) + ')');
+    bloom.addColorStop(0.45,'rgba(0,8,28,'  + (0.09 * MF.glow) + ')');
+    bloom.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.fillStyle = bloom;
+    ctx.fillRect(0, 0, W, H);
+
+    /* Estrellas de fondo */
+    stars.forEach(function (s) {
+      s.x = (s.x + s.dx + 1) % 1;
+      s.y = (s.y + s.dy + 1) % 1;
+      ctx.beginPath();
+      ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(198,212,242,' + s.op + ')';
+      ctx.fill();
+    });
+
+    /* ── Anillos orbitales (elipses inclinadas) ── */
+    [1, 2, 3, 4].forEach(function (ring) {
+      var r     = BASE_R * RING_R[ring];
+      var alpha = (ring === 4 ? 0.040 : ring === 1 ? 0.110 : 0.075) * MF.ringAlpha;
+      ctx.beginPath();
+      ctx.ellipse(CX, CY, r, r * TILT, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(0,170,218,' + alpha + ')';
+      ctx.lineWidth   = 0.5;
+      ctx.stroke();
+    });
+
+    /* ── Posiciones de los nodos ── */
+    var pos = {};
+    NODES.forEach(function (n) { pos[n.id] = nodePos(n); });
+
+    /* ── Aristas/conexiones ── */
+    EDGES.forEach(function (e) {
+      var fp = pos[e[0]], tp = pos[e[1]];
+      var fn = nodeMap[e[0]], tn = nodeMap[e[1]];
+      if (!fp || !tp || !fn || !tn) return;
+
+      var dorm   = fn.dorm || tn.dorm;
+      var active = isActiveForDraw(fn) && isActiveForDraw(tn);
+
+      ctx.beginPath();
+      ctx.moveTo(fp.x, fp.y);
+      ctx.lineTo(tp.x, tp.y);
+
+      if (dorm) {
+        ctx.strokeStyle = 'rgba(30,50,78,0.09)';
+        ctx.lineWidth   = 0.4;
+      } else if (active) {
+        var grad = ctx.createLinearGradient(fp.x, fp.y, tp.x, tp.y);
+        grad.addColorStop(0, hexRgba(fn.col, 0.28 * MF.edgeAlpha));
+        grad.addColorStop(1, hexRgba(tn.col, 0.28 * MF.edgeAlpha));
+        ctx.strokeStyle = grad;
+        ctx.lineWidth   = 0.9;
+      } else {
+        ctx.strokeStyle = 'rgba(0,120,185,0.07)';
+        ctx.lineWidth   = 0.4;
+      }
+      ctx.stroke();
+    });
+
+    /* ── Partículas ── */
+    particles.forEach(function (p) {
+      var fp = pos[p.from], tp = pos[p.to];
+      if (!fp || !tp) return;
+
+      var px2 = fp.x + (tp.x - fp.x) * p.t;
+      var py2 = fp.y + (tp.y - fp.y) * p.t;
+
+      /* Halo de la partícula — intensidad escala con madurez */
+      var haloR = 5.5 + MF.glow * 2.5;
+      var glow  = ctx.createRadialGradient(px2, py2, 0, px2, py2, haloR);
+      glow.addColorStop(0,   'rgba(0,222,255,' + (0.82 * MF.glow) + ')');
+      glow.addColorStop(0.42,'rgba(0,175,255,' + (0.22 * MF.glow) + ')');
+      glow.addColorStop(1,   'rgba(0,90,200,0)');
+      ctx.beginPath();
+      ctx.arc(px2, py2, haloR, 0, Math.PI * 2);
+      ctx.fillStyle = glow;
+      ctx.fill();
+
+      /* Núcleo brillante */
+      ctx.beginPath();
+      ctx.arc(px2, py2, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(210,248,255,0.94)';
+      ctx.fill();
+
+      p.t += p.speed;
+      if (p.t > 1) p.t -= 1;
+    });
+
+    /* ── Nodos ── */
+    var nodeScale = Math.max(7, BASE_R * 0.0295);
+
+    NODES.forEach(function (n) {
+      var p      = pos[n.id];
+      if (!p) return;
+      var active = isActiveForDraw(n);
+      var dorm   = !!n.dorm;
+      var bR     = n.sz * nodeScale;
+
+      /* Amplitud de pulso escala con madurez */
+      var pulse = Math.sin(time * 0.00085 + n.a * 1.85) * MF.pulse + (1 - MF.pulse * 0.5);
+
+      if (!dorm && active) {
+        /* Halo exterior — radio y opacidad escalan con madurez */
+        var outerR = bR * (n.special ? 6.8 : 5.2) * pulse;
+        var glow   = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, outerR);
+        glow.addColorStop(0,    hexRgba(n.col, (n.special ? 0.58 : 0.22) * MF.glow));
+        glow.addColorStop(0.32, hexRgba(n.col, (n.special ? 0.20 : 0.07) * MF.glow));
+        glow.addColorStop(1,    hexRgba(n.col, 0));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, outerR, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        /* Anillo medio */
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, bR * 2.15 * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = hexRgba(n.col, 0.10 * pulse * MF.glow);
+        ctx.fill();
+
+        /* Escudo de gobernanza — solo para el nodo especial central */
+        if (n.special) drawGovernanceShield(p.x, p.y, bR, MF);
+
+        /* Núcleo — ilusión de esfera con gradiente radial */
+        var coreGrad = ctx.createRadialGradient(
+          p.x - bR * 0.22, p.y - bR * 0.22, 0,
+          p.x, p.y, bR
+        );
+        coreGrad.addColorStop(0, hexRgba(n.col, 1.0));
+        coreGrad.addColorStop(1, hexRgba(n.col, 0.65));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, bR, 0, Math.PI * 2);
+        ctx.fillStyle = coreGrad;
+        ctx.fill();
+
+      } else if (dorm) {
+        /* Efectos del sector dormido: halo congelado + cruces */
+        drawDormantEffects(p.x, p.y, bR);
+
+        /* Núcleo dormido */
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, bR, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(12,20,36,0.92)';
+        ctx.fill();
+
+      } else {
+        /* Nodo no activo en reproducción */
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, bR, 0, Math.PI * 2);
+        ctx.fillStyle = hexRgba(n.col, 0.35);
+        ctx.fill();
+      }
+
+      /* Borde exterior del nodo */
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, bR, 0, Math.PI * 2);
+      if (dorm) {
+        ctx.strokeStyle = 'rgba(35,58,92,0.28)';
+        ctx.lineWidth   = 0.5;
+      } else {
+        ctx.strokeStyle = hexRgba(n.col, active ? 0.65 : 0.28);
+        ctx.lineWidth   = active ? 1.0 : 0.6;
+      }
+      ctx.stroke();
+
+      /* Etiquetas de los nodos — se ocultan en pantallas pequeñas */
+      if (W > 500) {
+        var lAlpha = dorm ? 0.20 : (active ? 0.72 : 0.38);
+        var lColor = dorm
+          ? 'rgba(55,80,125,' + lAlpha + ')'
+          : 'rgba(198,218,244,' + lAlpha + ')';
+        var fSize  = Math.max(6.5, bR * 0.58);
+
+        ctx.font      = fSize + 'px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = lColor;
+
+        var lineH  = fSize * 1.22;
+        var startY = p.y + bR + 7;
+        n.lines.forEach(function (line, i) {
+          ctx.fillText(line, p.x, startY + i * lineH);
+        });
+      }
+    });
+
+    time++;
+    frame++;
+  }
+
+  /* ================================================================
+     BUCLE DE ANIMACIÓN
+  ================================================================ */
+  function loop() {
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  /* ================================================================
+     REDIMENSIONAMIENTO
+  ================================================================ */
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W  = window.innerWidth;
+    H  = window.innerHeight;
+    CX = W / 2;
+    CY = H / 2;
+    BASE_R = Math.min(W * 0.46, H * 0.46);
+    canvas.width  = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    /* Restablecer la transformación para evitar acumulación */
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  /* ================================================================
+     OSCURECIMIENTO EN DESPLAZAMIENTO
+     El canvas se atenúa a medida que el usuario baja hacia las secciones.
+  ================================================================ */
+  window.addEventListener('scroll', function () {
+    var pct     = Math.min(1, window.scrollY / window.innerHeight);
+    var opacity = Math.max(0.18, 1 - pct * 0.70);
+    canvas.style.opacity = opacity;
+  }, { passive: true });
+
+  /* ================================================================
+     BOTÓN DE REPRODUCCIÓN DE EVOLUCIÓN
+  ================================================================ */
+  var replayBtn = document.getElementById('replay-btn');
+  if (replayBtn) {
+    replayBtn.addEventListener('click', startReplay);
+  }
+
+  /* ================================================================
+     INICIALIZACIÓN
+  ================================================================ */
+  window.addEventListener('resize', function () {
+    resize();
+    initParticles();
+  }, { passive: true });
+
+  resize();
+  initStars();
+  initParticles();
+  loop();
+
+})();
+</script>
+
+</body>
+</html>

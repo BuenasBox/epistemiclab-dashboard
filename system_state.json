@@ -1,0 +1,25 @@
+{
+  "maturity": 41,
+  "tests": 600,
+  "snapshots": 35,
+  "phases_completed": [
+    "governance",
+    "retrieval",
+    "causal_chains",
+    "sat_reasoning",
+    "misconception_prepass",
+    "orchestrator",
+    "answer_builder",
+    "strategic_planner",
+    "session_ledger",
+    "ledger_summary",
+    "self_eval",
+    "question_bank",
+    "planner_hint_parser",
+    "planner_gate"
+  ],
+  "latest_phase": "Phase 3A.5",
+  "latest_event": "Medición de deltas de puntuación en cadenas causales del Planner",
+  "latest_commit": "5481624",
+  "current_recommendation": "Mantener influencia experimental detrás de compuertas"
+}
