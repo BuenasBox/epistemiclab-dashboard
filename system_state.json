@@ -1,12 +1,12 @@
 {
   "current_phase": "Phase 4A Active",
-  "latest_phase": "Phase 4A.3.7",
-  "latest_event": "Structured Question Bank Compatibility Audit completed",
+  "latest_phase": "Phase 4A.3.7.5",
+  "latest_event": "Pilot Enrichment Contract completed",
   "latest_commit": "5481624",
-  "current_recommendation": "Structured Question Bank Adapter Contract or Diagnostic SBA Cockpit Prototype",
+  "current_recommendation": "Phase 4A.3.7.6 — Pilot Enrichment Skeleton",
   "updated_at": "2026-06-01T00:00:00+00:00",
-  "maturity": 50,
-  "tests": 660,
+  "maturity": 55,
+  "tests": 1107,
   "snapshots": 35,
   "phases_completed": [
     "governance",
@@ -37,10 +37,15 @@
     "Phase 4A.3.6.6",
     "Phase 4A.3.6.7",
     "Phase 4A.3.6.8",
-    "Phase 4A.3.7"
+    "Phase 4A.3.7",
+    "Phase 4A.3.7.1 — Structured Question Bank Adapter Contract",
+    "Phase 4A.3.7.2 — Adapter Contract Tests",
+    "Phase 4A.3.7.3 — Adapter Skeleton",
+    "Phase 4A.3.7.4 — Pilot Adapter Validation",
+    "Phase 4A.3.7.5 — Pilot Enrichment Contract"
   ],
   "in_progress_phase": "",
-  "next_target": "Structured Question Bank Adapter Contract or Diagnostic SBA Cockpit Prototype",
+  "next_target": "Phase 4A.3.7.6 — Pilot Enrichment Skeleton",
   "governance_status": {
     "governance_violations": 0,
     "llm_dependency": 0,
@@ -50,7 +55,11 @@
     "snapshot_regressions_green": 35
   },
   "planner_influence_status": "gated",
-  "diagnostic_sba_status": "pending",
+  "diagnostic_sba_status": "foundation_complete",
+  "diagnostic_sba_cockpit_status": "prototype_available",
+  "adapter_status": "skeleton_validated",
+  "pilot_validation_status": "complete",
+  "enrichment_contract_status": "complete",
   "knowledge_assets_count": 2210,
   "knowledge_assets_size_mb": 868,
   "official_wset_markdown_count": 52,

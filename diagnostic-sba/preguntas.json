@@ -1,0 +1,411 @@
+{
+  "export_version": "static_demo_export_v0",
+  "static_demo_only": true,
+  "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+  "items": [
+    {
+      "item_id": "draft_diag_sba_structured_2",
+      "source_question_id": "2",
+      "draft_id": "draft_diag_sba_structured_2",
+      "review_id": "review_2_20260602_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA4",
+      "topic": "fortified_wines",
+      "subtopic": "port_fortification_fermentation",
+      "difficulty": "intermediate",
+      "learning_objective": "Identify how fortification stops fermentation in a training-only diagnostic item.",
+      "stem": "¿Qué método se usa para detener la fermentación en el vino de Oporto?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "option_id": "A",
+          "option_text": "Crianza en roble americano"
+        },
+        {
+          "option_id": "B",
+          "option_text": "Uso de crianza larga"
+        },
+        {
+          "option_id": "C",
+          "option_text": "Adición de aguardiente vínico"
+        },
+        {
+          "option_id": "D",
+          "option_text": "Secado de uvas al sol"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_12",
+      "source_question_id": "12",
+      "draft_id": "draft_diag_sba_structured_12",
+      "review_id": "review_12_20260602_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA1",
+      "topic": "viticulture",
+      "subtopic": "spring_frost_topography",
+      "difficulty": "intermediate",
+      "learning_objective": "Identify how topography affects spring frost risk in a training-only diagnostic item.",
+      "stem": "¿Qué factor natural tiene mayor influencia en el riesgo de heladas primaverales?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "option_id": "A",
+          "option_text": "Exposición al sol"
+        },
+        {
+          "option_id": "B",
+          "option_text": "Altitud"
+        },
+        {
+          "option_id": "C",
+          "option_text": "Pendiente del terreno"
+        },
+        {
+          "option_id": "D",
+          "option_text": "Latitud"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_17",
+      "source_question_id": "17",
+      "draft_id": "draft_diag_sba_structured_17",
+      "review_id": "review_17_20260602_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA1",
+      "topic": "winemaking",
+      "subtopic": "destemming_tannin_extraction",
+      "difficulty": "intermediate",
+      "learning_objective": "Identify why destemming can reduce extraction of green tannins in a training-only diagnostic item.",
+      "stem": "¿Cuál es el propósito principal del despalillado antes de la fermentación?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "option_id": "A",
+          "option_text": "Reducir el nivel de azúcar"
+        },
+        {
+          "option_id": "B",
+          "option_text": "Evitar la extracción de taninos verdes"
+        },
+        {
+          "option_id": "C",
+          "option_text": "Estimular la fermentación maloláctica"
+        },
+        {
+          "option_id": "D",
+          "option_text": "Mejorar la retención aromática"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    }
+  ],
+  "outcomes_by_item_id": {
+    "draft_diag_sba_structured_2": {
+      "item_id": "draft_diag_sba_structured_2",
+      "source_question_id": "2",
+      "draft_id": "draft_diag_sba_structured_2",
+      "review_id": "review_2_20260602_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "process_confusion",
+          "misconception_id": null,
+          "diagnostic_note": "Confuses maturation vessel choice with fermentation control."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "process_confusion",
+          "misconception_id": null,
+          "diagnostic_note": "Confuses ageing duration with stopping active fermentation."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Matches the causal-chain draft for fortification stopping yeast activity."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "regional_confusion",
+          "misconception_id": null,
+          "diagnostic_note": "Confuses a grape-concentration technique with Port fortification."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Adding grape spirit during fermentation raises alcohol to a level that stops yeast activity. The draft support therefore makes option C the best answer.",
+        "why_other_options_are_wrong": {
+          "A": "Oak choice affects maturation style but does not stop fermentation.",
+          "B": "Long ageing changes development but is not the method used to halt fermentation.",
+          "C": "This is the correct answer.",
+          "D": "Drying grapes concentrates sugars but is not the Port fortification method described by the draft support."
+        },
+        "remediation_recommendation": "Review the fortification and residual-sugar causal chain, then contrast production method with maturation choices.",
+        "remediation_target": {
+          "target_type": "causal_chain",
+          "target_id": "CC_FORTIFICATION_RESIDUAL_SUGAR"
+        }
+      },
+      "misconception_linkage": {
+        "status": "not_attached",
+        "candidate_misconception_ids": [
+          "MC_RESIDUAL_SUGAR_SWEET_01"
+        ],
+        "notes": "Residual sugar misconception is adjacent but not required by this production-method item."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": "CC_FORTIFICATION_RESIDUAL_SUGAR",
+        "status": "draft_supported_by_expected_causal_links"
+      },
+      "sat_relevance": [
+        {
+          "parameter": "sweetness",
+          "status": "tentative",
+          "reason": "Residual sugar is implicated by the causal chain, but the question asks about production method rather than tasting assessment."
+        }
+      ],
+      "remediation": {
+        "recommendation": "Review the fortification and residual-sugar causal chain, then contrast production method with maturation choices.",
+        "target": {
+          "target_type": "causal_chain",
+          "target_id": "CC_FORTIFICATION_RESIDUAL_SUGAR"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_12": {
+      "item_id": "draft_diag_sba_structured_12",
+      "source_question_id": "12",
+      "draft_id": "draft_diag_sba_structured_12",
+      "review_id": "review_12_20260602_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "partial_reasoning",
+          "misconception_id": null,
+          "diagnostic_note": "Sun exposure matters generally but does not target cold-air pooling."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "partial_reasoning",
+          "misconception_id": null,
+          "diagnostic_note": "Altitude can affect temperature but is less precise than slope/topography for this cold-air-drainage relationship."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Matches the draft causal chain about cold-air drainage and low-lying frost risk."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "scope_error",
+          "misconception_id": null,
+          "diagnostic_note": "Confuses broad climate location with site-level topography."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Slope/topography is the best answer because cold air can drain away from slopes and accumulate in low-lying areas, changing spring frost risk.",
+        "why_other_options_are_wrong": {
+          "A": "Sun exposure can matter to ripening but does not directly describe cold-air drainage.",
+          "B": "Altitude may influence temperature, but the draft support focuses on site shape and air movement.",
+          "C": "This is the correct answer.",
+          "D": "Latitude is a broad regional factor, not the site-level factor tested here."
+        },
+        "remediation_recommendation": "Review the spring frost and vineyard topography causal chain before retrying a viticulture risk item.",
+        "remediation_target": {
+          "target_type": "causal_chain",
+          "target_id": "CC_SPRING_FROST_TOPOGRAPHY"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No direct frost/topography misconception node was confirmed."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": "CC_SPRING_FROST_TOPOGRAPHY",
+        "status": "draft_supported_by_expected_causal_links"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the spring frost and vineyard topography causal chain before retrying a viticulture risk item.",
+        "target": {
+          "target_type": "causal_chain",
+          "target_id": "CC_SPRING_FROST_TOPOGRAPHY"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_17": {
+      "item_id": "draft_diag_sba_structured_17",
+      "source_question_id": "17",
+      "draft_id": "draft_diag_sba_structured_17",
+      "review_id": "review_17_20260602_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "process_confusion",
+          "misconception_id": null,
+          "diagnostic_note": "Confuses destemming with sugar adjustment."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Matches the draft causal chain for stems, green tannins, and structure."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "process_confusion",
+          "misconception_id": null,
+          "diagnostic_note": "Confuses grape handling before fermentation with malolactic conversion."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "partial_reasoning",
+          "misconception_id": null,
+          "diagnostic_note": "Aroma protection may matter in other processes, but the draft support focuses on tannin extraction from stems."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Destemming removes stems before fermentation. The draft support links stems to green tannin extraction, making option B the best answer.",
+        "why_other_options_are_wrong": {
+          "A": "Destemming does not primarily reduce grape sugar.",
+          "B": "This is the correct answer.",
+          "C": "Malolactic conversion is a separate process and is not stimulated by destemming in this draft relationship.",
+          "D": "Aroma retention is not the main relationship supported by the destemming/tannin draft support."
+        },
+        "remediation_recommendation": "Review the destemming and tannin-structure causal chain, then contrast grape handling with fermentation and maturation processes.",
+        "remediation_target": {
+          "target_type": "causal_chain",
+          "target_id": "CC_DESTEMMING_TANNIN_STRUCTURE"
+        }
+      },
+      "misconception_linkage": {
+        "status": "not_attached",
+        "candidate_misconception_ids": [
+          "MC_TANNIN_01",
+          "MC_TANNIN_02"
+        ],
+        "notes": "Tannin misconceptions are adjacent but not direct matches unless a future rationale targets tannin/astringency confusion."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": "CC_DESTEMMING_TANNIN_STRUCTURE",
+        "status": "draft_supported_by_expected_causal_links"
+      },
+      "sat_relevance": [
+        {
+          "parameter": "tannin",
+          "status": "tentative",
+          "reason": "The item concerns green tannin extraction, but the question is about production process rather than tasting assessment."
+        }
+      ],
+      "remediation": {
+        "recommendation": "Review the destemming and tannin-structure causal chain, then contrast grape handling with fermentation and maturation processes.",
+        "target": {
+          "target_type": "causal_chain",
+          "target_id": "CC_DESTEMMING_TANNIN_STRUCTURE"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    }
+  },
+  "export_metadata": {
+    "export_version": "static_demo_export_v0",
+    "exported_at": "not_written_in_skeleton",
+    "eligible_item_count": 3,
+    "source_question_ids": [
+      "2",
+      "12",
+      "17"
+    ],
+    "review_ids": [
+      "review_2_20260602_001",
+      "review_12_20260602_001",
+      "review_17_20260602_001"
+    ],
+    "output_written": false,
+    "target_path": "frontend/diagnostic-sba/preguntas.json"
+  }
+}

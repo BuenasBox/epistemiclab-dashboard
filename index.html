@@ -512,6 +512,62 @@
     }
 
     /* ============================================================
+       LABORATORIOS PRIVADOS
+    ============================================================ */
+    .lab-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .lab-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 20px;
+      border: 1px solid rgba(0,210,255,0.10);
+      background: rgba(0,210,255,0.025);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .lab-card:hover {
+      border-color: rgba(0,210,255,0.28);
+      background: rgba(0,210,255,0.055);
+    }
+
+    .lab-card-tag {
+      font-size: 7.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(0,210,255,0.38);
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .lab-card-title {
+      flex: 1;
+      font-size: 13px;
+      color: rgba(196,200,220,0.85);
+    }
+
+    .lab-card-desc {
+      font-size: 9.5px;
+      color: rgba(0,210,255,0.30);
+      max-width: 320px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .lab-card-arrow {
+      font-size: 14px;
+      color: rgba(0,210,255,0.28);
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
        PIE DE PÁGINA
     ============================================================ */
     footer {
@@ -821,6 +877,30 @@
         Los sectores dormidos requieren validación de gobernanza antes de activarse.<br>
         Secuencia de activación: Fase 4 &rarr; 5 &rarr; 6 &rarr; 7 &rarr; 8. No se permiten atajos entre fases.<br>
         Ningún sector se otorga autoridad de examinador en ninguna etapa de activación.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LABORATORIOS PRIVADOS
+  ============================================================ -->
+  <section class="arch-section" id="labs">
+    <div class="wrap">
+      <div class="sec-eye">LABORATORIOS_PRIVADOS :: Entrenamiento Local · Sin Autoridad de Examinador</div>
+      <div class="lab-grid">
+
+        <a class="lab-card" href="./diagnostic-sba/">
+          <div class="lab-card-tag">FASE 4A · PROTOTIPO ESTÁTICO</div>
+          <div class="lab-card-title">Laboratorio Diagnóstico SBA</div>
+          <div class="lab-card-desc">Entrenamiento privado · No evaluación oficial WSET · Prototipo estático</div>
+          <div class="lab-card-arrow">→</div>
+        </a>
+
+      </div>
+      <div class="gov-note">
+        Laboratorios privados de uso local.<br>
+        No otorgan calificación, certificación ni autoridad de examinador.<br>
+        Ningún laboratorio está conectado a sistemas oficiales WSET.
       </div>
     </div>
   </section>
