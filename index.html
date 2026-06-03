@@ -642,22 +642,22 @@
     <div class="top-left">
       <div class="sys-id">
         WSET-AI-SISTEMA &nbsp;·&nbsp; NÚCLEO COGNITIVO
-        <span class="sys-private">PRIVADO &nbsp;·&nbsp; NO INDEXADO &nbsp;·&nbsp; NO DESPLEGADO</span>
+        <span class="sys-private">PRIVADO &nbsp;·&nbsp; NO INDEXADO &nbsp;·&nbsp; DESPLIEGUE ESTÁTICO CONTROLADO</span>
       </div>
 
       <div class="synapse-panel">
         <div class="synapse-badge">Nueva Sinapsis Formada</div>
-        <div class="synapse-phase" id="synapse-phase">Phase 4A</div>
-        <div class="synapse-event" id="synapse-event">Arquitectura madura · Tutor neuro-simbólico determinístico activo</div>
-        <div class="synapse-rec"   id="synapse-rec">Madurez cognitiva: ~48–52% · Fase experimental temprana superada</div>
-        <div class="synapse-commit" id="synapse-commit">&middot;&nbsp;<span id="synapse-commit-hash">5481624</span></div>
+        <div class="synapse-phase" id="synapse-phase">Phase 4A.3.7.21</div>
+        <div class="synapse-event" id="synapse-event">Laboratorio Diagnóstico SBA privado publicado</div>
+        <div class="synapse-rec"   id="synapse-rec">Siguiente: integrar el loader JSON en la experiencia visual v2.2</div>
+        <div class="synapse-commit" id="synapse-commit">&middot;&nbsp;<span id="synapse-commit-hash">0c412a6</span></div>
       </div>
     </div>
 
     <!-- Columna derecha: madurez + botón de evolución -->
     <div class="top-right">
       <div class="maturity-block">
-        <span class="mat-num" id="mat-num">41<span class="mat-unit">%</span></span>
+        <span class="mat-num" id="mat-num">55<span class="mat-unit">%</span></span>
         <span class="mat-label">Madurez<br>Cognitiva</span>
       </div>
       <button id="replay-btn">REPRODUCIR EVOLUCIÓN</button>
@@ -680,7 +680,7 @@
     <div class="sys-status">
       <span class="status-dot"></span>
       NÚCLEO COGNITIVO: EN EVOLUCIÓN
-      &nbsp;·&nbsp; <span id="test-count">660</span>&nbsp;PRUEBAS VERIFICADAS
+      &nbsp;·&nbsp; <span id="test-count">1107</span>&nbsp;PRUEBAS VERIFICADAS
       &nbsp;·&nbsp; <span id="snap-count">35</span>/35&nbsp;SNAPSHOTS
       &nbsp;·&nbsp; SIN LLM EN TIEMPO REAL
       &nbsp;·&nbsp; GOBERNANZA INTACTA
@@ -835,10 +835,10 @@
     </div>
   </section>
 
-  <!-- ── Sectores Dormidos ── -->
+  <!-- ── Sectores Controlados ── -->
   <section class="arch-section">
     <div class="wrap">
-      <div class="sec-eye">SECTORES_DORMIDOS :: Regiones Neurales Futuras — Sin Activar</div>
+      <div class="sec-eye">SECTORES_CONTROLADOS :: Regiones Futuras y Superficies Activadas</div>
       <div class="dormant-list">
 
         <div class="dorm-row">
@@ -863,19 +863,19 @@
           <div class="dorm-sector">SECTOR 7-A</div>
           <div class="dorm-name">Capa de Experiencia Frontend</div>
           <div class="dorm-bar"></div>
-          <div class="dorm-label">Hibernando</div>
+          <div class="dorm-label">Activo · Demo Privada</div>
         </div>
         <div class="dorm-row">
           <div class="dorm-sector">SECTOR 8-A</div>
           <div class="dorm-name">Despliegue Controlado &middot; epistemiclab.dpdns.org</div>
           <div class="dorm-bar"></div>
-          <div class="dorm-label">Hibernando</div>
+          <div class="dorm-label">Activo · Estático</div>
         </div>
 
       </div>
       <div class="dorm-note">
-        Los sectores dormidos requieren validación de gobernanza antes de activarse.<br>
-        Secuencia de activación: Fase 4 &rarr; 5 &rarr; 6 &rarr; 7 &rarr; 8. No se permiten atajos entre fases.<br>
+        Los sectores futuros requieren validación de gobernanza antes de activarse.<br>
+        La capa frontend y el despliegue estático están activos solo como laboratorio privado de entrenamiento.<br>
         Ningún sector se otorga autoridad de examinador en ninguna etapa de activación.
       </div>
     </div>
@@ -914,8 +914,8 @@
   <div class="foot">
     <div class="foot-l">
       WSET-AI-System &nbsp;&middot;&nbsp; Estado de Arquitectura Cognitiva<br>
-      Privado &nbsp;&middot;&nbsp; No Indexado &nbsp;&middot;&nbsp; No Desplegado<br>
-      epistemiclab.dpdns.org &nbsp;&middot;&nbsp; DNS reservado vía Cloudflare
+      Privado &nbsp;&middot;&nbsp; No Indexado &nbsp;&middot;&nbsp; Despliegue Estático Controlado<br>
+      epistemiclab.dpdns.org &nbsp;&middot;&nbsp; Laboratorio Diagnóstico SBA Disponible
     </div>
     <div class="foot-r">
       NO ES UN SISTEMA DE EVALUACIÓN WSET<br>
@@ -939,8 +939,8 @@
      ESTADO DEL SISTEMA
   ================================================================ */
   var STATE = {
-    maturity: 50,
-    tests: 660,
+    maturity: 55,
+    tests: 1107,
     snapshots: 35,
     phases_completed: [
       'governance','retrieval','causal_chains','sat_reasoning',
@@ -948,10 +948,10 @@
       'strategic_planner','session_ledger','ledger_summary',
       'self_eval','question_bank','planner_hint_parser','planner_gate'
     ],
-    latest_phase:  'Phase 4A',
-    latest_event:  'Arquitectura madura · Tutor neuro-simbólico determinístico activo',
-    latest_commit: '5481624',
-    current_recommendation: 'Fase experimental temprana superada · Madurez arquitectónica ~48–52%'
+    latest_phase:  'Phase 4A.3.7.21',
+    latest_event:  'Private Diagnostic SBA Lab published',
+    latest_commit: '0c412a6',
+    current_recommendation: 'Phase 4A.3.7.22 — Diagnostic SBA v2.2 JSON Loader Integration'
   };
 
   /* Carga del archivo externo — fallback silencioso */
