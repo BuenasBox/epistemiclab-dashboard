@@ -560,6 +560,34 @@
       flex-shrink: 0;
     }
 
+    .lab-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .lab-card-metrics {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      max-width: 520px;
+    }
+
+    .lab-metric {
+      border: 1px solid rgba(0,210,255,0.09);
+      background: rgba(0,210,255,0.018);
+      padding: 4px 7px;
+      font-size: 8px;
+      letter-spacing: 0.04em;
+      color: rgba(196,200,220,0.55);
+      white-space: nowrap;
+    }
+
+    .lab-metric strong {
+      color: rgba(0,255,136,0.62);
+      font-weight: 500;
+    }
+
     .lab-card-arrow {
       font-size: 14px;
       color: rgba(0,210,255,0.28);
@@ -616,6 +644,10 @@
       .gov-key { min-width: 165px; }
       .gov-fill { display: none; }
       .dorm-bar { display: none; }
+      .lab-card { align-items: flex-start; }
+      .lab-card-tag { min-width: auto; }
+      .lab-card-desc { display: none; }
+      .lab-metric { white-space: normal; }
       .foot { flex-direction: column; align-items: flex-start; }
       .foot-r { text-align: left; }
     }
@@ -647,10 +679,10 @@
 
       <div class="synapse-panel">
         <div class="synapse-badge">Nueva Sinapsis Formada</div>
-        <div class="synapse-phase" id="synapse-phase">Phase 4A.3.7.21</div>
-        <div class="synapse-event" id="synapse-event">Laboratorio Diagnóstico SBA privado publicado</div>
-        <div class="synapse-rec"   id="synapse-rec">Siguiente: integrar el loader JSON en la experiencia visual v2.2</div>
-        <div class="synapse-commit" id="synapse-commit">&middot;&nbsp;<span id="synapse-commit-hash">0c412a6</span></div>
+        <div class="synapse-phase" id="synapse-phase">Phase 4A.3.7.43</div>
+        <div class="synapse-event" id="synapse-event">36-item Gold Bank Diagnostic SBA Lab deployed with deterministic option shuffle</div>
+        <div class="synapse-rec"   id="synapse-rec">Phase 4A.3.7.44 — SBA Master Bank &amp; Governed Question Generation Roadmap</div>
+        <div class="synapse-commit" id="synapse-commit">&middot;&nbsp;<span id="synapse-commit-hash">f0b5d84</span></div>
       </div>
     </div>
 
@@ -680,7 +712,8 @@
     <div class="sys-status">
       <span class="status-dot"></span>
       NÚCLEO COGNITIVO: EN EVOLUCIÓN
-      &nbsp;·&nbsp; <span id="test-count">1107</span>&nbsp;PRUEBAS VERIFICADAS
+      &nbsp;·&nbsp; <span id="test-count">1363</span>&nbsp;PRUEBAS VERIFICADAS
+      &nbsp;·&nbsp; <span id="skip-count">9</span>&nbsp;OMITIDAS
       &nbsp;·&nbsp; <span id="snap-count">35</span>/35&nbsp;SNAPSHOTS
       &nbsp;·&nbsp; SIN LLM EN TIEMPO REAL
       &nbsp;·&nbsp; GOBERNANZA INTACTA
@@ -890,9 +923,20 @@
       <div class="lab-grid">
 
         <a class="lab-card" href="./diagnostic-sba/">
-          <div class="lab-card-tag">FASE 4A · PROTOTIPO ESTÁTICO</div>
-          <div class="lab-card-title">Laboratorio Diagnóstico SBA</div>
-          <div class="lab-card-desc">Entrenamiento privado · No evaluación oficial WSET · Prototipo estático</div>
+          <div class="lab-card-tag">FASE 4A.3.7.43 · ACTIVO</div>
+          <div class="lab-card-body">
+            <div class="lab-card-title">Laboratorio Diagnóstico SBA</div>
+            <div class="lab-card-metrics">
+              <span class="lab-metric">SBA activos: <strong id="sba-item-count">36</strong></span>
+              <span class="lab-metric">Loader JSON: <strong id="json-loader-status">activo</strong></span>
+              <span class="lab-metric">Shuffle: <strong id="shuffle-status">activo</strong></span>
+              <span class="lab-metric">Estrategia: <strong id="shuffle-strategy">stable_item_id_sha256_v1</strong></span>
+              <span class="lab-metric">Errores export: <strong id="export-errors">0</strong></span>
+              <span class="lab-metric">Suite: <strong id="suite-status">1363 OK, 9 skipped</strong></span>
+              <span class="lab-metric">Mock: <strong id="mock-status">inactivo</strong></span>
+            </div>
+          </div>
+          <div class="lab-card-desc">Entrenamiento privado · Sin scoring oficial · Sin autoridad de examinador</div>
           <div class="lab-card-arrow">→</div>
         </a>
 
@@ -940,7 +984,8 @@
   ================================================================ */
   var STATE = {
     maturity: 55,
-    tests: 1107,
+    tests: 1363,
+    tests_skipped: 9,
     snapshots: 35,
     phases_completed: [
       'governance','retrieval','causal_chains','sat_reasoning',
@@ -948,10 +993,17 @@
       'strategic_planner','session_ledger','ledger_summary',
       'self_eval','question_bank','planner_hint_parser','planner_gate'
     ],
-    latest_phase:  'Phase 4A.3.7.21',
-    latest_event:  'Private Diagnostic SBA Lab published',
-    latest_commit: '0c412a6',
-    current_recommendation: 'Phase 4A.3.7.22 — Diagnostic SBA v2.2 JSON Loader Integration'
+    latest_phase:  'Phase 4A.3.7.43',
+    latest_event:  '36-item Gold Bank Diagnostic SBA Lab deployed with deterministic option shuffle',
+    latest_commit: 'f0b5d84',
+    current_recommendation: 'Phase 4A.3.7.44 — SBA Master Bank & Governed Question Generation Roadmap',
+    active_sba_items: 36,
+    diagnostic_sba_json_loader_status: 'active',
+    option_shuffle_status: 'active',
+    option_shuffle_strategy: 'stable_item_id_sha256_v1',
+    export_validation_errors: 0,
+    test_suite_status: '1363 OK, 9 skipped',
+    mock_questions_status: 'inactive'
   };
 
   /* Carga del archivo externo — fallback silencioso */
@@ -964,10 +1016,13 @@
   function syncHero() {
     var mn = document.getElementById('mat-num');
     var tc = document.getElementById('test-count');
+    var sk = document.getElementById('skip-count');
     var sc = document.getElementById('snap-count');
     if (mn) mn.innerHTML = STATE.maturity + '<span class="mat-unit">%</span>';
     if (tc) tc.textContent = STATE.tests;
+    if (sk) sk.textContent = STATE.tests_skipped || 0;
     if (sc) sc.textContent = STATE.snapshots;
+    syncLabMetrics();
   }
 
   function syncSynapse() {
@@ -979,6 +1034,27 @@
     if (ev  && STATE.latest_event)              ev.textContent  = STATE.latest_event;
     if (rec && STATE.current_recommendation)    rec.textContent = STATE.current_recommendation;
     if (cmt && STATE.latest_commit)             cmt.textContent = STATE.latest_commit;
+  }
+
+  function syncLabMetrics() {
+    setText('sba-item-count', STATE.active_sba_items);
+    setText('json-loader-status', statusWord(STATE.diagnostic_sba_json_loader_status));
+    setText('shuffle-status', statusWord(STATE.option_shuffle_status));
+    setText('shuffle-strategy', STATE.option_shuffle_strategy);
+    setText('export-errors', STATE.export_validation_errors);
+    setText('suite-status', STATE.test_suite_status || ((STATE.tests || 0) + ' OK, ' + (STATE.tests_skipped || 0) + ' skipped'));
+    setText('mock-status', statusWord(STATE.mock_questions_status));
+  }
+
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el && value !== undefined && value !== null) el.textContent = value;
+  }
+
+  function statusWord(value) {
+    if (value === 'active') return 'activo';
+    if (value === 'inactive') return 'inactivo';
+    return value;
   }
 
   /* ================================================================
