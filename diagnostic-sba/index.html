@@ -836,6 +836,18 @@
     return found ? found.option_text : '';
   }
 
+  function visualOptionId(options, id) {
+    var found = (options || []).filter(function(option) { return option.option_id === id; })[0];
+    return found ? found.visual_option_id || found.option_id : id;
+  }
+
+  function optionIdForVisual(options, visualId) {
+    var found = (options || []).filter(function(option) {
+      return (option.visual_option_id || option.option_id) === visualId;
+    })[0];
+    return found ? found.option_id : null;
+  }
+
   function displayDifficulty(value) {
     var text = String(value || 'intermediate').toUpperCase();
     if (text === 'BASIC') return 'BASICO';
@@ -902,7 +914,8 @@
   }
 
   function validateOption(option) {
-    return isObject(option) && isNonEmptyString(option.option_id) &&
+    return isObject(option) && isNonEmptyString(option.visual_option_id) &&
+      isNonEmptyString(option.option_id) &&
       isNonEmptyString(option.option_text);
   }
 
@@ -920,8 +933,11 @@
         item.examiner_scoring_allowed !== false || !hasSafeGovernance(item.governance)) return false;
     if (!Array.isArray(item.options) || item.options.length !== 4 || !item.options.every(validateOption)) return false;
 
+    var visualOptionIds = item.options.map(function(option) { return option.visual_option_id; });
+    if (visualOptionIds.join(',') !== 'A,B,C,D') return false;
     var optionIds = item.options.map(function(option) { return option.option_id; });
-    if (optionIds.join(',') !== 'A,B,C,D') return false;
+    if (optionIds.slice().sort().join(',') !== 'A,B,C,D') return false;
+    if (new Set(optionIds).size !== optionIds.length) return false;
     return validateOutcome(outcomesByItemId[item.item_id], item.item_id, optionIds);
   }
 
@@ -989,8 +1005,9 @@
       var div = document.createElement('div');
       div.className = 'opt';
       div.dataset.id = op.option_id;
+      div.dataset.visualId = op.visual_option_id;
       div.innerHTML =
-        '<div class="opt-key">' + escapeHtml(op.option_id) + '</div>' +
+        '<div class="opt-key">' + escapeHtml(op.visual_option_id) + '</div>' +
         '<div class="opt-txt">' + escapeHtml(op.option_text) + '</div>' +
         '<div class="opt-mark"></div>';
       div.addEventListener('click', function() { pickOpt(op.option_id); });
@@ -1063,7 +1080,12 @@
   document.addEventListener('keydown', function(e) {
     if (S.done || QS.length === 0) return;
     var k = e.key.toUpperCase();
-    if (['A', 'B', 'C', 'D'].indexOf(k) !== -1) { pickOpt(k); return; }
+    if (['A', 'B', 'C', 'D'].indexOf(k) !== -1) {
+      var q = QS[S.idx];
+      var optionId = q ? optionIdForVisual(q.options, k) : null;
+      if (optionId) pickOpt(optionId);
+      return;
+    }
     if (e.key === 'Enter' && S.sel && S.conf !== null) { confirmAnswer(); }
   });
 
@@ -1133,6 +1155,8 @@
     var feedback = outcome.feedback || {};
     var wrong = feedback.why_other_options_are_wrong || {};
     var correctId = outcome.correct_option_id;
+    var selectedVisualId = visualOptionId(q.options, S.sel);
+    var correctVisualId = visualOptionId(q.options, correctId);
 
     document.getElementById('waiting').style.display = 'none';
     document.getElementById('result').classList.add('show');
@@ -1150,7 +1174,7 @@
         '<div class="v-title ' + (isOk ? 'ok' : 'fail') + '">' + (isOk ? 'RESPUESTA CORRECTA' : 'RESPUESTA INCORRECTA') + '</div>' +
         '<div class="v-sub">' + (isOk
           ? 'Fundamento confirmado · Entrenamiento estático'
-          : 'Opción seleccionada: ' + escapeHtml(S.sel) + ' &nbsp;·&nbsp; Correcta: ' + escapeHtml(correctId)) + '</div>' +
+          : 'Opción seleccionada: ' + escapeHtml(selectedVisualId) + ' &nbsp;·&nbsp; Correcta: ' + escapeHtml(correctVisualId)) + '</div>' +
         (metaLine ? '<div class="v-sub" style="margin-top:3px;color:rgba(0,212,255,0.35);">' + metaLine + '</div>' : '') +
       '</div>';
 

@@ -24,20 +24,24 @@
       "question_type": "single_best_answer",
       "options": [
         {
+          "visual_option_id": "A",
           "option_id": "A",
           "option_text": "Crianza en roble americano"
         },
         {
+          "visual_option_id": "B",
           "option_id": "B",
           "option_text": "Uso de crianza larga"
         },
         {
-          "option_id": "C",
-          "option_text": "Adición de aguardiente vínico"
-        },
-        {
+          "visual_option_id": "C",
           "option_id": "D",
           "option_text": "Secado de uvas al sol"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Adición de aguardiente vínico"
         }
       ],
       "governance": {
@@ -49,10 +53,59 @@
       }
     },
     {
-      "item_id": "draft_diag_sba_structured_12",
-      "source_question_id": "12",
-      "draft_id": "draft_diag_sba_structured_12",
-      "review_id": "review_12_20260602_001",
+      "item_id": "draft_diag_sba_structured_21",
+      "source_question_id": "21",
+      "draft_id": "draft_diag_sba_structured_21",
+      "review_id": "review_21_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA3",
+      "topic": "sparkling_wines",
+      "subtopic": "cremant_de_loire_chenin_blanc",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Cremant de Loire / Chenin Blanc.",
+      "stem": "¿Cuál es una variedad comúnmente utilizada en el espumoso Crémant de Loire?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Malbec"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "C",
+          "option_text": "Chenin Blanc"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Cabernet Sauvignon"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Tempranillo"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_83",
+      "source_question_id": "83",
+      "draft_id": "draft_diag_sba_structured_83",
+      "review_id": "review_83_20260603_001",
       "approval_scope": "static_demo_only",
       "static_demo_only": true,
       "training_item_only": true,
@@ -61,28 +114,32 @@
       "examiner_scoring_allowed": false,
       "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
       "ra_id": "RA1",
-      "topic": "viticulture",
-      "subtopic": "spring_frost_topography",
+      "topic": "quality_factors",
+      "subtopic": "ageability_structure_balance",
       "difficulty": "intermediate",
-      "learning_objective": "Identify how topography affects spring frost risk in a training-only diagnostic item.",
-      "stem": "¿Qué factor natural tiene mayor influencia en el riesgo de heladas primaverales?",
+      "learning_objective": "Identify the structural combination that supports extended wine life in training diagnostics.",
+      "stem": "¿Qué combinación de factores maximiza la vida útil de un vino para guarda prolongada?",
       "question_type": "single_best_answer",
       "options": [
         {
-          "option_id": "A",
-          "option_text": "Exposición al sol"
-        },
-        {
-          "option_id": "B",
-          "option_text": "Altitud"
-        },
-        {
-          "option_id": "C",
-          "option_text": "Pendiente del terreno"
-        },
-        {
+          "visual_option_id": "A",
           "option_id": "D",
-          "option_text": "Latitud"
+          "option_text": "Cosecha temprana y maceración mínima"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Bajo alcohol, baja acidez, mucho dulzor"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Alta acidez, taninos firmes y buen equilibrio"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Fermentación en frío y filtrado"
         }
       ],
       "governance": {
@@ -94,10 +151,1235 @@
       }
     },
     {
-      "item_id": "draft_diag_sba_structured_17",
-      "source_question_id": "17",
-      "draft_id": "draft_diag_sba_structured_17",
-      "review_id": "review_17_20260602_001",
+      "item_id": "draft_diag_sba_structured_105",
+      "source_question_id": "105",
+      "draft_id": "draft_diag_sba_structured_105",
+      "review_id": "review_105_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA4",
+      "topic": "fortified_wines",
+      "subtopic": "sherry_oxidative_complexity",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Sherry oxidative complexity.",
+      "stem": "¿Qué estilo de Jerez representa mejor la complejidad oxidativa intensa?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "A",
+          "option_text": "Fino"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "Manzanilla"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "C",
+          "option_text": "Moscatel"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "B",
+          "option_text": "Palo Cortado"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_107",
+      "source_question_id": "107",
+      "draft_id": "draft_diag_sba_structured_107",
+      "review_id": "review_107_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA3",
+      "topic": "sparkling_wines",
+      "subtopic": "prise_de_mousse",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Prise de mousse.",
+      "stem": "¿Qué es una 'prise de mousse'?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "C",
+          "option_text": "La fermentación que genera las burbujas"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "El licor de expedición"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "A",
+          "option_text": "El proceso de filtración final"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "B",
+          "option_text": "La crianza sobre lías"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_206",
+      "source_question_id": "206",
+      "draft_id": "draft_diag_sba_structured_206",
+      "review_id": "review_206_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA4",
+      "topic": "fortified_wines",
+      "subtopic": "port_varieties",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Port varieties.",
+      "stem": "¿Qué variedad es dominante en los vinos de Oporto?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "B",
+          "option_text": "Tempranillo"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Touriga Nacional"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "D",
+          "option_text": "Garnacha"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Baga"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_216",
+      "source_question_id": "216",
+      "draft_id": "draft_diag_sba_structured_216",
+      "review_id": "review_216_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA3",
+      "topic": "sparkling_wines",
+      "subtopic": "cremant_de_loire_chenin_blanc",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Cremant de Loire / Chenin Blanc.",
+      "stem": "¿Qué variedad blanca domina los espumosos Crémant de Loire?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "B",
+          "option_text": "Sauvignon Blanc"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Chenin Blanc"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "D",
+          "option_text": "Semillón"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Chardonnay"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_228",
+      "source_question_id": "228",
+      "draft_id": "draft_diag_sba_structured_228",
+      "review_id": "review_228_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "chianti_classico",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Chianti Classico.",
+      "stem": "¿Qué región vinícola italiana se distingue por vinos tintos a base de Sangiovese y suelos de galestro?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Etna"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "B",
+          "option_text": "Chianti Classico"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "C",
+          "option_text": "Trentino"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Barolo"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_230",
+      "source_question_id": "230",
+      "draft_id": "draft_diag_sba_structured_230",
+      "review_id": "review_230_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA1",
+      "topic": "quality_factors",
+      "subtopic": "continental_climate_red_structure",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Continental-climate red structure.",
+      "stem": "¿Qué estilo define a un vino tinto de clima continental?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Notas oxidativas y poco potencial de guarda"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "C",
+          "option_text": "Gasificación natural y bajo alcohol"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Bajo cuerpo y perfil floral"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Alta acidez, taninos marcados y estructura firme"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_232",
+      "source_question_id": "232",
+      "draft_id": "draft_diag_sba_structured_232",
+      "review_id": "review_232_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "pinot_noir_terroir_sensitivity",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Pinot Noir terroir sensitivity.",
+      "stem": "¿Qué variedad es más sensible al terroir y se expresa de forma distinta según región?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "A",
+          "option_text": "Cabernet Sauvignon"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "Pinot Noir"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Grenache"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Syrah"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_240",
+      "source_question_id": "240",
+      "draft_id": "draft_diag_sba_structured_240",
+      "review_id": "review_240_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA3",
+      "topic": "sparkling_wines",
+      "subtopic": "charmat_prosecco",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Charmat / Prosecco.",
+      "stem": "¿Qué define al método Charmat usado en Prosecco?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "B",
+          "option_text": "Fermentación en tanques presurizados"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "C",
+          "option_text": "Crianza oxidativa en barricas"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "D",
+          "option_text": "Maceración carbónica"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Fermentación en botella"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_258",
+      "source_question_id": "258",
+      "draft_id": "draft_diag_sba_structured_258",
+      "review_id": "review_258_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "uco_valley_altitude_coolness",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Uco Valley altitude/coolness.",
+      "stem": "¿Qué región de Sudamérica combina altitud con un clima fresco ideal para Pinot Noir?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "A",
+          "option_text": "Valle Central"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "Itata"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Uco Valley"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Canelones"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_265",
+      "source_question_id": "265",
+      "draft_id": "draft_diag_sba_structured_265",
+      "review_id": "review_265_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "central_otago_pinot_noir",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Central Otago Pinot Noir.",
+      "stem": "¿Qué región de Nueva Zelanda se ha posicionado por su Pinot Noir de alta calidad?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "C",
+          "option_text": "Central Otago"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Gisborne"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Marlborough"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "D",
+          "option_text": "Wairarapa"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_268",
+      "source_question_id": "268",
+      "draft_id": "draft_diag_sba_structured_268",
+      "review_id": "review_268_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "nebbiolo_young_style",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Nebbiolo young style.",
+      "stem": "¿Qué describe mejor al estilo de un vino de Nebbiolo joven?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "A",
+          "option_text": "Notas frutales maduras, tanino bajo"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "C",
+          "option_text": "Gas residual y notas tropicales"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Florales, taninos firmes, alta acidez"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "D",
+          "option_text": "Carácter oxidativo dominante"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_269",
+      "source_question_id": "269",
+      "draft_id": "draft_diag_sba_structured_269",
+      "review_id": "review_269_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "vinho_verde",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Vinho Verde.",
+      "stem": "¿Qué región portuguesa es famosa por vinos blancos frescos y ligeros?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "C",
+          "option_text": "Vinho Verde"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Douro"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Alentejo"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "D",
+          "option_text": "Bairrada"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_270",
+      "source_question_id": "270",
+      "draft_id": "draft_diag_sba_structured_270",
+      "review_id": "review_270_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "chinon_cabernet_franc",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Chinon / Cabernet Franc.",
+      "stem": "¿Qué variedad domina los vinos tintos de Chinon en el Valle del Loira?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Malbec"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Merlot"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Cabernet Sauvignon"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Cabernet Franc"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_277",
+      "source_question_id": "277",
+      "draft_id": "draft_diag_sba_structured_277",
+      "review_id": "review_277_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "oregon_pinot_noir",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Oregon Pinot Noir.",
+      "stem": "¿Qué variedad se cultiva en Oregon con prestigio similar al de Borgoña?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "C",
+          "option_text": "Pinot Noir"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "Grenache"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Syrah"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Cabernet Sauvignon"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_287",
+      "source_question_id": "287",
+      "draft_id": "draft_diag_sba_structured_287",
+      "review_id": "review_287_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "barolo_structure",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Barolo structure.",
+      "stem": "¿Qué define el estilo clásico de un vino tinto de la DOCG Barolo?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Alcohol bajo y sin crianza"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "B",
+          "option_text": "Taninos altos, acidez alta y notas terciarias con la edad"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "A",
+          "option_text": "Fruta tropical y dulzor residual"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Cuerpo ligero, acidez baja"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_301",
+      "source_question_id": "301",
+      "draft_id": "draft_diag_sba_structured_301",
+      "review_id": "review_301_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "chile_cabernet_sauvignon",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Chile / Cabernet Sauvignon.",
+      "stem": "¿Qué variedad tinta es más plantada en Chile?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Sangiovese"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Pinot Noir"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Malbec"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Cabernet Sauvignon"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_308",
+      "source_question_id": "308",
+      "draft_id": "draft_diag_sba_structured_308",
+      "review_id": "review_308_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "marlborough_sauvignon_blanc",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Marlborough Sauvignon Blanc.",
+      "stem": "¿Qué variedad se asocia con Marlborough Sauvignon Blanc?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "A",
+          "option_text": "Chenin Blanc"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "Semillón"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Verdejo"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Sauvignon Blanc"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_309",
+      "source_question_id": "309",
+      "draft_id": "draft_diag_sba_structured_309",
+      "review_id": "review_309_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "tokaj_botrytis",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Tokaj botrytis.",
+      "stem": "¿Qué factor limita el estilo de los vinos en Tokaj?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Falta de acidez"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "B",
+          "option_text": "Protección DOC"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "A",
+          "option_text": "Inundaciones"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Botrytis cinerea"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_325",
+      "source_question_id": "325",
+      "draft_id": "draft_diag_sba_structured_325",
+      "review_id": "review_325_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "loire_sauvignon_blanc",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Loire Sauvignon Blanc.",
+      "stem": "¿Qué variedad blanca domina en el Valle del Loira, especialmente en Sancerre y Pouilly-Fumé?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Muscadet"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "C",
+          "option_text": "Sauvignon Blanc"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "A",
+          "option_text": "Chardonnay"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "B",
+          "option_text": "Chenin Blanc"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_356",
+      "source_question_id": "356",
+      "draft_id": "draft_diag_sba_structured_356",
+      "review_id": "review_356_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "sta_rita_hills_coastal_pinot_noir",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Sta. Rita Hills / coastal Pinot Noir.",
+      "stem": "¿Qué región vinícola californiana es famosa por su influencia costera y Pinot Noir de alta calidad?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Alexander Valley"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Paso Robles"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Sierra Foothills"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Santa Rita Hills"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_395",
+      "source_question_id": "395",
+      "draft_id": "draft_diag_sba_structured_395",
+      "review_id": "review_395_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "maipo_cabernet_sauvignon_profile",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Maipo Cabernet Sauvignon profile.",
+      "stem": "¿Qué característica se espera en un Cabernet Sauvignon de Maipo Valley, Chile?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "B",
+          "option_text": "Alta acidez, aromas a grosella negra, taninos marcados"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Taninos ligeros y fruta tropical"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "D",
+          "option_text": "Bajo alcohol y aromas terrosos"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Cuerpo medio y notas herbáceas"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_402",
+      "source_question_id": "402",
+      "draft_id": "draft_diag_sba_structured_402",
+      "review_id": "review_402_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "douro_touriga_nacional",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Douro / Touriga Nacional.",
+      "stem": "¿Qué variedad tinta se cultiva comúnmente en el Douro para vinos tranquilos y fortificados?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "C",
+          "option_text": "Touriga Nacional"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "Garnacha"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Cabernet Sauvignon"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Touriga Franca"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_421",
+      "source_question_id": "421",
+      "draft_id": "draft_diag_sba_structured_421",
+      "review_id": "review_421_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "ribera_del_duero_climate_effect",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Ribera del Duero climate effect.",
+      "stem": "¿Qué efecto tiene el clima continental de Ribera del Duero en sus vinos tintos?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "B",
+          "option_text": "Buena acidez y fruta madura"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "C",
+          "option_text": "Taninos intensos y buena acidez"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "D",
+          "option_text": "Color pálido y aromas florales"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Baja acidez y cuerpo ligero"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_424",
+      "source_question_id": "424",
+      "draft_id": "draft_diag_sba_structured_424",
+      "review_id": "review_424_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "barossa_valley_shiraz",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Barossa Valley Shiraz.",
+      "stem": "¿Qué región de Australia es famosa por su Shiraz potente y con notas especiadas?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "B",
+          "option_text": "Barossa Valley"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "D",
+          "option_text": "Coonawarra"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "C",
+          "option_text": "Yarra Valley"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Margaret River"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_438",
+      "source_question_id": "438",
+      "draft_id": "draft_diag_sba_structured_438",
+      "review_id": "review_438_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "willamette_valley_pinot_noir",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Willamette Valley Pinot Noir.",
+      "stem": "¿Cuál de las siguientes regiones es conocida por producir Pinot Noir con alta acidez y aromas a frutas rojas frescas?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "C",
+          "option_text": "Marlborough"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Sonoma Coast"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "D",
+          "option_text": "Willamette Valley"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "B",
+          "option_text": "Côte de Nuits"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_440",
+      "source_question_id": "440",
+      "draft_id": "draft_diag_sba_structured_440",
+      "review_id": "review_440_20260604_gold_bank_001",
       "approval_scope": "static_demo_only",
       "static_demo_only": true,
       "training_item_only": true,
@@ -107,27 +1389,374 @@
       "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
       "ra_id": "RA1",
       "topic": "winemaking",
-      "subtopic": "destemming_tannin_extraction",
+      "subtopic": "chablis_avoiding_mlf",
       "difficulty": "intermediate",
-      "learning_objective": "Identify why destemming can reduce extraction of green tannins in a training-only diagnostic item.",
-      "stem": "¿Cuál es el propósito principal del despalillado antes de la fermentación?",
+      "learning_objective": "Use a training-only diagnostic item for Chablis / avoiding MLF.",
+      "stem": "¿Qué práctica en bodega es común en Chablis para mantener el perfil fresco del vino?",
       "question_type": "single_best_answer",
       "options": [
         {
-          "option_id": "A",
-          "option_text": "Reducir el nivel de azúcar"
-        },
-        {
-          "option_id": "B",
-          "option_text": "Evitar la extracción de taninos verdes"
-        },
-        {
+          "visual_option_id": "A",
           "option_id": "C",
-          "option_text": "Estimular la fermentación maloláctica"
+          "option_text": "Evitar la fermentación maloláctica"
         },
         {
+          "visual_option_id": "B",
+          "option_id": "B",
+          "option_text": "Crianza oxidativa"
+        },
+        {
+          "visual_option_id": "C",
           "option_id": "D",
-          "option_text": "Mejorar la retención aromática"
+          "option_text": "Uso de levaduras seleccionadas"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Uso de roble nuevo"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_441",
+      "source_question_id": "441",
+      "draft_id": "draft_diag_sba_structured_441",
+      "review_id": "review_441_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "still_wines",
+      "subtopic": "medoc_red_structure",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Medoc red structure.",
+      "stem": "¿Cuál es una característica común de los vinos tintos del Médoc?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Sin crianza en madera"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "C",
+          "option_text": "Alto azúcar residual"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "A",
+          "option_text": "Bajo alcohol"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "B",
+          "option_text": "Alta acidez y taninos firmes"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_464",
+      "source_question_id": "464",
+      "draft_id": "draft_diag_sba_structured_464",
+      "review_id": "review_464_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "winemaking",
+      "subtopic": "destemming_green_tannin",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Destemming and green tannin.",
+      "stem": "¿Qué efecto tiene el despalillado previo a la fermentación?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Fomenta fermentaciones espontáneas"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "B",
+          "option_text": "Incrementa la extracción"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "C",
+          "option_text": "Oxida los antocianos"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Reduce el tanino verde"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_493",
+      "source_question_id": "493",
+      "draft_id": "draft_diag_sba_structured_493",
+      "review_id": "review_493_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA1",
+      "topic": "viticulture",
+      "subtopic": "late_harvest_frost_exposure",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Late harvest frost exposure.",
+      "stem": "¿Cuál es el principal riesgo de una vendimia muy tardía?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Exceso de acidez volátil"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Aumento de acidez"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Exposición a heladas"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Pérdida de color"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_498",
+      "source_question_id": "498",
+      "draft_id": "draft_diag_sba_structured_498",
+      "review_id": "review_498_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA2",
+      "topic": "viticulture",
+      "subtopic": "canopy_management_fungal_disease",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Canopy management / fungal disease.",
+      "stem": "¿Cuál es una práctica común para evitar enfermedades fúngicas en climas húmedos?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Vendimia mecánica"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Reducción del SO₂"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "B",
+          "option_text": "Canopy management"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "C",
+          "option_text": "Filtración tangencial"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_515",
+      "source_question_id": "515",
+      "draft_id": "draft_diag_sba_structured_515",
+      "review_id": "review_515_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA1",
+      "topic": "winemaking",
+      "subtopic": "open_vats_malolactic_fermentation",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Open vats / malolactic fermentation.",
+      "stem": "¿Qué tipo de fermentación se favorece con depósitos troncocónicos abiertos?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Fermentación aeróbica con sombrero sumergido"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "B",
+          "option_text": "Fermentación espontánea"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "C",
+          "option_text": "Fermentación a bajas temperaturas"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Fermentación maloláctica"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_659",
+      "source_question_id": "659",
+      "draft_id": "draft_diag_sba_structured_659",
+      "review_id": "review_659_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA3",
+      "topic": "sparkling_wines",
+      "subtopic": "brut_nature_no_dosage",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for Brut Nature / no dosage.",
+      "stem": "¿Qué término en la etiqueta indica un espumoso sin adición de azúcar tras el degüelle?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "C",
+          "option_text": "Brut"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "B",
+          "option_text": "Brut Nature"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "D",
+          "option_text": "Sec"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "A",
+          "option_text": "Extra Dry"
+        }
+      ],
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    {
+      "item_id": "draft_diag_sba_structured_834",
+      "source_question_id": "834",
+      "draft_id": "draft_diag_sba_structured_834",
+      "review_id": "review_834_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "training_item_only": true,
+      "official_wset_question": false,
+      "safe_for_examiner": false,
+      "examiner_scoring_allowed": false,
+      "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET",
+      "ra_id": "RA5",
+      "topic": "label_law",
+      "subtopic": "german_pradikat_label_hierarchy",
+      "difficulty": "intermediate",
+      "learning_objective": "Use a training-only diagnostic item for German Pradikat label hierarchy.",
+      "stem": "¿Cuál de las siguientes menciones en una etiqueta alemana indica el nivel más alto de dulzor y concentración dentro del sistema Prädikat?",
+      "question_type": "single_best_answer",
+      "options": [
+        {
+          "visual_option_id": "A",
+          "option_id": "D",
+          "option_text": "Trockenbeerenauslese (TBA)"
+        },
+        {
+          "visual_option_id": "B",
+          "option_id": "A",
+          "option_text": "Spätlese"
+        },
+        {
+          "visual_option_id": "C",
+          "option_id": "C",
+          "option_text": "Beerenauslese (BA)"
+        },
+        {
+          "visual_option_id": "D",
+          "option_id": "B",
+          "option_text": "Auslese"
         }
       ],
       "governance": {
@@ -226,11 +1855,11 @@
         "static_demo_only": true
       }
     },
-    "draft_diag_sba_structured_12": {
-      "item_id": "draft_diag_sba_structured_12",
-      "source_question_id": "12",
-      "draft_id": "draft_diag_sba_structured_12",
-      "review_id": "review_12_20260602_001",
+    "draft_diag_sba_structured_21": {
+      "item_id": "draft_diag_sba_structured_21",
+      "source_question_id": "21",
+      "draft_id": "draft_diag_sba_structured_21",
+      "review_id": "review_21_20260604_gold_bank_001",
       "approval_scope": "static_demo_only",
       "static_demo_only": true,
       "correct_option_id": "C",
@@ -242,57 +1871,57 @@
       "option_diagnostics": {
         "A": {
           "is_correct": false,
-          "diagnostic_role": "partial_reasoning",
+          "diagnostic_role": "distractor",
           "misconception_id": null,
-          "diagnostic_note": "Sun exposure matters generally but does not target cold-air pooling."
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
         },
         "B": {
           "is_correct": false,
-          "diagnostic_role": "partial_reasoning",
+          "diagnostic_role": "distractor",
           "misconception_id": null,
-          "diagnostic_note": "Altitude can affect temperature but is less precise than slope/topography for this cold-air-drainage relationship."
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
         },
         "C": {
           "is_correct": true,
           "diagnostic_role": "correct",
           "misconception_id": null,
-          "diagnostic_note": "Matches the draft causal chain about cold-air drainage and low-lying frost risk."
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
         },
         "D": {
           "is_correct": false,
-          "diagnostic_role": "scope_error",
+          "diagnostic_role": "distractor",
           "misconception_id": null,
-          "diagnostic_note": "Confuses broad climate location with site-level topography."
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
         }
       },
       "feedback": {
-        "correct_rationale": "Slope/topography is the best answer because cold air can drain away from slopes and accumulate in low-lying areas, changing spring frost risk.",
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
         "why_other_options_are_wrong": {
-          "A": "Sun exposure can matter to ripening but does not directly describe cold-air drainage.",
-          "B": "Altitude may influence temperature, but the draft support focuses on site shape and air movement.",
-          "C": "This is the correct answer.",
-          "D": "Latitude is a broad regional factor, not the site-level factor tested here."
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
         },
-        "remediation_recommendation": "Review the spring frost and vineyard topography causal chain before retrying a viticulture risk item.",
+        "remediation_recommendation": "Review the source topic for Cremant de Loire / Chenin Blanc before retrying comparable training items.",
         "remediation_target": {
-          "target_type": "causal_chain",
-          "target_id": "CC_SPRING_FROST_TOPOGRAPHY"
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "cremant_de_loire_chenin_blanc"
         }
       },
       "misconception_linkage": {
         "status": "none_attached",
-        "notes": "No direct frost/topography misconception node was confirmed."
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
       },
       "causal_chain_linkage": {
-        "causal_chain_id": "CC_SPRING_FROST_TOPOGRAPHY",
-        "status": "draft_supported_by_expected_causal_links"
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
       },
       "sat_relevance": [],
       "remediation": {
-        "recommendation": "Review the spring frost and vineyard topography causal chain before retrying a viticulture risk item.",
+        "recommendation": "Review the source topic for Cremant de Loire / Chenin Blanc before retrying comparable training items.",
         "target": {
-          "target_type": "causal_chain",
-          "target_id": "CC_SPRING_FROST_TOPOGRAPHY"
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "cremant_de_loire_chenin_blanc"
         }
       },
       "governance": {
@@ -303,11 +1932,11 @@
         "static_demo_only": true
       }
     },
-    "draft_diag_sba_structured_17": {
-      "item_id": "draft_diag_sba_structured_17",
-      "source_question_id": "17",
-      "draft_id": "draft_diag_sba_structured_17",
-      "review_id": "review_17_20260602_001",
+    "draft_diag_sba_structured_83": {
+      "item_id": "draft_diag_sba_structured_83",
+      "source_question_id": "83",
+      "draft_id": "draft_diag_sba_structured_83",
+      "review_id": "review_83_20260603_001",
       "approval_scope": "static_demo_only",
       "static_demo_only": true,
       "correct_option_id": "B",
@@ -319,67 +1948,2607 @@
       "option_diagnostics": {
         "A": {
           "is_correct": false,
-          "diagnostic_role": "process_confusion",
+          "diagnostic_role": "partial_reasoning",
           "misconception_id": null,
-          "diagnostic_note": "Confuses destemming with sugar adjustment."
+          "diagnostic_note": "Includes sweetness but misses the structural backbone and wrongly includes low acidity."
         },
         "B": {
           "is_correct": true,
           "diagnostic_role": "correct",
           "misconception_id": null,
-          "diagnostic_note": "Matches the draft causal chain for stems, green tannins, and structure."
+          "diagnostic_note": "Correctly combines acidity, tannin, and balance."
         },
         "C": {
           "is_correct": false,
           "diagnostic_role": "process_confusion",
           "misconception_id": null,
-          "diagnostic_note": "Confuses grape handling before fermentation with malolactic conversion."
+          "diagnostic_note": "Confuses production operations with ageability structure."
         },
         "D": {
           "is_correct": false,
-          "diagnostic_role": "partial_reasoning",
+          "diagnostic_role": "causal_confusion",
           "misconception_id": null,
-          "diagnostic_note": "Aroma protection may matter in other processes, but the draft support focuses on tannin extraction from stems."
+          "diagnostic_note": "Early harvest and minimal maceration do not provide the structural basis tested."
         }
       },
       "feedback": {
-        "correct_rationale": "Destemming removes stems before fermentation. The draft support links stems to green tannin extraction, making option B the best answer.",
+        "correct_rationale": "High acidity, firm tannins, and good balance are the best answer because acidity and tannin can protect and structure a wine during ageing when integrated in balance.",
         "why_other_options_are_wrong": {
-          "A": "Destemming does not primarily reduce grape sugar.",
+          "A": "Low acidity weakens the preservation logic, and sweetness alone is not the structural combination tested.",
           "B": "This is the correct answer.",
-          "C": "Malolactic conversion is a separate process and is not stimulated by destemming in this draft relationship.",
-          "D": "Aroma retention is not the main relationship supported by the destemming/tannin draft support."
+          "C": "Fermentation and filtration steps do not by themselves define long ageing capacity.",
+          "D": "Early harvest and minimal extraction do not describe the tested ageability structure."
         },
-        "remediation_recommendation": "Review the destemming and tannin-structure causal chain, then contrast grape handling with fermentation and maturation processes.",
+        "remediation_recommendation": "Review ageability as a causal relationship among acidity, tannin, concentration, balance, and fruit condition.",
         "remediation_target": {
           "target_type": "causal_chain",
-          "target_id": "CC_DESTEMMING_TANNIN_STRUCTURE"
+          "target_id": "CC_TANNIN_AGEABILITY"
         }
       },
       "misconception_linkage": {
-        "status": "not_attached",
-        "candidate_misconception_ids": [
-          "MC_TANNIN_01",
-          "MC_TANNIN_02"
+        "status": "attached",
+        "misconception_ids": [
+          "MC_AGEING_IMPROVEMENT_01"
         ],
-        "notes": "Tannin misconceptions are adjacent but not direct matches unless a future rationale targets tannin/astringency confusion."
+        "notes": "The item checks the error that any wine improves with age by focusing on structural preconditions."
       },
       "causal_chain_linkage": {
-        "causal_chain_id": "CC_DESTEMMING_TANNIN_STRUCTURE",
+        "causal_chain_id": "CC_TANNIN_AGEABILITY",
         "status": "draft_supported_by_expected_causal_links"
       },
       "sat_relevance": [
         {
-          "parameter": "tannin",
-          "status": "tentative",
-          "reason": "The item concerns green tannin extraction, but the question is about production process rather than tasting assessment."
+          "parameter": "quality_assessment",
+          "status": "supported",
+          "reason": "The item diagnoses structure/balance reasoning used in quality and ageing assessment."
         }
       ],
       "remediation": {
-        "recommendation": "Review the destemming and tannin-structure causal chain, then contrast grape handling with fermentation and maturation processes.",
+        "recommendation": "Review ageability as a causal relationship among acidity, tannin, concentration, balance, and fruit condition.",
         "target": {
           "target_type": "causal_chain",
-          "target_id": "CC_DESTEMMING_TANNIN_STRUCTURE"
+          "target_id": "CC_TANNIN_AGEABILITY"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_105": {
+      "item_id": "draft_diag_sba_structured_105",
+      "source_question_id": "105",
+      "draft_id": "draft_diag_sba_structured_105",
+      "review_id": "review_105_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Sherry oxidative complexity before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "sherry_oxidative_complexity"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Sherry oxidative complexity before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "sherry_oxidative_complexity"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_107": {
+      "item_id": "draft_diag_sba_structured_107",
+      "source_question_id": "107",
+      "draft_id": "draft_diag_sba_structured_107",
+      "review_id": "review_107_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Prise de mousse before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "prise_de_mousse"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Prise de mousse before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "prise_de_mousse"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_206": {
+      "item_id": "draft_diag_sba_structured_206",
+      "source_question_id": "206",
+      "draft_id": "draft_diag_sba_structured_206",
+      "review_id": "review_206_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "A",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option A is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This is the preserved correct answer.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Port varieties before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "port_varieties"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Port varieties before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "port_varieties"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_216": {
+      "item_id": "draft_diag_sba_structured_216",
+      "source_question_id": "216",
+      "draft_id": "draft_diag_sba_structured_216",
+      "review_id": "review_216_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "A",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option A is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This is the preserved correct answer.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Cremant de Loire / Chenin Blanc before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "cremant_de_loire_chenin_blanc"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Cremant de Loire / Chenin Blanc before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "cremant_de_loire_chenin_blanc"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_228": {
+      "item_id": "draft_diag_sba_structured_228",
+      "source_question_id": "228",
+      "draft_id": "draft_diag_sba_structured_228",
+      "review_id": "review_228_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Chianti Classico before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chianti_classico"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Chianti Classico before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chianti_classico"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_230": {
+      "item_id": "draft_diag_sba_structured_230",
+      "source_question_id": "230",
+      "draft_id": "draft_diag_sba_structured_230",
+      "review_id": "review_230_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "A",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option A is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This is the preserved correct answer.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Continental-climate red structure before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "continental_climate_red_structure"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Continental-climate red structure before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "continental_climate_red_structure"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_232": {
+      "item_id": "draft_diag_sba_structured_232",
+      "source_question_id": "232",
+      "draft_id": "draft_diag_sba_structured_232",
+      "review_id": "review_232_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "D",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option D is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This is the preserved correct answer."
+        },
+        "remediation_recommendation": "Review the source topic for Pinot Noir terroir sensitivity before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "pinot_noir_terroir_sensitivity"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Pinot Noir terroir sensitivity before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "pinot_noir_terroir_sensitivity"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_240": {
+      "item_id": "draft_diag_sba_structured_240",
+      "source_question_id": "240",
+      "draft_id": "draft_diag_sba_structured_240",
+      "review_id": "review_240_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Charmat / Prosecco before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "charmat_prosecco"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Charmat / Prosecco before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "charmat_prosecco"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_258": {
+      "item_id": "draft_diag_sba_structured_258",
+      "source_question_id": "258",
+      "draft_id": "draft_diag_sba_structured_258",
+      "review_id": "review_258_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Uco Valley altitude/coolness before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "uco_valley_altitude_coolness"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Uco Valley altitude/coolness before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "uco_valley_altitude_coolness"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_265": {
+      "item_id": "draft_diag_sba_structured_265",
+      "source_question_id": "265",
+      "draft_id": "draft_diag_sba_structured_265",
+      "review_id": "review_265_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Central Otago Pinot Noir before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "central_otago_pinot_noir"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Central Otago Pinot Noir before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "central_otago_pinot_noir"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_268": {
+      "item_id": "draft_diag_sba_structured_268",
+      "source_question_id": "268",
+      "draft_id": "draft_diag_sba_structured_268",
+      "review_id": "review_268_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Nebbiolo young style before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "nebbiolo_young_style"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Nebbiolo young style before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "nebbiolo_young_style"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_269": {
+      "item_id": "draft_diag_sba_structured_269",
+      "source_question_id": "269",
+      "draft_id": "draft_diag_sba_structured_269",
+      "review_id": "review_269_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Vinho Verde before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "vinho_verde"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Vinho Verde before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "vinho_verde"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_270": {
+      "item_id": "draft_diag_sba_structured_270",
+      "source_question_id": "270",
+      "draft_id": "draft_diag_sba_structured_270",
+      "review_id": "review_270_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Chinon / Cabernet Franc before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chinon_cabernet_franc"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Chinon / Cabernet Franc before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chinon_cabernet_franc"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_277": {
+      "item_id": "draft_diag_sba_structured_277",
+      "source_question_id": "277",
+      "draft_id": "draft_diag_sba_structured_277",
+      "review_id": "review_277_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Oregon Pinot Noir before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "oregon_pinot_noir"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Oregon Pinot Noir before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "oregon_pinot_noir"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_287": {
+      "item_id": "draft_diag_sba_structured_287",
+      "source_question_id": "287",
+      "draft_id": "draft_diag_sba_structured_287",
+      "review_id": "review_287_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Barolo structure before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "barolo_structure"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Barolo structure before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "barolo_structure"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_301": {
+      "item_id": "draft_diag_sba_structured_301",
+      "source_question_id": "301",
+      "draft_id": "draft_diag_sba_structured_301",
+      "review_id": "review_301_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Chile / Cabernet Sauvignon before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chile_cabernet_sauvignon"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Chile / Cabernet Sauvignon before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chile_cabernet_sauvignon"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_308": {
+      "item_id": "draft_diag_sba_structured_308",
+      "source_question_id": "308",
+      "draft_id": "draft_diag_sba_structured_308",
+      "review_id": "review_308_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Marlborough Sauvignon Blanc before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "marlborough_sauvignon_blanc"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Marlborough Sauvignon Blanc before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "marlborough_sauvignon_blanc"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_309": {
+      "item_id": "draft_diag_sba_structured_309",
+      "source_question_id": "309",
+      "draft_id": "draft_diag_sba_structured_309",
+      "review_id": "review_309_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Tokaj botrytis before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "tokaj_botrytis"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Tokaj botrytis before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "tokaj_botrytis"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_325": {
+      "item_id": "draft_diag_sba_structured_325",
+      "source_question_id": "325",
+      "draft_id": "draft_diag_sba_structured_325",
+      "review_id": "review_325_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Loire Sauvignon Blanc before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "loire_sauvignon_blanc"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Loire Sauvignon Blanc before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "loire_sauvignon_blanc"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_356": {
+      "item_id": "draft_diag_sba_structured_356",
+      "source_question_id": "356",
+      "draft_id": "draft_diag_sba_structured_356",
+      "review_id": "review_356_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Sta. Rita Hills / coastal Pinot Noir before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "sta_rita_hills_coastal_pinot_noir"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Sta. Rita Hills / coastal Pinot Noir before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "sta_rita_hills_coastal_pinot_noir"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_395": {
+      "item_id": "draft_diag_sba_structured_395",
+      "source_question_id": "395",
+      "draft_id": "draft_diag_sba_structured_395",
+      "review_id": "review_395_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Maipo Cabernet Sauvignon profile before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "maipo_cabernet_sauvignon_profile"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Maipo Cabernet Sauvignon profile before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "maipo_cabernet_sauvignon_profile"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_402": {
+      "item_id": "draft_diag_sba_structured_402",
+      "source_question_id": "402",
+      "draft_id": "draft_diag_sba_structured_402",
+      "review_id": "review_402_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Douro / Touriga Nacional before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "douro_touriga_nacional"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Douro / Touriga Nacional before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "douro_touriga_nacional"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_421": {
+      "item_id": "draft_diag_sba_structured_421",
+      "source_question_id": "421",
+      "draft_id": "draft_diag_sba_structured_421",
+      "review_id": "review_421_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Ribera del Duero climate effect before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "ribera_del_duero_climate_effect"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Ribera del Duero climate effect before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "ribera_del_duero_climate_effect"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_424": {
+      "item_id": "draft_diag_sba_structured_424",
+      "source_question_id": "424",
+      "draft_id": "draft_diag_sba_structured_424",
+      "review_id": "review_424_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Barossa Valley Shiraz before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "barossa_valley_shiraz"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Barossa Valley Shiraz before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "barossa_valley_shiraz"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_438": {
+      "item_id": "draft_diag_sba_structured_438",
+      "source_question_id": "438",
+      "draft_id": "draft_diag_sba_structured_438",
+      "review_id": "review_438_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "D",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option D is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This is the preserved correct answer."
+        },
+        "remediation_recommendation": "Review the source topic for Willamette Valley Pinot Noir before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "willamette_valley_pinot_noir"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Willamette Valley Pinot Noir before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "willamette_valley_pinot_noir"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_440": {
+      "item_id": "draft_diag_sba_structured_440",
+      "source_question_id": "440",
+      "draft_id": "draft_diag_sba_structured_440",
+      "review_id": "review_440_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "C",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option C is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This is the preserved correct answer.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Chablis / avoiding MLF before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chablis_avoiding_mlf"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Chablis / avoiding MLF before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "chablis_avoiding_mlf"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_441": {
+      "item_id": "draft_diag_sba_structured_441",
+      "source_question_id": "441",
+      "draft_id": "draft_diag_sba_structured_441",
+      "review_id": "review_441_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Medoc red structure before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "medoc_red_structure"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Medoc red structure before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "medoc_red_structure"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_464": {
+      "item_id": "draft_diag_sba_structured_464",
+      "source_question_id": "464",
+      "draft_id": "draft_diag_sba_structured_464",
+      "review_id": "review_464_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "A",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option A is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This is the preserved correct answer.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Destemming and green tannin before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "destemming_green_tannin"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Destemming and green tannin before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "destemming_green_tannin"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_493": {
+      "item_id": "draft_diag_sba_structured_493",
+      "source_question_id": "493",
+      "draft_id": "draft_diag_sba_structured_493",
+      "review_id": "review_493_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Late harvest frost exposure before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "late_harvest_frost_exposure"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Late harvest frost exposure before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "late_harvest_frost_exposure"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_498": {
+      "item_id": "draft_diag_sba_structured_498",
+      "source_question_id": "498",
+      "draft_id": "draft_diag_sba_structured_498",
+      "review_id": "review_498_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Canopy management / fungal disease before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "canopy_management_fungal_disease"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Canopy management / fungal disease before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "canopy_management_fungal_disease"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_515": {
+      "item_id": "draft_diag_sba_structured_515",
+      "source_question_id": "515",
+      "draft_id": "draft_diag_sba_structured_515",
+      "review_id": "review_515_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "A",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option A is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This is the preserved correct answer.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Open vats / malolactic fermentation before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "open_vats_malolactic_fermentation"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Open vats / malolactic fermentation before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "open_vats_malolactic_fermentation"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_659": {
+      "item_id": "draft_diag_sba_structured_659",
+      "source_question_id": "659",
+      "draft_id": "draft_diag_sba_structured_659",
+      "review_id": "review_659_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "B",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option B is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This is the preserved correct answer.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This preserved distractor does not match the selected answer key for this training item."
+        },
+        "remediation_recommendation": "Review the source topic for Brut Nature / no dosage before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "brut_nature_no_dosage"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for Brut Nature / no dosage before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "brut_nature_no_dosage"
+        }
+      },
+      "governance": {
+        "training_item_only": true,
+        "official_wset_question": false,
+        "safe_for_examiner": false,
+        "examiner_scoring_allowed": false,
+        "static_demo_only": true
+      }
+    },
+    "draft_diag_sba_structured_834": {
+      "item_id": "draft_diag_sba_structured_834",
+      "source_question_id": "834",
+      "draft_id": "draft_diag_sba_structured_834",
+      "review_id": "review_834_20260604_gold_bank_001",
+      "approval_scope": "static_demo_only",
+      "static_demo_only": true,
+      "correct_option_id": "D",
+      "result_messaging": {
+        "correct": "Respuesta correcta en demo de entrenamiento.",
+        "incorrect": "Respuesta incorrecta en demo de entrenamiento.",
+        "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "option_diagnostics": {
+        "A": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "B": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "C": {
+          "is_correct": false,
+          "diagnostic_role": "distractor",
+          "misconception_id": null,
+          "diagnostic_note": "Distractor preserved unchanged from the structured source bank for local diagnostic contrast."
+        },
+        "D": {
+          "is_correct": true,
+          "diagnostic_role": "correct",
+          "misconception_id": null,
+          "diagnostic_note": "Correct option preserved from the structured source bank and Gold Bank selection."
+        }
+      },
+      "feedback": {
+        "correct_rationale": "Option D is preserved as the correct answer from the structured source bank for this Gold Bank training item.",
+        "why_other_options_are_wrong": {
+          "A": "This preserved distractor does not match the selected answer key for this training item.",
+          "B": "This preserved distractor does not match the selected answer key for this training item.",
+          "C": "This preserved distractor does not match the selected answer key for this training item.",
+          "D": "This is the preserved correct answer."
+        },
+        "remediation_recommendation": "Review the source topic for German Pradikat label hierarchy before retrying comparable training items.",
+        "remediation_target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "german_pradikat_label_hierarchy"
+        }
+      },
+      "misconception_linkage": {
+        "status": "none_attached",
+        "notes": "No new misconception linkage was introduced during Gold Bank implementation."
+      },
+      "causal_chain_linkage": {
+        "causal_chain_id": null,
+        "status": "not_attached_in_gold_bank_activation"
+      },
+      "sat_relevance": [],
+      "remediation": {
+        "recommendation": "Review the source topic for German Pradikat label hierarchy before retrying comparable training items.",
+        "target": {
+          "target_type": "gold_bank_topic_signal",
+          "target_id": "german_pradikat_label_hierarchy"
         }
       },
       "governance": {
@@ -394,17 +4563,84 @@
   "export_metadata": {
     "export_version": "static_demo_export_v0",
     "exported_at": "not_written_in_skeleton",
-    "eligible_item_count": 3,
+    "eligible_item_count": 36,
     "source_question_ids": [
       "2",
-      "12",
-      "17"
+      "21",
+      "83",
+      "105",
+      "107",
+      "206",
+      "216",
+      "228",
+      "230",
+      "232",
+      "240",
+      "258",
+      "265",
+      "268",
+      "269",
+      "270",
+      "277",
+      "287",
+      "301",
+      "308",
+      "309",
+      "325",
+      "356",
+      "395",
+      "402",
+      "421",
+      "424",
+      "438",
+      "440",
+      "441",
+      "464",
+      "493",
+      "498",
+      "515",
+      "659",
+      "834"
     ],
     "review_ids": [
       "review_2_20260602_001",
-      "review_12_20260602_001",
-      "review_17_20260602_001"
+      "review_21_20260604_gold_bank_001",
+      "review_83_20260603_001",
+      "review_105_20260604_gold_bank_001",
+      "review_107_20260604_gold_bank_001",
+      "review_206_20260604_gold_bank_001",
+      "review_216_20260604_gold_bank_001",
+      "review_228_20260604_gold_bank_001",
+      "review_230_20260604_gold_bank_001",
+      "review_232_20260604_gold_bank_001",
+      "review_240_20260604_gold_bank_001",
+      "review_258_20260604_gold_bank_001",
+      "review_265_20260604_gold_bank_001",
+      "review_268_20260604_gold_bank_001",
+      "review_269_20260604_gold_bank_001",
+      "review_270_20260604_gold_bank_001",
+      "review_277_20260604_gold_bank_001",
+      "review_287_20260604_gold_bank_001",
+      "review_301_20260604_gold_bank_001",
+      "review_308_20260604_gold_bank_001",
+      "review_309_20260604_gold_bank_001",
+      "review_325_20260604_gold_bank_001",
+      "review_356_20260604_gold_bank_001",
+      "review_395_20260604_gold_bank_001",
+      "review_402_20260604_gold_bank_001",
+      "review_421_20260604_gold_bank_001",
+      "review_424_20260604_gold_bank_001",
+      "review_438_20260604_gold_bank_001",
+      "review_440_20260604_gold_bank_001",
+      "review_441_20260604_gold_bank_001",
+      "review_464_20260604_gold_bank_001",
+      "review_493_20260604_gold_bank_001",
+      "review_498_20260604_gold_bank_001",
+      "review_515_20260604_gold_bank_001",
+      "review_659_20260604_gold_bank_001",
+      "review_834_20260604_gold_bank_001"
     ],
+    "option_shuffle_strategy": "stable_item_id_sha256_v1",
     "output_written": false,
     "target_path": "frontend/diagnostic-sba/preguntas.json"
   }
