@@ -1,14 +1,94 @@
 {
-  "current_phase": "Phase 4A Active",
-  "latest_phase": "Phase 4A.3.7.43",
-  "latest_event": "36-item Gold Bank Diagnostic SBA Lab deployed with deterministic option shuffle",
-  "latest_commit": "f0b5d84",
-  "current_recommendation": "Phase 4A.3.7.44 — SBA Master Bank & Governed Question Generation Roadmap",
-  "updated_at": "2026-06-04T00:00:00+00:00",
-  "maturity": 55,
-  "tests": 1363,
+  "current_phase": "Foundation Consolidation",
+  "latest_phase": "Master Bank + Adaptive Contract",
+  "latest_event": "Canonical Master Bank merged and adaptive-session pedagogical contract versioned",
+  "latest_commit": "8eab69e",
+  "current_recommendation": "Knowledge Utilization & Coverage Audit",
+  "updated_at": "2026-06-06T00:00:00-06:00",
+  "maturity": 58,
+  "maturity_model": {
+    "model_version": "repository_evidence_weighted_v1",
+    "overall_percent": 58,
+    "interpretation": "Engineering maturity estimate, not learner scoring or official assessment.",
+    "calculation": "Weighted sum of track percentages; weights total 100.",
+    "tracks": [
+      {
+        "id": "tutor_core",
+        "label": "Tutor Core",
+        "percent": 95,
+        "weight": 18,
+        "stage": "operational_verified",
+        "evidence": "Deterministic Tutor, SAT, misconceptions and snapshots are implemented; regular suite and slow golden are green.",
+        "next_gate": "Preserve regression stability while other layers evolve."
+      },
+      {
+        "id": "diagnostic_sba",
+        "label": "Diagnostic SBA Lab",
+        "percent": 95,
+        "weight": 16,
+        "stage": "published_stable",
+        "evidence": "36-item static lab is published; exporter has 36 eligible items and 0 validation errors; deterministic option shuffle is active.",
+        "next_gate": "Keep the stable public payload unchanged while private practice expands."
+      },
+      {
+        "id": "master_bank",
+        "label": "Master Bank Foundation",
+        "percent": 75,
+        "weight": 14,
+        "stage": "foundation_implemented",
+        "evidence": "616 records are consolidated with schema, importer, validator, collection exports and deterministic SBA composer.",
+        "next_gate": "Classify the full bank into confidence-based operational layers."
+      },
+      {
+        "id": "open_response",
+        "label": "Open Response Lab",
+        "percent": 70,
+        "weight": 14,
+        "stage": "runtime_inactive",
+        "evidence": "Pipeline, grounding, review, session engine and runtime MVP exist; 20 records are approved, 18 are in the operational pool and activation remains off.",
+        "next_gate": "Resolve retained items and complete private activation readiness."
+      },
+      {
+        "id": "adaptive_engine",
+        "label": "Adaptive Engine",
+        "percent": 25,
+        "weight": 12,
+        "stage": "contract_only",
+        "evidence": "Pedagogical rules and a base SBA composer exist; no adaptive 50-question runtime is implemented.",
+        "next_gate": "Implement deterministic block-by-block adaptation against learner-state evidence."
+      },
+      {
+        "id": "governed_generation",
+        "label": "Governed Generation",
+        "percent": 10,
+        "weight": 10,
+        "stage": "readiness_only",
+        "evidence": "Governance and lifecycle contracts exist; no governed question-generation runtime is active.",
+        "next_gate": "Complete evidence-backed readiness and approval contracts before implementation."
+      },
+      {
+        "id": "knowledge_utilization",
+        "label": "Knowledge Utilization Mapping",
+        "percent": 5,
+        "weight": 10,
+        "stage": "audit_pending",
+        "evidence": "Knowledge assets exist, but there is no complete registry, consumer matrix or orphan analysis.",
+        "next_gate": "Build the Knowledge Asset Registry, Consumer Matrix and orphan detection."
+      },
+      {
+        "id": "project_state_engine",
+        "label": "Project State Engine",
+        "percent": 15,
+        "weight": 6,
+        "stage": "manual_reconciliation",
+        "evidence": "Repository reconciliation and dashboard updater exist, but state derivation remains partly manual and stale-state prone.",
+        "next_gate": "Automate evidence collection and freshness validation without reading private learner artifacts."
+      }
+    ]
+  },
+  "tests": 1464,
   "tests_skipped": 9,
-  "test_suite_status": "1363 OK, 9 skipped",
+  "test_suite_status": "1464 OK, 9 skipped",
   "snapshots": 35,
   "phases_completed": [
     "governance",
@@ -65,8 +145,8 @@
     "Phase 4A.3.7.21 — Dashboard Lab Link Implementation",
     "Phase 4A.3.7.43 — 36-item Diagnostic SBA Lab Live"
   ],
-  "in_progress_phase": "",
-  "next_target": "Phase 4A.3.7.44 — SBA Master Bank & Governed Question Generation Roadmap",
+  "in_progress_phase": "Knowledge Utilization & Coverage Audit",
+  "next_target": "Knowledge Asset Registry + Consumer Matrix + Orphan Detection",
   "governance_status": {
     "governance_violations": 0,
     "llm_dependency": 0,
@@ -110,6 +190,25 @@
   "structured_question_count": 616,
   "theory_questions": 595,
   "short_answer_questions": 21,
+  "master_bank_status": "implemented",
+  "master_bank_total": 616,
+  "master_bank_sba": 595,
+  "master_bank_open_response": 21,
+  "master_bank_gold": 34,
+  "master_bank_public_lab": 36,
+  "master_bank_inactive": 580,
+  "open_response_status": "implemented_inactive",
+  "open_response_approved": 20,
+  "open_response_operational_pool": 18,
+  "open_response_retained_ids": [
+    "807",
+    "809"
+  ],
+  "adaptive_engine_status": "pedagogical_contract_only",
+  "knowledge_utilization_status": "audit_pending",
+  "production_dashboard_url": "https://epistemiclab.dpdns.org/",
+  "requested_custom_domain": "https://www.epistemiclab.org/",
+  "custom_domain_status": "dns_not_pointing_to_github_pages",
   "sba_basic_candidates": 591,
   "sba_strict_candidates": 525,
   "sba_clean_pilot_candidates": 520,
