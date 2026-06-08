@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Open Response Lab Privado</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+:root {
+  --bg: #101418;
+  --panel: #171d23;
+  --panel-2: #202830;
+  --line: #303944;
+  --text: #f3f6f8;
+  --muted: #aab4bd;
+  --faint: #75818c;
+  --accent: #d5a84f;
+  --accent-2: #65b7c7;
+  --ok: #7bc47f;
+  --warn: #e0b15b;
+}
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  line-height: 1.55;
+}
+body { display: flex; flex-direction: column; }
+.gov {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #342916;
+  background: #15110a;
+  color: #c9a766;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  min-height: calc(100vh - 33px);
+}
+main { padding: 28px; min-width: 0; }
+aside {
+  border-left: 1px solid var(--line);
+  background: var(--panel);
+  padding: 22px;
+}
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+.subtitle, .meta, .muted { color: var(--muted); }
+.subtitle { margin: 0; max-width: 760px; }
+.session-picker {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+button {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 9px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover, button:focus { border-color: var(--accent); outline: none; }
+button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: #2a2518;
+  color: #f6dfaa;
+}
+button.primary {
+  border-color: #507b83;
+  background: #17343b;
+  color: #d6f7fb;
+}
+button.danger {
+  border-color: #664636;
+  background: #302017;
+}
+button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+.question-panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 24px;
+}
+.question-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--faint);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 18px;
+}
+.stem {
+  font-size: 22px;
+  line-height: 1.35;
+  margin: 0 0 18px;
+}
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: var(--muted);
+  font-size: 12px;
+}
+label {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  min-height: 190px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0d1115;
+  color: var(--text);
+  padding: 14px;
+  font: inherit;
+}
+textarea:focus { outline: none; border-color: var(--accent-2); }
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.feedback {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.feedback[hidden], .completion[hidden] { display: none; }
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.feedback-box {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #12171c;
+  padding: 14px;
+  min-height: 110px;
+}
+.feedback-box h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--accent-2);
+}
+ul { margin: 0; padding-left: 19px; }
+.empty { color: var(--faint); }
+.side-section { margin-bottom: 24px; }
+.side-section h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.progress-list {
+  display: grid;
+  gap: 7px;
+}
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid #242c35;
+  padding-bottom: 7px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.done { color: var(--ok); }
+.completion {
+  margin-top: 16px;
+  border: 1px solid #405636;
+  background: #142018;
+  border-radius: 8px;
+  padding: 18px;
+}
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; }
+  aside { border-left: 0; border-top: 1px solid var(--line); }
+  main { padding: 20px; }
+  .topline { flex-direction: column; }
+  .feedback-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="gov" data-testid="governance-banner">
+  <span>safe_for_examiner=false</span>
+  <span>examiner_scoring_allowed=false</span>
+  <span>private inactive lab</span>
+</div>
+<div class="shell">
+  <main>
+    <div class="topline">
+      <div>
+        <h1>Open Response Lab</h1>
+        <p class="subtitle">Runtime local privado para práctica formativa de respuesta abierta.</p>
+      </div>
+      <div class="session-picker" role="group" aria-label="Tamaño de sesión">
+        <button type="button" data-session="short" aria-pressed="true">Corta · 3</button>
+        <button type="button" data-session="standard" aria-pressed="false">Estándar · 5</button>
+        <button type="button" data-session="long" aria-pressed="false">Larga · 10</button>
+      </div>
+    </div>
+
+    <section class="question-panel" aria-live="polite">
+      <div class="question-head">
+        <span data-testid="question-position">Pregunta 1 de 3</span>
+        <span data-testid="session-state">Sesión corta</span>
+      </div>
+      <p class="stem" data-testid="question-stem"></p>
+      <div class="chips">
+        <span class="chip" data-testid="question-topic"></span>
+        <span class="chip" data-testid="question-ra"></span>
+      </div>
+      <label for="answer">Respuesta libre</label>
+      <textarea id="answer" data-testid="answer-input" autocomplete="off"></textarea>
+      <div class="actions">
+        <button type="button" class="primary" id="submit-answer" data-testid="submit-answer">Revisar respuesta</button>
+        <button type="button" id="next-question" data-testid="next-question">Siguiente pregunta</button>
+        <button type="button" id="finish-session" data-testid="finish-session">Finalizar sesión</button>
+        <button type="button" class="danger" id="restart-session" data-testid="restart-session">Reiniciar sesión</button>
+      </div>
+
+      <section class="feedback" data-testid="feedback-panel" hidden>
+        <div class="feedback-grid">
+          <div class="feedback-box">
+            <h2>Conceptos detectados</h2>
+            <ul data-testid="concepts-detected"></ul>
+          </div>
+          <div class="feedback-box">
+            <h2>Conceptos ausentes</h2>
+            <ul data-testid="concepts-absent"></ul>
+          </div>
+          <div class="feedback-box">
+            <h2>Razonamiento causal faltante</h2>
+            <ul data-testid="missing-causal-reasoning"></ul>
+          </div>
+          <div class="feedback-box">
+            <h2>Sugerencias de mejora</h2>
+            <ul data-testid="improvement-suggestions"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="completion" data-testid="completion-panel" hidden>
+        <strong>Sesión finalizada.</strong>
+        <p class="muted">Las respuestas quedan solo en este navegador.</p>
+      </section>
+    </section>
+  </main>
+
+  <aside>
+    <section class="side-section">
+      <h2>Progreso</h2>
+      <div class="progress-list" data-testid="progress-list"></div>
+    </section>
+    <section class="side-section">
+      <h2>Estado local</h2>
+      <p class="meta" data-testid="local-state">Respuestas guardadas localmente.</p>
+    </section>
+  </aside>
+</div>
+
+<script src="./lab_payload.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  const payload = window.OPEN_RESPONSE_LAB_PAYLOAD;
+  const storageKey = payload.storage_key;
+  const state = loadState();
+  const els = {
+    position: document.querySelector("[data-testid='question-position']"),
+    sessionState: document.querySelector("[data-testid='session-state']"),
+    stem: document.querySelector("[data-testid='question-stem']"),
+    topic: document.querySelector("[data-testid='question-topic']"),
+    ra: document.querySelector("[data-testid='question-ra']"),
+    answer: document.getElementById("answer"),
+    feedback: document.querySelector("[data-testid='feedback-panel']"),
+    completion: document.querySelector("[data-testid='completion-panel']"),
+    detected: document.querySelector("[data-testid='concepts-detected']"),
+    absent: document.querySelector("[data-testid='concepts-absent']"),
+    causal: document.querySelector("[data-testid='missing-causal-reasoning']"),
+    suggestions: document.querySelector("[data-testid='improvement-suggestions']"),
+    progress: document.querySelector("[data-testid='progress-list']"),
+    localState: document.querySelector("[data-testid='local-state']"),
+    next: document.getElementById("next-question")
+  };
+
+  document.querySelectorAll("[data-session]").forEach((button) => {
+    button.addEventListener("click", () => startSession(button.dataset.session));
+  });
+  document.getElementById("submit-answer").addEventListener("click", submitAnswer);
+  document.getElementById("next-question").addEventListener("click", nextQuestion);
+  document.getElementById("finish-session").addEventListener("click", finishSession);
+  document.getElementById("restart-session").addEventListener("click", () => startSession(state.sessionName));
+
+  render();
+
+  function loadState() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      return {
+        sessionName: stored.sessionName || "short",
+        index: Number.isInteger(stored.index) ? stored.index : 0,
+        answers: stored.answers || {},
+        feedback: stored.feedback || {},
+        completed: stored.completed === true
+      };
+    } catch (_error) {
+      return { sessionName: "short", index: 0, answers: {}, feedback: {}, completed: false };
+    }
+  }
+
+  function saveState() {
+    localStorage.setItem(storageKey, JSON.stringify(state));
+  }
+
+  function currentSession() {
+    return payload.sessions[state.sessionName];
+  }
+
+  function currentItem() {
+    const itemId = currentSession().item_ids[state.index];
+    return payload.items.find((item) => item.item_id === itemId);
+  }
+
+  function currentEvaluationItem() {
+    return payload.evaluation_by_item_id[currentItem().item_id];
+  }
+
+  function startSession(name) {
+    state.sessionName = name;
+    state.index = 0;
+    state.answers = {};
+    state.feedback = {};
+    state.completed = false;
+    saveState();
+    render();
+  }
+
+  function submitAnswer() {
+    const item = currentItem();
+    state.answers[item.item_id] = els.answer.value;
+    state.feedback[item.item_id] = evaluateAnswer(currentEvaluationItem(), els.answer.value);
+    saveState();
+    render();
+  }
+
+  function nextQuestion() {
+    const lastIndex = currentSession().item_ids.length - 1;
+    if (state.index < lastIndex) {
+      state.index += 1;
+      state.completed = false;
+      saveState();
+      render();
+    }
+  }
+
+  function finishSession() {
+    state.completed = true;
+    saveState();
+    render();
+  }
+
+  function render() {
+    const session = currentSession();
+    const item = currentItem();
+    const itemFeedback = state.feedback[item.item_id];
+    document.querySelectorAll("[data-session]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.session === state.sessionName));
+    });
+    els.position.textContent = `Pregunta ${state.index + 1} de ${session.session_size}`;
+    els.sessionState.textContent = `Sesión ${labelForSession(state.sessionName)}`;
+    els.stem.textContent = item.stem;
+    els.topic.textContent = `Tema: ${item.topic}`;
+    els.ra.textContent = `RA: ${item.RA}`;
+    els.answer.value = state.answers[item.item_id] || "";
+    els.next.disabled = state.index >= session.item_ids.length - 1;
+    els.feedback.hidden = !itemFeedback;
+    els.completion.hidden = !state.completed;
+    els.localState.textContent = `${Object.keys(state.answers).length} respuesta(s) guardada(s) localmente.`;
+    renderFeedback(itemFeedback);
+    renderProgress(session);
+  }
+
+  function renderFeedback(feedback) {
+    if (!feedback) {
+      clearList(els.detected);
+      clearList(els.absent);
+      clearList(els.causal);
+      clearList(els.suggestions);
+      return;
+    }
+    renderList(els.detected, feedback.concepts_detected, "Sin conceptos detectados todavía.");
+    renderList(els.absent, feedback.concepts_absent, "Sin ausencias visibles.");
+    renderList(els.causal, feedback.missing_causal_reasoning, "Sin razonamiento causal faltante visible.");
+    renderList(els.suggestions, feedback.improvement_suggestions, "Mantén la estructura.");
+  }
+
+  function renderProgress(session) {
+    els.progress.innerHTML = "";
+    session.item_ids.forEach((itemId, index) => {
+      const row = document.createElement("div");
+      row.className = "progress-row";
+      const left = document.createElement("span");
+      left.textContent = `Pregunta ${index + 1}`;
+      const right = document.createElement("span");
+      right.textContent = state.answers[itemId] ? "revisada" : "pendiente";
+      if (state.answers[itemId]) right.className = "done";
+      row.append(left, right);
+      els.progress.append(row);
+    });
+  }
+
+  function renderList(target, values, emptyText) {
+    target.innerHTML = "";
+    const cleanValues = (values || []).filter(Boolean);
+    if (!cleanValues.length) {
+      const li = document.createElement("li");
+      li.textContent = emptyText;
+      li.className = "empty";
+      target.append(li);
+      return;
+    }
+    cleanValues.forEach((value) => {
+      const li = document.createElement("li");
+      li.textContent = value;
+      target.append(li);
+    });
+  }
+
+  function clearList(target) {
+    target.innerHTML = "";
+  }
+
+  function evaluateAnswer(item, answer) {
+    const present = [];
+    const partial = [];
+    const missing = [];
+    item.expected_concepts.forEach((concept) => {
+      const state = conceptState(concept, answer);
+      if (state === "present") present.push(concept);
+      else if (state === "partial") partial.push(concept);
+      else missing.push(concept);
+    });
+    const causal = causalFeedback(item.optional_causal_chain, answer);
+    return {
+      concepts_detected: present.concat(partial),
+      concepts_absent: missing,
+      missing_causal_reasoning: missingCausalReasoning(causal),
+      improvement_suggestions: [revisionSuggestion(missing, partial, causal)]
+    };
+  }
+
+  function conceptState(concept, answer) {
+    const conceptNorm = normalizeText(concept);
+    const answerNorm = normalizeText(answer);
+    if (conceptNorm && answerNorm.includes(conceptNorm)) return "present";
+    const conceptTokens = meaningfulTokens(concept);
+    const answerTokens = new Set(meaningfulTokens(answer));
+    if (!conceptTokens.length) return "missing";
+    const hits = conceptTokens.filter((token) => answerTokens.has(token));
+    if (hits.length === conceptTokens.length) return "present";
+    if (hits.length) return "partial";
+    return "missing";
+  }
+
+  function causalFeedback(chain, answer) {
+    if (!chain || !String(chain).trim()) return "not_applicable";
+    const segments = String(chain).split("->").map((part) => part.trim()).filter(Boolean);
+    const matched = segments.filter((segment) => ["present", "partial"].includes(conceptState(segment, answer)));
+    const connectors = new Set(["porque", "debido", "causa", "causar", "provoca", "produce", "resulta", "resultado", "conduce", "influye", "afecta", "impacta", "therefore", "because", "leads", "results"]);
+    const hasConnector = meaningfulTokens(answer).some((token) => connectors.has(token));
+    if (matched.length >= 2 && hasConnector) return "causal_link_present";
+    if (matched.length >= 2 || (matched.length === 1 && hasConnector)) return "weak_causal_link";
+    return "causal_link_missing";
+  }
+
+  function missingCausalReasoning(causal) {
+    if (causal === "weak_causal_link") return ["Haz explícita la relación causa-efecto."];
+    if (causal === "causal_link_missing") return ["Añade la relación causa-efecto esperada."];
+    return [];
+  }
+
+  function revisionSuggestion(missing, partial, causal) {
+    const targets = missing.slice(0, 3).concat(partial.slice(0, 2));
+    if (targets.length) return `Revisa incorporando explícitamente: ${targets.join(", ")}.`;
+    if (causal === "weak_causal_link") return "Conecta causa y efecto con lenguaje causal explícito.";
+    if (causal === "causal_link_missing") return "Añade la relación causa-efecto relevante.";
+    return "Conserva la estructura y mantén la explicación fundada.";
+  }
+
+  function meaningfulTokens(text) {
+    const stopwords = new Set(["a", "al", "and", "de", "del", "el", "en", "for", "la", "las", "los", "of", "the", "to", "un", "una", "y"]);
+    return normalizeText(text).match(/\b[^\W\d_](?:[^\W_]|['-])*\b/gu)?.filter((token) => token.length > 1 && !stopwords.has(token)) || [];
+  }
+
+  function normalizeText(text) {
+    return String(text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/₂/g, "2").trim().replace(/\s+/g, " ");
+  }
+
+  function labelForSession(name) {
+    return { short: "corta", standard: "estándar", long: "larga" }[name] || name;
+  }
+})();
+</script>
+</body>
+</html>

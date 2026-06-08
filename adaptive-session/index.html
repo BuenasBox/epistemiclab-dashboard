@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSET L3 · Sesión Adaptativa · PROTOTIPO</title>
+<style>
+/* =====================================================================
+   WSET-AI-System · Adaptive Session UI
+   PROTOTIPO ESTÁTICO — ENTRENAMIENTO — SIN AUTORIDAD EXAMINADORA
+   ===================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #0f1115;
+  --panel:       #171b22;
+  --raised:      #1e2430;
+  --border:      #252c38;
+  --border-soft: #1c2230;
+  --text:        #f5f7fa;
+  --text-2:      #a7b0be;
+  --text-muted:  #525e6e;
+  --blue:        #3fa9f5;
+  --amber:       #f6b73c;
+  --green:       #2ec27e;
+  --red:         #e45c5c;
+  --gold:        #c9a84c;
+  --gold-dim:    #7a6230;
+  --gold-light:  #e5c97a;
+  --purple:      #8b7cf6;
+
+  --gov-h:       30px;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---- GOVERNANCE BANNER ---- */
+.gov-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  height: var(--gov-h);
+  background: #120d00;
+  border-bottom: 1px solid #2a1a00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 9px;
+  color: var(--gold-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  flex-wrap: wrap;
+  padding: 0 16px;
+}
+.gov-hi  { color: var(--gold); }
+.gov-sep { color: #3a2800; }
+
+/* ---- SCREENS ---- */
+.screen {
+  position: fixed;
+  inset: 0;
+  top: var(--gov-h);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease, transform 280ms ease;
+  transform: translateY(12px);
+}
+.screen.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ---- COMMON COMPONENTS ---- */
+
+/* Chips / tags */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+.chip-green  { background: #0e2d1c; color: var(--green);  border: 1px solid #1a4a2b; }
+.chip-amber  { background: #2a1d00; color: var(--amber);  border: 1px solid #4a3200; }
+.chip-red    { background: #2a0e0e; color: var(--red);    border: 1px solid #5a1f1f; }
+.chip-purple { background: #1a1630; color: var(--purple); border: 1px solid #302a5a; }
+.chip-blue   { background: #0d1f30; color: var(--blue);   border: 1px solid #1a3a52; }
+.chip-gold   { background: #221800; color: var(--gold);   border: 1px solid var(--gold-dim); }
+.chip-muted  { background: var(--raised); color: var(--text-muted); border: 1px solid var(--border); }
+
+/* Challenge-type badge */
+.challenge-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cb-recall            { background: #0d1f30; color: var(--blue); }
+.cb-reasoning         { background: #1a1630; color: var(--purple); }
+.cb-causal_chain      { background: #2a1d00; color: var(--amber); }
+.cb-misconception_rep { background: #2a0e0e; color: var(--red); }
+.cb-challenge         { background: #221800; color: var(--gold-light); }
+.cb-comparison        { background: #0d1f30; color: var(--blue); }
+
+/* Training-type badge */
+.training-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.tb-refuerzo    { background: #0d1f30; color: var(--blue);       border: 1px solid #1a3a52; }
+.tb-diagnostico { background: var(--raised); color: var(--text-2); border: 1px solid var(--border); }
+.tb-desafio     { background: #221800; color: var(--gold-light);  border: 1px solid var(--gold-dim); }
+.tb-reparacion  { background: #2a1200; color: var(--amber);       border: 1px solid #4a3200; }
+
+/* Buttons */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 150ms, transform 100ms;
+}
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  color: #0f0a00;
+}
+.btn-primary:hover:not(:disabled) { opacity: 0.9; }
+
+.btn-secondary {
+  background: var(--raised);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover:not(:disabled) { background: var(--panel); }
+
+/* Content wrapper */
+.content {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* ================================================================
+   SCREEN 0 — MISSION BRIEFING
+   ================================================================ */
+
+.s0-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-top: 12px;
+}
+.s0-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 6px;
+}
+.s0-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--gold-light);
+  line-height: 1.2;
+}
+.s0-mode-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 12px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Cognitive state grid */
+.cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.cs-card {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 12px;
+}
+.cs-card-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cs-card-label-green  { color: var(--green); }
+.cs-card-label-amber  { color: var(--amber); }
+.cs-card-label-red    { color: var(--red); }
+.cs-card-label-purple { color: var(--purple); }
+
+.cs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.cs-empty {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Objective block */
+.objective-block {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.objective-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 6px;
+}
+.objective-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* Session meta */
+.s0-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.s0-meta-count {
+  font-size: 12px;
+  color: var(--text-2);
+}
+.s0-meta-count strong { color: var(--text); }
+
+/* Error screen */
+.error-box {
+  background: #1a0e0e;
+  border: 1px solid #4a1f1f;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.error-title { color: var(--red); font-weight: 700; margin-bottom: 8px; }
+.error-cmd {
+  background: var(--raised);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--text-2);
+  margin-top: 12px;
+  text-align: left;
+}
+
+/* ================================================================
+   SCREEN 1 — ACTIVE CHALLENGE
+   ================================================================ */
+
+/* Progress bar */
+.progress-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 3px;
+  background: var(--panel);
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  transition: width 500ms ease;
+  width: 0%;
+}
+
+/* Question header */
+.q-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 16px 0;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.q-ra {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  background: var(--raised);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+.q-topic {
+  font-size: 11px;
+  color: var(--text-2);
+}
+.q-sep { color: var(--border); font-size: 10px; }
+
+/* Question counter */
+.q-counter {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Stem */
+.q-stem-wrap {
+  padding: 20px 16px 16px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.q-stem {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* Options */
+.options-wrap {
+  padding: 0 16px;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 120ms, border-color 120ms;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.option-btn:hover:not(:disabled):not(.confirmed-wrong):not(.confirmed-right) {
+  background: var(--raised);
+  border-color: var(--border-soft);
+}
+.option-letter {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--raised);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-2);
+  margin-top: 1px;
+}
+.option-btn.selected {
+  border-color: var(--gold-dim);
+  background: #1a1400;
+}
+.option-btn.selected .option-letter {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: #0f0a00;
+}
+.option-btn:disabled { cursor: default; }
+.option-btn.confirmed-right {
+  border-color: #1a4a2b;
+  background: #0a1f12;
+}
+.option-btn.confirmed-right .option-letter {
+  background: var(--green);
+  color: #000;
+  border-color: var(--green);
+}
+.option-btn.confirmed-wrong {
+  border-color: #5a1f1f;
+  background: #180a0a;
+}
+.option-btn.confirmed-wrong .option-letter {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+
+/* Continue button */
+.q-action {
+  padding: 16px 16px 0;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ================================================================
+   SCREEN 2 — FEEDBACK
+   ================================================================ */
+
+/* Status indicator */
+.fb-status {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.fb-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.fb-dot-correct   { background: var(--green); }
+.fb-dot-incorrect { background: var(--amber); }
+.fb-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.fb-label-correct   { color: var(--green); }
+.fb-label-incorrect { color: var(--amber); }
+
+/* Explanation */
+.fb-explanation {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 16px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 0 16px 14px;
+  border: 1px solid var(--border-soft);
+}
+
+.fb-mc-note {
+  margin: 0 16px 14px;
+  max-width: 608px;
+  background: #1a1000;
+  border: 1px solid #3a2800;
+  border-left: 3px solid var(--amber);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--amber);
+  line-height: 1.55;
+  display: none;
+}
+.fb-mc-icon { margin-right: 5px; }
+
+.fb-wwj-badge {
+  margin: 0 16px 14px;
+  max-width: 608px;
+  background: #0d1f30;
+  border: 1px solid #1a3a52;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 11px;
+  color: var(--blue);
+  font-weight: 600;
+  display: none;
+}
+
+.fb-action {
+  padding: 4px 16px 0;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ================================================================
+   SCREEN 3 — DEBRIEFING
+   ================================================================ */
+
+.db-header {
+  text-align: center;
+  padding: 20px 16px 0;
+}
+.db-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 4px;
+}
+.db-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.db-timestamp {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Metric cards */
+.db-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+.db-metric {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.db-metric-val {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.db-metric-val-green  { color: var(--green); }
+.db-metric-val-amber  { color: var(--amber); }
+.db-metric-val-purple { color: var(--purple); }
+.db-metric-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Section blocks */
+.db-section {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.db-section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.db-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Next mission suggestion */
+.db-next {
+  background: #221800;
+  border: 1px solid var(--gold-dim);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 20px;
+}
+.db-next-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 6px;
+}
+.db-next-text {
+  font-size: 13px;
+  color: var(--gold-light);
+  line-height: 1.55;
+}
+
+/* Footer disclaimer */
+.db-footer {
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 16px 0 8px;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* ================================================================
+   RESPONSIVE — DESKTOP 768px+
+   ================================================================ */
+
+@media (min-width: 768px) {
+  .content { padding: 24px 28px 48px; }
+
+  /* Screen 0 & 3: optional two-column layout */
+  .s0-layout-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .s0-layout-desktop .objective-block { grid-column: 1 / -1; }
+
+  /* Screen 1 & 2: always single column, centered */
+  .q-stem { font-size: 18px; }
+  .option-btn { font-size: 15px; }
+
+  .db-metrics { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Fixed governance banner -->
+<div class="gov-banner">
+  <span class="gov-hi">PROTOTIPO</span>
+  <span class="gov-sep">·</span>
+  <span>ENTRENAMIENTO</span>
+  <span class="gov-sep">·</span>
+  <span>NO EVALUACIÓN OFICIAL WSET</span>
+  <span class="gov-sep">·</span>
+  <span>safe_for_examiner: false</span>
+</div>
+
+<!-- =========================================================
+     SCREEN 0 — MISSION BRIEFING
+     ========================================================= -->
+<div id="screen-0" class="screen active" role="main" aria-label="Briefing de misión">
+  <div class="content" id="s0-content">
+    <div class="s0-header">
+      <div class="s0-eyebrow">Sesión Adaptativa</div>
+      <div class="s0-title">MISIÓN DE ENTRENAMIENTO</div>
+    </div>
+    <!-- Injected by renderScreen0() -->
+  </div>
+</div>
+
+<!-- =========================================================
+     SCREEN 1 — ACTIVE CHALLENGE
+     ========================================================= -->
+<div id="screen-1" class="screen" role="main" aria-label="Reto activo">
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <div class="q-header" id="q-header"></div>
+  <div class="q-stem-wrap"><p class="q-stem" id="q-stem"></p></div>
+  <div class="options-wrap" id="options-wrap"></div>
+  <div class="q-action">
+    <button class="btn btn-primary" id="btn-continue" onclick="confirmAnswer()" style="display:none">
+      CONFIRMAR
+    </button>
+  </div>
+  <!-- spacer -->
+  <div style="height: 32px;"></div>
+</div>
+
+<!-- =========================================================
+     SCREEN 2 — FEEDBACK
+     ========================================================= -->
+<div id="screen-2" class="screen" role="main" aria-label="Retroalimentación">
+  <div class="fb-status" id="fb-status"></div>
+  <div class="fb-explanation" id="fb-explanation"></div>
+  <div class="fb-mc-note" id="fb-mc-note"></div>
+  <div class="fb-wwj-badge" id="fb-wwj-badge">
+    📎 Fragmento de apoyo disponible — revisa tu material WWJ para este concepto
+  </div>
+  <div class="fb-action">
+    <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">SIGUIENTE RETO</button>
+  </div>
+  <div style="height: 32px;"></div>
+</div>
+
+<!-- =========================================================
+     SCREEN 3 — DEBRIEFING
+     ========================================================= -->
+<div id="screen-3" class="screen" role="main" aria-label="Debriefing de misión">
+  <div class="db-header">
+    <div class="db-eyebrow">Misión completada</div>
+    <div class="db-title">DEBRIEFING</div>
+    <div class="db-timestamp" id="db-timestamp"></div>
+  </div>
+  <div class="content" id="db-content"></div>
+</div>
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+<script>
+'use strict';
+
+/* ---- State ---- */
+const STATE = {
+  payload:    null,
+  screen:     0,
+  qIdx:       0,
+  selected:   null,
+  confirmed:  false,
+  attempts:   [],
+  sessionId:  new Date().toISOString(),
+};
+
+/* ---- Challenge type labels ---- */
+const CHALLENGE_LABELS = {
+  recall:            'Recall',
+  reasoning:         'Razonamiento',
+  causal_chain:      'Cadena causal',
+  misconception_repair: 'Reparación',
+  challenge:         'Desafío',
+  comparison:        'Comparación',
+};
+
+const CHALLENGE_CSS = {
+  recall:            'cb-recall',
+  reasoning:         'cb-reasoning',
+  causal_chain:      'cb-causal_chain',
+  misconception_repair: 'cb-misconception_rep',
+  challenge:         'cb-challenge',
+  comparison:        'cb-comparison',
+};
+
+const CORRECT_PERFORMANCE = {
+  recall:            'concepto asentado',
+  reasoning:         'razonamiento sólido',
+  causal_chain:      'cadena causal conectada',
+  misconception_repair: 'patrón corregido',
+  challenge:         'nivel desafío superado',
+  comparison:        'comparación precisa',
+};
+
+const INCORRECT_PERFORMANCE = {
+  recall:            'requiere refuerzo',
+  reasoning:         'falta conectar la lógica',
+  causal_chain:      'cadena causal incompleta',
+  misconception_repair: 'misconception activa',
+  challenge:         'zona de desarrollo identificada',
+  comparison:        'comparación requiere revisión',
+};
+
+/* ---- DOM helpers ---- */
+function $(id) { return document.getElementById(id); }
+
+function el(tag, attrs, ...children) {
+  const e = document.createElement(tag);
+  if (attrs) {
+    if (attrs.class) e.className = attrs.class;
+    if (attrs.id)    e.id = attrs.id;
+    Object.entries(attrs).forEach(([k, v]) => {
+      if (k !== 'class' && k !== 'id') e.setAttribute(k, v);
+    });
+  }
+  children.forEach(c => {
+    if (c == null) return;
+    if (typeof c === 'string') e.appendChild(document.createTextNode(c));
+    else e.appendChild(c);
+  });
+  return e;
+}
+
+function txt(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  e.textContent = text;
+  return e;
+}
+
+/* ---- Screen transitions ---- */
+function showScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const screen = $(`screen-${n}`);
+  STATE.screen = n;
+  // Scroll to top before making it active
+  screen.scrollTop = 0;
+  requestAnimationFrame(() => screen.classList.add('active'));
+}
+
+/* ---- Chip factories ---- */
+function makeChips(items, cls) {
+  const wrap = el('div', { class: 'cs-chips' });
+  if (!items || items.length === 0) {
+    wrap.appendChild(txt('span', 'cs-empty', '—'));
+    return wrap;
+  }
+  items.forEach(item => {
+    const c = txt('span', `chip ${cls}`, item);
+    wrap.appendChild(c);
+  });
+  return wrap;
+}
+
+/* ---- Screen 0: Mission Briefing ---- */
+function renderScreen0() {
+  const p = STATE.payload;
+  const b = p.mission_briefing;
+  const container = $('s0-content');
+  container.innerHTML = '';
+
+  // Header
+  const hdr = el('div', { class: 's0-header' });
+  hdr.appendChild(txt('div', 's0-eyebrow', 'Sesión Adaptativa'));
+  hdr.appendChild(txt('div', 's0-title', 'MISIÓN DE ENTRENAMIENTO'));
+  const modeBadge = txt('div', 's0-mode-badge', p.session_mode);
+  hdr.appendChild(modeBadge);
+  container.appendChild(hdr);
+
+  // Cognitive state grid
+  const grid = el('div', { class: 'cs-grid' });
+
+  const cards = [
+    { label: 'Áreas fuertes',    items: b.strong_areas,        labelCls: 'cs-card-label-green',  chipCls: 'chip-green'  },
+    { label: 'Áreas débiles',    items: b.weak_areas,          labelCls: 'cs-card-label-amber',  chipCls: 'chip-amber'  },
+    { label: 'Misconceptions',   items: b.active_misconceptions, labelCls: 'cs-card-label-red',   chipCls: 'chip-red'    },
+    { label: 'Brechas causales', items: b.causal_gaps,         labelCls: 'cs-card-label-purple', chipCls: 'chip-purple' },
+  ];
+
+  cards.forEach(({ label, items, labelCls, chipCls }) => {
+    const card = el('div', { class: 'cs-card' });
+    card.appendChild(txt('div', `cs-card-label ${labelCls}`, label));
+    card.appendChild(makeChips(items, chipCls));
+    grid.appendChild(card);
+  });
+  container.appendChild(grid);
+
+  // Objective block
+  const obj = el('div', { class: 'objective-block' });
+  obj.appendChild(txt('div', 'objective-label', 'Objetivo de sesión'));
+  obj.appendChild(txt('div', 'objective-text', b.session_objective));
+  container.appendChild(obj);
+
+  // Meta row
+  const meta = el('div', { class: 's0-meta' });
+  const count = el('div', { class: 's0-meta-count' });
+  count.innerHTML = `<strong>${p.questions.length}</strong> retos · modo <strong>${p.session_mode}</strong>`;
+  meta.appendChild(count);
+  const tbCls = `training-badge tb-${b.training_type}`;
+  meta.appendChild(txt('span', tbCls, b.training_type.toUpperCase()));
+  container.appendChild(meta);
+
+  // Start button
+  const startBtn = el('button', { class: 'btn btn-primary', onclick: 'startMission()' });
+  startBtn.textContent = 'INICIAR MISIÓN';
+  container.appendChild(startBtn);
+}
+
+function renderError(err) {
+  const container = $('s0-content');
+  container.innerHTML = '';
+
+  const hdr = el('div', { class: 's0-header' });
+  hdr.appendChild(txt('div', 's0-eyebrow', 'Sesión Adaptativa'));
+  hdr.appendChild(txt('div', 's0-title', 'MISIÓN DE ENTRENAMIENTO'));
+  container.appendChild(hdr);
+
+  const box = el('div', { class: 'error-box' });
+  box.appendChild(txt('div', 'error-title', 'Payload no encontrado'));
+  box.appendChild(txt('p', '', 'Para generar el payload, ejecuta este comando desde la raíz del proyecto:'));
+  const cmd = el('div', { class: 'error-cmd' });
+  cmd.textContent = 'python tools/question_generation/generate_session_payload.py';
+  box.appendChild(cmd);
+  const hint = txt('p', '', '');
+  hint.innerHTML = `<br>Luego abre la página a través de un servidor local:<br><code style="color:var(--text-2)">python -m http.server 8000</code><br>y navega a <code style="color:var(--text-2)">http://localhost:8000/frontend/adaptive-session/</code>`;
+  box.appendChild(hint);
+  container.appendChild(box);
+}
+
+/* ---- Start mission ---- */
+function startMission() {
+  if (!STATE.payload || STATE.payload.questions.length === 0) return;
+  STATE.qIdx = 0;
+  STATE.attempts = [];
+  STATE.selected = null;
+  STATE.confirmed = false;
+  renderQuestion();
+  showScreen(1);
+}
+
+/* ---- Screen 1: Question rendering ---- */
+function renderQuestion() {
+  const p = STATE.payload;
+  const q = p.questions[STATE.qIdx];
+  const total = p.questions.length;
+
+  // Progress bar
+  $('progress-fill').style.width = `${(STATE.qIdx / total) * 100}%`;
+
+  // Header
+  const hdr = $('q-header');
+  hdr.innerHTML = '';
+  hdr.appendChild(txt('span', 'q-ra', q.ra_id || 'RA?'));
+  hdr.appendChild(txt('span', 'q-sep', '·'));
+  hdr.appendChild(txt('span', 'q-topic', q.topic || ''));
+  hdr.appendChild(txt('span', 'q-sep', '·'));
+  const cbCls = `challenge-badge ${CHALLENGE_CSS[q.challenge_type] || 'cb-recall'}`;
+  hdr.appendChild(txt('span', cbCls, CHALLENGE_LABELS[q.challenge_type] || q.challenge_type));
+  const counter = txt('span', 'q-counter', `${STATE.qIdx + 1} / ${total}`);
+  hdr.appendChild(counter);
+
+  // Stem
+  $('q-stem').textContent = q.stem || '';
+
+  // Options
+  const wrap = $('options-wrap');
+  wrap.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  letters.forEach(letter => {
+    const text = (q.options || {})[letter];
+    if (!text) return;
+    const btn = el('button', {
+      class: 'option-btn',
+      'data-letter': letter,
+    });
+    btn.addEventListener('click', () => selectOption(letter));
+    btn.appendChild(txt('span', 'option-letter', letter));
+    const optTxt = document.createElement('span');
+    optTxt.textContent = text;
+    btn.appendChild(optTxt);
+    wrap.appendChild(btn);
+  });
+
+  // Reset continue button
+  const cont = $('btn-continue');
+  cont.style.display = 'none';
+  cont.disabled = false;
+
+  STATE.selected = null;
+  STATE.confirmed = false;
+}
+
+function selectOption(letter) {
+  if (STATE.confirmed) return;
+  STATE.selected = letter;
+
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.classList.remove('selected');
+    if (btn.getAttribute('data-letter') === letter) {
+      btn.classList.add('selected');
+    }
+  });
+
+  $('btn-continue').style.display = 'block';
+}
+
+/* ---- Confirm and go to feedback ---- */
+function confirmAnswer() {
+  if (!STATE.selected || STATE.confirmed) return;
+  STATE.confirmed = true;
+  $('btn-continue').disabled = true;
+
+  const q = STATE.payload.questions[STATE.qIdx];
+  const correct = STATE.selected === q.correct_answer;
+
+  STATE.attempts.push({
+    question_id:    q.question_id,
+    selected:       STATE.selected,
+    correct:        correct,
+    challenge_type: q.challenge_type,
+    topic:          q.topic,
+  });
+
+  // Visual feedback on options before switching screen
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.disabled = true;
+    const letter = btn.getAttribute('data-letter');
+    if (letter === STATE.selected && correct) {
+      btn.classList.remove('selected');
+      btn.classList.add('confirmed-right');
+    } else if (letter === STATE.selected && !correct) {
+      btn.classList.remove('selected');
+      btn.classList.add('confirmed-wrong');
+    }
+  });
+
+  setTimeout(() => {
+    renderFeedback(q, correct);
+    showScreen(2);
+  }, 400);
+}
+
+/* ---- Screen 2: Feedback ---- */
+function renderFeedback(q, correct) {
+  const fb = q.feedback || {};
+  const ct = q.challenge_type || 'recall';
+
+  // Status
+  const status = $('fb-status');
+  status.innerHTML = '';
+  const dotCls = correct ? 'fb-dot fb-dot-correct' : 'fb-dot fb-dot-incorrect';
+  const lblCls = correct ? 'fb-label fb-label-correct' : 'fb-label fb-label-incorrect';
+  const perfLabel = correct
+    ? (CORRECT_PERFORMANCE[ct] || 'concepto asentado')
+    : (INCORRECT_PERFORMANCE[ct] || 'requiere refuerzo');
+  status.appendChild(el('span', { class: dotCls }));
+  status.appendChild(txt('span', lblCls, perfLabel));
+
+  // Explanation
+  const expl = $('fb-explanation');
+  expl.textContent = fb.explanation || '';
+
+  // Misconception note
+  const mcNote = $('fb-mc-note');
+  if (fb.misconception_note) {
+    mcNote.style.display = 'block';
+    mcNote.innerHTML = `<span class="fb-mc-icon">⚠</span>${escTxt(fb.misconception_note)}`;
+  } else {
+    mcNote.style.display = 'none';
+  }
+
+  // WWJ badge
+  const wwj = $('fb-wwj-badge');
+  wwj.style.display = fb.wwj_available ? 'block' : 'none';
+
+  // Next button label
+  const isLast = STATE.qIdx >= STATE.payload.questions.length - 1;
+  $('btn-next').textContent = isLast ? 'VER DEBRIEFING' : 'SIGUIENTE RETO';
+}
+
+function escTxt(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+/* ---- Next question ---- */
+function nextQuestion() {
+  const total = STATE.payload.questions.length;
+  if (STATE.qIdx >= total - 1) {
+    renderDebriefing();
+    showScreen(3);
+  } else {
+    STATE.qIdx++;
+    renderQuestion();
+    showScreen(1);
+  }
+}
+
+/* ---- Screen 3: Debriefing ---- */
+function renderDebriefing() {
+  const p = STATE.payload;
+  const now = new Date();
+  const completedAt = now.toISOString();
+
+  // Persist to localStorage
+  try {
+    const record = {
+      session_id:   STATE.sessionId,
+      mode:         p.session_mode,
+      attempts:     STATE.attempts.map(a => ({
+        question_id:    a.question_id,
+        selected:       a.selected,
+        correct:        a.correct,
+        challenge_type: a.challenge_type,
+      })),
+      completed_at: completedAt,
+    };
+    localStorage.setItem('wset_session_results', JSON.stringify(record));
+  } catch (_) { /* localStorage may be unavailable */ }
+
+  // Timestamp
+  $('db-timestamp').textContent = `${now.toLocaleDateString('es-ES')} · ${now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`;
+
+  // Compute stats
+  const total     = STATE.attempts.length;
+  const solid     = STATE.attempts.filter(a => a.correct).length;
+  const gaps      = total - solid;
+  const mc_hit    = STATE.attempts.filter(a => a.challenge_type === 'misconception_repair' && !a.correct);
+  const strong_topics = [...new Set(STATE.attempts.filter(a => a.correct).map(a => a.topic).filter(Boolean))];
+  const gap_topics    = [...new Set(STATE.attempts.filter(a => !a.correct).map(a => a.topic).filter(Boolean))];
+
+  // Next mission suggestion
+  let nextMission = 'Continúa con la siguiente sesión EXPRESS_10 para consolidar lo trabajado.';
+  if (gap_topics.length > 0) {
+    const focus = gap_topics.slice(0, 2).join(' y ');
+    nextMission = `Próxima sesión: refuerzo enfocado en ${focus}. ${solid > 0 ? `Consolida los ${solid} conceptos sólidos primero.` : ''}`;
+  } else if (solid === total && total > 0) {
+    nextMission = `Excelente rendimiento. Siguiente paso: sesión DESAFÍO o QUICK_25 para avanzar en profundidad.`;
+  }
+
+  const container = $('db-content');
+  container.innerHTML = '';
+
+  // Metrics row
+  const metrics = el('div', { class: 'db-metrics' });
+  const metricData = [
+    { val: total, label: 'retos\ncompletados', cls: 'db-metric-val-green' },
+    { val: solid, label: 'conceptos\nconsolidados', cls: 'db-metric-val-green' },
+    { val: gaps,  label: 'brechas\ndetectadas', cls: gaps > 0 ? 'db-metric-val-amber' : 'db-metric-val-green' },
+  ];
+  metricData.forEach(({ val, label, cls }) => {
+    const card = el('div', { class: 'db-metric' });
+    const v = txt('div', `db-metric-val ${cls}`, String(val));
+    card.appendChild(v);
+    const lbl = txt('div', 'db-metric-label', label);
+    lbl.style.whiteSpace = 'pre-line';
+    card.appendChild(lbl);
+    metrics.appendChild(card);
+  });
+  container.appendChild(metrics);
+
+  // Strengths
+  if (strong_topics.length > 0) {
+    const sec = el('div', { class: 'db-section' });
+    sec.appendChild(txt('div', 'db-section-label', 'Fortalezas consolidadas esta sesión'));
+    const chips = el('div', { class: 'db-chips' });
+    strong_topics.forEach(t => chips.appendChild(txt('span', 'chip chip-green', t)));
+    sec.appendChild(chips);
+    container.appendChild(sec);
+  }
+
+  // Gaps
+  if (gap_topics.length > 0) {
+    const sec = el('div', { class: 'db-section' });
+    sec.appendChild(txt('div', 'db-section-label', 'Brechas detectadas'));
+    const chips = el('div', { class: 'db-chips' });
+    gap_topics.forEach(t => chips.appendChild(txt('span', 'chip chip-amber', t)));
+    sec.appendChild(chips);
+    container.appendChild(sec);
+  }
+
+  // Misconceptions triggered
+  if (mc_hit.length > 0) {
+    const sec = el('div', { class: 'db-section' });
+    sec.appendChild(txt('div', 'db-section-label', 'Misconceptions activadas'));
+    const chips = el('div', { class: 'db-chips' });
+    mc_hit.forEach(a => chips.appendChild(txt('span', 'chip chip-red', a.question_id)));
+    sec.appendChild(chips);
+    container.appendChild(sec);
+  }
+
+  // Next mission
+  const nextBox = el('div', { class: 'db-next' });
+  nextBox.appendChild(txt('div', 'db-next-label', 'Siguiente misión sugerida'));
+  nextBox.appendChild(txt('div', 'db-next-text', nextMission));
+  container.appendChild(nextBox);
+
+  // Restart button
+  const restartBtn = el('button', { class: 'btn btn-secondary', onclick: 'restartSession()' });
+  restartBtn.textContent = 'NUEVA SESIÓN';
+  container.appendChild(restartBtn);
+
+  // Footer
+  const footer = el('div', { class: 'db-footer' });
+  footer.textContent = 'PROTOTIPO ESTÁTICO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET';
+  container.appendChild(footer);
+}
+
+/* ---- Restart ---- */
+function restartSession() {
+  STATE.qIdx = 0;
+  STATE.selected = null;
+  STATE.confirmed = false;
+  STATE.attempts = [];
+  STATE.sessionId = new Date().toISOString();
+  startMission();
+}
+
+/* ---- Bootstrap ---- */
+async function init() {
+  try {
+    const res = await fetch('../session_data/session_payload.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}: session_payload.json not found`);
+    STATE.payload = await res.json();
+
+    // Governance safety check
+    const gov = STATE.payload.governance || {};
+    if (gov.safe_for_examiner === true || gov.examiner_scoring_allowed === true) {
+      throw new Error('Governance violation detected in payload — aborting session.');
+    }
+
+    renderScreen0();
+  } catch (err) {
+    console.warn('[adaptive-session] Failed to load payload:', err.message);
+    renderError(err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
