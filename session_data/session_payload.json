@@ -1,0 +1,236 @@
+{
+  "generated_at": "2026-06-08T02:14:25.375068+00:00",
+  "session_mode": "EXPRESS_10",
+  "target_size": 10,
+  "mission_briefing": {
+    "strong_areas": [],
+    "weak_areas": [],
+    "active_misconceptions": [],
+    "causal_gaps": [],
+    "session_objective": "Sesión de diagnóstico inicial — evaluando tu estado cognitivo en WSET L3.",
+    "training_type": "diagnostico"
+  },
+  "questions": [
+    {
+      "question_id": "wset3_2",
+      "priority_score": 10,
+      "stem": "¿Qué método se usa para detener la fermentación en el vino de Oporto?",
+      "options": {
+        "A": "Crianza en roble americano",
+        "B": "Uso de crianza larga",
+        "C": "Adición de aguardiente vínico",
+        "D": "Secado de uvas al sol"
+      },
+      "correct_answer": "C",
+      "topic": "fortified_wines",
+      "ra_id": "RA4",
+      "difficulty": "intermediate",
+      "challenge_type": "reasoning",
+      "feedback": {
+        "explanation": "La lógica correcta en fortified_wines apunta a este fundamento: Adición de aguardiente vínico. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_21",
+      "priority_score": 10,
+      "stem": "¿Cuál es una variedad comúnmente utilizada en el espumoso Crémant de Loire?",
+      "options": {
+        "A": "Tempranillo",
+        "B": "Cabernet Sauvignon",
+        "C": "Chenin Blanc",
+        "D": "Malbec"
+      },
+      "correct_answer": "C",
+      "topic": "sparkling_wines",
+      "ra_id": "RA3",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en sparkling_wines apunta a este fundamento: Chenin Blanc. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_83",
+      "priority_score": 10,
+      "stem": "¿Qué combinación de factores maximiza la vida útil de un vino para guarda prolongada?",
+      "options": {
+        "A": "Bajo alcohol, baja acidez, mucho dulzor",
+        "B": "Alta acidez, taninos firmes y buen equilibrio",
+        "C": "Fermentación en frío y filtrado",
+        "D": "Cosecha temprana y maceración mínima"
+      },
+      "correct_answer": "B",
+      "topic": "quality_factors",
+      "ra_id": "RA1",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en quality_factors apunta a este fundamento: Alta acidez, taninos firmes y buen equilibrio. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_105",
+      "priority_score": 10,
+      "stem": "¿Qué estilo de Jerez representa mejor la complejidad oxidativa intensa?",
+      "options": {
+        "A": "Fino",
+        "B": "Palo Cortado",
+        "C": "Moscatel",
+        "D": "Manzanilla"
+      },
+      "correct_answer": "B",
+      "topic": "fortified_wines",
+      "ra_id": "RA4",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en fortified_wines apunta a este fundamento: Palo Cortado. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_107",
+      "priority_score": 10,
+      "stem": "¿Qué es una 'prise de mousse'?",
+      "options": {
+        "A": "El proceso de filtración final",
+        "B": "La crianza sobre lías",
+        "C": "La fermentación que genera las burbujas",
+        "D": "El licor de expedición"
+      },
+      "correct_answer": "C",
+      "topic": "sparkling_wines",
+      "ra_id": "RA3",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en sparkling_wines apunta a este fundamento: La fermentación que genera las burbujas. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_206",
+      "priority_score": 10,
+      "stem": "¿Qué variedad es dominante en los vinos de Oporto?",
+      "options": {
+        "A": "Touriga Nacional",
+        "B": "Tempranillo",
+        "C": "Baga",
+        "D": "Garnacha"
+      },
+      "correct_answer": "A",
+      "topic": "fortified_wines",
+      "ra_id": "RA4",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en fortified_wines apunta a este fundamento: Touriga Nacional. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_216",
+      "priority_score": 10,
+      "stem": "¿Qué variedad blanca domina los espumosos Crémant de Loire?",
+      "options": {
+        "A": "Chenin Blanc",
+        "B": "Sauvignon Blanc",
+        "C": "Chardonnay",
+        "D": "Semillón"
+      },
+      "correct_answer": "A",
+      "topic": "sparkling_wines",
+      "ra_id": "RA3",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en sparkling_wines apunta a este fundamento: Chenin Blanc. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_228",
+      "priority_score": 10,
+      "stem": "¿Qué región vinícola italiana se distingue por vinos tintos a base de Sangiovese y suelos de galestro?",
+      "options": {
+        "A": "Barolo",
+        "B": "Chianti Classico",
+        "C": "Trentino",
+        "D": "Etna"
+      },
+      "correct_answer": "B",
+      "topic": "still_wines",
+      "ra_id": "RA2",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en still_wines apunta a este fundamento: Chianti Classico. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_230",
+      "priority_score": 10,
+      "stem": "¿Qué estilo define a un vino tinto de clima continental?",
+      "options": {
+        "A": "Alta acidez, taninos marcados y estructura firme",
+        "B": "Bajo cuerpo y perfil floral",
+        "C": "Gasificación natural y bajo alcohol",
+        "D": "Notas oxidativas y poco potencial de guarda"
+      },
+      "correct_answer": "A",
+      "topic": "quality_factors",
+      "ra_id": "RA1",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en quality_factors apunta a este fundamento: Alta acidez, taninos marcados y estructura firme. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    },
+    {
+      "question_id": "wset3_232",
+      "priority_score": 10,
+      "stem": "¿Qué variedad es más sensible al terroir y se expresa de forma distinta según región?",
+      "options": {
+        "A": "Cabernet Sauvignon",
+        "B": "Grenache",
+        "C": "Syrah",
+        "D": "Pinot Noir"
+      },
+      "correct_answer": "D",
+      "topic": "still_wines",
+      "ra_id": "RA2",
+      "difficulty": "intermediate",
+      "challenge_type": "recall",
+      "feedback": {
+        "explanation": "La lógica correcta en still_wines apunta a este fundamento: Pinot Noir. Analiza el mecanismo causal para consolidar el razonamiento.",
+        "misconception_note": "",
+        "wwj_available": false
+      }
+    }
+  ],
+  "adaptive_signals_summary": {
+    "reinforcement_count": 0,
+    "progression_count": 0,
+    "repair_count": 0,
+    "avoidance_count": 0
+  },
+  "governance": {
+    "safe_for_examiner": false,
+    "examiner_scoring_allowed": false,
+    "training_item_only": true
+  }
+}
