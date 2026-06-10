@@ -1012,13 +1012,13 @@
           <div class="lab-card-body">
             <div class="lab-card-title">Laboratorio Diagnóstico SBA</div>
             <div class="lab-card-metrics">
-              <span class="lab-metric">SBA activos: <strong id="sba-item-count">36</strong></span>
+              <span class="lab-metric">SBA activos: <strong id="sba-item-count">119</strong></span>
               <span class="lab-metric">Loader JSON: <strong id="json-loader-status">activo</strong></span>
               <span class="lab-metric">Shuffle: <strong id="shuffle-status">activo</strong></span>
               <span class="lab-metric">Estrategia: <strong id="shuffle-strategy">stable_item_id_sha256_v1</strong></span>
               <span class="lab-metric">Errores export: <strong id="export-errors">0</strong></span>
-              <span class="lab-metric">Suite: <strong id="suite-status">1363 OK, 9 skipped</strong></span>
-              <span class="lab-metric">Mock: <strong id="mock-status">inactivo</strong></span>
+              <span class="lab-metric">Suite: <strong id="suite-status">1593 OK, 7 skipped</strong></span>
+              <span class="lab-metric">Mock: <strong id="mock-status">activo</strong></span>
             </div>
           </div>
           <div class="lab-card-desc">Entrenamiento privado · Sin scoring oficial · Sin autoridad de examinador</div>
@@ -1069,31 +1069,33 @@
      ESTADO DEL SISTEMA
   ================================================================ */
   var STATE = {
-    maturity: 58,
+    maturity: 78,
     maturity_model: {
-      overall_percent: 58,
+      overall_percent: 78,
       tracks: []
     },
-    tests: 1464,
-    tests_skipped: 9,
+    tests: 1593,
+    tests_skipped: 7,
     snapshots: 35,
     phases_completed: [
       'governance','retrieval','causal_chains','sat_reasoning',
       'misconception_prepass','orchestrator','answer_builder',
       'strategic_planner','session_ledger','ledger_summary',
-      'self_eval','question_bank','planner_hint_parser','planner_gate'
+      'self_eval','question_bank','planner_hint_parser','planner_gate',
+      'Phase X.1','Phase X.2','Phase X.3','Phase X.4','Phase X.5',
+      'production_expansion','full_simulation'
     ],
-    latest_phase:  'Master Bank + Adaptive Contract',
-    latest_event:  'Canonical Master Bank merged and adaptive-session pedagogical contract versioned',
-    latest_commit: '8eab69e',
-    current_recommendation: 'Knowledge Utilization & Coverage Audit',
-    active_sba_items: 36,
+    latest_phase:  'Phase X.5 — SAT Validators + Full WSET Simulation Live',
+    latest_event:  'Phase X.3/X.4/X.5 SAT validators live; 119 SBA + 26 OR + 6 SAT deployed; Full Simulation live',
+    latest_commit: 'e483604',
+    current_recommendation: 'Phase Y.0 — Bank Scope Reconciliation',
+    active_sba_items: 119,
     diagnostic_sba_json_loader_status: 'active',
     option_shuffle_status: 'active',
     option_shuffle_strategy: 'stable_item_id_sha256_v1',
     export_validation_errors: 0,
-    test_suite_status: '1464 OK, 9 skipped',
-    mock_questions_status: 'inactive'
+    test_suite_status: '1593 OK, 7 skipped',
+    mock_questions_status: 'active'
   };
 
   /* Carga del archivo externo — fallback silencioso */

@@ -1,14 +1,14 @@
 {
-  "current_phase": "Assessment Intelligence Activation",
-  "latest_phase": "Phase X.2 — Runtime Migration + Assessment Intelligence",
-  "latest_event": "Open Response Lab activated (20 items, active_private_lab); Phase X.1 assessment intelligence embedded as runtime resource; adaptive session pool expanded to 116 items (approved_private_sba + approved_for_static_demo); Diagnostic SBA stable at 36 items.",
-  "latest_commit": "phase-x2-runtime-migration",
-  "current_recommendation": "SAT Answer Validator (first Phase X.1 runtime consumer)",
-  "updated_at": "2026-06-09T00:00:00-06:00",
-  "maturity": 66,
+  "current_phase": "Production Expansion + Full WSET Simulation Live",
+  "latest_phase": "Phase X.5 — SAT Response Structure Validator + Full WSET Simulation Deployed",
+  "latest_event": "Phase X.3 SAT Answer Validator live; Phase X.4 SAT Readiness Validator live; Phase X.5 SAT Response Structure Validator live. Production expansion complete: Diagnostic SBA 119 items (4 modes), Open Response Lab 26 items (4 modes), Adaptive Session 119 SBA + 6 SAT (6 modes). Full WSET Simulation (Part E) live: SBA 50 → OR 4 → SAT 2 wines, single continuous flow. Global nav bar active on all 4 experiences.",
+  "latest_commit": "e483604 (epistemiclab) / 8552387 (WSET)",
+  "current_recommendation": "Phase Y.0 — Reconcile bank filter: wire eligibility engine into production generator",
+  "updated_at": "2026-06-10T00:00:00-06:00",
+  "maturity": 78,
   "maturity_model": {
     "model_version": "repository_evidence_weighted_v1",
-    "overall_percent": 66,
+    "overall_percent": 78,
     "interpretation": "Engineering maturity estimate, not learner scoring or official assessment.",
     "calculation": "Weighted sum of track percentages; weights total 100.",
     "tracks": [
@@ -24,29 +24,29 @@
       {
         "id": "diagnostic_sba",
         "label": "Diagnostic SBA Lab",
-        "percent": 95,
+        "percent": 98,
         "weight": 16,
-        "stage": "published_stable",
-        "evidence": "36-item static lab is published; exporter has 36 eligible items and 0 validation errors; deterministic option shuffle is active.",
-        "next_gate": "Keep the stable public payload unchanged while private practice expands."
+        "stage": "full_bank_deployed",
+        "evidence": "119-item bank deployed across 4 modes (Quick Drill 5, Express 10, Standard 25, Mock Theory 50); RA-preserving Mock Theory selection active; seeded Fisher-Yates rotation; Full Simulation integrates SBA 50 phase; governance flags clean.",
+        "next_gate": "Reconcile eligibility engine scope (589 eligible) vs deployed 119."
       },
       {
         "id": "master_bank",
         "label": "Master Bank Foundation",
-        "percent": 80,
+        "percent": 85,
         "weight": 14,
-        "stage": "expanded_operational",
-        "evidence": "616 records consolidated; importer canonical (public_lab: 36); adaptive session pool expanded to 116 items (approved_for_static_demo + approved_private_sba); grounding remediations (V4.2) applied; V4.3 readiness audit complete.",
-        "next_gate": "Wire full 116-item pool into deployed adaptive session frontend."
+        "stage": "production_deployed",
+        "evidence": "616 records; 590 single_best_answer, 26 open_response; eligibility engine: 589 SBA private_practice eligible, 36 public_lab; production generator deployed 119 (approved_private_sba + approved_for_static_demo); review_state metadata stale vs eligibility engine — reconciliation pending.",
+        "next_gate": "Wire eligibility engine into generator to deploy full 589-item pool."
       },
       {
         "id": "open_response",
         "label": "Open Response Lab",
-        "percent": 88,
+        "percent": 92,
         "weight": 14,
-        "stage": "active_private_lab",
-        "evidence": "20 items active; all approved review records activated; assessment intelligence (Phase X.1) embedded as runtime resource: 6 command verbs, 6 SAT quality levels, 7 CRF patterns, 6 improvement patterns, mentor hints by topic.",
-        "next_gate": "Frontend consumer reads assessment_intelligence for adaptive feedback display."
+        "stage": "full_bank_deployed",
+        "evidence": "26 items active (approved_open_response); 4 modes deployed (Short 1, Standard 2, Extended 4, Mock Theory Part 2 4); Full Simulation integrates OR 4-question phase; lab_payload_v3 schema; assessment intelligence (Phase X.1) embedded.",
+        "next_gate": "Frontend assessment_intelligence consumer for adaptive feedback."
       },
       {
         "id": "adaptive_engine",
@@ -69,26 +69,26 @@
       {
         "id": "knowledge_utilization",
         "label": "Knowledge Utilization Mapping",
-        "percent": 50,
+        "percent": 75,
         "weight": 10,
-        "stage": "phase_x1_ingested_x2_active",
-        "evidence": "Phase X.1 complete: 25 JSON files ingested from official WSET spec, SAT framework, marking keys, model answers, command verbs, and mentor framework. Phase X.2: assessment intelligence activated as runtime resources in open response lab.",
-        "next_gate": "Wire retrieval and Tutor layers to consume Phase X.1 assets (SAT Answer Validator → next)."
+        "stage": "x3_x4_x5_operational",
+        "evidence": "Phase X.1: 25 JSON files ingested. Phase X.2: runtime migration. Phase X.3: SAT Answer Validator (8 components, ENABLE_SAT_VALIDATOR_FEEDBACK=True). Phase X.4: SAT Readiness Validator (readiness_reasoning_patterns.json). Phase X.5: SAT Response Structure Validator (response_structures.json). All validator feedback rendered via answer_builder.py.",
+        "next_gate": "Wire Tutor retrieval layer to consume Phase X.1 SAT assets adaptively."
       },
       {
         "id": "project_state_engine",
         "label": "Project State Engine",
-        "percent": 15,
+        "percent": 30,
         "weight": 6,
-        "stage": "manual_reconciliation",
-        "evidence": "Repository reconciliation and dashboard updater exist, but state derivation remains partly manual and stale-state prone.",
+        "stage": "updated_june_10",
+        "evidence": "system_state.json manually reconciled to June 10 reality. Dashboard shows 4 live experiences + Full Simulation. Automated freshness validation still pending.",
         "next_gate": "Automate evidence collection and freshness validation without reading private learner artifacts."
       }
     ]
   },
-  "tests": 1464,
-  "tests_skipped": 9,
-  "test_suite_status": "1464 OK, 9 skipped",
+  "tests": 1593,
+  "tests_skipped": 7,
+  "test_suite_status": "1593 OK, 7 skipped (38 pre-existing errors: datetime.UTC + Windows permissions)",
   "snapshots": 35,
   "phases_completed": [
     "governance",
@@ -147,10 +147,15 @@
     "Phase X.1 — Official WSET Assessment Intelligence Ingestion",
     "Phase V4.2 — Grounding Remediations Applied",
     "Phase V4.3 — Master Bank & Official Corpus Readiness Audit",
-    "Phase X.2 — Runtime Migration (Diagnostic SBA stable; Adaptive Session expanded; OR Lab activated)"
+    "Phase X.2 — Runtime Migration (Diagnostic SBA stable; Adaptive Session expanded; OR Lab activated)",
+    "Phase X.3 — SAT Answer Validator (8 components, Tutor integration)",
+    "Phase X.4 — SAT Readiness Validator (readiness_reasoning_patterns.json)",
+    "Phase X.5 — SAT Response Structure Validator (response_structures.json)",
+    "Production Expansion — 119 SBA + 26 OR + 6 SAT deployed across 3 experiences",
+    "Part E — Full WSET Simulation (SBA 50 + OR 4 + SAT 2, single continuous flow)"
   ],
-  "in_progress_phase": "SAT Answer Validator — Phase X.1 Runtime Consumer",
-  "next_target": "Wire sat_quality_framework.json + evidence_requirements.json into Tutor SAT feedback path",
+  "in_progress_phase": "Phase Y.0 — Bank Scope Reconciliation (eligibility engine vs review_state)",
+  "next_target": "Wire eligibility engine (589 SBA) into generate_production_payloads.py; regenerate and deploy",
   "governance_status": {
     "governance_violations": 0,
     "llm_dependency": 0,
@@ -166,14 +171,14 @@
   "diagnostic_sba_json_loader_status": "active",
   "diagnostic_sba_public_url": "https://epistemiclab.dpdns.org/diagnostic-sba/",
   "static_demo_export_version": "static_demo_export_v0",
-  "active_sba_items": 36,
+  "active_sba_items": 119,
   "static_demo_approved_count": 36,
   "static_demo_requires_revision_count": 2,
   "option_shuffle_status": "active",
   "option_shuffle_strategy": "stable_item_id_sha256_v1",
   "visual_option_id_status": "present",
   "export_validation_errors": 0,
-  "mock_questions_status": "inactive",
+  "mock_questions_status": "active",
   "const_questions_status": "absent",
   "official_scoring_status": "not_allowed",
   "examiner_authority_status": "not_allowed",
@@ -196,18 +201,15 @@
   "short_answer_questions": 21,
   "master_bank_status": "implemented",
   "master_bank_total": 616,
-  "master_bank_sba": 595,
-  "master_bank_open_response": 21,
+  "master_bank_sba": 590,
+  "master_bank_open_response": 26,
   "master_bank_gold": 34,
   "master_bank_public_lab": 36,
-  "master_bank_inactive": 580,
+  "master_bank_inactive": 0,
   "open_response_status": "active_private_lab",
-  "open_response_approved": 20,
-  "open_response_operational_pool": 18,
-  "open_response_retained_ids": [
-    "807",
-    "809"
-  ],
+  "open_response_approved": 26,
+  "open_response_operational_pool": 26,
+  "open_response_retained_ids": [],
   "adaptive_engine_status": "pedagogical_contract_only",
   "knowledge_utilization_status": "audit_pending",
   "production_dashboard_url": "https://epistemiclab.dpdns.org/",
@@ -221,7 +223,38 @@
   "open_response_assessment_intelligence": "phase_x1_embedded",
   "assessment_intelligence_status": "phase_x1_ingested_x2_active",
   "assessment_intelligence_files": 25,
-  "adaptive_session_pool_size": 116,
-  "adaptive_session_pool_source": "approved_for_static_demo+approved_private_sba",
-  "adaptive_session_status": "expanded_operational"
+  "adaptive_session_pool_size": 119,
+  "adaptive_session_pool_source": "approved_private_sba + approved_for_static_demo (review_state filter)",
+  "adaptive_session_status": "full_bank_deployed",
+  "full_simulation_status": "live",
+  "full_simulation_url": "https://epistemiclab.dpdns.org/full-simulation/",
+  "full_simulation_phases": "SBA 50 (75min) → Open Response 4 (30min) → SAT 2 wines (30min)",
+  "deployed_experiences": {
+    "diagnostic_sba": {
+      "url": "https://epistemiclab.dpdns.org/diagnostic-sba/",
+      "items": 119,
+      "modes": 4,
+      "status": "live"
+    },
+    "adaptive_session": {
+      "url": "https://epistemiclab.dpdns.org/adaptive-session/",
+      "sba_items": 119,
+      "sat_prompts": 6,
+      "modes": 6,
+      "status": "live"
+    },
+    "open_response_lab": {
+      "url": "https://epistemiclab.dpdns.org/open-response-lab/",
+      "items": 26,
+      "modes": 4,
+      "status": "live"
+    },
+    "full_simulation": {
+      "url": "https://epistemiclab.dpdns.org/full-simulation/",
+      "sba": 50,
+      "or": 4,
+      "sat": 2,
+      "status": "live"
+    }
+  }
 }
