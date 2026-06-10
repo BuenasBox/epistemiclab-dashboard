@@ -1024,6 +1024,8 @@ footer {
 .global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
 <script src="preguntas_data.js"></script>
+<script src="../adaptive-session/coach_data.js"></script>
+<script src="../adaptive-session/learner_intelligence.js"></script>
 </head>
 <body>
 
@@ -1298,17 +1300,19 @@ function loadMode(mode){
     const byRa={};
     all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
     Object.entries(MOCK_RA).forEach(([ra,need])=>{
-      const pool=sbaShuf(byRa[ra]||[],Date.now()+ra.charCodeAt(2));
-      const fresh=pool.filter(i=>!recent.includes(i.source_question_id));
-      const stale=pool.filter(i=>recent.includes(i.source_question_id));
-      selected.push(...[...fresh,...stale].slice(0,need));
+      let pool=sbaShuf(byRa[ra]||[],Date.now()+ra.charCodeAt(2));
+      // Phase Y.2 — Adaptive Weakness Engine: weak-area unseen items first (RA blueprint preserved)
+      pool=window.LI?LI.prioritize(pool,recent)
+        :[...pool.filter(i=>!recent.includes(i.source_question_id)),...pool.filter(i=>recent.includes(i.source_question_id))];
+      selected.push(...pool.slice(0,need));
     });
     selected=sbaShuf(selected,Date.now());
   } else {
     const size={quick_drill:5,express:10,standard:25}[mode]||10;
     const fresh=sbaShuf(all.filter(i=>!recent.includes(i.source_question_id)),Date.now());
     const stale=sbaShuf(all.filter(i=>recent.includes(i.source_question_id)),Date.now()+1);
-    selected=[...fresh,...stale].slice(0,size);
+    // Phase Y.2 — Adaptive Weakness Engine: learner weaknesses bias selection
+    selected=(window.LI?LI.prioritize([...fresh,...stale],recent):[...fresh,...stale]).slice(0,size);
   }
   QUESTIONS=selected.map(bankToQ);
   sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
@@ -1340,6 +1344,8 @@ const STATE = {
   readTimeElapsed: 0,
   drillSelectedOption: null,
   drillSubmitted: false,
+  attempts: [],
+  historyRecorded: false,
   session: {
     answered: 0,
     correct: 0,
@@ -1818,6 +1824,8 @@ function goToReveal() {
   if (isCorrect) STATE.session.correct++;
   if (!isCorrect && STATE.selectedConfidence === 'seguro') STATE.session.overconfident++;
   if (STATE.crossChanged) STATE.session.hesitated++;
+  // Phase Y.2 — longitudinal history (Performance Analytics + Weakness Engine)
+  STATE.attempts.push({ question_id: q.source_question_id, ra_id: q.ra, topic: q.topic, correct: isCorrect });
   // Update instruments
   if (!isCorrect && STATE.selectedConfidence === 'seguro') activateMisconGlyph(true);
   if (STATE.crossChanged) triggerHesDot(Math.min(STATE.session.hesitated - 1, 3));
@@ -2028,6 +2036,11 @@ function nextQuestion() {
 // -----------------------------------------------------------------------
 function renderMap() {
   stopTimer();
+  // Phase Y.2 — record session once into shared learner history
+  if (window.LI && !STATE.historyRecorded && STATE.attempts.length) {
+    LI.recordSBASession('dsba_' + Date.now(), ACTIVE_MODE || 'standard', STATE.attempts);
+    STATE.historyRecorded = true;
+  }
   const s = STATE.session;
   const total = s.answered || 1;
   const accuracy = Math.round((s.correct / total) * 100);
@@ -2113,6 +2126,13 @@ function renderMap() {
       <button class="nav-btn primary-nav" onclick="restartSession()">↺ Nueva sesión de entrenamiento</button>
       <button class="nav-btn" onclick="restartSession()">↩ Repasar desde pregunta 1</button>
 
+      <div style="margin-top:18px;padding:14px 18px;background:#10141c;border:1px solid #1e2430;border-radius:8px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-dim);margin-bottom:7px;font-weight:700;">
+          Tu progreso acumulado
+        </div>
+        ${window.LI ? LI.renderProgress() : ''}
+      </div>
+
       <div style="margin-top:18px;padding:14px 18px;background:#0d0800;border:1px solid #2a1a00;border-radius:8px;">
         <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-dim);margin-bottom:7px;font-weight:700;">
           Recordatorio de gobernanza
@@ -2180,6 +2200,7 @@ function goToTrain()   { STATE.stage = 'train';  render(); window.scrollTo({top:
 function restartSession() {
   STATE.crossChanged=false; STATE.drillSelectedOption=null; STATE.drillSubmitted=false;
   STATE.session={answered:0,correct:0,overconfident:0,hesitated:0,causalWeakness:0,trapSusceptibility:0};
+  STATE.attempts=[]; STATE.historyRecorded=false;
   resetConfGauge(); setCausalBars(0); activateMisconGlyph(false);
   document.querySelectorAll('.hes-dot').forEach(d=>d.classList.remove('triggered'));
   document.getElementById('hesLabel').textContent='—';

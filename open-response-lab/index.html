@@ -263,6 +263,7 @@ ul { margin: 0; padding-left: 19px; }
         <span class="chip" data-testid="question-topic"></span>
         <span class="chip" data-testid="question-ra"></span>
       </div>
+      <div data-testid="verb-coach"></div>
       <label for="answer">Respuesta libre</label>
       <textarea id="answer" data-testid="answer-input" autocomplete="off"></textarea>
       <div class="actions">
@@ -273,6 +274,7 @@ ul { margin: 0; padding-left: 19px; }
       </div>
 
       <section class="feedback" data-testid="feedback-panel" hidden>
+        <div data-testid="coach-feedback"></div>
         <div class="feedback-grid">
           <div class="feedback-box">
             <h2>Conceptos detectados</h2>
@@ -296,6 +298,7 @@ ul { margin: 0; padding-left: 19px; }
       <section class="completion" data-testid="completion-panel" hidden>
         <strong>Sesión finalizada.</strong>
         <p class="muted">Las respuestas quedan solo en este navegador.</p>
+        <div data-testid="next-route"></div>
       </section>
     </section>
   </main>
@@ -313,6 +316,8 @@ ul { margin: 0; padding-left: 19px; }
 </div>
 
 <script src="./lab_payload.js"></script>
+<script src="../adaptive-session/coach_data.js"></script>
+<script src="../adaptive-session/learner_intelligence.js"></script>
 <script>
 (function () {
   "use strict";
@@ -333,6 +338,7 @@ ul { margin: 0; padding-left: 19px; }
     absent: document.querySelector("[data-testid='concepts-absent']"),
     causal: document.querySelector("[data-testid='missing-causal-reasoning']"),
     suggestions: document.querySelector("[data-testid='improvement-suggestions']"),
+    verbCoach: document.querySelector("[data-testid='verb-coach']"),
     progress: document.querySelector("[data-testid='progress-list']"),
     localState: document.querySelector("[data-testid='local-state']"),
     next: document.getElementById("next-question")
@@ -409,6 +415,26 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function finishSession() {
+    // Phase Y.2 — record command-verb performance into shared learner history
+    if (window.LI && !state.completed) {
+      const results = [];
+      currentSession().item_ids.forEach((itemId) => {
+        const fb = state.feedback[itemId];
+        if (!fb) return;
+        const item = payload.items.find((it) => it.item_id === itemId);
+        if (!item) return;
+        const cr = LI.coachOpenResponse(item.stem, state.answers[itemId] || "", item.topic, fb);
+        results.push({
+          item_id: itemId, ra_id: item.RA || null, topic: item.topic || null,
+          verb: cr.verb,
+          concepts_total: (fb.concepts_detected || []).length + (fb.concepts_absent || []).length,
+          concepts_absent: (fb.concepts_absent || []).length,
+          causal_missing: (fb.missing_causal_reasoning || []).length > 0,
+          structure_ok: cr.structure_ok, chain_fuerza: cr.chain_fuerza,
+        });
+      });
+      if (results.length) LI.recordORSession(state.sessionName, results);
+    }
     state.completed = true;
     saveState();
     render();
@@ -427,11 +453,34 @@ ul { margin: 0; padding-left: 19px; }
     els.topic.textContent = `Tema: ${item.topic}`;
     els.ra.textContent = `RA: ${item.RA}`;
     els.answer.value = state.answers[item.item_id] || "";
+    // Phase Y.2 — Distinction Coach: command-verb guidance for this stem
+    if (els.verbCoach) {
+      const verb = window.LI ? LI.detectVerb(item.stem) : null;
+      els.verbCoach.innerHTML = verb && window.LI ? LI.renderVerbCoach(verb) : "";
+    }
     els.next.disabled = state.index >= session.item_ids.length - 1;
     els.feedback.hidden = !itemFeedback;
     els.completion.hidden = !state.completed;
     els.localState.textContent = `${Object.keys(state.answers).length} respuesta(s) guardada(s) localmente.`;
     renderFeedback(itemFeedback);
+    // Phase Z — Distinction Coach: contenido + estructura del verbo + cadena causal
+    const coachEl = document.querySelector("[data-testid='coach-feedback']");
+    if (coachEl) {
+      coachEl.innerHTML = (itemFeedback && window.LI)
+        ? LI.coachOpenResponse(item.stem, state.answers[item.item_id] || "", item.topic, itemFeedback).html
+        : "";
+    }
+    // Phase Z — próxima ruta recomendada al finalizar
+    const routeEl = document.querySelector("[data-testid='next-route']");
+    if (routeEl) {
+      if (state.completed && window.LI) {
+        const recs = LI.recommendNext();
+        routeEl.innerHTML = recs.length
+          ? '<div style="margin-top:10px"><div style="font-size:11px;letter-spacing:.1em;color:#c9a84c;margin-bottom:6px">PRÓXIMA RUTA RECOMENDADA</div>'
+            + recs.slice(0, 5).map(r => '<div style="font-size:12px;margin:3px 0">→ ' + r.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</div>').join('') + '</div>'
+          : "";
+      } else routeEl.innerHTML = "";
+    }
     renderProgress(session);
   }
 

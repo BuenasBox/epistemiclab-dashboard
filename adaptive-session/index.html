@@ -705,6 +705,8 @@ html, body {
 .global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
 <script src="session_bank.js"></script>
+<script src="coach_data.js"></script>
+<script src="learner_intelligence.js"></script>
 </head>
 <body>
 
@@ -738,6 +740,11 @@ html, body {
       <button class="adp-btn adp-sat" onclick="startAdp('sat_practice')"><span class="adp-blabel">SAT Practice</span><span class="adp-bsub">2 vinos · práctica completa</span></button>
       <button class="adp-btn adp-sat" onclick="startAdp('sat_mock')"><span class="adp-blabel">SAT Mock Exam</span><span class="adp-bsub">2 vinos · 30 min · simulación examen</span></button>
     </div>
+    <div class="adp-slabel">Análisis</div>
+    <div class="adp-btns">
+      <button class="adp-btn" onclick="toggleProgress()"><span class="adp-blabel">Mi Progreso</span><span class="adp-bsub">RA · temas débiles · tendencias SAT</span></button>
+    </div>
+    <div id="li-progress" style="display:none"></div>
     <div class="adp-disc">PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET</div>
   </div>
 </div>
@@ -1081,6 +1088,7 @@ function confirmAnswer() {
     correct:        correct,
     challenge_type: q.challenge_type,
     topic:          q.topic,
+    ra_id:          q.ra_id,
   });
 
   // Visual feedback on options before switching screen
@@ -1129,6 +1137,22 @@ function renderFeedback(q, correct) {
     mcNote.innerHTML = `<span class="fb-mc-icon">⚠</span>${escTxt(fb.misconception_note)}`;
   } else {
     mcNote.style.display = 'none';
+  }
+
+  // Phase Y.1 — mentor hint (Distinction Coach) on incorrect answers
+  let mentor = document.getElementById('fb-mentor');
+  if (!mentor) {
+    mentor = el('div', { id: 'fb-mentor', class: 'fb-mc-note' });
+    mcNote.parentNode.insertBefore(mentor, mcNote.nextSibling);
+  }
+  const mcqHint = window.DISTINCTION_COACH
+    && DISTINCTION_COACH.mentor_hints
+    && DISTINCTION_COACH.mentor_hints.MCQ_strategy;
+  if (!correct && mcqHint) {
+    mentor.style.display = 'block';
+    mentor.innerHTML = '<span style="color:#c9a84c">MENTOR · </span>' + escTxt(mcqHint.hint);
+  } else {
+    mentor.style.display = 'none';
   }
 
   // WWJ badge
@@ -1181,6 +1205,9 @@ function renderDebriefing() {
     };
     localStorage.setItem('wset_session_results', JSON.stringify(record));
   } catch (_) { /* localStorage may be unavailable */ }
+
+  // Phase Y.1 — append to longitudinal learner history (analytics + weakness engine)
+  if (window.LI) LI.recordSBASession(STATE.sessionId, p.session_mode, STATE.attempts);
 
   // Timestamp
   $('db-timestamp').textContent = `${now.toLocaleDateString('es-ES')} · ${now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`;
@@ -1298,17 +1325,27 @@ function buildSBA(mode){
   const bk=window.SESSION_BANK;
   if(!bk||!bk.sba_items){console.error('SESSION_BANK missing');return null;}
   const all=bk.sba_items, rec=adpRec(); let sel=[];
+  // Phase Y.1 — Adaptive Weakness Engine: learner weaknesses bias selection
+  const ws=window.LI?LI.weakSet():{weakRAs:[],weakTopics:[],strongTopics:[],mcTrends:[]};
+  const isWeak=i=>ws.weakTopics.indexOf(i.topic)!==-1||ws.weakRAs.indexOf(i.ra)!==-1;
   if(mode==='mock_theory_50'){
+    // RA blueprint preserved; within each RA, weak-topic unseen items first
     const byRa={};
     all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
     Object.entries(ADP_MRA).forEach(([ra,n])=>{
-      const pool=adpShuf(byRa[ra]||[],ra.charCodeAt(2));
-      sel.push(...[...pool.filter(i=>!rec.includes(i.source_question_id)),...pool.filter(i=>rec.includes(i.source_question_id))].slice(0,n));
+      let pool=adpShuf(byRa[ra]||[],ra.charCodeAt(2));
+      pool=window.LI?LI.prioritize(pool,rec)
+        :[...pool.filter(i=>!rec.includes(i.source_question_id)),...pool.filter(i=>rec.includes(i.source_question_id))];
+      sel.push(...pool.slice(0,n));
     });
     sel=adpShuf(sel,42);
   } else {
     const sz={express_10:10,standard_25:25}[mode]||10;
-    sel=[...adpShuf(all.filter(i=>!rec.includes(i.source_question_id)),1),...adpShuf(all.filter(i=>rec.includes(i.source_question_id)),2)].slice(0,sz);
+    const base=[...adpShuf(all.filter(i=>!rec.includes(i.source_question_id)),1),...adpShuf(all.filter(i=>rec.includes(i.source_question_id)),2)];
+    // Reserve ~40% of slots for weak-area items (if any), rest unchanged
+    const weakPool=base.filter(isWeak).slice(0,Math.ceil(sz*0.4));
+    const taken=weakPool.map(i=>i.source_question_id);
+    sel=adpShuf([...weakPool,...base.filter(i=>taken.indexOf(i.source_question_id)===-1)].slice(0,sz),3);
   }
   adpSav([...rec,...sel.map(i=>i.source_question_id)]);
   const ml={express_10:'EXPRESS_10',standard_25:'STANDARD_25',mock_theory_50:'MOCK_THEORY_50'}[mode]||mode;
@@ -1316,8 +1353,11 @@ function buildSBA(mode){
     generated_at:new Date().toISOString(), session_mode:ml,
     pool_size:all.length, pool_source:'session_bank_v1', target_size:sel.length,
     governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true},
-    mission_briefing:{strong_areas:[],weak_areas:[],active_misconceptions:[],causal_gaps:[],
-      session_objective:'Sesión de entrenamiento formativo WSET L3'},
+    mission_briefing:{strong_areas:ws.strongTopics.slice(0,4),weak_areas:ws.weakTopics.slice(0,4),
+      active_misconceptions:ws.mcTrends.slice(0,3),causal_gaps:[],
+      session_objective:ws.weakTopics.length
+        ?'Sesión adaptativa: refuerzo priorizado en '+ws.weakTopics.slice(0,2).join(' y ')
+        :'Sesión de entrenamiento formativo WSET L3'},
     questions:sel.map(i=>({
       question_id:i.id, priority_score:1, stem:i.text,
       options:(i.options||[]).map((t,x)=>({label:['A','B','C','D'][x]||String(x),text:t})),
@@ -1341,7 +1381,7 @@ let _satTmr=null, _satSec=0;
 function startAdp(mode){
   document.getElementById('adp-ol').classList.remove('active');
   if(mode.startsWith('sat_')){
-    STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0;
+    STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0; STATE.satResponses={};
     showScreen('sat'); renderSAT();
     if(STATE.satPayload&&STATE.satPayload.duration_minutes){
       _satSec=STATE.satPayload.duration_minutes*60; clearInterval(_satTmr);
@@ -1385,20 +1425,51 @@ function renderSAT(){
     </div>
     <div style="display:flex;gap:10px;justify-content:flex-end">
       ${idx+1<tot
-        ?`<button onclick="STATE.satWineIdx++;renderSAT();window.scrollTo({top:0,behavior:'smooth'})" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px">Siguiente →</button>`
+        ?`<button onclick="satNext()" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px">Siguiente →</button>`
         :`<button onclick="finishSAT()" style="background:#1e2430;border:1px solid #2ec27e;border-radius:6px;padding:9px 20px;color:#2ec27e;cursor:pointer;font-size:13px">Finalizar ✓</button>`}
     </div>
   </div>`;
 }
 
+function satCapture(){
+  const p=STATE.satPayload; if(!p)return;
+  const wine=(p.wines||[])[STATE.satWineIdx||0]; if(!wine)return;
+  const ta=document.getElementById('sat-resp-'+wine.prompt_id);
+  if(ta){STATE.satResponses=STATE.satResponses||{};STATE.satResponses[wine.prompt_id]=ta.value;}
+}
+function satNext(){
+  satCapture();
+  STATE.satWineIdx++;renderSAT();window.scrollTo({top:0,behavior:'smooth'});
+}
 function finishSAT(){
   clearInterval(_satTmr);
-  document.getElementById('sat-content').innerHTML=`<div style="text-align:center;padding:60px 20px">
+  satCapture();
+  // Phase Y.1 — Distinction Coach: structural review of each SAT response
+  let coachHtml='', reviews=[];
+  if(window.LI&&window.DISTINCTION_COACH){
+    const p=STATE.satPayload, resp=STATE.satResponses||{};
+    (p.wines||[]).forEach(w=>{
+      const findings=LI.coachSAT(resp[w.prompt_id]||'',w);
+      if(findings){
+        reviews.push({prompt_id:w.prompt_id,findings:findings});
+        coachHtml+=`<div style="font-size:12px;color:#e5c97a;text-align:left;margin-top:18px;font-weight:700">${escTxt(w.wine_name)}</div>`+LI.renderCoachPanel(findings);
+      }
+    });
+    if(reviews.length)LI.recordSATSession(p.mode,reviews);
+  }
+  document.getElementById('sat-content').innerHTML=`<div style="text-align:center;padding:40px 20px;max-width:640px;margin:0 auto">
     <div style="font-size:40px;margin-bottom:14px">✓</div>
     <div style="font-size:18px;font-weight:700;color:#e5c97a;margin-bottom:8px">Práctica SAT completada</div>
-    <div style="font-size:12px;color:#a7b0be;margin-bottom:22px">Entrenamiento formativo. Evaluación oficial requiere Examiner WSET acreditado.</div>
-    <button onclick="document.getElementById('adp-ol').classList.add('active')" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px">← Nueva sesión</button>
+    <div style="font-size:12px;color:#a7b0be;margin-bottom:10px">Entrenamiento formativo. Evaluación oficial requiere Examiner WSET acreditado.</div>
+    ${coachHtml}
+    <button onclick="document.getElementById('adp-ol').classList.add('active')" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px;margin-top:18px">← Nueva sesión</button>
   </div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleProgress(){
+  const box=document.getElementById('li-progress'); if(!box)return;
+  if(box.style.display==='none'){box.innerHTML=window.LI?LI.renderProgress():'';box.style.display='block';}
+  else box.style.display='none';
 }
 
 async function init() {

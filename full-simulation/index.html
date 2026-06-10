@@ -6,6 +6,8 @@
   <title>WSET L3 · Simulacro Completo · PROTOTIPO</title>
   <script src="../adaptive-session/session_bank.js"></script>
   <script src="../open-response-lab/lab_payload.js"></script>
+  <script src="../adaptive-session/coach_data.js"></script>
+  <script src="../adaptive-session/learner_intelligence.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -243,6 +245,7 @@
   <div class="screen" id="screen-or">
     <div class="q-tags" id="or-tags"></div>
     <div class="or-stem" id="or-stem"></div>
+    <div id="or-verb-coach"></div>
     <div class="or-label">Respuesta libre</div>
     <textarea id="or-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
     <div class="nav-bottom">
@@ -301,6 +304,7 @@
         <span class="complete-part-done">✓</span>
       </div>
     </div>
+    <div id="complete-coach" style="max-width:640px;margin:0 auto;text-align:left"></div>
     <p class="disclaimer" style="margin-bottom:24px">
       PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET<br>
       safe_for_examiner: false · examiner_scoring_allowed: false
@@ -323,7 +327,7 @@ function shuf(arr, seed){
 /* ── STATE ── */
 const STATE = {
   phase: 'intro',
-  sba: { items:[], idx:0, correct:0, selected:null, confirmed:false },
+  sba: { items:[], idx:0, correct:0, selected:null, confirmed:false, attempts:[], recorded:false },
   or:  { items:[], idx:0, answers:[] },
   sat: { items:[], idx:0, answers:[] },
   timers: { sba:null, or:null, sat:null },
@@ -401,7 +405,7 @@ function startSim(){
   STATE.sba.items   = loadSBAItems();
   STATE.or.items    = loadORItems();
   STATE.sat.items   = loadSATItems();
-  STATE.sba.idx=0; STATE.sba.correct=0;
+  STATE.sba.idx=0; STATE.sba.correct=0; STATE.sba.attempts=[]; STATE.sba.recorded=false;
   STATE.or.idx=0;  STATE.or.answers=[];
   STATE.sat.idx=0; STATE.sat.answers=[];
   STATE.secs.sba=75*60; STATE.secs.or=30*60; STATE.secs.sat=30*60;
@@ -464,6 +468,8 @@ function confirmSBA(){
   const sel=STATE.sba.selected;
   const ok=(sel===correct);
   if(ok) STATE.sba.correct++;
+  // Phase Y.2 — longitudinal history
+  STATE.sba.attempts.push({ question_id:q.source_question_id, ra_id:q.ra, topic:q.topic, correct:ok });
 
   document.querySelectorAll('.opt').forEach((el,j)=>{
     el.classList.remove('selected');
@@ -489,6 +495,11 @@ function autoAdvanceSBA(){ bridgeSBA(); }
 
 function bridgeSBA(){
   stopAllTimers();
+  // Phase Y.2 — record Part 1 into shared learner history (analytics + weakness engine)
+  if(window.LI && !STATE.sba.recorded && STATE.sba.attempts.length){
+    LI.recordSBASession('fullsim_'+Date.now(),'full_simulation',STATE.sba.attempts);
+    STATE.sba.recorded=true;
+  }
   $('phase-header').style.display='none';
   $('progress-fill').style.width='100%';
   const c=STATE.sba.correct, t=STATE.sba.items.length;
@@ -521,6 +532,11 @@ function renderORQ(){
 
   $('or-tags').innerHTML=`<span class="q-tag">RA: ${escT(q.RA||q.ra||'—')}</span><span class="q-tag">${escT(q.topic||'—')}</span>`;
   $('or-stem').textContent=q.stem||q.question_text||'';
+  // Phase Y.2 — Distinction Coach: command-verb guidance
+  if($('or-verb-coach')){
+    const verb=window.LI?LI.detectVerb(q.stem||q.question_text||''):null;
+    $('or-verb-coach').innerHTML=verb&&window.LI?LI.renderVerbCoach(verb):'';
+  }
   $('or-textarea').value = STATE.or.answers[idx]||'';
   $('or-next-btn').textContent = idx<items.length-1 ? 'Guardar y continuar →' : 'Finalizar Parte 2 →';
   showScreen('screen-or');
@@ -589,6 +605,30 @@ function completeSim(){
   $('progress-fill').style.width='100%';
   const c=STATE.sba.correct, t=STATE.sba.items.length;
   $('complete-sba-result').textContent=`${c}/${t} (${Math.round((c/t)*100)}%)`;
+  // Phase Y.2/Z — Distinction Coach: open-response + SAT review + history
+  if(window.LI && window.DISTINCTION_COACH && $('complete-coach')){
+    let coachHtml='', reviews=[], orResults=[];
+    // Part 2 — verb structure + Universal Distinction Chain per open response
+    STATE.or.items.forEach((q,i)=>{
+      const ans=STATE.or.answers[i]||'';
+      if(!String(ans).trim())return;
+      const res=LI.coachOpenResponse(q.stem||q.question_text||'',ans,q.topic||null,null);
+      coachHtml+=`<div style="font-size:12px;color:var(--gold,#e5c97a);margin-top:18px;font-weight:700">Respuesta abierta ${i+1}</div>`+res.html;
+      orResults.push({item_id:q.item_id||('fullsim_or_'+i),ra_id:q.RA||q.ra||null,topic:q.topic||null,
+        verb:res.verb,concepts_total:0,concepts_absent:0,causal_missing:false,
+        structure_ok:res.structure_ok,chain_fuerza:res.chain_fuerza});
+    });
+    if(orResults.length)LI.recordORSession('full_simulation',orResults);
+    STATE.sat.items.forEach((w,i)=>{
+      const findings=LI.coachSAT(STATE.sat.answers[i]||'',w);
+      if(findings){
+        reviews.push({prompt_id:w.prompt_id,findings:findings});
+        coachHtml+=`<div style="font-size:12px;color:var(--gold,#e5c97a);margin-top:18px;font-weight:700">${escT(w.wine_name)}</div>`+LI.renderCoachPanel(findings);
+      }
+    });
+    if(reviews.length)LI.recordSATSession('full_simulation',reviews);
+    $('complete-coach').innerHTML=coachHtml;
+  }
   showScreen('screen-complete');
 }
 
