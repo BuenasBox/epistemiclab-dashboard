@@ -1,14 +1,14 @@
 {
-  "current_phase": "Foundation Consolidation",
-  "latest_phase": "Master Bank + Adaptive Contract",
-  "latest_event": "Canonical Master Bank merged and adaptive-session pedagogical contract versioned",
-  "latest_commit": "8eab69e",
-  "current_recommendation": "Knowledge Utilization & Coverage Audit",
-  "updated_at": "2026-06-06T00:00:00-06:00",
-  "maturity": 58,
+  "current_phase": "Assessment Intelligence Activation",
+  "latest_phase": "Phase X.2 — Runtime Migration + Assessment Intelligence",
+  "latest_event": "Open Response Lab activated (20 items, active_private_lab); Phase X.1 assessment intelligence embedded as runtime resource; adaptive session pool expanded to 116 items (approved_private_sba + approved_for_static_demo); Diagnostic SBA stable at 36 items.",
+  "latest_commit": "phase-x2-runtime-migration",
+  "current_recommendation": "SAT Answer Validator (first Phase X.1 runtime consumer)",
+  "updated_at": "2026-06-09T00:00:00-06:00",
+  "maturity": 66,
   "maturity_model": {
     "model_version": "repository_evidence_weighted_v1",
-    "overall_percent": 58,
+    "overall_percent": 66,
     "interpretation": "Engineering maturity estimate, not learner scoring or official assessment.",
     "calculation": "Weighted sum of track percentages; weights total 100.",
     "tracks": [
@@ -33,20 +33,20 @@
       {
         "id": "master_bank",
         "label": "Master Bank Foundation",
-        "percent": 75,
+        "percent": 80,
         "weight": 14,
-        "stage": "foundation_implemented",
-        "evidence": "616 records are consolidated with schema, importer, validator, collection exports and deterministic SBA composer.",
-        "next_gate": "Classify the full bank into confidence-based operational layers."
+        "stage": "expanded_operational",
+        "evidence": "616 records consolidated; importer canonical (public_lab: 36); adaptive session pool expanded to 116 items (approved_for_static_demo + approved_private_sba); grounding remediations (V4.2) applied; V4.3 readiness audit complete.",
+        "next_gate": "Wire full 116-item pool into deployed adaptive session frontend."
       },
       {
         "id": "open_response",
         "label": "Open Response Lab",
-        "percent": 70,
+        "percent": 88,
         "weight": 14,
-        "stage": "runtime_inactive",
-        "evidence": "Pipeline, grounding, review, session engine and runtime MVP exist; 20 records are approved, 18 are in the operational pool and activation remains off.",
-        "next_gate": "Resolve retained items and complete private activation readiness."
+        "stage": "active_private_lab",
+        "evidence": "20 items active; all approved review records activated; assessment intelligence (Phase X.1) embedded as runtime resource: 6 command verbs, 6 SAT quality levels, 7 CRF patterns, 6 improvement patterns, mentor hints by topic.",
+        "next_gate": "Frontend consumer reads assessment_intelligence for adaptive feedback display."
       },
       {
         "id": "adaptive_engine",
@@ -69,11 +69,11 @@
       {
         "id": "knowledge_utilization",
         "label": "Knowledge Utilization Mapping",
-        "percent": 5,
+        "percent": 50,
         "weight": 10,
-        "stage": "audit_pending",
-        "evidence": "Knowledge assets exist, but there is no complete registry, consumer matrix or orphan analysis.",
-        "next_gate": "Build the Knowledge Asset Registry, Consumer Matrix and orphan detection."
+        "stage": "phase_x1_ingested_x2_active",
+        "evidence": "Phase X.1 complete: 25 JSON files ingested from official WSET spec, SAT framework, marking keys, model answers, command verbs, and mentor framework. Phase X.2: assessment intelligence activated as runtime resources in open response lab.",
+        "next_gate": "Wire retrieval and Tutor layers to consume Phase X.1 assets (SAT Answer Validator → next)."
       },
       {
         "id": "project_state_engine",
@@ -143,10 +143,14 @@
     "Phase 4A.3.7.20.5 — Static Lab Deployment Staging Plan",
     "Phase 4A.3.7.20.6 — Static Release Assembly Script Contract",
     "Phase 4A.3.7.21 — Dashboard Lab Link Implementation",
-    "Phase 4A.3.7.43 — 36-item Diagnostic SBA Lab Live"
+    "Phase 4A.3.7.43 — 36-item Diagnostic SBA Lab Live",
+    "Phase X.1 — Official WSET Assessment Intelligence Ingestion",
+    "Phase V4.2 — Grounding Remediations Applied",
+    "Phase V4.3 — Master Bank & Official Corpus Readiness Audit",
+    "Phase X.2 — Runtime Migration (Diagnostic SBA stable; Adaptive Session expanded; OR Lab activated)"
   ],
-  "in_progress_phase": "Knowledge Utilization & Coverage Audit",
-  "next_target": "Knowledge Asset Registry + Consumer Matrix + Orphan Detection",
+  "in_progress_phase": "SAT Answer Validator — Phase X.1 Runtime Consumer",
+  "next_target": "Wire sat_quality_framework.json + evidence_requirements.json into Tutor SAT feedback path",
   "governance_status": {
     "governance_violations": 0,
     "llm_dependency": 0,
@@ -197,7 +201,7 @@
   "master_bank_gold": 34,
   "master_bank_public_lab": 36,
   "master_bank_inactive": 580,
-  "open_response_status": "implemented_inactive",
+  "open_response_status": "active_private_lab",
   "open_response_approved": 20,
   "open_response_operational_pool": 18,
   "open_response_retained_ids": [
@@ -212,5 +216,12 @@
   "sba_basic_candidates": 591,
   "sba_strict_candidates": 525,
   "sba_clean_pilot_candidates": 520,
-  "diagnostic_compatible_count": 0
+  "diagnostic_compatible_count": 0,
+  "open_response_lab_activation": "active_private_lab",
+  "open_response_assessment_intelligence": "phase_x1_embedded",
+  "assessment_intelligence_status": "phase_x1_ingested_x2_active",
+  "assessment_intelligence_files": 25,
+  "adaptive_session_pool_size": 116,
+  "adaptive_session_pool_source": "approved_for_static_demo+approved_private_sba",
+  "adaptive_session_status": "expanded_operational"
 }
