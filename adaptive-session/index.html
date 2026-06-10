@@ -1366,12 +1366,12 @@ function renderSAT(){
   el.innerHTML=`<div style="max-width:640px;margin:0 auto;padding:24px 0">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
       <div><div style="font-size:11px;color:#525e6e;letter-spacing:.1em;text-transform:uppercase">Cata SAT · Vino ${idx+1} de ${tot}</div>
-      <div style="font-size:18px;font-weight:700;color:#e5c97a;margin-top:4px">${escapeHtml(wine.wine_name)}</div></div>
+      <div style="font-size:18px;font-weight:700;color:#e5c97a;margin-top:4px">${escTxt(wine.wine_name)}</div></div>
       ${dur?`<div style="text-align:right"><div style="font-size:10px;color:#525e6e">Tiempo restante</div><div id="sat-timer" style="font-size:20px;font-weight:700;color:#c9a84c">${dur}:00</div></div>`:''}
     </div>
     <div style="background:#1e2430;border:1px solid #252c38;border-radius:8px;padding:16px;margin-bottom:14px">
       <div style="font-size:11px;color:#a7b0be;margin-bottom:8px">DESCRIPCIÓN</div>
-      <div style="font-size:13px;color:#f5f7fa;line-height:1.6">${escapeHtml(wine.description)}</div>
+      <div style="font-size:13px;color:#f5f7fa;line-height:1.6">${escTxt(wine.description)}</div>
     </div>
     <div style="background:#1e2430;border:1px solid #252c38;border-radius:8px;padding:16px;margin-bottom:14px">
       <div style="font-size:11px;color:#a7b0be;margin-bottom:8px">TU ANÁLISIS SAT</div>
@@ -1381,7 +1381,7 @@ function renderSAT(){
     </div>
     <div style="background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:8px;padding:12px;margin-bottom:16px">
       <div style="font-size:11px;color:#c9a84c;margin-bottom:4px">NOTA FORMATIVA</div>
-      <div style="font-size:12px;color:#a7b0be">${escapeHtml(wine.training_note)}</div>
+      <div style="font-size:12px;color:#a7b0be">${escTxt(wine.training_note)}</div>
     </div>
     <div style="display:flex;gap:10px;justify-content:flex-end">
       ${idx+1<tot
