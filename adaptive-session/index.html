@@ -672,7 +672,39 @@ html, body {
 
   .db-metrics { grid-template-columns: 1fr 1fr 1fr; }
 }
+
+/* ---- Adaptive Mode Overlay ---- */
+.adp-ol{display:none;position:fixed;inset:0;background:rgba(15,17,21,.97);z-index:500;align-items:center;justify-content:center;padding:20px;}
+.adp-ol.active{display:flex;}
+.adp-card{background:#171b22;border:1px solid #252c38;border-radius:12px;padding:28px 24px;max-width:520px;width:100%;}
+.adp-eyebrow{font-size:11px;color:#525e6e;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.adp-title{font-size:20px;font-weight:700;color:#e5c97a;margin-bottom:4px;}
+.adp-sub{font-size:12px;color:#a7b0be;margin-bottom:14px;}
+.adp-slabel{font-size:11px;color:#a7b0be;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 7px;padding-left:8px;border-left:2px solid #c9a84c;}
+.adp-btns{display:flex;flex-direction:column;gap:7px;}
+.adp-btn{background:#1e2430;border:1px solid #252c38;border-radius:7px;padding:11px 14px;cursor:pointer;text-align:left;color:#f5f7fa;transition:border-color .15s;}
+.adp-btn:hover{border-color:#7a6230;}
+.adp-btn.adp-sat{border-color:#4a3e8c;}
+.adp-btn.adp-sat:hover{background:rgba(139,124,246,.07);border-color:#7b6df5;}
+.adp-blabel{display:block;font-size:14px;font-weight:600;}
+.adp-bsub{display:block;font-size:11px;color:#a7b0be;margin-top:2px;}
+.adp-disc{font-size:10px;color:#525e6e;text-align:center;margin-top:14px;}
+
+/* ---- Global Navigation ---- */
+.global-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 8px 16px;
+  background: var(--raised); border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.global-nav a {
+  color: var(--text-2); text-decoration: none; font-size: 12px;
+  padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
+  transition: color .15s, border-color .15s;
+}
+.global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
+.global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
+<script src="session_bank.js"></script>
 </head>
 <body>
 
@@ -685,6 +717,29 @@ html, body {
   <span>NO EVALUACIÓN OFICIAL WSET</span>
   <span class="gov-sep">·</span>
   <span>safe_for_examiner: false</span>
+</div>
+
+<nav class="global-nav"><a href="/diagnostic-sba/">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/" class="nav-active">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Open Response Lab</a></nav>
+<!-- ADAPTIVE MODE OVERLAY -->
+<div id="adp-ol" class="adp-ol active">
+  <div class="adp-card">
+    <div class="adp-eyebrow">Adaptive Session</div>
+    <div class="adp-title">Selecciona modo</div>
+    <div class="adp-sub">119 preguntas SBA + 6 prompts SAT · safe_for_examiner: false</div>
+    <div class="adp-slabel">Teoría · SBA</div>
+    <div class="adp-btns">
+      <button class="adp-btn" onclick="startAdp('express_10')"><span class="adp-blabel">Express · 10</span><span class="adp-bsub">10 preguntas · ~15 min</span></button>
+      <button class="adp-btn" onclick="startAdp('standard_25')"><span class="adp-blabel">Estándar · 25</span><span class="adp-bsub">25 preguntas · ~35 min</span></button>
+      <button class="adp-btn" onclick="startAdp('mock_theory_50')"><span class="adp-blabel">Mock Theory Part 1 · 50</span><span class="adp-bsub">RA1=8 · RA2=28 · RA3=5 · RA4=5 · RA5=4 · ~75 min</span></button>
+    </div>
+    <div class="adp-slabel">Cata SAT</div>
+    <div class="adp-btns">
+      <button class="adp-btn adp-sat" onclick="startAdp('sat_sprint')"><span class="adp-blabel">SAT Sprint</span><span class="adp-bsub">1 vino · práctica rápida</span></button>
+      <button class="adp-btn adp-sat" onclick="startAdp('sat_practice')"><span class="adp-blabel">SAT Practice</span><span class="adp-bsub">2 vinos · práctica completa</span></button>
+      <button class="adp-btn adp-sat" onclick="startAdp('sat_mock')"><span class="adp-blabel">SAT Mock Exam</span><span class="adp-bsub">2 vinos · 30 min · simulación examen</span></button>
+    </div>
+    <div class="adp-disc">PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET</div>
+  </div>
 </div>
 
 <!-- =========================================================
@@ -747,6 +802,11 @@ html, body {
   <div class="content" id="db-content"></div>
 </div>
 
+<!-- SCREEN SAT -->
+<div id="screen-sat" class="screen" role="main" aria-label="Práctica SAT">
+  <div class="content" id="sat-content"></div>
+</div>
+
 <!-- =========================================================
      JAVASCRIPT
      ========================================================= -->
@@ -756,6 +816,8 @@ html, body {
 /* ---- State ---- */
 const STATE = {
   payload:    null,
+  satPayload: null,
+  satWineIdx: 0,
   screen:     0,
   qIdx:       0,
   selected:   null,
@@ -1219,9 +1281,130 @@ function restartSession() {
 }
 
 /* ---- Bootstrap ---- */
+
+// ═══════════════════════════════════════════════════════════
+// SESSION BANK CLIENT (window.SESSION_BANK from session_bank.js)
+// ═══════════════════════════════════════════════════════════
+const ADP_RK='wset_adp_recent_v2';
+const ADP_MRA={RA1:8,RA2:28,RA3:5,RA4:5,RA5:4};
+function adpRec(){try{return JSON.parse(localStorage.getItem(ADP_RK)||'[]');}catch(e){return[];}}
+function adpSav(ids){try{localStorage.setItem(ADP_RK,JSON.stringify(ids.slice(-80)));}catch(e){}}
+function adpShuf(arr,salt){
+  const a=arr.slice();let s=Math.abs(((salt||Date.now()))&0x7fffffff);
+  for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+function buildSBA(mode){
+  const bk=window.SESSION_BANK;
+  if(!bk||!bk.sba_items){console.error('SESSION_BANK missing');return null;}
+  const all=bk.sba_items, rec=adpRec(); let sel=[];
+  if(mode==='mock_theory_50'){
+    const byRa={};
+    all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
+    Object.entries(ADP_MRA).forEach(([ra,n])=>{
+      const pool=adpShuf(byRa[ra]||[],ra.charCodeAt(2));
+      sel.push(...[...pool.filter(i=>!rec.includes(i.source_question_id)),...pool.filter(i=>rec.includes(i.source_question_id))].slice(0,n));
+    });
+    sel=adpShuf(sel,42);
+  } else {
+    const sz={express_10:10,standard_25:25}[mode]||10;
+    sel=[...adpShuf(all.filter(i=>!rec.includes(i.source_question_id)),1),...adpShuf(all.filter(i=>rec.includes(i.source_question_id)),2)].slice(0,sz);
+  }
+  adpSav([...rec,...sel.map(i=>i.source_question_id)]);
+  const ml={express_10:'EXPRESS_10',standard_25:'STANDARD_25',mock_theory_50:'MOCK_THEORY_50'}[mode]||mode;
+  return {
+    generated_at:new Date().toISOString(), session_mode:ml,
+    pool_size:all.length, pool_source:'session_bank_v1', target_size:sel.length,
+    governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true},
+    mission_briefing:{strong_areas:[],weak_areas:[],active_misconceptions:[],causal_gaps:[],
+      session_objective:'Sesión de entrenamiento formativo WSET L3'},
+    questions:sel.map(i=>({
+      question_id:i.id, priority_score:1, stem:i.text,
+      options:(i.options||[]).map((t,x)=>({label:['A','B','C','D'][x]||String(x),text:t})),
+      correct_answer:i.correct_letter||'A', topic:i.topic||'—', ra_id:i.ra||'—',
+      difficulty:i.difficulty||'—', challenge_type:'theory_foundation',
+      feedback:'Repasa el concepto relacionado con esta pregunta.',
+    }))
+  };
+}
+function buildSAT(mode){
+  const bk=window.SESSION_BANK;
+  if(!bk||!bk.sat_prompts){console.error('SESSION_BANK missing sat_prompts');return null;}
+  const cnt=(mode==='sat_sprint')?1:2;
+  const sel=adpShuf(bk.sat_prompts,Date.now()).slice(0,cnt);
+  return {type:'sat',mode,duration_minutes:mode==='sat_mock'?30:null,wines:sel,
+    governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true}};
+}
+
+let _satTmr=null, _satSec=0;
+
+function startAdp(mode){
+  document.getElementById('adp-ol').classList.remove('active');
+  if(mode.startsWith('sat_')){
+    STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0;
+    showScreen('screen-sat'); renderSAT();
+    if(STATE.satPayload&&STATE.satPayload.duration_minutes){
+      _satSec=STATE.satPayload.duration_minutes*60; clearInterval(_satTmr);
+      _satTmr=setInterval(()=>{
+        _satSec=Math.max(0,_satSec-1);
+        const el=document.getElementById('sat-timer');
+        if(el){const m=Math.floor(_satSec/60),s=_satSec%60;el.textContent=m+':'+String(s).padStart(2,'0');el.style.color=_satSec<120?'#e45c5c':'#c9a84c';}
+        if(!_satSec)clearInterval(_satTmr);
+      },1000);
+    }
+  } else {
+    STATE.payload=buildSBA(mode); STATE.screen=0; STATE.qIdx=0; STATE.selected=null; STATE.confirmed=false;
+    showScreen('screen-0'); renderScreen0();
+  }
+}
+
+function renderSAT(){
+  const p=STATE.satPayload; if(!p)return;
+  const wines=p.wines||[], idx=STATE.satWineIdx||0, wine=wines[idx], el=document.getElementById('sat-content');
+  if(!wine||!el)return;
+  const tot=wines.length, dur=p.duration_minutes;
+  el.innerHTML=`<div style="max-width:640px;margin:0 auto;padding:24px 0">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+      <div><div style="font-size:11px;color:#525e6e;letter-spacing:.1em;text-transform:uppercase">Cata SAT · Vino ${idx+1} de ${tot}</div>
+      <div style="font-size:18px;font-weight:700;color:#e5c97a;margin-top:4px">${escapeHtml(wine.wine_name)}</div></div>
+      ${dur?`<div style="text-align:right"><div style="font-size:10px;color:#525e6e">Tiempo restante</div><div id="sat-timer" style="font-size:20px;font-weight:700;color:#c9a84c">${dur}:00</div></div>`:''}
+    </div>
+    <div style="background:#1e2430;border:1px solid #252c38;border-radius:8px;padding:16px;margin-bottom:14px">
+      <div style="font-size:11px;color:#a7b0be;margin-bottom:8px">DESCRIPCIÓN</div>
+      <div style="font-size:13px;color:#f5f7fa;line-height:1.6">${escapeHtml(wine.description)}</div>
+    </div>
+    <div style="background:#1e2430;border:1px solid #252c38;border-radius:8px;padding:16px;margin-bottom:14px">
+      <div style="font-size:11px;color:#a7b0be;margin-bottom:8px">TU ANÁLISIS SAT</div>
+      <div style="font-size:12px;color:#525e6e;margin-bottom:8px">Orden WSET: Aspecto → Nariz → Boca → Conclusiones</div>
+      <textarea id="sat-resp-${wine.prompt_id}" style="width:100%;min-height:160px;background:#0f1115;border:1px solid #252c38;border-radius:6px;color:#f5f7fa;font-size:13px;padding:12px;font-family:inherit;resize:vertical;box-sizing:border-box"
+        placeholder="ASPECTO: [intensidad] [color]&#10;NARIZ: [intensidad] · [aromas]&#10;BOCA: [dulzor] · [acidez] · [tanino] · [alcohol] · [cuerpo] · [sabores] · [final]&#10;CONCLUSIONES: [calidad] · [potencial]"></textarea>
+    </div>
+    <div style="background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:8px;padding:12px;margin-bottom:16px">
+      <div style="font-size:11px;color:#c9a84c;margin-bottom:4px">NOTA FORMATIVA</div>
+      <div style="font-size:12px;color:#a7b0be">${escapeHtml(wine.training_note)}</div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end">
+      ${idx+1<tot
+        ?`<button onclick="STATE.satWineIdx++;renderSAT();window.scrollTo({top:0,behavior:'smooth'})" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px">Siguiente →</button>`
+        :`<button onclick="finishSAT()" style="background:#1e2430;border:1px solid #2ec27e;border-radius:6px;padding:9px 20px;color:#2ec27e;cursor:pointer;font-size:13px">Finalizar ✓</button>`}
+    </div>
+  </div>`;
+}
+
+function finishSAT(){
+  clearInterval(_satTmr);
+  document.getElementById('sat-content').innerHTML=`<div style="text-align:center;padding:60px 20px">
+    <div style="font-size:40px;margin-bottom:14px">✓</div>
+    <div style="font-size:18px;font-weight:700;color:#e5c97a;margin-bottom:8px">Práctica SAT completada</div>
+    <div style="font-size:12px;color:#a7b0be;margin-bottom:22px">Entrenamiento formativo. Evaluación oficial requiere Examiner WSET acreditado.</div>
+    <button onclick="document.getElementById('adp-ol').classList.add('active')" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px">← Nueva sesión</button>
+  </div>`;
+}
+
 async function init() {
   try {
-    const res = await fetch('../session_data/session_payload.json');
+    // Session built client-side; no fetch needed.
+    return;
     if (!res.ok) throw new Error(`HTTP ${res.status}: session_payload.json not found`);
     STATE.payload = await res.json();
 
@@ -1238,7 +1421,8 @@ async function init() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded',function(){/* mode overlay visible */});
 </script>
+<nav class="global-nav" style="margin-top:12px"><a href="/diagnostic-sba/">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/" class="nav-active">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Open Response Lab</a></nav>
 </body>
 </html>

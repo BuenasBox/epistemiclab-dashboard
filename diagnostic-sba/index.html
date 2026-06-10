@@ -992,7 +992,38 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 .section-sep { height: 1px; background: var(--border-soft); margin: 18px 0; }
+
+/* ---- Mode Overlay ---- */
+.mode-overlay { display:none; position:fixed; inset:0; background:rgba(15,17,21,.96); z-index:500; align-items:center; justify-content:center; }
+.mode-overlay.active { display:flex; }
+.mode-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:32px 28px; max-width:480px; width:90%; text-align:center; }
+.mode-card-eyebrow { font-size:11px; color:#525e6e; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
+.mode-card-title { font-size:22px; font-weight:700; color:#e5c97a; margin-bottom:4px; }
+.mode-card-sub { font-size:12px; color:var(--text-2); margin-bottom:24px; }
+.mode-buttons { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.mode-btn { background:var(--raised); border:1px solid var(--border); border-radius:8px; padding:14px 16px; cursor:pointer; text-align:left; color:var(--text); transition:border-color .15s,background .15s; }
+.mode-btn:hover,.mode-btn.mode-featured { border-color:#7a6230; background:rgba(201,168,76,.06); }
+.mode-btn.mode-featured .mode-btn-label { color:#e5c97a; }
+.mode-btn-label { display:block; font-size:15px; font-weight:600; }
+.mode-btn-count { display:block; font-size:12px; color:var(--text-2); margin-top:2px; }
+.mode-btn-detail { display:block; font-size:11px; color:#525e6e; margin-top:2px; }
+.mode-disclaimer { font-size:10px; color:#525e6e; }
+
+/* ---- Global Navigation ---- */
+.global-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 8px 16px;
+  background: var(--raised); border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.global-nav a {
+  color: var(--text-2); text-decoration: none; font-size: 12px;
+  padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
+  transition: color .15s, border-color .15s;
+}
+.global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
+.global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
+<script src="preguntas_data.js"></script>
 </head>
 <body>
 
@@ -1011,6 +1042,36 @@ footer {
 </div>
 
 <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
+<nav class="global-nav"><a href="/diagnostic-sba/" class="nav-active">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Open Response Lab</a></nav>
+<!-- MODE OVERLAY -->
+<div id="mode-overlay" class="mode-overlay active">
+  <div class="mode-card">
+    <div class="mode-card-eyebrow">Diagnostic SBA Cockpit</div>
+    <div class="mode-card-title">Selecciona modo</div>
+    <div class="mode-card-sub">119 preguntas aprobadas · safe_for_examiner: false</div>
+    <div class="mode-buttons">
+      <button class="mode-btn" onclick="startMode('quick_drill')">
+        <span class="mode-btn-label">Quick Drill</span>
+        <span class="mode-btn-count">5 preguntas</span>
+      </button>
+      <button class="mode-btn" onclick="startMode('express')">
+        <span class="mode-btn-label">Express</span>
+        <span class="mode-btn-count">10 preguntas</span>
+      </button>
+      <button class="mode-btn mode-featured" onclick="startMode('standard')">
+        <span class="mode-btn-label">Estándar</span>
+        <span class="mode-btn-count">25 preguntas</span>
+      </button>
+      <button class="mode-btn" onclick="startMode('mock_theory_1')">
+        <span class="mode-btn-label">Mock Theory · Parte 1</span>
+        <span class="mode-btn-count">50 preguntas · distribución oficial WSET</span>
+        <span class="mode-btn-detail">RA1=8 · RA2=28 · RA3=5 · RA4=5 · RA5=4</span>
+      </button>
+    </div>
+    <div class="mode-disclaimer">PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET</div>
+  </div>
+</div>
+
 
 <div class="app">
 
@@ -1201,176 +1262,65 @@ footer {
 // MOCK DATA — 4 PREGUNTAS DE ENTRENAMIENTO
 // micro_drill: type "micro_sba" only (v2.2 SBA purity)
 // -----------------------------------------------------------------------
-const QUESTIONS = [
-  {
-    id: 1,
-    topic: "Procesos Enológicos",
-    difficulty: "Alta",
-    cognitive_skill: "Cadena Causal",
-    est_time: "60–90 s",
-    text: "¿Por qué la fermentación maloláctica (FML) reduce la acidez percibida de un vino y modifica su textura en boca?",
-    options: [
-      "Porque convierte el ácido málico (diácido) en ácido láctico (monoacido), reduciendo la acidez total titulable y produciendo una sensación más suave.",
-      "Porque las bacterias lácticas consumen el azúcar residual, disminuyendo el cuerpo del vino.",
-      "Porque el CO₂ liberado durante la FML actúa como tampón de la acidez volátil.",
-      "Porque la FML eleva el pH al convertir ácidos fijos en ácidos volátiles de menor peso molecular."
-    ],
-    correct_index: 0,
-    distractor_traps: "Las opciones B y C confunden el sustrato de la FML (ácido málico, no azúcar) y el rol del CO₂ (subproducto menor, no tampón de acidez). La opción D invierte la relación ácidos fijos/volátiles — la FML no produce acidez volátil significativa.",
-    causal_chain: {
-      causa: "Ácido málico (diácido, aroma verde/duro) presente en el vino base",
-      mecanismo: "Bacterias lácticas (Oenococcus oeni) convierten ácido málico → ácido láctico (monoacido, percepción más suave) + CO₂",
-      efecto: "Reducción de acidez total titulable, pH más alto, textura mantecosa/cremosa, aromas de mantequilla por diacetilo"
-    },
-    misconception: "Confusión FML = fermentación alcohólica",
-    cross_exam_challenge: "¿Tu respuesta explica la causa química (tipo de ácido) o solo el efecto organoléptico? ¿Qué rol específico tienen los grupos carboxílicos?",
-    sat_relevance: "Relevante para la evaluación de acidez (RA): vinos con FML completa suelen puntuarse como 'baja' a 'media' acidez en cata a ciegas. El catador WSET debe reconocer la textura como indicador de FML.",
-    micro_drill: {
-      type: "micro_sba",
-      prompt: "¿Cuál de los siguientes describe con mayor precisión el mecanismo químico de la fermentación maloláctica?",
-      options: [
-        "Las bacterias lácticas transforman el ácido málico (2 grupos carboxílicos) en ácido láctico (1 grupo carboxílico), reduciendo la acidez titulable.",
-        "Las bacterias lácticas consumen el azúcar residual y producen ácido láctico como subproducto.",
-        "La FML convierte el ácido tartárico en ácido láctico mediante acción enzimática.",
-        "El CO₂ generado neutraliza los ácidos presentes, elevando el pH del vino."
-      ],
-      correct_index: 0,
-      explanation: "Correcto. El mecanismo es la conversión de ácido málico (diácido) en ácido láctico (monoacido). La reducción en grupos carboxílicos ionizables explica directamente la caída de acidez titulable y la percepción más suave.",
-      remediation_signal: "Revisa la diferencia estructural entre diácidos y monoacidos orgánicos, y su efecto sobre el pH del vino."
-    },
-    feedback_by_mode: {
-      mentor: "Bien encaminado si elegiste A. La FML es un proceso de desacidificación biológica: el ácido málico tiene dos grupos carboxílicos (diácido, percepción más agresiva) y el láctico solo uno. Esa diferencia estructural es la razón química de la suavidad percibida. El diacetilo, subproducto de la FML, aporta los aromas lácteos/mantequilla.",
-      trainer: "La respuesta correcta es A. Diferencia clave: ácido málico = diácido (pKa1 ≈ 3.4, pKa2 ≈ 5.2); ácido láctico = monoacido (pKa ≈ 3.86). La reducción de grupos ionizables explica la caída de acidez titulable. La FML no actúa sobre azúcares (opción B: error de sustrato). El CO₂ es subproducto menor, no tampón eficaz.",
-      reviewer: "A es correcta. Las demás opciones revelan errores conceptuales graves: B confunde FML con fermentación alcohólica, C malinterpreta el CO₂, D invierte la clasificación ácidos fijos/volátiles. En examen, la pregunta sobre FML casi siempre evalúa si el candidato sabe que el sustrato es el ácido málico, no el azúcar."
-    }
-  },
-  {
-    id: 2,
-    topic: "Clasificación Regional · Borgoña",
-    difficulty: "Media-Alta",
-    cognitive_skill: "Clasificación Jerárquica",
-    est_time: "45–60 s",
-    text: "¿Cuál de las siguientes afirmaciones describe correctamente la jerarquía de denominaciones en la Côte de Nuits (Borgoña)?",
-    options: [
-      "Regional → Village → Premier Cru → Grand Cru, donde Grand Cru es la denominación más específica y se aplica solo a parcelas individuales con reconocimiento propio.",
-      "Grand Cru es la categoría más amplia e incluye múltiples comunas con viñedos de alta calidad.",
-      "Los vinos Premier Cru pueden mezclar uvas de diferentes comunas siempre que estén dentro de la Côte de Nuits.",
-      "La denominación Village solo aplica a vinos elaborados en el municipio de Gevrey-Chambertin."
-    ],
-    correct_index: 0,
-    distractor_traps: "La opción B invierte la pirámide: Grand Cru es la más específica (menor volumen), no la más amplia. La opción C confunde Premier Cru con Regional — los Premier Cru son vinos de parcelas específicas dentro de una sola commune. La opción D confunde Village con denominación exclusiva de Gevrey.",
-    causal_chain: {
-      causa: "Sistema de clasificación de viñedos de Borgoña basado en el concepto de terroir (clima, suelo, exposición por parcela)",
-      mecanismo: "Jerarquía legal de AOC en cuatro niveles: Regional (mayor volumen, menor especificidad) → Village → Premier Cru → Grand Cru (menor volumen, mayor especificidad geográfica)",
-      efecto: "Los Grand Cru poseen su propia AOC (ej. Chambertin, Romanée-Conti); Premier Cru incluye el nombre de la commune + nom du climat"
-    },
-    misconception: "Inversión de la pirámide (creer que Grand Cru es la categoría más amplia)",
-    cross_exam_challenge: "¿Estás seguro de que 'Grand Cru' significa siempre la categoría más pequeña y específica? ¿Cómo se llama legalmente un Grand Cru en la etiqueta — incluye el nombre de la commune?",
-    sat_relevance: "No directamente aplicable al SAT, pero el conocimiento de la jerarquía permite contextualizar la calidad y el precio esperado del vino al catarlo.",
-    micro_drill: {
-      type: "micro_sba",
-      prompt: "En la jerarquía de denominaciones de Borgoña, ¿cuál es el nivel que posee su propia AOC independiente, sin necesidad de incluir el nombre de la commune en la etiqueta?",
-      options: [
-        "Grand Cru (ej. Chambertin, Romanée-Conti tiene su propia denominación separada de la commune).",
-        "Premier Cru (la commune desaparece de la etiqueta cuando el viñedo es clasificado).",
-        "Village (el nivel Village tiene denominación propia en cada municipio de Borgoña).",
-        "Regional (incluye toda la región de Borgoña bajo una sola AOC unificada)."
-      ],
-      correct_index: 0,
-      explanation: "Correcto. Solo los Grand Cru tienen su propia AOC independiente. Por eso la etiqueta dice 'Chambertin' — no 'Gevrey-Chambertin Grand Cru'. Los Premier Cru siempre incluyen la commune + el nom du climat.",
-      remediation_signal: "Estudia cómo se construye la etiqueta en cada nivel jerárquico de Borgoña: Regional, Village, Premier Cru y Grand Cru."
-    },
-    feedback_by_mode: {
-      mentor: "La pirámide de Borgoña es fundamental: a mayor especificidad geográfica, mayor categoría. Grand Cru es la cima — y lo importante es que tienen su propia denominación (Chambertin, no 'Gevrey-Chambertin Grand Cru'). En examen, la trampa clásica es invertir la pirámide o confundir Premier Cru con un nivel más alto que Grand Cru.",
-      trainer: "Respuesta correcta: A. La jerarquía de Borgoña sigue una lógica de especificidad creciente: Regional → Village → Premier Cru → Grand Cru. Los Grand Cru tienen su propia AOC; no se etiquetan con el nombre de la commune. Los Premier Cru se etiquetan 'Commune + Premier Cru [+ Climat]'. La opción C es incorrecta porque Premier Cru siempre es monocommunal.",
-      reviewer: "A es la única respuesta correcta. La opción B es el error más grave (inversión de pirámide) y el más frecuente en examen. B, C y D revelan comprensión incompleta del sistema de clasificación borgoñón. En WSET L3, se espera que el candidato domine la estructura jerárquica completa y sepa cómo aparece en la etiqueta."
-    }
-  },
-  {
-    id: 3,
-    topic: "SAT · Técnica de Cata",
-    difficulty: "Media",
-    cognitive_skill: "SAT / Evaluación de Acidez",
-    est_time: "45–60 s",
-    text: "Al evaluar la acidez de un vino blanco mediante el SAT, ¿qué respuesta fisiológica confirma principalmente la presencia de acidez alta?",
-    options: [
-      "Salivación intensa y prolongada después de tragar o escupir, que persiste más de 30 segundos.",
-      "Sensación de sequedad y astringencia en el paladar medio.",
-      "Calor pronunciado en la garganta y pecho.",
-      "Amargor intenso en el paladar posterior."
-    ],
-    correct_index: 0,
-    distractor_traps: "La sequedad y astringencia (opción B) son señales de tanino, no de acidez. El calor (opción C) indica alta graduación alcohólica. El amargor (opción D) corresponde a taninos, fenoles o algunos compuestos amargos — no a la acidez. La salivación es la respuesta fisiológica característica de los ácidos.",
-    causal_chain: {
-      causa: "Alta concentración de ácidos orgánicos (tartárico, málico, láctico) en el vino",
-      mecanismo: "Los ácidos estimulan los receptores gustativos ácidos (células tipo III) y activan el reflejo de salivación como mecanismo de neutralización/dilución",
-      efecto: "Salivación intensa y persistente; la boca produce más saliva para neutralizar la acidez — indicador fisiológico confiable y consistente"
-    },
-    misconception: "Confundir señales de acidez con señales de tanino (astringencia)",
-    cross_exam_challenge: "¿La salivación que describes ocurre durante la cata o después de escupir/tragar? La persistencia temporal es clave en la evaluación SAT de acidez. ¿Puedes precisar ese detalle?",
-    sat_relevance: "Directamente relevante: la evaluación de acidez en el SAT WSET se basa en la salivación post-deglución. 'Baja' acidez = poca salivación, boca seca. 'Alta' acidez = salivación intensa y persistente (>30s). Este indicador es el ancla fisiológica del descriptor de acidez en la hoja SAT.",
-    micro_drill: {
-      type: "micro_sba",
-      prompt: "Según el protocolo SAT de WSET, ¿cuál es la diferencia clave entre la respuesta fisiológica a la acidez alta y la respuesta a los taninos altos?",
-      options: [
-        "La acidez alta genera salivación intensa y persistente; los taninos altos producen sequedad y astringencia por precipitación de proteínas salivales.",
-        "Tanto la acidez alta como los taninos altos producen salivación — la diferencia es solo de intensidad.",
-        "Los taninos altos producen salivación inmediata; la acidez alta produce sequedad a largo plazo.",
-        "En el SAT no se distingue fisiológicamente entre acidez y taninos — ambos se evalúan por el color del vino."
-      ],
-      correct_index: 0,
-      explanation: "Correcto. La distinción es mecanística: la acidez activa el reflejo de salivación (producción de saliva), mientras que los taninos precipitan las proteínas salivales, generando sequedad y astringencia. Son mecanismos opuestos.",
-      remediation_signal: "Aprende los mecanismos fisiológicos detrás de cada descriptor del SAT: salivación (acidez), astringencia (tanino), calor (alcohol), amargor (taninos/fenoles)."
-    },
-    feedback_by_mode: {
-      mentor: "Excelente ancla fisiológica: la salivación es la respuesta del cuerpo a los ácidos. Tu boca intenta neutralizar el pH bajo produciendo más saliva. Por eso, cuando catas un Riesling Mosel o un Chablis y notas que la boca 'fluye' después de escupir, estás confirmando acidez alta. Las opciones B, C, D son señales de otras características — confundirlas es un error frecuente en las primeras catas.",
-      trainer: "A es correcta. La fisiología es precisa: los H⁺ activan los receptores ácidos y generan salivación refleja. La persistencia temporal (>30 s) distingue acidez alta de media en el protocolo SAT. La astringencia (B) es precipitación de proteínas salivales por taninos — mecanismo completamente distinto.",
-      reviewer: "A es la única respuesta correcta. En examen, B es la trampa más frecuente: los candidatos confunden 'sequedad' con 'acidez' porque ambas producen incomodidad. La diferencia es mecanística y fisiológica. La salivación post-deglución es el marcador SAT oficial de acidez. Quien no la conoce no puede evaluar acidez con fiabilidad."
-    }
-  },
-  {
-    id: 4,
-    topic: "Viticultura · Clima",
-    difficulty: "Media",
-    cognitive_skill: "Cadena Causal / Clima-Estilo",
-    est_time: "50–70 s",
-    text: "¿Por qué los vinos producidos en climas continentales suelen tener mayor acidez y menor graduación alcohólica que los de climas mediterráneos, incluso con la misma variedad de uva?",
-    options: [
-      "Porque los veranos cortos y frescos de los climas continentales limitan la acumulación de azúcar en la uva, y la menor temperatura conserva los ácidos naturales (tartárico y málico).",
-      "Porque el suelo volcánico típico de los climas continentales retiene más agua y produce uvas con menor concentración de azúcar.",
-      "Porque en climas continentales las viñas reciben menos horas de sol directas, reduciendo la fotosíntesis y la producción de polifenoles.",
-      "Porque las lluvias frecuentes en climas continentales diluyen los azúcares en la baya, pero aumentan los taninos por estrés hídrico."
-    ],
-    correct_index: 0,
-    distractor_traps: "La opción B confunde tipo de clima con tipo de suelo — no existe correlación directa entre clima continental y suelo volcánico. La opción C malinterpreta la relación fotosíntesis-polifenoles y no aborda el mecanismo de azúcar/acidez. La opción D contradice la viticultura: el estrés hídrico no aumenta los taninos en contexto de lluvia abundante — son conceptos opuestos.",
-    causal_chain: {
-      causa: "Clima continental: veranos cortos, inviernos fríos, alta amplitud térmica diaria y estacional",
-      mecanismo: "Menor temperatura media durante la maduración → menor actividad metabólica de la uva → acumulación más lenta y limitada de azúcar + menor degradación de ácidos málico y tartárico por temperaturas nocturnas bajas",
-      efecto: "Uva con menor °Brix (→ vino con menor ABV) y mayor acidez total titulable (→ perfil ácido, fresco, de guarda)"
-    },
-    misconception: "Confundir la influencia del clima con la del suelo en el perfil de acidez/alcohol",
-    cross_exam_challenge: "¿Tu respuesta distingue entre el efecto de la temperatura sobre los azúcares y su efecto sobre los ácidos por separado? Son dos mecanismos distintos. ¿Cuál predomina en la determinación de la acidez final?",
-    sat_relevance: "Relevante para inferir origen en cata a ciegas: acidez alta + alcohol moderado + color pálido sugieren clima fresco (continental o oceánico). Esta cadena clima → composición → perfil SAT es un razonamiento de distinción frecuente en WSET L3.",
-    micro_drill: {
-      type: "micro_sba",
-      prompt: "Un catador evalúa a ciegas un vino blanco con acidez alta, alcohol moderado (12% ABV) y color amarillo pálido. ¿Qué tipo de clima sugiere principalmente este perfil, y cuál es el mecanismo que lo explica?",
-      options: [
-        "Clima fresco (continental u oceánico): las bajas temperaturas limitan la acumulación de azúcar y preservan los ácidos orgánicos durante la maduración.",
-        "Clima cálido mediterráneo: el calor favorece la retención de acidez y produce alcoholes bajos por fermentación corta.",
-        "Clima desértico continental: la sequía extrema concentra los ácidos en la baya y reduce los azúcares por estrés hídrico.",
-        "Clima tropical: la alta humedad diluye los azúcares y produce vinos de bajo ABV con alta acidez residual."
-      ],
-      correct_index: 0,
-      explanation: "Correcto. El perfil acidez alta + alcohol moderado es la firma del clima fresco. El mecanismo es doble: las temperaturas bajas reducen la actividad metabólica (menos acumulación de azúcar → menos alcohol), y las noches frías minimizan la degradación de ácidos orgánicos.",
-      remediation_signal: "Practica la inferencia de clima a partir del perfil SAT: acidez / alcohol / color son los tres indicadores primarios de origen climático en cata a ciegas."
-    },
-    feedback_by_mode: {
-      mentor: "Muy bien si elegiste A. La lógica es elegante: el frío es el protagonista. Las noches frías conservan los ácidos (la uva no los metaboliza tan rápido) y el verano corto no da tiempo para que los azúcares lleguen a niveles altos. Por eso Borgoña, Alsacia, y el Loira producen vinos más ácidos y más delgados en alcohol que Priorat o Barossa — misma variedad, clima diferente, perfil diferente.",
-      trainer: "A es correcta. El mecanismo tiene dos componentes: (1) menor temperatura → menor respiración celular → menor degradación de ácidos orgánicos; (2) temporada más corta → fotosíntesis limitada → menor acumulación de hexosas (azúcar). La opción B introduce un error de categoría (confunde clima con geología). La D introduce una contradicción interna (lluvia + estrés hídrico).",
-      reviewer: "A es la única respuesta correcta. En examen L3, la confusión clima/suelo (opción B) y la introducción de polifenoles sin base (opción C) son errores que penalizan. La pregunta evalúa comprensión causal del binomio temperatura-acidez/alcohol. Quien entiende este mecanismo puede extrapolar a cualquier región — esa es la competencia que evalúa el examen."
-    }
+
+// QUESTIONS: dynamic from window.PREGUNTAS_BANK
+let QUESTIONS = [];
+let ACTIVE_MODE = null;
+const SBA_RK = 'wset_sba_recent_v2';
+function sbaRecent(){try{return JSON.parse(localStorage.getItem(SBA_RK)||'[]');}catch(e){return[];}}
+function sbaSave(ids){try{localStorage.setItem(SBA_RK,JSON.stringify(ids.slice(-60)));}catch(e){}}
+function sbaShuf(arr,seed){
+  const a=arr.slice();let s=Math.abs(((seed||Date.now()))&0x7fffffff);
+  for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+const MOCK_RA={RA1:8,RA2:28,RA3:5,RA4:5,RA5:4};
+function bankToQ(item){
+  return {
+    id:item.id, source_question_id:item.source_question_id,
+    topic:item.topic||'—', ra:item.ra||'—', difficulty:item.difficulty||'—',
+    cognitive_skill:item.ra?('RA: '+item.ra):'—', est_time:'45–90 s',
+    text:item.text||'', options:item.options||[],
+    correct_index:typeof item.correct_index==='number'?item.correct_index:0,
+    correct_letter:item.correct_letter||'A',
+    feedback_by_mode:item.feedback_by_mode||null, causal_chain:item.causal_chain||null,
+    distractor_traps:item.distractor_traps||null, misconception:item.misconception||null,
+    cross_exam_challenge:item.cross_exam_challenge||null, sat_relevance:item.sat_relevance||null,
+    micro_drill:item.micro_drill||null,
+  };
+}
+function loadMode(mode){
+  const bank=window.PREGUNTAS_BANK;
+  if(!bank||!bank.items){console.error('PREGUNTAS_BANK not loaded');return;}
+  ACTIVE_MODE=mode;
+  const recent=sbaRecent(); const all=bank.items.slice(); let selected=[];
+  if(mode==='mock_theory_1'){
+    const byRa={};
+    all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
+    Object.entries(MOCK_RA).forEach(([ra,need])=>{
+      const pool=sbaShuf(byRa[ra]||[],Date.now()+ra.charCodeAt(2));
+      const fresh=pool.filter(i=>!recent.includes(i.source_question_id));
+      const stale=pool.filter(i=>recent.includes(i.source_question_id));
+      selected.push(...[...fresh,...stale].slice(0,need));
+    });
+    selected=sbaShuf(selected,Date.now());
+  } else {
+    const size={quick_drill:5,express:10,standard:25}[mode]||10;
+    const fresh=sbaShuf(all.filter(i=>!recent.includes(i.source_question_id)),Date.now());
+    const stale=sbaShuf(all.filter(i=>recent.includes(i.source_question_id)),Date.now()+1);
+    selected=[...fresh,...stale].slice(0,size);
   }
-];
+  QUESTIONS=selected.map(bankToQ);
+  sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
+}
+function startMode(mode){
+  loadMode(mode);
+  document.getElementById('mode-overlay').classList.remove('active');
+  STATE.stage='prepare'; STATE.questionIndex=0;
+  STATE.selectedOption=null; STATE.selectedConfidence=null; STATE.selectedTag=null;
+  render();
+}
+
 
 // -----------------------------------------------------------------------
 // STATE
@@ -1807,7 +1757,7 @@ function renderCross() {
 
       <div class="cross-challenge">
         <div class="cross-challenge-label">⚡ Desafío del mentor</div>
-        <div class="cross-challenge-text">${escapeHtml(q.cross_exam_challenge)}</div>
+        <div class="cross-challenge-text">${escapeHtml(q.cross_exam_challenge||'¿Tu razonamiento cubre causa, mecanismo y efecto?')}</div>
       </div>
 
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">
@@ -1883,7 +1833,7 @@ function renderReveal() {
   const isCorrect = STATE.selectedOption === q.correct_index;
   const timing = getTimingBand(STATE.timeElapsed);
   const isOverconf = !isCorrect && STATE.selectedConfidence === 'seguro';
-  const feedback = q.feedback_by_mode[STATE.mentorMode] || q.feedback_by_mode.mentor;
+  const _fbm=q.feedback_by_mode||{}; const feedback=_fbm[STATE.mentorMode]||_fbm.mentor||'Repasa el concepto relacionado con esta pregunta.';
 
   document.getElementById('mainContent').innerHTML = `
     <div class="fade-in">
@@ -1943,34 +1893,34 @@ function renderReveal() {
         <div class="causal-flow">
           <div class="causal-node causa">
             <div class="causal-node-label">Causa</div>
-            <div class="causal-node-text">${escapeHtml(q.causal_chain.causa)}</div>
+            <div class="causal-node-text">${escapeHtml((q.causal_chain&&q.causal_chain.causa)||"—")}</div>
           </div>
           <div class="causal-arrow">→</div>
           <div class="causal-node mecanismo">
             <div class="causal-node-label">Mecanismo</div>
-            <div class="causal-node-text">${escapeHtml(q.causal_chain.mecanismo)}</div>
+            <div class="causal-node-text">${escapeHtml((q.causal_chain&&q.causal_chain.mecanismo)||"—")}</div>
           </div>
           <div class="causal-arrow">→</div>
           <div class="causal-node efecto">
             <div class="causal-node-label">Efecto</div>
-            <div class="causal-node-text">${escapeHtml(q.causal_chain.efecto)}</div>
+            <div class="causal-node-text">${escapeHtml((q.causal_chain&&q.causal_chain.efecto)||"—")}</div>
           </div>
         </div>
       </div>
 
       <div class="feedback-block">
         <div class="feedback-block-title distractor">Trampas de distractor</div>
-        <p>${escapeHtml(q.distractor_traps)}</p>
+        <p>${escapeHtml(q.distractor_traps||'—')}</p>
       </div>
 
       <div class="feedback-block">
         <div class="feedback-block-title misconception">Misconception frecuente</div>
-        <p><em>${escapeHtml(q.misconception)}</em></p>
+        <p><em>${escapeHtml(q.misconception||'—')}</em></p>
       </div>
 
       <div class="feedback-block">
         <div class="feedback-block-title sat">Relevancia SAT</div>
-        <p>${escapeHtml(q.sat_relevance)}</p>
+        <p>${escapeHtml(q.sat_relevance||'—')}</p>
       </div>
 
       <div class="feedback-block">
@@ -1988,7 +1938,8 @@ function renderReveal() {
 // -----------------------------------------------------------------------
 function renderTrain() {
   const q = currentQ();
-  const drill = q.micro_drill;
+  const drill=q.micro_drill||null;
+  if(!drill){goToRead();return;}
   STATE.drillSelectedOption = null;
   STATE.drillSubmitted = false;
 
@@ -2037,7 +1988,8 @@ function submitDrill() {
   if (STATE.drillSubmitted || STATE.drillSelectedOption === null) return;
   STATE.drillSubmitted = true;
   const q = currentQ();
-  const drill = q.micro_drill;
+  const drill=q.micro_drill||null;
+  if(!drill){goToRead();return;}
   const isCorrect = STATE.drillSelectedOption === drill.correct_index;
 
   document.querySelectorAll('.drill-opt-btn').forEach((b, i) => {
@@ -2226,30 +2178,22 @@ function goToCommit()  { stopTimer(); STATE.stage = 'commit'; render(); window.s
 function goToTrain()   { STATE.stage = 'train';  render(); window.scrollTo({top:0,behavior:'smooth'}); }
 
 function restartSession() {
-  STATE.stage = 'prepare';
-  STATE.questionIndex = 0;
-  STATE.selectedOption = null;
-  STATE.selectedConfidence = null;
-  STATE.selectedTag = null;
-  STATE.crossChanged = false;
-  STATE.drillSelectedOption = null;
-  STATE.drillSubmitted = false;
-  STATE.session = { answered:0, correct:0, overconfident:0, hesitated:0, causalWeakness:0, trapSusceptibility:0 };
-  resetConfGauge();
-  setCausalBars(0);
-  activateMisconGlyph(false);
-  document.querySelectorAll('.hes-dot').forEach(d => d.classList.remove('triggered'));
-  document.getElementById('hesLabel').textContent = '—';
-  render();
+  STATE.crossChanged=false; STATE.drillSelectedOption=null; STATE.drillSubmitted=false;
+  STATE.session={answered:0,correct:0,overconfident:0,hesitated:0,causalWeakness:0,trapSusceptibility:0};
+  resetConfGauge(); setCausalBars(0); activateMisconGlyph(false);
+  document.querySelectorAll('.hes-dot').forEach(d=>d.classList.remove('triggered'));
+  document.getElementById('hesLabel').textContent='—';
+  document.getElementById('mode-overlay').classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 // -----------------------------------------------------------------------
 // INIT
 // -----------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', function() {
-  render();
+document.addEventListener('DOMContentLoaded',function(){
+  // Mode overlay visible; quiz starts on mode selection.
 });
 </script>
+<nav class="global-nav" style="margin-top:12px"><a href="/diagnostic-sba/" class="nav-active">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Open Response Lab</a></nav>
 </body>
 </html>

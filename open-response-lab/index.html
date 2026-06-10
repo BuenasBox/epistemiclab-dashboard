@@ -214,9 +214,25 @@ ul { margin: 0; padding-left: 19px; }
   .topline { flex-direction: column; }
   .feedback-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Global Navigation ---- */
+.global-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 8px 16px;
+  background: var(--raised); border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.global-nav a {
+  color: var(--text-2); text-decoration: none; font-size: 12px;
+  padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
+  transition: color .15s, border-color .15s;
+}
+.global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
+.global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
 </head>
 <body>
+<nav class="global-nav"><a href="/diagnostic-sba/">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Open Response Lab</a></nav>
+
 <div class="gov" data-testid="governance-banner">
   <span>safe_for_examiner=false</span>
   <span>examiner_scoring_allowed=false</span>
@@ -227,12 +243,13 @@ ul { margin: 0; padding-left: 19px; }
     <div class="topline">
       <div>
         <h1>Open Response Lab</h1>
-        <p class="subtitle">Runtime local privado para práctica formativa de respuesta abierta.</p>
+        <p class="subtitle">26 preguntas aprobadas · 4 modos de práctica · safe_for_examiner: false</p>
       </div>
-      <div class="session-picker" role="group" aria-label="Tamaño de sesión">
-        <button type="button" data-session="short" aria-pressed="true">Corta · 3</button>
-        <button type="button" data-session="standard" aria-pressed="false">Estándar · 5</button>
-        <button type="button" data-session="long" aria-pressed="false">Larga · 10</button>
+      <div class="session-picker" role="group" aria-label="Modo de sesión">
+        <button type="button" data-session="short_practice" aria-pressed="true">Short Practice · 1</button>
+        <button type="button" data-session="standard_practice" aria-pressed="false">Standard Practice · 2</button>
+        <button type="button" data-session="extended_practice" aria-pressed="false">Extended Practice · 4</button>
+        <button type="button" data-session="mock_theory_2" aria-pressed="false">Mock Theory Part 2 · 4</button>
       </div>
     </div>
 
@@ -539,5 +556,6 @@ ul { margin: 0; padding-left: 19px; }
   }
 })();
 </script>
+<nav class="global-nav" style="margin-top:12px"><a href="/diagnostic-sba/">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Open Response Lab</a></nav>
 </body>
 </html>
