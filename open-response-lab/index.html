@@ -352,14 +352,14 @@ ul { margin: 0; padding-left: 19px; }
     try {
       const stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
       return {
-        sessionName: stored.sessionName || "short",
+        sessionName: stored.sessionName || "short_practice",
         index: Number.isInteger(stored.index) ? stored.index : 0,
         answers: stored.answers || {},
         feedback: stored.feedback || {},
         completed: stored.completed === true
       };
     } catch (_error) {
-      return { sessionName: "short", index: 0, answers: {}, feedback: {}, completed: false };
+      return { sessionName: "short_practice", index: 0, answers: {}, feedback: {}, completed: false };
     }
   }
 
@@ -552,7 +552,7 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function labelForSession(name) {
-    return { short: "corta", standard: "estándar", long: "larga" }[name] || name;
+    return { short_practice: "Short Practice", standard_practice: "Standard Practice", extended_practice: "Extended Practice", mock_theory_2: "Mock Theory Part 2" }[name] || name;
   }
 })();
 </script>
