@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSET L3 · Simulacro Completo · PROTOTIPO</title>
+  <script src="../adaptive-session/session_bank.js"></script>
+  <script src="../open-response-lab/lab_payload.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f1115; --panel: #181c22; --raised: #1e232b;
+      --border: #2a3040; --text: #e8eaf0; --text-2: #8a95a8;
+      --gold: #c9a84c; --gold-light: #e5c97a; --red: #e45c5c;
+      --green: #4caf7d; --radius: 8px;
+    }
+    body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; min-height: 100vh; }
+
+    /* Governance bar */
+    .gov-bar { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 6px 16px;
+      background: #0a0c0f; border-bottom: 1px solid var(--border); font-size: 10px;
+      letter-spacing: .08em; font-weight: 700; flex-wrap: wrap; }
+    .gov-bar span { color: var(--text-2); }
+    .gov-bar .warn { color: var(--gold); }
+
+    /* Nav */
+    .global-nav { display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px 16px; background: var(--raised); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .global-nav a { color: var(--text-2); text-decoration: none; font-size: 12px;
+      padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border); transition: color .15s, border-color .15s; }
+    .global-nav a:hover { color: var(--gold-light); border-color: #7a6230; }
+    .global-nav a.nav-active { color: var(--gold-light); border-color: #7a6230; background: rgba(201,168,76,.08); }
+    .nav-sep { color: #525e6e; font-size: 10px; }
+
+    /* Phase header */
+    .phase-header { display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 24px; background: var(--panel); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 50; flex-wrap: wrap; gap: 8px; }
+    .phase-label { font-size: 11px; color: var(--text-2); letter-spacing: .1em; text-transform: uppercase; }
+    .phase-progress { font-size: 13px; font-weight: 600; color: var(--text); }
+    .phase-timer { font-size: 20px; font-weight: 700; color: var(--gold); font-variant-numeric: tabular-nums; min-width: 56px; text-align: right; }
+    .phase-timer.warn { color: var(--red); }
+
+    /* Progress bar */
+    .progress-track { height: 3px; background: var(--border); }
+    .progress-fill { height: 3px; background: var(--gold); transition: width .3s; }
+
+    /* Main content */
+    .sim-main { max-width: 720px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    /* Screen visibility */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* Intro screen */
+    .intro-eyebrow { font-size: 11px; color: var(--text-2); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+    .intro-title { font-size: 28px; font-weight: 700; color: var(--gold-light); margin-bottom: 6px; }
+    .intro-sub { font-size: 14px; color: var(--text-2); margin-bottom: 32px; }
+    .parts-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .part-row { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .part-row-label { font-size: 13px; font-weight: 600; }
+    .part-row-meta { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+    .part-row-time { font-size: 13px; color: var(--gold); font-weight: 600; white-space: nowrap; }
+    .total-row { background: var(--raised); border: 1px solid #7a6230; border-radius: var(--radius);
+      padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; font-weight: 600; }
+    .total-row .tot-time { color: var(--gold-light); }
+    .disclaimer { font-size: 11px; color: #525e6e; text-align: center; margin-bottom: 24px; line-height: 1.6; }
+    .btn-primary { display: block; width: 100%; padding: 16px; background: var(--gold);
+      color: #0a0c0f; font-size: 15px; font-weight: 700; border: none; border-radius: var(--radius);
+      cursor: pointer; letter-spacing: .04em; transition: background .15s; }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-secondary { display: inline-block; padding: 10px 20px; background: var(--raised);
+      color: var(--text); font-size: 13px; font-weight: 600; border: 1px solid var(--border);
+      border-radius: var(--radius); cursor: pointer; transition: border-color .15s; }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+    /* SBA question */
+    .q-stem { font-size: 17px; line-height: 1.6; margin-bottom: 24px; }
+    .q-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .q-tag { font-size: 11px; color: var(--text-2); background: var(--raised); border: 1px solid var(--border);
+      padding: 3px 8px; border-radius: 12px; }
+    .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .opt { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 14px 16px; cursor: pointer; font-size: 14px; line-height: 1.5;
+      transition: border-color .15s, background .15s; display: flex; gap: 12px; align-items: flex-start; }
+    .opt:hover { border-color: #4a5568; }
+    .opt.selected { border-color: var(--gold); background: rgba(201,168,76,.06); }
+    .opt.correct { border-color: var(--green); background: rgba(76,175,125,.08); }
+    .opt.wrong { border-color: var(--red); background: rgba(228,92,92,.08); }
+    .opt-letter { font-size: 12px; font-weight: 700; color: var(--text-2); min-width: 18px; }
+    .opt.selected .opt-letter { color: var(--gold); }
+    .opt.correct .opt-letter { color: var(--green); }
+    .opt.wrong .opt-letter { color: var(--red); }
+    .feedback-bar { padding: 12px 16px; border-radius: var(--radius); margin-bottom: 20px;
+      font-size: 13px; font-weight: 600; }
+    .feedback-bar.ok { background: rgba(76,175,125,.12); color: var(--green); border: 1px solid rgba(76,175,125,.3); }
+    .feedback-bar.ko { background: rgba(228,92,92,.1); color: var(--red); border: 1px solid rgba(228,92,92,.25); }
+
+    /* OR screen */
+    .or-stem { font-size: 17px; line-height: 1.6; margin-bottom: 20px; }
+    .or-label { font-size: 11px; color: var(--text-2); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+    textarea { width: 100%; min-height: 180px; background: var(--panel); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 12px 14px; color: var(--text); font-size: 14px;
+      line-height: 1.6; resize: vertical; font-family: inherit; }
+    textarea:focus { outline: none; border-color: var(--gold); }
+
+    /* SAT screen */
+    .sat-wine-name { font-size: 20px; font-weight: 700; color: var(--gold-light); margin-bottom: 16px; }
+    .sat-desc-box { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px 18px; margin-bottom: 20px; font-size: 13px; line-height: 1.7; color: var(--text); }
+    .sat-template { font-size: 11px; color: var(--text-2); line-height: 1.8; }
+
+    /* Bridge / complete */
+    .bridge-icon { font-size: 48px; margin-bottom: 16px; }
+    .bridge-title { font-size: 22px; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
+    .bridge-sub { font-size: 14px; color: var(--text-2); margin-bottom: 32px; line-height: 1.6; }
+    .bridge-next-label { font-size: 11px; color: var(--text-2); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .score-summary { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+    .score-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 14px 18px; flex: 1; min-width: 120px; text-align: center; }
+    .score-card-num { font-size: 24px; font-weight: 700; color: var(--gold-light); }
+    .score-card-label { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+    .complete-parts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+    .complete-part { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+    .complete-part-done { color: var(--green); font-size: 16px; }
+
+    /* Nav bar bottom */
+    .nav-bottom { display: flex; justify-content: flex-end; gap: 10px; margin-top: 28px; }
+  </style>
+</head>
+<body>
+
+<!-- Governance bar -->
+<div class="gov-bar">
+  <span>▲ PROTOTIPO ESTÁTICO</span>
+  <span>·</span>
+  <span>ENTRENAMIENTO</span>
+  <span>·</span>
+  <span class="warn">NO EVALUACIÓN OFICIAL WSET</span>
+  <span>·</span>
+  <span>SIN PUNTUACIÓN OFICIAL</span>
+  <span>·</span>
+  <span>SAFE_FOR_EXAMINER: FALSE</span>
+</div>
+
+<!-- Global nav -->
+<nav class="global-nav">
+  <a href="/diagnostic-sba/">SBA Cockpit</a>
+  <span class="nav-sep">·</span>
+  <a href="/adaptive-session/">Adaptive Session</a>
+  <span class="nav-sep">·</span>
+  <a href="/open-response-lab/">Open Response Lab</a>
+  <span class="nav-sep">·</span>
+  <a href="/full-simulation/" class="nav-active">Simulacro Completo</a>
+</nav>
+
+<!-- Phase header (hidden on intro/bridge/complete) -->
+<div class="phase-header" id="phase-header" style="display:none">
+  <div>
+    <div class="phase-label" id="ph-label">PARTE 1 · SBA</div>
+    <div class="phase-progress" id="ph-progress">Pregunta 1 de 50</div>
+  </div>
+  <div class="phase-timer" id="ph-timer">75:00</div>
+</div>
+<div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+
+<!-- ── SCREENS ── -->
+<div class="sim-main">
+
+  <!-- INTRO -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-eyebrow">WSET Level 3</div>
+    <div class="intro-title">Simulacro Completo</div>
+    <div class="intro-sub">Práctica formativa · 3 partes · ~135 min · safe_for_examiner: false</div>
+    <div class="parts-grid">
+      <div class="part-row">
+        <div>
+          <div class="part-row-label">Parte 1 · Teoría SBA</div>
+          <div class="part-row-meta">50 preguntas · distribución WSET (RA1=8 · RA2=28 · RA3=5 · RA4=5 · RA5=4)</div>
+        </div>
+        <div class="part-row-time">75 min</div>
+      </div>
+      <div class="part-row">
+        <div>
+          <div class="part-row-label">Parte 2 · Respuesta Abierta</div>
+          <div class="part-row-meta">4 preguntas de respuesta corta</div>
+        </div>
+        <div class="part-row-time">30 min</div>
+      </div>
+      <div class="part-row">
+        <div>
+          <div class="part-row-label">Parte 3 · SAT</div>
+          <div class="part-row-meta">2 vinos · cata sistemática WSET</div>
+        </div>
+        <div class="part-row-time">30 min</div>
+      </div>
+      <div class="total-row">
+        <span>Total estimado</span>
+        <span class="tot-time">~135 min</span>
+      </div>
+    </div>
+    <p class="disclaimer">
+      PROTOTIPO DE ENTRENAMIENTO · NO ES EVALUACIÓN OFICIAL WSET<br>
+      Ninguna respuesta es puntuada por un examinador. Formativo únicamente.<br>
+      safe_for_examiner: false · examiner_scoring_allowed: false
+    </p>
+    <button class="btn-primary" onclick="startSim()">Iniciar Simulacro →</button>
+  </div>
+
+  <!-- SBA QUESTION -->
+  <div class="screen" id="screen-sba">
+    <div class="q-tags" id="sba-tags"></div>
+    <div class="q-stem" id="sba-stem"></div>
+    <div class="options" id="sba-options"></div>
+    <div class="feedback-bar" id="sba-feedback" style="display:none"></div>
+    <div class="nav-bottom">
+      <button class="btn-secondary" id="sba-confirm-btn" onclick="confirmSBA()">Confirmar</button>
+      <button class="btn-secondary" id="sba-next-btn" onclick="nextSBA()" style="display:none">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- BRIDGE 1→2 -->
+  <div class="screen" id="screen-bridge1">
+    <div class="bridge-icon">✓</div>
+    <div class="bridge-title">Parte 1 completada</div>
+    <div class="bridge-sub" id="bridge1-sub">Has completado las 50 preguntas SBA.</div>
+    <div class="score-summary">
+      <div class="score-card"><div class="score-card-num" id="sba-score-num">—</div><div class="score-card-label">Correctas / 50</div></div>
+      <div class="score-card"><div class="score-card-num" id="sba-pct-num">—</div><div class="score-card-label">Porcentaje</div></div>
+    </div>
+    <div class="bridge-next-label">A continuación · Parte 2</div>
+    <div class="part-row" style="margin-bottom:24px">
+      <div><div class="part-row-label">Respuesta Abierta · 4 preguntas</div><div class="part-row-meta">Responde con tus propias palabras · sin evaluación oficial</div></div>
+      <div class="part-row-time">30 min</div>
+    </div>
+    <button class="btn-primary" onclick="startOR()">Iniciar Parte 2 →</button>
+  </div>
+
+  <!-- OR QUESTION -->
+  <div class="screen" id="screen-or">
+    <div class="q-tags" id="or-tags"></div>
+    <div class="or-stem" id="or-stem"></div>
+    <div class="or-label">Respuesta libre</div>
+    <textarea id="or-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+    <div class="nav-bottom">
+      <button class="btn-secondary" id="or-next-btn" onclick="nextOR()">Guardar y continuar →</button>
+    </div>
+  </div>
+
+  <!-- BRIDGE 2→3 -->
+  <div class="screen" id="screen-bridge2">
+    <div class="bridge-icon">✓</div>
+    <div class="bridge-title">Parte 2 completada</div>
+    <div class="bridge-sub">Has completado las 4 preguntas de respuesta abierta.<br>Las respuestas son formativas — no hay evaluación oficial.</div>
+    <div class="bridge-next-label">A continuación · Parte 3</div>
+    <div class="part-row" style="margin-bottom:24px">
+      <div><div class="part-row-label">SAT · 2 vinos</div><div class="part-row-meta">Análisis sensorial sistemático · cata libre · sin puntuación</div></div>
+      <div class="part-row-time">30 min</div>
+    </div>
+    <button class="btn-primary" onclick="startSAT()">Iniciar Parte 3 →</button>
+  </div>
+
+  <!-- SAT WINE -->
+  <div class="screen" id="screen-sat">
+    <div class="q-tags" id="sat-tags"></div>
+    <div class="sat-wine-name" id="sat-wine-name"></div>
+    <div class="sat-desc-box" id="sat-desc"></div>
+    <div class="or-label">Tu análisis SAT</div>
+    <div class="sat-template">
+      Orden WSET: Aspecto → Nariz → Boca → Conclusiones<br>
+      ASPECTO: [intensidad] [color] · NARIZ: [intensidad] · [aromas] · BOCA: [dulzor] · [acidez] · [tanino] · [alcohol] · [cuerpo] · [sabores] · [final] · CONCLUSIONES: [calidad] · [potencial]
+    </div>
+    <textarea id="sat-textarea" style="margin-top:10px" placeholder="ASPECTO: …&#10;NARIZ: …&#10;BOCA: …&#10;CONCLUSIONES: …"></textarea>
+    <div class="nav-bottom">
+      <button class="btn-secondary" id="sat-next-btn" onclick="nextSAT()">Guardar y continuar →</button>
+    </div>
+  </div>
+
+  <!-- COMPLETE -->
+  <div class="screen" id="screen-complete">
+    <div class="bridge-icon">🏁</div>
+    <div class="bridge-title">Simulacro completado</div>
+    <div class="bridge-sub">Has completado las 3 partes del simulacro formativo.<br>Ninguna respuesta ha sido evaluada por un examinador oficial.</div>
+    <div class="complete-parts">
+      <div class="complete-part">
+        <span>Parte 1 · SBA 50</span>
+        <span id="complete-sba-result" style="color:var(--text-2)">—</span>
+        <span class="complete-part-done">✓</span>
+      </div>
+      <div class="complete-part">
+        <span>Parte 2 · Respuesta Abierta 4</span>
+        <span style="color:var(--text-2)">Formativo</span>
+        <span class="complete-part-done">✓</span>
+      </div>
+      <div class="complete-part">
+        <span>Parte 3 · SAT 2 vinos</span>
+        <span style="color:var(--text-2)">Formativo</span>
+        <span class="complete-part-done">✓</span>
+      </div>
+    </div>
+    <p class="disclaimer" style="margin-bottom:24px">
+      PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET<br>
+      safe_for_examiner: false · examiner_scoring_allowed: false
+    </p>
+    <button class="btn-primary" onclick="resetSim()">Nuevo simulacro</button>
+  </div>
+
+</div><!-- /sim-main -->
+
+<script>
+/* ── UTILITIES ── */
+function $(id){ return document.getElementById(id); }
+function escT(s){ const d=document.createElement('div'); d.textContent=String(s||''); return d.innerHTML; }
+function shuf(arr, seed){
+  const a=arr.slice(); let s=Math.abs(((seed||Date.now()))&0x7fffffff);
+  for(let i=a.length-1;i>0;i--){ s=(s*1664525+1013904223)&0x7fffffff; const j=s%(i+1); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+/* ── STATE ── */
+const STATE = {
+  phase: 'intro',
+  sba: { items:[], idx:0, correct:0, selected:null, confirmed:false },
+  or:  { items:[], idx:0, answers:[] },
+  sat: { items:[], idx:0, answers:[] },
+  timers: { sba:null, or:null, sat:null },
+  secs:   { sba:75*60, or:30*60, sat:30*60 }
+};
+
+/* ── SCREEN MANAGEMENT ── */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  $(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function setHeader(label, progress, secsLeft, total){
+  $('phase-header').style.display = 'flex';
+  $('ph-label').textContent = label;
+  $('ph-progress').textContent = progress;
+  updateTimer('ph-timer', secsLeft);
+  $('progress-fill').style.width = (((total-1-STATE.sba.idx<0?0:0))*0+'%'); // set by callers
+}
+function updateTimer(elId, secs){
+  const el=$(elId); if(!el) return;
+  const m=Math.floor(secs/60), s=secs%60;
+  el.textContent = m+':'+String(s).padStart(2,'0');
+  el.className = 'phase-timer' + (secs<120?' warn':'');
+}
+function setProgress(current, total){
+  $('progress-fill').style.width = Math.round((current/total)*100)+'%';
+}
+function stopAllTimers(){
+  clearInterval(STATE.timers.sba);
+  clearInterval(STATE.timers.or);
+  clearInterval(STATE.timers.sat);
+}
+
+/* ── DATA LOADING ── */
+const RA_DIST = {RA1:8, RA2:28, RA3:5, RA4:5, RA5:4};
+
+function loadSBAItems(){
+  const bk = window.SESSION_BANK;
+  if(!bk||!bk.sba_items){ console.error('SESSION_BANK not loaded'); return []; }
+  const seed = Date.now();
+  const byRa = {};
+  bk.sba_items.forEach(i=>{ const r=i.ra||'RA1'; (byRa[r]=byRa[r]||[]).push(i); });
+  const out = [];
+  Object.entries(RA_DIST).forEach(([ra,need])=>{
+    const pool = shuf(byRa[ra]||[], seed + ra.charCodeAt(2));
+    out.push(...pool.slice(0,need));
+  });
+  return shuf(out, seed+1);
+}
+
+function loadORItems(){
+  const pl = window.OPEN_RESPONSE_LAB_PAYLOAD;
+  if(!pl||!pl.items){ console.error('OPEN_RESPONSE_LAB_PAYLOAD not loaded'); return []; }
+  // pick 4 items: prefer mock_theory_2 session ids if available
+  const sess = pl.sessions && pl.sessions.mock_theory_2;
+  if(sess && sess.item_ids && sess.item_ids.length >= 4){
+    const idMap = {};
+    (pl.items||[]).forEach(i=>{ idMap[i.item_id]=i; });
+    const items = sess.item_ids.slice(0,4).map(id=>idMap[id]).filter(Boolean);
+    if(items.length===4) return items;
+  }
+  // fallback: random 4 from pool
+  return shuf(pl.items||[], Date.now()).slice(0,4);
+}
+
+function loadSATItems(){
+  const bk = window.SESSION_BANK;
+  if(!bk||!bk.sat_prompts){ console.error('SESSION_BANK sat_prompts missing'); return []; }
+  return shuf(bk.sat_prompts, Date.now()).slice(0,2);
+}
+
+/* ── SIM LIFECYCLE ── */
+function startSim(){
+  STATE.sba.items   = loadSBAItems();
+  STATE.or.items    = loadORItems();
+  STATE.sat.items   = loadSATItems();
+  STATE.sba.idx=0; STATE.sba.correct=0;
+  STATE.or.idx=0;  STATE.or.answers=[];
+  STATE.sat.idx=0; STATE.sat.answers=[];
+  STATE.secs.sba=75*60; STATE.secs.or=30*60; STATE.secs.sat=30*60;
+  startSBAPhase();
+}
+
+/* ── PHASE 1: SBA ── */
+function startSBAPhase(){
+  stopAllTimers();
+  STATE.phase='sba';
+  renderSBAQ();
+  STATE.timers.sba = setInterval(()=>{
+    STATE.secs.sba = Math.max(0, STATE.secs.sba-1);
+    updateTimer('ph-timer', STATE.secs.sba);
+    if(!STATE.secs.sba){ clearInterval(STATE.timers.sba); autoAdvanceSBA(); }
+  },1000);
+}
+
+function renderSBAQ(){
+  const items = STATE.sba.items;
+  const idx   = STATE.sba.idx;
+  const q     = items[idx];
+  if(!q){ bridgeSBA(); return; }
+  STATE.sba.selected = null; STATE.sba.confirmed = false;
+
+  $('phase-header').style.display='flex';
+  $('ph-label').textContent='PARTE 1 · TEORÍA SBA';
+  $('ph-progress').textContent=`Pregunta ${idx+1} de ${items.length}`;
+  updateTimer('ph-timer', STATE.secs.sba);
+  setProgress(idx, items.length);
+
+  $('sba-tags').innerHTML = `<span class="q-tag">RA: ${escT(q.ra||'—')}</span><span class="q-tag">${escT(q.topic||'—')}</span>`;
+  $('sba-stem').textContent = q.text||'';
+
+  const opts = q.options||[];
+  $('sba-options').innerHTML = opts.map((o,i)=>{
+    const letter = String.fromCharCode(65+i);
+    return `<div class="opt" id="opt-${i}" onclick="selectOpt(${i})"><span class="opt-letter">${letter}</span><span>${escT(o)}</span></div>`;
+  }).join('');
+
+  $('sba-feedback').style.display='none';
+  $('sba-confirm-btn').style.display='inline-block';
+  $('sba-next-btn').style.display='none';
+  showScreen('screen-sba');
+}
+
+function selectOpt(i){
+  if(STATE.sba.confirmed) return;
+  STATE.sba.selected=i;
+  document.querySelectorAll('.opt').forEach((el,j)=>{
+    el.classList.toggle('selected', j===i);
+  });
+}
+
+function confirmSBA(){
+  if(STATE.sba.selected===null) return;
+  STATE.sba.confirmed=true;
+  const q=STATE.sba.items[STATE.sba.idx];
+  const correct=q.correct_index;
+  const sel=STATE.sba.selected;
+  const ok=(sel===correct);
+  if(ok) STATE.sba.correct++;
+
+  document.querySelectorAll('.opt').forEach((el,j)=>{
+    el.classList.remove('selected');
+    if(j===correct) el.classList.add('correct');
+    if(j===sel && !ok) el.classList.add('wrong');
+  });
+
+  const fb=$('sba-feedback');
+  fb.className='feedback-bar '+(ok?'ok':'ko');
+  fb.textContent = ok ? '✓ Correcto' : `✗ Incorrecto · Respuesta: ${String.fromCharCode(65+correct)}`;
+  fb.style.display='block';
+  $('sba-confirm-btn').style.display='none';
+  $('sba-next-btn').style.display='inline-block';
+}
+
+function nextSBA(){
+  STATE.sba.idx++;
+  if(STATE.sba.idx>=STATE.sba.items.length){ bridgeSBA(); return; }
+  renderSBAQ();
+}
+
+function autoAdvanceSBA(){ bridgeSBA(); }
+
+function bridgeSBA(){
+  stopAllTimers();
+  $('phase-header').style.display='none';
+  $('progress-fill').style.width='100%';
+  const c=STATE.sba.correct, t=STATE.sba.items.length;
+  $('sba-score-num').textContent=`${c}/${t}`;
+  $('sba-pct-num').textContent=Math.round((c/t)*100)+'%';
+  showScreen('screen-bridge1');
+}
+
+/* ── PHASE 2: OPEN RESPONSE ── */
+function startOR(){
+  STATE.phase='or';
+  STATE.secs.or=30*60;
+  renderORQ();
+  STATE.timers.or = setInterval(()=>{
+    STATE.secs.or=Math.max(0,STATE.secs.or-1);
+    updateTimer('ph-timer',STATE.secs.or);
+    if(!STATE.secs.or){ clearInterval(STATE.timers.or); autoAdvanceOR(); }
+  },1000);
+}
+
+function renderORQ(){
+  const items=STATE.or.items, idx=STATE.or.idx, q=items[idx];
+  if(!q){ bridgeOR(); return; }
+
+  $('phase-header').style.display='flex';
+  $('ph-label').textContent='PARTE 2 · RESPUESTA ABIERTA';
+  $('ph-progress').textContent=`Pregunta ${idx+1} de ${items.length}`;
+  updateTimer('ph-timer', STATE.secs.or);
+  setProgress(idx, items.length);
+
+  $('or-tags').innerHTML=`<span class="q-tag">RA: ${escT(q.RA||q.ra||'—')}</span><span class="q-tag">${escT(q.topic||'—')}</span>`;
+  $('or-stem').textContent=q.stem||q.question_text||'';
+  $('or-textarea').value = STATE.or.answers[idx]||'';
+  $('or-next-btn').textContent = idx<items.length-1 ? 'Guardar y continuar →' : 'Finalizar Parte 2 →';
+  showScreen('screen-or');
+}
+
+function nextOR(){
+  STATE.or.answers[STATE.or.idx]=$('or-textarea').value;
+  STATE.or.idx++;
+  if(STATE.or.idx>=STATE.or.items.length){ bridgeOR(); return; }
+  renderORQ();
+}
+
+function autoAdvanceOR(){ bridgeOR(); }
+
+function bridgeOR(){
+  clearInterval(STATE.timers.or);
+  $('phase-header').style.display='none';
+  $('progress-fill').style.width='100%';
+  showScreen('screen-bridge2');
+}
+
+/* ── PHASE 3: SAT ── */
+function startSAT(){
+  STATE.phase='sat';
+  STATE.secs.sat=30*60;
+  renderSATQ();
+  STATE.timers.sat=setInterval(()=>{
+    STATE.secs.sat=Math.max(0,STATE.secs.sat-1);
+    updateTimer('ph-timer',STATE.secs.sat);
+    if(!STATE.secs.sat){ clearInterval(STATE.timers.sat); autoAdvanceSAT(); }
+  },1000);
+}
+
+function renderSATQ(){
+  const items=STATE.sat.items, idx=STATE.sat.idx, w=items[idx];
+  if(!w){ completeSim(); return; }
+
+  $('phase-header').style.display='flex';
+  $('ph-label').textContent='PARTE 3 · SAT';
+  $('ph-progress').textContent=`Vino ${idx+1} de ${items.length}`;
+  updateTimer('ph-timer', STATE.secs.sat);
+  setProgress(idx, items.length);
+
+  $('sat-tags').innerHTML=`<span class="q-tag">Cata SAT</span><span class="q-tag">Formativo</span>`;
+  $('sat-wine-name').textContent=w.wine_name||'Vino sin nombre';
+  $('sat-desc').innerHTML=`<strong>DESCRIPCIÓN:</strong> ${escT(w.description||'—')}`
+    +(w.training_note?`<br><br><em style="color:var(--text-2);font-size:12px">${escT(w.training_note)}</em>`:'');
+  $('sat-textarea').value=STATE.sat.answers[idx]||'';
+  $('sat-next-btn').textContent=idx<items.length-1?'Guardar y continuar →':'Finalizar Simulacro →';
+  showScreen('screen-sat');
+}
+
+function nextSAT(){
+  STATE.sat.answers[STATE.sat.idx]=$('sat-textarea').value;
+  STATE.sat.idx++;
+  if(STATE.sat.idx>=STATE.sat.items.length){ completeSim(); return; }
+  renderSATQ();
+}
+
+function autoAdvanceSAT(){ completeSim(); }
+
+/* ── COMPLETE ── */
+function completeSim(){
+  stopAllTimers();
+  $('phase-header').style.display='none';
+  $('progress-fill').style.width='100%';
+  const c=STATE.sba.correct, t=STATE.sba.items.length;
+  $('complete-sba-result').textContent=`${c}/${t} (${Math.round((c/t)*100)}%)`;
+  showScreen('screen-complete');
+}
+
+function resetSim(){
+  stopAllTimers();
+  $('phase-header').style.display='none';
+  $('progress-fill').style.width='0%';
+  showScreen('screen-intro');
+}
+</script>
+</body>
+</html>
