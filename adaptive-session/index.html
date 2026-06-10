@@ -1342,7 +1342,7 @@ function startAdp(mode){
   document.getElementById('adp-ol').classList.remove('active');
   if(mode.startsWith('sat_')){
     STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0;
-    showScreen('screen-sat'); renderSAT();
+    showScreen('sat'); renderSAT();
     if(STATE.satPayload&&STATE.satPayload.duration_minutes){
       _satSec=STATE.satPayload.duration_minutes*60; clearInterval(_satTmr);
       _satTmr=setInterval(()=>{
@@ -1354,7 +1354,7 @@ function startAdp(mode){
     }
   } else {
     STATE.payload=buildSBA(mode); STATE.screen=0; STATE.qIdx=0; STATE.selected=null; STATE.confirmed=false;
-    showScreen('screen-0'); renderScreen0();
+    showScreen(0); renderScreen0();
   }
 }
 
