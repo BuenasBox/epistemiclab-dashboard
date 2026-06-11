@@ -90,6 +90,18 @@ test('login route loads shared auth scripts before the page controller', () => {
   assert.match(html, /Cerrar sesión mock/);
 });
 
+test('login route declares responsive and accessible interaction safeguards', () => {
+  const htmlPath = path.join(__dirname, '..', 'login', 'index.html');
+  const html = fs.readFileSync(htmlPath, 'utf8');
+
+  assert.match(html, /\.home-link\s*\{[^}]*min-height:\s*44px/s);
+  assert.match(html, /summary\s*\{[^}]*min-height:\s*44px/s);
+  assert.match(html, /:focus-visible/);
+  assert.match(html, /overflow-wrap:\s*anywhere/);
+  assert.match(html, /pre\s*\{[^}]*font-size:\s*11px/s);
+  assert.match(html, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+});
+
 test('login controller initializes safely as a classic browser script', () => {
   const scriptPath = path.join(__dirname, '..', 'login', 'login.js');
   const script = fs.readFileSync(scriptPath, 'utf8');
