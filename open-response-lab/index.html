@@ -231,7 +231,7 @@ ul { margin: 0; padding-left: 19px; }
 </style>
 </head>
 <body>
-<nav class="global-nav"><a href="/diagnostic-sba/">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Open Response Lab</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro</a></nav>
+<nav class="global-nav"><a href="/diagnostic-sba/">Cabina SBA</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Sesión Adaptativa</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro</a></nav>
 
 <div class="gov" data-testid="governance-banner">
   <span>safe_for_examiner=false</span>
@@ -242,20 +242,20 @@ ul { margin: 0; padding-left: 19px; }
   <main>
     <div class="topline">
       <div>
-        <h1>Open Response Lab</h1>
+        <h1>Laboratorio de Respuesta Abierta</h1>
         <p class="subtitle">26 preguntas aprobadas · 4 modos de práctica · safe_for_examiner: false</p>
       </div>
       <div class="session-picker" role="group" aria-label="Modo de sesión">
-        <button type="button" data-session="short_practice" aria-pressed="true">Short Practice · 1</button>
-        <button type="button" data-session="standard_practice" aria-pressed="false">Standard Practice · 2</button>
-        <button type="button" data-session="extended_practice" aria-pressed="false">Extended Practice · 4</button>
-        <button type="button" data-session="mock_theory_2" aria-pressed="false">Mock Theory Part 2 · 4</button>
+        <button type="button" data-session="short_practice" aria-pressed="true">Práctica corta · 1</button>
+        <button type="button" data-session="standard_practice" aria-pressed="false">Práctica estándar · 2</button>
+        <button type="button" data-session="extended_practice" aria-pressed="false">Práctica extendida · 4</button>
+        <button type="button" data-session="mock_theory_2" aria-pressed="false">Simulacro Teoría Parte 2 · 4</button>
       </div>
     </div>
 
     <section class="question-panel" aria-live="polite">
       <div class="question-head">
-        <span data-testid="question-position">Pregunta 1 de 3</span>
+        <span data-testid="question-position">Pregunta — de —</span>
         <span data-testid="session-state">Sesión corta</span>
       </div>
       <p class="stem" data-testid="question-stem"></p>
@@ -354,18 +354,24 @@ ul { margin: 0; padding-left: 19px; }
 
   render();
 
+  function validSessionName(name) {
+    if (payload.sessions && payload.sessions[name]) return name;
+    const keys = Object.keys(payload.sessions || {});
+    return keys.length ? keys[0] : name;
+  }
+
   function loadState() {
     try {
       const stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
       return {
-        sessionName: stored.sessionName || "short_practice",
+        sessionName: validSessionName(stored.sessionName || "short_practice"),
         index: Number.isInteger(stored.index) ? stored.index : 0,
         answers: stored.answers || {},
         feedback: stored.feedback || {},
         completed: stored.completed === true
       };
     } catch (_error) {
-      return { sessionName: "short_practice", index: 0, answers: {}, feedback: {}, completed: false };
+      return { sessionName: validSessionName("short_practice"), index: 0, answers: {}, feedback: {}, completed: false };
     }
   }
 
@@ -387,7 +393,7 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function startSession(name) {
-    state.sessionName = name;
+    state.sessionName = validSessionName(name);
     state.index = 0;
     state.answers = {};
     state.feedback = {};
@@ -601,10 +607,10 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function labelForSession(name) {
-    return { short_practice: "Short Practice", standard_practice: "Standard Practice", extended_practice: "Extended Practice", mock_theory_2: "Mock Theory Part 2" }[name] || name;
+    return { short_practice: "Práctica corta", standard_practice: "Práctica estándar", extended_practice: "Práctica extendida", mock_theory_2: "Simulacro Teoría Parte 2" }[name] || name;
   }
 })();
 </script>
-<nav class="global-nav" style="margin-top:12px"><a href="/diagnostic-sba/">SBA Cockpit</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Adaptive Session</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Open Response Lab</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro</a></nav>
+<nav class="global-nav" style="margin-top:12px"><a href="/diagnostic-sba/">Cabina SBA</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Sesión Adaptativa</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro</a></nav>
 </body>
 </html>

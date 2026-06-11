@@ -4,67 +4,66 @@ window.OPEN_RESPONSE_LAB_PAYLOAD = {
   "pool_size": 26,
   "storage_key": "wset_open_response_lab_private_v1",
   "session_options": {
-    "short": 3,
-    "standard": 5,
-    "long": 10
+    "short_practice": 1,
+    "standard_practice": 2,
+    "extended_practice": 4,
+    "mock_theory_2": 4
   },
   "sessions": {
-    "short": {
-      "session_size": 3,
+    "short_practice": {
+      "label": "Práctica corta · 1",
+      "session_size": 1,
+      "item_ids": [
+        "open_response_798"
+      ],
+      "source_question_ids": [
+        "798"
+      ]
+    },
+    "standard_practice": {
+      "label": "Práctica estándar · 2",
+      "session_size": 2,
       "item_ids": [
         "open_response_798",
-        "open_response_799",
-        "open_response_800"
+        "open_response_799"
       ],
       "source_question_ids": [
         "798",
-        "799",
-        "800"
+        "799"
       ]
     },
-    "standard": {
-      "session_size": 5,
+    "extended_practice": {
+      "label": "Práctica extendida · 4",
+      "session_size": 4,
       "item_ids": [
         "open_response_798",
         "open_response_799",
         "open_response_800",
-        "open_response_801",
-        "open_response_802"
+        "open_response_801"
       ],
       "source_question_ids": [
         "798",
         "799",
         "800",
-        "801",
-        "802"
+        "801"
       ]
     },
-    "long": {
-      "session_size": 10,
+    "mock_theory_2": {
+      "label": "Simulacro Teoría Parte 2 · 4",
+      "session_size": 4,
       "item_ids": [
         "open_response_798",
         "open_response_799",
         "open_response_800",
-        "open_response_801",
-        "open_response_802",
-        "open_response_803",
-        "open_response_804",
-        "open_response_805",
-        "open_response_806",
-        "open_response_808"
+        "open_response_853"
       ],
       "source_question_ids": [
         "798",
         "799",
         "800",
-        "801",
-        "802",
-        "803",
-        "804",
-        "805",
-        "806",
-        "808"
-      ]
+        "853"
+      ],
+      "distribution_note": "Aproximación con RA disponibles (RA1+RA5). Distribución oficial: Q1/Q2=RA1+RA2, Q3=RA1+RA2+RA5, Q4=RA1+RA3+RA4+RA5."
     }
   },
   "items": [
