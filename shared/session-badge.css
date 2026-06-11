@@ -1,0 +1,85 @@
+.access-session-badge {
+  min-height: 44px;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid rgba(0, 255, 136, .28);
+  border-radius: 999px;
+  background: rgba(0, 255, 136, .055);
+  color: rgba(210, 225, 245, .82);
+  font: 500 9px/1.35 "JetBrains Mono", "Fira Code", "Cascadia Code",
+    Consolas, "Courier New", monospace;
+  letter-spacing: .06em;
+  text-decoration: none;
+  pointer-events: auto;
+  touch-action: manipulation;
+  overflow-wrap: anywhere;
+  transition: border-color .18s ease, background .18s ease, color .18s ease;
+}
+
+.access-session-badge__dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: rgba(0, 210, 255, .58);
+}
+
+.access-session-badge[data-session-state="active"] {
+  border-color: rgba(0, 255, 136, .32);
+  background: rgba(0, 255, 136, .065);
+}
+
+.access-session-badge[data-session-state="active"]
+  .access-session-badge__dot {
+  background: #00ff88;
+  box-shadow: 0 0 8px rgba(0, 255, 136, .55);
+}
+
+.access-session-badge[data-session-state="expired"] {
+  border-color: rgba(255, 170, 0, .30);
+  background: rgba(255, 170, 0, .06);
+}
+
+.access-session-badge[data-session-state="expired"]
+  .access-session-badge__dot {
+  background: #ffaa00;
+}
+
+.access-session-badge__separator {
+  color: rgba(160, 180, 210, .42);
+}
+
+.access-session-badge__role {
+  color: #ffaa00;
+}
+
+.access-session-badge:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .access-session-badge:hover {
+    border-color: rgba(0, 210, 255, .48);
+    background: rgba(0, 210, 255, .08);
+    color: rgba(238, 244, 255, .96);
+  }
+}
+
+@media (max-width: 420px) {
+  .access-session-badge {
+    padding-inline: 10px;
+    font-size: 8.5px;
+    letter-spacing: .04em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .access-session-badge {
+    transition: none;
+  }
+}
