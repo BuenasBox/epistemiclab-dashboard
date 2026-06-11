@@ -1,6 +1,7 @@
 # ACCESS_MATRIX_V1
 
 **Estado:** Aprobado como contrato arquitectónico
+**Revisión:** V1.1 - identidad autenticada preservada después de la expiración
 **Alcance:** Control de identidad, planes, acceso, vigencia y límites.
 **Fuera de alcance:** Implementación, autenticación real, pedagogía, bancos de preguntas, generadores, validadores SAT, Distinction Coach y Adaptive Weakness Engine.
 
@@ -139,7 +140,11 @@ Los límites deben reiniciarse según una zona horaria de negocio única. Recome
    - La cuenta no se elimina.
    - El historial no se borra.
    - La sesión puede mantenerse abierta.
-   - El acceso efectivo pasa a `anonymous_visitor`.
+   - La identidad sigue siendo `student` o `admin`.
+   - El estado efectivo del plan pasa a `expired_plan`.
+   - Los permisos comerciales activos del plan dejan de concederse.
+   - El usuario conserva perfil, historial, progreso y analytics básicos autorizados.
+   - La experiencia pública disponible es equivalente a la del visitante, pero el usuario no se convierte en `anonymous_visitor`.
    - Se muestra una invitación de renovación o upgrade.
 
 3. El plan registrado puede conservarse como dato histórico, pero no debe conceder permisos después de `access_end_date`.
@@ -147,6 +152,14 @@ Los límites deben reiniciarse según una zona horaria de negocio única. Recome
 4. `is_active = false` revoca inmediatamente el acceso registrado, independientemente de las fechas.
 
 5. El rol `admin` no debe ignorar automáticamente una cuenta desactivada.
+
+### Distinción entre visitante y plan vencido
+
+- `anonymous_visitor`: nunca inició sesión o no tiene una sesión autenticada válida.
+- `student + expired_plan`: usuario autenticado cuyo plan alcanzó `access_end_date`.
+- `admin + expired_plan`: administrador autenticado cuyo acceso estudiantil comercial venció. Los permisos técnicos administrativos se evalúan por separado y requieren una cuenta activa.
+
+La expiración afecta las capacidades comerciales del plan, no la existencia de la identidad autenticada.
 
 ## 9. Mensajes
 
