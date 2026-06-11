@@ -1,6 +1,6 @@
 window.SESSION_BANK = {
   "schema_version": "session_bank_v1",
-  "generated_at": "2026-06-11T17:36:12.114753",
+  "generated_at": "2026-06-11T18:53:20.571008",
   "total_sba": 578,
   "total_sat_prompts": 6,
   "modes": {
@@ -1080,6 +1080,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Los raspones pueden estar presentes con las uvas antes de la fermentación y aportar taninos verdes y astringentes.",
+        "efecto": "El despalillado elimina esa fuente de taninos verdes, dando taninos más suaves y redondos y una estructura más limpia en boca.",
+        "mecanismo": "Si los raspones permanecen durante la fermentación, de ellos se extraen taninos y compuestos fenólicos verdes hacia el mosto."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Evitar la extracción de taninos verdes». La clave está en el despalillado antes de la fermentación: Si los raspones permanecen durante la fermentación, de ellos se extraen taninos y compuestos fenólicos verdes hacia el mosto. Por eso, el despalillado elimina esa fuente de taninos verdes, dando taninos más suaves y redondos y una estructura más limpia en boca.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Evitar la extracción de taninos verdes» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del despalillado antes de la fermentación. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Tema: winemaking. Fija el mecanismo del despalillado antes de la fermentación: Los raspones pueden estar presentes con las uvas antes de la fermentación y aportar taninos verdes y astringentes. → Si los raspones permanecen durante la fermentación, de ellos se extraen taninos y compuestos fenólicos verdes hacia el mosto. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Evitar la extracción de taninos verdes» corresponde al despalillado antes de la fermentación. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Evitar la extracción de taninos verdes",
+          "Sistema de soleras y criaderas",
+          "Crianza prolongada en botella después de corta crianza en barrica"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al despalillado antes de la fermentación?",
+        "remediation_signal": "Revisa la cadena causal del despalillado antes de la fermentación"
       }
     },
     {
@@ -3344,6 +3366,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En la vinificación en tinto, el color y los taninos se extraen principalmente de los hollejos durante el contacto entre el mosto en fermentación y las partes sólidas.",
+        "efecto": "Una mayor extracción produce tintos de color más profundo, mayor estructura tánica y una impresión más completa en boca.",
+        "mecanismo": "La maceración y las técnicas de manejo del sombrero (remontado, bazuqueo, délestage) aumentan el contacto entre el líquido y los hollejos, permitiendo que pasen más color y taninos al vino."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Maceración prolongada y delestage». La clave está en la maceración y la gestión del sombrero en tintos: La maceración y las técnicas de manejo del sombrero (remontado, bazuqueo, délestage) aumentan el contacto entre el líquido y los hollejos, permitiendo que pasen más color y taninos al vino. Por eso, una mayor extracción produce tintos de color más profundo, mayor estructura tánica y una impresión más completa en boca.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Maceración prolongada y delestage» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la maceración y la gestión del sombrero en tintos. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la maceración y la gestión del sombrero en tintos: En la vinificación en tinto, el color y los taninos se extraen principalmente de los hollejos durante el contacto entre el mosto en fermentación y las partes sólidas. → La maceración y las técnicas de manejo del sombrero (remontado, bazuqueo, délestage) aumentan el contacto entre el líquido y los hollejos, permitiendo que pasen más color y taninos al vino. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Maceración prolongada y delestage» corresponde a la maceración y la gestión del sombrero en tintos. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Maceración prolongada y delestage",
+          "Sistema de soleras y criaderas",
+          "Evitar la extracción de taninos verdes"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la maceración y la gestión del sombrero en tintos?",
+        "remediation_signal": "Revisa la cadena causal de la maceración y la gestión del sombrero en tintos"
       }
     },
     {
@@ -5619,6 +5663,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino criado en barrica de roble recibe pequeñas cantidades continuas de oxígeno a través de los poros de la madera y absorbe compuestos de la propia madera, como vainillina y lactonas.",
+        "efecto": "Los vinos criados en roble nuevo suelen mostrar taninos más suaves, mayor complejidad y aromas secundarios (vainilla, tostado, cedro, especias) sobre la fruta primaria.",
+        "mecanismo": "La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «El roble americano tiende a aportar notas más pronunciadas de vainilla y coco que el francés.». La clave está en la crianza en barrica de roble: La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo. Por eso, los vinos criados en roble nuevo suelen mostrar taninos más suaves, mayor complejidad y aromas secundarios (vainilla, tostado, cedro, especias) sobre la fruta primaria.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «El roble americano tiende a aportar notas más pronunciadas de vainilla y coco que el francés.» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la crianza en barrica de roble. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la crianza en barrica de roble: El vino criado en barrica de roble recibe pequeñas cantidades continuas de oxígeno a través de los poros de la madera y absorbe compuestos de la propia madera, como vainillina y lactonas. → La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«El roble americano tiende a aportar notas más pronunciadas de vainilla y coco que el francés.» corresponde a la crianza en barrica de roble. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas",
+          "El roble americano tiende a aportar notas más pronunciadas de vainilla y coco que el francés.",
+          "Evitar la extracción de taninos verdes"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la crianza en barrica de roble?",
+        "remediation_signal": "Revisa la cadena causal de la crianza en barrica de roble"
       }
     },
     {
@@ -14009,6 +14075,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se añade aguardiente vínico (alcohol neutro de alta graduación) a un mosto o vino parcialmente fermentado.",
+        "efecto": "El vino terminado conserva azúcar residual del mosto sin fermentar, dando un estilo dulce o semidulce.",
+        "mecanismo": "La adición eleva el alcohol hasta un nivel (típicamente 15–18% vol.) en el que la levadura no sobrevive: la fermentación se detiene y queda azúcar sin fermentar en el vino."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Adición de aguardiente vínico». La clave está en la fortificación durante la fermentación: La adición eleva el alcohol hasta un nivel (típicamente 15–18% vol.) en el que la levadura no sobrevive: la fermentación se detiene y queda azúcar sin fermentar en el vino. Por eso, el vino terminado conserva azúcar residual del mosto sin fermentar, dando un estilo dulce o semidulce.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Adición de aguardiente vínico» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la fortificación durante la fermentación. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA4): Tema: fortified wines. Fija el mecanismo de la fortificación durante la fermentación: Se añade aguardiente vínico (alcohol neutro de alta graduación) a un mosto o vino parcialmente fermentado. → La adición eleva el alcohol hasta un nivel (típicamente 15–18% vol.) en el que la levadura no sobrevive: la fermentación se detiene y queda azúcar sin fermentar en el vino. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Adición de aguardiente vínico» corresponde a la fortificación durante la fermentación. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Sistema de soleras y criaderas",
+          "Adición de aguardiente vínico",
+          "Evitar la extracción de taninos verdes",
+          "Crianza prolongada en botella después de corta crianza en barrica"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la fortificación durante la fermentación?",
+        "remediation_signal": "Revisa la cadena causal de la fortificación durante la fermentación"
       }
     },
     {
@@ -14039,6 +14127,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se establece un sistema de solera: una serie de botas (criaderas) ordenadas por edad, cada una con vino en distinta etapa de maduración.",
+        "efecto": "Cada saca contiene una mezcla de añadas; la incorporación constante de vino viejo y joven mantiene una edad media y un estilo estables año tras año.",
+        "mecanismo": "Al extraer vino de las botas más viejas (la solera) para embotellar, estas se rellenan parcialmente con vino más joven de la siguiente criadera, y la cascada continúa por todos los niveles."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Sistema de soleras y criaderas». La clave está en el sistema de solera y criaderas: Al extraer vino de las botas más viejas (la solera) para embotellar, estas se rellenan parcialmente con vino más joven de la siguiente criadera, y la cascada continúa por todos los niveles. Por eso, cada saca contiene una mezcla de añadas; la incorporación constante de vino viejo y joven mantiene una edad media y un estilo estables año tras año.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Sistema de soleras y criaderas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del sistema de solera y criaderas. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA4): Tema: fortified wines. Fija el mecanismo del sistema de solera y criaderas: Se establece un sistema de solera: una serie de botas (criaderas) ordenadas por edad, cada una con vino en distinta etapa de maduración. → Al extraer vino de las botas más viejas (la solera) para embotellar, estas se rellenan parcialmente con vino más joven de la siguiente criadera, y la cascada continúa por todos los niveles. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Sistema de soleras y criaderas» corresponde al sistema de solera y criaderas. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Evitar la extracción de taninos verdes",
+          "Sistema de soleras y criaderas",
+          "Crianza prolongada en botella después de corta crianza en barrica"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al sistema de solera y criaderas?",
+        "remediation_signal": "Revisa la cadena causal del sistema de solera y criaderas"
       }
     },
     {
@@ -14412,6 +14522,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un tinto con suficiente tanino, pigmento y estructura se cría en botella durante un periodo prolongado (años o décadas).",
+        "efecto": "Se forma sedimento en la botella; el vino desarrolla aromas terciarios (cuero, tierra, fruta seca, champiñón, tabaco) y los taninos se integran y suavizan.",
+        "mecanismo": "Los taninos y los antocianos se polimerizan (se unen en moléculas mayores) y acaban precipitando; la estructura se suaviza a medida que disminuyen los taninos libres."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Crianza prolongada en botella después de corta crianza en barrica». La clave está en la crianza prolongada en botella de tintos estructurados: Los taninos y los antocianos se polimerizan (se unen en moléculas mayores) y acaban precipitando; la estructura se suaviza a medida que disminuyen los taninos libres. Por eso, se forma sedimento en la botella; el vino desarrolla aromas terciarios (cuero, tierra, fruta seca, champiñón, tabaco) y los taninos se integran y suavizan.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Crianza prolongada en botella después de corta crianza en barrica» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la crianza prolongada en botella de tintos estructurados. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA4): Fija el mecanismo de la crianza prolongada en botella de tintos estructurados: Un tinto con suficiente tanino, pigmento y estructura se cría en botella durante un periodo prolongado (años o décadas). → Los taninos y los antocianos se polimerizan (se unen en moléculas mayores) y acaban precipitando; la estructura se suaviza a medida que disminuyen los taninos libres. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Crianza prolongada en botella después de corta crianza en barrica» corresponde a la crianza prolongada en botella de tintos estructurados. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Crianza prolongada en botella después de corta crianza en barrica",
+          "Sistema de soleras y criaderas",
+          "Evitar la extracción de taninos verdes"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la crianza prolongada en botella de tintos estructurados?",
+        "remediation_signal": "Revisa la cadena causal de la crianza prolongada en botella de tintos estructurados"
       }
     },
     {
@@ -14493,6 +14625,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "La levadura de flor (un velo de cepas de Saccharomyces cerevisiae) se forma en la superficie del vino en botas parcialmente llenas.",
+        "efecto": "El vino desarrolla carácter de crianza biológica: notas de almendra, masa de pan y levadura, color pálido, tanino bajo y protección frente a la oxidación pese a la crianza en bota.",
+        "mecanismo": "El velo protege al vino del oxígeno; la levadura metaboliza etanol y glicerol produciendo acetaldehído, y su autólisis aporta aminoácidos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «La crianza biológica vs oxidativa». La clave está en la crianza biológica bajo velo de flor: El velo protege al vino del oxígeno; la levadura metaboliza etanol y glicerol produciendo acetaldehído, y su autólisis aporta aminoácidos. Por eso, el vino desarrolla carácter de crianza biológica: notas de almendra, masa de pan y levadura, color pálido, tanino bajo y protección frente a la oxidación pese a la crianza en bota.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «La crianza biológica vs oxidativa» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la crianza biológica bajo velo de flor. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA4): Fija el mecanismo de la crianza biológica bajo velo de flor: La levadura de flor (un velo de cepas de Saccharomyces cerevisiae) se forma en la superficie del vino en botas parcialmente llenas. → El velo protege al vino del oxígeno; la levadura metaboliza etanol y glicerol produciendo acetaldehído, y su autólisis aporta aminoácidos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«La crianza biológica vs oxidativa» corresponde a la crianza biológica bajo velo de flor. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas",
+          "La crianza biológica vs oxidativa",
+          "Evitar la extracción de taninos verdes"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la crianza biológica bajo velo de flor?",
+        "remediation_signal": "Revisa la cadena causal de la crianza biológica bajo velo de flor"
       }
     },
     {
@@ -14682,6 +14836,28 @@ window.SESSION_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se establece un sistema de solera: una serie de botas (criaderas) ordenadas por edad, cada una con vino en distinta etapa de maduración.",
+        "efecto": "Cada saca contiene una mezcla de añadas; la incorporación constante de vino viejo y joven mantiene una edad media y un estilo estables año tras año.",
+        "mecanismo": "Al extraer vino de las botas más viejas (la solera) para embotellar, estas se rellenan parcialmente con vino más joven de la siguiente criadera, y la cascada continúa por todos los niveles."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Sistema de soleras y criaderas». La clave está en el sistema de solera y criaderas: Al extraer vino de las botas más viejas (la solera) para embotellar, estas se rellenan parcialmente con vino más joven de la siguiente criadera, y la cascada continúa por todos los niveles. Por eso, cada saca contiene una mezcla de añadas; la incorporación constante de vino viejo y joven mantiene una edad media y un estilo estables año tras año.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Sistema de soleras y criaderas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del sistema de solera y criaderas. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA4): Fija el mecanismo del sistema de solera y criaderas: Se establece un sistema de solera: una serie de botas (criaderas) ordenadas por edad, cada una con vino en distinta etapa de maduración. → Al extraer vino de las botas más viejas (la solera) para embotellar, estas se rellenan parcialmente con vino más joven de la siguiente criadera, y la cascada continúa por todos los niveles. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Sistema de soleras y criaderas» corresponde al sistema de solera y criaderas. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas",
+          "Evitar la extracción de taninos verdes",
+          "Crianza prolongada en botella después de corta crianza en barrica"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al sistema de solera y criaderas?",
+        "remediation_signal": "Revisa la cadena causal del sistema de solera y criaderas"
       }
     },
     {

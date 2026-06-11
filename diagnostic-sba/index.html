@@ -1545,6 +1545,14 @@ function render() {
   updateStagePips();
   setOrbStage(STATE.stage);
   updateSessionStats();
+  // Phase P.1: el selector de mentor solo es visible cuando el ítem actual
+  // tiene feedback_by_mode real (lote enriquecido). Sin datos = sin control placebo.
+  (function(){
+    const sel = document.getElementById('mentorMode');
+    if (!sel) return;
+    const q = (typeof QUESTIONS !== 'undefined' && QUESTIONS && QUESTIONS.length) ? currentQ() : null;
+    sel.style.display = (q && q.feedback_by_mode) ? 'inline-block' : 'none';
+  })();
   const stages = ['prepare','read','commit','cross','reveal','train','map'];
   setProgress(Math.round((stages.indexOf(STATE.stage) / 6) * 100));
   ({ prepare:renderPrepare, read:renderRead, commit:renderCommit,
