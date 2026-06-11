@@ -1,7 +1,7 @@
 {
   "current_phase": "Production Expansion + Full WSET Simulation Live",
   "latest_phase": "Phase X.5 — SAT Response Structure Validator + Full WSET Simulation Deployed",
-  "latest_event": "Phase X.3 SAT Answer Validator live; Phase X.4 SAT Readiness Validator live; Phase X.5 SAT Response Structure Validator live. Production expansion complete: Diagnostic SBA 119 items (4 modes), Open Response Lab 26 items (4 modes), Adaptive Session 119 SBA + 6 SAT (6 modes). Full WSET Simulation (Part E) live: SBA 50 → OR 4 → SAT 2 wines, single continuous flow. Global nav bar active on all 4 experiences.",
+  "latest_event": "Phase X.3 SAT Answer Validator live; Phase X.4 SAT Readiness Validator live; Phase X.5 SAT Response Structure Validator live. Production expansion complete: Diagnostic SBA 578 items (4 modes), Open Response Lab 26 items (4 modes), Adaptive Session 578 SBA + 6 SAT (6 modes). Full WSET Simulation (Part E) live: SBA 50 → OR 4 → SAT 2 wines, single continuous flow. Global nav bar active on all 4 experiences.",
   "latest_commit": "e483604 (epistemiclab) / 8552387 (WSET)",
   "current_recommendation": "Phase Y.0 — Reconcile bank filter: wire eligibility engine into production generator",
   "updated_at": "2026-06-10T00:00:00-06:00",
@@ -27,8 +27,8 @@
         "percent": 98,
         "weight": 16,
         "stage": "full_bank_deployed",
-        "evidence": "119-item bank deployed across 4 modes (Quick Drill 5, Express 10, Standard 25, Mock Theory 50); RA-preserving Mock Theory selection active; seeded Fisher-Yates rotation; Full Simulation integrates SBA 50 phase; governance flags clean.",
-        "next_gate": "Reconcile eligibility engine scope (589 eligible) vs deployed 119."
+        "evidence": "578-item bank deployed across 4 modes (Quick Drill 5, Express 10, Standard 25, Mock Theory 50); RA-preserving Mock Theory selection active; seeded Fisher-Yates rotation; Full Simulation integrates SBA 50 phase; governance flags clean.",
+        "next_gate": "Reconcile eligibility engine scope (589 eligible) vs deployed 578 (reconciled Phase Z.2.1)."
       },
       {
         "id": "master_bank",
@@ -36,7 +36,7 @@
         "percent": 85,
         "weight": 14,
         "stage": "production_deployed",
-        "evidence": "616 records; 590 single_best_answer, 26 open_response; eligibility engine: 589 SBA private_practice eligible, 36 public_lab; production generator deployed 119 (approved_private_sba + approved_for_static_demo); review_state metadata stale vs eligibility engine — reconciliation pending.",
+        "evidence": "616 records; 590 single_best_answer, 26 open_response; eligibility engine: 589 SBA private_practice eligible, 36 public_lab; production generator deployed 578 (approved_private_sba + approved_for_static_demo); review_state metadata stale vs eligibility engine — reconciliation pending.",
         "next_gate": "Wire eligibility engine into generator to deploy full 589-item pool."
       },
       {
@@ -151,7 +151,7 @@
     "Phase X.3 — SAT Answer Validator (8 components, Tutor integration)",
     "Phase X.4 — SAT Readiness Validator (readiness_reasoning_patterns.json)",
     "Phase X.5 — SAT Response Structure Validator (response_structures.json)",
-    "Production Expansion — 119 SBA + 26 OR + 6 SAT deployed across 3 experiences",
+    "Production Expansion — 578 SBA + 26 OR + 6 SAT deployed across 3 experiences",
     "Part E — Full WSET Simulation (SBA 50 + OR 4 + SAT 2, single continuous flow)"
   ],
   "in_progress_phase": "Phase Y.0 — Bank Scope Reconciliation (eligibility engine vs review_state)",
@@ -171,7 +171,7 @@
   "diagnostic_sba_json_loader_status": "active",
   "diagnostic_sba_public_url": "https://epistemiclab.dpdns.org/diagnostic-sba/",
   "static_demo_export_version": "static_demo_export_v0",
-  "active_sba_items": 119,
+  "active_sba_items": 578,
   "static_demo_approved_count": 36,
   "static_demo_requires_revision_count": 2,
   "option_shuffle_status": "active",
@@ -223,7 +223,7 @@
   "open_response_assessment_intelligence": "phase_x1_embedded",
   "assessment_intelligence_status": "phase_x1_ingested_x2_active",
   "assessment_intelligence_files": 25,
-  "adaptive_session_pool_size": 119,
+  "adaptive_session_pool_size": 578,
   "adaptive_session_pool_source": "approved_private_sba + approved_for_static_demo (review_state filter)",
   "adaptive_session_status": "full_bank_deployed",
   "full_simulation_status": "live",
@@ -232,13 +232,13 @@
   "deployed_experiences": {
     "diagnostic_sba": {
       "url": "https://epistemiclab.dpdns.org/diagnostic-sba/",
-      "items": 119,
+      "items": 578,
       "modes": 4,
       "status": "live"
     },
     "adaptive_session": {
       "url": "https://epistemiclab.dpdns.org/adaptive-session/",
-      "sba_items": 119,
+      "sba_items": 578,
       "sat_prompts": 6,
       "modes": 6,
       "status": "live"
