@@ -107,7 +107,7 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
   border: 1px solid rgba(229, 201, 122, .3);
   border-radius: 8px;
   background: rgba(229, 201, 122, .07);
-  font-size: 9px;
+  font-size: 10px;
   text-align: right;
 }
 
@@ -144,6 +144,12 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
 
 .section-head h2 { margin: 0; font-size: 15px; }
 .section-head p { margin: 5px 0 0; color: var(--muted); font-size: 10px; }
+.section-kicker {
+  margin: 0 0 7px !important;
+  color: var(--cyan) !important;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
 
 .workspace {
   display: grid;
@@ -213,6 +219,117 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
 }
 .badge[data-status="inactive"] { color: var(--red); border-color: rgba(238, 123, 123, .28); }
 
+.access-analytics {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+}
+
+.metrics-grid,
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.metric-card {
+  min-width: 0;
+  min-height: 94px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--raised);
+}
+
+.metric-card span {
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.metric-card strong {
+  font-size: clamp(18px, 2.2vw, 28px);
+  overflow-wrap: anywhere;
+}
+
+.metric-card[data-tone="allow"] strong { color: var(--green); }
+.metric-card[data-tone="deny"] strong { color: var(--red); }
+
+.impact-card {
+  padding: 18px;
+  border: 1px solid rgba(229, 201, 122, .32);
+  border-radius: 10px;
+  background:
+    linear-gradient(145deg, rgba(229, 201, 122, .09), transparent 52%),
+    #0c1016;
+}
+
+.impact-card > div:first-child span {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.impact-card h3 {
+  margin: 5px 0 16px;
+  font: 500 25px/1.15 Georgia, serif;
+}
+
+.impact-grid .metric-card { min-height: 86px; background: rgba(21, 27, 36, .8); }
+.impact-grid .metric-card strong { font-size: clamp(15px, 1.7vw, 22px); }
+
+.analytics-tables {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.analytics-block {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel);
+}
+
+.analytics-block h3 {
+  margin: 0;
+  padding: 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.analytics-row {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) repeat(3, minmax(52px, auto));
+  gap: 10px;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(41, 52, 67, .65);
+  font-size: 9px;
+}
+
+.analytics-row:last-child { border-bottom: 0; }
+.analytics-row strong { min-width: 0; overflow-wrap: anywhere; }
+.analytics-row span { text-align: right; }
+.analytics-row--head {
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.analytics-block:nth-child(3) .analytics-row {
+  grid-template-columns: minmax(150px, 1fr) repeat(2, minmax(60px, auto));
+}
+
 .audit-list { display: grid; gap: 1px; background: var(--line); }
 
 .audit-row {
@@ -242,6 +359,9 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
   .workspace { grid-template-columns: 1fr; }
   .user-form { border-right: 0; border-bottom: 1px solid var(--line); }
   .audit-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metrics-grid,
+  .impact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .analytics-tables { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -255,6 +375,21 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
   .form-actions,
   .feedback { grid-column: auto; }
   .users-list { padding: 14px; }
+  .access-analytics { padding: 14px; }
+  .metrics-grid,
+  .impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric-card { min-height: 84px; }
+  .impact-card { padding: 14px; }
+  .analytics-row,
+  .analytics-block:nth-child(3) .analytics-row {
+    grid-template-columns: minmax(105px, 1fr) repeat(3, minmax(38px, auto));
+    gap: 6px;
+    padding: 10px;
+    font-size: 9px;
+  }
+  .analytics-block:nth-child(3) .analytics-row {
+    grid-template-columns: minmax(130px, 1fr) repeat(2, minmax(44px, auto));
+  }
   .audit-row { grid-template-columns: 1fr; padding: 14px; }
 }
 

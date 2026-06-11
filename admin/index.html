@@ -10,6 +10,7 @@
   <script src="../shared/auth-providers/mock-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
   <script src="../shared/mock-user-store.js"></script>
+  <script src="./access-analytics.js"></script>
   <script src="./admin.js"></script>
 </head>
 <body>
@@ -114,15 +115,29 @@
         </div>
       </section>
 
+      <section class="panel analytics-panel">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Modo sombra · sin enforcement</p>
+            <h2>Access Analytics</h2>
+            <p>
+              Impacto hipotético calculado exclusivamente desde
+              `wset_access_audit_v1`.
+            </p>
+          </div>
+          <button class="button button--small" type="button" data-refresh-audit>
+            Actualizar datos
+          </button>
+        </div>
+        <div class="access-analytics" data-access-analytics></div>
+      </section>
+
       <section class="panel">
         <div class="section-head">
           <div>
             <h2>Auditoría de acceso</h2>
             <p>Lectura local de `wset_access_audit_v1` · últimos eventos.</p>
           </div>
-          <button class="button button--small" type="button" data-refresh-audit>
-            Actualizar
-          </button>
         </div>
         <div class="audit-list" data-audit-list></div>
       </section>

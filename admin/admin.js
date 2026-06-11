@@ -1,15 +1,36 @@
 (function (root, factory) {
-  var api = factory(root);
+  var accessAnalytics = (
+    typeof module === 'object'
+    && module.exports
+  )
+    ? require('./access-analytics.js')
+    : root.WSETAccessAnalytics;
+  var api = factory(root, accessAnalytics);
 
   if (typeof module === 'object' && module.exports) {
     module.exports = api;
   }
 
   root.WSETAdmin = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (
+  root,
+  accessAnalytics
+) {
   'use strict';
 
   var ACCESS_AUDIT_STORAGE_KEY = 'wset_access_audit_v1';
+  var EXPERIENCE_LABELS = {
+    diagnostic_sba: 'Diagnostic SBA',
+    adaptive_session: 'Adaptive Session',
+    open_response_lab: 'Open Response Lab',
+    full_simulation: 'Full Simulation',
+  };
+  var PLAN_LABELS = {
+    demo: 'Demo',
+    premium: 'Premium',
+    full_access: 'Full Access',
+    anonymous: 'Anonymous',
+  };
 
   function isAdminSession(snapshot) {
     return !!(
@@ -74,6 +95,7 @@
     var form = documentRef.querySelector('[data-user-form]');
     var usersList = documentRef.querySelector('[data-users-list]');
     var auditList = documentRef.querySelector('[data-audit-list]');
+    var analyticsRoot = documentRef.querySelector('[data-access-analytics]');
     var feedback = documentRef.querySelector('[data-admin-feedback]');
     var saveButton = documentRef.querySelector('[data-save-user]');
     var cancelButton = documentRef.querySelector('[data-cancel-edit]');
@@ -182,11 +204,201 @@
       return cell;
     }
 
-    function renderAudit() {
-      auditList.replaceChildren();
-      var events = readAuditEvents(storage).slice().reverse();
+    function metricCard(label, value, tone) {
+      var card = documentRef.createElement('article');
+      var heading = documentRef.createElement('span');
+      var content = documentRef.createElement('strong');
 
-      if (!events.length) {
+      card.className = 'metric-card';
+      if (tone) card.dataset.tone = tone;
+      heading.textContent = label;
+      content.textContent = value;
+      card.appendChild(heading);
+      card.appendChild(content);
+      return card;
+    }
+
+    function analyticsRow(label, values) {
+      var row = documentRef.createElement('div');
+      var name = documentRef.createElement('strong');
+
+      row.className = 'analytics-row';
+      name.textContent = label;
+      row.appendChild(name);
+      values.forEach(function (value) {
+        var cell = documentRef.createElement('span');
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
+      return row;
+    }
+
+    function analyticsBlock(title, columns) {
+      var block = documentRef.createElement('section');
+      var heading = documentRef.createElement('h3');
+      var header = documentRef.createElement('div');
+
+      block.className = 'analytics-block';
+      heading.textContent = title;
+      header.className = 'analytics-row analytics-row--head';
+      header.appendChild(documentRef.createElement('span'));
+      columns.forEach(function (column) {
+        var cell = documentRef.createElement('span');
+        cell.textContent = column;
+        header.appendChild(cell);
+      });
+      block.appendChild(heading);
+      block.appendChild(header);
+      return block;
+    }
+
+    function formatPercentage(value) {
+      return String(value) + '%';
+    }
+
+    function renderAnalytics(events) {
+      if (!analyticsRoot || !accessAnalytics) return;
+
+      var analytics = accessAnalytics.buildAccessAnalytics(events);
+      var summary = analytics.summary;
+      var overview = documentRef.createElement('div');
+      var impact = documentRef.createElement('section');
+      var impactHeading = documentRef.createElement('div');
+      var impactMetrics = documentRef.createElement('div');
+      var tables = documentRef.createElement('div');
+      var experienceBlock = analyticsBlock(
+        'Por experiencia',
+        ['Eventos', 'Allow', 'Deny']
+      );
+      var planBlock = analyticsBlock(
+        'Por plan',
+        ['Eventos', 'Allow', 'Deny']
+      );
+      var reasonsBlock = analyticsBlock(
+        'Razones de denegación',
+        ['Cantidad', 'Porcentaje']
+      );
+      var modesBlock = analyticsBlock(
+        'Modos más utilizados',
+        ['Frecuencia', 'Allow', 'Deny']
+      );
+
+      analyticsRoot.replaceChildren();
+      overview.className = 'metrics-grid';
+      overview.appendChild(metricCard(
+        'Total eventos auditados',
+        summary.total
+      ));
+      overview.appendChild(metricCard(
+        'Would Allow',
+        summary.allow,
+        'allow'
+      ));
+      overview.appendChild(metricCard(
+        'Would Deny',
+        summary.deny,
+        'deny'
+      ));
+      overview.appendChild(metricCard(
+        '% Allow',
+        formatPercentage(summary.allow_percentage),
+        'allow'
+      ));
+      overview.appendChild(metricCard(
+        '% Deny',
+        formatPercentage(summary.deny_percentage),
+        'deny'
+      ));
+
+      impact.className = 'impact-card';
+      impactHeading.innerHTML =
+        '<span>Simulación de impacto</span>' +
+        '<h3>Si los gates estuvieran activos hoy</h3>';
+      impactMetrics.className = 'impact-grid';
+      impactMetrics.appendChild(metricCard(
+        'Acciones permitidas',
+        analytics.impact.allowed_actions,
+        'allow'
+      ));
+      impactMetrics.appendChild(metricCard(
+        'Acciones denegadas',
+        analytics.impact.denied_actions,
+        'deny'
+      ));
+      impactMetrics.appendChild(metricCard(
+        '% de impacto',
+        formatPercentage(analytics.impact.impact_percentage),
+        'deny'
+      ));
+      impactMetrics.appendChild(metricCard(
+        'Experiencia más afectada',
+        EXPERIENCE_LABELS[
+          analytics.impact.most_affected_experience
+        ] || 'Sin datos'
+      ));
+      impactMetrics.appendChild(metricCard(
+        'Plan más afectado',
+        PLAN_LABELS[analytics.impact.most_affected_plan] || 'Sin datos'
+      ));
+      impact.appendChild(impactHeading);
+      impact.appendChild(impactMetrics);
+
+      Object.keys(EXPERIENCE_LABELS).forEach(function (key) {
+        var counts = analytics.by_experience[key];
+        experienceBlock.appendChild(analyticsRow(
+          EXPERIENCE_LABELS[key],
+          [counts.total, counts.allow, counts.deny]
+        ));
+      });
+
+      Object.keys(PLAN_LABELS).forEach(function (key) {
+        var counts = analytics.by_plan[key];
+        planBlock.appendChild(analyticsRow(
+          PLAN_LABELS[key],
+          [counts.total, counts.allow, counts.deny]
+        ));
+      });
+
+      if (analytics.denial_reasons.length) {
+        analytics.denial_reasons.forEach(function (item) {
+          reasonsBlock.appendChild(analyticsRow(
+            item.reason,
+            [item.count, formatPercentage(item.percentage)]
+          ));
+        });
+      } else {
+        reasonsBlock.appendChild(analyticsRow(
+          'Sin denegaciones',
+          [0, '0%']
+        ));
+      }
+
+      if (analytics.top_modes.length) {
+        analytics.top_modes.forEach(function (item) {
+          modesBlock.appendChild(analyticsRow(
+            item.mode,
+            [item.frequency, item.allow, item.deny]
+          ));
+        });
+      } else {
+        modesBlock.appendChild(analyticsRow('Sin eventos', [0, 0, 0]));
+      }
+
+      tables.className = 'analytics-tables';
+      tables.appendChild(experienceBlock);
+      tables.appendChild(planBlock);
+      tables.appendChild(reasonsBlock);
+      tables.appendChild(modesBlock);
+      analyticsRoot.appendChild(overview);
+      analyticsRoot.appendChild(impact);
+      analyticsRoot.appendChild(tables);
+    }
+
+    function renderAudit(events) {
+      auditList.replaceChildren();
+      var displayedEvents = events.slice().reverse();
+
+      if (!displayedEvents.length) {
         var empty = documentRef.createElement('p');
         empty.className = 'empty';
         empty.textContent = 'Todavía no hay eventos de auditoría.';
@@ -194,7 +406,7 @@
         return;
       }
 
-      events.forEach(function (event) {
+      displayedEvents.forEach(function (event) {
         var row = documentRef.createElement('article');
         var request = event.request || {};
         var user = event.user || {};
@@ -232,6 +444,12 @@
         row.appendChild(auditCell('enforcement', event.enforcement));
         auditList.appendChild(row);
       });
+    }
+
+    function renderAuditDashboard() {
+      var events = readAuditEvents(storage);
+      renderAnalytics(events);
+      renderAudit(events);
     }
 
     function startEdit(userId) {
@@ -313,7 +531,7 @@
       }
     });
 
-    refreshAudit.addEventListener('click', renderAudit);
+    refreshAudit.addEventListener('click', renderAuditDashboard);
 
     auth.resolve().then(function (snapshot) {
       var allowed = isAdminSession(snapshot);
@@ -325,14 +543,15 @@
       currentAdmin.textContent = snapshot.identity.display_name + ' · Admin';
       resetForm();
       renderUsers();
-      renderAudit();
+      renderAuditDashboard();
     });
 
     return {
       auth: auth,
       store: store,
       userStore: userStore,
-      renderAudit: renderAudit,
+      renderAnalytics: renderAnalytics,
+      renderAudit: renderAuditDashboard,
       renderUsers: renderUsers,
     };
   }
@@ -347,6 +566,7 @@
   }
 
   return {
+    buildAccessAnalytics: accessAnalytics.buildAccessAnalytics,
     initializeAdminPage: initializeAdminPage,
     isAdminSession: isAdminSession,
     readAuditEvents: readAuditEvents,

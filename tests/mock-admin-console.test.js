@@ -11,6 +11,7 @@ const {
   createSessionStore,
 } = require('../shared/session-store.js');
 const {
+  buildAccessAnalytics,
   isAdminSession,
   readAuditEvents,
 } = require('../admin/admin.js');
@@ -40,6 +41,36 @@ function createStore(storage = createMemoryStorage()) {
       storage,
       now: () => FIXED_NOW,
     }),
+  };
+}
+
+function auditEvent({
+  experience,
+  mode,
+  plan = null,
+  accessState = 'active_plan',
+  allow = true,
+  reason = null,
+}) {
+  return {
+    schema_version: 'access_audit_v1',
+    timestamp: '2026-06-11T20:00:00Z',
+    enforcement: 'shadow_only',
+    user: {
+      display_name: plan || 'anonymous_visitor',
+      plan,
+      access_state: accessState,
+    },
+    request: {
+      route: `/${experience}/`,
+      experience,
+      mode,
+    },
+    decision: {
+      would_allow: allow,
+      would_deny: !allow,
+      denial_reason: reason,
+    },
   };
 }
 
@@ -202,6 +233,178 @@ test('admin console reads access audit without changing storage', () => {
   );
 });
 
+test('access analytics summarizes allow and deny decisions', () => {
+  const analytics = buildAccessAnalytics([
+    auditEvent({
+      experience: 'diagnostic_sba',
+      mode: 'sba_quick_drill',
+      allow: true,
+    }),
+    auditEvent({
+      experience: 'adaptive_session',
+      mode: 'adaptive_standard',
+      plan: 'premium',
+      allow: false,
+      reason: 'full_access_required',
+    }),
+    auditEvent({
+      experience: 'full_simulation',
+      mode: 'full_simulation',
+      plan: 'demo',
+      allow: false,
+      reason: 'full_access_required',
+    }),
+    auditEvent({
+      experience: 'open_response_lab',
+      mode: 'open_response_standard',
+      plan: 'premium',
+      allow: true,
+    }),
+  ]);
+
+  assert.deepEqual(analytics.summary, {
+    total: 4,
+    allow: 2,
+    deny: 2,
+    allow_percentage: 50,
+    deny_percentage: 50,
+  });
+  assert.deepEqual(analytics.by_experience.diagnostic_sba, {
+    total: 1,
+    allow: 1,
+    deny: 0,
+  });
+  assert.deepEqual(analytics.by_experience.full_simulation, {
+    total: 1,
+    allow: 0,
+    deny: 1,
+  });
+  assert.deepEqual(analytics.by_plan.premium, {
+    total: 2,
+    allow: 1,
+    deny: 1,
+  });
+  assert.deepEqual(analytics.by_plan.anonymous, {
+    total: 1,
+    allow: 1,
+    deny: 0,
+  });
+});
+
+test('access analytics ranks denial reasons and normalized top modes', () => {
+  const analytics = buildAccessAnalytics([
+    auditEvent({
+      experience: 'diagnostic_sba',
+      mode: 'sba_quick_drill',
+      allow: true,
+    }),
+    auditEvent({
+      experience: 'diagnostic_sba',
+      mode: 'sba_quick_drill',
+      plan: 'demo',
+      allow: true,
+    }),
+    auditEvent({
+      experience: 'adaptive_session',
+      mode: 'adaptive_standard',
+      plan: 'premium',
+      allow: false,
+      reason: 'full_access_required',
+    }),
+    auditEvent({
+      experience: 'full_simulation',
+      mode: 'full_simulation',
+      plan: 'demo',
+      allow: false,
+      reason: 'full_access_required',
+    }),
+    auditEvent({
+      experience: 'open_response_lab',
+      mode: 'open_response_standard',
+      plan: 'demo',
+      allow: false,
+      reason: 'premium_required',
+    }),
+  ]);
+
+  assert.deepEqual(analytics.denial_reasons, [
+    {
+      reason: 'full_access_required',
+      count: 2,
+      percentage: 66.7,
+    },
+    {
+      reason: 'premium_required',
+      count: 1,
+      percentage: 33.3,
+    },
+  ]);
+  assert.deepEqual(analytics.top_modes[0], {
+    mode: 'quick_drill',
+    canonical_mode: 'sba_quick_drill',
+    frequency: 2,
+    allow: 2,
+    deny: 0,
+  });
+});
+
+test('access analytics estimates gate impact from denied actions', () => {
+  const analytics = buildAccessAnalytics([
+    auditEvent({
+      experience: 'adaptive_session',
+      mode: 'adaptive_standard',
+      plan: 'premium',
+      allow: false,
+      reason: 'full_access_required',
+    }),
+    auditEvent({
+      experience: 'adaptive_session',
+      mode: 'sat_mock',
+      plan: 'premium',
+      allow: false,
+      reason: 'full_access_required',
+    }),
+    auditEvent({
+      experience: 'full_simulation',
+      mode: 'full_simulation',
+      plan: 'demo',
+      allow: false,
+      reason: 'full_access_required',
+    }),
+    auditEvent({
+      experience: 'diagnostic_sba',
+      mode: 'sba_standard',
+      plan: 'demo',
+      allow: true,
+    }),
+  ]);
+
+  assert.deepEqual(analytics.impact, {
+    allowed_actions: 1,
+    denied_actions: 3,
+    impact_percentage: 75,
+    most_affected_experience: 'adaptive_session',
+    most_affected_plan: 'premium',
+  });
+});
+
+test('access analytics returns stable zero values for empty audit data', () => {
+  const analytics = buildAccessAnalytics([]);
+
+  assert.deepEqual(analytics.summary, {
+    total: 0,
+    allow: 0,
+    deny: 0,
+    allow_percentage: 0,
+    deny_percentage: 0,
+  });
+  assert.equal(analytics.denial_reasons.length, 0);
+  assert.equal(analytics.top_modes.length, 0);
+  assert.equal(analytics.impact.impact_percentage, 0);
+  assert.equal(analytics.impact.most_affected_experience, null);
+  assert.equal(analytics.impact.most_affected_plan, null);
+});
+
 test('admin route and login declare mock user and audit integrations', () => {
   const adminHtml = fs.readFileSync(
     path.join(__dirname, '..', 'admin', 'index.html'),
@@ -216,6 +419,8 @@ test('admin route and login declare mock user and audit integrations', () => {
   assert.match(adminHtml, /No es seguridad real/);
   assert.match(adminHtml, /Solo para prototipo/);
   assert.match(adminHtml, /wset_access_audit_v1/);
+  assert.match(adminHtml, /Access Analytics/);
+  assert.match(adminHtml, /data-access-analytics/);
   assert.match(adminHtml, /data-admin-console/);
   assert.match(adminHtml, /data-admin-denied/);
   assert.match(adminHtml, /\.\.\/shared\/mock-user-store\.js/);
