@@ -706,6 +706,11 @@ html, body {
 .global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
 .global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
+<script src="../shared/session-store.js"></script>
+<script src="../shared/auth-providers/mock-auth-provider.js"></script>
+<script src="../shared/auth-provider.js"></script>
+<script src="../shared/access-control.js"></script>
+<script src="../shared/access-audit.js"></script>
 <script src="session_bank.js"></script>
 <script src="coach_data.js"></script>
 <script src="learner_intelligence.js"></script>
@@ -1379,6 +1384,20 @@ function buildSAT(mode){
 let _satTmr=null, _satSec=0;
 
 function startAdp(mode){
+  try {
+    window.WSETAccess.audit.observeAttempt({
+      route: '/adaptive-session/',
+      experience: 'adaptive_session',
+      mode: {
+        express_10: 'adaptive_express',
+        standard_25: 'adaptive_standard',
+        mock_theory_50: 'adaptive_mock_theory',
+        sat_sprint: 'sat_sprint',
+        sat_practice: 'sat_practice',
+        sat_mock: 'sat_mock',
+      }[mode] || mode,
+    });
+  } catch(_error) {}
   document.getElementById('adp-ol').classList.remove('active');
   if(mode.startsWith('sat_')){
     STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0; STATE.satResponses={};

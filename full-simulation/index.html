@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WSET L3 · Simulacro Completo · PROTOTIPO</title>
+  <script src="../shared/session-store.js"></script>
+  <script src="../shared/auth-providers/mock-auth-provider.js"></script>
+  <script src="../shared/auth-provider.js"></script>
+  <script src="../shared/access-control.js"></script>
+  <script src="../shared/access-audit.js"></script>
   <script src="../adaptive-session/session_bank.js"></script>
   <script src="../open-response-lab/lab_payload.js"></script>
   <script src="../adaptive-session/coach_data.js"></script>
@@ -402,6 +407,13 @@ function loadSATItems(){
 
 /* ── SIM LIFECYCLE ── */
 function startSim(){
+  try {
+    window.WSETAccess.audit.observeAttempt({
+      route: '/full-simulation/',
+      experience: 'full_simulation',
+      mode: 'full_simulation',
+    });
+  } catch(_error) {}
   STATE.sba.items   = loadSBAItems();
   STATE.or.items    = loadORItems();
   STATE.sat.items   = loadSATItems();

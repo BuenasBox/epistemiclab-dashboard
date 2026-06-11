@@ -315,6 +315,11 @@ ul { margin: 0; padding-left: 19px; }
   </aside>
 </div>
 
+<script src="../shared/session-store.js"></script>
+<script src="../shared/auth-providers/mock-auth-provider.js"></script>
+<script src="../shared/auth-provider.js"></script>
+<script src="../shared/access-control.js"></script>
+<script src="../shared/access-audit.js"></script>
 <script src="./lab_payload.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
@@ -393,6 +398,18 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function startSession(name) {
+    try {
+      window.WSETAccess.audit.observeAttempt({
+        route: "/open-response-lab/",
+        experience: "open_response_lab",
+        mode: {
+          short_practice: "open_response_short",
+          standard_practice: "open_response_standard",
+          extended_practice: "open_response_extended",
+          mock_theory_2: "open_response_mock_theory"
+        }[name] || name
+      });
+    } catch (_error) {}
     state.sessionName = validSessionName(name);
     state.index = 0;
     state.answers = {};

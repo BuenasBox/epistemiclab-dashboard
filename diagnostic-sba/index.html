@@ -1025,6 +1025,11 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 .global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
 .global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
+<script src="../shared/session-store.js"></script>
+<script src="../shared/auth-providers/mock-auth-provider.js"></script>
+<script src="../shared/auth-provider.js"></script>
+<script src="../shared/access-control.js"></script>
+<script src="../shared/access-audit.js"></script>
 <script src="preguntas_data.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
@@ -1322,6 +1327,18 @@ function loadMode(mode){
   sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
 }
 function startMode(mode){
+  try {
+    window.WSETAccess.audit.observeAttempt({
+      route: '/diagnostic-sba/',
+      experience: 'diagnostic_sba',
+      mode: {
+        quick_drill: 'sba_quick_drill',
+        express: 'sba_express',
+        standard: 'sba_standard',
+        mock_theory_1: 'sba_mock_theory',
+      }[mode] || mode,
+    });
+  } catch(_error) {}
   loadMode(mode);
   document.getElementById('mode-overlay').classList.remove('active');
   STATE.stage='prepare'; STATE.questionIndex=0;
