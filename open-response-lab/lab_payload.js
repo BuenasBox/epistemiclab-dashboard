@@ -11,7 +11,6 @@ window.OPEN_RESPONSE_LAB_PAYLOAD = {
   },
   "sessions": {
     "short_practice": {
-      "label": "Práctica corta · 1",
       "session_size": 1,
       "item_ids": [
         "open_response_798"
@@ -21,7 +20,6 @@ window.OPEN_RESPONSE_LAB_PAYLOAD = {
       ]
     },
     "standard_practice": {
-      "label": "Práctica estándar · 2",
       "session_size": 2,
       "item_ids": [
         "open_response_798",
@@ -33,7 +31,6 @@ window.OPEN_RESPONSE_LAB_PAYLOAD = {
       ]
     },
     "extended_practice": {
-      "label": "Práctica extendida · 4",
       "session_size": 4,
       "item_ids": [
         "open_response_798",
@@ -49,7 +46,6 @@ window.OPEN_RESPONSE_LAB_PAYLOAD = {
       ]
     },
     "mock_theory_2": {
-      "label": "Simulacro Teoría Parte 2 · 4",
       "session_size": 4,
       "item_ids": [
         "open_response_798",
@@ -62,8 +58,7 @@ window.OPEN_RESPONSE_LAB_PAYLOAD = {
         "799",
         "800",
         "853"
-      ],
-      "distribution_note": "Aproximación con RA disponibles (RA1+RA5). Distribución oficial: Q1/Q2=RA1+RA2, Q3=RA1+RA2+RA5, Q4=RA1+RA3+RA4+RA5."
+      ]
     }
   },
   "items": [
