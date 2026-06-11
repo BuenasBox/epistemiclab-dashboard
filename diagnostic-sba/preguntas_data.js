@@ -1,6 +1,6 @@
 window.PREGUNTAS_BANK = {
   "schema_version": "sba_bank_v1",
-  "generated_at": "2026-06-11T18:53:20.240874",
+  "generated_at": "2026-06-11T20:21:21.570772",
   "total_items": 578,
   "ra_distribution": {
     "RA1": 225,
@@ -4623,6 +4623,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Cuando una vid produce menos racimos —por las condiciones del sitio, la variedad o técnicas como la vendimia verde— cada baya recibe una mayor proporción de los recursos de la planta.",
+        "efecto": "Los vinos de vides de bajo rendimiento suelen mostrar mayor intensidad aromática, más concentración de sabor, color más pronunciado en tintos y taninos más estructurados.",
+        "mecanismo": "Con menos racimos compitiendo por la producción fotosintética de la vid, cada baya acumula más azúcar, compuestos de sabor y componentes estructurales como antocianos y taninos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Rendimiento por hectárea». La clave está en el bajo rendimiento y la concentración de la uva: Con menos racimos compitiendo por la producción fotosintética de la vid, cada baya acumula más azúcar, compuestos de sabor y componentes estructurales como antocianos y taninos. Por eso, los vinos de vides de bajo rendimiento suelen mostrar mayor intensidad aromática, más concentración de sabor, color más pronunciado en tintos y taninos más estructurados.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Rendimiento por hectárea» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del bajo rendimiento y la concentración de la uva. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del bajo rendimiento y la concentración de la uva: Cuando una vid produce menos racimos —por las condiciones del sitio, la variedad o técnicas como la vendimia verde— cada baya recibe una mayor proporción de los recursos de la planta. → Con menos racimos compitiendo por la producción fotosintética de la vid, cada baya acumula más azúcar, compuestos de sabor y componentes estructurales como antocianos y taninos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Rendimiento por hectárea» corresponde al bajo rendimiento y la concentración de la uva. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas",
+          "Evitar la extracción de taninos verdes",
+          "Rendimiento por hectárea"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al bajo rendimiento y la concentración de la uva?",
+        "remediation_signal": "Revisa la cadena causal del bajo rendimiento y la concentración de la uva"
       }
     },
     {
@@ -5708,6 +5730,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El estrés hídrico leve ocurre cuando la vid dispone de un acceso al agua limitado pero no críticamente escaso durante la maduración, a menudo en suelos de buen drenaje o bajo riego controlado (por goteo) en climas secos.",
+        "efecto": "El estrés hídrico leve tiende a producir bayas más pequeñas con mayor concentración de sabor, color y tanino y mayor potencial de calidad; el riego excesivo o la lluvia los diluyen y pueden reducir la calidad.",
+        "mecanismo": "El agua limitada hace que la vid frene el crecimiento de brotes y follaje y derive recursos a las bayas; el tamaño de la baya se mantiene pequeño, aumentando la proporción de piel respecto al jugo, mientras se concentran azúcar, antocianos y compuestos de sabor. Un estrés severo, en cambio, detiene la maduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Un nivel moderado de estrés hídrico puede contribuir a concentrar los compuestos de la baya.». La clave está en el estrés hídrico leve y la concentración de la uva: El agua limitada hace que la vid frene el crecimiento de brotes y follaje y derive recursos a las bayas; el tamaño de la baya se mantiene pequeño, aumentando la proporción de piel respecto al jugo, mientras se concentran azúcar, antocianos y compuestos de sabor. Un estrés severo, en cambio, detiene la maduración. Por eso, el estrés hídrico leve tiende a producir bayas más pequeñas con mayor concentración de sabor, color y tanino y mayor potencial de calidad; el riego excesivo o la lluvia los diluyen y pueden reducir la calidad.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Un nivel moderado de estrés hídrico puede contribuir a concentrar los compuestos de la baya.» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del estrés hídrico leve y la concentración de la uva. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del estrés hídrico leve y la concentración de la uva: El estrés hídrico leve ocurre cuando la vid dispone de un acceso al agua limitado pero no críticamente escaso durante la maduración, a menudo en suelos de buen drenaje o bajo riego controlado (por goteo) en climas secos. → El agua limitada hace que la vid frene el crecimiento de brotes y follaje y derive recursos a las bayas; el tamaño de la baya se mantiene pequeño, aumentando la proporción de piel respecto al jugo, mientras se concentran azúcar, antocianos y compuestos de sabor. Un estrés severo, en cambio, detiene la maduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Un nivel moderado de estrés hídrico puede contribuir a concentrar los compuestos de la baya.» corresponde al estrés hídrico leve y la concentración de la uva. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Un nivel moderado de estrés hídrico puede contribuir a concentrar los compuestos de la baya.",
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas",
+          "Evitar la extracción de taninos verdes"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al estrés hídrico leve y la concentración de la uva?",
+        "remediation_signal": "Revisa la cadena causal del estrés hídrico leve y la concentración de la uva"
       }
     },
     {
@@ -9993,6 +10037,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico.",
+        "efecto": "Los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme.",
+        "mecanismo": "El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Alta oscilación térmica y concentración». La clave está en la amplitud térmica entre el día y la noche: El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. Por eso, los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Alta oscilación térmica y concentración» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la amplitud térmica entre el día y la noche. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la amplitud térmica entre el día y la noche: Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico. → El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Alta oscilación térmica y concentración» corresponde a la amplitud térmica entre el día y la noche. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas",
+          "Evitar la extracción de taninos verdes",
+          "Alta oscilación térmica y concentración"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la amplitud térmica entre el día y la noche?",
+        "remediation_signal": "Revisa la cadena causal de la amplitud térmica entre el día y la noche"
       }
     },
     {
