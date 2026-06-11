@@ -5,6 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const {
+  createManagedUserSource,
   createMockProfileSource,
   getMockProfiles,
 } = require('../login/login.js');
@@ -31,6 +32,27 @@ test('mock login exposes the five Spanish profile choices', () => {
 
 test('visitor profile represents logout and does not create source data', () => {
   assert.equal(createMockProfileSource('visitor', FIXED_NOW), null);
+});
+
+test('managed login delegates session source creation to mock user store', () => {
+  const calls = [];
+  const source = {
+    identity: {
+      user_id: 'mock_test_user',
+    },
+  };
+  const userStore = {
+    createSessionSource(userId) {
+      calls.push(userId);
+      return source;
+    },
+  };
+
+  assert.equal(
+    createManagedUserSource('mock_test_user', userStore),
+    source,
+  );
+  assert.deepEqual(calls, ['mock_test_user']);
 });
 
 test('demo and premium profiles receive active 30 day plans', () => {
@@ -80,6 +102,7 @@ test('login route loads shared auth scripts before the page controller', () => {
     '../shared/session-store.js',
     '../shared/auth-providers/mock-auth-provider.js',
     '../shared/auth-provider.js',
+    '../shared/mock-user-store.js',
     './login.js',
   ];
   const positions = expectedScripts.map((source) => html.indexOf(source));
@@ -88,6 +111,8 @@ test('login route loads shared auth scripts before the page controller', () => {
   assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
   assert.match(html, /Selecciona un perfil de prueba/);
   assert.match(html, /Cerrar sesión mock/);
+  assert.match(html, /Usuarios administrados/);
+  assert.match(html, /data-managed-users/);
 });
 
 test('login route declares responsive and accessible interaction safeguards', () => {

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Admin Mock Local · EpistemicLab</title>
+  <link rel="stylesheet" href="./admin.css">
+  <script src="../shared/session-store.js"></script>
+  <script src="../shared/auth-providers/mock-auth-provider.js"></script>
+  <script src="../shared/auth-provider.js"></script>
+  <script src="../shared/mock-user-store.js"></script>
+  <script src="./admin.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <strong>EpistemicLab</strong>
+        <span>Administración local de prototipo</span>
+      </div>
+      <nav class="top-links" aria-label="Navegación administrativa">
+        <a href="/">Home</a>
+        <a href="/login/">Cambiar sesión</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Admin mock local</p>
+        <h1>Usuarios y auditoría</h1>
+        <p class="lead">
+          Gestiona identidades locales de prueba y revisa decisiones hipotéticas
+          del modo sombra.
+        </p>
+      </div>
+      <div class="warning">
+        No es seguridad real · Solo para prototipo
+      </div>
+    </section>
+
+    <section class="denied" data-admin-denied hidden>
+      <h2>Sesión admin requerida</h2>
+      <p>
+        Esta protección es únicamente visual. Inicia una sesión mock con rol
+        Admin para mostrar la consola local.
+      </p>
+      <a class="button button--primary" href="/login/">Ir al login mock</a>
+    </section>
+
+    <div class="dashboard" data-admin-console hidden>
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <h2>Usuarios mock</h2>
+            <p>Persistencia separada: `wset_mock_users_v1`.</p>
+          </div>
+          <span class="badge" data-current-admin>Admin</span>
+        </div>
+
+        <div class="workspace">
+          <form class="user-form" data-user-form>
+            <input type="hidden" name="user_id">
+            <label class="field field--wide">
+              <span>Nombre visible</span>
+              <input name="display_name" autocomplete="off" required>
+            </label>
+            <label class="field field--wide">
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="off" required>
+            </label>
+            <label class="field">
+              <span>Rol</span>
+              <select name="role">
+                <option value="student">student</option>
+                <option value="admin">admin</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Plan</span>
+              <select name="plan">
+                <option value="demo">demo</option>
+                <option value="premium">premium</option>
+                <option value="full_access">full_access</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Estado</span>
+              <select name="status">
+                <option value="active">active</option>
+                <option value="inactive">inactive</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Inicio de acceso</span>
+              <input name="access_start_date" type="datetime-local" required>
+            </label>
+            <label class="field field--wide">
+              <span>Fin de acceso</span>
+              <input name="access_end_date" type="datetime-local" required>
+            </label>
+            <div class="form-actions">
+              <button class="button button--primary" type="submit" data-save-user>
+                Crear usuario
+              </button>
+              <button class="button" type="button" data-cancel-edit hidden>
+                Cancelar edición
+              </button>
+            </div>
+            <p class="feedback" data-admin-feedback role="status"></p>
+          </form>
+
+          <div class="users-list" data-users-list></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <h2>Auditoría de acceso</h2>
+            <p>Lectura local de `wset_access_audit_v1` · últimos eventos.</p>
+          </div>
+          <button class="button button--small" type="button" data-refresh-audit>
+            Actualizar
+          </button>
+        </div>
+        <div class="audit-list" data-audit-list></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -125,6 +125,13 @@
     };
   }
 
+  function createManagedUserSource(userId, userStore) {
+    if (!userStore || typeof userStore.createSessionSource !== 'function') {
+      throw new TypeError('userStore must implement createSessionSource');
+    }
+    return userStore.createSessionSource(userId);
+  }
+
   function formatDate(value) {
     if (!value) return 'No aplica';
     return new Intl.DateTimeFormat('es', {
@@ -159,8 +166,14 @@
       provider: mockProvider,
       sessionStore: store,
     });
+    var userStore = access.MockUserStore
+      ? access.MockUserStore.createMockUserStore({
+        storage: options.storage || root.localStorage,
+      })
+      : null;
 
     var profileGrid = documentRef.querySelector('[data-profile-grid]');
+    var managedUsers = documentRef.querySelector('[data-managed-users]');
     var statusPanel = documentRef.querySelector('[data-session-status]');
     var snapshotPanel = documentRef.querySelector('[data-session-snapshot]');
     var logoutButton = documentRef.querySelector('[data-logout]');
@@ -173,7 +186,10 @@
 
     function render(snapshot) {
       var authenticated = snapshot.authentication.status === 'authenticated';
-      var activeProfile = authenticated
+      var managedUser = authenticated && userStore
+        ? userStore.getUser(snapshot.identity.user_id)
+        : null;
+      var activeProfile = authenticated && !managedUser
         ? snapshot.identity.role === 'admin'
           ? 'admin'
           : snapshot.plan.code
@@ -184,6 +200,15 @@
         button.classList.toggle('is-selected', selected);
         button.setAttribute('aria-pressed', selected ? 'true' : 'false');
       });
+
+      if (managedUsers) {
+        managedUsers.querySelectorAll('[data-user-id]').forEach(function (button) {
+          var selected = authenticated
+            && button.dataset.userId === snapshot.identity.user_id;
+          button.classList.toggle('is-selected', selected);
+          button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
+      }
 
       if (authenticated) {
         statusPanel.innerHTML =
@@ -201,6 +226,45 @@
 
       logoutButton.disabled = !authenticated;
       snapshotPanel.textContent = JSON.stringify(snapshot, null, 2);
+    }
+
+    function renderManagedUsers() {
+      if (!managedUsers || !userStore) return;
+
+      managedUsers.replaceChildren();
+      var users = userStore.listUsers();
+
+      if (!users.length) {
+        var empty = documentRef.createElement('p');
+        empty.className = 'managed-empty';
+        empty.textContent = 'No hay usuarios mock administrados.';
+        managedUsers.appendChild(empty);
+        return;
+      }
+
+      users.forEach(function (user) {
+        var button = documentRef.createElement('button');
+        var identity = documentRef.createElement('span');
+        var name = documentRef.createElement('strong');
+        var details = documentRef.createElement('span');
+        var state = documentRef.createElement('span');
+
+        button.className = 'managed-user';
+        button.type = 'button';
+        button.dataset.userId = user.user_id;
+        button.setAttribute('aria-pressed', 'false');
+        name.textContent = user.display_name;
+        details.textContent = user.email + ' · ' + user.role + ' · ' + user.plan;
+        state.className = 'managed-user__state';
+        state.dataset.status = user.status;
+        state.textContent = user.status === 'active' ? 'Activo' : 'Inactivo';
+
+        identity.appendChild(name);
+        identity.appendChild(details);
+        button.appendChild(identity);
+        button.appendChild(state);
+        managedUsers.appendChild(button);
+      });
     }
 
     function selectProfile(profileId) {
@@ -221,6 +285,17 @@
       });
     }
 
+    function selectManagedUser(userId) {
+      var source = createManagedUserSource(userId, userStore);
+      return auth.signIn(source).then(function (snapshot) {
+        setFeedback(
+          'Sesión iniciada como ' + snapshot.identity.display_name + '.',
+          'success',
+        );
+        return snapshot;
+      });
+    }
+
     profileGrid.addEventListener('click', function (event) {
       var button = event.target.closest('[data-profile]');
       if (!button) return;
@@ -230,6 +305,18 @@
         setFeedback('No fue posible actualizar la sesión mock.', 'error');
       });
     });
+
+    if (managedUsers) {
+      managedUsers.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-user-id]');
+        if (!button) return;
+
+        setFeedback('Actualizando sesión mock...', 'neutral');
+        selectManagedUser(button.dataset.userId).catch(function () {
+          setFeedback('No fue posible iniciar con este usuario mock.', 'error');
+        });
+      });
+    }
 
     logoutButton.addEventListener('click', function () {
       setFeedback('Cerrando sesión mock...', 'neutral');
@@ -242,6 +329,7 @@
         });
     });
 
+    renderManagedUsers();
     store.subscribe(render);
     auth.resolve()
       .then(function (snapshot) {
@@ -257,6 +345,8 @@
     return {
       auth: auth,
       store: store,
+      userStore: userStore,
+      selectManagedUser: selectManagedUser,
       selectProfile: selectProfile,
     };
   }
@@ -271,6 +361,7 @@
   }
 
   return {
+    createManagedUserSource: createManagedUserSource,
     createMockProfileSource: createMockProfileSource,
     getMockProfiles: getMockProfiles,
     initializeLoginPage: initializeLoginPage,

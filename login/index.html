@@ -203,6 +203,68 @@
       font-size: 11px;
       overflow-wrap: anywhere;
     }
+    .managed-grid {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+    }
+    .managed-user {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      color: var(--text);
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--raised);
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .managed-user.is-selected {
+      border-color: var(--gold);
+      background: linear-gradient(145deg, rgba(229, 201, 122, .13), var(--raised));
+    }
+    .managed-user strong,
+    .managed-user span {
+      display: block;
+      overflow-wrap: anywhere;
+    }
+    .managed-user strong { font-size: 13px; }
+    .managed-user span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+    .managed-user__state {
+      margin: 0 !important;
+      padding: 4px 7px;
+      color: var(--green) !important;
+      border: 1px solid rgba(93, 211, 158, .25);
+      border-radius: 999px;
+      font-size: 8px !important;
+      text-transform: uppercase;
+    }
+    .managed-user__state[data-status="inactive"] {
+      color: var(--red) !important;
+      border-color: rgba(238, 123, 123, .28);
+    }
+    .managed-empty {
+      margin: 0;
+      padding: 18px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .admin-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 12px;
+      color: var(--cyan);
+      font-size: 11px;
+    }
     .side-panel { width: 100%; position: sticky; top: 20px; }
     .session-status {
       display: flex;
@@ -321,6 +383,9 @@
       .profile-card:first-child { grid-column: auto; }
       .profile-card { min-height: 126px; padding: 16px; }
       .profile-card strong { margin-top: 10px; }
+      .managed-grid { padding: 12px; }
+      .managed-user { grid-template-columns: 1fr; }
+      .managed-user__state { justify-self: start; }
       .session-status { padding: 16px; }
       .feedback { padding: 14px 16px; }
       .logout { width: calc(100% - 32px); margin: 16px; }
@@ -342,6 +407,7 @@
   <script src="../shared/session-store.js"></script>
   <script src="../shared/auth-providers/mock-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
+  <script src="../shared/mock-user-store.js"></script>
   <script src="./login.js"></script>
 </head>
 <body>
@@ -400,6 +466,12 @@
             <p>Rol administrativo independiente con plan Acceso Completo.</p>
           </button>
         </div>
+        <div class="panel-head">
+          <h2>Usuarios administrados</h2>
+          <p>Cuentas locales creadas desde la consola mock.</p>
+          <a class="admin-link" href="/admin/">Abrir Admin mock local</a>
+        </div>
+        <div class="managed-grid" data-managed-users></div>
       </div>
 
       <aside class="panel side-panel" aria-live="polite">
