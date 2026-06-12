@@ -116,6 +116,10 @@ test('only full simulation declares an active access gate', () => {
   assert.match(fullSimulation, /Ir a Login/);
   assert.match(fullSimulation, /Ver Planes/);
   assert.match(fullSimulation, /Volver al Inicio/);
+  assert.match(
+    fullSimulation,
+    /auth-providers\/supabase-auth-provider\.js/,
+  );
 
   [
     'diagnostic-sba/index.html',

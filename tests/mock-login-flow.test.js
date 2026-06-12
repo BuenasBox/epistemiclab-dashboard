@@ -95,11 +95,12 @@ test('every registered mock profile normalizes to access_session_v1', () => {
   });
 });
 
-test('login route loads shared auth scripts before the page controller', () => {
+test('login route loads Supabase and mock fallback scripts before the controller', () => {
   const htmlPath = path.join(__dirname, '..', 'login', 'index.html');
   const html = fs.readFileSync(htmlPath, 'utf8');
   const expectedScripts = [
     '../shared/session-store.js',
+    '../shared/auth-providers/supabase-auth-provider.js',
     '../shared/auth-providers/mock-auth-provider.js',
     '../shared/auth-provider.js',
     '../shared/mock-user-store.js',
@@ -109,10 +110,11 @@ test('login route loads shared auth scripts before the page controller', () => {
 
   positions.forEach((position) => assert.notEqual(position, -1));
   assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
-  assert.match(html, /Selecciona un perfil de prueba/);
-  assert.match(html, /Cerrar sesión mock/);
-  assert.match(html, /Usuarios administrados/);
-  assert.match(html, /data-managed-users/);
+  assert.match(html, /Crear cuenta/);
+  assert.match(html, /Iniciar sesión/);
+  assert.match(html, /Recuperar contraseña/);
+  assert.match(html, /data-auth-form/);
+  assert.match(html, /data-register-form/);
 });
 
 test('login route declares responsive and accessible interaction safeguards', () => {

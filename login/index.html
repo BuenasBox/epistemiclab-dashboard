@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>Acceso Mock · EpistemicLab</title>
+  <title>Acceso · EpistemicLab</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html {
@@ -38,6 +38,7 @@
     }
     a { color: inherit; }
     button { font: inherit; touch-action: manipulation; }
+    input { font: inherit; }
     a:focus-visible,
     button:focus-visible,
     summary:focus-visible {
@@ -165,6 +166,81 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       padding: 18px;
+    }
+    .auth-stack {
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+    }
+    .auth-block {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--raised);
+    }
+    .auth-block h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .auth-block p {
+      margin: 7px 0 16px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .auth-form {
+      display: grid;
+      gap: 12px;
+    }
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+    .field span {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .field input {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 12px;
+      color: var(--text);
+      border: 1px solid #465468;
+      border-radius: 7px;
+      background: #0c1016;
+    }
+    .field input:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 2px;
+    }
+    .auth-submit {
+      min-height: 48px;
+      padding: 11px 14px;
+      color: #090c11;
+      font-weight: 800;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      background: var(--gold);
+      cursor: pointer;
+    }
+    .auth-submit:disabled { opacity: .55; cursor: wait; }
+    .recovery-toggle {
+      min-height: 44px;
+      padding: 0;
+      color: var(--cyan);
+      text-align: left;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .fallback {
+      border-top: 1px solid var(--line);
+    }
+    .fallback > summary {
+      color: var(--gold);
     }
     .profile-card {
       min-height: 146px;
@@ -380,6 +456,8 @@
       }
       .panel-head { padding: 17px 16px; }
       .profile-grid { grid-template-columns: 1fr; gap: 10px; padding: 12px; }
+      .auth-stack { padding: 12px; }
+      .auth-block { padding: 16px; }
       .profile-card:first-child { grid-column: auto; }
       .profile-card { min-height: 126px; padding: 16px; }
       .profile-card strong { margin-top: 10px; }
@@ -405,6 +483,7 @@
     }
   </style>
   <script src="../shared/session-store.js"></script>
+  <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
   <script src="../shared/auth-providers/mock-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
   <script src="../shared/mock-user-store.js"></script>
@@ -424,11 +503,11 @@
     </header>
 
     <section class="hero">
-      <p class="eyebrow">Autenticación mock · fase de integración</p>
-      <h1>Selecciona un perfil de prueba</h1>
+      <p class="eyebrow">Cuenta EpistemicLab</p>
+      <h1>Continúa tu aprendizaje</h1>
       <p class="lead">
-        Esta pantalla simula identidad, rol, plan y vigencia en este navegador.
-        No activa bloqueos ni modifica las experiencias actuales.
+        Inicia sesión o crea una cuenta para conservar tu acceso entre
+        dispositivos. Toda orientación sigue siendo exclusivamente formativa.
       </p>
       <div class="notice">Solo entrenamiento · sin autoridad examinadora</div>
     </section>
@@ -436,42 +515,104 @@
     <section class="workspace">
       <div class="panel">
         <div class="panel-head">
-          <h2>Perfiles disponibles</h2>
-          <p>La selección se guarda como `wset_access_session_mock_v1`.</p>
+          <h2>Acceso real</h2>
+          <p>Identidad y sesión persistente mediante Supabase Auth.</p>
         </div>
-        <div class="profile-grid" data-profile-grid>
-          <button class="profile-card" type="button" data-profile="visitor" aria-pressed="false">
-            <span class="profile-card__eyebrow">Sin sesión</span>
-            <strong>Visitante</strong>
-            <p>Explora sin una cuenta registrada y conserva el progreso local.</p>
-          </button>
-          <button class="profile-card" type="button" data-profile="demo" aria-pressed="false">
-            <span class="profile-card__eyebrow">Prueba de 30 días</span>
-            <strong>Demo</strong>
-            <p>Perfil de estudiante con acceso inicial limitado.</p>
-          </button>
-          <button class="profile-card" type="button" data-profile="premium" aria-pressed="false">
-            <span class="profile-card__eyebrow">Acceso intermedio</span>
-            <strong>Premium</strong>
-            <p>Más práctica y funciones que el plan Demo.</p>
-          </button>
-          <button class="profile-card" type="button" data-profile="full_access" aria-pressed="false">
-            <span class="profile-card__eyebrow">Plan anual</span>
-            <strong>Acceso Completo</strong>
-            <p>Todos los módulos estudiantiles quedan disponibles para futuros gates.</p>
-          </button>
-          <button class="profile-card" type="button" data-profile="admin" aria-pressed="false">
-            <span class="profile-card__eyebrow">Rol técnico</span>
-            <strong>Admin</strong>
-            <p>Rol administrativo independiente con plan Acceso Completo.</p>
-          </button>
+        <div class="auth-stack">
+          <section class="auth-block">
+            <h3>Iniciar sesión</h3>
+            <p>Usa el correo y contraseña de tu cuenta.</p>
+            <form class="auth-form" data-auth-form>
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input name="email" type="email" autocomplete="email" required>
+              </label>
+              <label class="field">
+                <span>Contraseña</span>
+                <input name="password" type="password" autocomplete="current-password" minlength="8" required>
+              </label>
+              <button class="auth-submit" type="submit">Iniciar sesión</button>
+            </form>
+            <button class="recovery-toggle" type="button" data-recovery-toggle>
+              Recuperar contraseña
+            </button>
+            <form class="auth-form" data-recovery-form hidden>
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input name="email" type="email" autocomplete="email" required>
+              </label>
+              <button class="auth-submit" type="submit">Enviar enlace de recuperación</button>
+            </form>
+          </section>
+
+          <section class="auth-block">
+            <h3>Crear cuenta</h3>
+            <p>Las cuentas nuevas comienzan con un plan Demo de 30 días.</p>
+            <form class="auth-form" data-register-form>
+              <label class="field">
+                <span>Nombre visible</span>
+                <input name="display_name" type="text" autocomplete="name" maxlength="100" required>
+              </label>
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input name="email" type="email" autocomplete="email" required>
+              </label>
+              <label class="field">
+                <span>Contraseña</span>
+                <input name="password" type="password" autocomplete="new-password" minlength="8" required>
+              </label>
+              <button class="auth-submit" type="submit">Crear cuenta</button>
+            </form>
+          </section>
+
+          <section class="auth-block" data-password-update hidden>
+            <h3>Define una nueva contraseña</h3>
+            <p>Completa la recuperación de tu cuenta.</p>
+            <form class="auth-form" data-password-update-form>
+              <label class="field">
+                <span>Nueva contraseña</span>
+                <input name="password" type="password" autocomplete="new-password" minlength="8" required>
+              </label>
+              <button class="auth-submit" type="submit">Actualizar contraseña</button>
+            </form>
+          </section>
         </div>
-        <div class="panel-head">
-          <h2>Usuarios administrados</h2>
-          <p>Cuentas locales creadas desde la consola mock.</p>
-          <a class="admin-link" href="/admin/">Abrir Admin mock local</a>
-        </div>
-        <div class="managed-grid" data-managed-users></div>
+
+        <details class="fallback">
+          <summary>Acceso mock temporal para pruebas locales</summary>
+          <div class="profile-grid" data-profile-grid>
+            <button class="profile-card" type="button" data-profile="visitor" aria-pressed="false">
+              <span class="profile-card__eyebrow">Sin sesión</span>
+              <strong>Visitante</strong>
+              <p>Cierra cualquier sesión mock sin borrar el historial local.</p>
+            </button>
+            <button class="profile-card" type="button" data-profile="demo" aria-pressed="false">
+              <span class="profile-card__eyebrow">Prueba local</span>
+              <strong>Demo</strong>
+              <p>Perfil mock de estudiante.</p>
+            </button>
+            <button class="profile-card" type="button" data-profile="premium" aria-pressed="false">
+              <span class="profile-card__eyebrow">Prueba local</span>
+              <strong>Premium</strong>
+              <p>Perfil mock de acceso intermedio.</p>
+            </button>
+            <button class="profile-card" type="button" data-profile="full_access" aria-pressed="false">
+              <span class="profile-card__eyebrow">Prueba local</span>
+              <strong>Acceso Completo</strong>
+              <p>Perfil mock con acceso total.</p>
+            </button>
+            <button class="profile-card" type="button" data-profile="admin" aria-pressed="false">
+              <span class="profile-card__eyebrow">Prueba local</span>
+              <strong>Admin</strong>
+              <p>Rol administrativo mock.</p>
+            </button>
+          </div>
+          <div class="panel-head">
+            <h2>Usuarios administrados</h2>
+            <a class="admin-link" href="/admin/">Abrir Admin mock local</a>
+          </div>
+          <div class="managed-grid" data-managed-users></div>
+        </details>
       </div>
 
       <aside class="panel side-panel" aria-live="polite">
@@ -483,11 +624,11 @@
           <span class="status-dot status-dot--muted"></span>
           <div>
             <strong>Resolviendo...</strong>
-            <span>Consultando sesión mock local</span>
+            <span>Consultando sesión persistente</span>
           </div>
         </div>
-        <p class="feedback" data-feedback role="status">Preparando sesión mock...</p>
-        <button class="logout" type="button" data-logout disabled>Cerrar sesión mock</button>
+        <p class="feedback" data-feedback role="status">Preparando acceso seguro...</p>
+        <button class="logout" type="button" data-logout disabled>Cerrar sesión</button>
         <details>
           <summary>Ver snapshot técnico</summary>
           <pre data-session-snapshot>{}</pre>
@@ -496,8 +637,8 @@
     </section>
 
     <p class="footnote">
-      El logout elimina únicamente la sesión mock. No borra
-      `wset_learner_history_v1` ni otros datos pedagógicos locales.
+      Cerrar sesión no borra `wset_learner_history_v1` ni otros datos
+      pedagógicos locales.
     </p>
   </main>
 </body>

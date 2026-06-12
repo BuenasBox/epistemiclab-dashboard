@@ -173,7 +173,6 @@
     if (
       !access
       || !access.SessionStore
-      || !access.MockAuthProvider
       || !access.AuthProvider
       || !storage
     ) {
@@ -185,13 +184,42 @@
 
     try {
       var store = access.SessionStore.createSessionStore();
-      var provider = access.MockAuthProvider.createMockAuthProvider({
-        storage: storage,
-      });
-      var auth = access.AuthProvider.createAuthProvider({
-        provider: provider,
-        sessionStore: store,
-      });
+      var mockAuth = access.MockAuthProvider
+        ? access.AuthProvider.createAuthProvider({
+          provider: access.MockAuthProvider.createMockAuthProvider({
+            storage: storage,
+          }),
+          sessionStore: store,
+        })
+        : null;
+      var supabaseAuth = access.SupabaseAuthProvider
+        ? access.AuthProvider.createAuthProvider({
+          provider: access.SupabaseAuthProvider.createSupabaseAuthProvider(),
+          sessionStore: store,
+        })
+        : null;
+      var auth = {
+        resolve: function () {
+          if (!supabaseAuth) {
+            return mockAuth
+              ? mockAuth.resolve()
+              : Promise.resolve(store.clearAuthentication());
+          }
+
+          return supabaseAuth.resolve().then(function (snapshot) {
+            if (
+              snapshot
+              && snapshot.authentication.status === 'authenticated'
+            ) {
+              return snapshot;
+            }
+            return mockAuth
+              ? mockAuth.resolve()
+              : snapshot;
+          });
+        },
+        getSnapshot: store.getSnapshot,
+      };
       var audit = createAccessAudit({
         storage: storage,
         getSnapshot: store.getSnapshot,
@@ -200,6 +228,8 @@
       auth.resolve();
       audit.auth = auth;
       audit.store = store;
+      audit.supabaseAuth = supabaseAuth;
+      audit.mockAuth = mockAuth;
       return audit;
     } catch (error) {
       return createAccessAudit({

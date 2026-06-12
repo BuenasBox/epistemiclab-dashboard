@@ -58,6 +58,16 @@
           .then(applySourceData);
       },
 
+      signUp: function (credentials) {
+        if (typeof provider.signUp !== 'function') {
+          return Promise.reject(
+            new TypeError('provider does not support signUp')
+          );
+        }
+        return provider.signUp(credentials)
+          .then(applySourceData);
+      },
+
       signOut: function () {
         return provider.signOut()
           .then(function () {
@@ -79,6 +89,31 @@
 
       getSnapshot: function () {
         return sessionStore.getSnapshot();
+      },
+
+      requestPasswordReset: function (email, redirectTo) {
+        if (typeof provider.requestPasswordReset !== 'function') {
+          return Promise.reject(
+            new TypeError('provider does not support password recovery')
+          );
+        }
+        return provider.requestPasswordReset(email, redirectTo);
+      },
+
+      updatePassword: function (password) {
+        if (typeof provider.updatePassword !== 'function') {
+          return Promise.reject(
+            new TypeError('provider does not support password updates')
+          );
+        }
+        return provider.updatePassword(password);
+      },
+
+      onAuthStateChange: function (listener) {
+        if (typeof provider.onAuthStateChange !== 'function') {
+          return Promise.resolve(null);
+        }
+        return provider.onAuthStateChange(listener);
       },
     };
   }
