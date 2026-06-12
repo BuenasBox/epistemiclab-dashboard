@@ -118,6 +118,22 @@
     };
   }
 
+  function shouldExposeInternalTools(locationRef) {
+    if (!locationRef) return false;
+
+    var hostname = String(locationRef.hostname || '').toLowerCase();
+    var localHost = (
+      hostname === 'localhost'
+      || hostname === '127.0.0.1'
+      || hostname === '::1'
+      || hostname === '[::1]'
+    );
+    if (!localHost) return false;
+
+    return new URLSearchParams(locationRef.search || '')
+      .get('access_debug') === '1';
+  }
+
   function initializeLoginPage(options) {
     options = options || {};
     var documentRef = options.document || root.document;
@@ -153,6 +169,22 @@
     var recoveryToggle = documentRef.querySelector('[data-recovery-toggle]');
     var passwordUpdate = documentRef.querySelector('[data-password-update]');
     var passwordUpdateForm = documentRef.querySelector('[data-password-update-form]');
+    var internalAccessTools = documentRef.querySelector(
+      '[data-internal-access-tools]'
+    );
+    var internalSessionSnapshot = documentRef.querySelector(
+      '[data-internal-session-snapshot]'
+    );
+    var internalToolsEnabled = shouldExposeInternalTools(
+      options.location || root.location
+    );
+
+    if (internalAccessTools) {
+      internalAccessTools.hidden = !internalToolsEnabled;
+    }
+    if (internalSessionSnapshot) {
+      internalSessionSnapshot.hidden = !internalToolsEnabled;
+    }
 
     function setFeedback(message, kind) {
       feedback.textContent = message;
@@ -192,7 +224,9 @@
       }
 
       logoutButton.disabled = !authenticated;
-      snapshotPanel.textContent = JSON.stringify(snapshot, null, 2);
+      if (internalToolsEnabled) {
+        snapshotPanel.textContent = JSON.stringify(snapshot, null, 2);
+      }
     }
 
     function renderManagedUsers() {
@@ -211,7 +245,9 @@
     function resolveInitialSession() {
       return supabaseAuth.resolve().then(function (snapshot) {
         if (snapshot.authentication.status === 'authenticated') return snapshot;
-        return mockAuth.resolve();
+        return internalToolsEnabled
+          ? mockAuth.resolve()
+          : snapshot;
       });
     }
 
@@ -383,5 +419,6 @@
     createMockProfileSource: createMockProfileSource,
     getMockProfiles: getMockProfiles,
     initializeLoginPage: initializeLoginPage,
+    shouldExposeInternalTools: shouldExposeInternalTools,
   };
 });

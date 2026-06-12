@@ -578,7 +578,7 @@
           </section>
         </div>
 
-        <details class="fallback">
+        <details class="fallback" data-internal-access-tools hidden>
           <summary>Acceso mock temporal para pruebas locales</summary>
           <div class="profile-grid" data-profile-grid>
             <button class="profile-card" type="button" data-profile="visitor" aria-pressed="false">
@@ -629,7 +629,7 @@
         </div>
         <p class="feedback" data-feedback role="status">Preparando acceso seguro...</p>
         <button class="logout" type="button" data-logout disabled>Cerrar sesión</button>
-        <details>
+        <details data-internal-session-snapshot hidden>
           <summary>Ver snapshot técnico</summary>
           <pre data-session-snapshot>{}</pre>
         </details>

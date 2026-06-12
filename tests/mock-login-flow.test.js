@@ -8,6 +8,7 @@ const {
   createManagedUserSource,
   createMockProfileSource,
   getMockProfiles,
+  shouldExposeInternalTools,
 } = require('../login/login.js');
 const {
   createSessionStore,
@@ -147,4 +148,37 @@ test('login controller initializes safely as a classic browser script', () => {
   assert.equal(typeof context.WSETLogin.initializeLoginPage, 'function');
   assert.equal(typeof readyCallback, 'function');
   assert.doesNotThrow(() => readyCallback());
+});
+
+test('technical snapshot and mock access stay hidden in production', () => {
+  const htmlPath = path.join(__dirname, '..', 'login', 'index.html');
+  const html = fs.readFileSync(htmlPath, 'utf8');
+
+  assert.match(
+    html,
+    /<details class="fallback"[^>]*data-internal-access-tools[^>]*hidden/,
+  );
+  assert.match(
+    html,
+    /<details[^>]*data-internal-session-snapshot[^>]*hidden/,
+  );
+  assert.equal(shouldExposeInternalTools({
+    hostname: 'epistemiclab.dpdns.org',
+    search: '?access_debug=1',
+  }), false);
+});
+
+test('internal tools require an explicit debug flag on a local host', () => {
+  assert.equal(shouldExposeInternalTools({
+    hostname: 'localhost',
+    search: '',
+  }), false);
+  assert.equal(shouldExposeInternalTools({
+    hostname: 'localhost',
+    search: '?access_debug=1',
+  }), true);
+  assert.equal(shouldExposeInternalTools({
+    hostname: '127.0.0.1',
+    search: '?access_debug=1',
+  }), true);
 });
