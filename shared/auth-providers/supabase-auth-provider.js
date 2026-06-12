@@ -184,6 +184,8 @@
     return {
       source: 'supabase',
 
+      getClient: getClient,
+
       resolveSessionSource: function () {
         return getClient().then(function (client) {
           return client.auth.getSession()
@@ -273,4 +275,3 @@
     createSupabaseAuthProvider: createSupabaseAuthProvider,
   };
 });
-

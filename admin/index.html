@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>Admin Mock Local · EpistemicLab</title>
+  <title>Admin Supabase · EpistemicLab</title>
   <link rel="stylesheet" href="./admin.css">
   <script src="../shared/session-store.js"></script>
+  <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
   <script src="../shared/auth-providers/mock-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
+  <script src="../shared/supabase-admin-store.js"></script>
   <script src="../shared/mock-user-store.js"></script>
   <script src="./access-analytics.js"></script>
   <script src="./admin.js"></script>
@@ -18,7 +20,7 @@
     <header class="topbar">
       <div class="brand">
         <strong>EpistemicLab</strong>
-        <span>Administración local de prototipo</span>
+        <span>Administración de identidad y acceso</span>
       </div>
       <nav class="top-links" aria-label="Navegación administrativa">
         <a href="/">Home</a>
@@ -28,33 +30,33 @@
 
     <section class="hero">
       <div>
-        <p class="eyebrow">Admin mock local</p>
+        <p class="eyebrow">Admin real con Supabase</p>
         <h1>Usuarios y auditoría</h1>
         <p class="lead">
-          Gestiona identidades locales de prueba y revisa decisiones hipotéticas
-          del modo sombra.
+          Gestiona roles, planes y vigencias reales. La auditoría local continúa
+          disponible como referencia del modo sombra.
         </p>
       </div>
       <div class="warning">
-        No es seguridad real · Solo para prototipo
+        Los cambios afectan permisos reales
       </div>
     </section>
 
     <section class="denied" data-admin-denied hidden>
       <h2>Sesión admin requerida</h2>
       <p>
-        Esta protección es únicamente visual. Inicia una sesión mock con rol
-        Admin para mostrar la consola local.
+        Inicia sesión con una cuenta admin activa. Los estudiantes y las
+        cuentas inactivas no pueden administrar usuarios.
       </p>
-      <a class="button button--primary" href="/login/">Ir al login mock</a>
+      <a class="button button--primary" href="/login/">Ir al login</a>
     </section>
 
     <div class="dashboard" data-admin-console hidden>
       <section class="panel">
         <div class="section-head">
           <div>
-            <h2>Usuarios mock</h2>
-            <p>Persistencia separada: `wset_mock_users_v1`.</p>
+            <h2>Usuarios</h2>
+            <p data-admin-mode>Conectando con Supabase...</p>
           </div>
           <span class="badge" data-current-admin>Admin</span>
         </div>
@@ -102,7 +104,7 @@
             </label>
             <div class="form-actions">
               <button class="button button--primary" type="submit" data-save-user>
-                Crear usuario
+                Selecciona un usuario
               </button>
               <button class="button" type="button" data-cancel-edit hidden>
                 Cancelar edición

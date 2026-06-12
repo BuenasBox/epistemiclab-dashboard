@@ -40,6 +40,12 @@
       && snapshot.authentication.status === 'authenticated'
       && snapshot.identity
       && snapshot.identity.role === 'admin'
+      && snapshot.account
+      && snapshot.account.is_active === true
+      && snapshot.plan
+      && snapshot.plan.status === 'active'
+      && snapshot.effective_permissions
+      && snapshot.effective_permissions.access_state === 'active_plan'
     );
   }
 
@@ -81,13 +87,25 @@
     var mockProvider = access.MockAuthProvider.createMockAuthProvider({
       storage: storage,
     });
-    var auth = access.AuthProvider.createAuthProvider({
+    var mockAuth = access.AuthProvider.createAuthProvider({
       provider: mockProvider,
       sessionStore: store,
     });
-    var userStore = access.MockUserStore.createMockUserStore({
+    var supabaseProvider = access.SupabaseAuthProvider
+      ? access.SupabaseAuthProvider.createSupabaseAuthProvider()
+      : null;
+    var supabaseAuth = supabaseProvider
+      ? access.AuthProvider.createAuthProvider({
+        provider: supabaseProvider,
+        sessionStore: store,
+      })
+      : null;
+    var mockUserStore = access.MockUserStore.createMockUserStore({
       storage: storage,
     });
+    var userStore = mockUserStore;
+    var adminMode = 'mock';
+    var usersCache = [];
 
     var denied = documentRef.querySelector('[data-admin-denied]');
     var consolePanel = documentRef.querySelector('[data-admin-console]');
@@ -100,6 +118,7 @@
     var saveButton = documentRef.querySelector('[data-save-user]');
     var cancelButton = documentRef.querySelector('[data-cancel-edit]');
     var refreshAudit = documentRef.querySelector('[data-refresh-audit]');
+    var adminModeLabel = documentRef.querySelector('[data-admin-mode]');
 
     function setFeedback(message, kind) {
       feedback.textContent = message || '';
@@ -121,7 +140,11 @@
       form.elements.plan.value = 'demo';
       form.elements.status.value = 'active';
       setDefaultDates();
-      saveButton.textContent = 'Crear usuario';
+      form.elements.email.readOnly = adminMode === 'supabase';
+      saveButton.textContent = adminMode === 'supabase'
+        ? 'Selecciona un usuario'
+        : 'Crear usuario';
+      saveButton.disabled = adminMode === 'supabase';
       cancelButton.hidden = true;
       setFeedback('');
     }
@@ -138,54 +161,75 @@
 
     function renderUsers() {
       usersList.replaceChildren();
-      var users = userStore.listUsers();
+      var loading = documentRef.createElement('p');
+      loading.className = 'empty';
+      loading.textContent = 'Cargando usuarios...';
+      usersList.appendChild(loading);
 
-      if (!users.length) {
-        var empty = documentRef.createElement('p');
-        empty.className = 'empty';
-        empty.textContent = 'No hay usuarios mock.';
-        usersList.appendChild(empty);
-        return;
-      }
+      return Promise.resolve(userStore.listUsers()).then(function (users) {
+        usersCache = users;
+        usersList.replaceChildren();
 
-      users.forEach(function (user) {
-        var card = documentRef.createElement('article');
-        var head = documentRef.createElement('div');
-        var name = documentRef.createElement('strong');
-        var state = documentRef.createElement('span');
-        var details = documentRef.createElement('p');
-        var actions = documentRef.createElement('div');
+        if (!users.length) {
+          var empty = documentRef.createElement('p');
+          empty.className = 'empty';
+          empty.textContent = 'No hay usuarios disponibles.';
+          usersList.appendChild(empty);
+          return users;
+        }
 
-        card.className = 'user-card';
-        head.className = 'user-card__head';
-        name.textContent = user.display_name;
-        state.className = 'badge';
-        state.dataset.status = user.status;
-        state.textContent = user.status;
-        details.textContent =
-          user.email + ' · ' + user.role + ' · ' + user.plan +
-          ' · ' + user.access_start_date.slice(0, 10) +
-          ' → ' + user.access_end_date.slice(0, 10);
-        actions.className = 'user-card__actions';
-        actions.appendChild(createButton(
-          'Editar',
-          'button button--small',
-          'edit',
-          user.user_id
-        ));
-        actions.appendChild(createButton(
-          'Eliminar',
-          'button button--small button--danger',
-          'delete',
-          user.user_id
-        ));
+        users.forEach(function (user) {
+          var card = documentRef.createElement('article');
+          var head = documentRef.createElement('div');
+          var name = documentRef.createElement('strong');
+          var state = documentRef.createElement('span');
+          var details = documentRef.createElement('p');
+          var actions = documentRef.createElement('div');
 
-        head.appendChild(name);
-        head.appendChild(state);
-        card.appendChild(head);
-        card.appendChild(details);
-        card.appendChild(actions);
-        usersList.appendChild(card);
+          card.className = 'user-card';
+          head.className = 'user-card__head';
+          name.textContent = user.display_name;
+          state.className = 'badge';
+          var status = typeof user.is_active === 'boolean'
+            ? user.is_active ? 'active' : 'inactive'
+            : user.status;
+          state.dataset.status = status;
+          state.textContent = status;
+          details.textContent =
+            user.email + ' · ' + user.role + ' · ' + user.plan +
+            ' · ' + user.access_start_date.slice(0, 10) +
+            ' → ' + user.access_end_date.slice(0, 10);
+          actions.className = 'user-card__actions';
+          actions.appendChild(createButton(
+            'Editar',
+            'button button--small',
+            'edit',
+            user.user_id
+          ));
+          if (adminMode === 'mock') {
+            actions.appendChild(createButton(
+              'Eliminar',
+              'button button--small button--danger',
+              'delete',
+              user.user_id
+            ));
+          }
+
+          head.appendChild(name);
+          head.appendChild(state);
+          card.appendChild(head);
+          card.appendChild(details);
+          card.appendChild(actions);
+          usersList.appendChild(card);
+        });
+        return users;
+      }).catch(function (error) {
+        usersList.replaceChildren();
+        var failed = documentRef.createElement('p');
+        failed.className = 'empty';
+        failed.textContent = 'No fue posible cargar usuarios.';
+        usersList.appendChild(failed);
+        setFeedback(error.message || 'Error consultando Supabase.', 'error');
       });
     }
 
@@ -453,7 +497,13 @@
     }
 
     function startEdit(userId) {
-      var user = userStore.getUser(userId);
+      var user = usersCache.find(function (item) {
+        return item.user_id === userId;
+      }) || (
+        adminMode === 'mock' && typeof userStore.getUser === 'function'
+          ? userStore.getUser(userId)
+          : null
+      );
       if (!user) return;
 
       form.elements.user_id.value = user.user_id;
@@ -461,12 +511,15 @@
       form.elements.email.value = user.email;
       form.elements.role.value = user.role;
       form.elements.plan.value = user.plan;
-      form.elements.status.value = user.status;
+      form.elements.status.value = typeof user.is_active === 'boolean'
+        ? user.is_active ? 'active' : 'inactive'
+        : user.status;
       form.elements.access_start_date.value = toLocalInput(
         user.access_start_date
       );
       form.elements.access_end_date.value = toLocalInput(user.access_end_date);
       saveButton.textContent = 'Guardar cambios';
+      saveButton.disabled = false;
       cancelButton.hidden = false;
       setFeedback('Editando ' + user.display_name + '.', 'neutral');
       form.elements.display_name.focus();
@@ -479,6 +532,7 @@
         role: form.elements.role.value,
         plan: form.elements.plan.value,
         status: form.elements.status.value,
+        is_active: form.elements.status.value === 'active',
         access_start_date: toIso(form.elements.access_start_date.value),
         access_end_date: toIso(form.elements.access_end_date.value),
       };
@@ -488,22 +542,39 @@
       event.preventDefault();
       var userId = form.elements.user_id.value;
 
-      try {
-        if (userId) {
-          userStore.updateUser(userId, formValues());
-          setFeedback('Usuario mock actualizado.', 'success');
-        } else {
-          userStore.createUser(formValues());
-          setFeedback('Usuario mock creado.', 'success');
-        }
-        renderUsers();
-        var message = feedback.textContent;
-        var kind = feedback.dataset.kind;
-        resetForm();
-        setFeedback(message, kind);
-      } catch (error) {
-        setFeedback(error.message || 'No fue posible guardar.', 'error');
+      if (adminMode === 'supabase' && !userId) {
+        setFeedback('Selecciona un usuario real para editarlo.', 'error');
+        return;
       }
+
+      saveButton.disabled = true;
+      var operation;
+      try {
+        operation = userId
+          ? userStore.updateUser(userId, formValues())
+          : userStore.createUser(formValues());
+      } catch (error) {
+        saveButton.disabled = false;
+        setFeedback(error.message || 'No fue posible guardar.', 'error');
+        return;
+      }
+
+      Promise.resolve(operation)
+        .then(function () {
+          var message = adminMode === 'supabase'
+            ? 'Permisos reales actualizados.'
+            : userId
+              ? 'Usuario mock actualizado.'
+              : 'Usuario mock creado.';
+          resetForm();
+          return renderUsers().then(function () {
+            setFeedback(message, 'success');
+          });
+        })
+        .catch(function (error) {
+          saveButton.disabled = false;
+          setFeedback(error.message || 'No fue posible guardar.', 'error');
+        });
     });
 
     cancelButton.addEventListener('click', resetForm);
@@ -519,6 +590,7 @@
 
       if (
         button.dataset.action === 'delete'
+        && adminMode === 'mock'
         && root.confirm('¿Eliminar este usuario mock local?')
       ) {
         userStore.deleteUser(button.dataset.userId);
@@ -533,23 +605,64 @@
 
     refreshAudit.addEventListener('click', renderAuditDashboard);
 
-    auth.resolve().then(function (snapshot) {
+    function activateConsole(snapshot, mode) {
       var allowed = isAdminSession(snapshot);
       denied.hidden = allowed;
       consolePanel.hidden = !allowed;
 
-      if (!allowed) return;
+      if (!allowed) return Promise.resolve(false);
 
+      adminMode = mode;
       currentAdmin.textContent = snapshot.identity.display_name + ' · Admin';
+      adminModeLabel.textContent = mode === 'supabase'
+        ? 'Admin real con Supabase · Los cambios afectan permisos reales.'
+        : 'Fallback mock local · Supabase no configurado o sin sesión.';
+
+      if (mode === 'supabase') {
+        return supabaseProvider.getClient().then(function (client) {
+          userStore = access.SupabaseAdminStore.createSupabaseAdminStore({
+            client: client,
+          });
+          resetForm();
+          renderAuditDashboard();
+          return renderUsers().then(function () { return true; });
+        });
+      }
+
+      userStore = mockUserStore;
       resetForm();
-      renderUsers();
       renderAuditDashboard();
+      return renderUsers().then(function () { return true; });
+    }
+
+    function resolveAdmin() {
+      if (!supabaseAuth) {
+        return mockAuth.resolve().then(function (snapshot) {
+          return activateConsole(snapshot, 'mock');
+        });
+      }
+
+      return supabaseAuth.resolve().then(function (snapshot) {
+        if (snapshot.authentication.status === 'authenticated') {
+          return activateConsole(snapshot, 'supabase');
+        }
+        return mockAuth.resolve().then(function (mockSnapshot) {
+          return activateConsole(mockSnapshot, 'mock');
+        });
+      });
+    }
+
+    resolveAdmin().catch(function (error) {
+      denied.hidden = false;
+      consolePanel.hidden = true;
+      setFeedback(error.message || 'No fue posible abrir la consola.', 'error');
     });
 
     return {
-      auth: auth,
+      auth: supabaseAuth || mockAuth,
+      mockAuth: mockAuth,
       store: store,
-      userStore: userStore,
+      getUserStore: function () { return userStore; },
       renderAnalytics: renderAnalytics,
       renderAudit: renderAuditDashboard,
       renderUsers: renderUsers,

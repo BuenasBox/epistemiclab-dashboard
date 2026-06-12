@@ -405,7 +405,7 @@ test('access analytics returns stable zero values for empty audit data', () => {
   assert.equal(analytics.impact.most_affected_plan, null);
 });
 
-test('admin route and login declare mock user and audit integrations', () => {
+test('admin route keeps mock fallback and audit integrations', () => {
   const adminHtml = fs.readFileSync(
     path.join(__dirname, '..', 'admin', 'index.html'),
     'utf8',
@@ -415,9 +415,8 @@ test('admin route and login declare mock user and audit integrations', () => {
     'utf8',
   );
 
-  assert.match(adminHtml, /Admin mock local/);
-  assert.match(adminHtml, /No es seguridad real/);
-  assert.match(adminHtml, /Solo para prototipo/);
+  assert.match(adminHtml, /Admin real con Supabase/);
+  assert.match(adminHtml, /Los cambios afectan permisos reales/);
   assert.match(adminHtml, /wset_access_audit_v1/);
   assert.match(adminHtml, /Access Analytics/);
   assert.match(adminHtml, /data-access-analytics/);

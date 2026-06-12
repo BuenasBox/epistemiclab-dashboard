@@ -208,6 +208,13 @@ test('shared auth facade exposes signup and password recovery operations', async
   assert.equal(typeof auth.onAuthStateChange, 'function');
 });
 
+test('Supabase provider exposes its authenticated client to shared services', async () => {
+  const client = createFakeClient();
+  const provider = createSupabaseAuthProvider({ client });
+
+  assert.equal(await provider.getClient(), client);
+});
+
 test('public Supabase config endpoint exposes no secret key', () => {
   const endpointPath = path.join(
     __dirname,
@@ -221,4 +228,3 @@ test('public Supabase config endpoint exposes no secret key', () => {
   assert.match(endpoint, /SUPABASE_PUBLISHABLE_KEY/);
   assert.doesNotMatch(endpoint, /SUPABASE_SECRET_KEY/);
 });
-
