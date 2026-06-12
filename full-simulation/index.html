@@ -9,6 +9,7 @@
   <script src="../shared/auth-provider.js"></script>
   <script src="../shared/access-control.js"></script>
   <script src="../shared/access-audit.js"></script>
+  <script src="./access-gate.js"></script>
   <script src="../adaptive-session/session_bank.js"></script>
   <script src="../open-response-lab/lab_payload.js"></script>
   <script src="../adaptive-session/coach_data.js"></script>
@@ -33,8 +34,9 @@
     /* Nav */
     .global-nav { display: flex; align-items: center; justify-content: center; gap: 6px;
       padding: 8px 16px; background: var(--raised); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .global-nav a { color: var(--text-2); text-decoration: none; font-size: 12px;
-      padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border); transition: color .15s, border-color .15s; }
+    .global-nav a { min-height: 40px; display: inline-flex; align-items: center; color: var(--text-2);
+      text-decoration: none; font-size: 12px; padding: 7px 10px; border-radius: 4px;
+      border: 1px solid var(--border); transition: color .15s, border-color .15s; }
     .global-nav a:hover { color: var(--gold-light); border-color: #7a6230; }
     .global-nav a.nav-active { color: var(--gold-light); border-color: #7a6230; background: rgba(201,168,76,.08); }
     .nav-sep { color: #525e6e; font-size: 10px; }
@@ -136,6 +138,36 @@
 
     /* Nav bar bottom */
     .nav-bottom { display: flex; justify-content: flex-end; gap: 10px; margin-top: 28px; }
+
+    /* Full Simulation access gate */
+    [hidden] { display: none !important; }
+    .access-state { max-width: 720px; margin: 0 auto; padding: 64px 24px 80px; }
+    .access-card { padding: clamp(24px, 6vw, 48px); text-align: center; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,.28); }
+    .access-card--denied { border-color: rgba(201,168,76,.42);
+      background: linear-gradient(145deg, rgba(201,168,76,.08), transparent 55%), var(--panel); }
+    .access-kicker { margin-bottom: 10px; color: var(--gold); font-size: 11px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase; }
+    .access-title { margin-bottom: 14px; color: var(--gold-light); font-size: clamp(28px, 6vw, 42px); line-height: 1.1; }
+    .access-message { max-width: 560px; margin: 0 auto; color: var(--text-2); font-size: 15px; line-height: 1.7; }
+    .access-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .access-actions a { min-height: 46px; display: inline-flex; align-items: center; justify-content: center;
+      padding: 11px 18px; color: var(--text); font-size: 13px; font-weight: 700; text-decoration: none;
+      border: 1px solid var(--border); border-radius: var(--radius); background: var(--raised); }
+    .access-actions a:first-child { color: #0a0c0f; border-color: var(--gold); background: var(--gold); }
+    .access-actions a:hover, .access-actions a:focus-visible { border-color: var(--gold-light); }
+    .access-reason { margin-top: 24px; color: #525e6e; font-size: 10px; letter-spacing: .06em; }
+    .access-spinner { width: 36px; height: 36px; margin: 0 auto 18px; border: 3px solid var(--border);
+      border-top-color: var(--gold); border-radius: 50%; animation: access-spin .8s linear infinite; }
+    @keyframes access-spin { to { transform: rotate(360deg); } }
+    @media (max-width: 520px) {
+      .access-state { padding: 36px 16px 56px; }
+      .access-actions { flex-direction: column; }
+      .access-actions a { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .access-spinner { animation: none; }
+    }
   </style>
 </head>
 <body>
@@ -164,6 +196,35 @@
   <a href="/full-simulation/" class="nav-active">Simulacro Completo</a>
 </nav>
 
+<section class="access-state" data-full-simulation-resolving>
+  <div class="access-card" role="status" aria-live="polite">
+    <div class="access-spinner" aria-hidden="true"></div>
+    <div class="access-kicker">Comprobando acceso</div>
+    <h1 class="access-title">Full Simulation</h1>
+    <p class="access-message">Estamos validando tu sesión de EpistemicLab.</p>
+  </div>
+</section>
+
+<section class="access-state" data-full-simulation-denied hidden>
+  <div class="access-card access-card--denied">
+    <div class="access-kicker">Acceso restringido</div>
+    <h1 class="access-title">Acceso Completo requerido</h1>
+    <p class="access-message">
+      Full Simulation forma parte de la experiencia Acceso Completo de
+      EpistemicLab.
+    </p>
+    <div class="access-actions">
+      <a href="/login/">Ir a Login</a>
+      <a href="/login/#perfiles">Ver Planes</a>
+      <a href="/">Volver al Inicio</a>
+    </div>
+    <p class="access-reason">
+      Decisión de acceso: <span data-denial-reason>full_access_required</span>
+    </p>
+  </div>
+</section>
+
+<div data-full-simulation-app hidden>
 <!-- Phase header (hidden on intro/bridge/complete) -->
 <div class="phase-header" id="phase-header" style="display:none">
   <div>
@@ -318,6 +379,7 @@
   </div>
 
 </div><!-- /sim-main -->
+</div><!-- /full-simulation-app -->
 
 <script>
 /* ── UTILITIES ── */
@@ -407,13 +469,10 @@ function loadSATItems(){
 
 /* ── SIM LIFECYCLE ── */
 function startSim(){
-  try {
-    window.WSETAccess.audit.observeAttempt({
-      route: '/full-simulation/',
-      experience: 'full_simulation',
-      mode: 'full_simulation',
-    });
-  } catch(_error) {}
+  if(
+    !window.WSETFullSimulationGate
+    || !window.WSETFullSimulationGate.canStart()
+  ) return;
   STATE.sba.items   = loadSBAItems();
   STATE.or.items    = loadORItems();
   STATE.sat.items   = loadSATItems();

@@ -123,7 +123,9 @@
           sequence: sequence,
           event_id: 'access-audit-' + sequence + '-' + Date.now(),
           timestamp: new Date(now()).toISOString(),
-          enforcement: 'shadow_only',
+          enforcement: request.enforcement === 'active'
+            ? 'active'
+            : 'shadow_only',
           user: userFromSnapshot(snapshot),
           request: {
             route: request.route,

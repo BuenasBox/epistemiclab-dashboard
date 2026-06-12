@@ -169,6 +169,29 @@ test('audit persists normalized shadow events and keeps the newest 100', () => {
   );
 });
 
+test('audit records active enforcement only when explicitly requested', () => {
+  const storage = createMemoryStorage();
+  const audit = createAccessAudit({
+    storage,
+    getSnapshot: () => createSnapshot({
+      authenticated: true,
+      plan: 'premium',
+    }),
+    now: () => new Date('2026-06-11T20:00:00Z'),
+  });
+
+  const event = audit.observeAttempt({
+    route: '/full-simulation/',
+    experience: 'full_simulation',
+    mode: 'full_simulation',
+    enforcement: 'active',
+  });
+
+  assert.equal(event.enforcement, 'active');
+  assert.equal(event.decision.would_deny, true);
+  assert.equal(event.decision.denial_reason, 'full_access_required');
+});
+
 test('audit absorbs storage and evaluation failures', () => {
   const audit = createAccessAudit({
     storage: {
@@ -193,7 +216,7 @@ test('audit absorbs storage and evaluation failures', () => {
   });
 });
 
-test('all experiences load audit dependencies and call observation explicitly', () => {
+test('all experiences load audit dependencies and shadow modes observe explicitly', () => {
   const integrations = [
     {
       file: 'diagnostic-sba/index.html',
@@ -212,7 +235,6 @@ test('all experiences load audit dependencies and call observation explicitly', 
     },
     {
       file: 'full-simulation/index.html',
-      functionName: 'startSim',
       route: '/full-simulation/',
     },
   ];
@@ -227,8 +249,6 @@ test('all experiences load audit dependencies and call observation explicitly', 
       '../shared/access-audit.js',
     ];
     const positions = expectedScripts.map((source) => html.indexOf(source));
-    const functionStart = html.indexOf(`function ${functionName}`);
-    const functionBody = html.slice(functionStart, functionStart + 500);
 
     positions.forEach((position) => assert.notEqual(position, -1, file));
     assert.deepEqual(
@@ -236,8 +256,21 @@ test('all experiences load audit dependencies and call observation explicitly', 
       [...positions].sort((a, b) => a - b),
       file,
     );
-    assert.match(functionBody, /observeAttempt\(/, file);
-    assert.match(functionBody, new RegExp(route.replaceAll('/', '\\/')), file);
-    assert.doesNotMatch(functionBody, /if\s*\([^)]*observeAttempt/, file);
+    if (functionName) {
+      const functionStart = html.indexOf(`function ${functionName}`);
+      const functionBody = html.slice(functionStart, functionStart + 500);
+
+      assert.match(functionBody, /observeAttempt\(/, file);
+      assert.match(
+        functionBody,
+        new RegExp(route.replaceAll('/', '\\/')),
+        file,
+      );
+      assert.doesNotMatch(
+        functionBody,
+        /if\s*\([^)]*observeAttempt/,
+        file,
+      );
+    }
   });
 });
