@@ -10,7 +10,9 @@ const {
   createSupabaseAdminStore,
 } = require('../shared/supabase-admin-store.js');
 const {
+  getAdminDeniedModel,
   isAdminSession,
+  shouldUseMockAdmin,
 } = require('../admin/admin.js');
 
 function adminSource(options = {}) {
@@ -144,6 +146,33 @@ test('real admin access requires active admin session and active plan', () => {
   assert.equal(isAdminSession(expired), false);
 });
 
+test('admin denial guides visitors to login and distinguishes non-admin users', () => {
+  const visitor = createSessionStore({
+    now: () => new Date('2026-06-12T12:00:00Z'),
+  }).getSnapshot();
+  const student = createSessionStore({
+    now: () => new Date('2026-06-12T12:00:00Z'),
+  }).setSourceData(adminSource({ role: 'student' }), 'supabase');
+
+  assert.deepEqual(getAdminDeniedModel(visitor), {
+    message: 'Para administrar usuarios, inicia sesión con una cuenta administradora.',
+    showLogin: true,
+  });
+  assert.deepEqual(getAdminDeniedModel(student), {
+    message: 'Tu cuenta no tiene permisos de administración.',
+    showLogin: false,
+  });
+});
+
+test('mock admin fallback is restricted to local development hosts', () => {
+  assert.equal(shouldUseMockAdmin({ hostname: 'localhost' }), true);
+  assert.equal(shouldUseMockAdmin({ hostname: '127.0.0.1' }), true);
+  assert.equal(
+    shouldUseMockAdmin({ hostname: 'epistemiclab.dpdns.org' }),
+    false,
+  );
+});
+
 test('Supabase admin store merges profiles and access grants', async () => {
   const client = createClient();
   const store = createSupabaseAdminStore({ client });
@@ -190,18 +219,101 @@ test('Supabase admin store updates profile and real access grant', async () => {
   );
 });
 
-test('admin route declares real Supabase administration with mock fallback', () => {
+test('Supabase admin store lists and updates upgrade requests', async () => {
+  const calls = [];
+  const requests = [{
+    id: 'request-1',
+    user_id: 'user-001',
+    current_plan: 'demo',
+    requested_plan: 'premium',
+    status: 'pending',
+    requested_at: '2026-06-15T00:00:00Z',
+    reviewed_at: null,
+    profiles: {
+      email: 'student@epistemiclab.test',
+      display_name: 'Estudiante Real',
+    },
+  }];
+  const client = {
+    from(table) {
+      assert.equal(table, 'upgrade_requests');
+      return {
+        select(columns) {
+          calls.push(['select', columns]);
+          return {
+            order(column, options) {
+              calls.push(['order', column, options]);
+              return Promise.resolve({ data: requests, error: null });
+            },
+          };
+        },
+        update(values) {
+          calls.push(['update', values]);
+          return {
+            eq(column, value) {
+              calls.push(['eq', column, value]);
+              return {
+                select() {
+                  return {
+                    single() {
+                      return Promise.resolve({
+                        data: { ...requests[0], ...values },
+                        error: null,
+                      });
+                    },
+                  };
+                },
+              };
+            },
+          };
+        },
+      };
+    },
+  };
+  const store = createSupabaseAdminStore({ client });
+
+  assert.deepEqual(await store.listUpgradeRequests(), requests);
+  const updated = await store.updateUpgradeRequest('request-1', 'approved');
+  assert.equal(updated.status, 'approved');
+  assert.ok(calls.some((call) => call[0] === 'update'));
+});
+
+test('upgrade request migration enforces owner creation and admin-only status updates', () => {
+  const migrations = fs.readdirSync(
+    path.join(__dirname, '..', 'supabase', 'migrations'),
+  );
+  const migration = migrations
+    .filter((file) => file.includes('upgrade_requests'))
+    .map((file) => fs.readFileSync(
+      path.join(__dirname, '..', 'supabase', 'migrations', file),
+      'utf8',
+    ))
+    .join('\n');
+
+  assert.match(migration, /create table public\.upgrade_requests/);
+  assert.match(migration, /requested_plan.*premium.*full_access/s);
+  assert.match(migration, /status.*pending.*approved.*rejected.*fulfilled/s);
+  assert.match(migration, /user_id\s*=\s*auth\.uid\(\)/);
+  assert.match(migration, /public\.is_admin\(\)/);
+  assert.match(migration, /for update[\s\S]*public\.is_admin\(\)/i);
+  assert.doesNotMatch(migration, /update public\.access_grants/i);
+});
+
+test('admin route declares protected Supabase student management', () => {
   const html = fs.readFileSync(
     path.join(__dirname, '..', 'admin', 'index.html'),
     'utf8',
   );
 
-  assert.match(html, /Admin real con Supabase/);
+  assert.match(html, /Gestión de estudiantes/);
   assert.match(html, /Los cambios afectan permisos reales/);
   assert.match(html, /supabase-auth-provider\.js/);
   assert.match(html, /supabase-admin-store\.js/);
   assert.match(html, /mock-user-store\.js/);
   assert.match(html, /data-admin-mode/);
+  assert.match(html, /data-student-dashboard/);
+  assert.match(html, /href="\/login\/\?next=\/admin\/"/);
+  assert.match(html, /data-admin-denied-message/);
 });
 
 test('database admin predicate requires active and current access grant', () => {

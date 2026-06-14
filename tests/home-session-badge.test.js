@@ -162,3 +162,28 @@ test('portable badge styles do not depend on current home layout selectors', () 
   assert.match(css, /\.access-session-badge/);
   assert.doesNotMatch(css, /#hero|\.top-right|\.maturity-block|#replay-btn/);
 });
+
+test('home replaces the static integration placeholder with four training steps', () => {
+  const html = fs.readFileSync(
+    path.join(__dirname, '..', 'index.html'),
+    'utf8',
+  );
+
+  assert.doesNotMatch(
+    html,
+    /Integración: SBA → Respuesta Abierta → SAT → Simulacro Completo/,
+  );
+  assert.match(html, /Ruta de entrenamiento/);
+  [
+    'Diagnóstico SBA',
+    'Respuesta Abierta',
+    'SAT / Cata',
+    'Simulacro Completo',
+  ].forEach((step) => assert.match(html, new RegExp(step)));
+  assert.equal(
+    (html.match(/<article[^>]*data-training-step/g) || []).length,
+    4,
+  );
+  assert.match(html, /data-training-status/);
+  assert.match(html, /data-training-cta/);
+});

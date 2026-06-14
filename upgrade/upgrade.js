@@ -91,6 +91,7 @@
       } else {
         cta.type = 'button';
         cta.dataset.upgradeRequest = 'true';
+        cta.dataset.requestedPlan = plan.code;
         cta.textContent = 'Solicitar actualización';
       }
 
@@ -113,7 +114,6 @@
     var feedback = documentRef
       && documentRef.querySelector('[data-upgrade-feedback]');
     var access = options.access || root.WSETAccess;
-    var storage = options.storage || root.localStorage;
     var grid = renderPlanGrid(mount, documentRef);
 
     if (
@@ -123,18 +123,16 @@
       || !access.AuthProvider
       || !access.SupabaseAuthProvider
       || !access.UpgradeRequestStore
-      || !storage
     ) {
       return grid;
     }
 
     var sessionStore = access.SessionStore.createSessionStore();
+    var supabaseProvider = access.SupabaseAuthProvider
+      .createSupabaseAuthProvider();
     var auth = access.AuthProvider.createAuthProvider({
-      provider: access.SupabaseAuthProvider.createSupabaseAuthProvider(),
+      provider: supabaseProvider,
       sessionStore: sessionStore,
-    });
-    var requestStore = access.UpgradeRequestStore.createUpgradeRequestStore({
-      storage: storage,
     });
 
     grid.addEventListener('click', function (event) {
@@ -144,7 +142,11 @@
       feedback.textContent = 'Comprobando tu sesión...';
       feedback.dataset.kind = 'neutral';
 
-      auth.resolve().then(function (snapshot) {
+      Promise.all([
+        auth.resolve(),
+        supabaseProvider.getClient(),
+      ]).then(function (results) {
+        var snapshot = results[0];
         if (
           !snapshot
           || snapshot.authentication.status !== 'authenticated'
@@ -153,9 +155,15 @@
           feedback.dataset.kind = 'error';
           return;
         }
-        requestStore.create(snapshot);
-        feedback.textContent = 'Solicitud registrada correctamente.';
-        feedback.dataset.kind = 'success';
+        var requestStore = access.UpgradeRequestStore
+          .createUpgradeRequestStore({ client: results[1] });
+        return requestStore.create(
+          snapshot,
+          button.dataset.requestedPlan
+        ).then(function () {
+          feedback.textContent = 'Solicitud registrada correctamente.';
+          feedback.dataset.kind = 'success';
+        });
       }).catch(function () {
         feedback.textContent = 'No fue posible registrar la solicitud.';
         feedback.dataset.kind = 'error';

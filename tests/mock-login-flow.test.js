@@ -8,6 +8,7 @@ const {
   createManagedUserSource,
   createMockProfileSource,
   errorMessage,
+  getNextDestination,
   getMockProfiles,
   showProfileTransition,
   shouldExposeInternalTools,
@@ -241,6 +242,41 @@ test('successful login shows Spanish confirmation and keeps profile CTA if redir
   assert.equal(profileCta.hidden, false);
   assert.doesNotThrow(() => scheduled());
   assert.equal(profileCta.hidden, false);
+});
+
+test('login respects a safe admin return destination', () => {
+  assert.equal(
+    getNextDestination({ search: '?next=%2Fadmin%2F' }),
+    '/admin/',
+  );
+  assert.equal(
+    getNextDestination({ search: '?next=https%3A%2F%2Fevil.example' }),
+    '/profile/',
+  );
+
+  const profileCta = { hidden: true, href: '', textContent: '' };
+  const destinations = [];
+  let scheduled;
+
+  showProfileTransition({
+    feedback: { textContent: '', dataset: {} },
+    profileCta,
+    destination: '/admin/',
+    location: {
+      assign(destination) {
+        destinations.push(destination);
+      },
+    },
+    setTimeout(callback) {
+      scheduled = callback;
+    },
+    message: 'Sesión iniciada correctamente.',
+  });
+
+  assert.equal(profileCta.href, '/admin/');
+  assert.equal(profileCta.textContent, 'Ir a administración');
+  scheduled();
+  assert.deepEqual(destinations, ['/admin/']);
 });
 
 test('failed signup and login retain learner-facing Spanish errors', () => {

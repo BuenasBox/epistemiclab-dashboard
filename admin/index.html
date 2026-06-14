@@ -13,7 +13,6 @@
   <script src="../shared/auth-provider.js"></script>
   <script src="../shared/supabase-admin-store.js"></script>
   <script src="../shared/mock-user-store.js"></script>
-  <script src="../shared/upgrade-request-store.js"></script>
   <script src="./access-analytics.js"></script>
   <script src="./admin.js"></script>
 </head>
@@ -32,11 +31,11 @@
 
     <section class="hero">
       <div>
-        <p class="eyebrow">Admin real con Supabase</p>
-        <h1>Usuarios y auditoría</h1>
+        <p class="eyebrow">Administración EpistemicLab</p>
+        <h1>Gestión de estudiantes</h1>
         <p class="lead">
-          Gestiona roles, planes y vigencias reales. La auditoría local continúa
-          disponible como referencia del modo sombra.
+          Gestiona planes, vigencias y solicitudes de acceso desde una sola
+          consola protegida.
         </p>
       </div>
       <div class="warning">
@@ -46,19 +45,49 @@
 
     <section class="denied" data-admin-denied hidden>
       <h2>Sesión admin requerida</h2>
-      <p>
-        Inicia sesión con una cuenta admin activa. Los estudiantes y las
-        cuentas inactivas no pueden administrar usuarios.
+      <p data-admin-denied-message>
+        Para administrar usuarios, inicia sesión con una cuenta administradora.
       </p>
-      <a class="button button--primary" href="/login/">Ir al login</a>
+      <a
+        class="button button--primary"
+        href="/login/?next=/admin/"
+        data-admin-login
+      >Iniciar sesión como admin</a>
     </section>
 
     <div class="dashboard" data-admin-console hidden>
+      <section class="metrics-grid" data-student-dashboard aria-label="Resumen de estudiantes">
+        <article class="metric-card">
+          <span>Estudiantes activos</span>
+          <strong data-dashboard-metric="active_students">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Usuarios Demo</span>
+          <strong data-dashboard-metric="demo_users">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Usuarios Premium</span>
+          <strong data-dashboard-metric="premium_users">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Acceso Completo</span>
+          <strong data-dashboard-metric="full_access_users">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Solicitudes pendientes</span>
+          <strong data-dashboard-metric="pending_upgrades">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Próximos a vencer</span>
+          <strong data-dashboard-metric="expiring_soon">0</strong>
+        </article>
+      </section>
+
       <section class="panel">
         <div class="section-head">
           <div>
             <h2>Solicitudes de actualización</h2>
-            <p>Interés registrado desde la página de planes en este dispositivo.</p>
+            <p>Solicitudes enviadas por estudiantes desde la página de planes.</p>
           </div>
         </div>
         <div class="audit-list" data-upgrade-requests></div>
@@ -67,7 +96,7 @@
       <section class="panel">
         <div class="section-head">
           <div>
-            <h2>Usuarios</h2>
+            <h2>Estudiantes y administradores</h2>
             <p data-admin-mode>Conectando con Supabase...</p>
           </div>
           <span class="badge" data-current-admin>Admin</span>
@@ -133,32 +162,6 @@
         </div>
       </section>
 
-      <section class="panel analytics-panel">
-        <div class="section-head">
-          <div>
-            <p class="section-kicker">Modo sombra · sin enforcement</p>
-            <h2>Access Analytics</h2>
-            <p>
-              Impacto hipotético calculado exclusivamente desde
-              `wset_access_audit_v1`.
-            </p>
-          </div>
-          <button class="button button--small" type="button" data-refresh-audit>
-            Actualizar datos
-          </button>
-        </div>
-        <div class="access-analytics" data-access-analytics></div>
-      </section>
-
-      <section class="panel">
-        <div class="section-head">
-          <div>
-            <h2>Auditoría de acceso</h2>
-            <p>Lectura local de `wset_access_audit_v1` · últimos eventos.</p>
-          </div>
-        </div>
-        <div class="audit-list" data-audit-list></div>
-      </section>
     </div>
   </main>
 </body>

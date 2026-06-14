@@ -8,18 +8,37 @@ const {
   getPlanCatalog,
 } = require('../upgrade/upgrade.js');
 const {
-  UPGRADE_REQUESTS_STORAGE_KEY,
   createUpgradeRequestStore,
 } = require('../shared/upgrade-request-store.js');
 
-function memoryStorage() {
-  const values = new Map();
+function requestClient() {
+  const calls = [];
   return {
-    getItem(key) {
-      return values.has(key) ? values.get(key) : null;
-    },
-    setItem(key, value) {
-      values.set(key, String(value));
+    calls,
+    from(table) {
+      assert.equal(table, 'upgrade_requests');
+      return {
+        insert(values) {
+          calls.push(['insert', values]);
+          return {
+            select() {
+              return {
+                single() {
+                  return Promise.resolve({
+                    data: {
+                      id: 'request-1',
+                      ...values,
+                      status: 'pending',
+                      requested_at: '2026-06-14T20:00:00.000Z',
+                    },
+                    error: null,
+                  });
+                },
+              };
+            },
+          };
+        },
+      };
     },
   };
 }
@@ -67,13 +86,12 @@ test('upgrade page is public and does not initialize an access gate', () => {
   assert.doesNotMatch(html, /access-gate\.js|data-access-state="restricted"/);
 });
 
-test('authenticated learner can create a lightweight upgrade request', () => {
-  const storage = memoryStorage();
+test('authenticated learner can create a Supabase upgrade request', async () => {
+  const client = requestClient();
   const store = createUpgradeRequestStore({
-    storage,
-    now: () => new Date('2026-06-14T20:00:00.000Z'),
+    client,
   });
-  const request = store.create({
+  const request = await store.create({
     schema_version: 'access_session_v1',
     authentication: { status: 'authenticated' },
     identity: {
@@ -81,18 +99,24 @@ test('authenticated learner can create a lightweight upgrade request', () => {
       email: 'student@example.com',
     },
     plan: { code: 'demo' },
-  });
+  }, 'premium');
 
-  assert.equal(UPGRADE_REQUESTS_STORAGE_KEY, 'wset_upgrade_requests_v1');
   assert.deepEqual(request, {
-    schema_version: 'upgrade_request_v1',
-    request_id: 'upgrade-user-1-2026-06-14T20:00:00.000Z',
+    id: 'request-1',
     user_id: 'user-1',
-    email: 'student@example.com',
     current_plan: 'demo',
+    requested_plan: 'premium',
+    status: 'pending',
     requested_at: '2026-06-14T20:00:00.000Z',
   });
-  assert.deepEqual(store.list(), [request]);
+  assert.deepEqual(client.calls, [[
+    'insert',
+    {
+      user_id: 'user-1',
+      current_plan: 'demo',
+      requested_plan: 'premium',
+    },
+  ]]);
 });
 
 test('upgrade page exposes request CTA and learner feedback region', () => {
@@ -104,4 +128,7 @@ test('upgrade page exposes request CTA and learner feedback region', () => {
   assert.match(html, /Solicitar actualización/);
   assert.match(html, /data-upgrade-feedback/);
   assert.match(html, /upgrade-request-store\.js/);
+  assert.match(html, /data-requested-plan="premium"/);
+  assert.match(html, /data-requested-plan="full_access"/);
+  assert.doesNotMatch(html, /localStorage|wset_upgrade_requests_v1/);
 });

@@ -12,6 +12,9 @@
 
   var VALID_ROLES = ['student', 'admin'];
   var VALID_PLANS = ['demo', 'premium', 'full_access'];
+  var VALID_REQUEST_STATUSES = [
+    'pending', 'approved', 'rejected', 'fulfilled',
+  ];
 
   function requireClient(client) {
     if (!client || typeof client.from !== 'function') {
@@ -131,8 +134,44 @@
       }).single().then(dataOrThrow);
     }
 
+    function listUpgradeRequests() {
+      return client
+        .from('upgrade_requests')
+        .select(
+          'id,user_id,current_plan,requested_plan,status,requested_at,'
+          + 'reviewed_at,profiles(email,display_name)'
+        )
+        .order('requested_at', { ascending: false })
+        .then(dataOrThrow);
+    }
+
+    function updateUpgradeRequest(requestId, status) {
+      var id = requireString(requestId, 'request_id');
+      var nextStatus = requireEnum(
+        status,
+        VALID_REQUEST_STATUSES,
+        'status'
+      );
+
+      return client
+        .from('upgrade_requests')
+        .update({
+          status: nextStatus,
+          reviewed_at: new Date().toISOString(),
+        })
+        .eq('id', id)
+        .select(
+          'id,user_id,current_plan,requested_plan,status,requested_at,'
+          + 'reviewed_at,profiles(email,display_name)'
+        )
+        .single()
+        .then(dataOrThrow);
+    }
+
     return {
       listUsers: listUsers,
+      listUpgradeRequests: listUpgradeRequests,
+      updateUpgradeRequest: updateUpgradeRequest,
       updateUser: updateUser,
     };
   }

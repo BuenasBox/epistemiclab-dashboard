@@ -10,31 +10,26 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
-  var UPGRADE_REQUESTS_STORAGE_KEY = 'wset_upgrade_requests_v1';
-  var MAX_REQUESTS = 100;
+  var VALID_REQUESTED_PLANS = ['premium', 'full_access'];
 
-  function read(storage) {
-    try {
-      var parsed = JSON.parse(
-        storage.getItem(UPGRADE_REQUESTS_STORAGE_KEY) || '[]'
-      );
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (error) {
-      return [];
+  function requireClient(client) {
+    if (!client || typeof client.from !== 'function') {
+      throw new TypeError('client must implement from');
     }
+    return client;
+  }
+
+  function dataOrThrow(result) {
+    if (result && result.error) throw result.error;
+    return result ? result.data : null;
   }
 
   function createUpgradeRequestStore(options) {
     options = options || {};
-    var storage = options.storage;
-    var now = options.now || function () { return new Date(); };
-
-    if (!storage || typeof storage.getItem !== 'function') {
-      throw new TypeError('storage is required');
-    }
+    var client = requireClient(options.client);
 
     return {
-      create: function (snapshot) {
+      create: function (snapshot, requestedPlan) {
         var authenticated = snapshot
           && snapshot.authentication
           && snapshot.authentication.status === 'authenticated'
@@ -43,37 +38,22 @@
         if (!authenticated) {
           throw new TypeError('authenticated session is required');
         }
+        if (VALID_REQUESTED_PLANS.indexOf(requestedPlan) === -1) {
+          throw new TypeError('requested_plan has an unsupported value');
+        }
 
-        var requestedAt = new Date(now()).toISOString();
-        var request = {
-          schema_version: 'upgrade_request_v1',
-          request_id: 'upgrade-'
-            + snapshot.identity.user_id
-            + '-'
-            + requestedAt,
+        return client.from('upgrade_requests').insert({
           user_id: snapshot.identity.user_id,
-          email: snapshot.identity.email,
           current_plan: snapshot.plan.code,
-          requested_at: requestedAt,
-        };
-        var requests = read(storage);
-        requests.push(request);
-        storage.setItem(
-          UPGRADE_REQUESTS_STORAGE_KEY,
-          JSON.stringify(requests.slice(-MAX_REQUESTS))
-        );
-        return request;
-      },
-
-      list: function () {
-        return read(storage).slice();
+          requested_plan: requestedPlan,
+        }).select(
+          'id,user_id,current_plan,requested_plan,status,requested_at'
+        ).single().then(dataOrThrow);
       },
     };
   }
 
   return {
-    MAX_REQUESTS: MAX_REQUESTS,
-    UPGRADE_REQUESTS_STORAGE_KEY: UPGRADE_REQUESTS_STORAGE_KEY,
     createUpgradeRequestStore: createUpgradeRequestStore,
   };
 });

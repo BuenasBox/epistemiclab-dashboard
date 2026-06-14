@@ -85,6 +85,41 @@ de sesión están implementados.
 Las restricciones existentes aceptan exclusivamente `demo`, `premium` y
 `full_access`. No hay una migración pendiente para ampliar el modelo de planes.
 
+### Estado de email de Supabase Auth
+
+**Decisión para alpha/testing privado:** desactivar temporalmente la
+confirmación de email para que una cuenta nueva quede activa inmediatamente.
+La capacidad de confirmación permanece en la arquitectura y se reactivará para
+el lanzamiento comercial después de configurar y validar SMTP personalizado.
+
+El cambio se realiza manualmente en el proyecto alojado:
+
+```text
+Supabase Dashboard
+→ Authentication
+→ Providers
+→ Email
+→ Confirm Email: OFF
+→ Save
+```
+
+Con `Confirm Email` desactivado, Supabase considera confirmado el email durante
+el alta y devuelve una sesión autenticada. El flujo frontend actual ya soporta
+ese resultado: el trigger de base crea `profiles`, el acceso `demo` y
+`learner_profiles`, y el usuario puede iniciar sesión inmediatamente. No se
+requiere cambio de código.
+
+| Componente | Estado |
+|---|---|
+| Configuración alpha acordada | `Confirm Email: OFF` |
+| Aplicación efectiva del cambio remoto | **Pendiente de verificación manual en Supabase Dashboard.** |
+| Proveedor SMTP personalizado | **Pendiente de verificación manual en Supabase Dashboard.** No es requisito para el alpha sin confirmación. |
+| Entrega de confirmaciones | No participa en el alta alpha mientras `Confirm Email` esté desactivado. |
+| Configuración para lanzamiento comercial | Reactivar `Confirm Email` después de configurar SMTP personalizado y validar dominio, límites y entrega. |
+
+La decisión no elimina plantillas, recuperación de contraseña ni la capacidad
+futura de confirmación. No requiere migraciones ni cambios de esquema.
+
 ## Administración
 
 `/admin/` exige una cuenta admin activa. La consola permite consultar usuarios

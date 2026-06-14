@@ -76,21 +76,141 @@
     );
   }
 
+  function getAdminDeniedModel(snapshot) {
+    var authenticated = !!(
+      snapshot
+      && snapshot.authentication
+      && snapshot.authentication.status === 'authenticated'
+    );
+
+    return authenticated
+      ? {
+        message: 'Tu cuenta no tiene permisos de administración.',
+        showLogin: false,
+      }
+      : {
+        message: 'Para administrar usuarios, inicia sesión con una cuenta administradora.',
+        showLogin: true,
+      };
+  }
+
+  function shouldUseMockAdmin(locationRef) {
+    var hostname = String(
+      locationRef && locationRef.hostname ? locationRef.hostname : ''
+    ).toLowerCase();
+    return hostname === 'localhost'
+      || hostname === '127.0.0.1'
+      || hostname === '::1'
+      || hostname === '[::1]';
+  }
+
+  function clone(value) {
+    return JSON.parse(JSON.stringify(value));
+  }
+
+  function getQuickActions(user) {
+    var actions = [];
+    if (!user) return actions;
+
+    if (user.plan === 'demo') {
+      actions.push(
+        { id: 'plan_premium', label: 'Cambiar a Premium' },
+        { id: 'plan_full_access', label: 'Dar Acceso Completo' }
+      );
+    } else if (user.plan === 'premium') {
+      actions.push({
+        id: 'plan_full_access',
+        label: 'Dar Acceso Completo',
+      });
+    } else if (user.plan === 'full_access') {
+      actions.push({
+        id: 'plan_premium',
+        label: 'Cambiar a Premium',
+      });
+    }
+
+    actions.push(user.is_active === false || user.status === 'inactive'
+      ? { id: 'activate', label: 'Activar' }
+      : { id: 'suspend', label: 'Suspender' });
+    actions.push(
+      { id: 'extend_30', label: 'Extender 30 días' },
+      { id: 'extend_90', label: 'Extender 90 días' },
+      { id: 'extend_365', label: 'Extender 1 año' }
+    );
+    return actions;
+  }
+
+  function applyQuickAction(user, action, now) {
+    var updated = clone(user);
+    var currentTime = new Date(now || new Date());
+    var extensionDays = {
+      extend_30: 30,
+      extend_90: 90,
+      extend_365: 365,
+    };
+
+    if (action === 'plan_premium') updated.plan = 'premium';
+    else if (action === 'plan_full_access') updated.plan = 'full_access';
+    else if (action === 'activate') {
+      updated.is_active = true;
+      updated.status = 'active';
+    } else if (action === 'suspend') {
+      updated.is_active = false;
+      updated.status = 'inactive';
+    } else if (extensionDays[action]) {
+      var currentEnd = new Date(updated.access_end_date);
+      var base = currentEnd.getTime() > currentTime.getTime()
+        ? currentEnd
+        : currentTime;
+      var extended = new Date(base.getTime());
+      extended.setUTCDate(extended.getUTCDate() + extensionDays[action]);
+      updated.access_end_date = extended.toISOString();
+    } else {
+      throw new TypeError('unsupported quick action');
+    }
+
+    if (typeof updated.is_active !== 'boolean') {
+      updated.is_active = updated.status === 'active';
+    }
+    updated.status = updated.is_active ? 'active' : 'inactive';
+    return updated;
+  }
+
+  function buildStudentDashboard(users, requests, now) {
+    var currentTime = new Date(now || new Date()).getTime();
+    var soon = currentTime + (30 * 24 * 60 * 60 * 1000);
+    var activeStudents = (users || []).filter(function (user) {
+      var end = new Date(user.access_end_date).getTime();
+      return user.role === 'student'
+        && user.is_active === true
+        && end > currentTime;
+    });
+
+    return {
+      active_students: activeStudents.length,
+      demo_users: activeStudents.filter(function (user) {
+        return user.plan === 'demo';
+      }).length,
+      premium_users: activeStudents.filter(function (user) {
+        return user.plan === 'premium';
+      }).length,
+      full_access_users: activeStudents.filter(function (user) {
+        return user.plan === 'full_access';
+      }).length,
+      pending_upgrades: (requests || []).filter(function (request) {
+        return request.status === 'pending';
+      }).length,
+      expiring_soon: activeStudents.filter(function (user) {
+        var end = new Date(user.access_end_date).getTime();
+        return end <= soon;
+      }).length,
+    };
+  }
+
   function readAuditEvents(storage) {
     try {
       var parsed = JSON.parse(
         storage.getItem(ACCESS_AUDIT_STORAGE_KEY) || '[]'
-      );
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (error) {
-      return [];
-    }
-  }
-
-  function readUpgradeRequests(storage) {
-    try {
-      var parsed = JSON.parse(
-        storage.getItem('wset_upgrade_requests_v1') || '[]'
       );
       return Array.isArray(parsed) ? parsed : [];
     } catch (error) {
@@ -144,8 +264,13 @@
     var userStore = mockUserStore;
     var adminMode = 'mock';
     var usersCache = [];
+    var requestsCache = [];
 
     var denied = documentRef.querySelector('[data-admin-denied]');
+    var deniedMessage = documentRef.querySelector(
+      '[data-admin-denied-message]'
+    );
+    var deniedLogin = documentRef.querySelector('[data-admin-login]');
     var consolePanel = documentRef.querySelector('[data-admin-console]');
     var currentAdmin = documentRef.querySelector('[data-current-admin]');
     var form = documentRef.querySelector('[data-user-form]');
@@ -153,6 +278,9 @@
     var auditList = documentRef.querySelector('[data-audit-list]');
     var upgradeRequests = documentRef.querySelector('[data-upgrade-requests]');
     var analyticsRoot = documentRef.querySelector('[data-access-analytics]');
+    var studentDashboard = documentRef.querySelector(
+      '[data-student-dashboard]'
+    );
     var feedback = documentRef.querySelector('[data-admin-feedback]');
     var saveButton = documentRef.querySelector('[data-save-user]');
     var cancelButton = documentRef.querySelector('[data-cancel-edit]');
@@ -216,6 +344,28 @@
       return button;
     }
 
+    function formatDisplayDate(value) {
+      if (!value) return 'Sin fecha';
+      var date = new Date(value);
+      if (Number.isNaN(date.getTime())) return 'Sin fecha';
+      return new Intl.DateTimeFormat('es', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+      }).format(date);
+    }
+
+    function renderStudentDashboard() {
+      if (!studentDashboard) return;
+      var dashboard = buildStudentDashboard(usersCache, requestsCache);
+      Object.keys(dashboard).forEach(function (key) {
+        var mount = studentDashboard.querySelector(
+          '[data-dashboard-metric="' + key + '"]'
+        );
+        if (mount) mount.textContent = dashboard[key];
+      });
+    }
+
     function renderUsers() {
       usersList.replaceChildren();
       var loading = documentRef.createElement('p');
@@ -225,6 +375,7 @@
 
       return Promise.resolve(userStore.listUsers()).then(function (users) {
         usersCache = users;
+        renderStudentDashboard();
         usersList.replaceChildren();
 
         if (!users.length) {
@@ -240,7 +391,7 @@
           var head = documentRef.createElement('div');
           var name = documentRef.createElement('strong');
           var state = documentRef.createElement('span');
-          var details = documentRef.createElement('p');
+          var details = documentRef.createElement('dl');
           var actions = documentRef.createElement('div');
 
           card.className = 'user-card';
@@ -252,15 +403,24 @@
             : user.status;
           state.dataset.status = status;
           state.textContent = status;
-          details.textContent =
-            user.email + ' · ' + user.role + ' · ' + user.plan +
-            ' · ' + user.access_start_date.slice(0, 10) +
-            ' → ' + user.access_end_date.slice(0, 10) +
-            ' · ' + allowedModulesForUser({
-              role: user.role,
-              plan: user.plan,
-              is_active: status === 'active',
-            }).join(', ');
+          details.className = 'user-card__details';
+          [
+            ['Email', user.email],
+            ['Rol', user.role === 'admin' ? 'Admin' : 'Estudiante'],
+            ['Plan', PLAN_LABELS[user.plan] || user.plan],
+            ['Estado', status === 'active' ? 'Activo' : 'Suspendido'],
+            ['Inicio', formatDisplayDate(user.access_start_date)],
+            ['Vencimiento', formatDisplayDate(user.access_end_date)],
+          ].forEach(function (detail) {
+            var group = documentRef.createElement('div');
+            var term = documentRef.createElement('dt');
+            var value = documentRef.createElement('dd');
+            term.textContent = detail[0];
+            value.textContent = detail[1];
+            group.appendChild(term);
+            group.appendChild(value);
+            details.appendChild(group);
+          });
           actions.className = 'user-card__actions';
           actions.appendChild(createButton(
             'Editar',
@@ -268,6 +428,20 @@
             'edit',
             user.user_id
           ));
+          getQuickActions({
+            plan: user.plan,
+            is_active: status === 'active',
+            status: status,
+          }).forEach(function (action) {
+            actions.appendChild(createButton(
+              action.label,
+              action.id === 'suspend'
+                ? 'button button--small button--danger'
+                : 'button button--small',
+              action.id,
+              user.user_id
+            ));
+          });
           if (adminMode === 'mock') {
             actions.appendChild(createButton(
               'Eliminar',
@@ -295,27 +469,87 @@
       });
     }
 
+    function requestProfile(request) {
+      if (Array.isArray(request.profiles)) return request.profiles[0] || {};
+      return request.profiles || {};
+    }
+
     function renderUpgradeRequests() {
-      if (!upgradeRequests) return;
-      var requests = readUpgradeRequests(storage).slice().reverse();
+      if (!upgradeRequests) return Promise.resolve([]);
       upgradeRequests.replaceChildren();
+      var operation = typeof userStore.listUpgradeRequests === 'function'
+        ? userStore.listUpgradeRequests()
+        : Promise.resolve([]);
 
-      if (!requests.length) {
-        var empty = documentRef.createElement('p');
-        empty.className = 'empty';
-        empty.textContent = 'No hay solicitudes registradas.';
-        upgradeRequests.appendChild(empty);
-        return;
-      }
+      return Promise.resolve(operation).then(function (requests) {
+        requestsCache = requests || [];
+        renderStudentDashboard();
 
-      requests.forEach(function (request) {
-        var row = documentRef.createElement('div');
-        row.className = 'audit-row';
-        row.appendChild(auditCell('Email', request.email));
-        row.appendChild(auditCell('Usuario', request.user_id));
-        row.appendChild(auditCell('Plan actual', request.current_plan));
-        row.appendChild(auditCell('Solicitado', request.requested_at));
-        upgradeRequests.appendChild(row);
+        if (!requestsCache.length) {
+          var empty = documentRef.createElement('p');
+          empty.className = 'empty';
+          empty.textContent = 'No hay solicitudes registradas.';
+          upgradeRequests.appendChild(empty);
+          return requestsCache;
+        }
+
+        requestsCache.forEach(function (request) {
+          var profile = requestProfile(request);
+          var row = documentRef.createElement('article');
+          var actions = documentRef.createElement('div');
+
+          row.className = 'request-card';
+          row.appendChild(auditCell(
+            'Estudiante',
+            profile.display_name || request.user_id
+          ));
+          row.appendChild(auditCell('Email', profile.email || '—'));
+          row.appendChild(auditCell(
+            'Plan solicitado',
+            PLAN_LABELS[request.requested_plan] || request.requested_plan
+          ));
+          row.appendChild(auditCell(
+            'Fecha',
+            formatDisplayDate(request.requested_at)
+          ));
+          row.appendChild(auditCell('Estado', request.status));
+
+          actions.className = 'request-card__actions';
+          if (request.status === 'pending') {
+            actions.appendChild(createButton(
+              'Aprobar',
+              'button button--small button--primary',
+              'request_approved',
+              request.id
+            ));
+            actions.appendChild(createButton(
+              'Rechazar',
+              'button button--small button--danger',
+              'request_rejected',
+              request.id
+            ));
+          } else if (request.status === 'approved') {
+            actions.appendChild(createButton(
+              'Marcar completada',
+              'button button--small',
+              'request_fulfilled',
+              request.id
+            ));
+          }
+          row.appendChild(actions);
+          upgradeRequests.appendChild(row);
+        });
+        return requestsCache;
+      }).catch(function (error) {
+        var failed = documentRef.createElement('p');
+        failed.className = 'empty';
+        failed.textContent = 'No fue posible cargar las solicitudes.';
+        upgradeRequests.replaceChildren(failed);
+        setFeedback(
+          error.message || 'No fue posible cargar las solicitudes.',
+          'error'
+        );
+        return [];
       });
     }
 
@@ -678,6 +912,38 @@
         return;
       }
 
+      if (button.dataset.action !== 'delete') {
+        var selectedUser = usersCache.find(function (user) {
+          return user.user_id === button.dataset.userId;
+        });
+        if (!selectedUser) return;
+
+        button.disabled = true;
+        var quickValues;
+        try {
+          quickValues = applyQuickAction(
+            selectedUser,
+            button.dataset.action,
+            new Date()
+          );
+        } catch (error) {
+          button.disabled = false;
+          setFeedback(error.message, 'error');
+          return;
+        }
+
+        Promise.resolve(
+          userStore.updateUser(selectedUser.user_id, quickValues)
+        ).then(function () {
+          setFeedback('Acceso del estudiante actualizado.', 'success');
+          return renderUsers();
+        }).catch(function (error) {
+          button.disabled = false;
+          setFeedback(error.message || 'No fue posible actualizar.', 'error');
+        });
+        return;
+      }
+
       if (
         button.dataset.action === 'delete'
         && adminMode === 'mock'
@@ -693,20 +959,47 @@
       }
     });
 
-    refreshAudit.addEventListener('click', renderAuditDashboard);
+    if (refreshAudit) {
+      refreshAudit.addEventListener('click', renderAuditDashboard);
+    }
+
+    if (upgradeRequests) {
+      upgradeRequests.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-action^="request_"]');
+        if (!button || typeof userStore.updateUpgradeRequest !== 'function') {
+          return;
+        }
+        var status = button.dataset.action.replace('request_', '');
+        button.disabled = true;
+        Promise.resolve(
+          userStore.updateUpgradeRequest(button.dataset.userId, status)
+        ).then(function () {
+          setFeedback('Solicitud actualizada.', 'success');
+          return renderUpgradeRequests();
+        }).catch(function (error) {
+          button.disabled = false;
+          setFeedback(error.message || 'No fue posible actualizar.', 'error');
+        });
+      });
+    }
 
     function activateConsole(snapshot, mode) {
       var allowed = isAdminSession(snapshot);
       denied.hidden = allowed;
       consolePanel.hidden = !allowed;
 
-      if (!allowed) return Promise.resolve(false);
+      if (!allowed) {
+        var deniedModel = getAdminDeniedModel(snapshot);
+        deniedMessage.textContent = deniedModel.message;
+        deniedLogin.hidden = !deniedModel.showLogin;
+        return Promise.resolve(false);
+      }
 
       adminMode = mode;
       currentAdmin.textContent = snapshot.identity.display_name + ' · Admin';
       adminModeLabel.textContent = mode === 'supabase'
-        ? 'Admin real con Supabase · Los cambios afectan permisos reales.'
-        : 'Fallback mock local · Supabase no configurado o sin sesión.';
+        ? 'Datos sincronizados con Supabase.'
+        : 'Datos locales de desarrollo.';
 
       if (mode === 'supabase') {
         return supabaseProvider.getClient().then(function (client) {
@@ -714,33 +1007,42 @@
             client: client,
           });
           resetForm();
-          renderAuditDashboard();
-          renderUpgradeRequests();
-          return renderUsers().then(function () { return true; });
+          return Promise.all([
+            renderUsers(),
+            renderUpgradeRequests(),
+          ]).then(function () { return true; });
         });
       }
 
       userStore = mockUserStore;
       resetForm();
-      renderAuditDashboard();
-      renderUpgradeRequests();
-      return renderUsers().then(function () { return true; });
+      return Promise.all([
+        renderUsers(),
+        renderUpgradeRequests(),
+      ]).then(function () { return true; });
     }
 
     function resolveAdmin() {
+      var mockAllowed = shouldUseMockAdmin(
+        options.location || root.location
+      );
       if (!supabaseAuth) {
-        return mockAuth.resolve().then(function (snapshot) {
-          return activateConsole(snapshot, 'mock');
-        });
+        return mockAllowed
+          ? mockAuth.resolve().then(function (snapshot) {
+            return activateConsole(snapshot, 'mock');
+          })
+          : activateConsole(store.getSnapshot(), 'supabase');
       }
 
       return supabaseAuth.resolve().then(function (snapshot) {
         if (snapshot.authentication.status === 'authenticated') {
           return activateConsole(snapshot, 'supabase');
         }
-        return mockAuth.resolve().then(function (mockSnapshot) {
-          return activateConsole(mockSnapshot, 'mock');
-        });
+        return mockAllowed
+          ? mockAuth.resolve().then(function (mockSnapshot) {
+            return activateConsole(mockSnapshot, 'mock');
+          })
+          : activateConsole(snapshot, 'supabase');
       });
     }
 
@@ -772,10 +1074,14 @@
 
   return {
     allowedModulesForUser: allowedModulesForUser,
+    applyQuickAction: applyQuickAction,
     buildAccessAnalytics: accessAnalytics.buildAccessAnalytics,
+    buildStudentDashboard: buildStudentDashboard,
+    getAdminDeniedModel: getAdminDeniedModel,
+    getQuickActions: getQuickActions,
     initializeAdminPage: initializeAdminPage,
     isAdminSession: isAdminSession,
     readAuditEvents: readAuditEvents,
-    readUpgradeRequests: readUpgradeRequests,
+    shouldUseMockAdmin: shouldUseMockAdmin,
   };
 });

@@ -401,13 +401,11 @@
 
     .solution-visual {
       position: relative;
-      height: 400px;
+      min-height: 400px;
       background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(0,255,136,0.05));
       border-radius: 12px;
       border: 1px solid rgba(0,210,255,0.16);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 24px;
       overflow: hidden;
     }
 
@@ -424,13 +422,87 @@
       );
     }
 
-    .visual-text {
+    .training-route {
       position: relative;
       z-index: 1;
-      text-align: center;
-      color: rgba(0,210,255,0.32);
-      font-size: 14px;
-      letter-spacing: 0.1em;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .training-route__heading {
+      grid-column: 1 / -1;
+      margin-bottom: 4px;
+    }
+
+    .training-route__heading span {
+      color: #00d4ff;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .training-route__heading h3 {
+      margin-top: 4px;
+      color: #ffffff;
+      font-size: 24px;
+    }
+
+    .training-step {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      padding: 16px;
+      border: 1px solid rgba(0,210,255,0.16);
+      border-radius: 10px;
+      background: rgba(3,3,6,0.58);
+    }
+
+    .training-step__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .training-step__number {
+      color: rgba(0,210,255,0.64);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .training-step__status {
+      padding: 3px 7px;
+      color: #00ff88;
+      border: 1px solid rgba(0,255,136,0.24);
+      border-radius: 999px;
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    .training-step[data-access="locked"] .training-step__status {
+      color: #ffaa00;
+      border-color: rgba(255,170,0,0.28);
+    }
+
+    .training-step h4 {
+      margin-top: 10px;
+      color: #ffffff;
+      font-size: 16px;
+    }
+
+    .training-step p {
+      flex: 1;
+      margin: 6px 0 12px;
+      color: rgba(175,192,220,0.72);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .training-step__cta {
+      color: #00d4ff;
+      font-size: 12px;
+      font-weight: 700;
     }
 
     /* ============================================================
@@ -897,7 +969,11 @@
       }
 
       .solution-visual {
-        height: 250px;
+        min-height: 0;
+      }
+
+      .training-route {
+        grid-template-columns: 1fr;
       }
 
       .problem-grid {
@@ -1115,7 +1191,48 @@
       </div>
 
       <div class="solution-visual">
-        <div class="visual-text">Integración: SBA → Respuesta Abierta → SAT → Simulacro Completo</div>
+        <div class="training-route" aria-label="Ruta de entrenamiento">
+          <div class="training-route__heading">
+            <span>Tu siguiente paso</span>
+            <h3>Ruta de entrenamiento</h3>
+          </div>
+          <article class="training-step" data-training-step data-mode="sba_quick_drill" data-href="/diagnostic-sba/">
+            <div class="training-step__top">
+              <span class="training-step__number">01</span>
+              <span class="training-step__status" data-training-status>Comprobando acceso</span>
+            </div>
+            <h4>Diagnóstico SBA</h4>
+            <p>Detecta fortalezas y áreas de revisión con práctica objetiva.</p>
+            <a class="training-step__cta" href="/diagnostic-sba/" data-training-cta>Entrenar ahora</a>
+          </article>
+          <article class="training-step" data-training-step data-mode="open_response_short" data-href="/open-response-lab/">
+            <div class="training-step__top">
+              <span class="training-step__number">02</span>
+              <span class="training-step__status" data-training-status>Comprobando acceso</span>
+            </div>
+            <h4>Respuesta Abierta</h4>
+            <p>Entrena estructura, command verbs y profundidad explicativa.</p>
+            <a class="training-step__cta" href="/open-response-lab/" data-training-cta>Entrenar ahora</a>
+          </article>
+          <article class="training-step" data-training-step data-mode="sat_sprint" data-href="/adaptive-session/">
+            <div class="training-step__top">
+              <span class="training-step__number">03</span>
+              <span class="training-step__status" data-training-status>Comprobando acceso</span>
+            </div>
+            <h4>SAT / Cata</h4>
+            <p>Practica observación, inferencia y formulación de calidad.</p>
+            <a class="training-step__cta" href="/adaptive-session/" data-training-cta>Ver planes</a>
+          </article>
+          <article class="training-step" data-training-step data-mode="full_simulation" data-href="/full-simulation/">
+            <div class="training-step__top">
+              <span class="training-step__number">04</span>
+              <span class="training-step__status" data-training-status>Comprobando acceso</span>
+            </div>
+            <h4>Simulacro Completo</h4>
+            <p>Integra todas las experiencias bajo condiciones de tiempo realistas.</p>
+            <a class="training-step__cta" href="/full-simulation/" data-training-cta>Ver planes</a>
+          </article>
+        </div>
       </div>
     </div>
   </div>
@@ -1401,6 +1518,7 @@
 <script src="./shared/auth-providers/supabase-auth-provider.js"></script>
 <script src="./shared/auth-providers/mock-auth-provider.js"></script>
 <script src="./shared/auth-provider.js"></script>
+<script src="./shared/access-control.js"></script>
 <script src="./shared/session-badge.js"></script>
 
 <script>
@@ -1408,10 +1526,42 @@
   'use strict';
 
   // Inicializar badge de sesión
+  function renderTrainingRoute(snapshot) {
+    if (!WSETAccess.AccessControl) return;
+    var authenticated = snapshot.authentication.status === 'authenticated';
+
+    document.querySelectorAll('[data-training-step]').forEach(function (step) {
+      var decision = WSETAccess.AccessControl.evaluateModeAccess(
+        snapshot,
+        step.dataset.mode
+      );
+      var status = step.querySelector('[data-training-status]');
+      var cta = step.querySelector('[data-training-cta]');
+
+      step.dataset.access = decision.would_allow ? 'available' : 'locked';
+      status.textContent = decision.would_allow
+        ? authenticated ? 'Incluido en tu acceso' : 'Disponible'
+        : step.dataset.mode === 'full_simulation'
+          ? 'Acceso Completo'
+          : 'Premium';
+      cta.textContent = decision.would_allow
+        ? authenticated ? 'Continuar' : 'Entrenar ahora'
+        : 'Ver planes';
+      cta.href = decision.would_allow ? step.dataset.href : '/upgrade/';
+    });
+  }
+
   if (typeof WSETAccess !== 'undefined' && WSETAccess.SessionBadge) {
-    WSETAccess.SessionBadge.initializeSessionBadge({
+    var badgeController = WSETAccess.SessionBadge.initializeSessionBadge({
       mount: document.querySelector('[data-session-badge]')
     });
+    if (badgeController) {
+      badgeController.store.subscribe(renderTrainingRoute);
+      renderTrainingRoute(badgeController.store.getSnapshot());
+      if (badgeController.resolution) {
+        badgeController.resolution.then(renderTrainingRoute);
+      }
+    }
   }
 
   // Smooth scroll para navegación

@@ -217,7 +217,24 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
 
 .user-card strong,
 .user-card span { overflow-wrap: anywhere; }
-.user-card p { margin: 8px 0 12px; color: var(--muted); font-size: 10px; }
+.user-card__details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.user-card__details div { min-width: 0; }
+.user-card__details dt {
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.user-card__details dd {
+  margin: 3px 0 0;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
 .user-card__actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .badge {
@@ -342,6 +359,22 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
 
 .audit-list { display: grid; gap: 1px; background: var(--line); }
 
+.request-card {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(110px, 1fr)) minmax(160px, auto);
+  gap: 12px;
+  align-items: center;
+  padding: 14px 20px;
+  background: var(--panel);
+}
+
+.request-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .audit-row {
   min-width: 0;
   display: grid;
@@ -369,6 +402,8 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
   .workspace { grid-template-columns: 1fr; }
   .user-form { border-right: 0; border-bottom: 1px solid var(--line); }
   .audit-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .request-card { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .request-card__actions { justify-content: flex-start; }
   .metrics-grid,
   .impact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .analytics-tables { grid-template-columns: 1fr; }
@@ -385,6 +420,8 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
   .form-actions,
   .feedback { grid-column: auto; }
   .users-list { padding: 14px; }
+  .user-card__details { grid-template-columns: 1fr; }
+  .user-card__actions .button { flex: 1 1 140px; }
   .access-analytics { padding: 14px; }
   .metrics-grid,
   .impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -401,6 +438,7 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
     grid-template-columns: minmax(130px, 1fr) repeat(2, minmax(44px, auto));
   }
   .audit-row { grid-template-columns: 1fr; padding: 14px; }
+  .request-card { grid-template-columns: 1fr; padding: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

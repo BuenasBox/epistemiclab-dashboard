@@ -134,6 +134,13 @@
       .get('access_debug') === '1';
   }
 
+  function getNextDestination(locationRef) {
+    var params = new URLSearchParams(
+      locationRef && locationRef.search ? locationRef.search : ''
+    );
+    return params.get('next') === '/admin/' ? '/admin/' : '/profile/';
+  }
+
   function showProfileTransition(options) {
     options = options || {};
 
@@ -142,6 +149,9 @@
     var locationRef = options.location || root.location;
     var setTimeoutFn = options.setTimeout || root.setTimeout;
     var delay = Number.isFinite(options.delay) ? options.delay : 800;
+    var destination = options.destination === '/admin/'
+      ? '/admin/'
+      : '/profile/';
 
     if (feedback) {
       feedback.textContent = options.message || '';
@@ -149,7 +159,10 @@
     }
 
     if (profileCta) {
-      profileCta.href = '/profile/';
+      profileCta.href = destination;
+      profileCta.textContent = destination === '/admin/'
+        ? 'Ir a administración'
+        : 'Ir a mi perfil';
       profileCta.hidden = false;
     }
 
@@ -158,9 +171,9 @@
     setTimeoutFn(function () {
       try {
         if (locationRef && typeof locationRef.assign === 'function') {
-          locationRef.assign('/profile/');
+          locationRef.assign(destination);
         } else if (locationRef) {
-          locationRef.href = '/profile/';
+          locationRef.href = destination;
         }
       } catch (error) {
         // Keep the profile CTA visible when navigation is unavailable.
@@ -211,6 +224,9 @@
       '[data-internal-session-snapshot]'
     );
     var internalToolsEnabled = shouldExposeInternalTools(
+      options.location || root.location
+    );
+    var nextDestination = getNextDestination(
       options.location || root.location
     );
 
@@ -309,6 +325,7 @@
             location: options.location || root.location,
             setTimeout: options.setTimeout || root.setTimeout,
             message: 'Sesión iniciada correctamente.',
+            destination: nextDestination,
           });
           loginForm.reset();
         })
@@ -332,6 +349,7 @@
               location: options.location || root.location,
               setTimeout: options.setTimeout || root.setTimeout,
               message: 'Cuenta creada correctamente. Tu prueba Demo de 30 días está activa.',
+              destination: nextDestination,
             });
           } else {
             setFeedback(
@@ -468,6 +486,7 @@
     createManagedUserSource: createManagedUserSource,
     createMockProfileSource: createMockProfileSource,
     errorMessage: errorMessage,
+    getNextDestination: getNextDestination,
     getMockProfiles: getMockProfiles,
     initializeLoginPage: initializeLoginPage,
     showProfileTransition: showProfileTransition,
