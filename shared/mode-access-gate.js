@@ -93,6 +93,7 @@
         mount,
         denialReason,
         {
+          modeGate: true,
           currentPlan: snapshot && snapshot.plan
             ? snapshot.plan.code
             : null,

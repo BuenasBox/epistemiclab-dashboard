@@ -18,9 +18,9 @@
 
   var MODE_POLICY = {
     sba_quick_drill: 'public',
-    sba_express: 'public',
-    sba_standard: 'public',
-    sba_mock_theory: 'public',
+    sba_express: 'demo',
+    sba_standard: 'full_access',
+    sba_mock_theory: 'full_access',
     adaptive_express: 'premium',
     adaptive_standard: 'full_access',
     adaptive_mock_theory: 'full_access',

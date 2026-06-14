@@ -93,10 +93,15 @@
     var safeReason = normalizeDenialReason(reason);
     var copy = COPY[safeReason];
     var loginRequired = safeReason === 'login_required';
+    var modeGate = context.modeGate === true;
 
     return {
       title: copy.title,
-      message: copy.message,
+      message: modeGate
+        ? loginRequired
+          ? 'Inicia sesión para acceder a este modo.'
+          : 'Este modo requiere un plan superior.'
+        : copy.message,
       currentPlan: planLabel(context.currentPlan),
       requiredPlan: planLabel(context.requiredPlan),
       accessExpiry: formatExpiry(context.accessExpiry),
@@ -105,8 +110,8 @@
         href: loginRequired ? '/login/' : '/upgrade/',
       },
       secondaryCta: {
-        label: 'Volver al inicio',
-        href: '/',
+        label: modeGate ? 'Ver planes' : 'Volver al inicio',
+        href: modeGate ? '/upgrade/' : '/',
       },
     };
   }

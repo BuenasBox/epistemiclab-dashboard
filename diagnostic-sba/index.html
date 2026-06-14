@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WSET L3 · Cabina Diagnóstica SBA v2.2 · PROTOTIPO</title>
+<link rel="stylesheet" href="../shared/upgrade-gate.css">
 <style>
 /* =====================================================================
    WSET-AI-System · Cabina Diagnóstica SBA v2.2
@@ -1032,6 +1033,8 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 <script src="../shared/auth-provider.js"></script>
 <script src="../shared/access-control.js"></script>
 <script src="../shared/access-audit.js"></script>
+<script src="../shared/upgrade-gate.js"></script>
+<script src="../shared/mode-access-gate.js"></script>
 <script src="preguntas_data.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
@@ -1330,18 +1333,24 @@ function loadMode(mode){
   sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
 }
 function startMode(mode){
-  try {
-    window.WSETAccess.audit.observeAttempt({
+  const accessMode = {
+    quick_drill: 'sba_quick_drill',
+    express: 'sba_express',
+    standard: 'sba_standard',
+    mock_theory_1: 'sba_mock_theory',
+  }[mode] || mode;
+  if(!window.WSETModeAccessGate)return;
+  window.WSETModeAccessGate.request({
       route: '/diagnostic-sba/',
       experience: 'diagnostic_sba',
-      mode: {
-        quick_drill: 'sba_quick_drill',
-        express: 'sba_express',
-        standard: 'sba_standard',
-        mock_theory_1: 'sba_mock_theory',
-      }[mode] || mode,
-    });
-  } catch(_error) {}
+      mode: accessMode,
+      enforcement: 'active',
+  }).then(decision=>{
+    if(decision.would_allow)startAllowedMode(mode);
+  });
+}
+
+function startAllowedMode(mode){
   loadMode(mode);
   document.getElementById('mode-overlay').classList.remove('active');
   STATE.stage='prepare'; STATE.questionIndex=0;

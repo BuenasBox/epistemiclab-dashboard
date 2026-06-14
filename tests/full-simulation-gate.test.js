@@ -146,7 +146,8 @@ test('full simulation and paid mode entry points declare active access gates', (
     path.join(__dirname, '..', 'diagnostic-sba', 'index.html'),
     'utf8',
   );
-  assert.doesNotMatch(diagnostic, /mode-access-gate\.js|enforcement:\s*['"]active/);
+  assert.match(diagnostic, /mode-access-gate\.js/);
+  assert.match(diagnostic, /enforcement:\s*['"]active/);
 });
 
 test('full simulation start guard runs before loading simulation data', () => {

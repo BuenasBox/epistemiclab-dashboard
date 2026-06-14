@@ -70,11 +70,10 @@ test('shadow evaluator applies plan rules without enforcing them', () => {
     plan: 'full_access',
   });
 
-  assert.deepEqual(evaluateModeAccess(anonymous, 'sba_mock_theory'), {
-    would_allow: true,
-    would_deny: false,
-    denial_reason: null,
-  });
+  assert.equal(
+    evaluateModeAccess(anonymous, 'sba_mock_theory').denial_reason,
+    'full_access_required',
+  );
   assert.equal(
     evaluateModeAccess(anonymous, 'adaptive_express').denial_reason,
     'premium_required',
@@ -272,13 +271,8 @@ test('experiences load access dependencies and enforce only matrix-paid modes', 
         new RegExp(route.replaceAll('/', '\\/')),
         file,
       );
-      if (file === 'diagnostic-sba/index.html') {
-        assert.match(functionBody, /observeAttempt\(/, file);
-        assert.doesNotMatch(functionBody, /enforcement:\s*['"]active['"]/, file);
-      } else {
-        assert.match(functionBody, /WSETModeAccessGate\.request\(/, file);
-        assert.match(functionBody, /enforcement:\s*['"]active['"]/, file);
-      }
+      assert.match(functionBody, /WSETModeAccessGate\.request\(/, file);
+      assert.match(functionBody, /enforcement:\s*['"]active['"]/, file);
     }
   });
 });
