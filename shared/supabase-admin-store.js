@@ -11,7 +11,7 @@
   'use strict';
 
   var VALID_ROLES = ['student', 'admin'];
-  var VALID_PLANS = ['demo', 'freemium', 'premium', 'full_access'];
+  var VALID_PLANS = ['demo', 'premium', 'full_access'];
 
   function requireClient(client) {
     if (!client || typeof client.from !== 'function') {

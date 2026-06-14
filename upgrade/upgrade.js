@@ -19,14 +19,6 @@
       cta: { label: 'Iniciar sesión', href: '/login/' },
     },
     {
-      code: 'freemium',
-      label: 'Freemium',
-      includedModules: ['Diagnostic SBA', 'Open Response Lab'],
-      limitations: ['Sin Full Simulation', 'Sin modos avanzados'],
-      recommendedUse: 'Mantener una práctica esencial de fundamentos.',
-      cta: { label: 'Solicitar acceso', href: '/login/' },
-    },
-    {
       code: 'premium',
       label: 'Premium',
       includedModules: [

@@ -12,7 +12,6 @@
   var MOCK_PROFILES = [
     { id: 'visitor', label: 'Visitante', role: null, plan: null, durationDays: null },
     { id: 'demo', label: 'Demo', role: 'student', plan: 'demo', durationDays: 30 },
-    { id: 'freemium', label: 'Freemium', role: 'student', plan: 'freemium', durationDays: 30 },
     { id: 'premium', label: 'Premium', role: 'student', plan: 'premium', durationDays: 30 },
     { id: 'full_access', label: 'Acceso Completo', role: 'student', plan: 'full_access', durationDays: null },
     { id: 'admin', label: 'Admin', role: 'admin', plan: 'full_access', durationDays: null },

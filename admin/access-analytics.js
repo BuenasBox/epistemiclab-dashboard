@@ -17,7 +17,6 @@
   ];
   var PLAN_KEYS = [
     'demo',
-    'freemium',
     'premium',
     'full_access',
     'anonymous',

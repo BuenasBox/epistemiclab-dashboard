@@ -24,7 +24,6 @@ test('mock login exposes visitor and all supported access profiles', () => {
     [
       ['visitor', 'Visitante'],
       ['demo', 'Demo'],
-      ['freemium', 'Freemium'],
       ['premium', 'Premium'],
       ['full_access', 'Acceso Completo'],
       ['admin', 'Admin'],
@@ -57,8 +56,8 @@ test('managed login delegates session source creation to mock user store', () =>
   assert.deepEqual(calls, ['mock_test_user']);
 });
 
-test('demo, freemium and premium profiles receive active 30 day plans', () => {
-  ['demo', 'freemium', 'premium'].forEach((profileId) => {
+test('demo and premium profiles receive active 30 day plans', () => {
+  ['demo', 'premium'].forEach((profileId) => {
     const source = createMockProfileSource(profileId, FIXED_NOW);
     const start = new Date(source.plan.access_start_date);
     const end = new Date(source.plan.access_end_date);
@@ -85,7 +84,7 @@ test('full access and admin profiles receive active one year plans', () => {
 });
 
 test('every registered mock profile normalizes to access_session_v1', () => {
-  ['demo', 'freemium', 'premium', 'full_access', 'admin'].forEach((profileId) => {
+  ['demo', 'premium', 'full_access', 'admin'].forEach((profileId) => {
     const store = createSessionStore({ now: () => FIXED_NOW });
     const source = createMockProfileSource(profileId, FIXED_NOW);
     const snapshot = store.setSourceData(source, 'mock');

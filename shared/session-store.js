@@ -12,7 +12,7 @@
 
   var ACCESS_SESSION_SCHEMA_VERSION = 'access_session_v1';
   var VALID_ROLES = ['student', 'admin'];
-  var VALID_PLANS = ['demo', 'freemium', 'premium', 'full_access'];
+  var VALID_PLANS = ['demo', 'premium', 'full_access'];
   var VALID_SOURCES = ['mock', 'supabase'];
 
   function clone(value) {
@@ -88,10 +88,6 @@
     return value;
   }
 
-  function normalizePlanCode(value) {
-    return value === 'free' ? 'freemium' : value;
-  }
-
   function normalizeDate(value, name) {
     requireString(value, name);
     var date = new Date(value);
@@ -139,11 +135,7 @@
     }
 
     var role = requireEnum(identity.role, VALID_ROLES, 'identity.role');
-    var planCode = requireEnum(
-      normalizePlanCode(plan.code),
-      VALID_PLANS,
-      'plan.code',
-    );
+    var planCode = requireEnum(plan.code, VALID_PLANS, 'plan.code');
     var accountIsActive = account.is_active === true;
     var startDate = normalizeDate(
       plan.access_start_date,

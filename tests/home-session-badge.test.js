@@ -86,16 +86,26 @@ test('admin remains a separate technical role in the badge model', () => {
 test('badge model includes identity, plan, expiry and logout state', () => {
   const model = getSessionBadgeModel(createSnapshot({
     authenticated: true,
-    plan: 'freemium',
+    plan: 'premium',
     displayName: 'Ana Estudiante',
     accessEnd: '2026-07-15T00:00:00Z',
   }));
 
   assert.equal(model.identity, 'Ana Estudiante');
-  assert.equal(model.label, 'Freemium');
+  assert.equal(model.label, 'Premium');
   assert.equal(model.expiry, '15 de julio de 2026');
   assert.equal(model.canLogout, true);
   assert.equal(model.logoutLabel, 'Cerrar sesión');
+});
+
+test('badge does not expose unapproved plan labels', () => {
+  const model = getSessionBadgeModel(createSnapshot({
+    authenticated: true,
+    plan: 'freemium',
+  }));
+
+  assert.equal(model.label, 'Explorar');
+  assert.doesNotMatch(JSON.stringify(model), /Freemium|\bfree\b/i);
 });
 
 test('badge falls back to email when display name is unavailable', () => {

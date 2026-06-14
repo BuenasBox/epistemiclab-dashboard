@@ -8,12 +8,12 @@ const {
   getPlanCatalog,
 } = require('../upgrade/upgrade.js');
 
-test('upgrade page exposes Demo, Freemium, Premium and Full Access', () => {
+test('upgrade page exposes only the approved commercial plans', () => {
   assert.deepEqual(
     getPlanCatalog().map((plan) => plan.code),
-    ['demo', 'freemium', 'premium', 'full_access'],
+    ['demo', 'premium', 'full_access'],
   );
-  assert.equal(PLAN_CATALOG.length, 4);
+  assert.equal(PLAN_CATALOG.length, 3);
 
   getPlanCatalog().forEach((plan) => {
     assert.ok(plan.label);
@@ -31,7 +31,7 @@ test('upgrade page renders Spanish plan content and placeholder CTAs', () => {
     'utf8',
   );
 
-  ['Demo', 'Freemium', 'Premium', 'Acceso Completo']
+  ['Demo', 'Premium', 'Acceso Completo']
     .forEach((label) => assert.match(html, new RegExp(label)));
   ['Iniciar sesión', 'Solicitar acceso', 'Mejorar acceso']
     .forEach((label) => assert.match(html, new RegExp(label)));
@@ -39,6 +39,7 @@ test('upgrade page renders Spanish plan content and placeholder CTAs', () => {
   assert.match(html, /\.\/upgrade\.css/);
   assert.match(html, /\.\/upgrade\.js/);
   assert.doesNotMatch(html, /Stripe|PayPal|checkout|payment/i);
+  assert.doesNotMatch(html, /Freemium|\bfree\b/i);
 });
 
 test('upgrade page is public and does not initialize an access gate', () => {

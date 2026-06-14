@@ -11,7 +11,7 @@ test('admin derives allowed modules from role and plan', () => {
   assert.deepEqual(
     allowedModulesForUser({
       role: 'student',
-      plan: 'freemium',
+      plan: 'demo',
       is_active: true,
     }),
     ['Diagnostic SBA', 'Open Response Lab'],
@@ -70,26 +70,19 @@ test('admin page documents every access field and allowed modules', () => {
     'Fin de acceso',
     'Módulos permitidos',
   ].forEach((label) => assert.match(html, new RegExp(label)));
-  assert.match(html, /value="freemium"/);
+  assert.doesNotMatch(html, /value="freemium"/);
   assert.match(html, /data-allowed-modules/);
 });
 
-test('pending Supabase migration accepts freemium without deployment', () => {
-  const migration = fs.readFileSync(
-    path.join(
+test('no pending migration expands the approved plan model', () => {
+  assert.equal(
+    fs.existsSync(path.join(
       __dirname,
       '..',
       'supabase',
       'migrations',
       '20260613100000_add_freemium_plan.sql',
-    ),
-    'utf8',
+    )),
+    false,
   );
-
-  assert.match(
-    migration,
-    /plan in \('demo', 'freemium', 'premium', 'full_access'\)/,
-  );
-  assert.match(migration, /access_grants_plan_check/);
-  assert.match(migration, /access_audit_events_plan_check/);
 });

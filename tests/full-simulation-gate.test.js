@@ -59,19 +59,13 @@ test('full simulation gate denies anonymous with login-required copy', () => {
   });
 });
 
-test('full simulation gate denies demo, freemium and premium per matrix', () => {
+test('full simulation gate denies demo and premium per matrix', () => {
   const demo = snapshot({ plan: 'demo' });
-  const freemium = snapshot({ plan: 'freemium' });
   const premium = snapshot({ plan: 'premium' });
 
   assert.equal(evaluateFullSimulationGate(demo).would_deny, true);
   assert.equal(
     evaluateFullSimulationGate(demo).denial_reason,
-    'full_access_required',
-  );
-  assert.equal(evaluateFullSimulationGate(freemium).would_deny, true);
-  assert.equal(
-    evaluateFullSimulationGate(freemium).denial_reason,
     'full_access_required',
   );
   assert.equal(evaluateFullSimulationGate(premium).would_deny, true);

@@ -112,18 +112,18 @@ test('optional plan and expiry details are normalized safely', () => {
   assert.equal(missing.accessExpiry, null);
 });
 
-test('Freemium and free aliases use one learner-facing plan label', () => {
+test('unapproved plan names are never displayed to learners', () => {
   assert.equal(
     getUpgradeGateModel('premium_required', {
       currentPlan: 'freemium',
     }).currentPlan,
-    'Freemium',
+    null,
   );
   assert.equal(
     getUpgradeGateModel('premium_required', {
       currentPlan: 'free',
     }).currentPlan,
-    'Freemium',
+    null,
   );
 });
 

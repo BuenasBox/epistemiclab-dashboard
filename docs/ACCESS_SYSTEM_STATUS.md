@@ -33,7 +33,6 @@ internas se normalizan en `upgrade-gate.js` y nunca se muestran al learner.
 | Código | Etiqueta | Estado |
 |---|---|---|
 | `demo` | Demo | Soportado |
-| `freemium` | Freemium | Soportado; `free` se normaliza como alias |
 | `premium` | Premium | Soportado |
 | `full_access` | Acceso Completo | Soportado |
 
@@ -46,7 +45,7 @@ Solo `/full-simulation/` tiene enforcement activo en esta fase:
 
 - `full_access` activo: permitido.
 - `admin` activo y con plan vigente: permitido.
-- `demo`, `free`, `freemium` y `premium`: bloqueados con mensaje de upgrade.
+- `demo` y `premium`: bloqueados con mensaje de upgrade.
 - Sesión anónima: bloqueada con llamada a iniciar sesión.
 - Cuenta inactiva o plan vencido: bloqueados con copy público en español.
 
@@ -73,9 +72,9 @@ Los perfiles mock están disponibles únicamente en:
 http://localhost:<puerto>/login/?access_debug=1
 ```
 
-Perfiles: Visitante, Demo, Freemium, Premium, Acceso Completo y Admin. Los
-perfiles Demo, Freemium y Premium reciben 30 días; Acceso Completo y Admin,
-un año. Las herramientas mock permanecen ocultas en el dominio de producción.
+Perfiles: Visitante, Demo, Premium, Acceso Completo y Admin. Los perfiles Demo
+y Premium reciben 30 días; Acceso Completo y Admin, un año. Las herramientas
+mock permanecen ocultas en el dominio de producción.
 
 ## Proveedor Supabase
 
@@ -83,9 +82,8 @@ El proveedor Supabase resuelve `profiles`, `access_grants` y
 `learner_profiles`. Login, registro, recuperación de contraseña y restauración
 de sesión están implementados.
 
-La migración `20260613100000_add_freemium_plan.sql` amplía las restricciones de
-plan para aceptar `freemium`. Está creada localmente, pero no ha sido ejecutada
-contra producción.
+Las restricciones existentes aceptan exclusivamente `demo`, `premium` y
+`full_access`. No hay una migración pendiente para ampliar el modelo de planes.
 
 ## Administración
 
@@ -107,8 +105,6 @@ pagos.
 - La asignación de planes es manual.
 - Solo Full Simulation tiene enforcement activo.
 - Las cuotas descritas en la matriz todavía no tienen enforcement global.
-- La migración Freemium requiere revisión y aplicación manual antes de usar ese
-  plan en Supabase de producción.
 - No existe todavía una ruta de perfil o facturación.
 
 ## Próximos pasos para pagos
@@ -122,10 +118,9 @@ pagos.
 
 ## Notas de despliegue
 
-1. Revisar y aplicar la migración Freemium en un entorno Supabase de prueba.
-2. Ejecutar `node --test tests/*.test.js`.
-3. Verificar `/login/`, `/upgrade/`, `/admin/` y `/full-simulation/`.
-4. Confirmar que los perfiles inferiores no cargan la aplicación de simulación.
-5. Desplegar frontend y migración en pasos separados con rollback disponible.
+1. Ejecutar `node --test tests/*.test.js`.
+2. Verificar `/login/`, `/upgrade/`, `/admin/` y `/full-simulation/`.
+3. Confirmar que los perfiles inferiores no cargan la aplicación de simulación.
+4. Desplegar el frontend con rollback disponible.
 
 No se realizó despliegue, push ni modificación de producción durante esta fase.

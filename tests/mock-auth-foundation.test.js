@@ -149,7 +149,7 @@ test('session store preserves authenticated identity when the plan is expired', 
   assert.equal(snapshot.effective_permissions.access_state, 'expired_plan');
 });
 
-test('session store accepts freemium and normalizes free as a compatibility alias', () => {
+test('session store rejects plans outside the approved model', () => {
   const store = createSessionStore({
     now: () => new Date('2026-06-11T18:00:00Z'),
   });
@@ -158,13 +158,13 @@ test('session store accepts freemium and normalizes free as a compatibility alia
   const free = createPremiumSource();
   free.plan.code = 'free';
 
-  assert.equal(
-    store.setSourceData(freemium, 'mock').plan.code,
-    'freemium',
+  assert.throws(
+    () => store.setSourceData(freemium, 'mock'),
+    /unsupported value/,
   );
-  assert.equal(
-    store.setSourceData(free, 'mock').plan.code,
-    'freemium',
+  assert.throws(
+    () => store.setSourceData(free, 'mock'),
+    /unsupported value/,
   );
 });
 

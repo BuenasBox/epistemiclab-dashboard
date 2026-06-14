@@ -39,8 +39,6 @@
 
   var PLAN_LABELS = {
     demo: 'Demo',
-    free: 'Freemium',
-    freemium: 'Freemium',
     premium: 'Premium',
     full_access: 'Acceso Completo',
   };

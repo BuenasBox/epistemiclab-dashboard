@@ -27,7 +27,6 @@
   };
   var PLAN_LABELS = {
     demo: 'Demo',
-    freemium: 'Freemium',
     premium: 'Premium',
     full_access: 'Full Access',
     anonymous: 'Anonymous',
@@ -37,7 +36,7 @@
     if (!user || user.is_active !== true) return [];
 
     var modules = [];
-    if (user.plan === 'demo' || user.plan === 'freemium') {
+    if (user.plan === 'demo') {
       modules = ['Diagnostic SBA', 'Open Response Lab'];
     } else if (user.plan === 'premium') {
       modules = [

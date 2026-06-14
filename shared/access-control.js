@@ -12,7 +12,6 @@
 
   var PLAN_RANK = {
     demo: 1,
-    freemium: 1,
     premium: 2,
     full_access: 3,
   };
