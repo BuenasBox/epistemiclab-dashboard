@@ -12,9 +12,24 @@
 
   var PLAN_LABELS = {
     demo: 'Demo',
+    free: 'Freemium',
+    freemium: 'Freemium',
     premium: 'Premium',
     full_access: 'Acceso Completo',
   };
+
+  var MONTHS = [
+    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre',
+  ];
+
+  function formatExpiry(value) {
+    if (!value) return null;
+    var date = new Date(value);
+    if (Number.isNaN(date.getTime())) return null;
+    return date.getUTCDate() + ' de ' + MONTHS[date.getUTCMonth()]
+      + ' de ' + date.getUTCFullYear();
+  }
 
   function getSessionBadgeModel(snapshot) {
     var isContract = snapshot
@@ -57,34 +72,62 @@
     }
 
     return {
+      identity: authenticated && snapshot.identity
+        ? snapshot.identity.display_name || snapshot.identity.email
+        : null,
       label: label,
       roleLabel: roleLabel,
       text: roleLabel ? label + ' · ' + roleLabel : label,
+      expiry: authenticated && snapshot.plan
+        ? formatExpiry(snapshot.plan.access_end_date)
+        : null,
+      canLogout: authenticated,
+      logoutLabel: 'Cerrar sesión',
       state: state,
       href: '/login/',
     };
   }
 
-  function renderSessionBadge(mount, snapshot, documentRef) {
+  function renderSessionBadge(mount, snapshot, documentRef, onLogout) {
     if (!mount || !documentRef) return null;
 
     var model = getSessionBadgeModel(snapshot);
+    var container = documentRef.createElement('div');
     var link = documentRef.createElement('a');
     var dot = documentRef.createElement('span');
-    var label = documentRef.createElement('span');
+    var copy = documentRef.createElement('span');
+    var label = documentRef.createElement('strong');
 
-    link.className = 'access-session-badge';
+    container.className = 'access-session-badge';
+    container.dataset.sessionState = model.state;
+    link.className = 'access-session-badge__main';
     link.href = model.href;
-    link.dataset.sessionState = model.state;
     link.setAttribute('aria-label', 'Estado de sesión: ' + model.text);
 
     dot.className = 'access-session-badge__dot';
     dot.setAttribute('aria-hidden', 'true');
+    copy.className = 'access-session-badge__copy';
     label.className = 'access-session-badge__label';
     label.textContent = model.label;
 
     link.appendChild(dot);
-    link.appendChild(label);
+    copy.appendChild(label);
+
+    if (model.identity) {
+      var identity = documentRef.createElement('span');
+      identity.className = 'access-session-badge__identity';
+      identity.textContent = model.identity;
+      copy.appendChild(identity);
+    }
+
+    if (model.expiry) {
+      var expiry = documentRef.createElement('span');
+      expiry.className = 'access-session-badge__expiry';
+      expiry.textContent = 'Hasta ' + model.expiry;
+      copy.appendChild(expiry);
+    }
+
+    link.appendChild(copy);
 
     if (model.roleLabel) {
       var separator = documentRef.createElement('span');
@@ -99,8 +142,21 @@
       link.appendChild(role);
     }
 
-    mount.replaceChildren(link);
-    return link;
+    container.appendChild(link);
+
+    if (model.canLogout) {
+      var logout = documentRef.createElement('button');
+      logout.type = 'button';
+      logout.className = 'access-session-badge__logout';
+      logout.textContent = model.logoutLabel;
+      if (typeof onLogout === 'function') {
+        logout.addEventListener('click', onLogout);
+      }
+      container.appendChild(logout);
+    }
+
+    mount.replaceChildren(container);
+    return container;
   }
 
   function initializeSessionBadge(options) {
@@ -119,31 +175,60 @@
       || !mount
       || !access
       || !access.SessionStore
-      || !access.MockAuthProvider
       || !access.AuthProvider
     ) {
       return null;
     }
 
     var store = access.SessionStore.createSessionStore();
-    var mockProvider = access.MockAuthProvider.createMockAuthProvider({
-      storage: options.storage || rootRef.localStorage,
-    });
-    var auth = access.AuthProvider.createAuthProvider({
-      provider: mockProvider,
-      sessionStore: store,
-    });
+    var mockAuth = access.MockAuthProvider
+      ? access.AuthProvider.createAuthProvider({
+        provider: access.MockAuthProvider.createMockAuthProvider({
+          storage: options.storage || rootRef.localStorage,
+        }),
+        sessionStore: store,
+      })
+      : null;
+    var supabaseAuth = access.SupabaseAuthProvider
+      ? access.AuthProvider.createAuthProvider({
+        provider: access.SupabaseAuthProvider.createSupabaseAuthProvider(),
+        sessionStore: store,
+      })
+      : null;
 
     function render(snapshot) {
-      return renderSessionBadge(mount, snapshot, documentRef);
+      return renderSessionBadge(
+        mount,
+        snapshot,
+        documentRef,
+        function () {
+          var current = store.getSnapshot();
+          var auth = current.source === 'supabase'
+            ? supabaseAuth
+            : mockAuth;
+          if (auth) auth.signOut();
+        }
+      );
     }
 
     store.subscribe(render);
     render(store.getSnapshot());
-    auth.resolve();
+    var resolution = supabaseAuth
+      ? supabaseAuth.resolve().then(function (snapshot) {
+        if (
+          snapshot.authentication.status === 'anonymous'
+          && mockAuth
+        ) {
+          return mockAuth.resolve();
+        }
+        return snapshot;
+      })
+      : mockAuth && mockAuth.resolve();
 
     return {
-      auth: auth,
+      auth: supabaseAuth || mockAuth,
+      mockAuth: mockAuth,
+      resolution: resolution,
       store: store,
       render: render,
     };

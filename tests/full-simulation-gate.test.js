@@ -49,19 +49,29 @@ function snapshot(options) {
     .setSourceData(sourceData(options), 'mock');
 }
 
-test('full simulation gate denies anonymous, demo and premium access', () => {
+test('full simulation gate denies anonymous with login-required copy', () => {
   const anonymous = createAnonymousSnapshot(FIXED_NOW.toISOString());
-  const demo = snapshot({ plan: 'demo' });
-  const premium = snapshot({ plan: 'premium' });
 
   assert.deepEqual(evaluateFullSimulationGate(anonymous), {
     would_allow: false,
     would_deny: true,
-    denial_reason: 'full_access_required',
+    denial_reason: 'login_required',
   });
+});
+
+test('full simulation gate denies demo, freemium and premium per matrix', () => {
+  const demo = snapshot({ plan: 'demo' });
+  const freemium = snapshot({ plan: 'freemium' });
+  const premium = snapshot({ plan: 'premium' });
+
   assert.equal(evaluateFullSimulationGate(demo).would_deny, true);
   assert.equal(
     evaluateFullSimulationGate(demo).denial_reason,
+    'full_access_required',
+  );
+  assert.equal(evaluateFullSimulationGate(freemium).would_deny, true);
+  assert.equal(
+    evaluateFullSimulationGate(freemium).denial_reason,
     'full_access_required',
   );
   assert.equal(evaluateFullSimulationGate(premium).would_deny, true);
@@ -71,15 +81,19 @@ test('full simulation gate denies anonymous, demo and premium access', () => {
   );
 });
 
-test('full simulation gate allows active full access students and admins', () => {
+test('full simulation gate allows active full access students', () => {
   const student = snapshot({ plan: 'full_access' });
+
+  assert.equal(evaluateFullSimulationGate(student).would_allow, true);
+});
+
+test('full simulation gate allows active admins independently of learner plan', () => {
   const admin = snapshot({
-    plan: 'full_access',
+    plan: 'demo',
     role: 'admin',
     userId: 'admin_001',
   });
 
-  assert.equal(evaluateFullSimulationGate(student).would_allow, true);
   assert.equal(evaluateFullSimulationGate(admin).would_allow, true);
 });
 
@@ -96,11 +110,11 @@ test('full simulation gate denies expired and inactive accounts', () => {
 
   assert.equal(
     evaluateFullSimulationGate(expired).denial_reason,
-    'plan_expired',
+    'expired',
   );
   assert.equal(
     evaluateFullSimulationGate(inactive).denial_reason,
-    'account_inactive',
+    'inactive',
   );
 });
 
@@ -112,10 +126,11 @@ test('only full simulation declares an active access gate', () => {
 
   assert.match(fullSimulation, /\.\/access-gate\.js/);
   assert.match(fullSimulation, /data-full-simulation-denied/);
-  assert.match(fullSimulation, /Acceso Completo requerido/);
-  assert.match(fullSimulation, /Ir a Login/);
-  assert.match(fullSimulation, /Ver Planes/);
-  assert.match(fullSimulation, /Volver al Inicio/);
+  assert.match(fullSimulation, /data-full-simulation-gate/);
+  assert.match(fullSimulation, /upgrade-gate\.js/);
+  assert.match(fullSimulation, /upgrade-gate\.css/);
+  assert.doesNotMatch(fullSimulation, /data-denial-reason/);
+  assert.doesNotMatch(fullSimulation, /full_access_required/);
   assert.match(
     fullSimulation,
     /auth-providers\/supabase-auth-provider\.js/,

@@ -21,7 +21,7 @@
 | Identidad | Significado | Autenticación | Plan |
 |---|---|---:|---|
 | `anonymous_visitor` | Visitante público | No | Ninguno |
-| `student` | Usuario registrado que utiliza la plataforma | Sí | `demo`, `premium` o `full_access` |
+| `student` | Usuario registrado que utiliza la plataforma | Sí | `demo`, `freemium`, `premium` o `full_access` |
 | `admin` | Rol técnico con permisos de gestión | Sí | Puede coexistir con cualquier plan |
 
 ### Separación obligatoria
@@ -29,6 +29,7 @@
 Ejemplos válidos:
 
 - `student + demo`
+- `student + freemium`
 - `student + premium`
 - `student + full_access`
 - `admin + full_access`
@@ -41,9 +42,11 @@ El rol `admin` permite gestión administrativa. Su acceso estudiantil depende de
 | Plan | Etiqueta visible | Vigencia inicial | Propósito |
 |---|---|---:|---|
 | `demo` | Demo | 30 días | Prueba registrada y limitada |
+| `freemium` | Freemium | Configurable | Acceso básico continuo |
 | `premium` | Premium | 30 días | Práctica intermedia con límites superiores |
 | `full_access` | Acceso Completo | 1 año | Acceso total para estudiantes |
 
+`free` es un alias frontend heredado que se normaliza a `freemium`.
 `anonymous_visitor` no es un plan y no tiene vigencia contractual.
 
 ## 4. Estados de acceso
@@ -59,19 +62,19 @@ Cada recurso debe clasificarse como:
 
 ## 5. Matriz por ruta
 
-| Ruta | Visitante | Demo | Premium | Acceso Completo | Admin |
-|---|---|---|---|---|---|
-| `/` | Público | Público | Público | Público | Público |
-| `/diagnostic-sba/` | Muestra mínima | Limitado | Limitado ampliado | Completo | Según plan |
-| `/adaptive-session/` | Teaser | Teaser | Express | Completo | Según plan |
-| `/open-response-lab/` | Muestra mínima | Limitado | Limitado ampliado | Completo | Según plan |
-| `/full-simulation/` | Teaser | Teaser | Teaser | Completo | Según plan |
-| `/login/` o `/auth/` | Público | Redirige al perfil | Redirige al perfil | Redirige al perfil | Redirige al perfil |
-| `/profile/` | Requiere login | Protegido | Protegido | Protegido | Protegido |
-| `/analytics/` | Teaser/login | Resumen básico | Resumen intermedio | Completo | Según plan |
-| `/upgrade/` | Público | Público | Público | Estado del plan | Público |
-| `/billing/` o `/access/` | Requiere login | Protegido | Protegido | Protegido | Protegido |
-| `/admin/` | Bloqueado | Bloqueado | Bloqueado | Bloqueado | Administrativo |
+| Ruta | Visitante | Demo | Freemium | Premium | Acceso Completo | Admin |
+|---|---|---|---|---|---|---|
+| `/` | Público | Público | Público | Público | Público | Público |
+| `/diagnostic-sba/` | Muestra mínima | Limitado | Limitado | Limitado ampliado | Completo | Según plan |
+| `/adaptive-session/` | Teaser | Teaser | Teaser | Express | Completo | Según plan |
+| `/open-response-lab/` | Muestra mínima | Limitado | Limitado | Limitado ampliado | Completo | Según plan |
+| `/full-simulation/` | Teaser | Teaser | Teaser | Teaser | Completo | Permitido si activo y vigente |
+| `/login/` | Público | Público | Público | Público | Público | Público |
+| `/profile/` | Requiere login | Protegido | Protegido | Protegido | Protegido | Protegido |
+| `/analytics/` | Teaser/login | Resumen básico | Resumen básico | Resumen intermedio | Completo | Según plan |
+| `/upgrade/` | Público | Público | Público | Público | Estado del plan | Público |
+| `/billing/` o `/access/` | Requiere login | Protegido | Protegido | Protegido | Protegido | Protegido |
+| `/admin/` | Bloqueado | Bloqueado | Bloqueado | Bloqueado | Bloqueado | Administrativo |
 
 ### Rutas existentes
 

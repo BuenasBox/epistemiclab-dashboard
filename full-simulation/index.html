@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WSET L3 · Simulacro Completo · PROTOTIPO</title>
+  <link rel="stylesheet" href="../shared/upgrade-gate.css">
   <script src="../shared/session-store.js"></script>
   <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
   <script src="../shared/auth-providers/mock-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
   <script src="../shared/access-control.js"></script>
   <script src="../shared/access-audit.js"></script>
+  <script src="../shared/upgrade-gate.js"></script>
   <script src="./access-gate.js"></script>
   <script src="../adaptive-session/session_bank.js"></script>
   <script src="../open-response-lab/lab_payload.js"></script>
@@ -207,22 +209,7 @@
 </section>
 
 <section class="access-state" data-full-simulation-denied hidden>
-  <div class="access-card access-card--denied">
-    <div class="access-kicker">Acceso restringido</div>
-    <h1 class="access-title">Acceso Completo requerido</h1>
-    <p class="access-message">
-      Full Simulation forma parte de la experiencia Acceso Completo de
-      EpistemicLab.
-    </p>
-    <div class="access-actions">
-      <a href="/login/">Ir a Login</a>
-      <a href="/login/#perfiles">Ver Planes</a>
-      <a href="/">Volver al Inicio</a>
-    </div>
-    <p class="access-reason">
-      Decisión de acceso: <span data-denial-reason>full_access_required</span>
-    </p>
-  </div>
+  <div data-full-simulation-gate></div>
 </section>
 
 <div data-full-simulation-app hidden>

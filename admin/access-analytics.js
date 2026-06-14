@@ -15,7 +15,13 @@
     'open_response_lab',
     'full_simulation',
   ];
-  var PLAN_KEYS = ['demo', 'premium', 'full_access', 'anonymous'];
+  var PLAN_KEYS = [
+    'demo',
+    'freemium',
+    'premium',
+    'full_access',
+    'anonymous',
+  ];
   var MODE_LABELS = {
     sba_quick_drill: 'quick_drill',
     sba_express: 'express',

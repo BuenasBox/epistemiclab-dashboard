@@ -24,7 +24,7 @@ No contiene preguntas, respuestas, resultados pedagógicos, validaciones SAT, re
 
 1. `anonymous_visitor` es un estado sin sesión autenticada, no un plan.
 2. `student` y `admin` son roles.
-3. `demo`, `premium` y `full_access` son planes.
+3. `demo`, `freemium`, `premium` y `full_access` son planes.
 4. Un plan vencido no elimina la identidad autenticada.
 5. Los permisos efectivos se derivan; no se aceptan como autoridad desde datos editables por el cliente.
 6. La cuenta, el rol, el plan, la vigencia y las cuotas se evalúan por separado.
@@ -160,8 +160,12 @@ Reglas:
 
 - `null` para visitante anónimo.
 - `demo`
+- `freemium`
 - `premium`
 - `full_access`
+
+`free` se acepta únicamente como alias de compatibilidad de entrada y se
+normaliza siempre a `freemium`.
 
 `plan.status` admite:
 
@@ -414,7 +418,7 @@ El rol `admin` se evalúa independientemente del plan:
 
 - Requiere sesión autenticada.
 - Requiere identidad, cuenta y plan registrados.
-- Puede tener plan `demo`, `premium` o `full_access`.
+- Puede tener plan `demo`, `freemium`, `premium` o `full_access`.
 - Los permisos estudiantiles dependen de cuenta, vigencia, plan y cuotas.
 - Si el plan vence, mantiene identidad y datos personales visibles.
 

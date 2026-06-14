@@ -5,6 +5,7 @@ const path = require('node:path');
 
 const {
   getUpgradeGateModel,
+  normalizeDenialReason,
   renderUpgradeGate,
 } = require('../shared/upgrade-gate.js');
 
@@ -55,6 +56,14 @@ test('unknown and unsupported reasons use the safe fallback copy', () => {
   );
 });
 
+test('internal access reasons normalize to public learner categories', () => {
+  assert.equal(normalizeDenialReason('plan_expired'), 'expired');
+  assert.equal(normalizeDenialReason('account_inactive'), 'inactive');
+  assert.equal(normalizeDenialReason('session_unavailable'), 'unknown');
+  assert.equal(normalizeDenialReason('anonymous_visitor'), 'login_required');
+  assert.equal(normalizeDenialReason('full_access_required'), 'full_access_required');
+});
+
 test('model never exposes internal policy names to the learner', () => {
   [
     'premium_required',
@@ -64,6 +73,9 @@ test('model never exposes internal policy names to the learner', () => {
     'login_required',
     'unknown',
     'internal_policy_failure',
+    'plan_expired',
+    'account_inactive',
+    'session_unavailable',
   ].forEach((reason) => {
     const learnerCopy = JSON.stringify(getUpgradeGateModel(reason));
 
@@ -71,6 +83,9 @@ test('model never exposes internal policy names to the learner', () => {
     assert.doesNotMatch(learnerCopy, /full_access_required/);
     assert.doesNotMatch(learnerCopy, /login_required/);
     assert.doesNotMatch(learnerCopy, /internal_policy_failure/);
+    assert.doesNotMatch(learnerCopy, /plan_expired/);
+    assert.doesNotMatch(learnerCopy, /account_inactive/);
+    assert.doesNotMatch(learnerCopy, /session_unavailable/);
   });
 });
 
@@ -95,6 +110,21 @@ test('optional plan and expiry details are normalized safely', () => {
   assert.equal(missing.currentPlan, null);
   assert.equal(missing.requiredPlan, null);
   assert.equal(missing.accessExpiry, null);
+});
+
+test('Freemium and free aliases use one learner-facing plan label', () => {
+  assert.equal(
+    getUpgradeGateModel('premium_required', {
+      currentPlan: 'freemium',
+    }).currentPlan,
+    'Freemium',
+  );
+  assert.equal(
+    getUpgradeGateModel('premium_required', {
+      currentPlan: 'free',
+    }).currentPlan,
+    'Freemium',
+  );
 });
 
 test('login state uses login CTA and all other states use upgrade CTA', () => {

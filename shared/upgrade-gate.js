@@ -39,8 +39,17 @@
 
   var PLAN_LABELS = {
     demo: 'Demo',
+    free: 'Freemium',
+    freemium: 'Freemium',
     premium: 'Premium',
     full_access: 'Acceso Completo',
+  };
+
+  var REASON_ALIASES = {
+    anonymous_visitor: 'login_required',
+    plan_expired: 'expired',
+    account_inactive: 'inactive',
+    session_unavailable: 'unknown',
   };
 
   var MONTHS = [
@@ -62,6 +71,11 @@
     return PLAN_LABELS[plan] || null;
   }
 
+  function normalizeDenialReason(reason) {
+    var normalized = REASON_ALIASES[reason] || reason;
+    return COPY[normalized] ? normalized : 'unknown';
+  }
+
   function formatExpiry(value) {
     if (!value) return null;
 
@@ -78,7 +92,7 @@
   function getUpgradeGateModel(reason, context) {
     context = context || {};
 
-    var safeReason = COPY[reason] ? reason : 'unknown';
+    var safeReason = normalizeDenialReason(reason);
     var copy = COPY[safeReason];
     var loginRequired = safeReason === 'login_required';
 
@@ -163,6 +177,7 @@
 
   return {
     getUpgradeGateModel: getUpgradeGateModel,
+    normalizeDenialReason: normalizeDenialReason,
     renderUpgradeGate: renderUpgradeGate,
   };
 });

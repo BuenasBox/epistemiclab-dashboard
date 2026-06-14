@@ -20,6 +20,40 @@
   transition: border-color .18s ease, background .18s ease, color .18s ease;
 }
 
+.access-session-badge__main {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.access-session-badge__copy {
+  display: grid;
+  gap: 1px;
+}
+
+.access-session-badge__identity,
+.access-session-badge__expiry {
+  max-width: 170px;
+  color: rgba(180, 197, 220, .68);
+  font-size: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.access-session-badge__logout {
+  min-height: 32px;
+  padding: 5px 8px;
+  border: 1px solid rgba(160, 180, 210, .24);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(210, 225, 245, .78);
+  font: inherit;
+  cursor: pointer;
+}
+
 .access-session-badge__dot {
   width: 6px;
   height: 6px;
@@ -58,6 +92,12 @@
 }
 
 .access-session-badge:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 3px;
+}
+
+.access-session-badge__main:focus-visible,
+.access-session-badge__logout:focus-visible {
   outline: 2px solid #00d4ff;
   outline-offset: 3px;
 }

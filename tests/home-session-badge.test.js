@@ -16,11 +16,18 @@ function createSnapshot(options = {}) {
       status: authenticated ? 'authenticated' : 'anonymous',
     },
     identity: authenticated
-      ? { role: options.role || 'student' }
+      ? {
+        role: options.role || 'student',
+        display_name: options.displayName || 'Estudiante',
+        email: options.email || 'estudiante@example.com',
+      }
       : null,
     plan: {
       code: authenticated ? options.plan : null,
       status: authenticated ? options.status || 'active' : 'none',
+      access_end_date: authenticated
+        ? options.accessEnd || '2026-07-01T00:00:00Z'
+        : null,
     },
     effective_permissions: {
       access_state: options.accessState
@@ -74,6 +81,35 @@ test('admin remains a separate technical role in the badge model', () => {
   assert.equal(model.roleLabel, 'Admin');
   assert.equal(model.text, 'Acceso Completo · Admin');
   assert.equal(model.href, '/login/');
+});
+
+test('badge model includes identity, plan, expiry and logout state', () => {
+  const model = getSessionBadgeModel(createSnapshot({
+    authenticated: true,
+    plan: 'freemium',
+    displayName: 'Ana Estudiante',
+    accessEnd: '2026-07-15T00:00:00Z',
+  }));
+
+  assert.equal(model.identity, 'Ana Estudiante');
+  assert.equal(model.label, 'Freemium');
+  assert.equal(model.expiry, '15 de julio de 2026');
+  assert.equal(model.canLogout, true);
+  assert.equal(model.logoutLabel, 'Cerrar sesión');
+});
+
+test('badge falls back to email when display name is unavailable', () => {
+  const snapshot = createSnapshot({
+    authenticated: true,
+    plan: 'premium',
+    email: 'fallback@example.com',
+  });
+  snapshot.identity.display_name = '';
+
+  assert.equal(
+    getSessionBadgeModel(snapshot).identity,
+    'fallback@example.com',
+  );
 });
 
 test('home only mounts and loads the portable session badge', () => {

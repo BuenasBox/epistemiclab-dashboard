@@ -83,6 +83,7 @@
               <span>Plan</span>
               <select name="plan">
                 <option value="demo">demo</option>
+                <option value="freemium">freemium</option>
                 <option value="premium">premium</option>
                 <option value="full_access">full_access</option>
               </select>
@@ -102,6 +103,10 @@
               <span>Fin de acceso</span>
               <input name="access_end_date" type="datetime-local" required>
             </label>
+            <div class="field field--wide">
+              <span>Módulos permitidos</span>
+              <p class="allowed-modules" data-allowed-modules></p>
+            </div>
             <div class="form-actions">
               <button class="button button--primary" type="submit" data-save-user>
                 Selecciona un usuario

@@ -149,6 +149,25 @@ test('session store preserves authenticated identity when the plan is expired', 
   assert.equal(snapshot.effective_permissions.access_state, 'expired_plan');
 });
 
+test('session store accepts freemium and normalizes free as a compatibility alias', () => {
+  const store = createSessionStore({
+    now: () => new Date('2026-06-11T18:00:00Z'),
+  });
+  const freemium = createPremiumSource();
+  freemium.plan.code = 'freemium';
+  const free = createPremiumSource();
+  free.plan.code = 'free';
+
+  assert.equal(
+    store.setSourceData(freemium, 'mock').plan.code,
+    'freemium',
+  );
+  assert.equal(
+    store.setSourceData(free, 'mock').plan.code,
+    'freemium',
+  );
+});
+
 test('sign out removes only mock authentication data and returns to anonymous', async () => {
   const storage = createMemoryStorage({
     [DEFAULT_MOCK_STORAGE_KEY]: JSON.stringify(createPremiumSource()),

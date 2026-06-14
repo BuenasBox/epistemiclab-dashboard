@@ -169,6 +169,16 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
 .field--wide { grid-column: 1 / -1; }
 .field span { color: var(--muted); font-size: 8px; }
 
+.allowed-modules {
+  min-height: 42px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .field input,
 .field select {
   width: 100%;

@@ -12,7 +12,7 @@
 
   var MOCK_USERS_STORAGE_KEY = 'wset_mock_users_v1';
   var VALID_ROLES = ['student', 'admin'];
-  var VALID_PLANS = ['demo', 'premium', 'full_access'];
+  var VALID_PLANS = ['demo', 'freemium', 'premium', 'full_access'];
   var VALID_STATUSES = ['active', 'inactive'];
 
   function clone(value) {

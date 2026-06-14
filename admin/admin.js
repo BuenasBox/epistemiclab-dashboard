@@ -27,10 +27,38 @@
   };
   var PLAN_LABELS = {
     demo: 'Demo',
+    freemium: 'Freemium',
     premium: 'Premium',
     full_access: 'Full Access',
     anonymous: 'Anonymous',
   };
+
+  function allowedModulesForUser(user) {
+    if (!user || user.is_active !== true) return [];
+
+    var modules = [];
+    if (user.plan === 'demo' || user.plan === 'freemium') {
+      modules = ['Diagnostic SBA', 'Open Response Lab'];
+    } else if (user.plan === 'premium') {
+      modules = [
+        'Diagnostic SBA',
+        'Adaptive Express',
+        'Open Response Lab',
+        'SAT Sprint',
+      ];
+    } else if (user.plan === 'full_access') {
+      modules = [
+        'Diagnostic SBA',
+        'Adaptive Session',
+        'Open Response Lab',
+        'SAT',
+        'Full Simulation',
+      ];
+    }
+
+    if (user.role === 'admin') modules.push('Administración');
+    return modules;
+  }
 
   function isAdminSession(snapshot) {
     return !!(
@@ -119,6 +147,23 @@
     var cancelButton = documentRef.querySelector('[data-cancel-edit]');
     var refreshAudit = documentRef.querySelector('[data-refresh-audit]');
     var adminModeLabel = documentRef.querySelector('[data-admin-mode]');
+    var allowedModules = documentRef.querySelector('[data-allowed-modules]');
+
+    function currentFormAccess() {
+      return {
+        role: form.elements.role.value,
+        plan: form.elements.plan.value,
+        is_active: form.elements.status.value === 'active',
+      };
+    }
+
+    function renderAllowedModules() {
+      if (!allowedModules) return;
+      var modules = allowedModulesForUser(currentFormAccess());
+      allowedModules.textContent = modules.length
+        ? modules.join(' · ')
+        : 'Sin módulos mientras la cuenta esté inactiva.';
+    }
 
     function setFeedback(message, kind) {
       feedback.textContent = message || '';
@@ -146,6 +191,7 @@
         : 'Crear usuario';
       saveButton.disabled = adminMode === 'supabase';
       cancelButton.hidden = true;
+      renderAllowedModules();
       setFeedback('');
     }
 
@@ -198,7 +244,12 @@
           details.textContent =
             user.email + ' · ' + user.role + ' · ' + user.plan +
             ' · ' + user.access_start_date.slice(0, 10) +
-            ' → ' + user.access_end_date.slice(0, 10);
+            ' → ' + user.access_end_date.slice(0, 10) +
+            ' · ' + allowedModulesForUser({
+              role: user.role,
+              plan: user.plan,
+              is_active: status === 'active',
+            }).join(', ');
           actions.className = 'user-card__actions';
           actions.appendChild(createButton(
             'Editar',
@@ -521,6 +572,7 @@
       saveButton.textContent = 'Guardar cambios';
       saveButton.disabled = false;
       cancelButton.hidden = false;
+      renderAllowedModules();
       setFeedback('Editando ' + user.display_name + '.', 'neutral');
       form.elements.display_name.focus();
     }
@@ -578,6 +630,9 @@
     });
 
     cancelButton.addEventListener('click', resetForm);
+    form.elements.role.addEventListener('change', renderAllowedModules);
+    form.elements.plan.addEventListener('change', renderAllowedModules);
+    form.elements.status.addEventListener('change', renderAllowedModules);
 
     usersList.addEventListener('click', function (event) {
       var button = event.target.closest('[data-action]');
@@ -679,6 +734,7 @@
   }
 
   return {
+    allowedModulesForUser: allowedModulesForUser,
     buildAccessAnalytics: accessAnalytics.buildAccessAnalytics,
     initializeAdminPage: initializeAdminPage,
     isAdminSession: isAdminSession,

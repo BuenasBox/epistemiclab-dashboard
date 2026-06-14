@@ -1,9 +1,9 @@
 # ROUTE_INVENTORY_V1
 
-**Estado:** Auditoría arquitectónica de solo lectura
+**Estado:** Inventario actualizado después de la fase de acceso
 **Repositorio:** `epistemiclab-dashboard`
-**Fecha de corte:** 2026-06-11
-**Objetivo:** Inventariar las rutas, entradas, navegación y dependencias actuales antes de introducir autenticación o control de acceso.
+**Fecha de corte:** 2026-06-13
+**Objetivo:** Inventariar las rutas, entradas, navegación y dependencias actuales.
 
 ## 1. Alcance y restricciones
 
@@ -11,9 +11,6 @@ Este documento describe el estado actual del sitio estático publicado. No propo
 
 Quedan fuera de alcance:
 
-- Login, registro y logout.
-- Access gates.
-- Supabase.
 - Cambios en Diagnostic SBA, Adaptive Session, Open Response Lab o Full Simulation.
 - Cambios en bancos, payloads, validadores SAT, Distinction Coach o Adaptive Weakness Engine.
 
@@ -27,6 +24,9 @@ El repositorio no usa router, framework frontend, empaquetador ni sistema de lay
 /adaptive-session/        -> adaptive-session/index.html
 /open-response-lab/       -> open-response-lab/index.html
 /full-simulation/         -> full-simulation/index.html
+/login/                   -> login/index.html
+/upgrade/                 -> upgrade/index.html
+/admin/                   -> admin/index.html
 ```
 
 Los scripts, estilos y controladores de interfaz están embebidos o cargados como archivos JavaScript globales. Las páginas comparten datos y servicios mediante propiedades de `window`, no mediante módulos ES.
@@ -40,8 +40,12 @@ Los scripts, estilos y controladores de interfaz están embebidos o cargados com
 | `/adaptive-session/` | Adaptive Session | `adaptive-session/index.html` | Activa | Home y navegación global |
 | `/open-response-lab/` | Open Response Lab | `open-response-lab/index.html` | Activa | Home y navegación global |
 | `/full-simulation/` | Full Simulation | `full-simulation/index.html` | Activa | Home y navegación global |
+| `/login/` | Identidad y sesión | `login/index.html` | Activa | Home, gates y acceso directo |
+| `/upgrade/` | Comparación de planes | `upgrade/index.html` | Activa y pública | Upgrade gates |
+| `/admin/` | Administración de acceso | `admin/index.html` | Activa y protegida por rol | Acceso directo |
 
-No se encontraron otras rutas HTML de aplicación. Tampoco existen actualmente `/login/`, `/auth/`, `/profile/`, `/analytics/`, `/upgrade/`, `/billing/`, `/access/` ni `/admin/`.
+No existen actualmente `/profile/`, `/analytics/`, `/billing/` ni `/access/`.
+Full Simulation es la única experiencia con enforcement de acceso activo.
 
 ### 3.1 Home
 
