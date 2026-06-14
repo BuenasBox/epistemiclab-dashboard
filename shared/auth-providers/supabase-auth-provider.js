@@ -63,6 +63,23 @@
   }
 
   function loadPublicConfig(fetchFn, configUrl) {
+    if (
+      root.WSET_SUPABASE_CONFIG
+      && root.WSET_SUPABASE_CONFIG.url
+      && root.WSET_SUPABASE_CONFIG.publishableKey
+    ) {
+      return Promise.resolve({
+        url: requireValue(
+          root.WSET_SUPABASE_CONFIG.url,
+          'Supabase URL'
+        ),
+        publishableKey: requireValue(
+          root.WSET_SUPABASE_CONFIG.publishableKey,
+          'Supabase publishable key'
+        ),
+      });
+    }
+
     if (typeof fetchFn !== 'function') {
       return Promise.reject(new Error('Fetch is unavailable'));
     }
