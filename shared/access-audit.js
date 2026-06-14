@@ -162,6 +162,13 @@
     };
   }
 
+  function shouldEnableMockFallback(locationRef) {
+    var hostname = locationRef && locationRef.hostname;
+    return hostname === 'localhost'
+      || hostname === '127.0.0.1'
+      || hostname === '::1';
+  }
+
   function initializeAccessAudit(options) {
     options = options || {};
     var rootRef = options.root || (
@@ -185,6 +192,7 @@
     try {
       var store = access.SessionStore.createSessionStore();
       var mockAuth = access.MockAuthProvider
+        && shouldEnableMockFallback(rootRef && rootRef.location)
         ? access.AuthProvider.createAuthProvider({
           provider: access.MockAuthProvider.createMockAuthProvider({
             storage: storage,
@@ -245,5 +253,6 @@
     MAX_AUDIT_EVENTS: MAX_AUDIT_EVENTS,
     createAccessAudit: createAccessAudit,
     initializeAccessAudit: initializeAccessAudit,
+    shouldEnableMockFallback: shouldEnableMockFallback,
   };
 });

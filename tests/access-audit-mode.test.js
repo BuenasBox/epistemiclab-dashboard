@@ -9,6 +9,7 @@ const {
 const {
   ACCESS_AUDIT_STORAGE_KEY,
   createAccessAudit,
+  shouldEnableMockFallback,
 } = require('../shared/access-audit.js');
 
 function createSnapshot(options = {}) {
@@ -122,6 +123,12 @@ test('shadow evaluator preserves public samples for expired identities', () => {
   );
 });
 
+test('mock fallback is disabled on production hosts', () => {
+  assert.equal(shouldEnableMockFallback({ hostname: 'epistemiclab.dpdns.org' }), false);
+  assert.equal(shouldEnableMockFallback({ hostname: 'localhost' }), true);
+  assert.equal(shouldEnableMockFallback({ hostname: '127.0.0.1' }), true);
+});
+
 test('audit persists normalized shadow events and keeps the newest 100', () => {
   const storage = createMemoryStorage({
     wset_learner_history_v1: '[{"type":"sba"}]',
@@ -216,7 +223,7 @@ test('audit absorbs storage and evaluation failures', () => {
   });
 });
 
-test('all experiences load audit dependencies and shadow modes observe explicitly', () => {
+test('experiences load access dependencies and enforce only matrix-paid modes', () => {
   const integrations = [
     {
       file: 'diagnostic-sba/index.html',
@@ -258,19 +265,20 @@ test('all experiences load audit dependencies and shadow modes observe explicitl
     );
     if (functionName) {
       const functionStart = html.indexOf(`function ${functionName}`);
-      const functionBody = html.slice(functionStart, functionStart + 500);
+      const functionBody = html.slice(functionStart, functionStart + 900);
 
-      assert.match(functionBody, /observeAttempt\(/, file);
       assert.match(
         functionBody,
         new RegExp(route.replaceAll('/', '\\/')),
         file,
       );
-      assert.doesNotMatch(
-        functionBody,
-        /if\s*\([^)]*observeAttempt/,
-        file,
-      );
+      if (file === 'diagnostic-sba/index.html') {
+        assert.match(functionBody, /observeAttempt\(/, file);
+        assert.doesNotMatch(functionBody, /enforcement:\s*['"]active['"]/, file);
+      } else {
+        assert.match(functionBody, /WSETModeAccessGate\.request\(/, file);
+        assert.match(functionBody, /enforcement:\s*['"]active['"]/, file);
+      }
     }
   });
 });

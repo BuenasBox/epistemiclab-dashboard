@@ -378,6 +378,25 @@
     }
     .feedback[data-kind="success"] { color: var(--green); }
     .feedback[data-kind="error"] { color: var(--red); }
+    .profile-cta {
+      display: inline-flex;
+      min-height: 44px;
+      margin: 0 20px 14px;
+      padding: 10px 14px;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      border: 1px solid rgba(100, 217, 245, .35);
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .profile-cta:hover,
+    .profile-cta:focus-visible {
+      border-color: var(--cyan);
+      background: rgba(100, 217, 245, .08);
+    }
+    .profile-cta[hidden] { display: none; }
     .logout {
       width: calc(100% - 40px);
       min-height: 48px;
@@ -629,6 +648,7 @@
           </div>
         </div>
         <p class="feedback" data-feedback role="status">Preparando acceso seguro...</p>
+        <a class="profile-cta" data-profile-cta href="/profile/" hidden>Ir a mi perfil</a>
         <button class="logout" type="button" data-logout disabled>Cerrar sesión</button>
         <details data-internal-session-snapshot hidden>
           <summary>Ver snapshot técnico</summary>

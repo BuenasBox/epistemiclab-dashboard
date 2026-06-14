@@ -7,7 +7,9 @@ const vm = require('node:vm');
 const {
   createManagedUserSource,
   createMockProfileSource,
+  errorMessage,
   getMockProfiles,
+  showProfileTransition,
   shouldExposeInternalTools,
 } = require('../login/login.js');
 const {
@@ -181,4 +183,94 @@ test('internal tools require an explicit debug flag on a local host', () => {
     hostname: '127.0.0.1',
     search: '?access_debug=1',
   }), true);
+});
+
+test('successful signup shows Spanish confirmation, fallback CTA and redirects to profile', () => {
+  const feedback = { textContent: '', dataset: {} };
+  const profileCta = { hidden: true, href: '' };
+  const scheduled = [];
+  const destinations = [];
+
+  showProfileTransition({
+    feedback,
+    profileCta,
+    location: {
+      assign(destination) {
+        destinations.push(destination);
+      },
+    },
+    setTimeout(callback, delay) {
+      scheduled.push({ callback, delay });
+    },
+    message: 'Cuenta creada correctamente. Tu prueba Demo de 30 días está activa.',
+  });
+
+  assert.equal(
+    feedback.textContent,
+    'Cuenta creada correctamente. Tu prueba Demo de 30 días está activa.',
+  );
+  assert.equal(feedback.dataset.kind, 'success');
+  assert.equal(profileCta.hidden, false);
+  assert.equal(profileCta.href, '/profile/');
+  assert.equal(scheduled.length, 1);
+  assert.ok(scheduled[0].delay >= 500);
+  scheduled[0].callback();
+  assert.deepEqual(destinations, ['/profile/']);
+});
+
+test('successful login shows Spanish confirmation and keeps profile CTA if redirect fails', () => {
+  const feedback = { textContent: '', dataset: {} };
+  const profileCta = { hidden: true, href: '' };
+  let scheduled = null;
+
+  showProfileTransition({
+    feedback,
+    profileCta,
+    location: {
+      assign() {
+        throw new Error('navigation unavailable');
+      },
+    },
+    setTimeout(callback) {
+      scheduled = callback;
+    },
+    message: 'Sesión iniciada correctamente.',
+  });
+
+  assert.equal(feedback.textContent, 'Sesión iniciada correctamente.');
+  assert.equal(profileCta.hidden, false);
+  assert.doesNotThrow(() => scheduled());
+  assert.equal(profileCta.hidden, false);
+});
+
+test('failed signup and login retain learner-facing Spanish errors', () => {
+  assert.equal(
+    errorMessage({ code: 'user_already_exists' }),
+    'Ya existe una cuenta con este correo.',
+  );
+  assert.equal(
+    errorMessage({ code: 'invalid_credentials' }),
+    'Correo o contraseña incorrectos.',
+  );
+});
+
+test('login route exposes profile fallback and preserves session, logout and recovery wiring', () => {
+  const html = fs.readFileSync(
+    path.join(__dirname, '..', 'login', 'index.html'),
+    'utf8',
+  );
+  const script = fs.readFileSync(
+    path.join(__dirname, '..', 'login', 'login.js'),
+    'utf8',
+  );
+
+  assert.match(html, /data-profile-cta[^>]*>Ir a mi perfil</);
+  assert.match(script, /store\.subscribe\(render\)/);
+  assert.match(script, /auth\.signOut\(\)/);
+  assert.match(script, /requestPasswordReset/);
+  assert.match(
+    script,
+    /Cuenta creada correctamente\. Tu prueba Demo de 30 días está activa\./,
+  );
+  assert.match(script, /Sesión iniciada correctamente\./);
 });

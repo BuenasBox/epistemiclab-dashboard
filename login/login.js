@@ -134,6 +134,40 @@
       .get('access_debug') === '1';
   }
 
+  function showProfileTransition(options) {
+    options = options || {};
+
+    var feedback = options.feedback;
+    var profileCta = options.profileCta;
+    var locationRef = options.location || root.location;
+    var setTimeoutFn = options.setTimeout || root.setTimeout;
+    var delay = Number.isFinite(options.delay) ? options.delay : 800;
+
+    if (feedback) {
+      feedback.textContent = options.message || '';
+      feedback.dataset.kind = 'success';
+    }
+
+    if (profileCta) {
+      profileCta.href = '/profile/';
+      profileCta.hidden = false;
+    }
+
+    if (typeof setTimeoutFn !== 'function') return;
+
+    setTimeoutFn(function () {
+      try {
+        if (locationRef && typeof locationRef.assign === 'function') {
+          locationRef.assign('/profile/');
+        } else if (locationRef) {
+          locationRef.href = '/profile/';
+        }
+      } catch (error) {
+        // Keep the profile CTA visible when navigation is unavailable.
+      }
+    }, delay);
+  }
+
   function initializeLoginPage(options) {
     options = options || {};
     var documentRef = options.document || root.document;
@@ -163,6 +197,7 @@
     var snapshotPanel = documentRef.querySelector('[data-session-snapshot]');
     var logoutButton = documentRef.querySelector('[data-logout]');
     var feedback = documentRef.querySelector('[data-feedback]');
+    var profileCta = documentRef.querySelector('[data-profile-cta]');
     var loginForm = documentRef.querySelector('[data-auth-form]');
     var registerForm = documentRef.querySelector('[data-register-form]');
     var recoveryForm = documentRef.querySelector('[data-recovery-form]');
@@ -189,6 +224,7 @@
     function setFeedback(message, kind) {
       feedback.textContent = message;
       feedback.dataset.kind = kind || 'neutral';
+      if (profileCta) profileCta.hidden = true;
     }
 
     function setBusy(form, busy) {
@@ -267,7 +303,13 @@
       supabaseAuth.signIn(formValues(loginForm))
         .then(function () {
           mockProvider.signOut();
-          setFeedback('Sesión iniciada correctamente.', 'success');
+          showProfileTransition({
+            feedback: feedback,
+            profileCta: profileCta,
+            location: options.location || root.location,
+            setTimeout: options.setTimeout || root.setTimeout,
+            message: 'Sesión iniciada correctamente.',
+          });
           loginForm.reset();
         })
         .catch(function (error) {
@@ -283,12 +325,20 @@
       supabaseAuth.signUp(formValues(registerForm))
         .then(function (snapshot) {
           mockProvider.signOut();
-          setFeedback(
-            snapshot.authentication.status === 'authenticated'
-              ? 'Cuenta creada. Tu prueba Demo de 30 días está activa.'
-              : 'Cuenta creada. Revisa tu correo para confirmar el acceso.',
-            'success'
-          );
+          if (snapshot.authentication.status === 'authenticated') {
+            showProfileTransition({
+              feedback: feedback,
+              profileCta: profileCta,
+              location: options.location || root.location,
+              setTimeout: options.setTimeout || root.setTimeout,
+              message: 'Cuenta creada correctamente. Tu prueba Demo de 30 días está activa.',
+            });
+          } else {
+            setFeedback(
+              'Cuenta creada. Revisa tu correo para confirmar el acceso.',
+              'success'
+            );
+          }
           registerForm.reset();
         })
         .catch(function (error) {
@@ -417,8 +467,10 @@
   return {
     createManagedUserSource: createManagedUserSource,
     createMockProfileSource: createMockProfileSource,
+    errorMessage: errorMessage,
     getMockProfiles: getMockProfiles,
     initializeLoginPage: initializeLoginPage,
+    showProfileTransition: showProfileTransition,
     shouldExposeInternalTools: shouldExposeInternalTools,
   };
 });

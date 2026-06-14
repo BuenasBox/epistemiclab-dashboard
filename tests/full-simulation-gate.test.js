@@ -61,6 +61,8 @@ test('full simulation gate denies anonymous with login-required copy', () => {
 
 test('full simulation gate denies demo and premium per matrix', () => {
   const demo = snapshot({ plan: 'demo' });
+  const legacyFreemium = snapshot({ plan: 'demo' });
+  legacyFreemium.plan.code = 'freemium';
   const premium = snapshot({ plan: 'premium' });
 
   assert.equal(evaluateFullSimulationGate(demo).would_deny, true);
@@ -68,6 +70,7 @@ test('full simulation gate denies demo and premium per matrix', () => {
     evaluateFullSimulationGate(demo).denial_reason,
     'full_access_required',
   );
+  assert.equal(evaluateFullSimulationGate(legacyFreemium).would_deny, true);
   assert.equal(evaluateFullSimulationGate(premium).would_deny, true);
   assert.equal(
     evaluateFullSimulationGate(premium).denial_reason,
@@ -112,7 +115,7 @@ test('full simulation gate denies expired and inactive accounts', () => {
   );
 });
 
-test('only full simulation declares an active access gate', () => {
+test('full simulation and paid mode entry points declare active access gates', () => {
   const fullSimulation = fs.readFileSync(
     path.join(__dirname, '..', 'full-simulation', 'index.html'),
     'utf8',
@@ -131,13 +134,19 @@ test('only full simulation declares an active access gate', () => {
   );
 
   [
-    'diagnostic-sba/index.html',
     'adaptive-session/index.html',
     'open-response-lab/index.html',
   ].forEach((file) => {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
-    assert.doesNotMatch(html, /access-gate\.js|enforcement:\s*['"]active/);
+    assert.match(html, /mode-access-gate\.js/);
+    assert.match(html, /enforcement:\s*['"]active/);
   });
+
+  const diagnostic = fs.readFileSync(
+    path.join(__dirname, '..', 'diagnostic-sba', 'index.html'),
+    'utf8',
+  );
+  assert.doesNotMatch(diagnostic, /mode-access-gate\.js|enforcement:\s*['"]active/);
 });
 
 test('full simulation start guard runs before loading simulation data', () => {

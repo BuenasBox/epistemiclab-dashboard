@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WSET L3 · Sesión Adaptativa · PROTOTIPO</title>
+<link rel="stylesheet" href="../shared/upgrade-gate.css">
 <style>
 /* =====================================================================
    WSET-AI-System · Adaptive Session UI
@@ -713,6 +714,8 @@ html, body {
 <script src="../shared/auth-provider.js"></script>
 <script src="../shared/access-control.js"></script>
 <script src="../shared/access-audit.js"></script>
+<script src="../shared/upgrade-gate.js"></script>
+<script src="../shared/mode-access-gate.js"></script>
 <script src="session_bank.js"></script>
 <script src="coach_data.js"></script>
 <script src="learner_intelligence.js"></script>
@@ -1387,20 +1390,26 @@ function buildSAT(mode){
 let _satTmr=null, _satSec=0;
 
 function startAdp(mode){
-  try {
-    window.WSETAccess.audit.observeAttempt({
+  const accessMode = {
+    express_10: 'adaptive_express',
+    standard_25: 'adaptive_standard',
+    mock_theory_50: 'adaptive_mock_theory',
+    sat_sprint: 'sat_sprint',
+    sat_practice: 'sat_practice',
+    sat_mock: 'sat_mock',
+  }[mode] || mode;
+  if(!window.WSETModeAccessGate)return;
+  window.WSETModeAccessGate.request({
       route: '/adaptive-session/',
       experience: 'adaptive_session',
-      mode: {
-        express_10: 'adaptive_express',
-        standard_25: 'adaptive_standard',
-        mock_theory_50: 'adaptive_mock_theory',
-        sat_sprint: 'sat_sprint',
-        sat_practice: 'sat_practice',
-        sat_mock: 'sat_mock',
-      }[mode] || mode,
-    });
-  } catch(_error) {}
+      mode: accessMode,
+      enforcement: 'active',
+  }).then(decision=>{
+    if(decision.would_allow)startAllowedAdp(mode);
+  });
+}
+
+function startAllowedAdp(mode){
   document.getElementById('adp-ol').classList.remove('active');
   if(mode.startsWith('sat_')){
     STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0; STATE.satResponses={};
