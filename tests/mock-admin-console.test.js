@@ -14,6 +14,7 @@ const {
   buildAccessAnalytics,
   isAdminSession,
   readAuditEvents,
+  readUpgradeRequests,
 } = require('../admin/admin.js');
 
 const FIXED_NOW = new Date('2026-06-11T18:00:00Z');
@@ -233,6 +234,21 @@ test('admin console reads access audit without changing storage', () => {
   );
 });
 
+test('admin console reads learner upgrade requests', () => {
+  const requests = [{
+    schema_version: 'upgrade_request_v1',
+    user_id: 'user-1',
+    email: 'student@example.com',
+    current_plan: 'demo',
+    requested_at: '2026-06-14T20:00:00.000Z',
+  }];
+  const storage = createMemoryStorage({
+    wset_upgrade_requests_v1: JSON.stringify(requests),
+  });
+
+  assert.deepEqual(readUpgradeRequests(storage), requests);
+});
+
 test('access analytics summarizes allow and deny decisions', () => {
   const analytics = buildAccessAnalytics([
     auditEvent({
@@ -422,6 +438,8 @@ test('admin route keeps mock fallback and audit integrations', () => {
   assert.match(adminHtml, /data-access-analytics/);
   assert.match(adminHtml, /data-admin-console/);
   assert.match(adminHtml, /data-admin-denied/);
+  assert.match(adminHtml, /data-upgrade-requests/);
+  assert.match(adminHtml, /upgrade-request-store\.js/);
   assert.match(adminHtml, /\.\.\/shared\/mock-user-store\.js/);
   assert.match(adminHtml, /\.\/admin\.js/);
   assert.match(loginHtml, /Usuarios administrados/);

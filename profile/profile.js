@@ -23,8 +23,17 @@
   };
 
   function validDate(value) {
+    if (
+      value === null
+      || typeof value === 'undefined'
+      || value === ''
+      || value === 0
+      || value === '0'
+    ) {
+      return null;
+    }
     var date = value instanceof Date ? new Date(value.getTime()) : new Date(value);
-    return Number.isNaN(date.getTime()) ? null : date;
+    return Number.isNaN(date.getTime()) || date.getTime() === 0 ? null : date;
   }
 
   function formatDate(value) {
@@ -174,7 +183,9 @@
       },
       learning: {
         localSessions: localLearning.totalSessions || 0,
-        localLatestActivity: formatDate(localLearning.latestActivity),
+        localLatestActivity: localLearning.latestActivity
+          ? formatDate(localLearning.latestActivity)
+          : 'Sin actividad registrada',
         experiences: localLearning.experiences || [],
         persistentSessions: learnerProfile
           && Number.isFinite(Number(learnerProfile.total_sessions))
@@ -185,9 +196,13 @@
           ? Number(learnerProfile.study_streak)
           : null,
         persistentLatestActivity: learnerProfile
+          && learnerProfile.last_activity_at
           ? formatDate(learnerProfile.last_activity_at)
-          : 'No disponible',
+          : 'Sin sincronización todavía',
         message: 'El progreso persistente se activará progresivamente.',
+      },
+      actions: {
+        showAdmin: Boolean(identity && identity.role === 'admin'),
       },
     };
   }
@@ -297,6 +312,7 @@
 
     setHidden(documentRef, '[data-login-action]', viewModel.authenticated);
     setHidden(documentRef, '[data-logout-action]', !viewModel.authenticated);
+    setHidden(documentRef, '[data-admin-action]', !viewModel.actions.showAdmin);
     return viewModel;
   }
 

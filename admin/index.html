@@ -13,6 +13,7 @@
   <script src="../shared/auth-provider.js"></script>
   <script src="../shared/supabase-admin-store.js"></script>
   <script src="../shared/mock-user-store.js"></script>
+  <script src="../shared/upgrade-request-store.js"></script>
   <script src="./access-analytics.js"></script>
   <script src="./admin.js"></script>
 </head>
@@ -53,6 +54,16 @@
     </section>
 
     <div class="dashboard" data-admin-console hidden>
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <h2>Solicitudes de actualización</h2>
+            <p>Interés registrado desde la página de planes en este dispositivo.</p>
+          </div>
+        </div>
+        <div class="audit-list" data-upgrade-requests></div>
+      </section>
+
       <section class="panel">
         <div class="section-head">
           <div>

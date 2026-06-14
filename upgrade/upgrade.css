@@ -35,9 +35,23 @@ body {
 
 .upgrade-nav a,
 .plan-card__cta {
+  font: inherit;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
   color: var(--text);
   text-decoration: none;
 }
+
+.upgrade-feedback {
+  min-height: 24px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.upgrade-feedback[data-kind="success"] { color: var(--success); }
+.upgrade-feedback[data-kind="error"] { color: #ff7a7a; }
 
 .upgrade-hero {
   max-width: 760px;

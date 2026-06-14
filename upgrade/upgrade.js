@@ -1,12 +1,12 @@
 (function (root, factory) {
-  var api = factory();
+  var api = factory(root);
 
   if (typeof module === 'object' && module.exports) {
     module.exports = api;
   }
 
   root.WSETUpgrade = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
 
   var PLAN_CATALOG = [
@@ -73,7 +73,9 @@
       var includedTitle = documentRef.createElement('h3');
       var limitationsTitle = documentRef.createElement('h3');
       var recommended = documentRef.createElement('p');
-      var cta = documentRef.createElement('a');
+      var cta = documentRef.createElement(
+        plan.code === 'demo' ? 'a' : 'button'
+      );
 
       card.className = 'plan-card';
       card.dataset.plan = plan.code;
@@ -83,8 +85,14 @@
       recommended.className = 'plan-card__recommended';
       recommended.textContent = 'Recomendado para: ' + plan.recommendedUse;
       cta.className = 'plan-card__cta';
-      cta.href = plan.cta.href;
-      cta.textContent = plan.cta.label;
+      if (plan.code === 'demo') {
+        cta.href = plan.cta.href;
+        cta.textContent = plan.cta.label;
+      } else {
+        cta.type = 'button';
+        cta.dataset.upgradeRequest = 'true';
+        cta.textContent = 'Solicitar actualización';
+      }
 
       card.appendChild(title);
       card.appendChild(includedTitle);
@@ -99,9 +107,64 @@
     return mount;
   }
 
-  function initializeUpgradePage(documentRef) {
+  function initializeUpgradePage(documentRef, options) {
+    options = options || {};
     var mount = documentRef && documentRef.querySelector('[data-plan-grid]');
-    return renderPlanGrid(mount, documentRef);
+    var feedback = documentRef
+      && documentRef.querySelector('[data-upgrade-feedback]');
+    var access = options.access || root.WSETAccess;
+    var storage = options.storage || root.localStorage;
+    var grid = renderPlanGrid(mount, documentRef);
+
+    if (
+      !grid
+      || !access
+      || !access.SessionStore
+      || !access.AuthProvider
+      || !access.SupabaseAuthProvider
+      || !access.UpgradeRequestStore
+      || !storage
+    ) {
+      return grid;
+    }
+
+    var sessionStore = access.SessionStore.createSessionStore();
+    var auth = access.AuthProvider.createAuthProvider({
+      provider: access.SupabaseAuthProvider.createSupabaseAuthProvider(),
+      sessionStore: sessionStore,
+    });
+    var requestStore = access.UpgradeRequestStore.createUpgradeRequestStore({
+      storage: storage,
+    });
+
+    grid.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-upgrade-request]');
+      if (!button) return;
+      button.disabled = true;
+      feedback.textContent = 'Comprobando tu sesión...';
+      feedback.dataset.kind = 'neutral';
+
+      auth.resolve().then(function (snapshot) {
+        if (
+          !snapshot
+          || snapshot.authentication.status !== 'authenticated'
+        ) {
+          feedback.textContent = 'Inicia sesión para solicitar una actualización.';
+          feedback.dataset.kind = 'error';
+          return;
+        }
+        requestStore.create(snapshot);
+        feedback.textContent = 'Solicitud registrada correctamente.';
+        feedback.dataset.kind = 'success';
+      }).catch(function () {
+        feedback.textContent = 'No fue posible registrar la solicitud.';
+        feedback.dataset.kind = 'error';
+      }).finally(function () {
+        button.disabled = false;
+      });
+    });
+
+    return grid;
   }
 
   if (typeof document !== 'undefined' && document.addEventListener) {

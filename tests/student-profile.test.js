@@ -8,6 +8,7 @@ const {
   buildProfileViewModel,
   daysRemaining,
   fetchLearnerProfile,
+  formatDate,
   initializeProfilePage,
   isLocalDevelopment,
   summarizeLocalHistory,
@@ -111,6 +112,40 @@ test('days remaining is bounded and rejects invalid dates safely', () => {
   assert.equal(daysRemaining('2026-06-15T12:00:00.000Z', now), 1);
   assert.equal(daysRemaining('2026-06-14T11:59:00.000Z', now), 0);
   assert.equal(daysRemaining('not-a-date', now), null);
+});
+
+test('null activity and sync dates never render as Unix epoch', () => {
+  const viewModel = buildProfileViewModel(snapshot(), {
+    localLearning: {
+      totalSessions: 0,
+      latestActivity: null,
+      experiences: [],
+    },
+    learnerProfile: {
+      study_streak: 0,
+      total_sessions: 0,
+      last_activity_at: null,
+    },
+  });
+
+  assert.equal(formatDate(null), 'No disponible');
+  assert.equal(formatDate(0), 'No disponible');
+  assert.equal(viewModel.learning.localLatestActivity, 'Sin actividad registrada');
+  assert.equal(
+    viewModel.learning.persistentLatestActivity,
+    'Sin sincronización todavía',
+  );
+  assert.doesNotMatch(JSON.stringify(viewModel), /1970|NaN|Invalid Date/);
+});
+
+test('admin profile exposes administration while student profile does not', () => {
+  const admin = buildProfileViewModel(snapshot({
+    identity: { role: 'admin' },
+  }));
+  const student = buildProfileViewModel(snapshot());
+
+  assert.equal(admin.actions.showAdmin, true);
+  assert.equal(student.actions.showAdmin, false);
 });
 
 test('local learning history is aggregated without importing learning logic', () => {
@@ -286,6 +321,14 @@ test('profile route is Spanish, responsive and isolated from access gates and pe
   assert.doesNotMatch(html, /Freemium|\bfree\b/i);
   assert.match(css, /@media\s*\(max-width:/);
   assert.match(css, /:focus-visible/);
+  assert.match(
+    html,
+    /href="\/upgrade\/"[^>]*data-upgrade-action[^>]*>Mejorar acceso</,
+  );
+  assert.match(
+    html,
+    /href="\/admin\/"[^>]*data-admin-action[^>]*hidden[^>]*>Administración</,
+  );
 });
 
 test('home landing links account access to login, plans and student profile', () => {

@@ -87,6 +87,17 @@
     }
   }
 
+  function readUpgradeRequests(storage) {
+    try {
+      var parsed = JSON.parse(
+        storage.getItem('wset_upgrade_requests_v1') || '[]'
+      );
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
   function toLocalInput(isoValue) {
     var date = new Date(isoValue);
     if (Number.isNaN(date.getTime())) return '';
@@ -140,6 +151,7 @@
     var form = documentRef.querySelector('[data-user-form]');
     var usersList = documentRef.querySelector('[data-users-list]');
     var auditList = documentRef.querySelector('[data-audit-list]');
+    var upgradeRequests = documentRef.querySelector('[data-upgrade-requests]');
     var analyticsRoot = documentRef.querySelector('[data-access-analytics]');
     var feedback = documentRef.querySelector('[data-admin-feedback]');
     var saveButton = documentRef.querySelector('[data-save-user]');
@@ -280,6 +292,30 @@
         failed.textContent = 'No fue posible cargar usuarios.';
         usersList.appendChild(failed);
         setFeedback(error.message || 'Error consultando Supabase.', 'error');
+      });
+    }
+
+    function renderUpgradeRequests() {
+      if (!upgradeRequests) return;
+      var requests = readUpgradeRequests(storage).slice().reverse();
+      upgradeRequests.replaceChildren();
+
+      if (!requests.length) {
+        var empty = documentRef.createElement('p');
+        empty.className = 'empty';
+        empty.textContent = 'No hay solicitudes registradas.';
+        upgradeRequests.appendChild(empty);
+        return;
+      }
+
+      requests.forEach(function (request) {
+        var row = documentRef.createElement('div');
+        row.className = 'audit-row';
+        row.appendChild(auditCell('Email', request.email));
+        row.appendChild(auditCell('Usuario', request.user_id));
+        row.appendChild(auditCell('Plan actual', request.current_plan));
+        row.appendChild(auditCell('Solicitado', request.requested_at));
+        upgradeRequests.appendChild(row);
       });
     }
 
@@ -679,6 +715,7 @@
           });
           resetForm();
           renderAuditDashboard();
+          renderUpgradeRequests();
           return renderUsers().then(function () { return true; });
         });
       }
@@ -686,6 +723,7 @@
       userStore = mockUserStore;
       resetForm();
       renderAuditDashboard();
+      renderUpgradeRequests();
       return renderUsers().then(function () { return true; });
     }
 
@@ -738,5 +776,6 @@
     initializeAdminPage: initializeAdminPage,
     isAdminSession: isAdminSession,
     readAuditEvents: readAuditEvents,
+    readUpgradeRequests: readUpgradeRequests,
   };
 });
