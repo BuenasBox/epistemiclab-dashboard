@@ -1291,6 +1291,10 @@ function sbaShuf(arr,seed){
   for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
+// Phase P3: Detect enrichment by presence of pedagogical fields
+function isEnriched(item){
+  return !!(item.feedback_by_mode || item.causal_chain || item.micro_drill);
+}
 const MOCK_RA={RA1:8,RA2:28,RA3:5,RA4:5,RA5:4};
 function bankToQ(item){
   return {
@@ -1315,7 +1319,11 @@ function loadMode(mode){
     const byRa={};
     all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
     Object.entries(MOCK_RA).forEach(([ra,need])=>{
-      let pool=sbaShuf(byRa[ra]||[],Date.now()+ra.charCodeAt(2));
+      let pool=byRa[ra]||[];
+      // Phase P3: enriched-first within RA bucket — preserve blueprint, prefer enriched
+      const enrichedPool=sbaShuf(pool.filter(i=>isEnriched(i)),Date.now()+ra.charCodeAt(2));
+      const fallbackPool=sbaShuf(pool.filter(i=>!isEnriched(i)),Date.now()+ra.charCodeAt(2)+100);
+      pool=[...enrichedPool,...fallbackPool];
       // Phase Y.2 — Adaptive Weakness Engine: weak-area unseen items first (RA blueprint preserved)
       pool=window.LI?LI.prioritize(pool,recent)
         :[...pool.filter(i=>!recent.includes(i.source_question_id)),...pool.filter(i=>recent.includes(i.source_question_id))];
@@ -1324,8 +1332,15 @@ function loadMode(mode){
     selected=sbaShuf(selected,Date.now());
   } else {
     const size={quick_drill:5,express:10,standard:25}[mode]||10;
-    const fresh=sbaShuf(all.filter(i=>!recent.includes(i.source_question_id)),Date.now());
-    const stale=sbaShuf(all.filter(i=>recent.includes(i.source_question_id)),Date.now()+1);
+    const all_unseen=all.filter(i=>!recent.includes(i.source_question_id));
+    const all_seen=all.filter(i=>recent.includes(i.source_question_id));
+    // Phase P3: enriched-first selection for all diagnostic modes
+    const enrichedUnseen=sbaShuf(all_unseen.filter(i=>isEnriched(i)),Date.now());
+    const fallbackUnseen=sbaShuf(all_unseen.filter(i=>!isEnriched(i)),Date.now()+100);
+    const fresh=[...enrichedUnseen,...fallbackUnseen];
+    const enrichedSeen=sbaShuf(all_seen.filter(i=>isEnriched(i)),Date.now()+1);
+    const fallbackSeen=sbaShuf(all_seen.filter(i=>!isEnriched(i)),Date.now()+101);
+    const stale=[...enrichedSeen,...fallbackSeen];
     // Phase Y.2 — Adaptive Weakness Engine: learner weaknesses bias selection
     selected=(window.LI?LI.prioritize([...fresh,...stale],recent):[...fresh,...stale]).slice(0,size);
   }
