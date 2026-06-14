@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Perfil de estudiante de EpistemicLab.">
+  <title>Mi perfil · EpistemicLab</title>
+  <link rel="stylesheet" href="./profile.css">
+  <script src="../shared/session-store.js"></script>
+  <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
+  <script src="../shared/auth-providers/mock-auth-provider.js"></script>
+  <script src="../shared/auth-provider.js"></script>
+  <script src="./profile.js"></script>
+</head>
+<body>
+  <main class="profile-shell" data-profile-shell data-profile-state="loading">
+    <nav class="profile-nav" aria-label="Navegación del perfil">
+      <a class="profile-brand" href="/" aria-label="EpistemicLab, volver al inicio">
+        <span class="profile-brand__mark">E</span>
+        <span>EpistemicLab</span>
+      </a>
+      <a class="profile-nav__link" href="/">Volver al inicio</a>
+    </nav>
+
+    <header class="profile-hero">
+      <p class="eyebrow">Student Profile V1</p>
+      <h1>Tu cuenta y tu aprendizaje, en un solo lugar.</h1>
+      <p>
+        Consulta tu identidad, el estado de tu acceso y las señales de
+        aprendizaje disponibles en este dispositivo.
+      </p>
+      <div class="profile-status" role="status" aria-live="polite">
+        <span class="profile-status__dot" aria-hidden="true"></span>
+        <span>
+          <strong data-status-label>Comprobando sesión</strong>
+          <small data-status-description>Estamos consultando tu acceso.</small>
+        </span>
+      </div>
+    </header>
+
+    <div class="profile-grid">
+      <section class="profile-card" aria-labelledby="identity-title">
+        <div class="profile-card__heading">
+          <span class="profile-card__index">01</span>
+          <div>
+            <p>Cuenta</p>
+            <h2 id="identity-title">Identidad</h2>
+          </div>
+        </div>
+        <dl class="profile-details">
+          <div>
+            <dt>Nombre</dt>
+            <dd data-identity-name>Visitante</dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd data-identity-email>Comprobando sesión</dd>
+          </div>
+          <div>
+            <dt>Rol</dt>
+            <dd data-identity-role>Sin sesión</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="profile-card" aria-labelledby="access-title">
+        <div class="profile-card__heading">
+          <span class="profile-card__index">02</span>
+          <div>
+            <p>Suscripción</p>
+            <h2 id="access-title">Acceso</h2>
+          </div>
+        </div>
+        <dl class="profile-details profile-details--access">
+          <div>
+            <dt>Plan actual</dt>
+            <dd data-access-plan>Sin plan</dd>
+          </div>
+          <div>
+            <dt>Estado del plan</dt>
+            <dd data-access-status>No disponible</dd>
+          </div>
+          <div>
+            <dt>Fecha de inicio</dt>
+            <dd data-access-start>No disponible</dd>
+          </div>
+          <div>
+            <dt>Fecha de vencimiento</dt>
+            <dd data-access-end>No disponible</dd>
+          </div>
+          <div>
+            <dt>Días restantes</dt>
+            <dd data-access-days>No disponible</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="profile-card profile-card--learning" aria-labelledby="learning-title">
+        <div class="profile-card__heading">
+          <span class="profile-card__index">03</span>
+          <div>
+            <p>Progreso</p>
+            <h2 id="learning-title">Aprendizaje</h2>
+          </div>
+        </div>
+        <div class="learning-grid">
+          <article class="learning-panel">
+            <h3>En este dispositivo</h3>
+            <dl class="profile-details">
+              <div>
+                <dt>Sesiones registradas</dt>
+                <dd data-local-sessions>0</dd>
+              </div>
+              <div>
+                <dt>Última actividad</dt>
+                <dd data-local-activity>No disponible</dd>
+              </div>
+              <div>
+                <dt>Experiencias</dt>
+                <dd data-experiences>Sin actividad local registrada</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="learning-panel">
+            <h3>Perfil persistente</h3>
+            <dl class="profile-details">
+              <div>
+                <dt>Sesiones sincronizadas</dt>
+                <dd data-persistent-sessions>No disponible</dd>
+              </div>
+              <div>
+                <dt>Racha de estudio</dt>
+                <dd data-study-streak>No disponible</dd>
+              </div>
+              <div>
+                <dt>Última sincronización</dt>
+                <dd data-persistent-activity>No disponible</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        <p class="learning-note" data-learning-message>
+          El progreso persistente se activará progresivamente.
+        </p>
+      </section>
+    </div>
+
+    <section class="profile-actions" aria-labelledby="actions-title">
+      <div>
+        <p class="eyebrow">Siguiente paso</p>
+        <h2 id="actions-title">Acciones de cuenta</h2>
+      </div>
+      <div class="profile-actions__links">
+        <a class="button button--primary" href="/upgrade/">Mejorar acceso</a>
+        <a class="button" href="/login/" data-login-action>Iniciar sesión</a>
+        <button class="button" type="button" data-logout-action hidden>
+          Cerrar sesión
+        </button>
+        <a class="button button--quiet" href="/">Volver al inicio</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

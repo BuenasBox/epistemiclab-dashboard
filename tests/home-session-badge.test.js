@@ -80,7 +80,7 @@ test('admin remains a separate technical role in the badge model', () => {
   assert.equal(model.label, 'Acceso Completo');
   assert.equal(model.roleLabel, 'Admin');
   assert.equal(model.text, 'Acceso Completo · Admin');
-  assert.equal(model.href, '/login/');
+  assert.equal(model.href, '/profile/');
 });
 
 test('badge model includes identity, plan, expiry and logout state', () => {
@@ -96,6 +96,18 @@ test('badge model includes identity, plan, expiry and logout state', () => {
   assert.equal(model.expiry, '15 de julio de 2026');
   assert.equal(model.canLogout, true);
   assert.equal(model.logoutLabel, 'Cerrar sesión');
+  assert.equal(model.href, '/profile/');
+});
+
+test('anonymous badge opens login while authenticated badge opens profile', () => {
+  assert.equal(getSessionBadgeModel(createSnapshot()).href, '/login/');
+  assert.equal(
+    getSessionBadgeModel(createSnapshot({
+      authenticated: true,
+      plan: 'demo',
+    })).href,
+    '/profile/',
+  );
 });
 
 test('badge does not expose unapproved plan labels', () => {
@@ -137,6 +149,7 @@ test('home only mounts and loads the portable session badge', () => {
 
   expectedAssets.forEach((asset) => assert.match(html, new RegExp(asset)));
   assert.match(html, /data-session-badge/);
+  assert.match(html, /href="\/profile\/"[^>]*>Mi perfil</);
   assert.doesNotMatch(html, /data-access-gate|canAccessRoute|canStartMode/);
 });
 

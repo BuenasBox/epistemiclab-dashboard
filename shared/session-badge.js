@@ -82,7 +82,7 @@
       canLogout: authenticated,
       logoutLabel: 'Cerrar sesión',
       state: state,
-      href: '/login/',
+      href: authenticated ? '/profile/' : '/login/',
     };
   }
 
