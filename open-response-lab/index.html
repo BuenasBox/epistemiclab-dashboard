@@ -327,6 +327,7 @@ ul { margin: 0; padding-left: 19px; }
 <script src="../shared/mode-access-gate.js"></script>
 <script src="../shared/remediation-engine.js"></script>
 <script src="../shared/or-enrichment.js"></script>
+<script src="../shared/weakness-sync.js"></script>
 <script src="./lab_payload.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
@@ -472,6 +473,15 @@ ul { margin: 0; padding-left: 19px; }
       });
       if (results.length) LI.recordORSession(state.sessionName, results);
     }
+
+    // Phase Y.2.1 — persist weakness profiles (non-blocking)
+    if (window.WeaknessSync && window.auth && window.auth.currentUser) {
+      window.WeaknessSync.triggerWeaknessSyncAtSessionEnd(
+        window.auth.currentUser.id,
+        window.supabase
+      ).catch(err => console.warn('[Y.2.1] Weakness sync error (non-blocking):', err));
+    }
+
     state.completed = true;
     saveState();
     render();

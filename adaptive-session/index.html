@@ -719,6 +719,7 @@ html, body {
 <script src="../shared/remediation-engine.js"></script>
 <script src="../shared/sat-sprint.js"></script>
 <script src="../shared/learning-loop.js"></script>
+<script src="../shared/weakness-sync.js"></script>
 <script src="session_bank.js"></script>
 <script src="coach_data.js"></script>
 <script src="learner_intelligence.js"></script>
@@ -1216,6 +1217,14 @@ function renderDebriefing() {
 
   // Phase Y.1 — append to longitudinal learner history (analytics + weakness engine)
   if (window.LI) LI.recordSBASession(STATE.sessionId, p.session_mode, STATE.attempts);
+
+  // Phase Y.2.1 — persist weakness profiles (non-blocking)
+  if (window.WeaknessSync && window.auth && window.auth.currentUser) {
+    window.WeaknessSync.triggerWeaknessSyncAtSessionEnd(
+      window.auth.currentUser.id,
+      window.supabase
+    ).catch(err => console.warn('[Y.2.1] Weakness sync error (non-blocking):', err));
+  }
 
   // Timestamp
   $('db-timestamp').textContent = `${now.toLocaleDateString('es-ES')} · ${now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`;
