@@ -369,6 +369,10 @@
       </div>
     </div>
     <div id="complete-coach" style="max-width:640px;margin:0 auto;text-align:left"></div>
+
+    <!-- M.6: Misconception findings from Part 2 -->
+    <div id="complete-misconceptions" style="max-width:640px;margin:24px auto;text-align:left"></div>
+
     <p class="disclaimer" style="margin-bottom:24px">
       PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET<br>
       safe_for_examiner: false · examiner_scoring_allowed: false
@@ -732,6 +736,44 @@ function completeSim(){
       }
     } catch (e) {
       console.warn('[Y.3.6] Simulation coaching error (non-blocking):', e);
+    }
+  }
+
+  // M.6: Render misconception insights from Part 2 (OR items)
+  if(window.LI && $('complete-misconceptions')){
+    try {
+      const memory = window.LI.pedagogicalMemory && typeof window.LI.pedagogicalMemory === 'function'
+        ? window.LI.pedagogicalMemory()
+        : null;
+
+      if(memory && memory.recurrent_misconceptions){
+        const miscs = memory.recurrent_misconceptions || {};
+        const items = Object.keys(miscs);
+
+        if(items.length > 0){
+          let html = '<div style="margin-top:24px;padding:16px;background:#1a2332;border:1px solid #4a7c8c;border-radius:8px">' +
+            '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px;font-size:13px">CONCEPCIONES FRECUENTES DETECTADAS</div>';
+
+          items.slice(0, 3).forEach(miscId => {
+            const misc = miscs[miscId];
+            const count = misc.hit_count || 1;
+            const coaching = misc.coaching_content || {};
+            const confused = coaching.confusion_statement || 'Concepto confundido';
+            const improve = coaching.improvement_signal || 'Practica preguntas similares';
+
+            html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:12px;margin:8px 0">' +
+              '<div style="color:#d5a84f;font-weight:600;margin-bottom:6px;font-size:12px">⚠ ' + confused + '</div>' +
+              '<div style="color:#aab4bd;font-size:11px;margin-bottom:6px">Detectado en ' + count + ' respuesta(s)</div>' +
+              '<div style="color:#75818c;font-size:11px;padding:8px;background:#101418;border-radius:4px">' + improve + '</div>' +
+              '</div>';
+          });
+
+          html += '</div>';
+          $('complete-misconceptions').innerHTML = html;
+        }
+      }
+    } catch (e) {
+      console.warn('[M.6] Misconception findings error (non-blocking):', e);
     }
   }
 

@@ -232,6 +232,54 @@
     }
   }
 
+  // M.5: Build and render misconception insights
+  function buildAndRenderMisconceptionInsights() {
+    if (typeof window.LI !== 'object') {
+      return '';
+    }
+
+    try {
+      var memory = window.LI.pedagogicalMemory && typeof window.LI.pedagogicalMemory === 'function'
+        ? window.LI.pedagogicalMemory()
+        : null;
+
+      if (!memory || !memory.recurrent_misconceptions) {
+        return '<div style="color:#aab4bd;font-size:14px;padding:16px">Aún no detectamos concepciones frecuentes. Sigue practicando para obtener insights.</div>';
+      }
+
+      var misconceptions = memory.recurrent_misconceptions || {};
+      var items = Object.keys(misconceptions);
+
+      if (items.length === 0) {
+        return '<div style="color:#aab4bd;font-size:14px;padding:16px">Aún no detectamos concepciones frecuentes. Sigue practicando para obtener insights.</div>';
+      }
+
+      var html = '<div style="display:flex;flex-direction:column;gap:12px">';
+
+      items.slice(0, 3).forEach(function(miscId) {
+        var count = misconceptions[miscId].hit_count || 0;
+        var confidence = misconceptions[miscId].confidence || 0;
+        var coaching = misconceptions[miscId].coaching_content || {};
+
+        var confusionStmt = coaching.confusion_statement || 'Concepto confundido';
+        var improvement = coaching.improvement_signal || 'Practica preguntas similares';
+
+        html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:14px">' +
+          '<div style="color:#e0b15b;font-weight:600;margin-bottom:8px;font-size:13px">⚠ Concepto frecuente</div>' +
+          '<div style="color:#f3f6f8;margin-bottom:8px;line-height:1.5">' + confusionStmt + '</div>' +
+          '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">Detectado ' + count + ' veces · Confianza: ' + Math.round(confidence * 100) + '%</div>' +
+          '<div style="color:#75818c;font-size:12px;padding:8px;background:#101418;border-radius:4px">' + improvement + '</div>' +
+          '</div>';
+      });
+
+      html += '</div>';
+      return html;
+    } catch (e) {
+      console.warn('[M.5] Misconception Insights error (non-blocking):', e);
+      return '';
+    }
+  }
+
   // Y.1.1: Render remediation card
   function renderRemediationCard() {
     var plan = getRemediationPlan();
@@ -701,6 +749,15 @@
         var readinessHtml = buildAndRenderReadinessIndicators();
         if (readinessHtml) {
           readinessPanel.innerHTML = readinessHtml;
+        }
+      }
+
+      // M.5: Render misconception insights
+      var misconceptionsPanel = root.document.querySelector('[data-misconception-insights]');
+      if (misconceptionsPanel) {
+        var misconceptionsHtml = buildAndRenderMisconceptionInsights();
+        if (misconceptionsHtml) {
+          misconceptionsPanel.innerHTML = misconceptionsHtml;
         }
       }
     };
