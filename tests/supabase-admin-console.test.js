@@ -273,6 +273,10 @@ test('Supabase admin store lists and updates upgrade requests', async () => {
   const store = createSupabaseAdminStore({ client });
 
   assert.deepEqual(await store.listUpgradeRequests(), requests);
+  assert.match(
+    calls.find((call) => call[0] === 'select')[1],
+    /profiles!upgrade_requests_user_id_fkey/,
+  );
   const updated = await store.updateUpgradeRequest('request-1', 'approved');
   assert.equal(updated.status, 'approved');
   assert.ok(calls.some((call) => call[0] === 'update'));

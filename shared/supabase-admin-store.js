@@ -56,9 +56,13 @@
     if (
       code === 'PGRST202'
       || code === 'PGRST205'
+      || code === 'PGRST203'
       || code === '42P01'
     ) {
-      return 'El módulo de códigos requiere aplicar la migración access_codes.';
+      return 'La función de generación de códigos no está disponible en Supabase. Aplica la migración ACCESS.3.';
+    }
+    if (code === '42501') {
+      return 'La sesión actual no tiene permisos administrativos en Supabase.';
     }
     return 'No fue posible administrar los códigos de acceso.';
   }
@@ -152,7 +156,8 @@
         .from('upgrade_requests')
         .select(
           'id,user_id,current_plan,requested_plan,status,requested_at,'
-          + 'reviewed_at,profiles(email,display_name)'
+          + 'reviewed_at,'
+          + 'profiles!upgrade_requests_user_id_fkey(email,display_name)'
         )
         .order('requested_at', { ascending: false })
         .then(dataOrThrow);
@@ -175,7 +180,8 @@
         .eq('id', id)
         .select(
           'id,user_id,current_plan,requested_plan,status,requested_at,'
-          + 'reviewed_at,profiles(email,display_name)'
+          + 'reviewed_at,'
+          + 'profiles!upgrade_requests_user_id_fkey(email,display_name)'
         )
         .single()
         .then(dataOrThrow);

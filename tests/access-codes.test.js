@@ -46,6 +46,28 @@ test('access-code migration creates secure table and RPCs', () => {
   assert.doesNotMatch(migration, /access_codes_(owner|student)_select/i);
 });
 
+test('runtime fix exposes pgcrypto functions to both generation RPCs', () => {
+  const migration = fs.readFileSync(
+    path.join(
+      __dirname,
+      '..',
+      'supabase',
+      'migrations',
+      '20260615210000_fix_access_code_admin_runtime.sql',
+    ),
+    'utf8',
+  );
+
+  assert.match(
+    migration,
+    /alter function public\.admin_generate_access_code[\s\S]*extensions/i,
+  );
+  assert.match(
+    migration,
+    /alter function public\.admin_generate_user_access_code[\s\S]*extensions/i,
+  );
+});
+
 test('learner redeems codes only through secure RPC', async () => {
   const calls = [];
   const store = createAccessCodeStore({
@@ -327,12 +349,23 @@ test('missing access-code migration maps to a clear admin warning', () => {
   ]) {
     assert.equal(
       getAccessCodeAdminErrorMessage(error),
-      'El módulo de códigos requiere aplicar la migración access_codes.',
+      'La función de generación de códigos no está disponible en Supabase. Aplica la migración ACCESS.3.',
     );
   }
   assert.equal(
     getAccessCodeAdminErrorMessage({ code: '42501' }),
-    'No fue posible administrar los códigos de acceso.',
+    'La sesión actual no tiene permisos administrativos en Supabase.',
+  );
+});
+
+test('RPC parameter mismatch and RLS denial have distinct admin-safe messages', () => {
+  assert.equal(
+    getAccessCodeAdminErrorMessage({ code: 'PGRST203' }),
+    'La función de generación de códigos no está disponible en Supabase. Aplica la migración ACCESS.3.',
+  );
+  assert.equal(
+    getAccessCodeAdminErrorMessage({ code: '42501' }),
+    'La sesión actual no tiene permisos administrativos en Supabase.',
   );
 });
 
@@ -366,4 +399,10 @@ test('upgrade and admin pages expose access-code workflows', () => {
     adminScript,
     /generateUserAccessCode[\s\S]*renderAccessCodes/,
   );
+  assert.match(adminScript, /load_upgrade_requests/);
+  assert.match(adminScript, /load_access_codes/);
+  assert.match(adminScript, /admin_generate_user_access_code/);
+  assert.match(adminScript, /admin_generate_access_code/);
+  assert.match(adminScript, /code:\s*error\s*&&\s*error\.code/);
+  assert.match(adminScript, /message:\s*error\s*&&\s*error\.message/);
 });

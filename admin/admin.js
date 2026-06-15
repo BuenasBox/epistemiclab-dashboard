@@ -372,6 +372,18 @@
       return button;
     }
 
+    function logAdminError(operation, error, metadata) {
+      if (!root.console || typeof root.console.error !== 'function') return;
+      root.console.error('EpistemicLab admin operation failed', {
+        operation: operation,
+        rpc: metadata && metadata.rpc || null,
+        code: error && error.code || null,
+        message: error && error.message || null,
+        details: error && error.details || null,
+        hint: error && error.hint || null,
+      });
+    }
+
     function formatDisplayDate(value) {
       if (!value) return 'Sin fecha';
       var date = new Date(value);
@@ -609,6 +621,7 @@
         });
         return requestsCache;
       }).catch(function (error) {
+        logAdminError('load_upgrade_requests', error);
         var failed = documentRef.createElement('p');
         failed.className = 'empty';
         failed.textContent = 'No fue posible cargar las solicitudes.';
@@ -681,6 +694,7 @@
         });
         return codesCache;
       }).catch(function (error) {
+        logAdminError('load_access_codes', error);
         var message = access.SupabaseAdminStore
           .getAccessCodeAdminErrorMessage(error);
         if (accessCodeWarning) {
@@ -1090,6 +1104,9 @@
           );
           return renderAccessCodes();
         }).catch(function (error) {
+          logAdminError('generate_user_access_code', error, {
+            rpc: 'admin_generate_user_access_code',
+          });
           button.disabled = false;
           var message = access.SupabaseAdminStore
             .getAccessCodeAdminErrorMessage(error);
@@ -1191,6 +1208,9 @@
               renderAccessCodes(),
             ]);
           }).catch(function (error) {
+            logAdminError('generate_request_access_code', error, {
+              rpc: 'admin_generate_access_code',
+            });
             button.disabled = false;
             setFeedback(
               error.message || 'No fue posible generar el código.',
