@@ -299,5 +299,7 @@
     eventIdForRecord: eventIdForRecord,
     initializeLearningSync: initializeLearningSync,
     wrapLearnerIntelligence: wrapLearnerIntelligence,
+    remediationPlan: (typeof window !== 'undefined' && window.LI && window.LI.remediationPlan) || function() { return null; },
+    progressReport: (typeof window !== 'undefined' && window.LI && window.LI.progressReport) || function() { return null; },
   };
 });

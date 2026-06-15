@@ -381,6 +381,7 @@ window.LI = (function () {
     boca_elementos: 'Repasa la lista completa de elementos de BOCA del SAT.',
     vocabulario_escalas: 'Usa los valores oficiales de las escalas SAT.',
   };
+  // Y.1.1: Structured recommendation engine (not just strings)
   function recommendNext() {
     const a = analytics();
     const ws = weakSet(a);
@@ -397,6 +398,112 @@ window.LI = (function () {
     Object.keys(a.satIssues).sort((x, y) => a.satIssues[y] - a.satIssues[x] || x.localeCompare(y))
       .slice(0, 2).forEach(k => { if (SAT_NEXT[k]) recs.push(SAT_NEXT[k]); });
     return recs;
+  }
+
+  // Y.1.1: Structured remediation recommendation
+  function remediationPlan() {
+    const a = analytics();
+    const ws = weakSet(a);
+    if (!ws.weakRAs.length && !ws.weakTopics.length && !ws.weakVerbs.length) {
+      return {
+        status: 'ready',
+        message: 'Tu progreso es sólido. Sigue practicando para alcanzar Distinction.',
+        actions: []
+      };
+    }
+    const actions = [];
+    if (ws.weakRAs.length && a.sbaSessions >= 4) {
+      ws.weakRAs.slice(0, 1).forEach(ra => {
+        actions.push({
+          type: 'practice_weak_ra',
+          ra: ra,
+          label: 'Refuerza ' + ra,
+          reason: 'Principal área de mejora en SBA',
+          mode: 'sba_standard'
+        });
+      });
+    }
+    if (ws.weakTopics.length && a.sbaSessions >= 3) {
+      ws.weakTopics.slice(0, 1).forEach(topic => {
+        actions.push({
+          type: 'practice_weak_topic',
+          topic: topic,
+          label: 'Practica: ' + topic,
+          reason: 'Tema con fallos recurrentes',
+          mode: 'sba_standard'
+        });
+      });
+    }
+    if (ws.weakVerbs.length && a.orSessions >= 2) {
+      ws.weakVerbs.slice(0, 1).forEach(verb => {
+        actions.push({
+          type: 'practice_weak_verb',
+          verb: verb,
+          label: 'Mejora en preguntas «' + (VERB_LABELS_REF[verb] || verb) + '»',
+          reason: 'Estructura débil en respuestas abiertas',
+          mode: 'open_response_standard'
+        });
+      });
+    }
+    if (a.satIssues && Object.keys(a.satIssues).length && a.satSessions >= 1) {
+      const topIssue = Object.keys(a.satIssues).sort((x, y) => a.satIssues[y] - a.satIssues[x])[0];
+      if (SAT_NEXT[topIssue]) {
+        actions.push({
+          type: 'practice_sat_issue',
+          issue: topIssue,
+          label: 'Mejora SAT: ' + SAT_ISSUE_LABELS[topIssue],
+          reason: SAT_NEXT[topIssue],
+          mode: 'sat_sprint'
+        });
+      }
+    }
+    if (!actions.length && a.sbaSessions >= 2) {
+      actions.push({
+        type: 'continue_practice',
+        label: 'Continúa practicando SBA',
+        reason: 'Aún necesitamos más datos para recomendaciones precisas',
+        mode: 'sba_standard'
+      });
+    }
+    return {
+      status: actions.length ? 'has_recommendations' : 'insufficient_data',
+      message: actions.length
+        ? (actions.length === 1 ? 'Tu principal enfoque' : 'Tus áreas a mejorar')
+        : 'Aún necesitamos más intentos para recomendar con precisión.',
+      actions: actions,
+      confidence: actions.length > 2 ? 'high' : (actions.length > 0 ? 'medium' : 'low')
+    };
+  }
+
+  // Y.1.3: Progress tracking
+  function progressReport() {
+    const a = analytics();
+    const ws = weakSet(a);
+    const report = {
+      totalSessions: a.sbaSessions + a.satSessions + a.orSessions,
+      byExperience: {
+        sba: { sessions: a.sbaSessions, items: Object.keys(a.topics || {}).length },
+        sat: { sessions: a.satSessions, issues: Object.keys(a.satIssues || {}).length },
+        or: { sessions: a.orSessions, verbs: Object.keys(a.verbs || {}).length }
+      },
+      weakAreas: ws.weakRAs,
+      strongAreas: ws.strongTopics,
+      trends: {
+        improving: [],
+        declining: [],
+        stable: []
+      }
+    };
+    Object.keys(a.topics || {}).forEach(t => {
+      const topic = a.topics[t];
+      if (topic.n >= 3) {
+        const recent = topic.n - (topic.c || 0);
+        if (recent < 1) report.trends.improving.push(t);
+        else if (recent >= 2) report.trends.declining.push(t);
+        else report.trends.stable.push(t);
+      }
+    });
+    return report;
   }
 
   function renderCoachPanel(findings) {

@@ -364,3 +364,35 @@ button {
     transition: none !important;
   }
 }
+
+/* ===== Y.1.7: REMEDIATION RECOMMENDATIONS CARD ===== */
+.profile-card--recommendations {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(34, 211, 238, .08), rgba(45, 223, 145, .04));
+  border: 1px solid rgba(34, 211, 238, .25);
+}
+
+#remediation-panel {
+  min-height: 120px;
+}
+
+#remediation-panel > div {
+  border-radius: 8px;
+  transition: all 200ms ease;
+}
+
+#remediation-panel > div:hover {
+  border-color: rgba(34, 211, 238, .4);
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .profile-card--recommendations {
+    grid-column: 1 / -1;
+  }
+
+  #remediation-panel > div {
+    padding: 10px !important;
+    font-size: 12px !important;
+  }
+}
