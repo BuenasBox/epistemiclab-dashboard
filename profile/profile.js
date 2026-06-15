@@ -63,6 +63,53 @@
     };
   }
 
+  // Y.1.1: Get remediation plan from learner intelligence
+  function getRemediationPlan() {
+    if (typeof root !== 'undefined' && root.LI && typeof root.LI.remediationPlan === 'function') {
+      return root.LI.remediationPlan();
+    }
+    return null;
+  }
+
+  // Y.1.6: Render learning loop indicator (next step recommendation)
+  function renderLearningLoopCard() {
+    if (typeof window.recommendNextExperience !== 'function') {
+      return ''; // Learning Loop module not available
+    }
+    try {
+      var nextExp = window.recommendNextExperience();
+      if (!nextExp || !nextExp.experience) return '';
+      return window.renderLearningLoopIndicator ? window.renderLearningLoopIndicator(nextExp) : '';
+    } catch (e) {
+      console.error('[Y.1.6] Learning Loop error:', e);
+      return '';
+    }
+  }
+
+  // Y.1.1: Render remediation card
+  function renderRemediationCard() {
+    var plan = getRemediationPlan();
+    if (!plan || plan.status === 'insufficient_data') {
+      return '<div style="background:#202830;border:1px solid #303944;border-radius:8px;padding:16px;margin:16px 0;color:#aab4bd;font-size:14px">' +
+        'Aún necesitamos más intentos para recomendar con precisión. ¡Sigue practicando!' +
+        '</div>';
+    }
+    var html = '<div style="background:#1a2332;border:2px solid #4a7c8c;border-radius:8px;padding:18px;margin:16px 0">' +
+      '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px;font-size:13px">PRÓXIMO PASO RECOMENDADO</div>';
+    (plan.actions || []).slice(0, 3).forEach(function (action) {
+      var icon = action.type.indexOf('weak') !== -1 ? '🎯' : '📚';
+      html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:12px;margin:8px 0;cursor:pointer">' +
+        '<div style="color:#d5a84f;font-weight:600;margin-bottom:4px">' + icon + ' ' + (action.label || 'Practice') + '</div>' +
+        '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">' + (action.reason || '') + '</div>' +
+        '<div style="display:inline-block;background:#17343b;color:#d6f7fb;padding:6px 12px;border-radius:4px;font-size:12px;font-weight:600">' +
+        (action.mode || 'start') + '</div>' +
+        '</div>';
+    });
+    html += '<div style="color:#525e6e;font-size:11px;margin-top:12px">Recomendaciones basadas en tu historial. Actualiza después de cada sesión.</div>';
+    html += '</div>';
+    return html;
+  }
+
   function summarizeLocalHistory(storage) {
     if (!storage || typeof storage.getItem !== 'function') {
       return emptyLearningSummary();
@@ -455,6 +502,20 @@
   function autoInitialize() {
     if (!root.document) return;
     initializeProfilePage();
+    // Y.1.1/Y.1.3/Y.1.6: Render recommendations, progress, and learning loop after profile loads
+    if (root.document.readyState === 'loading') {
+      root.document.addEventListener('DOMContentLoaded', function () {
+        var remPanel = root.document.querySelector('[data-remediation-panel]');
+        if (remPanel) {
+          remPanel.innerHTML = renderRemediationCard() + renderLearningLoopCard();
+        }
+      });
+    } else {
+      var remPanel = root.document.querySelector('[data-remediation-panel]');
+      if (remPanel) {
+        remPanel.innerHTML = renderRemediationCard() + renderLearningLoopCard();
+      }
+    }
   }
 
   if (root.document) {
@@ -476,5 +537,8 @@
     isLocalDevelopment: isLocalDevelopment,
     renderProfilePage: renderProfilePage,
     summarizeLocalHistory: summarizeLocalHistory,
+    renderRemediationCard: renderRemediationCard,
+    getRemediationPlan: getRemediationPlan,
+    renderLearningLoopCard: renderLearningLoopCard,
   };
 });

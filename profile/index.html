@@ -11,6 +11,9 @@
   <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
   <script src="../shared/auth-providers/mock-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
+  <script src="../adaptive-session/learner_intelligence.js"></script>
+  <script src="../shared/remediation-engine.js"></script>
+  <script src="../shared/learning-loop.js"></script>
   <script src="./profile.js"></script>
 </head>
 <body>
@@ -143,6 +146,20 @@
         <p class="learning-note" data-learning-message>
           El progreso persistente se activará progresivamente.
         </p>
+      </section>
+
+      <!-- Y.1.1: Remediation recommendations section -->
+      <section class="profile-card profile-card--recommendations" aria-labelledby="recommendations-title">
+        <div class="profile-card__heading">
+          <span class="profile-card__index">04</span>
+          <div>
+            <p>Próximos pasos</p>
+            <h2 id="recommendations-title">Recomendaciones</h2>
+          </div>
+        </div>
+        <div data-remediation-panel id="remediation-panel">
+          <!-- Rendered by JavaScript -->
+        </div>
       </section>
     </div>
 
