@@ -244,7 +244,7 @@ ul { margin: 0; padding-left: 19px; }
     <div class="topline">
       <div>
         <h1>Laboratorio de Respuesta Abierta</h1>
-        <p class="subtitle">148 ejercicios · 6 modos de práctica · Mentoría integrada</p>
+        <p class="subtitle" data-testid="lab-subtitle">Práctica guiada de respuesta abierta · Mentoría integrada</p>
       </div>
       <div class="session-picker" role="group" aria-label="Modo de sesión">
         <button type="button" data-session="short_practice" aria-pressed="true">Práctica corta · 1</button>
@@ -508,17 +508,18 @@ ul { margin: 0; padding-left: 19px; }
     });
     els.position.textContent = `Pregunta ${state.index + 1} de ${session.item_ids.length}`;
     els.sessionState.textContent = `Sesión ${labelForSession(state.sessionName)}`;
-    els.stem.textContent = item.question_text || item.stem || "";
+    const questionText = item.question_text || item.stem || "";
+    els.stem.textContent = questionText;
     els.topic.textContent = item.topic ? `Tema: ${item.topic}` : "Tema: sin clasificar";
     els.ra.textContent = item.ra_id ? `RA: ${item.ra_id}` : "RA: sin asignar";
     els.answer.value = state.answers[item.item_id] || "";
     // Phase Y.4 — Open Response Mentor: full 6-layer coaching
     if (els.verbCoach && window.MentorEngine && window.MentorUI) {
-      const guidance = window.MentorEngine.buildMentorGuidance(item.stem, item.topic);
+      const guidance = window.MentorEngine.buildMentorGuidance(questionText, item.topic);
       els.verbCoach.innerHTML = window.MentorUI.renderMentorUI(guidance);
     } else if (els.verbCoach) {
       // Fallback to legacy verb coach
-      const verb = window.LI ? LI.detectVerb(item.stem) : null;
+      const verb = window.LI ? LI.detectVerb(questionText) : null;
       els.verbCoach.innerHTML = verb && window.LI ? LI.renderVerbCoach(verb) : "";
     }
     els.next.disabled = state.index >= session.item_ids.length - 1;
