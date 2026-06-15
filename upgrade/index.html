@@ -58,5 +58,29 @@
     </section>
     <p class="upgrade-feedback" data-upgrade-feedback role="status"></p>
   </main>
+  <div
+    class="upgrade-modal"
+    data-upgrade-modal
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="upgrade-modal-title"
+    hidden
+  >
+    <section class="upgrade-modal__panel">
+      <p class="upgrade-modal__eyebrow">EpistemicLab</p>
+      <h2 id="upgrade-modal-title" data-upgrade-modal-title>
+        No pudimos registrar la solicitud
+      </h2>
+      <p data-upgrade-modal-message>
+        La solicitud no pudo guardarse. Inténtalo nuevamente.
+      </p>
+      <div class="upgrade-modal__actions">
+        <button type="button" data-upgrade-modal-close>Entendido</button>
+        <a href="/login/" data-upgrade-modal-login hidden>
+          Iniciar sesión
+        </a>
+      </div>
+    </section>
+  </div>
 </body>
 </html>

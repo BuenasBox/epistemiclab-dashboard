@@ -53,6 +53,55 @@
     return clone(PLAN_CATALOG);
   }
 
+  function successModel() {
+    return {
+      kind: 'success',
+      title: 'Solicitud enviada',
+      message: 'Recibimos tu solicitud de actualización. Un administrador la revisará.',
+      showLogin: false,
+    };
+  }
+
+  function getUpgradeErrorModel(error) {
+    var code = error && error.code;
+    if (code === 'AUTH_REQUIRED') {
+      return {
+        kind: 'error',
+        title: 'No pudimos registrar la solicitud',
+        message: 'Inicia sesión para solicitar una actualización.',
+        showLogin: true,
+      };
+    }
+    if (code === 'PGRST205' || code === '42P01') {
+      return {
+        kind: 'error',
+        title: 'No pudimos registrar la solicitud',
+        message: 'El servicio de solicitudes aún no está disponible.',
+        showLogin: false,
+      };
+    }
+    return {
+      kind: 'error',
+      title: 'No pudimos registrar la solicitud',
+      message: 'La solicitud no pudo guardarse. Inténtalo nuevamente.',
+      showLogin: false,
+    };
+  }
+
+  function showUpgradeModal(modal, model) {
+    if (!modal || !model) return null;
+    var title = modal.querySelector('[data-upgrade-modal-title]');
+    var message = modal.querySelector('[data-upgrade-modal-message]');
+    var login = modal.querySelector('[data-upgrade-modal-login]');
+
+    modal.dataset.kind = model.kind;
+    modal.hidden = false;
+    if (title) title.textContent = model.title;
+    if (message) message.textContent = model.message;
+    if (login) login.hidden = !model.showLogin;
+    return modal;
+  }
+
   function createList(items, documentRef) {
     var list = documentRef.createElement('ul');
     items.forEach(function (item) {
@@ -113,6 +162,8 @@
     var mount = documentRef && documentRef.querySelector('[data-plan-grid]');
     var feedback = documentRef
       && documentRef.querySelector('[data-upgrade-feedback]');
+    var modal = documentRef
+      && documentRef.querySelector('[data-upgrade-modal]');
     var access = options.access || root.WSETAccess;
     var grid = renderPlanGrid(mount, documentRef);
 
@@ -135,6 +186,17 @@
       sessionStore: sessionStore,
     });
 
+    if (modal) {
+      modal.addEventListener('click', function (event) {
+        if (
+          event.target === modal
+          || event.target.closest('[data-upgrade-modal-close]')
+        ) {
+          modal.hidden = true;
+        }
+      });
+    }
+
     grid.addEventListener('click', function (event) {
       var button = event.target.closest('[data-upgrade-request]');
       if (!button) return;
@@ -151,9 +213,7 @@
           !snapshot
           || snapshot.authentication.status !== 'authenticated'
         ) {
-          feedback.textContent = 'Inicia sesión para solicitar una actualización.';
-          feedback.dataset.kind = 'error';
-          return;
+          throw { code: 'AUTH_REQUIRED' };
         }
         var requestStore = access.UpgradeRequestStore
           .createUpgradeRequestStore({ client: results[1] });
@@ -161,12 +221,19 @@
           snapshot,
           button.dataset.requestedPlan
         ).then(function () {
-          feedback.textContent = 'Solicitud registrada correctamente.';
+          var model = successModel();
+          feedback.textContent = model.message;
           feedback.dataset.kind = 'success';
+          showUpgradeModal(modal, model);
         });
-      }).catch(function () {
-        feedback.textContent = 'No fue posible registrar la solicitud.';
+      }).catch(function (error) {
+        var model = getUpgradeErrorModel(error);
+        feedback.textContent = model.message;
         feedback.dataset.kind = 'error';
+        showUpgradeModal(modal, model);
+        if (root.console && typeof root.console.error === 'function') {
+          root.console.error('Upgrade request failed', error);
+        }
       }).finally(function () {
         button.disabled = false;
       });
@@ -183,8 +250,10 @@
 
   return {
     PLAN_CATALOG: PLAN_CATALOG,
+    getUpgradeErrorModel: getUpgradeErrorModel,
     getPlanCatalog: getPlanCatalog,
     initializeUpgradePage: initializeUpgradePage,
     renderPlanGrid: renderPlanGrid,
+    showUpgradeModal: showUpgradeModal,
   };
 });

@@ -53,6 +53,74 @@ body {
 .upgrade-feedback[data-kind="success"] { color: var(--success); }
 .upgrade-feedback[data-kind="error"] { color: #ff7a7a; }
 
+.upgrade-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(2, 4, 8, .82);
+  backdrop-filter: blur(8px);
+}
+
+.upgrade-modal[hidden] { display: none; }
+
+.upgrade-modal__panel {
+  width: min(460px, 100%);
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .55);
+}
+
+.upgrade-modal__eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.upgrade-modal__panel h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.upgrade-modal__panel > p:not(.upgrade-modal__eyebrow) {
+  margin: 14px 0 0;
+  color: var(--muted);
+}
+
+.upgrade-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.upgrade-modal__actions button,
+.upgrade-modal__actions a {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.upgrade-modal__actions button {
+  color: var(--bg);
+  background: var(--accent);
+}
+
 .upgrade-hero {
   max-width: 760px;
   padding: 80px 0 42px;
@@ -139,4 +207,7 @@ body {
 @media (max-width: 560px) {
   .plan-grid { grid-template-columns: 1fr; }
   .upgrade-hero { padding-top: 54px; }
+  .upgrade-modal { align-items: end; padding: 12px; }
+  .upgrade-modal__panel { padding: 22px 18px; }
+  .upgrade-modal__actions > * { flex: 1 1 100%; }
 }
