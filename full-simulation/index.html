@@ -15,6 +15,7 @@
   <script src="../shared/upgrade-gate.js"></script>
   <script src="./access-gate.js"></script>
   <script src="../adaptive-session/session_bank.js"></script>
+  <script src="../shared/sat-wine-data.js"><\/script>
   <script src="../open-response-lab/lab_payload.js"></script>
   <script src="../adaptive-session/coach_data.js"></script>
   <script src="../adaptive-session/learner_intelligence.js"></script>
@@ -474,8 +475,14 @@ function loadORItems(){
 }
 
 function loadSATItems(){
+  // Try new wine inventory first
+  if(window.WINE_INVENTORY && window.WINE_INVENTORY.length > 0){
+    return shuf(window.WINE_INVENTORY, Date.now()).slice(0,2);
+  }
+
+  // Fallback to legacy SESSION_BANK.sat_prompts
   const bk = window.SESSION_BANK;
-  if(!bk||!bk.sat_prompts){ console.error('SESSION_BANK sat_prompts missing'); return []; }
+  if(!bk||!bk.sat_prompts){ console.error('No wine inventory or sat_prompts available'); return []; }
   return shuf(bk.sat_prompts, Date.now()).slice(0,2);
 }
 
@@ -666,8 +673,12 @@ function renderSATQ(){
 
   $('sat-tags').innerHTML=`<span class="q-tag">Cata SAT</span><span class="q-tag">Formativo</span>`;
   $('sat-wine-name').textContent=w.wine_name||'Vino sin nombre';
-  $('sat-desc').innerHTML=`<strong>DESCRIPCIÓN:</strong> ${escT(w.description||'—')}`
+  let descHtml=`<strong>DESCRIPCIÓN:</strong> ${escT(w.description||'—')}`
     +(w.training_note?`<br><br><em style="color:var(--text-2);font-size:12px">${escT(w.training_note)}</em>`:'');
+  if(w.coaching_hints && w.coaching_hints.length > 0){
+    descHtml+=`<br><br><strong style="color:var(--blue)">ORIENTACIÓN:</strong><br><em style="color:var(--text-2);font-size:12px">${escT(w.coaching_hints[0])}</em>`;
+  }
+  $('sat-desc').innerHTML=descHtml;
   $('sat-textarea').value=STATE.sat.answers[idx]||'';
   $('sat-next-btn').textContent=idx<items.length-1?'Guardar y continuar →':'Finalizar Simulacro →';
   showScreen('screen-sat');

@@ -717,7 +717,7 @@ html, body {
 <script src="../shared/upgrade-gate.js"></script>
 <script src="../shared/mode-access-gate.js"></script>
 <script src="../shared/remediation-engine.js"></script>
-<script src="../shared/sat-sprint.js"></script>
+<script src="../shared/sat-wine-data.js"></script>`n  <script src="../shared/sat-sprint.js"></script>
 <script src="../shared/sat-coaching-intelligence.js"></script>
 <script src="../shared/learning-analytics.js"></script>
 <script src="../shared/pedagogical-coaching-engine.js"></script>
@@ -1411,11 +1411,20 @@ function buildSBA(mode){
   };
 }
 function buildSAT(mode){
-  const bk=window.SESSION_BANK;
-  if(!bk||!bk.sat_prompts){console.error('SESSION_BANK missing sat_prompts');return null;}
   const cnt=(mode==='sat_sprint')?1:2;
-  const sel=adpShuf(bk.sat_prompts,Date.now()).slice(0,cnt);
-  return {type:'sat',mode,duration_minutes:mode==='sat_mock'?30:null,wines:sel,
+  let wines=[];
+
+  // Try new wine inventory first
+  if(window.WINE_INVENTORY && window.WINE_INVENTORY.length > 0){
+    wines=adpShuf(window.WINE_INVENTORY,Date.now()).slice(0,cnt);
+  } else {
+    // Fallback to legacy SESSION_BANK.sat_prompts
+    const bk=window.SESSION_BANK;
+    if(!bk||!bk.sat_prompts){console.error('No wine inventory available');return null;}
+    wines=adpShuf(bk.sat_prompts,Date.now()).slice(0,cnt);
+  }
+
+  return {type:'sat',mode,duration_minutes:mode==='sat_mock'?30:null,wines:wines,
     governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true}};
 }
 
@@ -1484,8 +1493,14 @@ function renderSAT(){
     </div>
     <div style="background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:8px;padding:12px;margin-bottom:16px">
       <div style="font-size:11px;color:#c9a84c;margin-bottom:4px">NOTA FORMATIVA</div>
-      <div style="font-size:12px;color:#a7b0be">${escTxt(wine.training_note)}</div>
+      <div style="font-size:12px;color:#a7b0be">${escTxt(wine.training_note||wine.style||'Entrenamiento SAT formativo')}</div>
     </div>
+    ${wine.coaching_hints && wine.coaching_hints.length > 0 ? `<div style="background:rgba(63,169,245,.07);border:1px solid #3fa9f5;border-radius:8px;padding:12px;margin-bottom:16px">
+      <div style="font-size:11px;color:#3fa9f5;margin-bottom:6px;font-weight:700">ORIENTACIÓN PEDAGÓGICA</div>
+      <ul style="font-size:12px;color:#a7b0be;margin:0;padding-left:18px">
+        ${wine.coaching_hints.slice(0,2).map(h => `<li style="margin-bottom:4px">${escTxt(h)}</li>`).join('')}
+      </ul>
+    </div>` : ''}
     <div style="display:flex;gap:10px;justify-content:flex-end">
       ${idx+1<tot
         ?`<button onclick="satNext()" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px">Siguiente →</button>`

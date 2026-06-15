@@ -10,12 +10,19 @@
 
   // Y.1.5: Get a single wine for sprint mode
   function getSingleWineForSprint() {
-    if (!root.SESSION_BANK || !root.SESSION_BANK.sat) return null;
-    var wines = root.SESSION_BANK.sat;
-    if (!wines.length) return null;
-    // Rotate through wines; start with quality assessment focus
-    var idx = Math.floor(Math.random() * wines.length);
-    return wines[idx];
+    // Try new wine inventory first
+    if (root.WINE_INVENTORY && root.WINE_INVENTORY.length > 0) {
+      var wines = root.WINE_INVENTORY;
+      var idx = Math.floor(Math.random() * wines.length);
+      return wines[idx];
+    }
+    // Fallback to legacy SESSION_BANK.sat_prompts if new inventory unavailable
+    if (root.SESSION_BANK && root.SESSION_BANK.sat_prompts && root.SESSION_BANK.sat_prompts.length > 0) {
+      var legacyWines = root.SESSION_BANK.sat_prompts;
+      var idx = Math.floor(Math.random() * legacyWines.length);
+      return legacyWines[idx];
+    }
+    return null;
   }
 
   // Y.1.5: Render SAT Sprint UI
