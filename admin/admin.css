@@ -205,6 +205,33 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
 .feedback[data-kind="success"] { color: var(--green); }
 .feedback[data-kind="error"] { color: var(--red); }
 
+.password-reset-feedback {
+  grid-column: 1 / -1;
+  min-height: 22px;
+  margin: 8px 0 0 0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: rgba(201, 168, 76, 0.06);
+  color: var(--muted);
+  font-size: 10px;
+  border-left: 2px solid var(--gold-dim);
+}
+.password-reset-feedback[data-kind="success"] {
+  color: var(--green);
+  background: rgba(46, 194, 126, 0.06);
+  border-left-color: var(--green);
+}
+.password-reset-feedback[data-kind="error"] {
+  color: var(--red);
+  background: rgba(228, 92, 92, 0.06);
+  border-left-color: var(--red);
+}
+.password-reset-feedback[data-kind="neutral"] {
+  color: #a7b0be;
+  background: rgba(101, 183, 199, 0.06);
+  border-left-color: #65b7c7;
+}
+
 .users-list { display: grid; align-content: start; gap: 10px; padding: 20px; }
 
 .user-card {

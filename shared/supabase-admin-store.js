@@ -246,12 +246,29 @@
         .then(dataOrThrow);
     }
 
+    function requestPasswordReset(email) {
+      var normalizedEmail = requireString(email, 'email');
+      if (typeof client.auth !== 'object' || typeof client.auth.admin !== 'object') {
+        throw new TypeError('Client must support auth admin operations');
+      }
+      return Promise.resolve(
+        client.auth.admin.generateLink({
+          type: 'recovery',
+          email: normalizedEmail
+        })
+      ).then(function(response) {
+        if (response && response.error) throw response.error;
+        return response;
+      });
+    }
+
     return {
       generateAccessCode: generateAccessCode,
       generateUserAccessCode: generateUserAccessCode,
       listAccessCodes: listAccessCodes,
       listUsers: listUsers,
       listUpgradeRequests: listUpgradeRequests,
+      requestPasswordReset: requestPasswordReset,
       revokeAccessCode: revokeAccessCode,
       updateUpgradeRequest: updateUpgradeRequest,
       updateUser: updateUser,

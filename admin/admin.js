@@ -310,7 +310,9 @@
       '[data-student-dashboard]'
     );
     var feedback = documentRef.querySelector('[data-admin-feedback]');
+    var passwordResetFeedback = documentRef.querySelector('[data-password-reset-feedback]');
     var saveButton = documentRef.querySelector('[data-save-user]');
+    var resetPasswordButton = documentRef.querySelector('[data-reset-password]');
     var cancelButton = documentRef.querySelector('[data-cancel-edit]');
     var refreshAudit = documentRef.querySelector('[data-refresh-audit]');
     var adminModeLabel = documentRef.querySelector('[data-admin-mode]');
@@ -358,6 +360,8 @@
         : 'Crear usuario';
       saveButton.disabled = adminMode === 'supabase';
       cancelButton.hidden = true;
+      resetPasswordButton.hidden = true;
+      if (passwordResetFeedback) passwordResetFeedback.hidden = true;
       renderAllowedModules();
       setFeedback('');
     }
@@ -1005,6 +1009,7 @@
       saveButton.textContent = 'Guardar cambios';
       saveButton.disabled = false;
       cancelButton.hidden = false;
+      resetPasswordButton.hidden = adminMode !== 'supabase' || user.role === 'admin';
       renderAllowedModules();
       setFeedback('Editando ' + user.display_name + '.', 'neutral');
       form.elements.display_name.focus();
@@ -1063,6 +1068,69 @@
     });
 
     cancelButton.addEventListener('click', resetForm);
+
+    resetPasswordButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      var userId = form.elements.user_id.value;
+      var email = form.elements.email.value;
+
+      if (!userId || !email) {
+        if (passwordResetFeedback) {
+          passwordResetFeedback.textContent = 'Selecciona un usuario para enviar recuperación de contraseña.';
+          passwordResetFeedback.dataset.kind = 'error';
+          passwordResetFeedback.hidden = false;
+        }
+        return;
+      }
+
+      if (adminMode !== 'supabase' || typeof userStore.requestPasswordReset !== 'function') {
+        if (passwordResetFeedback) {
+          passwordResetFeedback.textContent = 'Recuperación de contraseña no disponible en este modo.';
+          passwordResetFeedback.dataset.kind = 'error';
+          passwordResetFeedback.hidden = false;
+        }
+        return;
+      }
+
+      resetPasswordButton.disabled = true;
+      if (passwordResetFeedback) {
+        passwordResetFeedback.textContent = 'Enviando email de recuperación...';
+        passwordResetFeedback.dataset.kind = 'neutral';
+        passwordResetFeedback.hidden = false;
+      }
+
+      Promise.resolve(userStore.requestPasswordReset(email))
+        .then(function () {
+          resetPasswordButton.disabled = false;
+          if (passwordResetFeedback) {
+            passwordResetFeedback.textContent = 'Correo de recuperación enviado a ' + email + '.';
+            passwordResetFeedback.dataset.kind = 'success';
+            passwordResetFeedback.hidden = false;
+          }
+          setFeedback('Correo de recuperación enviado.', 'success');
+        })
+        .catch(function (error) {
+          resetPasswordButton.disabled = false;
+          var errorMessage = 'No fue posible enviar el email de recuperación.';
+
+          if (error && error.code === 'PGRST204' || error.status === 404) {
+            errorMessage = 'Usuario no encontrado.';
+          } else if (error && error.message && error.message.includes('Rate limit')) {
+            errorMessage = 'Has superado el límite de intentos. Intenta nuevamente más tarde.';
+          } else if (error && error.message) {
+            errorMessage = error.message;
+          }
+
+          if (passwordResetFeedback) {
+            passwordResetFeedback.textContent = errorMessage;
+            passwordResetFeedback.dataset.kind = 'error';
+            passwordResetFeedback.hidden = false;
+          }
+          setFeedback(errorMessage, 'error');
+          logAdminError('request_password_reset', error, { rpc: 'admin_request_password_reset' });
+        });
+    });
+
     form.elements.role.addEventListener('change', renderAllowedModules);
     form.elements.plan.addEventListener('change', renderAllowedModules);
     form.elements.status.addEventListener('change', renderAllowedModules);

@@ -273,6 +273,13 @@
       };
     }
 
+    function requestPasswordReset(email) {
+      // Mock implementation - in actual use, this would be Supabase auth
+      return Promise.reject(new Error(
+        'Recuperación de contraseña no disponible en modo mock. Use Supabase mode.'
+      ));
+    }
+
     return {
       listUsers: listUsers,
       getUser: getUser,
@@ -280,6 +287,7 @@
       updateUser: updateUser,
       deleteUser: deleteUser,
       createSessionSource: createSessionSource,
+      requestPasswordReset: requestPasswordReset,
     };
   }
 
