@@ -1326,6 +1326,10 @@ function adpShuf(arr,salt){
   for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
+// Phase P3: Detect enrichment by presence of pedagogical fields
+function isEnrichedAdp(item){
+  return !!(item.feedback_by_mode || item.causal_chain || item.micro_drill);
+}
 function buildSBA(mode){
   const bk=window.SESSION_BANK;
   if(!bk||!bk.sba_items){console.error('SESSION_BANK missing');return null;}
@@ -1334,11 +1338,15 @@ function buildSBA(mode){
   const ws=window.LI?LI.weakSet():{weakRAs:[],weakTopics:[],strongTopics:[],mcTrends:[]};
   const isWeak=i=>ws.weakTopics.indexOf(i.topic)!==-1||ws.weakRAs.indexOf(i.ra)!==-1;
   if(mode==='mock_theory_50'){
-    // RA blueprint preserved; within each RA, weak-topic unseen items first
+    // Phase P3: RA blueprint preserved; within each RA, enriched-first then weak-topic unseen items
     const byRa={};
     all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
     Object.entries(ADP_MRA).forEach(([ra,n])=>{
-      let pool=adpShuf(byRa[ra]||[],ra.charCodeAt(2));
+      let pool=byRa[ra]||[];
+      // Phase P3: enriched-first within RA bucket
+      const enrichedRa=adpShuf(pool.filter(i=>isEnrichedAdp(i)),ra.charCodeAt(2));
+      const fallbackRa=adpShuf(pool.filter(i=>!isEnrichedAdp(i)),ra.charCodeAt(2)+100);
+      pool=[...enrichedRa,...fallbackRa];
       pool=window.LI?LI.prioritize(pool,rec)
         :[...pool.filter(i=>!rec.includes(i.source_question_id)),...pool.filter(i=>rec.includes(i.source_question_id))];
       sel.push(...pool.slice(0,n));
@@ -1346,7 +1354,14 @@ function buildSBA(mode){
     sel=adpShuf(sel,42);
   } else {
     const sz={express_10:10,standard_25:25}[mode]||10;
-    const base=[...adpShuf(all.filter(i=>!rec.includes(i.source_question_id)),1),...adpShuf(all.filter(i=>rec.includes(i.source_question_id)),2)];
+    // Phase P3: enriched-first unseen and seen items
+    const allUnseen=all.filter(i=>!rec.includes(i.source_question_id));
+    const allSeen=all.filter(i=>rec.includes(i.source_question_id));
+    const enrichedUnseen=adpShuf(allUnseen.filter(i=>isEnrichedAdp(i)),1);
+    const fallbackUnseen=adpShuf(allUnseen.filter(i=>!isEnrichedAdp(i)),101);
+    const enrichedSeen=adpShuf(allSeen.filter(i=>isEnrichedAdp(i)),2);
+    const fallbackSeen=adpShuf(allSeen.filter(i=>!isEnrichedAdp(i)),102);
+    const base=[...enrichedUnseen,...fallbackUnseen,...enrichedSeen,...fallbackSeen];
     // Reserve ~40% of slots for weak-area items (if any), rest unchanged
     const weakPool=base.filter(isWeak).slice(0,Math.ceil(sz*0.4));
     const taken=weakPool.map(i=>i.source_question_id);

@@ -422,6 +422,11 @@ function stopAllTimers(){
 /* ── DATA LOADING ── */
 const RA_DIST = {RA1:8, RA2:28, RA3:5, RA4:5, RA5:4};
 
+// Phase P3: Detect enrichment by presence of pedagogical fields
+function isEnrichedFS(item){
+  return !!(item.feedback_by_mode || item.causal_chain || item.micro_drill);
+}
+
 function loadSBAItems(){
   const bk = window.SESSION_BANK;
   if(!bk||!bk.sba_items){ console.error('SESSION_BANK not loaded'); return []; }
@@ -430,7 +435,11 @@ function loadSBAItems(){
   bk.sba_items.forEach(i=>{ const r=i.ra||'RA1'; (byRa[r]=byRa[r]||[]).push(i); });
   const out = [];
   Object.entries(RA_DIST).forEach(([ra,need])=>{
-    const pool = shuf(byRa[ra]||[], seed + ra.charCodeAt(2));
+    let pool = byRa[ra]||[];
+    // Phase P3: enriched-first within RA bucket — preserve blueprint, prefer enriched
+    const enrichedPool = shuf(pool.filter(i=>isEnrichedFS(i)), seed + ra.charCodeAt(2));
+    const fallbackPool = shuf(pool.filter(i=>!isEnrichedFS(i)), seed + ra.charCodeAt(2) + 100);
+    pool = [...enrichedPool, ...fallbackPool];
     out.push(...pool.slice(0,need));
   });
   return shuf(out, seed+1);
