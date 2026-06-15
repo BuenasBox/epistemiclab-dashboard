@@ -707,6 +707,34 @@ function completeSim(){
     if(reviews.length)LI.recordSATSession('full_simulation',reviews);
     $('complete-coach').innerHTML=coachHtml;
   }
+
+  // Y.3.6: Add simulation coaching if module available
+  if(window.SimulationCoaching && window.LI && $('complete-coach')){
+    try {
+      const learnerState = window.LI.weakSet ? window.LI.weakSet() : {};
+      const simulationResults = {
+        sba_results: { strong_topics: learnerState.strongTopics || [], weak_topics: learnerState.weakTopics || [], scores: [] },
+        or_results: { verb_performance: {}, structure_gaps: [] },
+        sat_results: { quality_accuracy: 0.5, observation_quality: 'partial' }
+      };
+      const misconceptions = window.MisconceptionEngine && window.MisconceptionEngine.detectMisconceptions
+        ? window.MisconceptionEngine.detectMisconceptions(learnerState.weakTopics || [], [])
+        : [];
+
+      const coaching = window.SimulationCoaching.buildSimulationCoaching(simulationResults, learnerState, misconceptions);
+      if(coaching){
+        const coachingHtml = window.SimulationCoaching.renderSimulationCoachingReport(coaching);
+        if(coachingHtml){
+          const coachDiv = document.createElement('div');
+          coachDiv.innerHTML = coachingHtml;
+          $('complete-coach').appendChild(coachDiv);
+        }
+      }
+    } catch (e) {
+      console.warn('[Y.3.6] Simulation coaching error (non-blocking):', e);
+    }
+  }
+
   showScreen('screen-complete');
 }
 
