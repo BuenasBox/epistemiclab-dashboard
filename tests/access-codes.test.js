@@ -10,8 +10,12 @@ const {
   getAccessCodeResultModel,
 } = require('../upgrade/upgrade.js');
 const {
+  getAccessCodeAdminErrorMessage,
   createSupabaseAdminStore,
 } = require('../shared/supabase-admin-store.js');
+const {
+  getUserCodeActions,
+} = require('../admin/admin.js');
 
 test('access-code migration creates secure table and RPCs', () => {
   const migration = fs.readFileSync(
@@ -149,6 +153,123 @@ test('admin generates premium and full access codes without changing grants', as
   );
 });
 
+test('admin user cards expose premium and full access code actions', () => {
+  assert.deepEqual(getUserCodeActions({
+    user_id: 'user-1',
+    role: 'student',
+    plan: 'demo',
+  }), [
+    {
+      id: 'code_generate_premium',
+      label: 'Generar código Premium',
+      target_plan: 'premium',
+    },
+    {
+      id: 'code_generate_full_access',
+      label: 'Generar código Acceso Completo',
+      target_plan: 'full_access',
+    },
+  ]);
+  assert.deepEqual(getUserCodeActions({
+    user_id: 'admin-1',
+    role: 'admin',
+    plan: 'full_access',
+  }), []);
+});
+
+test('admin generates a user code without changing the current plan', async () => {
+  const calls = [];
+  const client = {
+    rpc(name, values) {
+      calls.push([name, values]);
+      return {
+        single() {
+          return Promise.resolve({
+            data: {
+              id: 'code-2',
+              code: 'EL-USER123',
+              target_user_id: values.p_target_user_id,
+              target_plan: values.p_target_plan,
+              duration_days: values.p_duration_days,
+              status: 'active',
+            },
+            error: null,
+          });
+        },
+      };
+    },
+    from(table) {
+      if (table === 'access_grants') {
+        throw new Error('generating a code must not update access grants');
+      }
+      throw new Error(`Unexpected table: ${table}`);
+    },
+  };
+  const store = createSupabaseAdminStore({ client });
+
+  const generated = await store.generateUserAccessCode(
+    'user-1',
+    'premium',
+    90,
+  );
+
+  assert.equal(generated.code, 'EL-USER123');
+  assert.deepEqual(calls[0], [
+    'admin_generate_user_access_code',
+    {
+      p_target_user_id: 'user-1',
+      p_target_plan: 'premium',
+      p_duration_days: 90,
+    },
+  ]);
+});
+
+test('generated user code appears when recent codes are refreshed', async () => {
+  const codes = [];
+  const client = {
+    rpc(name, values) {
+      assert.equal(name, 'admin_generate_user_access_code');
+      return {
+        single() {
+          const generated = {
+            id: 'code-3',
+            code: 'EL-RECENT123',
+            target_user_id: values.p_target_user_id,
+            target_email: 'student@example.com',
+            target_plan: values.p_target_plan,
+            duration_days: values.p_duration_days,
+            status: 'active',
+            created_at: '2026-06-15T01:00:00Z',
+            expires_at: '2026-07-15T01:00:00Z',
+            redeemed_at: null,
+          };
+          codes.unshift(generated);
+          return Promise.resolve({ data: generated, error: null });
+        },
+      };
+    },
+    from(table) {
+      assert.equal(table, 'access_codes');
+      return {
+        select() {
+          return {
+            order() {
+              return Promise.resolve({ data: codes, error: null });
+            },
+          };
+        },
+      };
+    },
+  };
+  const store = createSupabaseAdminStore({ client });
+
+  await store.generateUserAccessCode('user-1', 'full_access', 365);
+  const recent = await store.listAccessCodes();
+
+  assert.equal(recent[0].code, 'EL-RECENT123');
+  assert.equal(recent[0].status, 'active');
+});
+
 test('admin lists and revokes access codes', async () => {
   const calls = [];
   const code = {
@@ -198,6 +319,23 @@ test('admin lists and revokes access codes', async () => {
   assert.equal((await store.revokeAccessCode('code-1')).status, 'revoked');
 });
 
+test('missing access-code migration maps to a clear admin warning', () => {
+  for (const error of [
+    { code: 'PGRST202' },
+    { code: 'PGRST205' },
+    { code: '42P01' },
+  ]) {
+    assert.equal(
+      getAccessCodeAdminErrorMessage(error),
+      'El módulo de códigos requiere aplicar la migración access_codes.',
+    );
+  }
+  assert.equal(
+    getAccessCodeAdminErrorMessage({ code: '42501' }),
+    'No fue posible administrar los códigos de acceso.',
+  );
+});
+
 test('upgrade and admin pages expose access-code workflows', () => {
   const upgrade = fs.readFileSync(
     path.join(__dirname, '..', 'upgrade', 'index.html'),
@@ -215,4 +353,17 @@ test('upgrade and admin pages expose access-code workflows', () => {
   assert.match(admin, /Códigos de acceso recientes/);
   assert.match(admin, /data-access-codes/);
   assert.match(admin, /data-generated-code/);
+  assert.match(admin, /data-access-code-warning/);
+
+  const adminScript = fs.readFileSync(
+    path.join(__dirname, '..', 'admin', 'admin.js'),
+    'utf8',
+  );
+  assert.match(adminScript, /request_generate/);
+  assert.match(adminScript, /Generar código Premium/);
+  assert.match(adminScript, /Generar código Acceso Completo/);
+  assert.match(
+    adminScript,
+    /generateUserAccessCode[\s\S]*renderAccessCodes/,
+  );
 });

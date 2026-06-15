@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Admin Supabase · EpistemicLab</title>
-  <link rel="stylesheet" href="./admin.css?v=20260615-codes4">
+  <link rel="stylesheet" href="./admin.css?v=20260615-codes5">
   <script src="../shared/session-store.js"></script>
   <script src="../shared/supabase-public-config.js"></script>
   <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
   <script src="../shared/auth-providers/mock-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
-  <script src="../shared/supabase-admin-store.js?v=20260615-codes4"></script>
+  <script src="../shared/supabase-admin-store.js?v=20260615-codes5"></script>
   <script src="../shared/mock-user-store.js"></script>
   <script src="./access-analytics.js"></script>
-  <script src="./admin.js?v=20260615-codes4"></script>
+  <script src="./admin.js?v=20260615-codes5"></script>
 </head>
 <body>
   <main class="shell">
@@ -109,6 +109,12 @@
             <p>Los planes cambian únicamente cuando el estudiante canjea el código.</p>
           </div>
         </div>
+        <p
+          class="access-code-warning"
+          data-access-code-warning
+          role="alert"
+          hidden
+        ></p>
         <div class="audit-list" data-access-codes></div>
       </section>
 

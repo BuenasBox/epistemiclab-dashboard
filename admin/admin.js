@@ -140,6 +140,22 @@
     return actions;
   }
 
+  function getUserCodeActions(user) {
+    if (!user || user.role !== 'student') return [];
+    return [
+      {
+        id: 'code_generate_premium',
+        label: 'Generar código Premium',
+        target_plan: 'premium',
+      },
+      {
+        id: 'code_generate_full_access',
+        label: 'Generar código Acceso Completo',
+        target_plan: 'full_access',
+      },
+    ];
+  }
+
   function applyQuickAction(user, action, now) {
     var updated = clone(user);
     var currentTime = new Date(now || new Date());
@@ -279,6 +295,9 @@
     var auditList = documentRef.querySelector('[data-audit-list]');
     var upgradeRequests = documentRef.querySelector('[data-upgrade-requests]');
     var accessCodes = documentRef.querySelector('[data-access-codes]');
+    var accessCodeWarning = documentRef.querySelector(
+      '[data-access-code-warning]'
+    );
     var generatedCode = documentRef.querySelector('[data-generated-code]');
     var generatedCodeValue = documentRef.querySelector(
       '[data-generated-code-value]'
@@ -451,6 +470,24 @@
               user.user_id
             ));
           });
+          var codeActions = getUserCodeActions(user);
+          if (codeActions.length) {
+            actions.appendChild(createSelect('duration_days', [
+              { value: 30, label: 'Código 30 días' },
+              { value: 90, label: 'Código 90 días' },
+              { value: 365, label: 'Código 1 año' },
+            ], 30));
+            codeActions.forEach(function (action) {
+              var codeButton = createButton(
+                action.label,
+                'button button--small button--primary',
+                action.id,
+                user.user_id
+              );
+              codeButton.dataset.targetPlan = action.target_plan;
+              actions.appendChild(codeButton);
+            });
+          }
           if (adminMode === 'mock') {
             actions.appendChild(createButton(
               'Eliminar',
@@ -592,6 +629,7 @@
         : Promise.resolve([]);
 
       return Promise.resolve(operation).then(function (codes) {
+        if (accessCodeWarning) accessCodeWarning.hidden = true;
         codesCache = codes || [];
         if (!codesCache.length) {
           var empty = documentRef.createElement('p');
@@ -643,10 +681,13 @@
         });
         return codesCache;
       }).catch(function (error) {
-        setFeedback(
-          error.message || 'No fue posible cargar los códigos.',
-          'error'
-        );
+        var message = access.SupabaseAdminStore
+          .getAccessCodeAdminErrorMessage(error);
+        if (accessCodeWarning) {
+          accessCodeWarning.textContent = message;
+          accessCodeWarning.hidden = false;
+        }
+        setFeedback(message, 'error');
         return [];
       });
     }
@@ -1021,6 +1062,50 @@
         return;
       }
 
+      if (button.dataset.action.indexOf('code_generate_') === 0) {
+        var codeUser = usersCache.find(function (user) {
+          return user.user_id === button.dataset.userId;
+        });
+        if (
+          !codeUser
+          || codeUser.role !== 'student'
+          || typeof userStore.generateUserAccessCode !== 'function'
+        ) return;
+
+        var codeCard = button.closest('.user-card');
+        var duration = Number(codeCard.querySelector(
+          '[data-field="duration_days"]'
+        ).value);
+        button.disabled = true;
+        Promise.resolve(userStore.generateUserAccessCode(
+          codeUser.user_id,
+          button.dataset.targetPlan,
+          duration
+        )).then(function (code) {
+          generatedCodeValue.textContent = code.code;
+          generatedCode.hidden = false;
+          setFeedback(
+            'Código generado. El plan permanece sin cambios hasta el canje.',
+            'success'
+          );
+          return renderAccessCodes();
+        }).catch(function (error) {
+          button.disabled = false;
+          var message = access.SupabaseAdminStore
+            .getAccessCodeAdminErrorMessage(error);
+          if (accessCodeWarning && (
+            error.code === 'PGRST202'
+            || error.code === 'PGRST205'
+            || error.code === '42P01'
+          )) {
+            accessCodeWarning.textContent = message;
+            accessCodeWarning.hidden = false;
+          }
+          setFeedback(message, 'error');
+        });
+        return;
+      }
+
       if (button.dataset.action !== 'delete') {
         var selectedUser = usersCache.find(function (user) {
           return user.user_id === button.dataset.userId;
@@ -1273,6 +1358,7 @@
     buildStudentDashboard: buildStudentDashboard,
     getAdminDeniedModel: getAdminDeniedModel,
     getQuickActions: getQuickActions,
+    getUserCodeActions: getUserCodeActions,
     initializeAdminPage: initializeAdminPage,
     isAdminSession: isAdminSession,
     readAuditEvents: readAuditEvents,

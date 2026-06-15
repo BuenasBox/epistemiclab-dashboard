@@ -51,6 +51,18 @@
     return result ? result.data : null;
   }
 
+  function getAccessCodeAdminErrorMessage(error) {
+    var code = error && error.code;
+    if (
+      code === 'PGRST202'
+      || code === 'PGRST205'
+      || code === '42P01'
+    ) {
+      return 'El módulo de códigos requiere aplicar la migración access_codes.';
+    }
+    return 'No fue posible administrar los códigos de acceso.';
+  }
+
   function normalizeUpdate(values) {
     values = values || {};
     var start = requireDate(
@@ -186,6 +198,23 @@
       }).single().then(dataOrThrow);
     }
 
+    function generateUserAccessCode(userId, targetPlan, durationDays) {
+      var id = requireString(userId, 'user_id');
+      var plan = requireEnum(targetPlan, [
+        'premium', 'full_access',
+      ], 'target_plan');
+      var duration = Number(durationDays);
+      if (VALID_DURATIONS.indexOf(duration) === -1) {
+        throw new TypeError('duration_days has an unsupported value');
+      }
+
+      return client.rpc('admin_generate_user_access_code', {
+        p_target_user_id: id,
+        p_target_plan: plan,
+        p_duration_days: duration,
+      }).single().then(dataOrThrow);
+    }
+
     function listAccessCodes() {
       return client
         .from('access_codes')
@@ -213,6 +242,7 @@
 
     return {
       generateAccessCode: generateAccessCode,
+      generateUserAccessCode: generateUserAccessCode,
       listAccessCodes: listAccessCodes,
       listUsers: listUsers,
       listUpgradeRequests: listUpgradeRequests,
@@ -224,6 +254,7 @@
 
   return {
     createSupabaseAdminStore: createSupabaseAdminStore,
+    getAccessCodeAdminErrorMessage: getAccessCodeAdminErrorMessage,
     mergeUsers: mergeUsers,
   };
 });

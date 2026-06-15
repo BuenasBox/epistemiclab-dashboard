@@ -6,6 +6,7 @@ const path = require('node:path');
 const {
   applyQuickAction,
   buildStudentDashboard,
+  getUserCodeActions,
   getQuickActions,
 } = require('../admin/admin.js');
 
@@ -127,6 +128,16 @@ test('admin page uses production student-management wording', () => {
   assert.match(html, /data-student-dashboard/);
   assert.match(html, /data-users-list/);
   assert.match(html, /data-upgrade-requests/);
+  assert.match(html, /data-access-code-warning/);
+});
+
+test('student cards offer code generation without changing plan actions', () => {
+  assert.deepEqual(
+    getUserCodeActions(user()).map((action) => action.label),
+    ['Generar código Premium', 'Generar código Acceso Completo'],
+  );
+  assert.equal(user().plan, 'demo');
+  assert.deepEqual(getUserCodeActions(user({ role: 'admin' })), []);
 });
 
 test('admin styles keep student cards and actions usable on phones', () => {
