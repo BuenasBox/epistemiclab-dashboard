@@ -16,6 +16,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 async function migrateORBank() {
   console.log('Starting Open Response bank migration...');
+  console.log('Note: OR bank (106 items) is SEPARATE from SBA bank (670 items)');
+  console.log('No duplication: OR items are unique pedagogical assets');
 
   const labPath = path.join(__dirname, '../open-response-lab/lab_payload.js');
   const labCode = fs.readFileSync(labPath, 'utf8');

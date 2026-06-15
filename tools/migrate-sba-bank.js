@@ -52,6 +52,13 @@ async function migrateSBABank() {
       correct_index: typeof item.correct_index !== 'undefined' ? item.correct_index : item.correct_answer,
       correct_letter: item.correct_letter,
       keywords: item.keywords,
+      gold: item.gold || false,
+
+      // Pedagogical metadata (from session_bank.js)
+      causal_chain: item.causal_chain || null,
+      feedback_by_mode: item.feedback_by_mode || null,
+      micro_drill: item.micro_drill || null,
+
       governance: item.governance || {
         safe_for_examiner: false,
         training_item_only: true

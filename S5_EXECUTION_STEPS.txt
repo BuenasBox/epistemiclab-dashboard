@@ -17,32 +17,113 @@ Zero pedagogical knowledge in frontend.
 ✅ Validation tool: validate-no-exposure.js
 ✅ Tests: s5-knowledge-protection.test.js
 
-=== FASE S5.3: DEPLOYMENT (PRÓXIMO) ===
+=== FASE S5.3: DEPLOYMENT (CORRECTED & AUTHORIZED) ===
 
-PASO 1: Aplicar schema SQL a Supabase (producción)
+⚠️ CRITICAL FIX APPLIED: Schema corrected to eliminate adaptive_bank duplication
+✅ Validation document: S5A_SINGLE_SOURCE_OF_TRUTH_VALIDATION.md
+
+PASO 1: Aplicar schema SQL corregido a Supabase (producción)
 COMANDO: supabase db push migrations/0001_pedagogical_knowledge.sql
 
+EXPECTED: 7 tables created (sba_bank, or_bank, sat_wines, mentor_config,
+          misconceptions, distinction_patterns, sat_observation_aliases)
+CRITICAL: adaptive_bank table should NOT exist (single source of truth: sba_bank)
+
 PASO 2: Validar tablas existen
-COMANDO: psql -h api.supabase.co -U postgres -d postgres -c "SELECT * FROM sba_bank LIMIT 1"
+COMANDO: psql -h api.supabase.co -U postgres -d postgres -c "
+  SELECT
+    table_name,
+    (SELECT COUNT(*) FROM sba_bank) as sba_count,
+    (SELECT COUNT(*) FROM or_bank) as or_count
+  FROM information_schema.tables
+  WHERE table_schema='public'
+"
 
-PASO 3: Importar datos críticos
-COMANDO: node tools/migrate-sba-bank.js
-COMANDO: node tools/migrate-or-bank.js
+EXPECTED OUTPUT:
+  table_name | sba_count | or_count
+  -----------+-----------+---------
+  sba_bank   |       670 |      106
+  or_bank    |       670 |      106
 
-PASO 4: Validar integridad
-COMANDO: SELECT COUNT(*) FROM sba_bank -- debe ser 670
-COMANDO: SELECT COUNT(*) FROM or_bank -- debe ser 106
+PASO 3: Importar corpus SBA (670 items con metadata pedagógica)
+COMANDO: SUPABASE_URL=$SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY \
+         node tools/migrate-sba-bank.js
 
-PASO 5: Desplegar Edge Functions
+EXPECTED:
+  ✅ Found 670 SBA items to migrate
+  ✅ All items including causal_chain, feedback_by_mode, micro_drill
+  ✅ Imported 670/670 items
+  ✅ Final count in database: 670 items
+
+PASO 4: Importar corpus OR (106 items, separado)
+COMANDO: SUPABASE_URL=$SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY \
+         node tools/migrate-or-bank.js
+
+EXPECTED:
+  ✅ Found 106 Open Response items to migrate
+  ✅ Imported 106/106 items
+  ✅ Final count in database: 106 items
+
+PASO 5: Validar integridad (no duplicación)
+COMANDO: psql -h api.supabase.co -U postgres -d postgres -c "
+  SELECT
+    COUNT(*) as sba_total,
+    COUNT(DISTINCT id) as sba_unique,
+    COUNT(DISTINCT source_id) as unique_sources
+  FROM sba_bank;
+"
+
+EXPECTED:
+  sba_total | sba_unique | unique_sources
+  ----------+------------+---------------
+        670 |        670 |            670
+
+  (Confirms: 670 total, 0 duplicates, single source of truth)
+
+PASO 6: Desplegar Edge Functions
 COMANDO: supabase functions deploy get-sba-bank
 COMANDO: supabase functions deploy get-or-bank
 
-PASO 6: Testear acceso autenticado
-curl -H "Authorization: Bearer $TOKEN" \
-  https://api.supabase.co/functions/v1/get-sba-bank?limit=5
+EXPECTED: Functions deployed and callable at:
+  https://<project-id>.supabase.co/functions/v1/get-sba-bank
+  https://<project-id>.supabase.co/functions/v1/get-or-bank
 
-PASO 7: Validar no hay exposición
+PASO 7: Testear acceso autenticado
+COMANDO: curl -H "Authorization: Bearer $TOKEN" \
+  "https://<project-id>.supabase.co/functions/v1/get-sba-bank?limit=5"
+
+EXPECTED:
+  - Status 200 (with valid token)
+  - Response contains items[] WITHOUT correct_index
+  - Watermark with user_id + 24h expiration
+  - Sample response:
+    {
+      "items": [
+        {
+          "id": "wset3_230",
+          "stem": "¿Qué estilo define...",
+          "options": ["...", "...", "...", "..."],
+          "causal_chain": {...},
+          "feedback_by_mode": {...}
+          // ⚠️ correct_index NOT present (removed by Edge Function)
+        }
+      ],
+      "watermark": {
+        "user_id": "abc123",
+        "issued_at": "2026-06-15T13:00:00Z",
+        "expires_at": "2026-06-16T13:00:00Z"
+      }
+    }
+
+PASO 8: Validar no hay exposición
 COMANDO: node tools/validate-no-exposure.js
+
+EXPECTED OUTPUT:
+  ✅ PASS: No exposures detected
+  ✅ preguntas_data.js is gitignored
+  ✅ session_bank.js is gitignored
+  ✅ lab_payload.js is gitignored
+  ✅ sat-wine-data.js is gitignored
 
 === FASE S5.4-S5.6: FRONTEND REFACTOR (DESPUÉS DE DEPLOY) ===
 

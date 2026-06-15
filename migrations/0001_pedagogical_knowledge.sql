@@ -1,7 +1,8 @@
 -- Phase S5: Pedagogical Knowledge Migration
 -- Migrate frontend knowledge assets to Supabase
 
--- SBA Items (from preguntas_data.js)
+-- SBA Items (from preguntas_data.js + session_bank.js pedagogical metadata)
+-- SINGLE SOURCE OF TRUTH: 670 SBA items with all metadata in one table
 CREATE TABLE IF NOT EXISTS sba_bank (
   id TEXT PRIMARY KEY,
   source_id TEXT,
@@ -11,9 +12,16 @@ CREATE TABLE IF NOT EXISTS sba_bank (
   topic TEXT,
   ra TEXT,
   difficulty TEXT,
-  correct_index INT,
-  correct_letter TEXT,
+  correct_index INT,          -- Removed on export by Edge Function
+  correct_letter TEXT,        -- Removed on export by Edge Function
   keywords JSONB,
+  gold BOOLEAN DEFAULT false,
+
+  -- Pedagogical metadata (from session_bank.js)
+  causal_chain JSONB,         -- Contains {causa, efecto, mecanismo}
+  feedback_by_mode JSONB,     -- Contains {mentor, reviewer, trainer} coaching
+  micro_drill JSONB,          -- Contains drill mode and remediation
+
   governance JSONB,
   created_at TIMESTAMP DEFAULT now(),
   CONSTRAINT valid_options CHECK ((options IS NOT NULL AND jsonb_array_length(options) = 4))
@@ -22,6 +30,7 @@ CREATE TABLE IF NOT EXISTS sba_bank (
 CREATE INDEX idx_sba_topic ON sba_bank(topic);
 CREATE INDEX idx_sba_ra ON sba_bank(ra);
 CREATE INDEX idx_sba_difficulty ON sba_bank(difficulty);
+CREATE INDEX idx_sba_gold ON sba_bank(gold);
 
 -- Open Response Items (from lab_payload.js)
 CREATE TABLE IF NOT EXISTS or_bank (
@@ -43,25 +52,10 @@ CREATE TABLE IF NOT EXISTS or_bank (
 CREATE INDEX idx_or_topic ON or_bank(topic);
 CREATE INDEX idx_or_ra ON or_bank(ra_id);
 
--- Adaptive Session Bank (from session_bank.js)
-CREATE TABLE IF NOT EXISTS adaptive_bank (
-  id TEXT PRIMARY KEY,
-  challenge_type TEXT,
-  question_text TEXT NOT NULL,
-  stem TEXT NOT NULL,
-  options JSONB NOT NULL,
-  ra_id TEXT,
-  topic TEXT,
-  difficulty TEXT,
-  correct_answer INT,
-  response_profile JSONB,
-  causal_chain_target JSONB,
-  governance JSONB,
-  created_at TIMESTAMP DEFAULT now()
-);
-
-CREATE INDEX idx_adaptive_topic ON adaptive_bank(topic);
-CREATE INDEX idx_adaptive_ra ON adaptive_bank(ra_id);
+-- REMOVED: adaptive_bank table
+-- RATIONALE: 670 SBA items are stored in sba_bank (single source of truth)
+-- Adaptive session queries sba_bank with session filters (express_10, standard_25, mock_theory_50)
+-- Session-level filtering is frontend responsibility, not database duplication
 
 -- SAT Wine Knowledge (from sat-wine-data.js)
 CREATE TABLE IF NOT EXISTS sat_wines (

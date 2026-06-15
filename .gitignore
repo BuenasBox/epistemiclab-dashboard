@@ -1,2 +1,20 @@
 .vercel
 .env*
+
+# S5: Pedagogical Knowledge Protection
+# These files contain complete curriculum and must NOT be committed
+# All content is served from Supabase backend via authenticated APIs
+/diagnostic-sba/preguntas_data.js
+/open-response-lab/lab_payload.js
+/adaptive-session/session_bank.js
+/shared/sat-wine-data.js
+/shared/mentor-config.js
+/shared/misconception-engine.js
+/shared/or-coaching-engine.js
+/shared/sat-coaching-intelligence.js
+
+# Build outputs
+/node_modules
+/.next
+/dist
+/build
