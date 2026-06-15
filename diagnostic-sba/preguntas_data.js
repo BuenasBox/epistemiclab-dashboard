@@ -1,6 +1,6 @@
 window.PREGUNTAS_BANK = {
   "schema_version": "sba_bank_v1",
-  "generated_at": "2026-06-14T19:03:13.625634",
+  "generated_at": "2026-06-15T00:08:21.030083",
   "total_items": 578,
   "ra_distribution": {
     "RA1": 225,
@@ -69,6 +69,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche.",
+        "efecto": "Los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año.",
+        "mecanismo": "La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Alta acidez, taninos marcados y estructura firme». La clave está en el clima continental: La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. Por eso, los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año. Matiz: El resultado depende de variedad, madurez, sitio y añada; no todos los tintos continentales son idénticos.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Alta acidez, taninos marcados y estructura firme» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima continental. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El resultado depende de variedad, madurez, sitio y añada; no todos los tintos continentales son idénticos.",
+        "trainer": "Concepto técnico (RA1): Tema: quality factors. Fija el mecanismo del clima continental: Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche. → La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El resultado depende de variedad, madurez, sitio y añada; no todos los tintos continentales son idénticos."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Alta acidez, taninos marcados y estructura firme» corresponde al clima continental. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Alta acidez, taninos marcados y estructura firme",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima continental?",
+        "remediation_signal": "Revisa la cadena causal del clima continental"
       }
     },
     {
@@ -675,6 +697,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche.",
+        "efecto": "Los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año.",
+        "mecanismo": "La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Taninos intensos y buena acidez». La clave está en el clima continental: La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. Por eso, los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año. Matiz: La intensidad final depende además de variedad, rendimiento, extracción, crianza y añada.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Taninos intensos y buena acidez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima continental. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La intensidad final depende además de variedad, rendimiento, extracción, crianza y añada.",
+        "trainer": "Concepto técnico (RA2): Tema: still wines. Fija el mecanismo del clima continental: Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche. → La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La intensidad final depende además de variedad, rendimiento, extracción, crianza y añada."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Taninos intensos y buena acidez» corresponde al clima continental. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Taninos intensos y buena acidez"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima continental?",
+        "remediation_signal": "Revisa la cadena causal del clima continental"
       }
     },
     {
@@ -756,6 +800,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un tinto concentrado parte de taninos, acidez y fruta abundantes y, en estilos fortificados, también de alcohol y azúcar.",
+        "efecto": "El vino tiene capacidad estructural para una guarda prolongada, durante la cual los taninos pueden integrarse y surgir complejidad terciaria; esa estructura permite la evolución, pero no garantiza mejora si el almacenamiento es deficiente.",
+        "mecanismo": "La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Alta acidez y taninos firmes». La clave está en la estructura que permite la guarda prolongada de un vino tinto: La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo. Por eso, el vino tiene capacidad estructural para una guarda prolongada, durante la cual los taninos pueden integrarse y surgir complejidad terciaria; esa estructura permite la evolución, pero no garantiza mejora si el almacenamiento es deficiente. Matiz: La proporción varietal, madurez, extracción y nivel de clasificación modifican ampliamente el estilo.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Alta acidez y taninos firmes» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la estructura que permite la guarda prolongada de un vino tinto. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La proporción varietal, madurez, extracción y nivel de clasificación modifican ampliamente el estilo.",
+        "trainer": "Concepto técnico (RA2): Tema: still wines. Fija el mecanismo de la estructura que permite la guarda prolongada de un vino tinto: Un tinto concentrado parte de taninos, acidez y fruta abundantes y, en estilos fortificados, también de alcohol y azúcar. → La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La proporción varietal, madurez, extracción y nivel de clasificación modifican ampliamente el estilo."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Alta acidez y taninos firmes» corresponde a la estructura que permite la guarda prolongada de un vino tinto. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas",
+          "Alta acidez y taninos firmes"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la estructura que permite la guarda prolongada de un vino tinto?",
+        "remediation_signal": "Revisa la cadena causal de la estructura que permite la guarda prolongada de un vino tinto"
       }
     },
     {
@@ -1103,6 +1169,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un entorno de cultivo fresco (temperaturas más bajas, gran altitud o latitud alta) marca el ritmo de maduración de la uva.",
+        "efecto": "Los vinos conservan mayor acidez, muestran frescura y nervio, y suelen tener niveles de alcohol más bajos.",
+        "mecanismo": "La maduración lenta retrasa la acumulación de azúcar y preserva los ácidos naturales de la uva (málico y tartárico), reduciendo la velocidad a la que se metaboliza el málico antes de la vendimia."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Clima fresco continental». La clave está en el clima fresco y la retención de acidez: La maduración lenta retrasa la acumulación de azúcar y preserva los ácidos naturales de la uva (málico y tartárico), reduciendo la velocidad a la que se metaboliza el málico antes de la vendimia. Por eso, los vinos conservan mayor acidez, muestran frescura y nervio, y suelen tener niveles de alcohol más bajos. Matiz: La continentalidad por sí sola no garantiza acidez alta; importan la temperatura de maduración, el sitio y la añada.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Clima fresco continental» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y la retención de acidez. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La continentalidad por sí sola no garantiza acidez alta; importan la temperatura de maduración, el sitio y la añada.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del clima fresco y la retención de acidez: Un entorno de cultivo fresco (temperaturas más bajas, gran altitud o latitud alta) marca el ritmo de maduración de la uva. → La maduración lenta retrasa la acumulación de azúcar y preserva los ácidos naturales de la uva (málico y tartárico), reduciendo la velocidad a la que se metaboliza el málico antes de la vendimia. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La continentalidad por sí sola no garantiza acidez alta; importan la temperatura de maduración, el sitio y la añada."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Clima fresco continental» corresponde al clima fresco y la retención de acidez. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Clima fresco continental",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y la retención de acidez?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y la retención de acidez"
       }
     },
     {
@@ -1272,6 +1360,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Cuando una vid produce menos racimos —por las condiciones del sitio, la variedad o técnicas como la vendimia verde— cada baya recibe una mayor proporción de los recursos de la planta.",
+        "efecto": "Los vinos de vides de bajo rendimiento suelen mostrar mayor intensidad aromática, más concentración de sabor, color más pronunciado en tintos y taninos más estructurados.",
+        "mecanismo": "Con menos racimos compitiendo por la producción fotosintética de la vid, cada baya acumula más azúcar, compuestos de sabor y componentes estructurales como antocianos y taninos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Mejora la concentración de fruta». La clave está en el bajo rendimiento y la concentración de la uva: Con menos racimos compitiendo por la producción fotosintética de la vid, cada baya acumula más azúcar, compuestos de sabor y componentes estructurales como antocianos y taninos. Por eso, los vinos de vides de bajo rendimiento suelen mostrar mayor intensidad aromática, más concentración de sabor, color más pronunciado en tintos y taninos más estructurados.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Mejora la concentración de fruta» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del bajo rendimiento y la concentración de la uva. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del bajo rendimiento y la concentración de la uva: Cuando una vid produce menos racimos —por las condiciones del sitio, la variedad o técnicas como la vendimia verde— cada baya recibe una mayor proporción de los recursos de la planta. → Con menos racimos compitiendo por la producción fotosintética de la vid, cada baya acumula más azúcar, compuestos de sabor y componentes estructurales como antocianos y taninos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Mejora la concentración de fruta» corresponde al bajo rendimiento y la concentración de la uva. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Mejora la concentración de fruta",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al bajo rendimiento y la concentración de la uva?",
+        "remediation_signal": "Revisa la cadena causal del bajo rendimiento y la concentración de la uva"
       }
     },
     {
@@ -1410,6 +1520,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las vides de una región seca necesitan agua suplementaria aplicada con eficiencia.",
+        "efecto": "El aporte de agua puede controlarse con precisión y con menos evaporación y escorrentía que una aplicación superficial amplia.",
+        "mecanismo": "Las líneas de goteo liberan cantidades medidas de agua lenta y directamente en la zona radicular de cada vid."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Aumenta el rendimiento sin diluir calidad». La clave está en la precisión del riego por goteo: Las líneas de goteo liberan cantidades medidas de agua lenta y directamente en la zona radicular de cada vid. Por eso, el aporte de agua puede controlarse con precisión y con menos evaporación y escorrentía que una aplicación superficial amplia.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Aumenta el rendimiento sin diluir calidad» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la precisión del riego por goteo. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la precisión del riego por goteo: Las vides de una región seca necesitan agua suplementaria aplicada con eficiencia. → Las líneas de goteo liberan cantidades medidas de agua lenta y directamente en la zona radicular de cada vid. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Aumenta el rendimiento sin diluir calidad» corresponde a la precisión del riego por goteo. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Aumenta el rendimiento sin diluir calidad",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la precisión del riego por goteo?",
+        "remediation_signal": "Revisa la cadena causal de la precisión del riego por goteo"
       }
     },
     {
@@ -1437,6 +1569,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "La fermentación comienza con poblaciones de levaduras presentes en la uva y la bodega, no con una sola cepa seleccionada.",
+        "efecto": "El vino puede mostrar un carácter distintivo o complejo, pero con menor previsibilidad de aroma, velocidad y final de fermentación.",
+        "mecanismo": "La sucesión de cepas puede producir una gama más diversa de metabolitos antes de que Saccharomyces complete la fermentación."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Mayor expresión del terruño». La clave está en las levaduras indígenas y la expresión del vino: La sucesión de cepas puede producir una gama más diversa de metabolitos antes de que Saccharomyces complete la fermentación. Por eso, el vino puede mostrar un carácter distintivo o complejo, pero con menor previsibilidad de aroma, velocidad y final de fermentación. Matiz: La expresión del terruño es una interpretación estilística, no una garantía; también aumenta la variabilidad y el riesgo de fermentación.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Mayor expresión del terruño» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las levaduras indígenas y la expresión del vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La expresión del terruño es una interpretación estilística, no una garantía; también aumenta la variabilidad y el riesgo de fermentación.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de las levaduras indígenas y la expresión del vino: La fermentación comienza con poblaciones de levaduras presentes en la uva y la bodega, no con una sola cepa seleccionada. → La sucesión de cepas puede producir una gama más diversa de metabolitos antes de que Saccharomyces complete la fermentación. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La expresión del terruño es una interpretación estilística, no una garantía; también aumenta la variabilidad y el riesgo de fermentación."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Mayor expresión del terruño» corresponde a las levaduras indígenas y la expresión del vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Mayor expresión del terruño"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a las levaduras indígenas y la expresión del vino?",
+        "remediation_signal": "Revisa la cadena causal de las levaduras indígenas y la expresión del vino"
       }
     },
     {
@@ -1823,6 +1977,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un vino de taninos marcados se sirve con un alimento que contiene proteínas o grasa.",
+        "efecto": "La astringencia puede sentirse menos agresiva y el conjunto resultar más equilibrado.",
+        "mecanismo": "Los taninos interactúan con las proteínas del alimento y disminuye su contacto directo con las proteínas salivales; la grasa también modifica el contraste táctil."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Los taninos se suavizan con platos salados y grasos». La clave está en los alimentos proteicos o grasos con un vino tánico: Los taninos interactúan con las proteínas del alimento y disminuye su contacto directo con las proteínas salivales; la grasa también modifica el contraste táctil. Por eso, la astringencia puede sentirse menos agresiva y el conjunto resultar más equilibrado. Matiz: La sal también puede suavizar la percepción, pero el resultado depende de la intensidad, la cocción y otros componentes del plato.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Los taninos se suavizan con platos salados y grasos» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de los alimentos proteicos o grasos con un vino tánico. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La sal también puede suavizar la percepción, pero el resultado depende de la intensidad, la cocción y otros componentes del plato.",
+        "trainer": "Concepto técnico (RA1): Tema: wine and food. Fija el mecanismo de los alimentos proteicos o grasos con un vino tánico: Un vino de taninos marcados se sirve con un alimento que contiene proteínas o grasa. → Los taninos interactúan con las proteínas del alimento y disminuye su contacto directo con las proteínas salivales; la grasa también modifica el contraste táctil. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La sal también puede suavizar la percepción, pero el resultado depende de la intensidad, la cocción y otros componentes del plato."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Los taninos se suavizan con platos salados y grasos» corresponde a los alimentos proteicos o grasos con un vino tánico. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Los taninos se suavizan con platos salados y grasos"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a los alimentos proteicos o grasos con un vino tánico?",
+        "remediation_signal": "Revisa la cadena causal de los alimentos proteicos o grasos con un vino tánico"
       }
     },
     {
@@ -2046,6 +2222,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un blanco seco tiene cuerpo, aromas de roble y complejidad.",
+        "efecto": "Un intervalo cercano a 10-13 °C puede equilibrar frescura y expresión en muchos blancos con cuerpo y roble.",
+        "mecanismo": "Servirlo moderadamente fresco conserva la frescura y permite que se expresen más aromas y textura que a una temperatura excesivamente baja."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «10–13 °C». La clave está en la temperatura de servicio de un blanco con crianza en roble: Servirlo moderadamente fresco conserva la frescura y permite que se expresen más aromas y textura que a una temperatura excesivamente baja. Por eso, un intervalo cercano a 10-13 °C puede equilibrar frescura y expresión en muchos blancos con cuerpo y roble. Matiz: El intervalo exacto depende del cuerpo, la complejidad y la temperatura ambiente.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «10–13 °C» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la temperatura de servicio de un blanco con crianza en roble. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El intervalo exacto depende del cuerpo, la complejidad y la temperatura ambiente.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la temperatura de servicio de un blanco con crianza en roble: Un blanco seco tiene cuerpo, aromas de roble y complejidad. → Servirlo moderadamente fresco conserva la frescura y permite que se expresen más aromas y textura que a una temperatura excesivamente baja. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El intervalo exacto depende del cuerpo, la complejidad y la temperatura ambiente."
       }
     },
     {
@@ -2620,6 +2806,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino blanco recibe demasiado oxígeno durante la elaboración, la guarda o el servicio.",
+        "efecto": "El vino adquiere color dorado o marrón, notas de fruta magullada o frutos secos y pierde frescura.",
+        "mecanismo": "Las reacciones oxidativas consumen aromas frescos y oscurecen los pigmentos fenólicos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Notas apagadas, color apagado, aromas de nuez». La clave está en la oxidación excesiva de un vino blanco: Las reacciones oxidativas consumen aromas frescos y oscurecen los pigmentos fenólicos. Por eso, el vino adquiere color dorado o marrón, notas de fruta magullada o frutos secos y pierde frescura. Matiz: Las notas de nuez pueden ser buscadas en estilos oxidativos; aquí se interpretan como defecto dentro del contexto de la pregunta.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Notas apagadas, color apagado, aromas de nuez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la oxidación excesiva de un vino blanco. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Las notas de nuez pueden ser buscadas en estilos oxidativos; aquí se interpretan como defecto dentro del contexto de la pregunta.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la oxidación excesiva de un vino blanco: El vino blanco recibe demasiado oxígeno durante la elaboración, la guarda o el servicio. → Las reacciones oxidativas consumen aromas frescos y oscurecen los pigmentos fenólicos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Las notas de nuez pueden ser buscadas en estilos oxidativos; aquí se interpretan como defecto dentro del contexto de la pregunta."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Notas apagadas, color apagado, aromas de nuez» corresponde a la oxidación excesiva de un vino blanco. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Notas apagadas, color apagado, aromas de nuez"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la oxidación excesiva de un vino blanco?",
+        "remediation_signal": "Revisa la cadena causal de la oxidación excesiva de un vino blanco"
       }
     },
     {
@@ -2711,6 +2919,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un plato con abundante acidez, como uno con vinagre, cítricos o ceviche, establece una referencia gustativa intensamente ácida.",
+        "efecto": "Un blanco joven de alta acidez resulta un acompañamiento fiable porque mantiene su frescura junto al plato sin que la combinación parezca apagada o desequilibrada.",
+        "mecanismo": "Frente a esa referencia, un vino con acidez insuficiente puede perder definición y parecer ancho o plano, mientras un vino de alta acidez conserva frescura y equilibrio estructural."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Plato con textura grasa o salsas cremosas». La clave está en el equilibrio entre un plato ácido y un vino de alta acidez: Frente a esa referencia, un vino con acidez insuficiente puede perder definición y parecer ancho o plano, mientras un vino de alta acidez conserva frescura y equilibrio estructural. Por eso, un blanco joven de alta acidez resulta un acompañamiento fiable porque mantiene su frescura junto al plato sin que la combinación parezca apagada o desequilibrada. Matiz: La intensidad aromática, el dulzor y la sal del plato también deben ser compatibles con el vino.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Plato con textura grasa o salsas cremosas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del equilibrio entre un plato ácido y un vino de alta acidez. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La intensidad aromática, el dulzor y la sal del plato también deben ser compatibles con el vino.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del equilibrio entre un plato ácido y un vino de alta acidez: Un plato con abundante acidez, como uno con vinagre, cítricos o ceviche, establece una referencia gustativa intensamente ácida. → Frente a esa referencia, un vino con acidez insuficiente puede perder definición y parecer ancho o plano, mientras un vino de alta acidez conserva frescura y equilibrio estructural. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La intensidad aromática, el dulzor y la sal del plato también deben ser compatibles con el vino."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Plato con textura grasa o salsas cremosas» corresponde al equilibrio entre un plato ácido y un vino de alta acidez. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Plato con textura grasa o salsas cremosas",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al equilibrio entre un plato ácido y un vino de alta acidez?",
+        "remediation_signal": "Revisa la cadena causal del equilibrio entre un plato ácido y un vino de alta acidez"
       }
     },
     {
@@ -2974,6 +3204,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un vino tinto estructurado se sirve a una temperatura excesivamente baja.",
+        "efecto": "Los aromas se expresan menos y los taninos y la dureza parecen más marcados.",
+        "mecanismo": "El frío reduce la volatilidad de los compuestos aromáticos y aumenta el protagonismo de las sensaciones táctiles firmes."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «14–16 °C». La clave está en una temperatura de servicio demasiado baja en un tinto estructurado: El frío reduce la volatilidad de los compuestos aromáticos y aumenta el protagonismo de las sensaciones táctiles firmes. Por eso, los aromas se expresan menos y los taninos y la dureza parecen más marcados. Matiz: La temperatura recomendada es orientativa y debe ajustarse al cuerpo, tanino y ambiente.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «14–16 °C» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de una temperatura de servicio demasiado baja en un tinto estructurado. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La temperatura recomendada es orientativa y debe ajustarse al cuerpo, tanino y ambiente.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de una temperatura de servicio demasiado baja en un tinto estructurado: Un vino tinto estructurado se sirve a una temperatura excesivamente baja. → El frío reduce la volatilidad de los compuestos aromáticos y aumenta el protagonismo de las sensaciones táctiles firmes. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La temperatura recomendada es orientativa y debe ajustarse al cuerpo, tanino y ambiente."
       }
     },
     {
@@ -3001,6 +3241,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino se contamina con TCA, a menudo mediante corcho o materiales de bodega afectados.",
+        "efecto": "El vino parece apagado y huele a moho, sótano húmedo o cartón mojado.",
+        "mecanismo": "El TCA se percibe a concentraciones muy bajas, suprime la fruta y aporta olores húmedos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Corcho contaminado». La clave está en la contaminación por TCA: El TCA se percibe a concentraciones muy bajas, suprime la fruta y aporta olores húmedos. Por eso, el vino parece apagado y huele a moho, sótano húmedo o cartón mojado. Matiz: El TCA también puede proceder de otros materiales contaminados de la bodega; no todo defecto de corcho es TCA.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Corcho contaminado» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la contaminación por TCA. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El TCA también puede proceder de otros materiales contaminados de la bodega; no todo defecto de corcho es TCA.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la contaminación por TCA: El vino se contamina con TCA, a menudo mediante corcho o materiales de bodega afectados. → El TCA se percibe a concentraciones muy bajas, suprime la fruta y aporta olores húmedos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El TCA también puede proceder de otros materiales contaminados de la bodega; no todo defecto de corcho es TCA."
       }
     },
     {
@@ -3077,6 +3327,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un vino de taninos marcados se sirve con un alimento que contiene proteínas o grasa.",
+        "efecto": "La astringencia puede sentirse menos agresiva y el conjunto resultar más equilibrado.",
+        "mecanismo": "Los taninos interactúan con las proteínas del alimento y disminuye su contacto directo con las proteínas salivales; la grasa también modifica el contraste táctil."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Carne roja asada». La clave está en los alimentos proteicos o grasos con un vino tánico: Los taninos interactúan con las proteínas del alimento y disminuye su contacto directo con las proteínas salivales; la grasa también modifica el contraste táctil. Por eso, la astringencia puede sentirse menos agresiva y el conjunto resultar más equilibrado. Matiz: Salsa, sal, picante y grado de cocción pueden cambiar el equilibrio del maridaje.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Carne roja asada» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de los alimentos proteicos o grasos con un vino tánico. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Salsa, sal, picante y grado de cocción pueden cambiar el equilibrio del maridaje.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de los alimentos proteicos o grasos con un vino tánico: Un vino de taninos marcados se sirve con un alimento que contiene proteínas o grasa. → Los taninos interactúan con las proteínas del alimento y disminuye su contacto directo con las proteínas salivales; la grasa también modifica el contraste táctil. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Salsa, sal, picante y grado de cocción pueden cambiar el equilibrio del maridaje."
       }
     },
     {
@@ -3945,6 +4205,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un blanco ligero depende de su frescura y de aromas primarios delicados.",
+        "efecto": "Un intervalo cercano a 6-8 °C suele ser apropiado para blancos secos sencillos y ligeros.",
+        "mecanismo": "El servicio frío realza la acidez y limita la sensación alcohólica, aunque una temperatura demasiado baja reduce la expresión aromática."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «6–8 °C». La clave está en la temperatura de servicio de un blanco seco y ligero: El servicio frío realza la acidez y limita la sensación alcohólica, aunque una temperatura demasiado baja reduce la expresión aromática. Por eso, un intervalo cercano a 6-8 °C suele ser apropiado para blancos secos sencillos y ligeros. Matiz: Una temperatura demasiado baja puede ocultar los aromas primarios.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «6–8 °C» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la temperatura de servicio de un blanco seco y ligero. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Una temperatura demasiado baja puede ocultar los aromas primarios.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la temperatura de servicio de un blanco seco y ligero: Un blanco ligero depende de su frescura y de aromas primarios delicados. → El servicio frío realza la acidez y limita la sensación alcohólica, aunque una temperatura demasiado baja reduce la expresión aromática. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Una temperatura demasiado baja puede ocultar los aromas primarios."
       }
     },
     {
@@ -5108,6 +5378,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel.",
+        "efecto": "Se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración.",
+        "mecanismo": "Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Poda severa». La clave está en el manejo del dosel, el vigor y la exposición de los racimos: Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. Por eso, se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Poda severa» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del manejo del dosel, el vigor y la exposición de los racimos. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del manejo del dosel, el vigor y la exposición de los racimos: Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel. → Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
       }
     },
     {
@@ -5243,6 +5523,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El productor inocula el mosto con una población suficiente de una cepa de levadura seleccionada.",
+        "efecto": "La fermentación suele arrancar con rapidez y avanzar de forma más predecible que si depende solo de una población indígena no controlada.",
+        "mecanismo": "La cepa se establece rápidamente y posee tolerancias y características fermentativas conocidas."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Control del perfil aromático». La clave está en las levaduras seleccionadas y la predictibilidad de la fermentación: La cepa se establece rápidamente y posee tolerancias y características fermentativas conocidas. Por eso, la fermentación suele arrancar con rapidez y avanzar de forma más predecible que si depende solo de una población indígena no controlada. Matiz: La levadura influye, pero no controla por sí sola todo el perfil aromático del vino.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Control del perfil aromático» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las levaduras seleccionadas y la predictibilidad de la fermentación. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La levadura influye, pero no controla por sí sola todo el perfil aromático del vino.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de las levaduras seleccionadas y la predictibilidad de la fermentación: El productor inocula el mosto con una población suficiente de una cepa de levadura seleccionada. → La cepa se establece rápidamente y posee tolerancias y características fermentativas conocidas. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La levadura influye, pero no controla por sí sola todo el perfil aromático del vino."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Control del perfil aromático» corresponde a las levaduras seleccionadas y la predictibilidad de la fermentación. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Control del perfil aromático",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a las levaduras seleccionadas y la predictibilidad de la fermentación?",
+        "remediation_signal": "Revisa la cadena causal de las levaduras seleccionadas y la predictibilidad de la fermentación"
       }
     },
     {
@@ -5307,6 +5609,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel.",
+        "efecto": "Se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración.",
+        "mecanismo": "Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Poda en verde». La clave está en el manejo del dosel, el vigor y la exposición de los racimos: Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. Por eso, se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Poda en verde» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del manejo del dosel, el vigor y la exposición de los racimos. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del manejo del dosel, el vigor y la exposición de los racimos: Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel. → Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
       }
     },
     {
@@ -5334,6 +5646,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Material vegetal y animal descompuesto vuelve al suelo del viñedo como compost.",
+        "efecto": "El compostaje recicla residuos y puede sostener la salud del suelo reduciendo la dependencia de insumos rápidamente disponibles.",
+        "mecanismo": "La materia orgánica favorece organismos del suelo, agregación, comportamiento hídrico y liberación gradual de nutrientes."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Compostaje». La clave está en el compost y la materia orgánica del suelo: La materia orgánica favorece organismos del suelo, agregación, comportamiento hídrico y liberación gradual de nutrientes. Por eso, el compostaje recicla residuos y puede sostener la salud del suelo reduciendo la dependencia de insumos rápidamente disponibles. Matiz: La sostenibilidad depende de dosis, origen, transporte y necesidades reales; exceso de nutrientes también puede aumentar vigor.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Compostaje» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del compost y la materia orgánica del suelo. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La sostenibilidad depende de dosis, origen, transporte y necesidades reales; exceso de nutrientes también puede aumentar vigor.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del compost y la materia orgánica del suelo: Material vegetal y animal descompuesto vuelve al suelo del viñedo como compost. → La materia orgánica favorece organismos del suelo, agregación, comportamiento hídrico y liberación gradual de nutrientes. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La sostenibilidad depende de dosis, origen, transporte y necesidades reales; exceso de nutrientes también puede aumentar vigor."
       }
     },
     {
@@ -5361,6 +5683,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El mosto o vino se mantiene en un depósito de acero inoxidable en buen estado.",
+        "efecto": "El productor controla fermentación o almacenamiento con poca aportación aromática del recipiente y exposición de oxígeno regulada.",
+        "mecanismo": "El acero no aporta sabor de madera, se limpia con facilidad y permite sellado y control de temperatura."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Acero inoxidable». La clave está en el acero inoxidable como recipiente inerte: El acero no aporta sabor de madera, se limpia con facilidad y permite sellado y control de temperatura. Por eso, el productor controla fermentación o almacenamiento con poca aportación aromática del recipiente y exposición de oxígeno regulada. Matiz: El recipiente sólo es efectivamente protector si se gestiona bien el sellado, la temperatura y el espacio de cabeza.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Acero inoxidable» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del acero inoxidable como recipiente inerte. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El recipiente sólo es efectivamente protector si se gestiona bien el sellado, la temperatura y el espacio de cabeza.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del acero inoxidable como recipiente inerte: El mosto o vino se mantiene en un depósito de acero inoxidable en buen estado. → El acero no aporta sabor de madera, se limpia con facilidad y permite sellado y control de temperatura. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El recipiente sólo es efectivamente protector si se gestiona bien el sellado, la temperatura y el espacio de cabeza."
       }
     },
     {
@@ -5388,6 +5720,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El productor inocula el mosto con una población suficiente de una cepa de levadura seleccionada.",
+        "efecto": "La fermentación suele arrancar con rapidez y avanzar de forma más predecible que si depende solo de una población indígena no controlada.",
+        "mecanismo": "La cepa se establece rápidamente y posee tolerancias y características fermentativas conocidas."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Seleccionada». La clave está en las levaduras seleccionadas y la predictibilidad de la fermentación: La cepa se establece rápidamente y posee tolerancias y características fermentativas conocidas. Por eso, la fermentación suele arrancar con rapidez y avanzar de forma más predecible que si depende solo de una población indígena no controlada. Matiz: La predictibilidad depende también de temperatura, nutrientes, higiene y composición del mosto.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Seleccionada» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las levaduras seleccionadas y la predictibilidad de la fermentación. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La predictibilidad depende también de temperatura, nutrientes, higiene y composición del mosto.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de las levaduras seleccionadas y la predictibilidad de la fermentación: El productor inocula el mosto con una población suficiente de una cepa de levadura seleccionada. → La cepa se establece rápidamente y posee tolerancias y características fermentativas conocidas. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La predictibilidad depende también de temperatura, nutrientes, higiene y composición del mosto."
       }
     },
     {
@@ -5491,6 +5833,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Distintas especies o cepas fermentan un mosto en condiciones comparables.",
+        "efecto": "La elección de levadura puede modificar de forma importante los aromas de fermentación y el estilo del vino.",
+        "mecanismo": "Su metabolismo produce proporciones diferentes de ésteres, alcoholes superiores, compuestos azufrados y otras moléculas volátiles."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Tipo de levadura». La clave está en la cepa de levadura y el perfil aromático: Su metabolismo produce proporciones diferentes de ésteres, alcoholes superiores, compuestos azufrados y otras moléculas volátiles. Por eso, la elección de levadura puede modificar de forma importante los aromas de fermentación y el estilo del vino. Matiz: Uva, temperatura, nutrientes, oxígeno y tiempo también influyen; la levadura no es la única variable aromática.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Tipo de levadura» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la cepa de levadura y el perfil aromático. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Uva, temperatura, nutrientes, oxígeno y tiempo también influyen; la levadura no es la única variable aromática.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la cepa de levadura y el perfil aromático: Distintas especies o cepas fermentan un mosto en condiciones comparables. → Su metabolismo produce proporciones diferentes de ésteres, alcoholes superiores, compuestos azufrados y otras moléculas volátiles. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Uva, temperatura, nutrientes, oxígeno y tiempo también influyen; la levadura no es la única variable aromática."
       }
     },
     {
@@ -6563,6 +6915,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico.",
+        "efecto": "Los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme.",
+        "mecanismo": "El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Altitud». La clave está en la amplitud térmica entre el día y la noche: El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. Por eso, los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme. Matiz: Latitud, nubosidad, humedad, viento y topografía también controlan la amplitud; no aumenta uniformemente con cada metro.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Altitud» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la amplitud térmica entre el día y la noche. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Latitud, nubosidad, humedad, viento y topografía también controlan la amplitud; no aumenta uniformemente con cada metro.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la amplitud térmica entre el día y la noche: Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico. → El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Latitud, nubosidad, humedad, viento y topografía también controlan la amplitud; no aumenta uniformemente con cada metro."
       }
     },
     {
@@ -6999,6 +7361,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino madura en barricas elaboradas con especies y estructuras de grano asociadas habitualmente al roble francés o americano.",
+        "efecto": "El roble americano suele aportar vainilla y coco más evidentes, mientras el francés suele percibirse más sutil; la tonelería, el tostado y el uso previo pueden cambiar ambos patrones.",
+        "mecanismo": "La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «El roble francés tiende a aportar sabores más sutiles y elegantes que el roble americano.». La clave está en el origen del roble y la intensidad de sus aromas: La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados. Por eso, el roble americano suele aportar vainilla y coco más evidentes, mientras el francés suele percibirse más sutil; la tonelería, el tostado y el uso previo pueden cambiar ambos patrones. Matiz: Es una tendencia, no una regla absoluta; tostado, tonelero, edad y tamaño pueden cambiar el resultado.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «El roble francés tiende a aportar sabores más sutiles y elegantes que el roble americano.» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del origen del roble y la intensidad de sus aromas. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Es una tendencia, no una regla absoluta; tostado, tonelero, edad y tamaño pueden cambiar el resultado.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del origen del roble y la intensidad de sus aromas: El vino madura en barricas elaboradas con especies y estructuras de grano asociadas habitualmente al roble francés o americano. → La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Es una tendencia, no una regla absoluta; tostado, tonelero, edad y tamaño pueden cambiar el resultado."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«El roble francés tiende a aportar sabores más sutiles y elegantes que el roble americano.» corresponde al origen del roble y la intensidad de sus aromas. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "El roble francés tiende a aportar sabores más sutiles y elegantes que el roble americano.",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al origen del roble y la intensidad de sus aromas?",
+        "remediation_signal": "Revisa la cadena causal del origen del roble y la intensidad de sus aromas"
       }
     },
     {
@@ -7792,6 +8176,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un Amontillado seco combina desarrollo biológico y oxidativo.",
+        "efecto": "Una temperatura cercana a 13 °C puede equilibrar frescura, alcohol y expresión aromática.",
+        "mecanismo": "Un enfriamiento moderado conserva frescura y controla el calor alcohólico sin ocultar sus aromas de frutos secos y carácter sabroso."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «13 °C». La clave está en la temperatura de servicio de un Amontillado: Un enfriamiento moderado conserva frescura y controla el calor alcohólico sin ocultar sus aromas de frutos secos y carácter sabroso. Por eso, una temperatura cercana a 13 °C puede equilibrar frescura, alcohol y expresión aromática. Matiz: La cifra es orientativa y puede ajustarse al estilo, la copa y la temperatura ambiente.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «13 °C» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la temperatura de servicio de un Amontillado. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La cifra es orientativa y puede ajustarse al estilo, la copa y la temperatura ambiente.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la temperatura de servicio de un Amontillado: Un Amontillado seco combina desarrollo biológico y oxidativo. → Un enfriamiento moderado conserva frescura y controla el calor alcohólico sin ocultar sus aromas de frutos secos y carácter sabroso. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La cifra es orientativa y puede ajustarse al estilo, la copa y la temperatura ambiente."
       }
     },
     {
@@ -8415,6 +8809,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un vino tinto estructurado se sirve a una temperatura excesivamente baja.",
+        "efecto": "Los aromas se expresan menos y los taninos y la dureza parecen más marcados.",
+        "mecanismo": "El frío reduce la volatilidad de los compuestos aromáticos y aumenta el protagonismo de las sensaciones táctiles firmes."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «14–16 °C». La clave está en una temperatura de servicio demasiado baja en un tinto estructurado: El frío reduce la volatilidad de los compuestos aromáticos y aumenta el protagonismo de las sensaciones táctiles firmes. Por eso, los aromas se expresan menos y los taninos y la dureza parecen más marcados. Matiz: El intervalo depende de alcohol, tanino, cuerpo, crianza y condiciones de servicio.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «14–16 °C» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de una temperatura de servicio demasiado baja en un tinto estructurado. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El intervalo depende de alcohol, tanino, cuerpo, crianza y condiciones de servicio.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de una temperatura de servicio demasiado baja en un tinto estructurado: Un vino tinto estructurado se sirve a una temperatura excesivamente baja. → El frío reduce la volatilidad de los compuestos aromáticos y aumenta el protagonismo de las sensaciones táctiles firmes. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El intervalo depende de alcohol, tanino, cuerpo, crianza y condiciones de servicio."
       }
     },
     {
@@ -8619,6 +9023,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un plato con abundante acidez, como uno con vinagre, cítricos o ceviche, establece una referencia gustativa intensamente ácida.",
+        "efecto": "Un blanco joven de alta acidez resulta un acompañamiento fiable porque mantiene su frescura junto al plato sin que la combinación parezca apagada o desequilibrada.",
+        "mecanismo": "Frente a esa referencia, un vino con acidez insuficiente puede perder definición y parecer ancho o plano, mientras un vino de alta acidez conserva frescura y equilibrio estructural."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Vino espumoso con buena acidez». La clave está en el equilibrio entre un plato ácido y un vino de alta acidez: Frente a esa referencia, un vino con acidez insuficiente puede perder definición y parecer ancho o plano, mientras un vino de alta acidez conserva frescura y equilibrio estructural. Por eso, un blanco joven de alta acidez resulta un acompañamiento fiable porque mantiene su frescura junto al plato sin que la combinación parezca apagada o desequilibrada. Matiz: El dulzor, el umami, la grasa y la intensidad aromática del plato pueden exigir un estilo de espumoso diferente.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Vino espumoso con buena acidez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del equilibrio entre un plato ácido y un vino de alta acidez. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El dulzor, el umami, la grasa y la intensidad aromática del plato pueden exigir un estilo de espumoso diferente.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del equilibrio entre un plato ácido y un vino de alta acidez: Un plato con abundante acidez, como uno con vinagre, cítricos o ceviche, establece una referencia gustativa intensamente ácida. → Frente a esa referencia, un vino con acidez insuficiente puede perder definición y parecer ancho o plano, mientras un vino de alta acidez conserva frescura y equilibrio estructural. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El dulzor, el umami, la grasa y la intensidad aromática del plato pueden exigir un estilo de espumoso diferente."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Vino espumoso con buena acidez» corresponde al equilibrio entre un plato ácido y un vino de alta acidez. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Vino espumoso con buena acidez"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al equilibrio entre un plato ácido y un vino de alta acidez?",
+        "remediation_signal": "Revisa la cadena causal del equilibrio entre un plato ácido y un vino de alta acidez"
       }
     },
     {
@@ -8695,6 +9121,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino blanco recibe demasiado oxígeno durante la elaboración, la guarda o el servicio.",
+        "efecto": "El vino adquiere color dorado o marrón, notas de fruta magullada o frutos secos y pierde frescura.",
+        "mecanismo": "Las reacciones oxidativas consumen aromas frescos y oscurecen los pigmentos fenólicos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Notas a nuez, manzana cocida o caramelo». La clave está en la oxidación excesiva de un vino blanco: Las reacciones oxidativas consumen aromas frescos y oscurecen los pigmentos fenólicos. Por eso, el vino adquiere color dorado o marrón, notas de fruta magullada o frutos secos y pierde frescura. Matiz: Esos aromas pueden ser buscados en estilos oxidativos; son defecto sólo cuando contradicen el estilo previsto.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Notas a nuez, manzana cocida o caramelo» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la oxidación excesiva de un vino blanco. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Esos aromas pueden ser buscados en estilos oxidativos; son defecto sólo cuando contradicen el estilo previsto.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la oxidación excesiva de un vino blanco: El vino blanco recibe demasiado oxígeno durante la elaboración, la guarda o el servicio. → Las reacciones oxidativas consumen aromas frescos y oscurecen los pigmentos fenólicos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Esos aromas pueden ser buscados en estilos oxidativos; son defecto sólo cuando contradicen el estilo previsto."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Notas a nuez, manzana cocida o caramelo» corresponde a la oxidación excesiva de un vino blanco. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Notas a nuez, manzana cocida o caramelo",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la oxidación excesiva de un vino blanco?",
+        "remediation_signal": "Revisa la cadena causal de la oxidación excesiva de un vino blanco"
       }
     },
     {
@@ -8771,6 +9219,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El espumoso contiene dióxido de carbono disuelto y se prepara para el servicio.",
+        "efecto": "Los espumosos secos suelen servirse bien fríos, ajustando la temperatura según su complejidad y tiempo de crianza.",
+        "mecanismo": "El frío retiene mejor el gas, reduce la formación brusca de espuma y conserva frescura; un frío extremo puede apagar los aromas."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «4–6 °C». La clave está en la temperatura fresca de servicio de un espumoso: El frío retiene mejor el gas, reduce la formación brusca de espuma y conserva frescura; un frío extremo puede apagar los aromas. Por eso, los espumosos secos suelen servirse bien fríos, ajustando la temperatura según su complejidad y tiempo de crianza. Matiz: Los espumosos de larga crianza pueden servirse algo más cálidos para expresar complejidad.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «4–6 °C» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la temperatura fresca de servicio de un espumoso. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Los espumosos de larga crianza pueden servirse algo más cálidos para expresar complejidad.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo de la temperatura fresca de servicio de un espumoso: El espumoso contiene dióxido de carbono disuelto y se prepara para el servicio. → El frío retiene mejor el gas, reduce la formación brusca de espuma y conserva frescura; un frío extremo puede apagar los aromas. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Los espumosos de larga crianza pueden servirse algo más cálidos para expresar complejidad."
       }
     },
     {
@@ -9161,6 +9619,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El alimento es más dulce que el vino con el que se sirve.",
+        "efecto": "El vino puede parecer más seco, ácido, amargo y menos frutal, especialmente cuando el propio vino es seco.",
+        "mecanismo": "El dulzor de la comida crea un contraste que reduce el dulzor y la fruta percibidos del vino y deja más expuestos sus componentes ácidos y amargos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Alimentos muy dulces». La clave está en el contraste entre un alimento dulce y el vino: El dulzor de la comida crea un contraste que reduce el dulzor y la fruta percibidos del vino y deja más expuestos sus componentes ácidos y amargos. Por eso, el vino puede parecer más seco, ácido, amargo y menos frutal, especialmente cuando el propio vino es seco. Matiz: El efecto depende de la diferencia real de dulzor y del equilibrio de acidez del espumoso.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Alimentos muy dulces» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del contraste entre un alimento dulce y el vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El efecto depende de la diferencia real de dulzor y del equilibrio de acidez del espumoso.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del contraste entre un alimento dulce y el vino: El alimento es más dulce que el vino con el que se sirve. → El dulzor de la comida crea un contraste que reduce el dulzor y la fruta percibidos del vino y deja más expuestos sus componentes ácidos y amargos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El efecto depende de la diferencia real de dulzor y del equilibrio de acidez del espumoso."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Alimentos muy dulces» corresponde al contraste entre un alimento dulce y el vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Alimentos muy dulces",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al contraste entre un alimento dulce y el vino?",
+        "remediation_signal": "Revisa la cadena causal del contraste entre un alimento dulce y el vino"
       }
     },
     {
@@ -9215,6 +9695,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel.",
+        "efecto": "Se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración.",
+        "mecanismo": "Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Gestión del dosel para optimizar la madurez». La clave está en el manejo del dosel, el vigor y la exposición de los racimos: Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. Por eso, se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración. Matiz: La exposición óptima depende del clima; demasiada luz y calor pueden quemar o deshidratar los racimos.",
+        "reviewer": "Exigencia de repaso (RA1): debes poder justificar por qué «Gestión del dosel para optimizar la madurez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del manejo del dosel, el vigor y la exposición de los racimos. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La exposición óptima depende del clima; demasiada luz y calor pueden quemar o deshidratar los racimos.",
+        "trainer": "Concepto técnico (RA1): Fija el mecanismo del manejo del dosel, el vigor y la exposición de los racimos: Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel. → Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La exposición óptima depende del clima; demasiada luz y calor pueden quemar o deshidratar los racimos."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Gestión del dosel para optimizar la madurez» corresponde al manejo del dosel, el vigor y la exposición de los racimos. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Gestión del dosel para optimizar la madurez"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al manejo del dosel, el vigor y la exposición de los racimos?",
+        "remediation_signal": "Revisa la cadena causal del manejo del dosel, el vigor y la exposición de los racimos"
       }
     },
     {
@@ -9840,6 +10342,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Bayas seleccionadas y concentradas por podredumbre noble se añaden al mosto en fermentación o al vino base.",
+        "efecto": "El Tokaji Aszú gana dulzor, concentración y complejidad botritizada, equilibrados por su acidez.",
+        "mecanismo": "La maceración transfiere azúcar, acidez, sabor y compuestos derivados de la botrytis desde las bayas concentradas al líquido."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Adición de pasta de bayas botritizadas». La clave está en la adición de bayas Aszú botritizadas: La maceración transfiere azúcar, acidez, sabor y compuestos derivados de la botrytis desde las bayas concentradas al líquido. Por eso, el Tokaji Aszú gana dulzor, concentración y complejidad botritizada, equilibrados por su acidez. Matiz: El método concreto y las proporciones varían; la podredumbre noble y la acidez son tan importantes como la adición.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Adición de pasta de bayas botritizadas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la adición de bayas Aszú botritizadas. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El método concreto y las proporciones varían; la podredumbre noble y la acidez son tan importantes como la adición.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la adición de bayas Aszú botritizadas: Bayas seleccionadas y concentradas por podredumbre noble se añaden al mosto en fermentación o al vino base. → La maceración transfiere azúcar, acidez, sabor y compuestos derivados de la botrytis desde las bayas concentradas al líquido. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El método concreto y las proporciones varían; la podredumbre noble y la acidez son tan importantes como la adición."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Adición de pasta de bayas botritizadas» corresponde a la adición de bayas Aszú botritizadas. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de pasta de bayas botritizadas",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la adición de bayas Aszú botritizadas?",
+        "remediation_signal": "Revisa la cadena causal de la adición de bayas Aszú botritizadas"
       }
     },
     {
@@ -9867,6 +10391,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas tintas maduran con calor sostenido y suficiente insolación.",
+        "efecto": "El vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos.",
+        "mecanismo": "La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Tintos estructurados de Merlot y Syrah con fruta madura». La clave está en el clima cálido, la fruta madura y el alcohol potencial: La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. Por eso, el vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos. Matiz: Hawke's Bay contiene mesoclimas y suelos diversos; variedad, sitio y productor cambian el perfil.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Tintos estructurados de Merlot y Syrah con fruta madura» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima cálido, la fruta madura y el alcohol potencial. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Hawke's Bay contiene mesoclimas y suelos diversos; variedad, sitio y productor cambian el perfil.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima cálido, la fruta madura y el alcohol potencial: Uvas tintas maduran con calor sostenido y suficiente insolación. → La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Hawke's Bay contiene mesoclimas y suelos diversos; variedad, sitio y productor cambian el perfil."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Tintos estructurados de Merlot y Syrah con fruta madura» corresponde al clima cálido, la fruta madura y el alcohol potencial. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Tintos estructurados de Merlot y Syrah con fruta madura"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima cálido, la fruta madura y el alcohol potencial?",
+        "remediation_signal": "Revisa la cadena causal del clima cálido, la fruta madura y el alcohol potencial"
       }
     },
     {
@@ -9894,6 +10440,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un tinto concentrado parte de taninos, acidez y fruta abundantes y, en estilos fortificados, también de alcohol y azúcar.",
+        "efecto": "El vino tiene capacidad estructural para una guarda prolongada, durante la cual los taninos pueden integrarse y surgir complejidad terciaria; esa estructura permite la evolución, pero no garantiza mejora si el almacenamiento es deficiente.",
+        "mecanismo": "La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Vinos estructurados, tanino alto y envejecimiento largo con Sangiovese Grosso». La clave está en la estructura que permite la guarda prolongada de un vino tinto: La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo. Por eso, el vino tiene capacidad estructural para una guarda prolongada, durante la cual los taninos pueden integrarse y surgir complejidad terciaria; esa estructura permite la evolución, pero no garantiza mejora si el almacenamiento es deficiente. Matiz: La duración de crianza es regulada y la calidad final depende también de fruta, extracción, recipiente y almacenamiento.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Vinos estructurados, tanino alto y envejecimiento largo con Sangiovese Grosso» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la estructura que permite la guarda prolongada de un vino tinto. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La duración de crianza es regulada y la calidad final depende también de fruta, extracción, recipiente y almacenamiento.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la estructura que permite la guarda prolongada de un vino tinto: Un tinto concentrado parte de taninos, acidez y fruta abundantes y, en estilos fortificados, también de alcohol y azúcar. → La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La duración de crianza es regulada y la calidad final depende también de fruta, extracción, recipiente y almacenamiento."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Vinos estructurados, tanino alto y envejecimiento largo con Sangiovese Grosso» corresponde a la estructura que permite la guarda prolongada de un vino tinto. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Vinos estructurados, tanino alto y envejecimiento largo con Sangiovese Grosso",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Sistema de soleras y criaderas"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la estructura que permite la guarda prolongada de un vino tinto?",
+        "remediation_signal": "Revisa la cadena causal de la estructura que permite la guarda prolongada de un vino tinto"
       }
     },
     {
@@ -9921,6 +10489,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas tintas maduran con calor sostenido y suficiente insolación.",
+        "efecto": "El vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos.",
+        "mecanismo": "La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Tintos maduros, cuerpo completo y bajo en acidez». La clave está en el clima cálido, la fruta madura y el alcohol potencial: La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. Por eso, el vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos. Matiz: Languedoc contiene zonas frescas y estilos diversos; altitud, costa, rendimiento y cosecha pueden conservar más acidez.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Tintos maduros, cuerpo completo y bajo en acidez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima cálido, la fruta madura y el alcohol potencial. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Languedoc contiene zonas frescas y estilos diversos; altitud, costa, rendimiento y cosecha pueden conservar más acidez.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima cálido, la fruta madura y el alcohol potencial: Uvas tintas maduran con calor sostenido y suficiente insolación. → La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Languedoc contiene zonas frescas y estilos diversos; altitud, costa, rendimiento y cosecha pueden conservar más acidez."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Tintos maduros, cuerpo completo y bajo en acidez» corresponde al clima cálido, la fruta madura y el alcohol potencial. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Tintos maduros, cuerpo completo y bajo en acidez"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima cálido, la fruta madura y el alcohol potencial?",
+        "remediation_signal": "Revisa la cadena causal del clima cálido, la fruta madura y el alcohol potencial"
       }
     },
     {
@@ -10137,6 +10727,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Notas herbales, acidez alta y cuerpo ligero». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: Suelo, exposición, añada y decisiones de bodega modifican el estilo; el clima no explica por sí solo toda la expresión.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Notas herbales, acidez alta y cuerpo ligero» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Suelo, exposición, añada y decisiones de bodega modifican el estilo; el clima no explica por sí solo toda la expresión.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Suelo, exposición, añada y decisiones de bodega modifican el estilo; el clima no explica por sí solo toda la expresión."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Notas herbales, acidez alta y cuerpo ligero» corresponde al clima fresco y su estilo de vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Notas herbales, acidez alta y cuerpo ligero",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y su estilo de vino?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y su estilo de vino"
       }
     },
     {
@@ -10164,6 +10776,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Los viñedos del Mosel combinan clima fresco y septentrional con pendientes empinadas y bien expuestas.",
+        "efecto": "El Riesling puede mantener acidez alta y frescura a la vez que alcanza madurez aromática en los mejores sitios.",
+        "mecanismo": "El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Pendientes empinadas y clima fresco». La clave está en el clima fresco y las pendientes del Mosel: El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración. Por eso, el Riesling puede mantener acidez alta y frescura a la vez que alcanza madurez aromática en los mejores sitios. Matiz: La pendiente ayuda a la madurez; no crea acidez por sí sola.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Pendientes empinadas y clima fresco» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y las pendientes del Mosel. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La pendiente ayuda a la madurez; no crea acidez por sí sola.",
+        "trainer": "Concepto técnico (RA2): Tema: still wines. Fija el mecanismo del clima fresco y las pendientes del Mosel: Los viñedos del Mosel combinan clima fresco y septentrional con pendientes empinadas y bien expuestas. → El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La pendiente ayuda a la madurez; no crea acidez por sí sola."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Pendientes empinadas y clima fresco» corresponde al clima fresco y las pendientes del Mosel. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Pendientes empinadas y clima fresco",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y las pendientes del Mosel?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y las pendientes del Mosel"
       }
     },
     {
@@ -10218,6 +10852,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Vides viejas de Garnacha y Cariñena crecen en laderas cálidas, secas, pobres y de drenaje libre.",
+        "efecto": "Las uvas maduras de bajo rendimiento pueden producir tintos concentrados, intensos y estructurados.",
+        "mecanismo": "La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Suelos de licorella, Garnacha y Cariñena con gran concentración». La clave está en las laderas de licorella y la concentración en Priorat: La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña. Por eso, las uvas maduras de bajo rendimiento pueden producir tintos concentrados, intensos y estructurados. Matiz: La licorella no aporta un sabor directo y único; edad de la vid, exposición, agua y decisiones de bodega también influyen.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Suelos de licorella, Garnacha y Cariñena con gran concentración» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las laderas de licorella y la concentración en Priorat. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La licorella no aporta un sabor directo y único; edad de la vid, exposición, agua y decisiones de bodega también influyen.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de las laderas de licorella y la concentración en Priorat: Vides viejas de Garnacha y Cariñena crecen en laderas cálidas, secas, pobres y de drenaje libre. → La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La licorella no aporta un sabor directo y único; edad de la vid, exposición, agua y decisiones de bodega también influyen."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Suelos de licorella, Garnacha y Cariñena con gran concentración» corresponde a las laderas de licorella y la concentración en Priorat. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Suelos de licorella, Garnacha y Cariñena con gran concentración",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a las laderas de licorella y la concentración en Priorat?",
+        "remediation_signal": "Revisa la cadena causal de las laderas de licorella y la concentración en Priorat"
       }
     },
     {
@@ -10272,6 +10928,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año.",
+        "efecto": "Los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave.",
+        "mecanismo": "El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Influencias oceánicas y clima fresco». La clave está en la influencia marítima u oceánica: El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. Por eso, los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave. Matiz: La lluvia y la humedad marítimas también pueden elevar el riesgo de enfermedad y dilución.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Influencias oceánicas y clima fresco» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la influencia marítima u oceánica. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La lluvia y la humedad marítimas también pueden elevar el riesgo de enfermedad y dilución.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la influencia marítima u oceánica: Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año. → El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La lluvia y la humedad marítimas también pueden elevar el riesgo de enfermedad y dilución."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Influencias oceánicas y clima fresco» corresponde a la influencia marítima u oceánica. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Influencias oceánicas y clima fresco",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la influencia marítima u oceánica?",
+        "remediation_signal": "Revisa la cadena causal de la influencia marítima u oceánica"
       }
     },
     {
@@ -10326,6 +11004,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El Barolo de Nebbiolo parte de taninos altos y acidez alta, que aportan una estructura considerable para la guarda.",
+        "efecto": "El Barolo maduro conserva acidez y estructura y desarrolla notas terciarias como flores secas, cuero, tierra y alquitrán.",
+        "mecanismo": "Durante la crianza en botella los taninos se polimerizan y suavizan, mientras los aromas primarios evolucionan gradualmente hacia compuestos terciarios."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Variedad Nebbiolo, tanino alto y crianza prolongada». La clave está en la evolución en botella del Barolo: Durante la crianza en botella los taninos se polimerizan y suavizan, mientras los aromas primarios evolucionan gradualmente hacia compuestos terciarios. Por eso, el Barolo maduro conserva acidez y estructura y desarrolla notas terciarias como flores secas, cuero, tierra y alquitrán. Matiz: La duración y el recipiente de crianza varían por productor; no toda crianza larga mejora automáticamente el vino.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Variedad Nebbiolo, tanino alto y crianza prolongada» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la evolución en botella del Barolo. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La duración y el recipiente de crianza varían por productor; no toda crianza larga mejora automáticamente el vino.",
+        "trainer": "Concepto técnico (RA2): Tema: still wines. Fija el mecanismo de la evolución en botella del Barolo: El Barolo de Nebbiolo parte de taninos altos y acidez alta, que aportan una estructura considerable para la guarda. → Durante la crianza en botella los taninos se polimerizan y suavizan, mientras los aromas primarios evolucionan gradualmente hacia compuestos terciarios. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La duración y el recipiente de crianza varían por productor; no toda crianza larga mejora automáticamente el vino."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Variedad Nebbiolo, tanino alto y crianza prolongada» corresponde a la evolución en botella del Barolo. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Variedad Nebbiolo, tanino alto y crianza prolongada",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la evolución en botella del Barolo?",
+        "remediation_signal": "Revisa la cadena causal de la evolución en botella del Barolo"
       }
     },
     {
@@ -10380,6 +11080,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas tintas maduran con calor sostenido y suficiente insolación.",
+        "efecto": "El vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos.",
+        "mecanismo": "La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Estructura completa, especias, fruta negra madura y alta graduación». La clave está en el clima cálido, la fruta madura y el alcohol potencial: La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. Por eso, el vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos. Matiz: La mezcla de variedades, rendimientos, suelos y fechas de cosecha producen estilos distintos dentro de la denominación.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Estructura completa, especias, fruta negra madura y alta graduación» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima cálido, la fruta madura y el alcohol potencial. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La mezcla de variedades, rendimientos, suelos y fechas de cosecha producen estilos distintos dentro de la denominación.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima cálido, la fruta madura y el alcohol potencial: Uvas tintas maduran con calor sostenido y suficiente insolación. → La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La mezcla de variedades, rendimientos, suelos y fechas de cosecha producen estilos distintos dentro de la denominación."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Estructura completa, especias, fruta negra madura y alta graduación» corresponde al clima cálido, la fruta madura y el alcohol potencial. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura completa, especias, fruta negra madura y alta graduación",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima cálido, la fruta madura y el alcohol potencial?",
+        "remediation_signal": "Revisa la cadena causal del clima cálido, la fruta madura y el alcohol potencial"
       }
     },
     {
@@ -10461,6 +11183,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Acidez alta, estructura firme y estilo seco». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: La variedad aporta naturalmente acidez, pero sitio, madurez, rendimiento y vinificación determinan el resultado.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Acidez alta, estructura firme y estilo seco» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La variedad aporta naturalmente acidez, pero sitio, madurez, rendimiento y vinificación determinan el resultado.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La variedad aporta naturalmente acidez, pero sitio, madurez, rendimiento y vinificación determinan el resultado."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Acidez alta, estructura firme y estilo seco» corresponde al clima fresco y su estilo de vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Acidez alta, estructura firme y estilo seco",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y su estilo de vino?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y su estilo de vino"
       }
     },
     {
@@ -10515,6 +11259,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas tintas maduran con calor sostenido y suficiente insolación.",
+        "efecto": "El vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos.",
+        "mecanismo": "La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Fruta negra madura, taninos suaves y alcohol elevado». La clave está en el clima cálido, la fruta madura y el alcohol potencial: La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. Por eso, el vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos. Matiz: La suavidad del tanino depende también de madurez fenólica, extracción y crianza.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Fruta negra madura, taninos suaves y alcohol elevado» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima cálido, la fruta madura y el alcohol potencial. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La suavidad del tanino depende también de madurez fenólica, extracción y crianza.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima cálido, la fruta madura y el alcohol potencial: Uvas tintas maduran con calor sostenido y suficiente insolación. → La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La suavidad del tanino depende también de madurez fenólica, extracción y crianza."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Fruta negra madura, taninos suaves y alcohol elevado» corresponde al clima cálido, la fruta madura y el alcohol potencial. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Fruta negra madura, taninos suaves y alcohol elevado",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima cálido, la fruta madura y el alcohol potencial?",
+        "remediation_signal": "Revisa la cadena causal del clima cálido, la fruta madura y el alcohol potencial"
       }
     },
     {
@@ -10596,6 +11362,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El viñedo se encuentra a gran altitud, donde las temperaturas ambientales, sobre todo nocturnas, son más bajas.",
+        "efecto": "La fruta de altura puede conservar más acidez y frescura aromática y madurar más lentamente que fruta comparable de menor altitud.",
+        "mecanismo": "Las condiciones más frescas ralentizan la maduración y reducen la pérdida respiratoria de ácidos de la uva, a la vez que prolongan el desarrollo aromático."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Altitud, suelos pedregosos y mayor acidez natural». La clave está en la altitud elevada, la maduración lenta y la frescura: Las condiciones más frescas ralentizan la maduración y reducen la pérdida respiratoria de ácidos de la uva, a la vez que prolongan el desarrollo aromático. Por eso, la fruta de altura puede conservar más acidez y frescura aromática y madurar más lentamente que fruta comparable de menor altitud. Matiz: La altitud no garantiza calidad por sí sola; exposición, agua, suelo y manejo siguen siendo decisivos.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Altitud, suelos pedregosos y mayor acidez natural» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la altitud elevada, la maduración lenta y la frescura. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La altitud no garantiza calidad por sí sola; exposición, agua, suelo y manejo siguen siendo decisivos.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la altitud elevada, la maduración lenta y la frescura: El viñedo se encuentra a gran altitud, donde las temperaturas ambientales, sobre todo nocturnas, son más bajas. → Las condiciones más frescas ralentizan la maduración y reducen la pérdida respiratoria de ácidos de la uva, a la vez que prolongan el desarrollo aromático. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La altitud no garantiza calidad por sí sola; exposición, agua, suelo y manejo siguen siendo decisivos."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Altitud, suelos pedregosos y mayor acidez natural» corresponde a la altitud elevada, la maduración lenta y la frescura. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Altitud, suelos pedregosos y mayor acidez natural",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la altitud elevada, la maduración lenta y la frescura?",
+        "remediation_signal": "Revisa la cadena causal de la altitud elevada, la maduración lenta y la frescura"
       }
     },
     {
@@ -10677,6 +11465,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino criado en barrica de roble recibe pequeñas cantidades continuas de oxígeno a través de los poros de la madera y absorbe compuestos de la propia madera, como vainillina y lactonas.",
+        "efecto": "Los vinos criados en roble nuevo suelen mostrar taninos más suaves, mayor complejidad y aromas secundarios (vainilla, tostado, cedro, especias) sobre la fruta primaria.",
+        "mecanismo": "La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Mayor crianza y mayor complejidad estructural». La clave está en la crianza en barrica de roble: La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo. Por eso, los vinos criados en roble nuevo suelen mostrar taninos más suaves, mayor complejidad y aromas secundarios (vainilla, tostado, cedro, especias) sobre la fruta primaria. Matiz: Riserva es una categoría regulada; la complejidad depende también de fruta, extracción, recipiente y guarda en botella.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Mayor crianza y mayor complejidad estructural» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la crianza en barrica de roble. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Riserva es una categoría regulada; la complejidad depende también de fruta, extracción, recipiente y guarda en botella.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la crianza en barrica de roble: El vino criado en barrica de roble recibe pequeñas cantidades continuas de oxígeno a través de los poros de la madera y absorbe compuestos de la propia madera, como vainillina y lactonas. → La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Riserva es una categoría regulada; la complejidad depende también de fruta, extracción, recipiente y guarda en botella."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Mayor crianza y mayor complejidad estructural» corresponde a la crianza en barrica de roble. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Mayor crianza y mayor complejidad estructural"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la crianza en barrica de roble?",
+        "remediation_signal": "Revisa la cadena causal de la crianza en barrica de roble"
       }
     },
     {
@@ -10812,6 +11622,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico.",
+        "efecto": "Los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme.",
+        "mecanismo": "El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Altitud elevada con grandes diferencias térmicas diurnas». La clave está en la amplitud térmica entre el día y la noche: El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. Por eso, los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme. Matiz: Ribera del Duero también depende de continentalidad, exposición, agua, Tempranillo y decisiones de extracción y crianza.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Altitud elevada con grandes diferencias térmicas diurnas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la amplitud térmica entre el día y la noche. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Ribera del Duero también depende de continentalidad, exposición, agua, Tempranillo y decisiones de extracción y crianza.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la amplitud térmica entre el día y la noche: Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico. → El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Ribera del Duero también depende de continentalidad, exposición, agua, Tempranillo y decisiones de extracción y crianza."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Altitud elevada con grandes diferencias térmicas diurnas» corresponde a la amplitud térmica entre el día y la noche. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Altitud elevada con grandes diferencias térmicas diurnas",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la amplitud térmica entre el día y la noche?",
+        "remediation_signal": "Revisa la cadena causal de la amplitud térmica entre el día y la noche"
       }
     },
     {
@@ -10839,6 +11671,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino madura deliberadamente con un acceso controlado al oxígeno.",
+        "efecto": "La fruta fresca pierde protagonismo y pueden desarrollarse notas terciarias de frutos secos, fruta desecada, caramelo o matices sabrosos, según el estilo.",
+        "mecanismo": "Las reacciones impulsadas por el oxígeno transforman los compuestos de fruta primaria y favorecen la aparición de aromas y sabores de evolución."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Envejecimiento prolongado en roble con evolución terciaria». La clave está en el envejecimiento oxidativo y el desarrollo de aromas terciarios: Las reacciones impulsadas por el oxígeno transforman los compuestos de fruta primaria y favorecen la aparición de aromas y sabores de evolución. Por eso, la fruta fresca pierde protagonismo y pueden desarrollarse notas terciarias de frutos secos, fruta desecada, caramelo o matices sabrosos, según el estilo. Matiz: La categoría regional y el tiempo de crianza no garantizan por sí solos calidad ni un perfil único.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Envejecimiento prolongado en roble con evolución terciaria» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del envejecimiento oxidativo y el desarrollo de aromas terciarios. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La categoría regional y el tiempo de crianza no garantizan por sí solos calidad ni un perfil único.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del envejecimiento oxidativo y el desarrollo de aromas terciarios: El vino madura deliberadamente con un acceso controlado al oxígeno. → Las reacciones impulsadas por el oxígeno transforman los compuestos de fruta primaria y favorecen la aparición de aromas y sabores de evolución. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La categoría regional y el tiempo de crianza no garantizan por sí solos calidad ni un perfil único."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Envejecimiento prolongado en roble con evolución terciaria» corresponde al envejecimiento oxidativo y el desarrollo de aromas terciarios. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Envejecimiento prolongado en roble con evolución terciaria",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al envejecimiento oxidativo y el desarrollo de aromas terciarios?",
+        "remediation_signal": "Revisa la cadena causal del envejecimiento oxidativo y el desarrollo de aromas terciarios"
       }
     },
     {
@@ -10866,6 +11720,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche.",
+        "efecto": "Los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año.",
+        "mecanismo": "La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Cuerpo más lleno y estilo más seco». La clave está en el clima continental: La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. Por eso, los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año. Matiz: Ambas regiones elaboran vinos secos y dulces; productor, sitio y categoría pesan más que una regla regional absoluta.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Cuerpo más lleno y estilo más seco» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima continental. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Ambas regiones elaboran vinos secos y dulces; productor, sitio y categoría pesan más que una regla regional absoluta.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima continental: Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche. → La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Ambas regiones elaboran vinos secos y dulces; productor, sitio y categoría pesan más que una regla regional absoluta."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Cuerpo más lleno y estilo más seco» corresponde al clima continental. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Cuerpo más lleno y estilo más seco",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima continental?",
+        "remediation_signal": "Revisa la cadena causal del clima continental"
       }
     },
     {
@@ -10893,6 +11769,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año.",
+        "efecto": "Los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave.",
+        "mecanismo": "El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Reduce la fotosíntesis excesiva y ayuda a mantener la acidez». La clave está en la influencia marítima u oceánica: El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. Por eso, los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave. Matiz: El efecto varía dentro de Napa y la niebla no sustituye las necesidades de agua ni determina por sí sola la calidad.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Reduce la fotosíntesis excesiva y ayuda a mantener la acidez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la influencia marítima u oceánica. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El efecto varía dentro de Napa y la niebla no sustituye las necesidades de agua ni determina por sí sola la calidad.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la influencia marítima u oceánica: Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año. → El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El efecto varía dentro de Napa y la niebla no sustituye las necesidades de agua ni determina por sí sola la calidad."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Reduce la fotosíntesis excesiva y ayuda a mantener la acidez» corresponde a la influencia marítima u oceánica. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Reduce la fotosíntesis excesiva y ayuda a mantener la acidez"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la influencia marítima u oceánica?",
+        "remediation_signal": "Revisa la cadena causal de la influencia marítima u oceánica"
       }
     },
     {
@@ -10920,6 +11818,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Racimos enteros y bayas intactas permanecen en un depósito rico en dióxido de carbono.",
+        "efecto": "El tinto joven muestra fruta fresca intensa, poco tanino y una textura accesible.",
+        "mecanismo": "La fermentación intracelular genera ésteres frutales característicos y la escasa rotura y extracción limita la incorporación de taninos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Cuerpo ligero, fruta roja y acidez refrescante». La clave está en la maceración carbónica en tintos jóvenes: La fermentación intracelular genera ésteres frutales característicos y la escasa rotura y extracción limita la incorporación de taninos. Por eso, el tinto joven muestra fruta fresca intensa, poco tanino y una textura accesible. Matiz: Beaujolais-Villages incluye estilos con extracción y crianza diferentes; no todos dependen del mismo grado de maceración carbónica.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Cuerpo ligero, fruta roja y acidez refrescante» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la maceración carbónica en tintos jóvenes. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Beaujolais-Villages incluye estilos con extracción y crianza diferentes; no todos dependen del mismo grado de maceración carbónica.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la maceración carbónica en tintos jóvenes: Racimos enteros y bayas intactas permanecen en un depósito rico en dióxido de carbono. → La fermentación intracelular genera ésteres frutales característicos y la escasa rotura y extracción limita la incorporación de taninos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Beaujolais-Villages incluye estilos con extracción y crianza diferentes; no todos dependen del mismo grado de maceración carbónica."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Cuerpo ligero, fruta roja y acidez refrescante» corresponde a la maceración carbónica en tintos jóvenes. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Cuerpo ligero, fruta roja y acidez refrescante",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la maceración carbónica en tintos jóvenes?",
+        "remediation_signal": "Revisa la cadena causal de la maceración carbónica en tintos jóvenes"
       }
     },
     {
@@ -10974,6 +11894,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año.",
+        "efecto": "Los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave.",
+        "mecanismo": "El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Influencia marina y nieblas». La clave está en la influencia marítima u oceánica: El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. Por eso, los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave. Matiz: Sonoma es muy diversa; distancia al mar, orientación, altitud y mesoclima cambian la intensidad del efecto.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Influencia marina y nieblas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la influencia marítima u oceánica. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Sonoma es muy diversa; distancia al mar, orientación, altitud y mesoclima cambian la intensidad del efecto.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la influencia marítima u oceánica: Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año. → El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Sonoma es muy diversa; distancia al mar, orientación, altitud y mesoclima cambian la intensidad del efecto."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Influencia marina y nieblas» corresponde a la influencia marítima u oceánica. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Influencia marina y nieblas",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la influencia marítima u oceánica?",
+        "remediation_signal": "Revisa la cadena causal de la influencia marítima u oceánica"
       }
     },
     {
@@ -11082,6 +12024,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El viñedo se encuentra a gran altitud, donde las temperaturas ambientales, sobre todo nocturnas, son más bajas.",
+        "efecto": "La fruta de altura puede conservar más acidez y frescura aromática y madurar más lentamente que fruta comparable de menor altitud.",
+        "mecanismo": "Las condiciones más frescas ralentizan la maduración y reducen la pérdida respiratoria de ácidos de la uva, a la vez que prolongan el desarrollo aromático."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Acidez alta y fruta roja fresca debido a la altitud». La clave está en la altitud elevada, la maduración lenta y la frescura: Las condiciones más frescas ralentizan la maduración y reducen la pérdida respiratoria de ácidos de la uva, a la vez que prolongan el desarrollo aromático. Por eso, la fruta de altura puede conservar más acidez y frescura aromática y madurar más lentamente que fruta comparable de menor altitud. Matiz: La radiación, orientación, agua y variedad modifican el efecto; la altitud no garantiza un perfil único.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Acidez alta y fruta roja fresca debido a la altitud» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la altitud elevada, la maduración lenta y la frescura. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La radiación, orientación, agua y variedad modifican el efecto; la altitud no garantiza un perfil único.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la altitud elevada, la maduración lenta y la frescura: El viñedo se encuentra a gran altitud, donde las temperaturas ambientales, sobre todo nocturnas, son más bajas. → Las condiciones más frescas ralentizan la maduración y reducen la pérdida respiratoria de ácidos de la uva, a la vez que prolongan el desarrollo aromático. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La radiación, orientación, agua y variedad modifican el efecto; la altitud no garantiza un perfil único."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Acidez alta y fruta roja fresca debido a la altitud» corresponde a la altitud elevada, la maduración lenta y la frescura. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Acidez alta y fruta roja fresca debido a la altitud"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la altitud elevada, la maduración lenta y la frescura?",
+        "remediation_signal": "Revisa la cadena causal de la altitud elevada, la maduración lenta y la frescura"
       }
     },
     {
@@ -11325,6 +12289,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Racimos enteros y bayas intactas permanecen en un depósito rico en dióxido de carbono.",
+        "efecto": "El tinto joven muestra fruta fresca intensa, poco tanino y una textura accesible.",
+        "mecanismo": "La fermentación intracelular genera ésteres frutales característicos y la escasa rotura y extracción limita la incorporación de taninos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Fruta roja, cuerpo ligero y consumo temprano». La clave está en la maceración carbónica en tintos jóvenes: La fermentación intracelular genera ésteres frutales característicos y la escasa rotura y extracción limita la incorporación de taninos. Por eso, el tinto joven muestra fruta fresca intensa, poco tanino y una textura accesible. Matiz: Beaujolais Nouveau también depende de Gamay, rendimientos, selección y una crianza muy corta.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Fruta roja, cuerpo ligero y consumo temprano» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la maceración carbónica en tintos jóvenes. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Beaujolais Nouveau también depende de Gamay, rendimientos, selección y una crianza muy corta.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la maceración carbónica en tintos jóvenes: Racimos enteros y bayas intactas permanecen en un depósito rico en dióxido de carbono. → La fermentación intracelular genera ésteres frutales característicos y la escasa rotura y extracción limita la incorporación de taninos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Beaujolais Nouveau también depende de Gamay, rendimientos, selección y una crianza muy corta."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Fruta roja, cuerpo ligero y consumo temprano» corresponde a la maceración carbónica en tintos jóvenes. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Fruta roja, cuerpo ligero y consumo temprano",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la maceración carbónica en tintos jóvenes?",
+        "remediation_signal": "Revisa la cadena causal de la maceración carbónica en tintos jóvenes"
       }
     },
     {
@@ -11379,6 +12365,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Vides viejas de Garnacha y Cariñena crecen en laderas cálidas, secas, pobres y de drenaje libre.",
+        "efecto": "Las uvas maduras de bajo rendimiento pueden producir tintos concentrados, intensos y estructurados.",
+        "mecanismo": "La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Suelo de llicorella y concentración». La clave está en las laderas de licorella y la concentración en Priorat: La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña. Por eso, las uvas maduras de bajo rendimiento pueden producir tintos concentrados, intensos y estructurados. Matiz: La pizarra no transfiere un sabor literal; edad de las vides, agua, exposición y elaboración también son decisivas.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Suelo de llicorella y concentración» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las laderas de licorella y la concentración en Priorat. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La pizarra no transfiere un sabor literal; edad de las vides, agua, exposición y elaboración también son decisivas.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de las laderas de licorella y la concentración en Priorat: Vides viejas de Garnacha y Cariñena crecen en laderas cálidas, secas, pobres y de drenaje libre. → La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La pizarra no transfiere un sabor literal; edad de las vides, agua, exposición y elaboración también son decisivas."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Suelo de llicorella y concentración» corresponde a las laderas de licorella y la concentración en Priorat. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Suelo de llicorella y concentración",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a las laderas de licorella y la concentración en Priorat?",
+        "remediation_signal": "Revisa la cadena causal de las laderas de licorella y la concentración en Priorat"
       }
     },
     {
@@ -11568,6 +12576,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Acidez alta y fruta roja fresca». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: Marlborough tiene subregiones y niveles de madurez diversos; manejo del dosel, rendimiento y crianza modifican el estilo.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Acidez alta y fruta roja fresca» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Marlborough tiene subregiones y niveles de madurez diversos; manejo del dosel, rendimiento y crianza modifican el estilo.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Marlborough tiene subregiones y niveles de madurez diversos; manejo del dosel, rendimiento y crianza modifican el estilo."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Acidez alta y fruta roja fresca» corresponde al clima fresco y su estilo de vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Acidez alta y fruta roja fresca",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y su estilo de vino?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y su estilo de vino"
       }
     },
     {
@@ -11595,6 +12625,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Continental fresco». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: La añada y la ubicación dentro de Chablis modifican madurez y concentración.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Continental fresco» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La añada y la ubicación dentro de Chablis modifican madurez y concentración.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La añada y la ubicación dentro de Chablis modifican madurez y concentración."
       }
     },
     {
@@ -11622,6 +12662,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Los viñedos del Mosel combinan clima fresco y septentrional con pendientes empinadas y bien expuestas.",
+        "efecto": "El Riesling puede mantener acidez alta y frescura a la vez que alcanza madurez aromática en los mejores sitios.",
+        "mecanismo": "El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Pendientes pronunciadas y clima frío». La clave está en el clima fresco y las pendientes del Mosel: El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración. Por eso, el Riesling puede mantener acidez alta y frescura a la vez que alcanza madurez aromática en los mejores sitios. Matiz: Latitud, río, orientación, suelo y añada también influyen en el resultado.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Pendientes pronunciadas y clima frío» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y las pendientes del Mosel. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Latitud, río, orientación, suelo y añada también influyen en el resultado.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y las pendientes del Mosel: Los viñedos del Mosel combinan clima fresco y septentrional con pendientes empinadas y bien expuestas. → El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Latitud, río, orientación, suelo y añada también influyen en el resultado."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Pendientes pronunciadas y clima frío» corresponde al clima fresco y las pendientes del Mosel. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Pendientes pronunciadas y clima frío",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y las pendientes del Mosel?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y las pendientes del Mosel"
       }
     },
     {
@@ -11649,6 +12711,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas tintas maduran con calor sostenido y suficiente insolación.",
+        "efecto": "El vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos.",
+        "mecanismo": "La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Estructurado, fruta negra madura y roble». La clave está en el clima cálido, la fruta madura y el alcohol potencial: La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. Por eso, el vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos. Matiz: El roble es una decisión de bodega y no una consecuencia automática del clima.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Estructurado, fruta negra madura y roble» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima cálido, la fruta madura y el alcohol potencial. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El roble es una decisión de bodega y no una consecuencia automática del clima.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima cálido, la fruta madura y el alcohol potencial: Uvas tintas maduran con calor sostenido y suficiente insolación. → La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El roble es una decisión de bodega y no una consecuencia automática del clima."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Estructurado, fruta negra madura y roble» corresponde al clima cálido, la fruta madura y el alcohol potencial. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Estructurado, fruta negra madura y roble",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima cálido, la fruta madura y el alcohol potencial?",
+        "remediation_signal": "Revisa la cadena causal del clima cálido, la fruta madura y el alcohol potencial"
       }
     },
     {
@@ -11757,6 +12841,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Alta acidez y notas a lima». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: Las notas de lima no proceden sólo del clima; variedad, sitio, cosecha y evolución en botella también cuentan.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Alta acidez y notas a lima» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Las notas de lima no proceden sólo del clima; variedad, sitio, cosecha y evolución en botella también cuentan.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Las notas de lima no proceden sólo del clima; variedad, sitio, cosecha y evolución en botella también cuentan."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Alta acidez y notas a lima» corresponde al clima fresco y su estilo de vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Alta acidez y notas a lima",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y su estilo de vino?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y su estilo de vino"
       }
     },
     {
@@ -11838,6 +12944,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas maduras y sanas se secan después de la vendimia antes de iniciar la fermentación alcohólica.",
+        "efecto": "El vino puede alcanzar alcohol potencial alto, cuerpo considerable y sabores concentrados de fruta madura o desecada; la sanidad y el control del secado siguen siendo esenciales.",
+        "mecanismo": "La evaporación de agua concentra azúcares, ácidos, compuestos de sabor y fenoles en las bayas."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Secado parcial de uvas antes de la fermentación». La clave está en el secado parcial de uvas antes de la fermentación: La evaporación de agua concentra azúcares, ácidos, compuestos de sabor y fenoles en las bayas. Por eso, el vino puede alcanzar alcohol potencial alto, cuerpo considerable y sabores concentrados de fruta madura o desecada; la sanidad y el control del secado siguen siendo esenciales. Matiz: El secado debe controlarse para evitar podredumbre no deseada y no es equivalente a añadir azúcar.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Secado parcial de uvas antes de la fermentación» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del secado parcial de uvas antes de la fermentación. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El secado debe controlarse para evitar podredumbre no deseada y no es equivalente a añadir azúcar.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del secado parcial de uvas antes de la fermentación: Uvas maduras y sanas se secan después de la vendimia antes de iniciar la fermentación alcohólica. → La evaporación de agua concentra azúcares, ácidos, compuestos de sabor y fenoles en las bayas. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El secado debe controlarse para evitar podredumbre no deseada y no es equivalente a añadir azúcar."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Secado parcial de uvas antes de la fermentación» corresponde al secado parcial de uvas antes de la fermentación. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Secado parcial de uvas antes de la fermentación"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al secado parcial de uvas antes de la fermentación?",
+        "remediation_signal": "Revisa la cadena causal del secado parcial de uvas antes de la fermentación"
       }
     },
     {
@@ -11865,6 +12993,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El viñedo se sitúa a mayor altitud, donde las temperaturas suelen ser más bajas, sobre todo de noche.",
+        "efecto": "La fruta tiende a conservar más acidez natural que fruta comparable de una cota inferior y más cálida.",
+        "mecanismo": "La maduración más fresca ralentiza la respiración y reduce la pérdida de ácidos de la uva."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Altitud y clima fresco». La clave está en la altitud y la retención de acidez en la uva: La maduración más fresca ralentiza la respiración y reduce la pérdida de ácidos de la uva. Por eso, la fruta tiende a conservar más acidez natural que fruta comparable de una cota inferior y más cálida. Matiz: En Mosel, latitud, exposición y pendiente interactúan; la altitud no actúa de forma aislada.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Altitud y clima fresco» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la altitud y la retención de acidez en la uva. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: En Mosel, latitud, exposición y pendiente interactúan; la altitud no actúa de forma aislada.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la altitud y la retención de acidez en la uva: El viñedo se sitúa a mayor altitud, donde las temperaturas suelen ser más bajas, sobre todo de noche. → La maduración más fresca ralentiza la respiración y reduce la pérdida de ácidos de la uva. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: En Mosel, latitud, exposición y pendiente interactúan; la altitud no actúa de forma aislada."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Altitud y clima fresco» corresponde a la altitud y la retención de acidez en la uva. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Altitud y clima fresco"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la altitud y la retención de acidez en la uva?",
+        "remediation_signal": "Revisa la cadena causal de la altitud y la retención de acidez en la uva"
       }
     },
     {
@@ -11973,6 +13123,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año.",
+        "efecto": "Los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave.",
+        "mecanismo": "El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Templado con influencia marítima». La clave está en la influencia marítima u oceánica: El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. Por eso, los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave. Matiz: La influencia marítima también trae variabilidad de lluvia y no elimina los riesgos de la añada.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Templado con influencia marítima» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la influencia marítima u oceánica. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La influencia marítima también trae variabilidad de lluvia y no elimina los riesgos de la añada.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la influencia marítima u oceánica: Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año. → El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La influencia marítima también trae variabilidad de lluvia y no elimina los riesgos de la añada."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Templado con influencia marítima» corresponde a la influencia marítima u oceánica. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Templado con influencia marítima",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la influencia marítima u oceánica?",
+        "remediation_signal": "Revisa la cadena causal de la influencia marítima u oceánica"
       }
     },
     {
@@ -12000,6 +13172,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Fruta roja, acidez vibrante y uso moderado de roble». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: El uso de roble es una decisión de productor y varía entre regiones y niveles de calidad.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Fruta roja, acidez vibrante y uso moderado de roble» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El uso de roble es una decisión de productor y varía entre regiones y niveles de calidad.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El uso de roble es una decisión de productor y varía entre regiones y niveles de calidad."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Fruta roja, acidez vibrante y uso moderado de roble» corresponde al clima fresco y su estilo de vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Fruta roja, acidez vibrante y uso moderado de roble",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y su estilo de vino?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y su estilo de vino"
       }
     },
     {
@@ -12184,6 +13378,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un tinto concentrado parte de taninos, acidez y fruta abundantes y, en estilos fortificados, también de alcohol y azúcar.",
+        "efecto": "El vino tiene capacidad estructural para una guarda prolongada, durante la cual los taninos pueden integrarse y surgir complejidad terciaria; esa estructura permite la evolución, pero no garantiza mejora si el almacenamiento es deficiente.",
+        "mecanismo": "La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Color intenso, taninos firmes y buen potencial de guarda». La clave está en la estructura que permite la guarda prolongada de un vino tinto: La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo. Por eso, el vino tiene capacidad estructural para una guarda prolongada, durante la cual los taninos pueden integrarse y surgir complejidad terciaria; esa estructura permite la evolución, pero no garantiza mejora si el almacenamiento es deficiente. Matiz: El potencial de guarda también requiere acidez, fruta suficiente, elaboración limpia y almacenamiento adecuado.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Color intenso, taninos firmes y buen potencial de guarda» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la estructura que permite la guarda prolongada de un vino tinto. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El potencial de guarda también requiere acidez, fruta suficiente, elaboración limpia y almacenamiento adecuado.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la estructura que permite la guarda prolongada de un vino tinto: Un tinto concentrado parte de taninos, acidez y fruta abundantes y, en estilos fortificados, también de alcohol y azúcar. → La acidez y otros componentes estables ralentizan el deterioro, mientras los taninos se polimerizan y el perfil concentrado evoluciona con el tiempo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El potencial de guarda también requiere acidez, fruta suficiente, elaboración limpia y almacenamiento adecuado."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Color intenso, taninos firmes y buen potencial de guarda» corresponde a la estructura que permite la guarda prolongada de un vino tinto. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Color intenso, taninos firmes y buen potencial de guarda",
+          "Sistema de soleras y criaderas"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la estructura que permite la guarda prolongada de un vino tinto?",
+        "remediation_signal": "Revisa la cadena causal de la estructura que permite la guarda prolongada de un vino tinto"
       }
     },
     {
@@ -12211,6 +13427,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino madura en barricas elaboradas con especies y estructuras de grano asociadas habitualmente al roble francés o americano.",
+        "efecto": "El roble americano suele aportar vainilla y coco más evidentes, mientras el francés suele percibirse más sutil; la tonelería, el tostado y el uso previo pueden cambiar ambos patrones.",
+        "mecanismo": "La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Crianza en roble americano». La clave está en el origen del roble y la intensidad de sus aromas: La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados. Por eso, el roble americano suele aportar vainilla y coco más evidentes, mientras el francés suele percibirse más sutil; la tonelería, el tostado y el uso previo pueden cambiar ambos patrones. Matiz: Tostado, edad, tamaño y uso previo de la barrica pueden cambiar el perfil.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Crianza en roble americano» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del origen del roble y la intensidad de sus aromas. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Tostado, edad, tamaño y uso previo de la barrica pueden cambiar el perfil.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del origen del roble y la intensidad de sus aromas: El vino madura en barricas elaboradas con especies y estructuras de grano asociadas habitualmente al roble francés o americano. → La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Tostado, edad, tamaño y uso previo de la barrica pueden cambiar el perfil."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Crianza en roble americano» corresponde al origen del roble y la intensidad de sus aromas. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Crianza en roble americano",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al origen del roble y la intensidad de sus aromas?",
+        "remediation_signal": "Revisa la cadena causal del origen del roble y la intensidad de sus aromas"
       }
     },
     {
@@ -12238,6 +13476,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas tintas maduran con calor sostenido y suficiente insolación.",
+        "efecto": "El vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos.",
+        "mecanismo": "La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Alta concentración, taninos firmes y fruta negra». La clave está en el clima cálido, la fruta madura y el alcohol potencial: La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. Por eso, el vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos. Matiz: Altitud y noches frescas pueden conservar acidez; edad de la vid, cosecha y extracción cambian la potencia final.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Alta concentración, taninos firmes y fruta negra» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima cálido, la fruta madura y el alcohol potencial. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Altitud y noches frescas pueden conservar acidez; edad de la vid, cosecha y extracción cambian la potencia final.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima cálido, la fruta madura y el alcohol potencial: Uvas tintas maduran con calor sostenido y suficiente insolación. → La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Altitud y noches frescas pueden conservar acidez; edad de la vid, cosecha y extracción cambian la potencia final."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Alta concentración, taninos firmes y fruta negra» corresponde al clima cálido, la fruta madura y el alcohol potencial. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Alta concentración, taninos firmes y fruta negra",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima cálido, la fruta madura y el alcohol potencial?",
+        "remediation_signal": "Revisa la cadena causal del clima cálido, la fruta madura y el alcohol potencial"
       }
     },
     {
@@ -12422,6 +13682,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Uvas tintas maduran con calor sostenido y suficiente insolación.",
+        "efecto": "El vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos.",
+        "mecanismo": "La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Alto alcohol, fruta negra madura y notas especiadas». La clave está en el clima cálido, la fruta madura y el alcohol potencial: La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. Por eso, el vino puede mostrar mayor cuerpo, alcohol y fruta negra madura, siempre que el calor y el estrés hídrico no sean excesivos. Matiz: Fecha de cosecha, viñedo, rendimiento y elaboración pueden producir estilos más frescos o menos alcohólicos.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Alto alcohol, fruta negra madura y notas especiadas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima cálido, la fruta madura y el alcohol potencial. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Fecha de cosecha, viñedo, rendimiento y elaboración pueden producir estilos más frescos o menos alcohólicos.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima cálido, la fruta madura y el alcohol potencial: Uvas tintas maduran con calor sostenido y suficiente insolación. → La acumulación rápida de azúcar eleva el alcohol potencial y la maduración avanzada desplaza el perfil hacia fruta negra madura o desecada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Fecha de cosecha, viñedo, rendimiento y elaboración pueden producir estilos más frescos o menos alcohólicos."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Alto alcohol, fruta negra madura y notas especiadas» corresponde al clima cálido, la fruta madura y el alcohol potencial. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Alto alcohol, fruta negra madura y notas especiadas"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima cálido, la fruta madura y el alcohol potencial?",
+        "remediation_signal": "Revisa la cadena causal del clima cálido, la fruta madura y el alcohol potencial"
       }
     },
     {
@@ -12449,6 +13731,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche.",
+        "efecto": "Los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año.",
+        "mecanismo": "La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Mayor estructura y concentración». La clave está en el clima continental: La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. Por eso, los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año. Matiz: Es una tendencia amplia: ambas regiones contienen sitios, crianzas y niveles de extracción muy diversos.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Mayor estructura y concentración» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima continental. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Es una tendencia amplia: ambas regiones contienen sitios, crianzas y niveles de extracción muy diversos.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima continental: Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche. → La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Es una tendencia amplia: ambas regiones contienen sitios, crianzas y niveles de extracción muy diversos."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Mayor estructura y concentración» corresponde al clima continental. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Mayor estructura y concentración",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima continental?",
+        "remediation_signal": "Revisa la cadena causal del clima continental"
       }
     },
     {
@@ -12476,6 +13780,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un tinto estructurado permanece largo tiempo con los hollejos y después madura en un recipiente grande, a menudo usado.",
+        "efecto": "El vino conserva estructura firme y puede evolucionar gradualmente sin quedar dominado por aromas de roble nuevo.",
+        "mecanismo": "La maceración extrae abundantes fenoles, mientras el gran volumen reduce la superficie de madera por litro y limita el sabor intenso de roble nuevo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Suelo calizo y largas maceraciones». La clave está en la maceración larga y la crianza en grandes toneles: La maceración extrae abundantes fenoles, mientras el gran volumen reduce la superficie de madera por litro y limita el sabor intenso de roble nuevo. Por eso, el vino conserva estructura firme y puede evolucionar gradualmente sin quedar dominado por aromas de roble nuevo. Matiz: El suelo calizo no actúa solo y los productores modernos usan tiempos y recipientes variados.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Suelo calizo y largas maceraciones» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la maceración larga y la crianza en grandes toneles. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El suelo calizo no actúa solo y los productores modernos usan tiempos y recipientes variados.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la maceración larga y la crianza en grandes toneles: Un tinto estructurado permanece largo tiempo con los hollejos y después madura en un recipiente grande, a menudo usado. → La maceración extrae abundantes fenoles, mientras el gran volumen reduce la superficie de madera por litro y limita el sabor intenso de roble nuevo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El suelo calizo no actúa solo y los productores modernos usan tiempos y recipientes variados."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Suelo calizo y largas maceraciones» corresponde a la maceración larga y la crianza en grandes toneles. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Suelo calizo y largas maceraciones",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la maceración larga y la crianza en grandes toneles?",
+        "remediation_signal": "Revisa la cadena causal de la maceración larga y la crianza en grandes toneles"
       }
     },
     {
@@ -12633,6 +13959,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico.",
+        "efecto": "Los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme.",
+        "mecanismo": "El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Fruta roja madura, buena acidez y cuerpo medio». La clave está en la amplitud térmica entre el día y la noche: El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. Por eso, los vinos de gran amplitud térmica retienen más acidez, muestran un carácter aromático marcado y preciso, y suelen exhibir una frescura o vibración que los distingue de los de clima más cálido y uniforme. Matiz: Subregión, exposición, viento, agua y cosecha pueden producir Pinot Noir más ligero o más potente.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Fruta roja madura, buena acidez y cuerpo medio» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la amplitud térmica entre el día y la noche. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Subregión, exposición, viento, agua y cosecha pueden producir Pinot Noir más ligero o más potente.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la amplitud térmica entre el día y la noche: Las regiones con gran amplitud térmica —donde los días cálidos favorecen la acumulación de azúcar pero las noches frescas frenan la respiración— generan un patrón de maduración característico. → El calor diurno permite que la fotosíntesis y el desarrollo de azúcar avancen, mientras que las noches frescas frenan la degradación respiratoria del ácido tartárico y málico, conservando la acidez. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Subregión, exposición, viento, agua y cosecha pueden producir Pinot Noir más ligero o más potente."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Fruta roja madura, buena acidez y cuerpo medio» corresponde a la amplitud térmica entre el día y la noche. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Fruta roja madura, buena acidez y cuerpo medio"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la amplitud térmica entre el día y la noche?",
+        "remediation_signal": "Revisa la cadena causal de la amplitud térmica entre el día y la noche"
       }
     },
     {
@@ -12660,6 +14008,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Vides viejas de Garnacha y Cariñena crecen en laderas cálidas, secas, pobres y de drenaje libre.",
+        "efecto": "Las uvas maduras de bajo rendimiento pueden producir tintos concentrados, intensos y estructurados.",
+        "mecanismo": "La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Suelos de pizarra y viñedos en ladera». La clave está en las laderas de licorella y la concentración en Priorat: La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña. Por eso, las uvas maduras de bajo rendimiento pueden producir tintos concentrados, intensos y estructurados. Matiz: No implica un sabor mineral directo ni calidad automática; el balance hídrico y las decisiones humanas siguen siendo esenciales.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Suelos de pizarra y viñedos en ladera» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las laderas de licorella y la concentración en Priorat. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: No implica un sabor mineral directo ni calidad automática; el balance hídrico y las decisiones humanas siguen siendo esenciales.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de las laderas de licorella y la concentración en Priorat: Vides viejas de Garnacha y Cariñena crecen en laderas cálidas, secas, pobres y de drenaje libre. → La disponibilidad limitada de agua y nutrientes restringe vigor y rendimiento, mientras la insolación permite madurar una cosecha pequeña. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: No implica un sabor mineral directo ni calidad automática; el balance hídrico y las decisiones humanas siguen siendo esenciales."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Suelos de pizarra y viñedos en ladera» corresponde a las laderas de licorella y la concentración en Priorat. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Suelos de pizarra y viñedos en ladera",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a las laderas de licorella y la concentración en Priorat?",
+        "remediation_signal": "Revisa la cadena causal de las laderas de licorella y la concentración en Priorat"
       }
     },
     {
@@ -12947,6 +14317,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un Riesling de clima fresco fermenta hasta un estilo que conserva parte del azúcar de la uva.",
+        "efecto": "Muchos estilos dulces o semidulces del Mosel combinan azúcar residual perceptible, alcohol bajo y acidez alta.",
+        "mecanismo": "Al detener la fermentación antes de convertir todo el azúcar, queda dulzor residual y se produce menos alcohol, mientras la acidez alta equilibra el conjunto."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Mayor dulzor residual y menor alcohol». La clave está en el azúcar residual y el bajo alcohol en estilos del Mosel: Al detener la fermentación antes de convertir todo el azúcar, queda dulzor residual y se produce menos alcohol, mientras la acidez alta equilibra el conjunto. Por eso, muchos estilos dulces o semidulces del Mosel combinan azúcar residual perceptible, alcohol bajo y acidez alta. Matiz: No todos los Riesling del Mosel son dulces ni todos los del Pfalz son secos.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Mayor dulzor residual y menor alcohol» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del azúcar residual y el bajo alcohol en estilos del Mosel. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: No todos los Riesling del Mosel son dulces ni todos los del Pfalz son secos.",
+        "trainer": "Concepto técnico (RA2): Tema: still wines. Fija el mecanismo del azúcar residual y el bajo alcohol en estilos del Mosel: Un Riesling de clima fresco fermenta hasta un estilo que conserva parte del azúcar de la uva. → Al detener la fermentación antes de convertir todo el azúcar, queda dulzor residual y se produce menos alcohol, mientras la acidez alta equilibra el conjunto. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: No todos los Riesling del Mosel son dulces ni todos los del Pfalz son secos."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Mayor dulzor residual y menor alcohol» corresponde al azúcar residual y el bajo alcohol en estilos del Mosel. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Mayor dulzor residual y menor alcohol"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al azúcar residual y el bajo alcohol en estilos del Mosel?",
+        "remediation_signal": "Revisa la cadena causal del azúcar residual y el bajo alcohol en estilos del Mosel"
       }
     },
     {
@@ -13050,6 +14442,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino madura en barricas elaboradas con especies y estructuras de grano asociadas habitualmente al roble francés o americano.",
+        "efecto": "El roble americano suele aportar vainilla y coco más evidentes, mientras el francés suele percibirse más sutil; la tonelería, el tostado y el uso previo pueden cambiar ambos patrones.",
+        "mecanismo": "La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Uso tradicional de roble americano». La clave está en el origen del roble y la intensidad de sus aromas: La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados. Por eso, el roble americano suele aportar vainilla y coco más evidentes, mientras el francés suele percibirse más sutil; la tonelería, el tostado y el uso previo pueden cambiar ambos patrones. Matiz: La calidad no depende únicamente del origen del roble; fruta, tonelería y tiempo de crianza también cuentan.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Uso tradicional de roble americano» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del origen del roble y la intensidad de sus aromas. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La calidad no depende únicamente del origen del roble; fruta, tonelería y tiempo de crianza también cuentan.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del origen del roble y la intensidad de sus aromas: El vino madura en barricas elaboradas con especies y estructuras de grano asociadas habitualmente al roble francés o americano. → La especie, el grano, el secado y el tostado modifican la extracción de lactonas, vainillina, taninos y compuestos tostados. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La calidad no depende únicamente del origen del roble; fruta, tonelería y tiempo de crianza también cuentan."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Uso tradicional de roble americano» corresponde al origen del roble y la intensidad de sus aromas. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Uso tradicional de roble americano",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al origen del roble y la intensidad de sus aromas?",
+        "remediation_signal": "Revisa la cadena causal del origen del roble y la intensidad de sus aromas"
       }
     },
     {
@@ -13077,6 +14491,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año.",
+        "efecto": "Los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave.",
+        "mecanismo": "El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Napa tiene clima más cálido y vinos más potentes». La clave está en la influencia marítima u oceánica: El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. Por eso, los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave. Matiz: Ambas regiones contienen mesoclimas diversos y la comparación no se aplica a todos los vinos.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Napa tiene clima más cálido y vinos más potentes» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la influencia marítima u oceánica. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Ambas regiones contienen mesoclimas diversos y la comparación no se aplica a todos los vinos.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la influencia marítima u oceánica: Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año. → El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Ambas regiones contienen mesoclimas diversos y la comparación no se aplica a todos los vinos."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Napa tiene clima más cálido y vinos más potentes» corresponde a la influencia marítima u oceánica. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Napa tiene clima más cálido y vinos más potentes",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la influencia marítima u oceánica?",
+        "remediation_signal": "Revisa la cadena causal de la influencia marítima u oceánica"
       }
     },
     {
@@ -13158,6 +14594,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un tinto estructurado permanece largo tiempo con los hollejos y después madura en un recipiente grande, a menudo usado.",
+        "efecto": "El vino conserva estructura firme y puede evolucionar gradualmente sin quedar dominado por aromas de roble nuevo.",
+        "mecanismo": "La maceración extrae abundantes fenoles, mientras el gran volumen reduce la superficie de madera por litro y limita el sabor intenso de roble nuevo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Larga maceración y crianza en grandes toneles». La clave está en la maceración larga y la crianza en grandes toneles: La maceración extrae abundantes fenoles, mientras el gran volumen reduce la superficie de madera por litro y limita el sabor intenso de roble nuevo. Por eso, el vino conserva estructura firme y puede evolucionar gradualmente sin quedar dominado por aromas de roble nuevo. Matiz: La práctica varía por productor y convive con estilos modernos de maceración y barrica diferentes.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Larga maceración y crianza en grandes toneles» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la maceración larga y la crianza en grandes toneles. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La práctica varía por productor y convive con estilos modernos de maceración y barrica diferentes.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la maceración larga y la crianza en grandes toneles: Un tinto estructurado permanece largo tiempo con los hollejos y después madura en un recipiente grande, a menudo usado. → La maceración extrae abundantes fenoles, mientras el gran volumen reduce la superficie de madera por litro y limita el sabor intenso de roble nuevo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La práctica varía por productor y convive con estilos modernos de maceración y barrica diferentes."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Larga maceración y crianza en grandes toneles» corresponde a la maceración larga y la crianza en grandes toneles. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Larga maceración y crianza en grandes toneles"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la maceración larga y la crianza en grandes toneles?",
+        "remediation_signal": "Revisa la cadena causal de la maceración larga y la crianza en grandes toneles"
       }
     },
     {
@@ -13185,6 +14643,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las vides crecen en una pendiente pronunciada cuya orientación recibe sol favorable en una región fresca.",
+        "efecto": "La uva puede madurar con mayor fiabilidad y alcanzar más desarrollo de sabor y azúcar que en un sitio mal expuesto; la pendiente por sí sola no garantiza ese efecto.",
+        "mecanismo": "El ángulo y la orientación de la ladera mejoran la intercepción de radiación directa, elevan la temperatura del dosel y de los racimos y sostienen la fotosíntesis en condiciones de maduración marginales."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Pendiente y exposición solar». La clave está en las pendientes bien orientadas y la maduración en clima fresco: El ángulo y la orientación de la ladera mejoran la intercepción de radiación directa, elevan la temperatura del dosel y de los racimos y sostienen la fotosíntesis en condiciones de maduración marginales. Por eso, la uva puede madurar con mayor fiabilidad y alcanzar más desarrollo de sabor y azúcar que en un sitio mal expuesto; la pendiente por sí sola no garantiza ese efecto. Matiz: Orientación, altitud, disponibilidad de agua, suelo y añada modifican el efecto; la pendiente no garantiza calidad por sí sola.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Pendiente y exposición solar» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las pendientes bien orientadas y la maduración en clima fresco. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Orientación, altitud, disponibilidad de agua, suelo y añada modifican el efecto; la pendiente no garantiza calidad por sí sola.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de las pendientes bien orientadas y la maduración en clima fresco: Las vides crecen en una pendiente pronunciada cuya orientación recibe sol favorable en una región fresca. → El ángulo y la orientación de la ladera mejoran la intercepción de radiación directa, elevan la temperatura del dosel y de los racimos y sostienen la fotosíntesis en condiciones de maduración marginales. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Orientación, altitud, disponibilidad de agua, suelo y añada modifican el efecto; la pendiente no garantiza calidad por sí sola."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Pendiente y exposición solar» corresponde a las pendientes bien orientadas y la maduración en clima fresco. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Pendiente y exposición solar",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a las pendientes bien orientadas y la maduración en clima fresco?",
+        "remediation_signal": "Revisa la cadena causal de las pendientes bien orientadas y la maduración en clima fresco"
       }
     },
     {
@@ -13212,6 +14692,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año.",
+        "efecto": "Los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave.",
+        "mecanismo": "El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Clima oceánico». La clave está en la influencia marítima u oceánica: El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. Por eso, los vinos de clima marítimo tienden a una maduración moderada y uniforme, con acidez conservada y elegancia; la temporada más larga y suave favorece estilos equilibrados, siendo la lluvia de la añada un riesgo clave. Matiz: La influencia continental aumenta hacia el este y el Loira no tiene un clima uniforme.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Clima oceánico» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la influencia marítima u oceánica. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La influencia continental aumenta hacia el este y el Loira no tiene un clima uniforme.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la influencia marítima u oceánica: Un clima marítimo u oceánico se da en regiones próximas al mar o al océano, cuya gran masa térmica se calienta y se enfría lentamente a lo largo del año. → El agua cercana modera los extremos de temperatura: mantiene veranos más frescos e inviernos más suaves que los sitios de interior a la misma latitud, reduce el riesgo de heladas y de calor excesivo y alarga la temporada, aunque puede traer lluvia y humedad. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La influencia continental aumenta hacia el este y el Loira no tiene un clima uniforme."
       }
     },
     {
@@ -13293,6 +14783,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Fruta roja fresca y acidez viva». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: Añada, subregión, madurez, extracción y roble producen una gama amplia de estilos en Oregon.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Fruta roja fresca y acidez viva» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Añada, subregión, madurez, extracción y roble producen una gama amplia de estilos en Oregon.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Añada, subregión, madurez, extracción y roble producen una gama amplia de estilos en Oregon."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Fruta roja fresca y acidez viva» corresponde al clima fresco y su estilo de vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Fruta roja fresca y acidez viva",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y su estilo de vino?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y su estilo de vino"
       }
     },
     {
@@ -13357,6 +14869,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino madura en barricas nuevas cuyos compuestos de la madera todavía no se han agotado por usos anteriores.",
+        "efecto": "El roble nuevo puede aportar especias, complejidad y estructura cuando su influencia está proporcionada e integrada con la fruta.",
+        "mecanismo": "El vino extrae taninos y compuestos aromáticos del roble, como especias, tostado y vainilla, mientras la entrada lenta de oxígeno favorece la integración de la estructura."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Uso de roble nuevo». La clave está en las barricas nuevas y su aporte de estructura y especias: El vino extrae taninos y compuestos aromáticos del roble, como especias, tostado y vainilla, mientras la entrada lenta de oxígeno favorece la integración de la estructura. Por eso, el roble nuevo puede aportar especias, complejidad y estructura cuando su influencia está proporcionada e integrada con la fruta. Matiz: El uso de roble nuevo no es universal ni garantiza calidad; debe integrarse con la fruta.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Uso de roble nuevo» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las barricas nuevas y su aporte de estructura y especias. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El uso de roble nuevo no es universal ni garantiza calidad; debe integrarse con la fruta.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de las barricas nuevas y su aporte de estructura y especias: El vino madura en barricas nuevas cuyos compuestos de la madera todavía no se han agotado por usos anteriores. → El vino extrae taninos y compuestos aromáticos del roble, como especias, tostado y vainilla, mientras la entrada lenta de oxígeno favorece la integración de la estructura. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El uso de roble nuevo no es universal ni garantiza calidad; debe integrarse con la fruta."
       }
     },
     {
@@ -13384,6 +14906,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta.",
+        "efecto": "Los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas.",
+        "mecanismo": "La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Lima, queroseno y alta acidez». La clave está en el clima fresco y su estilo de vino: La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. Por eso, los vinos de clima fresco suelen presentar acidez alta, menor alcohol, cuerpo más ligero y aromas primarios que tienden a manzana verde, cítricos y notas herbáceas. Matiz: La nota de queroseno se desarrolla sobre todo con la evolución y depende también de variedad, luz, sitio y botella.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Lima, queroseno y alta acidez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y su estilo de vino. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La nota de queroseno se desarrolla sobre todo con la evolución y depende también de variedad, luz, sitio y botella.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y su estilo de vino: En las regiones de clima fresco, las temperaturas medias del periodo de maduración son lo bastante bajas como para que la uva madure despacio, a veces de forma incompleta, en una temporada más corta. → La maduración lenta y fresca preserva el ácido málico y tartárico de la uva, porque las noches no aceleran lo suficiente la respiración de los ácidos, y la acumulación de azúcar es más limitada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La nota de queroseno se desarrolla sobre todo con la evolución y depende también de variedad, luz, sitio y botella."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Lima, queroseno y alta acidez» corresponde al clima fresco y su estilo de vino. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Lima, queroseno y alta acidez",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y su estilo de vino?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y su estilo de vino"
       }
     },
     {
@@ -13649,6 +15193,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino criado en barrica de roble recibe pequeñas cantidades continuas de oxígeno a través de los poros de la madera y absorbe compuestos de la propia madera, como vainillina y lactonas.",
+        "efecto": "Los vinos criados en roble nuevo suelen mostrar taninos más suaves, mayor complejidad y aromas secundarios (vainilla, tostado, cedro, especias) sobre la fruta primaria.",
+        "mecanismo": "La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Crianza prolongada en roble». La clave está en la crianza en barrica de roble: La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo. Por eso, los vinos criados en roble nuevo suelen mostrar taninos más suaves, mayor complejidad y aromas secundarios (vainilla, tostado, cedro, especias) sobre la fruta primaria. Matiz: Reserva es una categoría regulada; el tiempo no garantiza por sí solo calidad ni complejidad.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Crianza prolongada en roble» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la crianza en barrica de roble. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Reserva es una categoría regulada; el tiempo no garantiza por sí solo calidad ni complejidad.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la crianza en barrica de roble: El vino criado en barrica de roble recibe pequeñas cantidades continuas de oxígeno a través de los poros de la madera y absorbe compuestos de la propia madera, como vainillina y lactonas. → La microoxigenación lenta suaviza los taninos por polimerización y redondea la estructura; a la vez, los compuestos de la madera aportan vainilla, especias, tostado y humo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Reserva es una categoría regulada; el tiempo no garantiza por sí solo calidad ni complejidad."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Crianza prolongada en roble» corresponde a la crianza en barrica de roble. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Crianza prolongada en roble",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la crianza en barrica de roble?",
+        "remediation_signal": "Revisa la cadena causal de la crianza en barrica de roble"
       }
     },
     {
@@ -13848,6 +15414,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las variedades bordelesas responden de manera distinta al tiempo de cada temporada y maduran en momentos diferentes.",
+        "efecto": "El vino final puede resultar más equilibrado y coherente que si dependiera de un único componente afectado por la añada.",
+        "mecanismo": "Mezclar variedades y lotes permite combinar componentes que rindieron de forma desigual y equilibrar fruta, acidez, tanino y cuerpo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Mezcla de uvas». La clave está en el ensamblaje bordelés frente a la variación de añada: Mezclar variedades y lotes permite combinar componentes que rindieron de forma desigual y equilibrar fruta, acidez, tanino y cuerpo. Por eso, el vino final puede resultar más equilibrado y coherente que si dependiera de un único componente afectado por la añada. Matiz: El ensamblaje no corrige fruta defectuosa y puede complementarse con selección, manejo de viñedo y clasificación de lotes.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Mezcla de uvas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del ensamblaje bordelés frente a la variación de añada. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El ensamblaje no corrige fruta defectuosa y puede complementarse con selección, manejo de viñedo y clasificación de lotes.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del ensamblaje bordelés frente a la variación de añada: Las variedades bordelesas responden de manera distinta al tiempo de cada temporada y maduran en momentos diferentes. → Mezclar variedades y lotes permite combinar componentes que rindieron de forma desigual y equilibrar fruta, acidez, tanino y cuerpo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El ensamblaje no corrige fruta defectuosa y puede complementarse con selección, manejo de viñedo y clasificación de lotes."
       }
     },
     {
@@ -14123,6 +15699,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Los viñedos del Mosel combinan clima fresco y septentrional con pendientes empinadas y bien expuestas.",
+        "efecto": "El Riesling puede mantener acidez alta y frescura a la vez que alcanza madurez aromática en los mejores sitios.",
+        "mecanismo": "El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Pendiente y orientación». La clave está en el clima fresco y las pendientes del Mosel: El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración. Por eso, el Riesling puede mantener acidez alta y frescura a la vez que alcanza madurez aromática en los mejores sitios. Matiz: El río, la roca, la altitud, la añada y el manejo del viñedo también contribuyen a la calidad.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Pendiente y orientación» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y las pendientes del Mosel. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El río, la roca, la altitud, la añada y el manejo del viñedo también contribuyen a la calidad.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima fresco y las pendientes del Mosel: Los viñedos del Mosel combinan clima fresco y septentrional con pendientes empinadas y bien expuestas. → El frío ralentiza la respiración y conserva los ácidos, mientras la exposición de la ladera mejora la captación solar y ayuda a completar la maduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El río, la roca, la altitud, la añada y el manejo del viñedo también contribuyen a la calidad."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Pendiente y orientación» corresponde al clima fresco y las pendientes del Mosel. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Pendiente y orientación",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima fresco y las pendientes del Mosel?",
+        "remediation_signal": "Revisa la cadena causal del clima fresco y las pendientes del Mosel"
       }
     },
     {
@@ -14575,6 +16173,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "La madera de roble se sazona y tuesta antes de utilizarse como barrica.",
+        "efecto": "El vino puede adquirir aroma de vainilla junto con otros caracteres de roble; la intensidad depende del origen, tostado, edad y tiempo de contacto de la barrica.",
+        "mecanismo": "El calor y el secado degradan parte de la lignina y forman aldehídos aromáticos como la vainillina, que después puede extraerse hacia el vino."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Lignina». La clave está en la lignina del roble y la formación de vainillina: El calor y el secado degradan parte de la lignina y forman aldehídos aromáticos como la vainillina, que después puede extraerse hacia el vino. Por eso, el vino puede adquirir aroma de vainilla junto con otros caracteres de roble; la intensidad depende del origen, tostado, edad y tiempo de contacto de la barrica. Matiz: La vainilla no depende solo de la lignina: origen, tostado, edad y contacto del roble modifican su intensidad.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Lignina» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la lignina del roble y la formación de vainillina. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La vainilla no depende solo de la lignina: origen, tostado, edad y contacto del roble modifican su intensidad.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo de la lignina del roble y la formación de vainillina: La madera de roble se sazona y tuesta antes de utilizarse como barrica. → El calor y el secado degradan parte de la lignina y forman aldehídos aromáticos como la vainillina, que después puede extraerse hacia el vino. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La vainilla no depende solo de la lignina: origen, tostado, edad y contacto del roble modifican su intensidad."
       }
     },
     {
@@ -14651,6 +16259,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El productor añade una dosis apropiada de dióxido de azufre al mosto o al vino.",
+        "efecto": "Se inhiben levaduras no deseadas y bacterias, ayudando a controlar la actividad microbiana sin implicar que se eliminen todos los microorganismos.",
+        "mecanismo": "La fracción antimicrobiana del SO₂ interfiere con el metabolismo microbiano; su eficacia depende especialmente del pH, la dosis, la fijación y la sensibilidad de cada organismo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Sulfitado». La clave está en el SO₂ y la inhibición microbiana: La fracción antimicrobiana del SO₂ interfiere con el metabolismo microbiano; su eficacia depende especialmente del pH, la dosis, la fijación y la sensibilidad de cada organismo. Por eso, se inhiben levaduras no deseadas y bacterias, ayudando a controlar la actividad microbiana sin implicar que se eliminen todos los microorganismos. Matiz: El SO2 no esteriliza el mosto ni sustituye higiene, temperatura y una inoculación adecuada.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Sulfitado» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del SO₂ y la inhibición microbiana. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El SO2 no esteriliza el mosto ni sustituye higiene, temperatura y una inoculación adecuada.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del SO₂ y la inhibición microbiana: El productor añade una dosis apropiada de dióxido de azufre al mosto o al vino. → La fracción antimicrobiana del SO₂ interfiere con el metabolismo microbiano; su eficacia depende especialmente del pH, la dosis, la fijación y la sensibilidad de cada organismo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El SO2 no esteriliza el mosto ni sustituye higiene, temperatura y una inoculación adecuada."
       }
     },
     {
@@ -14678,6 +16296,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel.",
+        "efecto": "Se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración.",
+        "mecanismo": "Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Poda severa». La clave está en el manejo del dosel, el vigor y la exposición de los racimos: Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. Por eso, se controla el vigor y se equilibran la exposición de los racimos y sus condiciones de maduración.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «Poda severa» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del manejo del dosel, el vigor y la exposición de los racimos. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del manejo del dosel, el vigor y la exposición de los racimos: Se gestionan brotes y hojas durante la temporada mediante poda en verde y otras operaciones de dosel. → Retirar o posicionar crecimiento limita la densidad vegetal y mejora la entrada de luz y la ventilación alrededor de los racimos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones."
       }
     },
     {
@@ -15016,6 +16644,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche.",
+        "efecto": "Los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año.",
+        "mecanismo": "La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «El clima continental de Piemonte favorece vinos con taninos altos y buena acidez.». La clave está en el clima continental: La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. Por eso, los vinos de clima continental suelen mostrar acidez alta, estructura tánica firme en tintos y una marcada variación entre añadas, porque la temporada ajustada hace que la madurez dependa mucho del clima del año. Matiz: La variedad y el mesoclima determinan cuánto se expresa este patrón.",
+        "reviewer": "Exigencia de repaso (RA2): debes poder justificar por qué «El clima continental de Piemonte favorece vinos con taninos altos y buena acidez.» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima continental. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La variedad y el mesoclima determinan cuánto se expresa este patrón.",
+        "trainer": "Concepto técnico (RA2): Fija el mecanismo del clima continental: Un clima continental se da en regiones alejadas de la influencia moderadora de grandes masas de agua, con veranos cálidos pero inviernos fríos y una gran diferencia de temperatura entre estaciones y entre el día y la noche. → La temporada de cultivo corta y definida, con fuertes oscilaciones térmicas, hace que la uva madure en días cálidos mientras las noches frescas frenan la respiración del ácido málico y tartárico, conservando la acidez; el final abrupto de la temporada limita la sobremaduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La variedad y el mesoclima determinan cuánto se expresa este patrón."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«El clima continental de Piemonte favorece vinos con taninos altos y buena acidez.» corresponde al clima continental. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "El clima continental de Piemonte favorece vinos con taninos altos y buena acidez.",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al clima continental?",
+        "remediation_signal": "Revisa la cadena causal del clima continental"
       }
     },
     {
@@ -15750,6 +17400,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Tras el degüelle, el productor decide no añadir azúcar mediante el licor de expedición.",
+        "efecto": "El vino puede etiquetarse Brut Nature o Zero Dosage si cumple el límite correspondiente, normalmente entre 0 y 3 g/L de azúcar residual.",
+        "mecanismo": "Sin dosificación no aumenta el dulzor final; solo contribuye el azúcar residual que haya quedado de forma natural."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Alta acidez y sin dulzor residual». La clave está en la ausencia de dosificación en un Brut Nature: Sin dosificación no aumenta el dulzor final; solo contribuye el azúcar residual que haya quedado de forma natural. Por eso, el vino puede etiquetarse Brut Nature o Zero Dosage si cumple el límite correspondiente, normalmente entre 0 y 3 g/L de azúcar residual. Matiz: La acidez alta procede del vino base y del estilo, no de omitir la dosificación.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Alta acidez y sin dulzor residual» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la ausencia de dosificación en un Brut Nature. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La acidez alta procede del vino base y del estilo, no de omitir la dosificación.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo de la ausencia de dosificación en un Brut Nature: Tras el degüelle, el productor decide no añadir azúcar mediante el licor de expedición. → Sin dosificación no aumenta el dulzor final; solo contribuye el azúcar residual que haya quedado de forma natural. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La acidez alta procede del vino base y del estilo, no de omitir la dosificación."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Alta acidez y sin dulzor residual» corresponde a la ausencia de dosificación en un Brut Nature. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Alta acidez y sin dulzor residual",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la ausencia de dosificación en un Brut Nature?",
+        "remediation_signal": "Revisa la cadena causal de la ausencia de dosificación en un Brut Nature"
       }
     },
     {
@@ -15875,6 +17547,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El espumoso contiene dióxido de carbono disuelto y se prepara para el servicio.",
+        "efecto": "Los espumosos secos suelen servirse bien fríos, ajustando la temperatura según su complejidad y tiempo de crianza.",
+        "mecanismo": "El frío retiene mejor el gas, reduce la formación brusca de espuma y conserva frescura; un frío extremo puede apagar los aromas."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «6–8 °C». La clave está en la temperatura fresca de servicio de un espumoso: El frío retiene mejor el gas, reduce la formación brusca de espuma y conserva frescura; un frío extremo puede apagar los aromas. Por eso, los espumosos secos suelen servirse bien fríos, ajustando la temperatura según su complejidad y tiempo de crianza. Matiz: Los espumosos complejos pueden expresarse mejor algo menos fríos que los estilos sencillos.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «6–8 °C» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la temperatura fresca de servicio de un espumoso. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Los espumosos complejos pueden expresarse mejor algo menos fríos que los estilos sencillos.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo de la temperatura fresca de servicio de un espumoso: El espumoso contiene dióxido de carbono disuelto y se prepara para el servicio. → El frío retiene mejor el gas, reduce la formación brusca de espuma y conserva frescura; un frío extremo puede apagar los aromas. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Los espumosos complejos pueden expresarse mejor algo menos fríos que los estilos sencillos."
       }
     },
     {
@@ -16103,6 +17785,16 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Las uvas destinadas al vino base crecen en clima fresco o en un sitio fresco de altitud.",
+        "efecto": "El vino base puede combinar acidez alta, alcohol moderado y sabores frescos adecuados para la segunda fermentación y la crianza sobre lías.",
+        "mecanismo": "Las temperaturas bajas ralentizan la acumulación de azúcar y conservan la acidez natural durante la maduración."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Acidez suficiente». La clave está en el clima fresco y la calidad del vino base para espumosos: Las temperaturas bajas ralentizan la acumulación de azúcar y conservan la acidez natural durante la maduración. Por eso, el vino base puede combinar acidez alta, alcohol moderado y sabores frescos adecuados para la segunda fermentación y la crianza sobre lías. Matiz: La acidez no es el único requisito técnico; sanidad, alcohol y estabilidad del vino base también importan.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Acidez suficiente» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del clima fresco y la calidad del vino base para espumosos. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La acidez no es el único requisito técnico; sanidad, alcohol y estabilidad del vino base también importan.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo del clima fresco y la calidad del vino base para espumosos: Las uvas destinadas al vino base crecen en clima fresco o en un sitio fresco de altitud. → Las temperaturas bajas ralentizan la acumulación de azúcar y conservan la acidez natural durante la maduración. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La acidez no es el único requisito técnico; sanidad, alcohol y estabilidad del vino base también importan."
       }
     },
     {
@@ -16184,6 +17876,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El productor declara una sola cosecha seleccionada y normalmente la madura más tiempo que su Champagne sin añada estándar.",
+        "efecto": "El vino puede mostrar mayor estructura, complejidad desarrollada y potencial de guarda.",
+        "mecanismo": "La crianza prolongada sobre lías aumenta el desarrollo autolítico y la integración, mientras la fruta de un año conserva carácter de añada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Mayor complejidad, estructura y longevidad». La clave está en la selección de añada y la crianza extendida de un Champagne vintage: La crianza prolongada sobre lías aumenta el desarrollo autolítico y la integración, mientras la fruta de un año conserva carácter de añada. Por eso, el vino puede mostrar mayor estructura, complejidad desarrollada y potencial de guarda. Matiz: La comparación es con el estilo sin añada del mismo productor; una añada declarada no garantiza superioridad absoluta.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Mayor complejidad, estructura y longevidad» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la selección de añada y la crianza extendida de un Champagne vintage. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La comparación es con el estilo sin añada del mismo productor; una añada declarada no garantiza superioridad absoluta.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo de la selección de añada y la crianza extendida de un Champagne vintage: El productor declara una sola cosecha seleccionada y normalmente la madura más tiempo que su Champagne sin añada estándar. → La crianza prolongada sobre lías aumenta el desarrollo autolítico y la integración, mientras la fruta de un año conserva carácter de añada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La comparación es con el estilo sin añada del mismo productor; una añada declarada no garantiza superioridad absoluta."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Mayor complejidad, estructura y longevidad» corresponde a la selección de añada y la crianza extendida de un Champagne vintage. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Mayor complejidad, estructura y longevidad"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la selección de añada y la crianza extendida de un Champagne vintage?",
+        "remediation_signal": "Revisa la cadena causal de la selección de añada y la crianza extendida de un Champagne vintage"
       }
     },
     {
@@ -16238,6 +17952,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un vino espumoso de método tradicional permanece durante un periodo prolongado sobre las lías de la segunda fermentación.",
+        "efecto": "El vino desarrolla complejidad autolítica con aromas de pan, galleta, tostado, brioche y pastelería.",
+        "mecanismo": "Las células de levadura muertas sufren autólisis y liberan aminoácidos, péptidos, manoproteínas y otros compuestos que evolucionan con el tiempo."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Notas a pan tostado, nuez y acidez alta». La clave está en la autólisis durante la crianza sobre lías de un espumoso: Las células de levadura muertas sufren autólisis y liberan aminoácidos, péptidos, manoproteínas y otros compuestos que evolucionan con el tiempo. Por eso, el vino desarrolla complejidad autolítica con aromas de pan, galleta, tostado, brioche y pastelería. Matiz: La intensidad autolítica depende del tiempo sobre lías y no todos los Cava muestran el mismo desarrollo.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Notas a pan tostado, nuez y acidez alta» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la autólisis durante la crianza sobre lías de un espumoso. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La intensidad autolítica depende del tiempo sobre lías y no todos los Cava muestran el mismo desarrollo.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo de la autólisis durante la crianza sobre lías de un espumoso: Un vino espumoso de método tradicional permanece durante un periodo prolongado sobre las lías de la segunda fermentación. → Las células de levadura muertas sufren autólisis y liberan aminoácidos, péptidos, manoproteínas y otros compuestos que evolucionan con el tiempo. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La intensidad autolítica depende del tiempo sobre lías y no todos los Cava muestran el mismo desarrollo."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Notas a pan tostado, nuez y acidez alta» corresponde a la autólisis durante la crianza sobre lías de un espumoso. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Notas a pan tostado, nuez y acidez alta",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la autólisis durante la crianza sobre lías de un espumoso?",
+        "remediation_signal": "Revisa la cadena causal de la autólisis durante la crianza sobre lías de un espumoso"
       }
     },
     {
@@ -16564,6 +18300,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El productor declara una sola cosecha seleccionada y normalmente la madura más tiempo que su Champagne sin añada estándar.",
+        "efecto": "El vino puede mostrar mayor estructura, complejidad desarrollada y potencial de guarda.",
+        "mecanismo": "La crianza prolongada sobre lías aumenta el desarrollo autolítico y la integración, mientras la fruta de un año conserva carácter de añada."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Seco, con carácter de un solo año y crianza extendida». La clave está en la selección de añada y la crianza extendida de un Champagne vintage: La crianza prolongada sobre lías aumenta el desarrollo autolítico y la integración, mientras la fruta de un año conserva carácter de añada. Por eso, el vino puede mostrar mayor estructura, complejidad desarrollada y potencial de guarda. Matiz: El nivel de dulzor depende de la dosificación; vintage no significa automáticamente seco en todos los casos.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Seco, con carácter de un solo año y crianza extendida» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la selección de añada y la crianza extendida de un Champagne vintage. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El nivel de dulzor depende de la dosificación; vintage no significa automáticamente seco en todos los casos.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo de la selección de añada y la crianza extendida de un Champagne vintage: El productor declara una sola cosecha seleccionada y normalmente la madura más tiempo que su Champagne sin añada estándar. → La crianza prolongada sobre lías aumenta el desarrollo autolítico y la integración, mientras la fruta de un año conserva carácter de añada. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El nivel de dulzor depende de la dosificación; vintage no significa automáticamente seco en todos los casos."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Seco, con carácter de un solo año y crianza extendida» corresponde a la selección de añada y la crianza extendida de un Champagne vintage. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Seco, con carácter de un solo año y crianza extendida",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la selección de añada y la crianza extendida de un Champagne vintage?",
+        "remediation_signal": "Revisa la cadena causal de la selección de añada y la crianza extendida de un Champagne vintage"
       }
     },
     {
@@ -16719,6 +18477,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "La segunda fermentación se realiza en un tanque cerrado resistente a la presión en lugar de cada botella final.",
+        "efecto": "El espumoso conserva aromas primarios frescos, frutales y florales y puede producirse con mayor rapidez y menor coste.",
+        "mecanismo": "El acero inoxidable con temperatura controlada y un contacto relativamente corto con las lías limitan la oxidación y el desarrollo autolítico mientras retienen el CO₂ bajo presión."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Fruta blanca fresca, dulzor perceptible y acidez media». La clave está en el método de tanque y la conservación de la fruta primaria: El acero inoxidable con temperatura controlada y un contacto relativamente corto con las lías limitan la oxidación y el desarrollo autolítico mientras retienen el CO₂ bajo presión. Por eso, el espumoso conserva aromas primarios frescos, frutales y florales y puede producirse con mayor rapidez y menor coste. Matiz: El dulzor y la acidez concretos dependen de la uva, la dosificación y el equilibrio final.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Fruta blanca fresca, dulzor perceptible y acidez media» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del método de tanque y la conservación de la fruta primaria. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El dulzor y la acidez concretos dependen de la uva, la dosificación y el equilibrio final.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo del método de tanque y la conservación de la fruta primaria: La segunda fermentación se realiza en un tanque cerrado resistente a la presión en lugar de cada botella final. → El acero inoxidable con temperatura controlada y un contacto relativamente corto con las lías limitan la oxidación y el desarrollo autolítico mientras retienen el CO₂ bajo presión. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El dulzor y la acidez concretos dependen de la uva, la dosificación y el equilibrio final."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Fruta blanca fresca, dulzor perceptible y acidez media» corresponde al método de tanque y la conservación de la fruta primaria. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Fruta blanca fresca, dulzor perceptible y acidez media"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al método de tanque y la conservación de la fruta primaria?",
+        "remediation_signal": "Revisa la cadena causal del método de tanque y la conservación de la fruta primaria"
       }
     },
     {
@@ -16925,6 +18705,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un mosto aromático de Moscatel fermenta bajo presión y la fermentación se detiene antes de consumir todo el azúcar de la uva.",
+        "efecto": "El vino resulta ligeramente espumoso, dulce, de baja graduación y con aromas florales y de uva marcados.",
+        "mecanismo": "El enfriamiento y la filtración frenan la levadura, conservan azúcar residual, limitan la producción de alcohol y retienen aromas primarios y parte del dióxido de carbono."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Baja graduación alcohólica, dulzor y aromas florales». La clave está en la detención de la fermentación en Moscato d'Asti: El enfriamiento y la filtración frenan la levadura, conservan azúcar residual, limitan la producción de alcohol y retienen aromas primarios y parte del dióxido de carbono. Por eso, el vino resulta ligeramente espumoso, dulce, de baja graduación y con aromas florales y de uva marcados. Matiz: El estilo es ligeramente espumoso y no debe generalizarse a todos los vinos de Moscatel.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Baja graduación alcohólica, dulzor y aromas florales» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la detención de la fermentación en Moscato d'Asti. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El estilo es ligeramente espumoso y no debe generalizarse a todos los vinos de Moscatel.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo de la detención de la fermentación en Moscato d'Asti: Un mosto aromático de Moscatel fermenta bajo presión y la fermentación se detiene antes de consumir todo el azúcar de la uva. → El enfriamiento y la filtración frenan la levadura, conservan azúcar residual, limitan la producción de alcohol y retienen aromas primarios y parte del dióxido de carbono. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El estilo es ligeramente espumoso y no debe generalizarse a todos los vinos de Moscatel."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Baja graduación alcohólica, dulzor y aromas florales» corresponde a la detención de la fermentación en Moscato d'Asti. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Baja graduación alcohólica, dulzor y aromas florales",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la detención de la fermentación en Moscato d'Asti?",
+        "remediation_signal": "Revisa la cadena causal de la detención de la fermentación en Moscato d'Asti"
       }
     },
     {
@@ -17109,6 +18911,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se añade licor de tiraje a la mezcla de vinos base y el vino se cierra en la botella en la que después se venderá.",
+        "efecto": "La presión y las burbujas se crean en la botella final, que después permite crianza sobre lías, removido y degüelle.",
+        "mecanismo": "La levadura realiza una segunda fermentación alcohólica en esa botella cerrada, por lo que el CO₂ producido se disuelve en el vino."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Franciacorta sigue el método tradicional». La clave está en la segunda fermentación en botella del método tradicional: La levadura realiza una segunda fermentación alcohólica en esa botella cerrada, por lo que el CO₂ producido se disuelve en el vino. Por eso, la presión y las burbujas se crean en la botella final, que después permite crianza sobre lías, removido y degüelle. Matiz: La diferencia de estilo también depende de variedades, tiempo sobre lías, presión y dosificación.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Franciacorta sigue el método tradicional» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la segunda fermentación en botella del método tradicional. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La diferencia de estilo también depende de variedades, tiempo sobre lías, presión y dosificación.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo de la segunda fermentación en botella del método tradicional: Se añade licor de tiraje a la mezcla de vinos base y el vino se cierra en la botella en la que después se venderá. → La levadura realiza una segunda fermentación alcohólica en esa botella cerrada, por lo que el CO₂ producido se disuelve en el vino. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La diferencia de estilo también depende de variedades, tiempo sobre lías, presión y dosificación."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Franciacorta sigue el método tradicional» corresponde a la segunda fermentación en botella del método tradicional. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Franciacorta sigue el método tradicional",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la segunda fermentación en botella del método tradicional?",
+        "remediation_signal": "Revisa la cadena causal de la segunda fermentación en botella del método tradicional"
       }
     },
     {
@@ -17163,6 +18987,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Se separa jugo de una vinificación tinta después de un periodo de contacto con los hollejos.",
+        "efecto": "Frente a un rosado pálido de mezcla, puede resultar un vino de color más profundo, fruta más madura y mayor estructura fenólica.",
+        "mecanismo": "Antes del sangrado, el contacto extrae pigmento, sabor y parte de los compuestos fenólicos de las pieles tintas."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Más carácter tánico y fruta madura». La clave está en el sangrado para elaborar un rosado: Antes del sangrado, el contacto extrae pigmento, sabor y parte de los compuestos fenólicos de las pieles tintas. Por eso, frente a un rosado pálido de mezcla, puede resultar un vino de color más profundo, fruta más madura y mayor estructura fenólica. Matiz: Saignée no garantiza siempre más tanino; variedad, tiempo y temperatura de contacto modifican el resultado.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Más carácter tánico y fruta madura» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del sangrado para elaborar un rosado. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Saignée no garantiza siempre más tanino; variedad, tiempo y temperatura de contacto modifican el resultado.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo del sangrado para elaborar un rosado: Se separa jugo de una vinificación tinta después de un periodo de contacto con los hollejos. → Antes del sangrado, el contacto extrae pigmento, sabor y parte de los compuestos fenólicos de las pieles tintas. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Saignée no garantiza siempre más tanino; variedad, tiempo y temperatura de contacto modifican el resultado."
+      },
+      "micro_drill": {
+        "correct_index": 0,
+        "explanation": "«Más carácter tánico y fruta madura» corresponde al sangrado para elaborar un rosado. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Más carácter tánico y fruta madura",
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al sangrado para elaborar un rosado?",
+        "remediation_signal": "Revisa la cadena causal del sangrado para elaborar un rosado"
       }
     },
     {
@@ -17298,6 +19144,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "La temperatura cae bajo cero después de que hayan aparecido yemas y brotes tiernos.",
+        "efecto": "Se pierde crecimiento primario y posibles racimos florales, reduciendo de forma importante el rendimiento de la campaña.",
+        "mecanismo": "La formación de hielo daña las células vivas de brotes, hojas e inflorescencias jóvenes."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Riesgo de heladas primaverales». La clave está en el daño de las heladas primaverales sobre brotes y rendimiento: La formación de hielo daña las células vivas de brotes, hojas e inflorescencias jóvenes. Por eso, se pierde crecimiento primario y posibles racimos florales, reduciendo de forma importante el rendimiento de la campaña. Matiz: El riesgo varía con topografía, fase fenológica y condiciones de cada añada.",
+        "reviewer": "Exigencia de repaso (RA3): debes poder justificar por qué «Riesgo de heladas primaverales» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del daño de las heladas primaverales sobre brotes y rendimiento. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El riesgo varía con topografía, fase fenológica y condiciones de cada añada.",
+        "trainer": "Concepto técnico (RA3): Fija el mecanismo del daño de las heladas primaverales sobre brotes y rendimiento: La temperatura cae bajo cero después de que hayan aparecido yemas y brotes tiernos. → La formación de hielo daña las células vivas de brotes, hojas e inflorescencias jóvenes. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El riesgo varía con topografía, fase fenológica y condiciones de cada añada."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Riesgo de heladas primaverales» corresponde al daño de las heladas primaverales sobre brotes y rendimiento. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Riesgo de heladas primaverales",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al daño de las heladas primaverales sobre brotes y rendimiento?",
+        "remediation_signal": "Revisa la cadena causal del daño de las heladas primaverales sobre brotes y rendimiento"
       }
     },
     {
@@ -17974,6 +19842,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El Madeira fortificado madura con exposición al calor y al oxígeno, de forma más rápida mediante estufagem o más gradual mediante canteiro.",
+        "efecto": "El vino desarrolla notas de nuez, caramelo y fruta seca; en Malmsey, el dulzor elevado queda equilibrado por la acidez.",
+        "mecanismo": "El calor y la oxidación controlada transforman los aromas de fruta fresca, mientras la acidez natural elevada sigue siendo un elemento estructural importante."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Calentamiento prolongado en tanques o cubas». La clave está en el calor y la crianza oxidativa de Madeira: El calor y la oxidación controlada transforman los aromas de fruta fresca, mientras la acidez natural elevada sigue siendo un elemento estructural importante. Por eso, el vino desarrolla notas de nuez, caramelo y fruta seca; en Malmsey, el dulzor elevado queda equilibrado por la acidez. Matiz: Estufagem es una vía de maduración; canteiro usa calor ambiental más suave y tiempos más largos.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Calentamiento prolongado en tanques o cubas» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del calor y la crianza oxidativa de Madeira. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Estufagem es una vía de maduración; canteiro usa calor ambiental más suave y tiempos más largos.",
+        "trainer": "Concepto técnico (RA4): Fija el mecanismo del calor y la crianza oxidativa de Madeira: El Madeira fortificado madura con exposición al calor y al oxígeno, de forma más rápida mediante estufagem o más gradual mediante canteiro. → El calor y la oxidación controlada transforman los aromas de fruta fresca, mientras la acidez natural elevada sigue siendo un elemento estructural importante. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Estufagem es una vía de maduración; canteiro usa calor ambiental más suave y tiempos más largos."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Calentamiento prolongado en tanques o cubas» corresponde al calor y la crianza oxidativa de Madeira. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Calentamiento prolongado en tanques o cubas",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al calor y la crianza oxidativa de Madeira?",
+        "remediation_signal": "Revisa la cadena causal del calor y la crianza oxidativa de Madeira"
       }
     },
     {
@@ -18234,6 +20124,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El Madeira fortificado madura con exposición al calor y al oxígeno, de forma más rápida mediante estufagem o más gradual mediante canteiro.",
+        "efecto": "El vino desarrolla notas de nuez, caramelo y fruta seca; en Malmsey, el dulzor elevado queda equilibrado por la acidez.",
+        "mecanismo": "El calor y la oxidación controlada transforman los aromas de fruta fresca, mientras la acidez natural elevada sigue siendo un elemento estructural importante."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Notas de nuez, caramelo, dulzor elevado y alta acidez». La clave está en el calor y la crianza oxidativa de Madeira: El calor y la oxidación controlada transforman los aromas de fruta fresca, mientras la acidez natural elevada sigue siendo un elemento estructural importante. Por eso, el vino desarrolla notas de nuez, caramelo y fruta seca; en Malmsey, el dulzor elevado queda equilibrado por la acidez. Matiz: Malmsey describe el estilo más dulce de Madeira; otros estilos muestran distinto nivel de dulzor.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Notas de nuez, caramelo, dulzor elevado y alta acidez» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del calor y la crianza oxidativa de Madeira. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Malmsey describe el estilo más dulce de Madeira; otros estilos muestran distinto nivel de dulzor.",
+        "trainer": "Concepto técnico (RA4): Fija el mecanismo del calor y la crianza oxidativa de Madeira: El Madeira fortificado madura con exposición al calor y al oxígeno, de forma más rápida mediante estufagem o más gradual mediante canteiro. → El calor y la oxidación controlada transforman los aromas de fruta fresca, mientras la acidez natural elevada sigue siendo un elemento estructural importante. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Malmsey describe el estilo más dulce de Madeira; otros estilos muestran distinto nivel de dulzor."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Notas de nuez, caramelo, dulzor elevado y alta acidez» corresponde al calor y la crianza oxidativa de Madeira. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Notas de nuez, caramelo, dulzor elevado y alta acidez",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al calor y la crianza oxidativa de Madeira?",
+        "remediation_signal": "Revisa la cadena causal del calor y la crianza oxidativa de Madeira"
       }
     },
     {
@@ -18386,6 +20298,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "La levadura de flor (un velo de cepas de Saccharomyces cerevisiae) se forma en la superficie del vino en botas parcialmente llenas.",
+        "efecto": "El vino desarrolla carácter de crianza biológica: notas de almendra, masa de pan y levadura, color pálido, tanino bajo y protección frente a la oxidación pese a la crianza en bota.",
+        "mecanismo": "El velo protege al vino del oxígeno; la levadura metaboliza etanol y glicerol produciendo acetaldehído, y su autólisis aporta aminoácidos."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Protege de la oxidación y aporta sabores salinos». La clave está en la crianza biológica bajo velo de flor: El velo protege al vino del oxígeno; la levadura metaboliza etanol y glicerol produciendo acetaldehído, y su autólisis aporta aminoácidos. Por eso, el vino desarrolla carácter de crianza biológica: notas de almendra, masa de pan y levadura, color pálido, tanino bajo y protección frente a la oxidación pese a la crianza en bota. Matiz: La percepción salina no procede de añadir sal y varía con el vino y el contexto sensorial.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Protege de la oxidación y aporta sabores salinos» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la crianza biológica bajo velo de flor. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La percepción salina no procede de añadir sal y varía con el vino y el contexto sensorial.",
+        "trainer": "Concepto técnico (RA4): Fija el mecanismo de la crianza biológica bajo velo de flor: La levadura de flor (un velo de cepas de Saccharomyces cerevisiae) se forma en la superficie del vino en botas parcialmente llenas. → El velo protege al vino del oxígeno; la levadura metaboliza etanol y glicerol produciendo acetaldehído, y su autólisis aporta aminoácidos. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La percepción salina no procede de añadir sal y varía con el vino y el contexto sensorial."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Protege de la oxidación y aporta sabores salinos» corresponde a la crianza biológica bajo velo de flor. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Protege de la oxidación y aporta sabores salinos",
+          "Sistema de soleras y criaderas"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la crianza biológica bajo velo de flor?",
+        "remediation_signal": "Revisa la cadena causal de la crianza biológica bajo velo de flor"
       }
     },
     {
@@ -18462,6 +20396,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "El vino madura deliberadamente con un acceso controlado al oxígeno.",
+        "efecto": "La fruta fresca pierde protagonismo y pueden desarrollarse notas terciarias de frutos secos, fruta desecada, caramelo o matices sabrosos, según el estilo.",
+        "mecanismo": "Las reacciones impulsadas por el oxígeno transforman los compuestos de fruta primaria y favorecen la aparición de aromas y sabores de evolución."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Larga crianza oxidativa en toneles». La clave está en el envejecimiento oxidativo y el desarrollo de aromas terciarios: Las reacciones impulsadas por el oxígeno transforman los compuestos de fruta primaria y favorecen la aparición de aromas y sabores de evolución. Por eso, la fruta fresca pierde protagonismo y pueden desarrollarse notas terciarias de frutos secos, fruta desecada, caramelo o matices sabrosos, según el estilo. Matiz: La indicación expresa un perfil de edad, no la edad exacta de cada componente de la mezcla.",
+        "reviewer": "Exigencia de repaso (RA4): debes poder justificar por qué «Larga crianza oxidativa en toneles» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del envejecimiento oxidativo y el desarrollo de aromas terciarios. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La indicación expresa un perfil de edad, no la edad exacta de cada componente de la mezcla.",
+        "trainer": "Concepto técnico (RA4): Fija el mecanismo del envejecimiento oxidativo y el desarrollo de aromas terciarios: El vino madura deliberadamente con un acceso controlado al oxígeno. → Las reacciones impulsadas por el oxígeno transforman los compuestos de fruta primaria y favorecen la aparición de aromas y sabores de evolución. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La indicación expresa un perfil de edad, no la edad exacta de cada componente de la mezcla."
+      },
+      "micro_drill": {
+        "correct_index": 2,
+        "explanation": "«Larga crianza oxidativa en toneles» corresponde al envejecimiento oxidativo y el desarrollo de aromas terciarios. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Larga crianza oxidativa en toneles",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al envejecimiento oxidativo y el desarrollo de aromas terciarios?",
+        "remediation_signal": "Revisa la cadena causal del envejecimiento oxidativo y el desarrollo de aromas terciarios"
       }
     },
     {
@@ -18612,6 +20568,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Bacterias acéticas u otros microorganismos producen un exceso de ácidos volátiles y compuestos relacionados en un vino susceptible.",
+        "efecto": "El vino puede mostrar picor desagradable, acidez avinagrada y aromas de disolvente que enmascaran la fruta.",
+        "mecanismo": "El ácido acético aporta un carácter punzante a vinagre y el acetato de etilo puede añadir aromas de disolvente o esmalte."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es C: «Aromas a vinagre y disolvente». La clave está en la acidez volátil elevada: El ácido acético aporta un carácter punzante a vinagre y el acetato de etilo puede añadir aromas de disolvente o esmalte. Por eso, el vino puede mostrar picor desagradable, acidez avinagrada y aromas de disolvente que enmascaran la fruta. Matiz: Concentraciones bajas pueden formar parte de algunos estilos; se considera defecto cuando domina o desequilibra el vino.",
+        "reviewer": "Exigencia de repaso (RA5): debes poder justificar por qué «Aromas a vinagre y disolvente» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de la acidez volátil elevada. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: Concentraciones bajas pueden formar parte de algunos estilos; se considera defecto cuando domina o desequilibra el vino.",
+        "trainer": "Concepto técnico (RA5): Fija el mecanismo de la acidez volátil elevada: Bacterias acéticas u otros microorganismos producen un exceso de ácidos volátiles y compuestos relacionados en un vino susceptible. → El ácido acético aporta un carácter punzante a vinagre y el acetato de etilo puede añadir aromas de disolvente o esmalte. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: Concentraciones bajas pueden formar parte de algunos estilos; se considera defecto cuando domina o desequilibra el vino."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Aromas a vinagre y disolvente» corresponde a la acidez volátil elevada. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Aromas a vinagre y disolvente"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a la acidez volátil elevada?",
+        "remediation_signal": "Revisa la cadena causal de la acidez volátil elevada"
       }
     },
     {
@@ -18715,6 +20693,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un vino embotellado se almacena durante un periodo prolongado antes de su servicio.",
+        "efecto": "Disminuye el riesgo de oxidación prematura y daño por calor, permitiendo que la evolución en botella avance de forma más lenta y uniforme.",
+        "mecanismo": "Un entorno fresco, oscuro, sin vibraciones y con temperatura estable ralentiza los cambios químicos; si el cierre es de corcho natural, la posición horizontal mantiene el vino en contacto con él."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es A: «Usar tapón de rosca y temperatura estable». La clave está en las condiciones estables para la guarda en botella: Un entorno fresco, oscuro, sin vibraciones y con temperatura estable ralentiza los cambios químicos; si el cierre es de corcho natural, la posición horizontal mantiene el vino en contacto con él. Por eso, disminuye el riesgo de oxidación prematura y daño por calor, permitiendo que la evolución en botella avance de forma más lenta y uniforme. Matiz: El tapón de rosca no revierte oxidación previa; luz, calor, tiempo y calidad inicial siguen siendo importantes.",
+        "reviewer": "Exigencia de repaso (RA5): debes poder justificar por qué «Usar tapón de rosca y temperatura estable» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo de las condiciones estables para la guarda en botella. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: El tapón de rosca no revierte oxidación previa; luz, calor, tiempo y calidad inicial siguen siendo importantes.",
+        "trainer": "Concepto técnico (RA5): Fija el mecanismo de las condiciones estables para la guarda en botella: Un vino embotellado se almacena durante un periodo prolongado antes de su servicio. → Un entorno fresco, oscuro, sin vibraciones y con temperatura estable ralentiza los cambios químicos; si el cierre es de corcho natural, la posición horizontal mantiene el vino en contacto con él. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: El tapón de rosca no revierte oxidación previa; luz, calor, tiempo y calidad inicial siguen siendo importantes."
+      },
+      "micro_drill": {
+        "correct_index": 1,
+        "explanation": "«Usar tapón de rosca y temperatura estable» corresponde a las condiciones estables para la guarda en botella. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Usar tapón de rosca y temperatura estable",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde a las condiciones estables para la guarda en botella?",
+        "remediation_signal": "Revisa la cadena causal de las condiciones estables para la guarda en botella"
       }
     },
     {
@@ -19591,6 +21591,28 @@ window.PREGUNTAS_BANK = {
         "training_item_only": true,
         "official_wset_question": false,
         "disclaimer": "PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET"
+      },
+      "causal_chain": {
+        "causa": "Un vino apto para guarda se sella con corcho natural y se conserva en condiciones estables.",
+        "efecto": "La evolución química lenta puede favorecer integración y aromas terciarios, pero el corcho no garantiza una mejora y un aporte excesivo o variable puede causar oxidación prematura.",
+        "mecanismo": "El cierre y el oxígeno inicial del espacio de cabeza exponen al vino a cantidades muy pequeñas de oxígeno con el tiempo, aunque la transmisión varía entre corchos y condiciones de almacenamiento."
+      },
+      "feedback_by_mode": {
+        "mentor": "La respuesta correcta es B: «Su estructura porosa que permite una micro-oxigenación lenta y gradual del vino». La clave está en el corcho natural y la evolución lenta en botella: El cierre y el oxígeno inicial del espacio de cabeza exponen al vino a cantidades muy pequeñas de oxígeno con el tiempo, aunque la transmisión varía entre corchos y condiciones de almacenamiento. Por eso, la evolución química lenta puede favorecer integración y aromas terciarios, pero el corcho no garantiza una mejora y un aporte excesivo o variable puede causar oxidación prematura. Matiz: La porosidad no garantiza mejora y existe variación entre corchos; demasiado oxígeno acelera la oxidación.",
+        "reviewer": "Exigencia de repaso (RA5): debes poder justificar por qué «Su estructura porosa que permite una micro-oxigenación lenta y gradual del vino» es correcta y por qué las otras tres opciones no lo son, citando el mecanismo del corcho natural y la evolución lenta en botella. Si no puedes reconstruir la cadena completa sin ver las opciones, repasa este concepto en tu material WSET L3. Matiz: La porosidad no garantiza mejora y existe variación entre corchos; demasiado oxígeno acelera la oxidación.",
+        "trainer": "Concepto técnico (RA5): Fija el mecanismo del corcho natural y la evolución lenta en botella: Un vino apto para guarda se sella con corcho natural y se conserva en condiciones estables. → El cierre y el oxígeno inicial del espacio de cabeza exponen al vino a cantidades muy pequeñas de oxígeno con el tiempo, aunque la transmisión varía entre corchos y condiciones de almacenamiento. En el examen, identifica este patrón causa→mecanismo→efecto antes de mirar las opciones. Matiz: La porosidad no garantiza mejora y existe variación entre corchos; demasiado oxígeno acelera la oxidación."
+      },
+      "micro_drill": {
+        "correct_index": 3,
+        "explanation": "«Su estructura porosa que permite una micro-oxigenación lenta y gradual del vino» corresponde al corcho natural y la evolución lenta en botella. Las demás afirmaciones son correctas, pero describen otros mecanismos.",
+        "options": [
+          "Protege al vino del oxígeno y desarrolla sabores únicos",
+          "Adición de aguardiente vínico",
+          "Estructura potente y necesidad de guarda",
+          "Su estructura porosa que permite una micro-oxigenación lenta y gradual del vino"
+        ],
+        "prompt": "Consolidación: ¿cuál de estas afirmaciones corresponde al corcho natural y la evolución lenta en botella?",
+        "remediation_signal": "Revisa la cadena causal del corcho natural y la evolución lenta en botella"
       }
     },
     {
