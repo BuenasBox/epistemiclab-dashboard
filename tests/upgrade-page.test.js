@@ -7,6 +7,7 @@ const {
   PLAN_CATALOG,
   getUpgradeErrorModel,
   getPlanCatalog,
+  initializeUpgradePage,
   showUpgradeModal,
 } = require('../upgrade/upgrade.js');
 const {
@@ -77,6 +78,16 @@ test('upgrade page renders Spanish plan content and placeholder CTAs', () => {
   assert.match(html, /\.\/upgrade\.js/);
   assert.doesNotMatch(html, /Stripe|PayPal|checkout|payment/i);
   assert.doesNotMatch(html, /Freemium|\bfree\b/i);
+});
+
+test('upgrade page cache-busts the modal JavaScript and stylesheet', () => {
+  const html = fs.readFileSync(
+    path.join(__dirname, '..', 'upgrade', 'index.html'),
+    'utf8',
+  );
+
+  assert.match(html, /\.\/upgrade\.css\?v=20260615-modal2/);
+  assert.match(html, /\.\/upgrade\.js\?v=20260615-modal2/);
 });
 
 test('upgrade page is public and does not initialize an access gate', () => {
@@ -221,4 +232,153 @@ test('request payload uses exactly the migration insert columns', async () => {
     'requested_plan',
     'user_id',
   ]);
+});
+
+function element(tagName) {
+  return {
+    tagName: tagName.toUpperCase(),
+    children: [],
+    dataset: {},
+    hidden: false,
+    disabled: false,
+    listeners: {},
+    textContent: '',
+    appendChild(child) {
+      this.children.push(child);
+      child.parentNode = this;
+      return child;
+    },
+    replaceChildren() {
+      this.children = [];
+    },
+    addEventListener(type, listener) {
+      this.listeners[type] = listener;
+    },
+    closest(selector) {
+      if (
+        selector === '[data-upgrade-request]'
+        && this.dataset.upgradeRequest
+      ) return this;
+      if (
+        selector === '[data-upgrade-modal-close]'
+        && this.dataset.upgradeModalClose
+      ) return this;
+      return this.parentNode && this.parentNode.closest
+        ? this.parentNode.closest(selector)
+        : null;
+    },
+  };
+}
+
+function renderedUpgradePageFixture() {
+  const grid = element('section');
+  const feedback = element('p');
+  const modal = element('div');
+  modal.hidden = true;
+  modal.title = element('h2');
+  modal.message = element('p');
+  modal.login = element('a');
+  modal.querySelector = (selector) => ({
+    '[data-upgrade-modal-title]': modal.title,
+    '[data-upgrade-modal-message]': modal.message,
+    '[data-upgrade-modal-login]': modal.login,
+  })[selector] || null;
+
+  return {
+    grid,
+    feedback,
+    modal,
+    document: {
+      createElement: element,
+      querySelector(selector) {
+        return {
+          '[data-plan-grid]': grid,
+          '[data-upgrade-feedback]': feedback,
+          '[data-upgrade-modal]': modal,
+        }[selector] || null;
+      },
+    },
+  };
+}
+
+function accessFixture(result) {
+  return {
+    SessionStore: {
+      createSessionStore() {
+        return {};
+      },
+    },
+    SupabaseAuthProvider: {
+      createSupabaseAuthProvider() {
+        return {
+          getClient() {
+            return Promise.resolve({});
+          },
+        };
+      },
+    },
+    AuthProvider: {
+      createAuthProvider() {
+        return {
+          resolve() {
+            return Promise.resolve({
+              authentication: { status: 'authenticated' },
+              identity: { user_id: 'user-1' },
+              plan: { code: 'demo' },
+            });
+          },
+        };
+      },
+    },
+    UpgradeRequestStore: {
+      createUpgradeRequestStore() {
+        return {
+          create() {
+            return result;
+          },
+        };
+      },
+    },
+  };
+}
+
+async function clickRenderedRequestButton(page, button) {
+  page.grid.listeners.click({ target: button });
+  await new Promise((resolve) => setImmediate(resolve));
+}
+
+test('clicking every rendered request button shows the modal on failure', async () => {
+  const page = renderedUpgradePageFixture();
+  initializeUpgradePage(page.document, {
+    access: accessFixture(Promise.reject({
+      code: '42501',
+      message: 'raw upgrade_requests RLS error',
+    })),
+  });
+  const buttons = page.grid.children
+    .map((card) => card.children.at(-1))
+    .filter((button) => button.dataset.upgradeRequest);
+
+  assert.equal(buttons.length, 2);
+  for (const button of buttons) {
+    page.modal.hidden = true;
+    await clickRenderedRequestButton(page, button);
+    assert.equal(page.modal.hidden, false);
+    assert.equal(page.modal.dataset.kind, 'error');
+    assert.doesNotMatch(page.modal.message.textContent, /RLS|upgrade_requests/i);
+  }
+});
+
+test('clicking a rendered request button shows the modal on success', async () => {
+  const page = renderedUpgradePageFixture();
+  initializeUpgradePage(page.document, {
+    access: accessFixture(Promise.resolve({ id: 'request-1' })),
+  });
+  const premiumButton = page.grid.children[1].children.at(-1);
+
+  await clickRenderedRequestButton(page, premiumButton);
+
+  assert.equal(page.modal.hidden, false);
+  assert.equal(page.modal.dataset.kind, 'success');
+  assert.equal(page.modal.title.textContent, 'Solicitud enviada');
 });
