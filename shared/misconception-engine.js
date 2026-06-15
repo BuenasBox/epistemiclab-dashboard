@@ -15,6 +15,8 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
 
+  var INSIGHT_STORAGE_KEY = 'wset_misconception_insights_v1';
+
   /**
    * Misconception Catalog (Rules-based)
    * Each misconception has: trigger_patterns, keywords, severity_multiplier
@@ -282,12 +284,118 @@
     };
   }
 
+  function adaptMisconceptionInsights(source, sessionId) {
+    var raw = source && source.misconception_insights
+      ? source.misconception_insights
+      : source;
+    var rows = [];
+
+    if (Array.isArray(raw)) {
+      rows = raw;
+    } else if (raw && raw.recurrent_misconceptions) {
+      rows = Object.keys(raw.recurrent_misconceptions).map(function (id) {
+        var legacy = raw.recurrent_misconceptions[id] || {};
+        return {
+          misconception_id: id,
+          active: legacy.resolved !== true,
+          confidence_label: evidenceLabel(
+            legacy.hit_count || legacy.hits || legacy.evidence_count || 0,
+            legacy.session_count || 0
+          ),
+          evidence_count: legacy.hit_count || legacy.hits || legacy.evidence_count || 0,
+          session_count: legacy.session_count || 0,
+          student_statement: legacy.student_statement ||
+            (legacy.coaching_content && legacy.coaching_content.confusion_statement) || '',
+          coaching: legacy.coaching || {
+            why_it_matters: legacy.why_it_matters || '',
+            what_is_confused: (legacy.coaching_content && legacy.coaching_content.confusion_statement) || '',
+            evidence_triggered: legacy.evidence_trace || [],
+            practice_next: legacy.practice_next || {},
+            improvement_signal: (legacy.coaching_content && legacy.coaching_content.improvement_signal) || ''
+          },
+          recommendation: legacy.recommendation || {}
+        };
+      });
+    }
+
+    return rows.filter(function (row) {
+      if (!row || row.active === false) return false;
+      if (sessionId && !hasSessionEvidence(row, sessionId)) return false;
+      return !!(row.student_statement || (row.coaching && row.coaching.what_is_confused));
+    }).map(function (row) {
+      var coaching = row.coaching || {};
+      return {
+        id: row.misconception_id || row.id || '',
+        statement: row.student_statement || coaching.what_is_confused || '',
+        confidence_label: normalizeEvidenceLabel(row.confidence_label),
+        evidence_count: Number(row.evidence_count || 0),
+        session_count: Number(row.session_count || 0),
+        why_it_matters: coaching.why_it_matters || '',
+        evidence_trace: Array.isArray(coaching.evidence_triggered)
+          ? coaching.evidence_triggered.slice()
+          : [],
+        practice_next: coaching.practice_next || {},
+        improvement_signal: coaching.improvement_signal || '',
+        recommendation: row.recommendation || {},
+        governance: {
+          formative_only: true,
+          safe_for_examiner: false,
+          examiner_scoring_allowed: false
+        }
+      };
+    }).sort(function (a, b) {
+      var rank = { high: 3, medium: 2, low: 1, none: 0 };
+      return (rank[b.confidence_label] - rank[a.confidence_label]) ||
+        (b.evidence_count - a.evidence_count) ||
+        a.id.localeCompare(b.id);
+    });
+  }
+
+  function loadMisconceptionInsights(storage, injectedState, sessionId) {
+    if (injectedState) return adaptMisconceptionInsights(injectedState, sessionId);
+    if (!storage || typeof storage.getItem !== 'function') return [];
+    try {
+      var parsed = JSON.parse(storage.getItem(INSIGHT_STORAGE_KEY) || '[]');
+      return adaptMisconceptionInsights(parsed, sessionId);
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function evidenceLabel(count, sessionCount) {
+    count = Number(count || 0);
+    sessionCount = Number(sessionCount || 0);
+    if (count >= 3 && sessionCount >= 2) return 'high';
+    if (count >= 2) return 'medium';
+    if (count >= 1) return 'low';
+    return 'none';
+  }
+
+  function normalizeEvidenceLabel(value) {
+    value = String(value || 'none').toLowerCase();
+    return ['low', 'medium', 'high'].indexOf(value) !== -1 ? value : 'none';
+  }
+
+  function hasSessionEvidence(row, sessionId) {
+    var coaching = row.coaching || {};
+    var evidence = Array.isArray(coaching.evidence_triggered)
+      ? coaching.evidence_triggered
+      : [];
+    return evidence.some(function (event) {
+      return String(event.session_id || '') === String(sessionId);
+    });
+  }
+
   // Public API
   return {
+    INSIGHT_STORAGE_KEY: INSIGHT_STORAGE_KEY,
     MISCONCEPTION_CATALOG: MISCONCEPTION_CATALOG,
+    adaptMisconceptionInsights: adaptMisconceptionInsights,
     detectMisconceptions: detectMisconceptions,
+    evidenceLabel: evidenceLabel,
     getMisconceptionRecommendations: getMisconceptionRecommendations,
     trackMisconceptionPersistence: trackMisconceptionPersistence,
-    getMisconceptionSummary: getMisconceptionSummary
+    getMisconceptionSummary: getMisconceptionSummary,
+    loadMisconceptionInsights: loadMisconceptionInsights
   };
 });

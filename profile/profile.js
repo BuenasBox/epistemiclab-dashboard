@@ -22,6 +22,15 @@
     or: 'Open Response Lab',
   };
 
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function validDate(value) {
     if (
       value === null
@@ -233,50 +242,42 @@
   }
 
   // M.5: Build and render misconception insights
-  function buildAndRenderMisconceptionInsights() {
-    if (typeof window.LI !== 'object') {
-      return '';
+  function renderMisconceptionInsights(insights) {
+    insights = Array.isArray(insights) ? insights : [];
+    if (insights.length === 0) {
+      return '<div style="color:#aab4bd;font-size:14px;padding:16px">Aún no hay evidencia suficiente de concepciones recurrentes.</div>';
     }
+    var labels = { low: 'baja', medium: 'media', high: 'alta' };
+    var html = '<div style="display:flex;flex-direction:column;gap:12px">';
+    insights.slice(0, 3).forEach(function(insight) {
+      var label = labels[insight.confidence_label] || 'baja';
+      html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:14px">' +
+        '<div style="color:#e0b15b;font-weight:600;margin-bottom:8px;font-size:13px">Patrón conceptual observado</div>' +
+        '<div style="color:#f3f6f8;margin-bottom:8px;line-height:1.5">' + escapeHtml(insight.statement) + '</div>' +
+        '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">Evidencia: ' +
+          insight.evidence_count + ' respuesta(s) · Frecuencia de evidencia: ' + label + '</div>' +
+        (insight.why_it_matters
+          ? '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">' + escapeHtml(insight.why_it_matters) + '</div>'
+          : '') +
+        '<div style="color:#75818c;font-size:12px;padding:8px;background:#101418;border-radius:4px">' +
+          escapeHtml(insight.improvement_signal || 'Una respuesta correcta y explicada reducirá este patrón activo.') +
+        '</div></div>';
+    });
+    return html + '</div>';
+  }
 
+  function buildAndRenderMisconceptionInsights(source) {
     try {
-      var memory = window.LI.pedagogicalMemory && typeof window.LI.pedagogicalMemory === 'function'
-        ? window.LI.pedagogicalMemory()
-        : null;
-
-      if (!memory || !memory.recurrent_misconceptions) {
-        return '<div style="color:#aab4bd;font-size:14px;padding:16px">Aún no detectamos concepciones frecuentes. Sigue practicando para obtener insights.</div>';
-      }
-
-      var misconceptions = memory.recurrent_misconceptions || {};
-      var items = Object.keys(misconceptions);
-
-      if (items.length === 0) {
-        return '<div style="color:#aab4bd;font-size:14px;padding:16px">Aún no detectamos concepciones frecuentes. Sigue practicando para obtener insights.</div>';
-      }
-
-      var html = '<div style="display:flex;flex-direction:column;gap:12px">';
-
-      items.slice(0, 3).forEach(function(miscId) {
-        var count = misconceptions[miscId].hit_count || 0;
-        var confidence = misconceptions[miscId].confidence || 0;
-        var coaching = misconceptions[miscId].coaching_content || {};
-
-        var confusionStmt = coaching.confusion_statement || 'Concepto confundido';
-        var improvement = coaching.improvement_signal || 'Practica preguntas similares';
-
-        html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:14px">' +
-          '<div style="color:#e0b15b;font-weight:600;margin-bottom:8px;font-size:13px">⚠ Concepto frecuente</div>' +
-          '<div style="color:#f3f6f8;margin-bottom:8px;line-height:1.5">' + confusionStmt + '</div>' +
-          '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">Detectado ' + count + ' veces · Confianza: ' + Math.round(confidence * 100) + '%</div>' +
-          '<div style="color:#75818c;font-size:12px;padding:8px;background:#101418;border-radius:4px">' + improvement + '</div>' +
-          '</div>';
-      });
-
-      html += '</div>';
-      return html;
+      if (typeof root.MisconceptionEngine !== 'object') return renderMisconceptionInsights([]);
+      var injected = source || root.__MISCONCEPTION_INSIGHTS__ || null;
+      var insights = root.MisconceptionEngine.loadMisconceptionInsights(
+        root.localStorage,
+        injected
+      );
+      return renderMisconceptionInsights(insights);
     } catch (e) {
       console.warn('[M.5] Misconception Insights error (non-blocking):', e);
-      return '';
+      return renderMisconceptionInsights([]);
     }
   }
 
@@ -791,5 +792,7 @@
     renderRemediationCard: renderRemediationCard,
     getRemediationPlan: getRemediationPlan,
     renderLearningLoopCard: renderLearningLoopCard,
+    buildAndRenderMisconceptionInsights: buildAndRenderMisconceptionInsights,
+    renderMisconceptionInsights: renderMisconceptionInsights,
   };
 });
