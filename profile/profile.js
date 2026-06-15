@@ -149,6 +149,89 @@
     }
   }
 
+  // Y.3.3: Build and render learning analytics
+  function buildAndRenderLearningAnalytics() {
+    if (typeof window.LI !== 'object' || typeof window.LearningAnalytics !== 'object') {
+      return '';
+    }
+
+    try {
+      var weakSet = window.LI.weakSet();
+      if (!weakSet) return '';
+
+      // Get session history (from localStorage or LI)
+      var sessionHistory = weakSet.sessionHistory || [];
+
+      // Compute analytics
+      var analytics = window.LearningAnalytics.computeAnalytics(weakSet, sessionHistory);
+      if (!analytics) return '';
+
+      // Render dashboard
+      return window.LearningAnalytics.renderAnalyticsDashboard(analytics);
+    } catch (e) {
+      console.warn('[Y.3.3] Learning Analytics error (non-blocking):', e);
+      return '';
+    }
+  }
+
+  // Y.3.4: Build and render pedagogical coaching
+  function buildAndRenderPedagogicalCoaching() {
+    if (typeof window.LI !== 'object' || typeof window.PedagogicalCoachingEngine !== 'object') {
+      return '';
+    }
+
+    try {
+      var weakSet = window.LI.weakSet();
+      if (!weakSet) return '';
+
+      // Get coaching signals
+      var orCoaching = {}; // Would come from OR history if available
+      var satCoaching = {}; // Would come from SAT history if available
+      var analytics = {};
+
+      // Build integrated coaching
+      var coaching = window.PedagogicalCoachingEngine.buildIntegratedCoaching(
+        orCoaching,
+        satCoaching,
+        analytics,
+        weakSet
+      );
+
+      if (!coaching) return '';
+
+      // Render coaching card
+      return window.PedagogicalCoachingEngine.renderIntegratedCoachingCard(coaching);
+    } catch (e) {
+      console.warn('[Y.3.4] Pedagogical Coaching error (non-blocking):', e);
+      return '';
+    }
+  }
+
+  // Y.3.5: Build and render readiness indicators
+  function buildAndRenderReadinessIndicators() {
+    if (typeof window.LI !== 'object' || typeof window.ReadinessIndicators !== 'object') {
+      return '';
+    }
+
+    try {
+      var weakSet = window.LI.weakSet();
+      if (!weakSet) return '';
+
+      // Get session history
+      var sessionHistory = weakSet.sessionHistory || [];
+
+      // Compute readiness
+      var indicators = window.ReadinessIndicators.computeReadinessIndicators(weakSet, sessionHistory);
+      if (!indicators) return '';
+
+      // Render indicators
+      return window.ReadinessIndicators.renderReadinessIndicators(indicators);
+    } catch (e) {
+      console.warn('[Y.3.5] Readiness Indicators error (non-blocking):', e);
+      return '';
+    }
+  }
+
   // Y.1.1: Render remediation card
   function renderRemediationCard() {
     var plan = getRemediationPlan();
@@ -591,6 +674,33 @@
         var dashboardHtml = buildAndRenderDashboard();
         if (dashboardHtml) {
           dashboardPanel.innerHTML = dashboardHtml;
+        }
+      }
+
+      // Y.3.3: Render learning analytics
+      var analyticsPanel = root.document.querySelector('[data-learning-analytics]');
+      if (analyticsPanel) {
+        var analyticsHtml = buildAndRenderLearningAnalytics();
+        if (analyticsHtml) {
+          analyticsPanel.innerHTML = analyticsHtml;
+        }
+      }
+
+      // Y.3.4: Render pedagogical coaching
+      var coachingPanel = root.document.querySelector('[data-pedagogical-coaching]');
+      if (coachingPanel) {
+        var coachingHtml = buildAndRenderPedagogicalCoaching();
+        if (coachingHtml) {
+          coachingPanel.innerHTML = coachingHtml;
+        }
+      }
+
+      // Y.3.5: Render readiness indicators
+      var readinessPanel = root.document.querySelector('[data-readiness-indicators]');
+      if (readinessPanel) {
+        var readinessHtml = buildAndRenderReadinessIndicators();
+        if (readinessHtml) {
+          readinessPanel.innerHTML = readinessHtml;
         }
       }
     };
