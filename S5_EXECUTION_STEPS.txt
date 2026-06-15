@@ -1,0 +1,130 @@
+FASE S5 — EJECUCIÓN DE MIGRACIÓN DE CONOCIMIENTO PEDAGÓGICO
+
+OBJETIVO FINAL:
+Zero pedagogical knowledge in frontend.
+100% backend-served via authenticated RPC/Edge Functions.
+
+=== FASE S5.1: INVENTARIO (COMPLETADA) ===
+✅ Identificadas 13 archivos críticos
+✅ Clasificadas por criticidad
+✅ Evaluado riesgo de exposición
+✅ Priorizada SBA > OR > Adaptive > SAT
+
+=== FASE S5.2: INFRAESTRUCTURA (COMPLETADA) ===
+✅ Schema SQL: 7 tablas + RLS policies
+✅ Edge Functions: get-sba-bank, get-or-bank
+✅ Migration tools: migrate-sba-bank.js, migrate-or-bank.js
+✅ Validation tool: validate-no-exposure.js
+✅ Tests: s5-knowledge-protection.test.js
+
+=== FASE S5.3: DEPLOYMENT (PRÓXIMO) ===
+
+PASO 1: Aplicar schema SQL a Supabase (producción)
+COMANDO: supabase db push migrations/0001_pedagogical_knowledge.sql
+
+PASO 2: Validar tablas existen
+COMANDO: psql -h api.supabase.co -U postgres -d postgres -c "SELECT * FROM sba_bank LIMIT 1"
+
+PASO 3: Importar datos críticos
+COMANDO: node tools/migrate-sba-bank.js
+COMANDO: node tools/migrate-or-bank.js
+
+PASO 4: Validar integridad
+COMANDO: SELECT COUNT(*) FROM sba_bank -- debe ser 670
+COMANDO: SELECT COUNT(*) FROM or_bank -- debe ser 106
+
+PASO 5: Desplegar Edge Functions
+COMANDO: supabase functions deploy get-sba-bank
+COMANDO: supabase functions deploy get-or-bank
+
+PASO 6: Testear acceso autenticado
+curl -H "Authorization: Bearer $TOKEN" \
+  https://api.supabase.co/functions/v1/get-sba-bank?limit=5
+
+PASO 7: Validar no hay exposición
+COMANDO: node tools/validate-no-exposure.js
+
+=== FASE S5.4-S5.6: FRONTEND REFACTOR (DESPUÉS DE DEPLOY) ===
+
+1. Actualizar diagnostic-sba/index.html
+   - Cambiar: window.PREGUNTAS_BANK → fetch GET /get-sba-bank
+   - Cambiar: preguntas_data.js → nunca se carga
+
+2. Actualizar adaptive-session/index.html
+   - Cambiar: window.ADAPTIVE_BANK_DATA → fetch GET /get-adaptive-bank
+   - Cambiar: session_bank.js → nunca se carga
+
+3. Actualizar open-response-lab/index.html
+   - Cambiar: window.OPEN_RESPONSE_LAB_PAYLOAD → fetch GET /get-or-bank
+   - Cambiar: lab_payload.js → nunca se carga
+
+4. Agregar .gitignore entries
+   /diagnostic-sba/preguntas_data.js
+   /open-response-lab/lab_payload.js
+   /adaptive-session/session_bank.js
+   /shared/sat-wine-data.js
+
+=== FASE S5.7: VALIDACIÓN FINAL ===
+
+TEST 1: DevTools no expone corpus
+- Abrir DevTools → Network tab
+- Verifica: NO hay GET a archivos .js de banco
+- Verifica: SÍ hay GET a /get-sba-bank (autenticado)
+
+TEST 2: JavaScript no contiene bancos
+- Inspect: preguntas_data.js does NOT contain 670 items
+- Inspect: lab_payload.js does NOT contain 106 items
+- Verifica: Frontend JS size < 500KB (vs 61KB+ banks)
+
+TEST 3: Usuario no autenticado = cero acceso
+- Sin token JWT → GET /get-sba-bank returns 401
+- Sin plan válido → GET /get-sba-bank returns 403
+
+TEST 4: Usuario autenticado recibe solo datos permitidos
+- Con token + demo plan → GET returns preguntas sin respuestas
+- Con token + premium plan → GET returns preguntas sin respuestas
+- Con token + admin plan → POST /get-sba-bank returns admin_data
+
+=== EVIDENCIA TÉCNICA ===
+
+Antes (VULNERABLE):
+- window.PREGUNTAS_BANK en JavaScript: 670 items visibles
+- window.OPEN_RESPONSE_LAB_PAYLOAD en JavaScript: 106 items visibles
+- window.ADAPTIVE_BANK_DATA en JavaScript: 119 items visibles
+- DevTools → Application → preguntas_data.js: COMPLETO
+
+Después (PROTEGIDO):
+- window.PREGUNTAS_BANK === undefined
+- GET /get-sba-bank returns items[] sin correct_index
+- GET sin autenticación returns 401
+- DevTools → Network → get-sba-bank: datos con watermark, no banco
+
+=== RIESGO ELIMINADO ===
+
+✅ SBA bank (670 items) — NO reconstruible sin backend
+✅ OR bank (106 items) — NO reconstruible sin backend
+✅ Adaptive bank (119 items) — NO reconstruible sin backend
+✅ SAT wines — NO reconstruible sin backend
+✅ Mentor coaching — NO visible en JavaScript
+✅ Misconceptions — NO visible en JavaScript
+✅ Correct answers — NO pre-submission, watermarked post-submission
+
+=== COMMITS GENERADOS ===
+
+1. cc9db71 — fix(open-response-lab): handle undefined session/item (BUG FIX)
+2. deabfd2 — S5.1-S5.3: Pedagogical knowledge protection infrastructure
+
+=== PRÓXIMOS COMMITS (POST-DEPLOY) ===
+
+3. S5.4: Remove SBA bank from frontend + migrate to API
+4. S5.5: Remove OR bank from frontend + migrate to API
+5. S5.6: Remove Adaptive bank from frontend + migrate to API
+6. S5.7: Validation suite + deployment verification
+
+=== ESTADO ACTUAL ===
+
+Código preparado: ✅
+Tests preparados: ✅
+Migraciones preparadas: ✅
+Frontend listo para refactor: ✅
+Awaiting: Supabase deployment de schema + Edge Functions
