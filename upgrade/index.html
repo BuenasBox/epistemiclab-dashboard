@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Planes de acceso · EpistemicLab</title>
-  <link rel="stylesheet" href="./upgrade.css?v=20260615-pending3">
+  <link rel="stylesheet" href="./upgrade.css?v=20260615-codes4">
   <script src="../shared/session-store.js"></script>
   <script src="../shared/supabase-public-config.js"></script>
   <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
   <script src="../shared/auth-provider.js"></script>
   <script src="../shared/upgrade-request-store.js?v=20260615-pending3"></script>
-  <script src="./upgrade.js?v=20260615-pending3"></script>
+  <script src="../shared/access-code-store.js?v=20260615-codes4"></script>
+  <script src="./upgrade.js?v=20260615-codes4"></script>
 </head>
 <body>
   <main class="upgrade-shell">
@@ -57,6 +58,28 @@
       </article>
     </section>
     <p class="upgrade-feedback" data-upgrade-feedback role="status"></p>
+
+    <section class="access-code-panel">
+      <div>
+        <p class="upgrade-eyebrow">Activación manual</p>
+        <h2>Tengo un código de acceso</h2>
+        <p>
+          Introduce el código enviado por el administrador para activar tu
+          plan aprobado.
+        </p>
+      </div>
+      <form class="access-code-form" data-access-code-form>
+        <label>
+          <span>Código de acceso</span>
+          <input
+            name="access_code"
+            autocomplete="one-time-code"
+            required
+          >
+        </label>
+        <button type="submit">Activar acceso</button>
+      </form>
+    </section>
   </main>
   <div
     class="upgrade-modal"
@@ -78,6 +101,9 @@
         <button type="button" data-upgrade-modal-close>Entendido</button>
         <a href="/login/" data-upgrade-modal-login hidden>
           Iniciar sesión
+        </a>
+        <a href="/profile/" data-upgrade-modal-profile hidden>
+          Ir a mi perfil
         </a>
       </div>
     </section>

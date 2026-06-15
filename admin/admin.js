@@ -265,6 +265,7 @@
     var adminMode = 'mock';
     var usersCache = [];
     var requestsCache = [];
+    var codesCache = [];
 
     var denied = documentRef.querySelector('[data-admin-denied]');
     var deniedMessage = documentRef.querySelector(
@@ -277,6 +278,14 @@
     var usersList = documentRef.querySelector('[data-users-list]');
     var auditList = documentRef.querySelector('[data-audit-list]');
     var upgradeRequests = documentRef.querySelector('[data-upgrade-requests]');
+    var accessCodes = documentRef.querySelector('[data-access-codes]');
+    var generatedCode = documentRef.querySelector('[data-generated-code]');
+    var generatedCodeValue = documentRef.querySelector(
+      '[data-generated-code-value]'
+    );
+    var copyGeneratedCode = documentRef.querySelector(
+      '[data-copy-generated-code]'
+    );
     var analyticsRoot = documentRef.querySelector('[data-access-analytics]');
     var studentDashboard = documentRef.querySelector(
       '[data-student-dashboard]'
@@ -474,6 +483,19 @@
       return request.profiles || {};
     }
 
+    function createSelect(name, values, selected) {
+      var select = documentRef.createElement('select');
+      select.dataset.field = name;
+      values.forEach(function (item) {
+        var option = documentRef.createElement('option');
+        option.value = String(item.value);
+        option.textContent = item.label;
+        option.selected = item.value === selected;
+        select.appendChild(option);
+      });
+      return select;
+    }
+
     function renderUpgradeRequests() {
       if (!upgradeRequests) return Promise.resolve([]);
       upgradeRequests.replaceChildren();
@@ -516,10 +538,19 @@
 
           actions.className = 'request-card__actions';
           if (request.status === 'pending') {
+            actions.appendChild(createSelect('target_plan', [
+              { value: 'premium', label: 'Premium' },
+              { value: 'full_access', label: 'Acceso Completo' },
+            ], request.requested_plan));
+            actions.appendChild(createSelect('duration_days', [
+              { value: 30, label: '30 días' },
+              { value: 90, label: '90 días' },
+              { value: 365, label: '1 año' },
+            ], 30));
             actions.appendChild(createButton(
-              'Aprobar',
+              'Generar código',
               'button button--small button--primary',
-              'request_approved',
+              'request_generate',
               request.id
             ));
             actions.appendChild(createButton(
@@ -551,6 +582,84 @@
         );
         return [];
       });
+    }
+
+    function renderAccessCodes() {
+      if (!accessCodes) return Promise.resolve([]);
+      accessCodes.replaceChildren();
+      var operation = typeof userStore.listAccessCodes === 'function'
+        ? userStore.listAccessCodes()
+        : Promise.resolve([]);
+
+      return Promise.resolve(operation).then(function (codes) {
+        codesCache = codes || [];
+        if (!codesCache.length) {
+          var empty = documentRef.createElement('p');
+          empty.className = 'empty';
+          empty.textContent = 'No hay códigos generados.';
+          accessCodes.appendChild(empty);
+          return codesCache;
+        }
+
+        codesCache.forEach(function (code) {
+          var row = documentRef.createElement('article');
+          var actions = documentRef.createElement('div');
+          row.className = 'request-card';
+          row.appendChild(auditCell('Código', code.code));
+          row.appendChild(auditCell(
+            'Usuario / email',
+            code.target_email || code.target_user_id
+          ));
+          row.appendChild(auditCell(
+            'Plan',
+            PLAN_LABELS[code.target_plan] || code.target_plan
+          ));
+          row.appendChild(auditCell('Estado', code.status));
+          row.appendChild(auditCell(
+            'Vence',
+            formatDisplayDate(code.expires_at)
+          ));
+          row.appendChild(auditCell(
+            'Canjeado',
+            formatDisplayDate(code.redeemed_at)
+          ));
+          actions.className = 'request-card__actions';
+          actions.appendChild(createButton(
+            'Copiar',
+            'button button--small',
+            'code_copy',
+            code.id
+          ));
+          if (code.status === 'active') {
+            actions.appendChild(createButton(
+              'Revocar',
+              'button button--small button--danger',
+              'code_revoke',
+              code.id
+            ));
+          }
+          row.appendChild(actions);
+          accessCodes.appendChild(row);
+        });
+        return codesCache;
+      }).catch(function (error) {
+        setFeedback(
+          error.message || 'No fue posible cargar los códigos.',
+          'error'
+        );
+        return [];
+      });
+    }
+
+    function copyCode(value) {
+      if (
+        root.navigator
+        && root.navigator.clipboard
+        && typeof root.navigator.clipboard.writeText === 'function'
+      ) {
+        return root.navigator.clipboard.writeText(value);
+      }
+      return Promise.reject(new Error('Clipboard unavailable'));
     }
 
     function auditCell(label, value, className) {
@@ -966,9 +1075,46 @@
     if (upgradeRequests) {
       upgradeRequests.addEventListener('click', function (event) {
         var button = event.target.closest('[data-action^="request_"]');
-        if (!button || typeof userStore.updateUpgradeRequest !== 'function') {
+        if (!button) {
           return;
         }
+        if (
+          button.dataset.action === 'request_generate'
+          && typeof userStore.generateAccessCode === 'function'
+        ) {
+          var card = button.closest('.request-card');
+          var targetPlan = card.querySelector(
+            '[data-field="target_plan"]'
+          ).value;
+          var durationDays = Number(card.querySelector(
+            '[data-field="duration_days"]'
+          ).value);
+          button.disabled = true;
+          Promise.resolve(userStore.generateAccessCode(
+            button.dataset.userId,
+            targetPlan,
+            durationDays
+          )).then(function (code) {
+            generatedCodeValue.textContent = code.code;
+            generatedCode.hidden = false;
+            setFeedback(
+              'Código generado. El plan permanece sin cambios hasta el canje.',
+              'success'
+            );
+            return Promise.all([
+              renderUpgradeRequests(),
+              renderAccessCodes(),
+            ]);
+          }).catch(function (error) {
+            button.disabled = false;
+            setFeedback(
+              error.message || 'No fue posible generar el código.',
+              'error'
+            );
+          });
+          return;
+        }
+        if (typeof userStore.updateUpgradeRequest !== 'function') return;
         var status = button.dataset.action.replace('request_', '');
         button.disabled = true;
         Promise.resolve(
@@ -980,6 +1126,52 @@
           button.disabled = false;
           setFeedback(error.message || 'No fue posible actualizar.', 'error');
         });
+      });
+    }
+
+    if (copyGeneratedCode) {
+      copyGeneratedCode.addEventListener('click', function () {
+        copyCode(generatedCodeValue.textContent).then(function () {
+          setFeedback('Código copiado.', 'success');
+        }).catch(function () {
+          setFeedback('No fue posible copiar automáticamente.', 'error');
+        });
+      });
+    }
+
+    if (accessCodes) {
+      accessCodes.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-action^="code_"]');
+        if (!button) return;
+        var code = codesCache.find(function (item) {
+          return item.id === button.dataset.userId;
+        });
+        if (!code) return;
+        if (button.dataset.action === 'code_copy') {
+          copyCode(code.code).then(function () {
+            setFeedback('Código copiado.', 'success');
+          }).catch(function () {
+            setFeedback('No fue posible copiar automáticamente.', 'error');
+          });
+          return;
+        }
+        if (
+          button.dataset.action === 'code_revoke'
+          && typeof userStore.revokeAccessCode === 'function'
+        ) {
+          button.disabled = true;
+          Promise.resolve(userStore.revokeAccessCode(code.id))
+            .then(function () {
+              setFeedback('Código revocado.', 'success');
+              return renderAccessCodes();
+            }).catch(function (error) {
+              button.disabled = false;
+              setFeedback(
+                error.message || 'No fue posible revocar el código.',
+                'error'
+              );
+            });
+        }
       });
     }
 
@@ -1010,6 +1202,7 @@
           return Promise.all([
             renderUsers(),
             renderUpgradeRequests(),
+            renderAccessCodes(),
           ]).then(function () { return true; });
         });
       }
@@ -1019,6 +1212,7 @@
       return Promise.all([
         renderUsers(),
         renderUpgradeRequests(),
+        renderAccessCodes(),
       ]).then(function () { return true; });
     }
 

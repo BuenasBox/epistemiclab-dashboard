@@ -98,11 +98,15 @@ test('upgrade page cache-busts the modal JavaScript and stylesheet', () => {
     'utf8',
   );
 
-  assert.match(html, /\.\/upgrade\.css\?v=20260615-pending3/);
-  assert.match(html, /\.\/upgrade\.js\?v=20260615-pending3/);
+  assert.match(html, /\.\/upgrade\.css\?v=20260615-codes4/);
+  assert.match(html, /\.\/upgrade\.js\?v=20260615-codes4/);
   assert.match(
     html,
     /\.\.\/shared\/upgrade-request-store\.js\?v=20260615-pending3/,
+  );
+  assert.match(
+    html,
+    /\.\.\/shared\/access-code-store\.js\?v=20260615-codes4/,
   );
 });
 

@@ -15,6 +15,7 @@
   var VALID_REQUEST_STATUSES = [
     'pending', 'approved', 'rejected', 'fulfilled',
   ];
+  var VALID_DURATIONS = [30, 90, 365];
 
   function requireClient(client) {
     if (!client || typeof client.from !== 'function') {
@@ -168,9 +169,54 @@
         .then(dataOrThrow);
     }
 
+    function generateAccessCode(requestId, targetPlan, durationDays) {
+      var id = requireString(requestId, 'request_id');
+      var plan = requireEnum(targetPlan, [
+        'premium', 'full_access',
+      ], 'target_plan');
+      var duration = Number(durationDays);
+      if (VALID_DURATIONS.indexOf(duration) === -1) {
+        throw new TypeError('duration_days has an unsupported value');
+      }
+
+      return client.rpc('admin_generate_access_code', {
+        p_upgrade_request_id: id,
+        p_target_plan: plan,
+        p_duration_days: duration,
+      }).single().then(dataOrThrow);
+    }
+
+    function listAccessCodes() {
+      return client
+        .from('access_codes')
+        .select(
+          'id,code,upgrade_request_id,target_user_id,target_email,'
+          + 'target_plan,duration_days,status,created_at,expires_at,'
+          + 'redeemed_at'
+        )
+        .order('created_at', { ascending: false })
+        .then(dataOrThrow);
+    }
+
+    function revokeAccessCode(codeId) {
+      return client
+        .from('access_codes')
+        .update({ status: 'revoked' })
+        .eq('id', requireString(codeId, 'code_id'))
+        .select(
+          'id,code,target_email,target_plan,duration_days,status,'
+          + 'created_at,expires_at,redeemed_at'
+        )
+        .single()
+        .then(dataOrThrow);
+    }
+
     return {
+      generateAccessCode: generateAccessCode,
+      listAccessCodes: listAccessCodes,
       listUsers: listUsers,
       listUpgradeRequests: listUpgradeRequests,
+      revokeAccessCode: revokeAccessCode,
       updateUpgradeRequest: updateUpgradeRequest,
       updateUser: updateUser,
     };

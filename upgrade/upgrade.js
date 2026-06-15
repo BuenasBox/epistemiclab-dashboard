@@ -104,17 +104,56 @@
     };
   }
 
+  function getAccessCodeResultModel(result) {
+    if (result === 'success') {
+      return {
+        kind: 'success',
+        title: 'Acceso activado',
+        message: 'Acceso actualizado correctamente.',
+        showLogin: false,
+        showProfile: true,
+      };
+    }
+    if (result === 'already_redeemed') {
+      return {
+        kind: 'error',
+        title: 'Código utilizado',
+        message: 'Este código ya fue utilizado.',
+        showLogin: false,
+        showProfile: false,
+      };
+    }
+    if (result === 'not_authorized') {
+      return {
+        kind: 'error',
+        title: 'Código no asignado',
+        message: 'Este código no corresponde a tu cuenta.',
+        showLogin: false,
+        showProfile: false,
+      };
+    }
+    return {
+      kind: 'error',
+      title: 'Código no válido',
+      message: 'Código inválido o vencido.',
+      showLogin: false,
+      showProfile: false,
+    };
+  }
+
   function showUpgradeModal(modal, model) {
     if (!modal || !model) return null;
     var title = modal.querySelector('[data-upgrade-modal-title]');
     var message = modal.querySelector('[data-upgrade-modal-message]');
     var login = modal.querySelector('[data-upgrade-modal-login]');
+    var profile = modal.querySelector('[data-upgrade-modal-profile]');
 
     modal.dataset.kind = model.kind;
     modal.hidden = false;
     if (title) title.textContent = model.title;
     if (message) message.textContent = model.message;
     if (login) login.hidden = !model.showLogin;
+    if (profile) profile.hidden = !model.showProfile;
     return modal;
   }
 
@@ -180,6 +219,8 @@
       && documentRef.querySelector('[data-upgrade-feedback]');
     var modal = documentRef
       && documentRef.querySelector('[data-upgrade-modal]');
+    var accessCodeForm = documentRef
+      && documentRef.querySelector('[data-access-code-form]');
     var access = options.access || root.WSETAccess;
     var grid = renderPlanGrid(mount, documentRef);
 
@@ -261,6 +302,60 @@
       });
     });
 
+    if (accessCodeForm && access.AccessCodeStore) {
+      accessCodeForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var submit = accessCodeForm.querySelector('[type="submit"]');
+        var code = accessCodeForm.elements.access_code.value;
+        if (submit) submit.disabled = true;
+
+        Promise.all([
+          auth.resolve(),
+          supabaseProvider.getClient(),
+        ]).then(function (results) {
+          var snapshot = results[0];
+          if (
+            !snapshot
+            || snapshot.authentication.status !== 'authenticated'
+          ) {
+            showUpgradeModal(modal, {
+              kind: 'error',
+              title: 'Inicia sesión',
+              message: 'Inicia sesión para activar tu código.',
+              showLogin: true,
+              showProfile: false,
+            });
+            return null;
+          }
+
+          var codeStore = access.AccessCodeStore.createAccessCodeStore({
+            client: results[1],
+          });
+          return codeStore.redeem(code).then(function (result) {
+            if (result === 'success') {
+              return auth.refresh().then(function () { return result; });
+            }
+            return result;
+          }).then(function (result) {
+            if (result) showUpgradeModal(
+              modal,
+              getAccessCodeResultModel(result)
+            );
+          });
+        }).catch(function (error) {
+          showUpgradeModal(modal, getAccessCodeResultModel('invalid'));
+          if (root.console && typeof root.console.error === 'function') {
+            root.console.error('Access code redemption failed', {
+              code: error && error.code || null,
+              message: error && error.message || null,
+            });
+          }
+        }).finally(function () {
+          if (submit) submit.disabled = false;
+        });
+      });
+    }
+
     return grid;
   }
 
@@ -272,6 +367,7 @@
 
   return {
     PLAN_CATALOG: PLAN_CATALOG,
+    getAccessCodeResultModel: getAccessCodeResultModel,
     getUpgradeErrorModel: getUpgradeErrorModel,
     getPlanCatalog: getPlanCatalog,
     initializeUpgradePage: initializeUpgradePage,

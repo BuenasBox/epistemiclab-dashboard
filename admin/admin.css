@@ -375,6 +375,33 @@ h1 { margin: 0; font: 500 clamp(36px, 6vw, 64px)/1 Georgia, serif; }
   gap: 8px;
 }
 
+.request-card__actions select {
+  min-height: 40px;
+  padding: 7px 9px;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #0b0f15;
+  font: inherit;
+}
+
+.generated-code {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+  background: rgba(93, 211, 158, .07);
+}
+.generated-code span { color: var(--muted); font-size: 9px; }
+.generated-code strong {
+  color: var(--green);
+  font-size: 16px;
+  letter-spacing: .08em;
+  overflow-wrap: anywhere;
+}
+
 .audit-row {
   min-width: 0;
   display: grid;
