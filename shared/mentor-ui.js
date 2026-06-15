@@ -279,7 +279,7 @@
         <div class="mentor-card-header" onclick="mentorToggleCard(this)">
           <div class="mentor-toggle collapsed"></div>
           <div>
-            <div class="mentor-title">What "${verbMentor.verb}" Means</div>
+            <div class="mentor-title">Qué significa «${verbMentor.verb}»</div>
             <div class="mentor-subtitle">${verbMentor.mentor_role}</div>
           </div>
         </div>
@@ -291,7 +291,7 @@
           </div>
 
           <div class="mentor-section">
-            <span class="mentor-label">How to structure your answer:</span>
+            <span class="mentor-label">Cómo estructurar tu respuesta:</span>
             <ol class="mentor-list">
               ${verbMentor.thinking_structure.map(step =>
                 `<li class="mentor-list-item">${escapeHtml(step)}</li>`
@@ -300,7 +300,7 @@
           </div>
 
           <div class="mentor-section">
-            <span class="mentor-label">Use these phrases to guide your thinking:</span>
+            <span class="mentor-label">Usa estas frases para guiar tu pensamiento:</span>
             <div>
               ${verbMentor.key_phrases.map(phrase =>
                 `<span class="mentor-phrase-tag">${escapeHtml(phrase)}</span>`
@@ -309,7 +309,7 @@
           </div>
 
           <div class="mentor-section">
-            <span class="mentor-label">What to avoid:</span>
+            <span class="mentor-label">Qué evitar:</span>
             <ul class="mentor-list">
               ${verbMentor.avoid.map(avoid =>
                 `<li class="mentor-list-item">${escapeHtml(avoid)}</li>`
@@ -318,8 +318,8 @@
           </div>
 
           <div class="mentor-example">
-            <strong>Example:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>
-            <strong>Thinking path:</strong><br>
+            <strong>Ejemplo:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>
+            <strong>Camino de pensamiento:</strong><br>
             ${verbMentor.example_thinking_path.map(step =>
               `→ ${escapeHtml(step)}`
             ).join('<br>')}
@@ -340,8 +340,8 @@
         <div class="mentor-card-header" onclick="mentorToggleCard(this)">
           <div class="mentor-toggle collapsed"></div>
           <div>
-            <div class="mentor-title">Thinking Prompts</div>
-            <div class="mentor-subtitle">Questions to ask yourself before you answer</div>
+            <div class="mentor-title">Preguntas de reflexión</div>
+            <div class="mentor-subtitle">Preguntas que hacerte antes de responder</div>
           </div>
         </div>
         <div class="mentor-card-body">
@@ -377,7 +377,7 @@
             </div>
             ${path.thinking_prompts ? `
               <div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(101,183,199,0.2);">
-                <strong style="font-size:12px; color:var(--accent-2, #65b7c7);">Think about:</strong>
+                <strong style="font-size:12px; color:var(--accent-2, #65b7c7);">Piensa en:</strong>
                 <ul class="mentor-list" style="margin-top:6px;">
                   ${path.thinking_prompts.map(q =>
                     `<li class="mentor-list-item" style="font-size:12px;">${escapeHtml(q)}</li>`
@@ -394,8 +394,8 @@
         <div class="mentor-card-header" onclick="mentorToggleCard(this)">
           <div class="mentor-toggle collapsed"></div>
           <div>
-            <div class="mentor-title">Causal Path Coach</div>
-            <div class="mentor-subtitle">How things cause other things</div>
+            <div class="mentor-title">Mentor de cadenas causales</div>
+            <div class="mentor-subtitle">Cómo una cosa causa otras cosas</div>
           </div>
         </div>
         <div class="mentor-card-body">
@@ -421,7 +421,7 @@
         <div class="mentor-card-header" onclick="mentorToggleCard(this)">
           <div class="mentor-toggle collapsed"></div>
           <div>
-            <div class="mentor-title">Concept Checklist</div>
+            <div class="mentor-title">Lista de conceptos</div>
             <div class="mentor-subtitle">${escapeHtml(concepts.category)}</div>
           </div>
         </div>
@@ -434,7 +434,7 @@
 
           ${concepts.foundational_level && concepts.foundational_level.length > 0 ? `
             <div class="mentor-concept-block">
-              <span class="mentor-concept-level">Foundational Level</span>
+              <span class="mentor-concept-level">Nivel fundamental</span>
               <ul class="mentor-concept-list">
                 ${concepts.foundational_level.map(concept =>
                   `<li class="mentor-concept-item">${escapeHtml(concept)}</li>`
@@ -445,7 +445,7 @@
 
           ${concepts.distinction_level && concepts.distinction_level.length > 0 ? `
             <div class="mentor-concept-block">
-              <span class="mentor-concept-level">Distinction Level (Stronger)</span>
+              <span class="mentor-concept-level">Nivel de distinción (Más fuerte)</span>
               <ul class="mentor-concept-list">
                 ${concepts.distinction_level.map(concept =>
                   `<li class="mentor-concept-item">${escapeHtml(concept)}</li>`
@@ -476,7 +476,7 @@
           <div class="mentor-toggle collapsed"></div>
           <div>
             <div class="mentor-title">${escapeHtml(distinction.title)}</div>
-            <div class="mentor-subtitle">What examiners look for</div>
+            <div class="mentor-subtitle">Lo que buscan los evaluadores</div>
           </div>
         </div>
         <div class="mentor-card-body">
@@ -510,8 +510,8 @@
         <div class="mentor-card-header" onclick="mentorToggleCard(this)">
           <div class="mentor-toggle collapsed"></div>
           <div>
-            <div class="mentor-title">Self-Review Checklist</div>
-            <div class="mentor-subtitle">Before you submit, check these</div>
+            <div class="mentor-title">Lista de autorevisión</div>
+            <div class="mentor-subtitle">Antes de enviar, verifica esto</div>
           </div>
         </div>
         <div class="mentor-card-body">
@@ -576,12 +576,12 @@
       <div style="background: rgba(201,168,76,0.06); border-left: 2px solid var(--accent, #d5a84f); padding: 12px 14px; border-radius: 4px; margin: 12px 0;">
         ${summary.main_guidance ? `
           <div style="font-size: 13px; color: var(--text, #f3f6f8); line-height: 1.6; margin-bottom: 8px;">
-            <strong>Mentor Tip:</strong> ${escapeHtml(summary.main_guidance)}
+            <strong>Consejo del mentor:</strong> ${escapeHtml(summary.main_guidance)}
           </div>
         ` : ''}
         ${summary.quick_tips && summary.quick_tips.length > 0 ? `
           <div style="font-size: 12px; color: var(--muted, #aab4bd);">
-            <strong>Use these phrases:</strong>
+            <strong>Usa estas frases:</strong>
             ${summary.quick_tips.map(tip => `<code style="background: rgba(0,0,0,0.2); padding: 2px 4px; border-radius: 2px; margin-right: 4px;">"${escapeHtml(tip)}"</code>`).join('')}
           </div>
         ` : ''}

@@ -131,9 +131,9 @@
     const prompts = config.thinking_prompts_by_verb[verb] || [];
     return {
       verb: verb,
-      title: `How to think about "${verb}" questions:`,
+      title: `Cómo pensar en preguntas de «${verb}»:`,
       prompts: prompts,
-      instruction: 'Before you answer, ask yourself these questions to guide your thinking:'
+      instruction: 'Antes de responder, hazte estas preguntas para guiar tu pensamiento:'
     };
   }
 
@@ -176,12 +176,12 @@
     }
 
     return {
-      title: 'Causal Path Coach',
-      instruction: 'Here are the causal chains that might be relevant to this question:',
+      title: 'Mentor de cadenas causales',
+      instruction: 'Aquí están las cadenas causales que podrían ser relevantes para esta pregunta:',
       paths: relevantPaths,
       guidance: relevantPaths.length > 0
-        ? 'As you answer, think through each step of the causal chain. Can you explain HOW one step leads to the next?'
-        : 'Think about what causes what in your answer. What is the cause, and what is the effect?'
+        ? '¿Puedes explicar CÓMO cada paso conduce al siguiente en la cadena causal?'
+        : '¿Qué causa qué en tu respuesta? ¿Cuál es la causa y cuál es el efecto?'
     };
   }
 
@@ -217,7 +217,7 @@
 
     if (!conceptTemplate) {
       conceptTemplate = {
-        category: 'General Knowledge',
+        category: 'Conocimiento General',
         expected_concepts: [],
         distinction_level_concepts: []
       };
@@ -225,11 +225,11 @@
 
     return {
       category: conceptTemplate.category,
-      title: 'Concepts to Consider:',
-      instruction: 'Make sure your answer includes these key concepts:',
+      title: 'Conceptos a considerar:',
+      instruction: 'Asegúrate de incluir estos conceptos clave en tu respuesta:',
       foundational_level: conceptTemplate.expected_concepts,
       distinction_level: conceptTemplate.distinction_level_concepts,
-      tip: 'Start with foundational concepts. For a stronger answer, include distinction-level concepts too.'
+      tip: 'Comienza con conceptos fundamentales. Para una respuesta más sólida, incluye también conceptos de nivel de distinción.'
     };
   }
 
@@ -243,22 +243,22 @@
 
     if (!pattern) {
       return {
-        title: 'What Strong Answers Look Like:',
-        instruction: 'Review these characteristics of strong responses:',
+        title: 'Características de respuestas sólidas:',
+        instruction: 'Revisa estas características de respuestas fuertes:',
         elements: [
-          'Clear and organized structure',
-          'Specific evidence and examples',
-          'Technical accuracy and vocabulary',
-          'Complete response to the question asked'
+          'Estructura clara y organizada',
+          'Evidencia específica y ejemplos',
+          'Precisión técnica y vocabulario',
+          'Respuesta completa a la pregunta formulada'
         ]
       };
     }
 
     return {
       title: pattern.title,
-      instruction: 'Aim to include these elements in your answer:',
+      instruction: 'Intenta incluir estos elementos en tu respuesta:',
       elements: pattern.elements,
-      common_weakness: `Common mistake to avoid: ${pattern.common_weakness}`
+      common_weakness: `Error común a evitar: ${pattern.common_weakness}`
     };
   }
 
@@ -270,7 +270,7 @@
     if (!studentAnswer || !String(studentAnswer).trim()) {
       return {
         answer_present: false,
-        feedback: 'Please write your answer before submitting for coaching.'
+        feedback: 'Por favor, escribe tu respuesta antes de enviar para recibir orientación.'
       };
     }
 

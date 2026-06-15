@@ -409,7 +409,10 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function currentEvaluationItem() {
-    return payload.evaluation_by_item_id[currentItem().item_id];
+    const item = currentItem();
+    return item && payload.evaluation_by_item_id
+      ? payload.evaluation_by_item_id[item.item_id]
+      : null;
   }
 
   function startSession(name) {
@@ -442,8 +445,11 @@ ul { margin: 0; padding-left: 19px; }
 
   function submitAnswer() {
     const item = currentItem();
+    const evalItem = currentEvaluationItem();
     state.answers[item.item_id] = els.answer.value;
-    state.feedback[item.item_id] = evaluateAnswer(currentEvaluationItem(), els.answer.value);
+    state.feedback[item.item_id] = evalItem
+      ? evaluateAnswer(evalItem, els.answer.value)
+      : { concepts_detected: [], concepts_absent: [], missing_causal_reasoning: [], improvement_suggestions: ["Sin retroalimentación disponible para este elemento."] };
     saveState();
     render();
   }
@@ -500,11 +506,11 @@ ul { margin: 0; padding-left: 19px; }
     document.querySelectorAll("[data-session]").forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.session === state.sessionName));
     });
-    els.position.textContent = `Pregunta ${state.index + 1} de ${session.session_size}`;
+    els.position.textContent = `Pregunta ${state.index + 1} de ${session.item_ids.length}`;
     els.sessionState.textContent = `Sesión ${labelForSession(state.sessionName)}`;
-    els.stem.textContent = item.stem;
-    els.topic.textContent = `Tema: ${item.topic}`;
-    els.ra.textContent = `RA: ${item.RA}`;
+    els.stem.textContent = item.question_text || item.stem || "";
+    els.topic.textContent = item.topic ? `Tema: ${item.topic}` : "Tema: sin clasificar";
+    els.ra.textContent = item.ra_id ? `RA: ${item.ra_id}` : "RA: sin asignar";
     els.answer.value = state.answers[item.item_id] || "";
     // Phase Y.4 — Open Response Mentor: full 6-layer coaching
     if (els.verbCoach && window.MentorEngine && window.MentorUI) {
@@ -706,6 +712,5 @@ ul { margin: 0; padding-left: 19px; }
   }
 })();
 </script>
-<nav class="global-nav" style="margin-top:12px"><a href="/diagnostic-sba/">Cabina SBA</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Sesión Adaptativa</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro</a></nav>
 </body>
 </html>
