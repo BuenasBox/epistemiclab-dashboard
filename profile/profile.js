@@ -102,6 +102,53 @@
     return '';
   }
 
+  // Y.2.2-Y.2.4: Build and render intelligence dashboard
+  function buildAndRenderDashboard() {
+    if (typeof window.LI !== 'object' || typeof window.IntelligenceDashboard !== 'object') {
+      return '';
+    }
+
+    try {
+      // Get learner state from LI
+      var weakSet = window.LI.weakSet();
+      if (!weakSet) return '';
+
+      // Detect misconceptions
+      var weaknesses = [];
+      (weakSet.weakTopics || []).forEach(function (topic) {
+        weaknesses.push({ topic: topic, strength_score: 40 });
+      });
+      var misconceptions = typeof window.MisconceptionEngine !== 'undefined'
+        ? window.MisconceptionEngine.detectMisconceptions(weaknesses, [])
+        : [];
+
+      // Build recommendation
+      var recommendation = typeof window.RecommendationEngine !== 'undefined'
+        ? window.RecommendationEngine.buildAdaptiveRecommendation(weaknesses, misconceptions, [], {})
+        : null;
+
+      // Build dashboard state
+      var dashboardState = {
+        strongTopics: (weakSet.strongTopics || []).map(function (t) { return { name: t, strength_score: 85 }; }),
+        weakTopics: (weakSet.weakTopics || []).map(function (t) { return { name: t, strength_score: 40 }; }),
+        improvingTopics: [],
+        misconceptions: misconceptions,
+        recommendation: recommendation,
+        readiness: {
+          sba_readiness: 0.6,
+          sat_observation_readiness: 0.5,
+          or_structure_readiness: 0.5
+        }
+      };
+
+      // Render dashboard
+      return window.IntelligenceDashboard.renderDashboard(dashboardState);
+    } catch (e) {
+      console.warn('[Y.2.2-Y.2.4] Dashboard render error (non-blocking):', e);
+      return '';
+    }
+  }
+
   // Y.1.1: Render remediation card
   function renderRemediationCard() {
     var plan = getRemediationPlan();
@@ -535,6 +582,15 @@
           if (persistedCard) {
             remPanel.innerHTML += persistedCard;
           }
+        }
+      }
+
+      // Y.2.2-Y.2.4: Render intelligence dashboard
+      var dashboardPanel = root.document.querySelector('[data-intelligence-dashboard]');
+      if (dashboardPanel) {
+        var dashboardHtml = buildAndRenderDashboard();
+        if (dashboardHtml) {
+          dashboardPanel.innerHTML = dashboardHtml;
         }
       }
     };
