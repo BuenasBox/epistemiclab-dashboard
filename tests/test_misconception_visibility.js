@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 
 const engine = require('../shared/misconception-engine.js');
 const profile = require('../profile/profile.js');
+const simulation = require('../shared/simulation-coaching.js');
 
 function backendInsight(overrides) {
   return Object.assign({
@@ -62,5 +63,24 @@ assert.equal(legacy[0].confidence_label, 'medium');
 
 const emptyHtml = profile.renderMisconceptionInsights([]);
 assert.match(emptyHtml, /no hay evidencia suficiente/i);
+
+const simulationFindings = simulation.buildMisconceptionFindings(
+  [backendInsight()],
+  's2'
+);
+assert.equal(simulationFindings.length, 1);
+assert.equal(simulationFindings[0].evidence_count, 1);
+assert.equal(simulationFindings[0].confidence_label, 'low');
+const simulationHtml = simulation.renderMisconceptionFindings(simulationFindings);
+assert.match(simulationHtml, /PATRONES CONCEPTUALES DE ESTE SIMULACRO/);
+assert.match(simulationHtml, /Traza: open_response · or1/);
+assert.doesNotMatch(simulationHtml, /sba · q1/);
+assert.match(simulationHtml, /Prioridad de práctica/);
+assert.match(simulationHtml, /Siguiente actividad/);
+assert.doesNotMatch(simulationHtml, /MC_MLF_01|%|pass|fail|readiness/i);
+assert.equal(
+  simulation.buildMisconceptionFindings([backendInsight()], 'another-session').length,
+  0
+);
 
 console.log('Misconception Profile visibility tests passed');

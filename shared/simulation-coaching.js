@@ -52,6 +52,59 @@
     return coaching;
   }
 
+  function buildMisconceptionFindings(source, sessionId) {
+    if (!root.MisconceptionEngine ||
+        typeof root.MisconceptionEngine.adaptMisconceptionInsights !== 'function') {
+      return [];
+    }
+    return root.MisconceptionEngine
+      .adaptMisconceptionInsights(source, sessionId)
+      .slice(0, 3);
+  }
+
+  function renderMisconceptionFindings(findings) {
+    findings = Array.isArray(findings) ? findings : [];
+    if (findings.length === 0) return '';
+    var labels = { low: 'baja', medium: 'media', high: 'alta' };
+    var html = '<div style="margin-top:24px;padding:16px;background:#1a2332;border:1px solid #4a7c8c;border-radius:8px">' +
+      '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px;font-size:13px">PATRONES CONCEPTUALES DE ESTE SIMULACRO</div>';
+
+    findings.forEach(function (finding) {
+      var trace = finding.evidence_trace.map(function (event) {
+        return escapeHtml(event.source_type || 'respuesta') +
+          (event.item_id ? ' · ' + escapeHtml(event.item_id) : '');
+      }).join(', ');
+      var topics = (
+        finding.recommendation.practice_topics ||
+        finding.practice_next.topics ||
+        []
+      ).join(', ');
+      html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:12px;margin:8px 0">' +
+        '<div style="color:#d5a84f;font-weight:600;margin-bottom:6px;font-size:12px">' +
+          escapeHtml(finding.statement) + '</div>' +
+        '<div style="color:#aab4bd;font-size:11px;margin-bottom:6px">Frecuencia de evidencia: ' +
+          (labels[finding.confidence_label] || 'baja') + ' · ' + finding.evidence_count + ' respuesta(s)</div>' +
+        '<div style="color:#aab4bd;font-size:11px;margin-bottom:6px">Traza: ' +
+          (trace || 'evidencia registrada en este simulacro') + '</div>' +
+        (topics ? '<div style="color:#aab4bd;font-size:11px;margin-bottom:6px">Prioridad de práctica: ' +
+          escapeHtml(topics) + '</div>' : '') +
+        '<div style="color:#75818c;font-size:11px;padding:8px;background:#101418;border-radius:4px">Siguiente actividad: ' +
+          escapeHtml(finding.improvement_signal || 'Explica el concepto correctamente en una nueva respuesta.') +
+        '</div></div>';
+    });
+
+    return html + '<div style="font-size:10px;color:#75818c;margin-top:10px">Hallazgos formativos basados solo en evidencia de este simulacro.</div></div>';
+  }
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   /**
    * Identify strengths from simulation
    */
@@ -296,7 +349,9 @@
 
   // Public API
   return {
+    buildMisconceptionFindings: buildMisconceptionFindings,
     buildSimulationCoaching: buildSimulationCoaching,
+    renderMisconceptionFindings: renderMisconceptionFindings,
     renderSimulationCoachingReport: renderSimulationCoachingReport
   };
 });

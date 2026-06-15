@@ -324,16 +324,30 @@
       return !!(row.student_statement || (row.coaching && row.coaching.what_is_confused));
     }).map(function (row) {
       var coaching = row.coaching || {};
+      var evidenceTrace = Array.isArray(coaching.evidence_triggered)
+        ? coaching.evidence_triggered.slice()
+        : [];
+      if (sessionId) {
+        evidenceTrace = evidenceTrace.filter(function (event) {
+          return String(event.session_id || '') === String(sessionId);
+        });
+      }
+      var evidenceCount = sessionId
+        ? evidenceTrace.length
+        : Number(row.evidence_count || 0);
+      var sessionCount = sessionId
+        ? (evidenceCount ? 1 : 0)
+        : Number(row.session_count || 0);
       return {
         id: row.misconception_id || row.id || '',
         statement: row.student_statement || coaching.what_is_confused || '',
-        confidence_label: normalizeEvidenceLabel(row.confidence_label),
-        evidence_count: Number(row.evidence_count || 0),
-        session_count: Number(row.session_count || 0),
+        confidence_label: sessionId
+          ? evidenceLabel(evidenceCount, sessionCount)
+          : normalizeEvidenceLabel(row.confidence_label),
+        evidence_count: evidenceCount,
+        session_count: sessionCount,
         why_it_matters: coaching.why_it_matters || '',
-        evidence_trace: Array.isArray(coaching.evidence_triggered)
-          ? coaching.evidence_triggered.slice()
-          : [],
+        evidence_trace: evidenceTrace,
         practice_next: coaching.practice_next || {},
         improvement_signal: coaching.improvement_signal || '',
         recommendation: row.recommendation || {},
