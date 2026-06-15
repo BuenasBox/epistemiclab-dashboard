@@ -331,6 +331,9 @@ ul { margin: 0; padding-left: 19px; }
 <script src="../shared/recommendation-engine.js"></script>
 <script src="../shared/or-coaching-engine.js"></script>
 <script src="../shared/weakness-sync.js"></script>
+<script src="../shared/mentor-config.js"></script>
+<script src="../shared/mentor-engine.js"></script>
+<script src="../shared/mentor-ui.js"></script>
 <script src="./lab_payload.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
@@ -503,8 +506,12 @@ ul { margin: 0; padding-left: 19px; }
     els.topic.textContent = `Tema: ${item.topic}`;
     els.ra.textContent = `RA: ${item.RA}`;
     els.answer.value = state.answers[item.item_id] || "";
-    // Phase Y.2 — Distinction Coach: command-verb guidance for this stem
-    if (els.verbCoach) {
+    // Phase Y.4 — Open Response Mentor: full 6-layer coaching
+    if (els.verbCoach && window.MentorEngine && window.MentorUI) {
+      const guidance = window.MentorEngine.buildMentorGuidance(item.stem, item.topic);
+      els.verbCoach.innerHTML = window.MentorUI.renderMentorUI(guidance);
+    } else if (els.verbCoach) {
+      // Fallback to legacy verb coach
       const verb = window.LI ? LI.detectVerb(item.stem) : null;
       els.verbCoach.innerHTML = verb && window.LI ? LI.renderVerbCoach(verb) : "";
     }
