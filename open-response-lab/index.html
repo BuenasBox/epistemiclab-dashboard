@@ -229,6 +229,212 @@ ul { margin: 0; padding-left: 19px; }
 }
 .global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
 .global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
+
+/* ---- P3: CONTEXTUAL ASSISTANCE TOOLBAR ---- */
+.assistance-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.assist-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--accent-2);
+  background: rgba(101, 183, 199, 0.08);
+  color: var(--accent-2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.assist-btn:hover {
+  background: rgba(101, 183, 199, 0.15);
+  border-color: var(--accent-2);
+}
+.assist-btn:active {
+  transform: scale(0.98);
+}
+.assist-icon {
+  font-size: 14px;
+  display: inline-block;
+}
+
+/* ---- P3: SIDE DRAWER ---- */
+.assist-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 100%;
+  height: 100vh;
+  background: var(--panel);
+  border-left: 1px solid var(--line);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 200ms ease;
+  transform: translateX(0);
+}
+.assist-drawer[hidden] {
+  display: none;
+}
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.drawer-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text);
+}
+.drawer-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 20px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+.drawer-close:hover {
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+.drawer-panel {
+  display: none;
+}
+.drawer-panel.active {
+  display: block;
+}
+.drawer-panel h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: var(--accent-2);
+}
+.drawer-panel ul {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+.drawer-panel li {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---- P3: OVERLAY ---- */
+.assist-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: fadeIn 200ms ease;
+}
+.assist-overlay[hidden] {
+  display: none;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---- P3: QUESTION PROMINENCE ---- */
+.question-panel {
+  display: flex;
+  flex-direction: column;
+}
+.stem {
+  flex: 0 0 auto;
+  font-size: 22px;
+  line-height: 1.4;
+  margin: 0 0 16px 0;
+  font-weight: 500;
+}
+textarea {
+  flex: 1;
+  min-height: 240px;
+}
+
+/* ---- P3: MOBILE FIRST ---- */
+@media (max-width: 860px) {
+  .assist-drawer {
+    width: 100%;
+  }
+  .question-panel {
+    padding: 16px;
+  }
+  .stem {
+    font-size: 18px;
+  }
+  textarea {
+    min-height: 160px;
+  }
+  .assistance-toolbar {
+    gap: 6px;
+  }
+  .assist-btn {
+    flex: 1;
+    min-width: 80px;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: 14px;
+  }
+  .topline {
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 18px;
+  }
+  .subtitle {
+    font-size: 13px;
+  }
+  .session-picker {
+    gap: 6px;
+  }
+  button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  .stem {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  textarea {
+    min-height: 140px;
+    padding: 10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -254,6 +460,19 @@ ul { margin: 0; padding-left: 19px; }
       </div>
     </div>
 
+    <!-- P3: Assistance Toolbar -->
+    <div class="assistance-toolbar" data-testid="assistance-toolbar">
+      <button type="button" class="assist-btn" data-assist-panel="mentor" aria-label="Abrir mentoría de respuesta">
+        <span class="assist-icon">🎓</span> Mentor
+      </button>
+      <button type="button" class="assist-btn" data-assist-panel="concepts" aria-label="Abrir lista de conceptos">
+        <span class="assist-icon">📋</span> Conceptos
+      </button>
+      <button type="button" class="assist-btn" data-assist-panel="checklist" aria-label="Abrir checklist de autorrevisión">
+        <span class="assist-icon">✓</span> Checklist
+      </button>
+    </div>
+
     <section class="question-panel" aria-live="polite">
       <div class="question-head">
         <span data-testid="question-position">Pregunta — de —</span>
@@ -264,7 +483,6 @@ ul { margin: 0; padding-left: 19px; }
         <span class="chip" data-testid="question-topic"></span>
         <span class="chip" data-testid="question-ra"></span>
       </div>
-      <div data-testid="verb-coach"></div>
       <label for="answer">Respuesta libre</label>
       <textarea id="answer" data-testid="answer-input" autocomplete="off"></textarea>
       <div class="actions">
@@ -302,6 +520,36 @@ ul { margin: 0; padding-left: 19px; }
         <div data-testid="next-route"></div>
       </section>
     </section>
+
+    <!-- P3: Side Drawer for Assistance -->
+    <div class="assist-drawer" data-testid="assist-drawer" hidden>
+      <div class="drawer-header">
+        <h2 data-testid="drawer-title">Mentoría</h2>
+        <button type="button" class="drawer-close" data-testid="drawer-close" aria-label="Cerrar panel de asistencia">✕</button>
+      </div>
+
+      <div class="drawer-content">
+        <!-- Mentor Panel -->
+        <div class="drawer-panel" id="mentor-panel" data-testid="mentor-panel">
+          <div data-testid="verb-coach"></div>
+        </div>
+
+        <!-- Concepts Panel -->
+        <div class="drawer-panel" id="concepts-panel" data-testid="concepts-panel" hidden>
+          <h3>Conceptos esperados</h3>
+          <ul data-testid="concepts-expected"></ul>
+        </div>
+
+        <!-- Checklist Panel -->
+        <div class="drawer-panel" id="checklist-panel" data-testid="checklist-panel" hidden>
+          <h3>Antes de enviar</h3>
+          <div data-testid="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P3: Drawer Overlay -->
+    <div class="assist-overlay" data-testid="assist-overlay" hidden></div>
   </main>
 
   <aside>
@@ -400,12 +648,16 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function currentSession() {
-    return payload.sessions[state.sessionName];
+    const session = payload.sessions && payload.sessions[state.sessionName];
+    return session || null;
   }
 
   function currentItem() {
-    const itemId = currentSession().item_ids[state.index];
-    return payload.items.find((item) => item.item_id === itemId);
+    const session = currentSession();
+    if (!session || !session.item_ids) return null;
+    const itemId = session.item_ids[state.index];
+    if (!itemId) return null;
+    return payload.items && payload.items.find((item) => item.item_id === itemId);
   }
 
   function currentEvaluationItem() {
@@ -499,9 +751,135 @@ ul { margin: 0; padding-left: 19px; }
     render();
   }
 
+  // P3: CONTEXTUAL ASSISTANCE SYSTEM
+  const drawer = documentRef.querySelector('[data-testid="assist-drawer"]');
+  const overlay = documentRef.querySelector('[data-testid="assist-overlay"]');
+  const mentorPanel = documentRef.querySelector('#mentor-panel');
+  const conceptsPanel = documentRef.querySelector('#concepts-panel');
+  const checklistPanel = documentRef.querySelector('#checklist-panel');
+  const drawerTitle = documentRef.querySelector('[data-testid="drawer-title"]');
+  const drawerClose = documentRef.querySelector('[data-testid="drawer-close"]');
+  const assistBtns = documentRef.querySelectorAll('[data-assist-panel]');
+
+  function closeDrawer() {
+    drawer.hidden = true;
+    overlay.hidden = true;
+    documentRef.querySelectorAll('.drawer-panel').forEach(p => p.classList.remove('active'));
+  }
+
+  function openDrawerPanel(panelId) {
+    drawer.hidden = false;
+    overlay.hidden = false;
+    documentRef.querySelectorAll('.drawer-panel').forEach(p => p.classList.remove('active'));
+
+    let panel, title;
+    switch(panelId) {
+      case 'mentor':
+        panel = mentorPanel;
+        title = 'Mentoría';
+        break;
+      case 'concepts':
+        panel = conceptsPanel;
+        title = 'Conceptos esperados';
+        break;
+      case 'checklist':
+        panel = checklistPanel;
+        title = 'Checklist de autorrevisión';
+        break;
+    }
+
+    if (panel) {
+      panel.classList.add('active');
+      drawerTitle.textContent = title;
+    }
+  }
+
+  // P3: Build contextual concepts list
+  function buildContextualConcepts(topic) {
+    const conceptMap = {
+      'malolactic_fermentation': ['ácido málico', 'ácido láctico', 'diacetilo', 'estabilidad microbiológica', 'textura', 'Chardonnay'],
+      'oak_ageing': ['tostado', 'vainilla', 'oxidación', 'microoxigenación', 'barrica nueva', 'barrica usada'],
+      'climate': ['temperatura', 'precipitación', 'luz', 'maduración', 'acidez', 'alcohol'],
+      'fermentation': ['temperatura', 'levadura', 'azúcar', 'ésteres', 'aromas', 'estabilidad'],
+      'sustainability': ['prácticas sostenibles', 'certificación', 'costes', 'diferenciación', 'consumidor', 'precio'],
+    };
+
+    const topicNorm = (topic || '').toLowerCase().replace(/\s+/g, '_');
+    const concepts = conceptMap[topicNorm] || [];
+
+    if (!concepts.length) {
+      const topicKey = Object.keys(conceptMap).find(k => topicNorm.includes(k.split('_')[0]));
+      return topicKey ? conceptMap[topicKey] : ['Conceptos esperados para el tema'];
+    }
+    return concepts;
+  }
+
+  // P3: Build contextual checklist
+  function buildContextualChecklist(verb) {
+    const checklistMap = {
+      'explain': [
+        '¿Identificaste el factor inicial?',
+        '¿Explicaste el mecanismo o cómo ocurre?',
+        '¿Nombraste el resultado final?',
+        '¿Usaste lenguaje causal (porque, debido, provoca)?'
+      ],
+      'compare': [
+        '¿Identificaste los elementos a comparar?',
+        '¿Cubriste similitudes?',
+        '¿Cubriste diferencias?',
+        '¿Organizaste por dimensiones (no por elemento)?'
+      ],
+      'describe': [
+        '¿Observaste características principales?',
+        '¿Usaste vocabulario técnico correcto?',
+        '¿Cubriste múltiples dimensiones?',
+        '¿Evitaste explicaciones causales?'
+      ],
+      'justify': [
+        '¿Enunciaste tu posición claramente?',
+        '¿Diste 3+ razones específicas?',
+        '¿Conectaste cada razón a tu afirmación?',
+        '¿Usaste evidencia relevante?'
+      ],
+      'evaluate': [
+        '¿Identificaste 3+ factores?',
+        '¿Evaluaste el impacto de cada uno?',
+        '¿Sintetizaste en una conclusión?',
+        '¿Jerarquizaste por importancia?'
+      ]
+    };
+
+    const verbNorm = (verb || '').toLowerCase();
+    return checklistMap[verbNorm] || [
+      '¿Respondiste lo que se preguntó?',
+      '¿Tu respuesta es clara?',
+      '¿Incluiste evidencia específica?'
+    ];
+  }
+
+  assistBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      openDrawerPanel(btn.dataset.assistPanel);
+    });
+  });
+
+  drawerClose.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
   function render() {
     const session = currentSession();
     const item = currentItem();
+
+    // Guard against undefined session/item
+    if (!session || !item) {
+      els.position.textContent = "Sesión no disponible";
+      els.sessionState.textContent = "Cargando...";
+      els.stem.textContent = "";
+      els.topic.textContent = "";
+      els.ra.textContent = "";
+      return;
+    }
+
     const itemFeedback = state.feedback[item.item_id];
     document.querySelectorAll("[data-session]").forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.session === state.sessionName));
@@ -513,15 +891,34 @@ ul { margin: 0; padding-left: 19px; }
     els.topic.textContent = item.topic ? `Tema: ${item.topic}` : "Tema: sin clasificar";
     els.ra.textContent = item.ra_id ? `RA: ${item.ra_id}` : "RA: sin asignar";
     els.answer.value = state.answers[item.item_id] || "";
-    // Phase Y.4 — Open Response Mentor: full 6-layer coaching
+
+    // P3: Populate drawer panels with contextual content
+    const verb = window.LI ? LI.detectVerb(questionText) : null;
+    const concepts = buildContextualConcepts(item.topic);
+    const checklist = buildContextualChecklist(verb);
+
+    const conceptsList = conceptsPanel.querySelector('[data-testid="concepts-expected"]');
+    if (conceptsList) {
+      conceptsList.innerHTML = concepts.map(c => `<li>${escapeHtml(c)}</li>`).join('');
+    }
+
+    const checklistDiv = checklistPanel.querySelector('[data-testid="checklist-items"]');
+    if (checklistDiv) {
+      checklistDiv.innerHTML = checklist.map(item => `<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #303944;"><label style="display: flex; gap: 8px;"><input type="checkbox" style="cursor: pointer;"> <span style="cursor: pointer;">${escapeHtml(item)}</span></label></div>`).join('');
+    }
+
+    // Phase Y.4 — Open Response Mentor: full 6-layer coaching (drawer version)
     if (els.verbCoach && window.MentorEngine && window.MentorUI) {
       const guidance = window.MentorEngine.buildMentorGuidance(questionText, item.topic);
       els.verbCoach.innerHTML = window.MentorUI.renderMentorUI(guidance);
     } else if (els.verbCoach) {
       // Fallback to legacy verb coach
-      const verb = window.LI ? LI.detectVerb(questionText) : null;
       els.verbCoach.innerHTML = verb && window.LI ? LI.renderVerbCoach(verb) : "";
     }
+
+    // Close drawer when question changes
+    closeDrawer();
+
     els.next.disabled = state.index >= session.item_ids.length - 1;
     els.feedback.hidden = !itemFeedback;
     els.completion.hidden = !state.completed;
@@ -706,6 +1103,11 @@ ul { margin: 0; padding-left: 19px; }
 
   function normalizeText(text) {
     return String(text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/₂/g, "2").trim().replace(/\s+/g, " ");
+  }
+
+  function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return String(text).replace(/[&<>"']/g, m => map[m]);
   }
 
   function labelForSession(name) {
