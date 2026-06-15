@@ -24,6 +24,12 @@
     return result ? result.data : null;
   }
 
+  function pendingRequestError() {
+    var error = new Error('An upgrade request is already pending');
+    error.code = 'UPGRADE_REQUEST_PENDING';
+    return error;
+  }
+
   function createUpgradeRequestStore(options) {
     options = options || {};
     var client = requireClient(options.client);
@@ -42,13 +48,24 @@
           throw new TypeError('requested_plan has an unsupported value');
         }
 
-        return client.from('upgrade_requests').insert({
-          user_id: snapshot.identity.user_id,
-          current_plan: snapshot.plan.code,
-          requested_plan: requestedPlan,
-        }).select(
-          'id,user_id,current_plan,requested_plan,status,requested_at'
-        ).single().then(dataOrThrow);
+        return client.from('upgrade_requests')
+          .select('id,status')
+          .eq('user_id', snapshot.identity.user_id)
+          .eq('requested_plan', requestedPlan)
+          .eq('status', 'pending')
+          .maybeSingle()
+          .then(dataOrThrow)
+          .then(function (pending) {
+            if (pending) throw pendingRequestError();
+
+            return client.from('upgrade_requests').insert({
+              user_id: snapshot.identity.user_id,
+              current_plan: snapshot.plan.code,
+              requested_plan: requestedPlan,
+            }).select(
+              'id,user_id,current_plan,requested_plan,status,requested_at'
+            ).single().then(dataOrThrow);
+          });
       },
     };
   }

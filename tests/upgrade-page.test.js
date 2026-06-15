@@ -21,6 +21,18 @@ function requestClient() {
     from(table) {
       assert.equal(table, 'upgrade_requests');
       return {
+        select(columns) {
+          calls.push(['select', columns]);
+          return {
+            eq(column, value) {
+              calls.push(['eq', column, value]);
+              return this;
+            },
+            maybeSingle() {
+              return Promise.resolve({ data: null, error: null });
+            },
+          };
+        },
         insert(values) {
           calls.push(['insert', values]);
           return {
@@ -86,8 +98,12 @@ test('upgrade page cache-busts the modal JavaScript and stylesheet', () => {
     'utf8',
   );
 
-  assert.match(html, /\.\/upgrade\.css\?v=20260615-modal2/);
-  assert.match(html, /\.\/upgrade\.js\?v=20260615-modal2/);
+  assert.match(html, /\.\/upgrade\.css\?v=20260615-pending3/);
+  assert.match(html, /\.\/upgrade\.js\?v=20260615-pending3/);
+  assert.match(
+    html,
+    /\.\.\/shared\/upgrade-request-store\.js\?v=20260615-pending3/,
+  );
 });
 
 test('upgrade page is public and does not initialize an access gate', () => {
@@ -122,14 +138,14 @@ test('authenticated learner can create a Supabase upgrade request', async () => 
     status: 'pending',
     requested_at: '2026-06-14T20:00:00.000Z',
   });
-  assert.deepEqual(client.calls, [[
+  assert.deepEqual(client.calls.at(-1), [
     'insert',
     {
       user_id: 'user-1',
       current_plan: 'demo',
       requested_plan: 'premium',
     },
-  ]]);
+  ]);
 });
 
 test('upgrade page exposes request CTA and learner feedback region', () => {
@@ -201,6 +217,45 @@ test('failed and unauthenticated requests use safe Spanish modal copy', () => {
   assert.doesNotMatch(JSON.stringify(raw), /upgrade_requests|row-level|42501/i);
 });
 
+test('pending and duplicate upgrade requests use specific Spanish copy', () => {
+  assert.deepEqual(getUpgradeErrorModel({
+    code: 'UPGRADE_REQUEST_PENDING',
+  }), {
+    kind: 'error',
+    title: 'Solicitud pendiente',
+    message: 'Ya existe una solicitud pendiente para esta actualización.',
+    showLogin: false,
+  });
+  assert.deepEqual(getUpgradeErrorModel({
+    code: '23505',
+    message: 'duplicate key value violates unique constraint',
+  }), {
+    kind: 'error',
+    title: 'Solicitud recibida',
+    message: 'Ya recibimos tu solicitud.',
+    showLogin: false,
+  });
+});
+
+test('RLS rejection stays generic and unauthenticated insert is explicit', () => {
+  const rls = getUpgradeErrorModel({
+    code: '42501',
+    message: 'new row violates row-level security policy',
+  });
+  assert.equal(
+    rls.message,
+    'La solicitud no pudo guardarse. Inténtalo nuevamente.',
+  );
+  assert.equal(rls.showLogin, false);
+
+  const unauthenticated = getUpgradeErrorModel({ code: 'AUTH_REQUIRED' });
+  assert.equal(
+    unauthenticated.message,
+    'Inicia sesión para solicitar una actualización.',
+  );
+  assert.equal(unauthenticated.showLogin, true);
+});
+
 test('upgrade page includes accessible modal and Spanish fallback copy', () => {
   const html = fs.readFileSync(
     path.join(__dirname, '..', 'upgrade', 'index.html'),
@@ -216,6 +271,18 @@ test('upgrade page includes accessible modal and Spanish fallback copy', () => {
   assert.match(html, /No pudimos registrar la solicitud/);
 });
 
+test('hidden login action cannot be revealed by modal button styles', () => {
+  const css = fs.readFileSync(
+    path.join(__dirname, '..', 'upgrade', 'upgrade.css'),
+    'utf8',
+  );
+
+  assert.match(
+    css,
+    /\[data-upgrade-modal-login\]\[hidden\]\s*\{\s*display:\s*none/,
+  );
+});
+
 test('request payload uses exactly the migration insert columns', async () => {
   const client = requestClient();
   const store = createUpgradeRequestStore({ client });
@@ -227,11 +294,70 @@ test('request payload uses exactly the migration insert columns', async () => {
     plan: { code: 'demo' },
   }, 'full_access');
 
-  assert.deepEqual(Object.keys(client.calls[0][1]).sort(), [
+  const insertCall = client.calls.find((call) => call[0] === 'insert');
+  assert.deepEqual(Object.keys(insertCall[1]).sort(), [
     'current_plan',
     'requested_plan',
     'user_id',
   ]);
+});
+
+test('existing pending request is detected before insert', async () => {
+  const calls = [];
+  const client = {
+    from(table) {
+      assert.equal(table, 'upgrade_requests');
+      return {
+        select(columns) {
+          calls.push(['select', columns]);
+          return {
+            eq(column, value) {
+              calls.push(['eq', column, value]);
+              return this;
+            },
+            maybeSingle() {
+              return Promise.resolve({
+                data: { id: 'pending-1', status: 'pending' },
+                error: null,
+              });
+            },
+          };
+        },
+        insert() {
+          calls.push(['insert']);
+          throw new Error('insert must not run for a pending request');
+        },
+      };
+    },
+  };
+  const store = createUpgradeRequestStore({ client });
+
+  await assert.rejects(
+    store.create({
+      authentication: { status: 'authenticated' },
+      identity: { user_id: 'user-1' },
+      plan: { code: 'demo' },
+    }, 'premium'),
+    (error) => error.code === 'UPGRADE_REQUEST_PENDING',
+  );
+  assert.equal(calls.some((call) => call[0] === 'insert'), false);
+});
+
+test('unauthenticated upgrade request never reaches Supabase', () => {
+  const store = createUpgradeRequestStore({
+    client: {
+      from() {
+        throw new Error('Supabase must not be called');
+      },
+    },
+  });
+
+  assert.throws(
+    () => store.create({
+      authentication: { status: 'anonymous' },
+    }, 'premium'),
+    /authenticated session is required/,
+  );
 });
 
 function element(tagName) {

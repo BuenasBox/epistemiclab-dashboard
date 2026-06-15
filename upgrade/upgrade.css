@@ -121,6 +121,10 @@ body {
   background: var(--accent);
 }
 
+[data-upgrade-modal-login][hidden] {
+  display: none;
+}
+
 .upgrade-hero {
   max-width: 760px;
   padding: 80px 0 42px;

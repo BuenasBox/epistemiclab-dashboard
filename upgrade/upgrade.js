@@ -72,6 +72,22 @@
         showLogin: true,
       };
     }
+    if (code === 'UPGRADE_REQUEST_PENDING') {
+      return {
+        kind: 'error',
+        title: 'Solicitud pendiente',
+        message: 'Ya existe una solicitud pendiente para esta actualización.',
+        showLogin: false,
+      };
+    }
+    if (code === '23505') {
+      return {
+        kind: 'error',
+        title: 'Solicitud recibida',
+        message: 'Ya recibimos tu solicitud.',
+        showLogin: false,
+      };
+    }
     if (code === 'PGRST205' || code === '42P01') {
       return {
         kind: 'error',
@@ -232,7 +248,13 @@
         feedback.dataset.kind = 'error';
         showUpgradeModal(modal, model);
         if (root.console && typeof root.console.error === 'function') {
-          root.console.error('Upgrade request failed', error);
+          root.console.error('Upgrade request failed', {
+            code: error && error.code || null,
+            message: error && error.message || null,
+            details: error && error.details || null,
+            hint: error && error.hint || null,
+            status: error && error.status || null,
+          });
         }
       }).finally(function () {
         button.disabled = false;
