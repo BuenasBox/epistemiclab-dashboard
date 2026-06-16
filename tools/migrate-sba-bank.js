@@ -43,18 +43,17 @@ async function migrateSBABank() {
     const records = batch.map((item) => ({
       id: item.id || item.item_id,
       source_id: item.source_question_id,
-      stem: item.stem || item.question_text,
-      text: item.text || item.question_text || '',
+      stem: item.text || item.stem || item.question_text || '',
+      text: item.text || item.stem || item.question_text || '',
       options: item.options || [],
       topic: item.topic,
-      ra: item.ra_id || item.RA,
+      ra: item.ra_id || item.ra || item.RA,
       difficulty: item.difficulty,
       correct_index: typeof item.correct_index !== 'undefined' ? item.correct_index : item.correct_answer,
       correct_letter: item.correct_letter,
       keywords: item.keywords,
       gold: item.gold || false,
 
-      // Pedagogical metadata (from session_bank.js)
       causal_chain: item.causal_chain || null,
       feedback_by_mode: item.feedback_by_mode || null,
       micro_drill: item.micro_drill || null,
