@@ -582,15 +582,31 @@ textarea {
 <script src="../shared/mentor-config.js"></script>
 <script src="../shared/mentor-engine.js"></script>
 <script src="../shared/mentor-ui.js"></script>
-<script src="./lab_payload.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
 <script src="../shared/learning-sync.js"></script>
 <script>
-(function () {
+(async function () {
   "use strict";
 
-  const payload = window.OPEN_RESPONSE_LAB_PAYLOAD;
+  let items = [];
+  try {
+    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/rest/v1/or_bank?select=*&limit=106',
+      {headers:{'apikey':'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'}});
+    items = await resp.json();
+    if (!Array.isArray(items)) items = [];
+  } catch(e) {console.error('Failed to load OR bank:', e);}
+
+  const payload = {
+    storage_key: 'or_lab_state_v1',
+    sessions: {
+      short_practice: { item_ids: items.slice(0, 5).map(i => i.item_id) },
+      standard_practice: { item_ids: items.slice(0, 10).map(i => i.item_id) },
+      extended_practice: { item_ids: items.slice(0, 20).map(i => i.item_id) },
+      mock_theory_2: { item_ids: items.slice(0, 4).map(i => i.item_id) }
+    },
+    items: items.reduce((o, i) => {o[i.item_id] = i; return o;}, {})
+  };
   const storageKey = payload.storage_key;
   const state = loadState();
   const els = {
