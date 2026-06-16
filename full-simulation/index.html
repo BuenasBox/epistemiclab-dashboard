@@ -549,29 +549,38 @@ function selectOpt(i){
   });
 }
 
-function confirmSBA(){
+async function confirmSBA(){
   if(STATE.sba.selected===null) return;
   STATE.sba.confirmed=true;
   const q=STATE.sba.items[STATE.sba.idx];
-  const correct=q.correct_index;
   const sel=STATE.sba.selected;
-  const ok=(sel===correct);
-  if(ok) STATE.sba.correct++;
-  // Phase Y.2 — longitudinal history
-  STATE.sba.attempts.push({ question_id:q.source_question_id, ra_id:q.ra, topic:q.topic, correct:ok });
+  const letter=String.fromCharCode(65+sel);
 
-  document.querySelectorAll('.opt').forEach((el,j)=>{
-    el.classList.remove('selected');
-    if(j===correct) el.classList.add('correct');
-    if(j===sel && !ok) el.classList.add('wrong');
-  });
+  try{
+    const token=await requireAuth();
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer',
+      {method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({item_id:q.item_id,selected_letter:letter})});
+    if(resp.status!==200){ console.error('Validation failed'); return; }
+    const {correct,correct_letter}=await resp.json();
+    const ok=correct;
 
-  const fb=$('sba-feedback');
-  fb.className='feedback-bar '+(ok?'ok':'ko');
-  fb.textContent = ok ? '✓ Correcto' : `✗ Incorrecto · Respuesta: ${String.fromCharCode(65+correct)}`;
-  fb.style.display='block';
-  $('sba-confirm-btn').style.display='none';
-  $('sba-next-btn').style.display='inline-block';
+    if(ok) STATE.sba.correct++;
+    STATE.sba.attempts.push({question_id:q.item_id,ra_id:q.ra,topic:q.topic,correct:ok});
+
+    const correctIdx=correct_letter.charCodeAt(0)-65;
+    document.querySelectorAll('.opt').forEach((el,j)=>{
+      el.classList.remove('selected');
+      if(j===correctIdx) el.classList.add('correct');
+      if(j===sel && !ok) el.classList.add('wrong');
+    });
+
+    const fb=$('sba-feedback');
+    fb.className='feedback-bar '+(ok?'ok':'ko');
+    fb.textContent=ok?'✓ Correcto':`✗ Incorrecto · Respuesta: ${correct_letter}`;
+    fb.style.display='block';
+    $('sba-confirm-btn').style.display='none';
+    $('sba-next-btn').style.display='inline-block';
+  }catch(e){console.error('confirmSBA error:',e);}
 }
 
 function nextSBA(){
