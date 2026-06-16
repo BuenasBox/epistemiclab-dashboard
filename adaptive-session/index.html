@@ -725,7 +725,6 @@ html, body {
 <script src="../shared/simulation-coaching.js"></script>
 <script src="../shared/learning-loop.js"></script>
 <script src="../shared/weakness-sync.js"></script>
-<script src="session_bank.js"></script>
 <script src="coach_data.js"></script>
 <script src="learner_intelligence.js"></script>
 <script src="../shared/learning-sync.js"></script>
@@ -1347,10 +1346,13 @@ function adpShuf(arr,salt){
 function isEnrichedAdp(item){
   return !!(item.feedback_by_mode || item.causal_chain || item.micro_drill);
 }
-function buildSBA(mode){
-  const bk=window.SESSION_BANK;
-  if(!bk||!bk.sba_items){console.error('SESSION_BANK missing');return null;}
-  const all=bk.sba_items, rec=adpRec(); let sel=[];
+async function buildSBA(mode){
+  try{
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/rest/v1/sba_bank?select=*&limit=670',
+      {headers:{'apikey':'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'}});
+    const all=await resp.json();
+    if(!Array.isArray(all)){console.error('API returned non-array');return null;}
+    const rec=adpRec(); let sel=[];
   // Phase Y.1 — Adaptive Weakness Engine: learner weaknesses bias selection
   const ws=window.LI?LI.weakSet():{weakRAs:[],weakTopics:[],strongTopics:[],mcTrends:[]};
   const isWeak=i=>ws.weakTopics.indexOf(i.topic)!==-1||ws.weakRAs.indexOf(i.ra)!==-1;
@@ -1409,6 +1411,7 @@ function buildSBA(mode){
       };
     })
   };
+  }catch(e){console.error('buildSBA error:',e);return null;}
 }
 function buildSAT(mode){
   const cnt=(mode==='sat_sprint')?1:2;
@@ -1450,7 +1453,7 @@ function startAdp(mode){
   });
 }
 
-function startAllowedAdp(mode){
+async function startAllowedAdp(mode){
   document.getElementById('adp-ol').classList.remove('active');
   if(mode.startsWith('sat_')){
     STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0; STATE.satResponses={};
@@ -1465,7 +1468,7 @@ function startAllowedAdp(mode){
       },1000);
     }
   } else {
-    STATE.payload=buildSBA(mode); STATE.screen=0; STATE.qIdx=0; STATE.selected=null; STATE.confirmed=false;
+    STATE.payload=await buildSBA(mode); STATE.screen=0; STATE.qIdx=0; STATE.selected=null; STATE.confirmed=false;
     showScreen(0); renderScreen0();
   }
 }
