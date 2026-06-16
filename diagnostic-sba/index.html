@@ -1036,7 +1036,6 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 <script src="../shared/upgrade-gate.js"></script>
 <script src="../shared/mode-access-gate.js"></script>
 <script src="../shared/learning-loop.js"></script>
-<script src="preguntas_data.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
 <script src="../shared/learning-sync.js"></script>
@@ -1318,42 +1317,42 @@ function bankToQ(item){
     micro_drill:item.micro_drill||null,
   };
 }
-function loadMode(mode){
-  const bank=window.PREGUNTAS_BANK;
-  if(!bank||!bank.items){console.error('PREGUNTAS_BANK not loaded');return;}
-  ACTIVE_MODE=mode;
-  const recent=sbaRecent(); const all=bank.items.slice(); let selected=[];
-  if(mode==='mock_theory_1'){
-    const byRa={};
-    all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
-    Object.entries(MOCK_RA).forEach(([ra,need])=>{
-      let pool=byRa[ra]||[];
-      // Phase P3: enriched-first within RA bucket — preserve blueprint, prefer enriched
-      const enrichedPool=sbaShuf(pool.filter(i=>isEnriched(i)),Date.now()+ra.charCodeAt(2));
-      const fallbackPool=sbaShuf(pool.filter(i=>!isEnriched(i)),Date.now()+ra.charCodeAt(2)+100);
-      pool=[...enrichedPool,...fallbackPool];
-      // Phase Y.2 — Adaptive Weakness Engine: weak-area unseen items first (RA blueprint preserved)
-      pool=window.LI?LI.prioritize(pool,recent)
-        :[...pool.filter(i=>!recent.includes(i.source_question_id)),...pool.filter(i=>recent.includes(i.source_question_id))];
-      selected.push(...pool.slice(0,need));
-    });
-    selected=sbaShuf(selected,Date.now());
-  } else {
-    const size={quick_drill:5,express:10,standard:25}[mode]||10;
-    const all_unseen=all.filter(i=>!recent.includes(i.source_question_id));
-    const all_seen=all.filter(i=>recent.includes(i.source_question_id));
-    // Phase P3: enriched-first selection for all diagnostic modes
-    const enrichedUnseen=sbaShuf(all_unseen.filter(i=>isEnriched(i)),Date.now());
-    const fallbackUnseen=sbaShuf(all_unseen.filter(i=>!isEnriched(i)),Date.now()+100);
-    const fresh=[...enrichedUnseen,...fallbackUnseen];
-    const enrichedSeen=sbaShuf(all_seen.filter(i=>isEnriched(i)),Date.now()+1);
-    const fallbackSeen=sbaShuf(all_seen.filter(i=>!isEnriched(i)),Date.now()+101);
-    const stale=[...enrichedSeen,...fallbackSeen];
-    // Phase Y.2 — Adaptive Weakness Engine: learner weaknesses bias selection
-    selected=(window.LI?LI.prioritize([...fresh,...stale],recent):[...fresh,...stale]).slice(0,size);
-  }
-  QUESTIONS=selected.map(bankToQ);
-  sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
+async function loadMode(mode){
+  try{
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/rest/v1/sba_bank?select=*&limit=670',
+      {headers:{'apikey':'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'}});
+    const all=await resp.json();
+    if(!Array.isArray(all)){console.error('API returned non-array');return;}
+    ACTIVE_MODE=mode;
+    const recent=sbaRecent(); let selected=[];
+    if(mode==='mock_theory_1'){
+      const byRa={};
+      all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
+      Object.entries(MOCK_RA).forEach(([ra,need])=>{
+        let pool=byRa[ra]||[];
+        const enrichedPool=sbaShuf(pool.filter(i=>isEnriched(i)),Date.now()+ra.charCodeAt(2));
+        const fallbackPool=sbaShuf(pool.filter(i=>!isEnriched(i)),Date.now()+ra.charCodeAt(2)+100);
+        pool=[...enrichedPool,...fallbackPool];
+        pool=window.LI?LI.prioritize(pool,recent)
+          :[...pool.filter(i=>!recent.includes(i.source_question_id)),...pool.filter(i=>recent.includes(i.source_question_id))];
+        selected.push(...pool.slice(0,need));
+      });
+      selected=sbaShuf(selected,Date.now());
+    } else {
+      const size={quick_drill:5,express:10,standard:25}[mode]||10;
+      const all_unseen=all.filter(i=>!recent.includes(i.source_question_id));
+      const all_seen=all.filter(i=>recent.includes(i.source_question_id));
+      const enrichedUnseen=sbaShuf(all_unseen.filter(i=>isEnriched(i)),Date.now());
+      const fallbackUnseen=sbaShuf(all_unseen.filter(i=>!isEnriched(i)),Date.now()+100);
+      const fresh=[...enrichedUnseen,...fallbackUnseen];
+      const enrichedSeen=sbaShuf(all_seen.filter(i=>isEnriched(i)),Date.now()+1);
+      const fallbackSeen=sbaShuf(all_seen.filter(i=>!isEnriched(i)),Date.now()+101);
+      const stale=[...enrichedSeen,...fallbackSeen];
+      selected=(window.LI?LI.prioritize([...fresh,...stale],recent):[...fresh,...stale]).slice(0,size);
+    }
+    QUESTIONS=selected.map(bankToQ);
+    sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
+  }catch(e){console.error('loadMode error:',e);}
 }
 function startMode(mode){
   const accessMode = {
@@ -1373,8 +1372,8 @@ function startMode(mode){
   });
 }
 
-function startAllowedMode(mode){
-  loadMode(mode);
+async function startAllowedMode(mode){
+  await loadMode(mode);
   document.getElementById('mode-overlay').classList.remove('active');
   STATE.stage='prepare'; STATE.questionIndex=0;
   STATE.selectedOption=null; STATE.selectedConfidence=null; STATE.selectedTag=null;
