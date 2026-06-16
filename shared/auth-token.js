@@ -22,12 +22,27 @@ async function getAuthToken() {
       return null;
     }
 
-    if (!session) {
-      console.log('No active session');
+    if (session) {
+      return session.access_token;
+    }
+
+    // No session: try anonymous sign-in
+    console.log('No session, attempting anonymous sign-in...');
+    const { data: { user }, error: anonError } = await supabaseClient.auth.signInAnonymously();
+    if (anonError) {
+      console.error('Anonymous sign-in failed:', anonError);
       return null;
     }
 
-    return session.access_token;
+    if (user) {
+      const { data: { session: newSession } } = await supabaseClient.auth.getSession();
+      if (newSession) {
+        console.log('Anonymous session created');
+        return newSession.access_token;
+      }
+    }
+
+    return null;
   } catch (e) {
     console.error('getAuthToken error:', e);
     return null;
