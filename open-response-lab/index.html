@@ -717,6 +717,7 @@ textarea {
     state.answers = {};
     state.feedback = {};
     state.completed = false;
+    state.showingFeedback = false;
     saveState();
     render();
   }
@@ -728,6 +729,7 @@ textarea {
     state.feedback[item.item_id] = evalItem
       ? evaluateAnswer(evalItem, els.answer.value)
       : { concepts_detected: [], concepts_absent: [], missing_causal_reasoning: [], improvement_suggestions: ["Sin retroalimentación disponible para este elemento."] };
+    state.showingFeedback = true;
     saveState();
     render();
   }
@@ -737,6 +739,7 @@ textarea {
     if (state.index < lastIndex) {
       state.index += 1;
       state.completed = false;
+      state.showingFeedback = false;
       saveState();
       render();
     }
@@ -946,9 +949,11 @@ textarea {
     closeDrawer();
 
     els.next.disabled = state.index >= session.item_ids.length - 1;
-    els.feedback.hidden = !itemFeedback;
+    els.feedback.hidden = !(itemFeedback && state.showingFeedback);
     els.completion.hidden = !state.completed;
     els.localState.textContent = `${Object.keys(state.answers).length} respuesta(s) guardada(s) localmente.`;
+    document.getElementById("submit-answer").style.display = state.showingFeedback ? "none" : "inline-block";
+    document.getElementById("next-question").style.display = (state.answers[item.item_id] && state.showingFeedback) ? "inline-block" : "none";
     renderFeedback(itemFeedback);
     // Phase Z — Distinction Coach: contenido + estructura del verbo + cadena causal
     const coachEl = document.querySelector("[data-testid='coach-feedback']");
