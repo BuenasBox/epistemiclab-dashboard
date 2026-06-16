@@ -576,11 +576,10 @@ textarea {
 <script src="../shared/remediation-engine.js"></script>
 <script src="../shared/or-enrichment.js"></script>
 <script src="../shared/recommendation-engine.js"></script>
-<script src="../shared/or-coaching-engine.js"></script>
 <script src="../shared/weakness-sync.js"></script>
-<script src="../shared/mentor-config.js"></script>
-<script src="../shared/mentor-engine.js"></script>
-<script src="../shared/mentor-ui.js"></script>
+<!-- Mentor / coaching reasoning moved server-side (evaluate-or). These engines
+     are no longer shipped to the browser to protect pedagogical IP:
+     or-coaching-engine.js, mentor-config.js, mentor-engine.js, mentor-ui.js -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../shared/auth-token.js"></script>
 <script src="../adaptive-session/coach_data.js"></script>
@@ -646,7 +645,9 @@ textarea {
   document.getElementById("finish-session").addEventListener("click", finishSession);
   document.getElementById("restart-session").addEventListener("click", () => startSession(state.sessionName));
 
-  render();
+  // NOTE: initial render() is invoked at the END of this IIFE, after the drawer
+  // panel consts (conceptsPanel, etc.) are initialised — otherwise render()
+  // hits a temporal-dead-zone ReferenceError on conceptsPanel (audit EL-003).
 
   function validSessionName(name) {
     if (payload.sessions && payload.sessions[name]) return name;
@@ -722,13 +723,38 @@ textarea {
     render();
   }
 
-  function submitAnswer() {
+  async function submitAnswer() {
     const item = currentItem();
-    const evalItem = currentEvaluationItem();
+    if (!item) return;
     state.answers[item.item_id] = els.answer.value;
-    state.feedback[item.item_id] = evalItem
-      ? evaluateAnswer(evalItem, els.answer.value)
-      : { concepts_detected: [], concepts_absent: [], missing_causal_reasoning: [], improvement_suggestions: ["Sin retroalimentación disponible para este elemento."] };
+    // Evaluation runs SERVER-SIDE (evaluate-or). The rubric never reaches the
+    // browser; we receive only the final result the student is allowed to see.
+    let fb = { concepts_detected: [], concepts_absent: [], missing_causal_reasoning: [], improvement_suggestions: ["Sin retroalimentación disponible para este elemento."] };
+    const submitBtn = document.getElementById("submit-answer");
+    if (submitBtn) submitBtn.disabled = true;
+    try {
+      const token = await getAuthToken();
+      const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/evaluate-or', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ item_id: item.item_id, response_text: els.answer.value })
+      });
+      if (resp.ok) {
+        const r = await resp.json();
+        fb = {
+          concepts_detected: r.concepts_detected || [],
+          concepts_absent: r.concepts_absent || [],
+          missing_causal_reasoning: r.missing_causal_reasoning || [],
+          improvement_suggestions: r.improvement_suggestions || []
+        };
+      } else {
+        console.error('evaluate-or status:', resp.status);
+      }
+    } catch (e) {
+      console.error('evaluate-or error:', e);
+    }
+    if (submitBtn) submitBtn.disabled = false;
+    state.feedback[item.item_id] = fb;
     state.showingFeedback = true;
     saveState();
     render();
@@ -988,50 +1014,6 @@ textarea {
     renderList(els.absent, feedback.concepts_absent, "Sin ausencias visibles.");
     renderList(els.causal, feedback.missing_causal_reasoning, "Sin razonamiento causal faltante visible.");
     renderList(els.suggestions, feedback.improvement_suggestions, "Mantén la estructura.");
-
-    // Y.1.4: Render OR enrichment if available
-    if (typeof window.enrichORItem === 'function') {
-      try {
-        const item = currentItem();
-        const coach = window.LI ? window.LI.coachOpenResponse(item.stem, state.answers[item.item_id] || "", item.topic, feedback) : null;
-        const verb = coach ? coach.verb : null;
-        if (verb) {
-          const enrichHtml = window.enrichORItem(item.stem, verb);
-          if (enrichHtml && els.suggestions.parentElement) {
-            const enrichDiv = document.createElement('div');
-            enrichDiv.style.marginTop = '16px';
-            enrichDiv.innerHTML = enrichHtml;
-            els.suggestions.parentElement.appendChild(enrichDiv);
-          }
-        }
-      } catch (e) {
-        console.error('[Y.1.4] OR Enrichment error:', e);
-      }
-    }
-
-    // Y.3.1: Open Response coaching if available
-    if (typeof window.ORCoachingEngine === 'object' && typeof window.ORCoachingEngine.coachResponse === 'function') {
-      try {
-        const item = currentItem();
-        const verb = item && item.command_verb ? item.command_verb : (window.LI && typeof window.LI.detectVerb === 'function' ? window.LI.detectVerb(item.stem) : null);
-        const weaknessProfile = window.LI && typeof window.LI.weakSet === 'function' ? window.LI.weakSet() : null;
-        const misconceptions = typeof window.MisconceptionEngine === 'object' && typeof window.MisconceptionEngine.detectMisconceptions === 'function' ? window.MisconceptionEngine.detectMisconceptions(weaknessProfile ? [(weaknessProfile.weakTopics || [])[0]] : [], []) : [];
-
-        if (verb && feedback) {
-          const coaching = window.ORCoachingEngine.coachResponse(verb, feedback, state.answers[item.item_id] || "", weaknessProfile, misconceptions);
-          if (coaching) {
-            const coachingHtml = window.ORCoachingEngine.renderCoachingCard(coaching);
-            if (coachingHtml && els.suggestions.parentElement) {
-              const coachingDiv = document.createElement('div');
-              coachingDiv.innerHTML = coachingHtml;
-              els.suggestions.parentElement.appendChild(coachingDiv);
-            }
-          }
-        }
-      } catch (e) {
-        console.warn('[Y.3.1] OR Coaching error (non-blocking):', e);
-      }
-    }
   }
 
   function renderProgress(session) {
@@ -1070,80 +1052,12 @@ textarea {
     target.innerHTML = "";
   }
 
-  function evaluateAnswer(item, answer) {
-    const present = [];
-    const partial = [];
-    const missing = [];
-    item.expected_concepts.forEach((concept) => {
-      const state = conceptState(concept, answer);
-      if (state === "present") present.push(concept);
-      else if (state === "partial") partial.push(concept);
-      else missing.push(concept);
-    });
-    const causal = causalFeedback(item.optional_causal_chain, answer);
-    return {
-      concepts_detected: present.concat(partial),
-      concepts_absent: missing,
-      missing_causal_reasoning: missingCausalReasoning(causal),
-      improvement_suggestions: [revisionSuggestion(missing, partial, causal)]
-    };
-  }
-
-  function conceptState(concept, answer) {
-    const conceptNorm = normalizeText(concept);
-    const answerNorm = normalizeText(answer);
-    if (conceptNorm && answerNorm.includes(conceptNorm)) return "present";
-    const conceptTokens = meaningfulTokens(concept);
-    const answerTokens = new Set(meaningfulTokens(answer));
-    if (!conceptTokens.length) return "missing";
-    const hits = conceptTokens.filter((token) => answerTokens.has(token));
-    if (hits.length === conceptTokens.length) return "present";
-    if (hits.length) return "partial";
-    return "missing";
-  }
-
-  function causalFeedback(chain, answer) {
-    if (!chain || !String(chain).trim()) return "not_applicable";
-    const segments = String(chain).split("->").map((part) => part.trim()).filter(Boolean);
-    const matched = segments.filter((segment) => ["present", "partial"].includes(conceptState(segment, answer)));
-    const connectors = new Set(["porque", "debido", "causa", "causar", "provoca", "produce", "resulta", "resultado", "conduce", "influye", "afecta", "impacta", "therefore", "because", "leads", "results"]);
-    const hasConnector = meaningfulTokens(answer).some((token) => connectors.has(token));
-    if (matched.length >= 2 && hasConnector) return "causal_link_present";
-    if (matched.length >= 2 || (matched.length === 1 && hasConnector)) return "weak_causal_link";
-    return "causal_link_missing";
-  }
-
-  function missingCausalReasoning(causal) {
-    if (causal === "weak_causal_link") return ["Haz explícita la relación causa-efecto."];
-    if (causal === "causal_link_missing") return ["Añade la relación causa-efecto esperada."];
-    return [];
-  }
-
-  function revisionSuggestion(missing, partial, causal) {
-    const targets = missing.slice(0, 3).concat(partial.slice(0, 2));
-    if (targets.length) return `Revisa incorporando explícitamente: ${targets.join(", ")}.`;
-    if (causal === "weak_causal_link") return "Conecta causa y efecto con lenguaje causal explícito.";
-    if (causal === "causal_link_missing") return "Añade la relación causa-efecto relevante.";
-    return "Conserva la estructura y mantén la explicación fundada.";
-  }
-
-  function meaningfulTokens(text) {
-    const stopwords = new Set(["a", "al", "and", "de", "del", "el", "en", "for", "la", "las", "los", "of", "the", "to", "un", "una", "y"]);
-    return normalizeText(text).match(/\b[^\W\d_](?:[^\W_]|['-])*\b/gu)?.filter((token) => token.length > 1 && !stopwords.has(token)) || [];
-  }
-
-  function normalizeText(text) {
-    return String(text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/₂/g, "2").trim().replace(/\s+/g, " ");
-  }
-
-  function escapeHtml(text) {
-    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-    return String(text).replace(/[&<>"']/g, m => map[m]);
-  }
-
   function labelForSession(name) {
     return { short_practice: "Práctica corta", standard_practice: "Práctica estándar", extended_practice: "Práctica extendida", mock_theory_2: "Simulacro Teoría Parte 2" }[name] || name;
   }
+
+  // Initial paint — runs only now that every const above is initialised.
+  render();
 })();
 </script>
 </body>
