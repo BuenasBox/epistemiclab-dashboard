@@ -480,7 +480,6 @@ async function loadSATItems(){
   if(window.WINE_INVENTORY && window.WINE_INVENTORY.length > 0){
     return shuf(window.WINE_INVENTORY, Date.now()).slice(0,2);
   }
-  console.error('SAT items not available');
   return [];
 }
 
@@ -498,6 +497,9 @@ async function startSim(){
   STATE.or.idx=0;  STATE.or.answers=[];
   STATE.sat.idx=0; STATE.sat.answers=[];
   STATE.secs.sba=75*60; STATE.secs.or=30*60; STATE.secs.sat=30*60;
+  const debugPart=new URLSearchParams(window.location.search).get('debug');
+  if(debugPart==='2'){ bridgeSBA(); return; }
+  if(debugPart==='3'){ bridgeOR(); return; }
   startSBAPhase();
 }
 
@@ -664,6 +666,15 @@ function bridgeOR(){
 
 /* ── PHASE 3: SAT ── */
 function startSAT(){
+  if(!STATE.sat.items || STATE.sat.items.length===0){
+    $('phase-header').style.display='none';
+    const s=document.createElement('div');
+    s.className='screen';
+    s.style.cssText='display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;padding:40px;text-align:center';
+    s.innerHTML=`<div style="font-size:24px;font-weight:700">Parte 3 · SAT</div><div style="font-size:16px;color:var(--muted);max-width:400px">Parte 3 no está disponible en este momento. El corpus de vinos SAT aún no ha sido integrado.</div><button class="btn-primary" onclick="location.reload()">Volver</button>`;
+    document.body.appendChild(s);
+    return;
+  }
   STATE.phase='sat';
   STATE.secs.sat=30*60;
   renderSATQ();
