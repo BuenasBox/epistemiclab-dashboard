@@ -451,7 +451,7 @@ async function loadSBAItems(){
     if(!Array.isArray(bk)){ console.error('Failed to load SBA items'); return []; }
     const seed = Date.now();
     const byRa = {};
-    bk.forEach(i=>{ const r=i.ra||'RA1'; (byRa[r]=byRa[r]||[]).push(i); });
+    bk.forEach(i=>{ const r=i.RA||i.ra||'RA1'; (byRa[r]=byRa[r]||[]).push(i); });
     const out = [];
     Object.entries(RA_DIST).forEach(([ra,need])=>{
       let pool = byRa[ra]||[];
