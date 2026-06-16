@@ -1046,7 +1046,6 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 <script src="../shared/pedagogical-coaching-engine.js"></script>
 <script src="../shared/readiness-indicators.js"></script>
 <script src="../shared/simulation-coaching.js"></script>
-<script src="../shared/misconception-engine.js"></script>
 <script src="../shared/recommendation-engine.js"></script>
 </head>
 <body>
@@ -1321,9 +1320,12 @@ function bankToQ(item){
 }
 async function loadMode(mode){
   try{
+    console.log('[loadMode] Starting for mode:', mode);
     const token=await requireAuth();
+    console.log('[loadMode] Got token, calling get-sba-bank');
     const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?limit=670',
       {headers:{'Authorization':'Bearer '+token}});
+    console.log('[loadMode] Response status:', resp.status);
     if(resp.status===401){
       els.sessionState.textContent='Inicia sesión para cargar preguntas';
       console.error('Authentication required');
@@ -1364,21 +1366,33 @@ async function loadMode(mode){
   }catch(e){console.error('loadMode error:',e);}
 }
 function startMode(mode){
+  console.log('[startMode] Initiating mode:', mode);
   const accessMode = {
     quick_drill: 'sba_quick_drill',
     express: 'sba_express',
     standard: 'sba_standard',
     mock_theory_1: 'sba_mock_theory',
   }[mode] || mode;
-  if(!window.WSETModeAccessGate)return;
-  window.WSETModeAccessGate.request({
-      route: '/diagnostic-sba/',
-      experience: 'diagnostic_sba',
-      mode: accessMode,
-      enforcement: 'active',
-  }).then(decision=>{
-    if(decision.would_allow) startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
-  });
+
+  // If access gate exists, use it; otherwise proceed directly
+  if(window.WSETModeAccessGate){
+    window.WSETModeAccessGate.request({
+        route: '/diagnostic-sba/',
+        experience: 'diagnostic_sba',
+        mode: accessMode,
+        enforcement: 'active',
+    }).then(decision=>{
+      if(decision.would_allow) {
+        console.log('[startMode] Access allowed, starting session');
+        startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
+      } else {
+        console.log('[startMode] Access denied:', decision.denial_reason);
+      }
+    });
+  } else {
+    console.log('[startMode] No WSETModeAccessGate found, proceeding directly');
+    startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
+  }
 }
 
 async function startAllowedMode(mode){
