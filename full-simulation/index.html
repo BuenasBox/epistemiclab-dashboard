@@ -556,11 +556,15 @@ async function confirmSBA(){
   const sel=STATE.sba.selected;
   const letter=String.fromCharCode(65+sel);
 
+  console.log('[confirmSBA] q:', q, 'sel:', sel, 'letter:', letter);
+
   try{
     const token=await requireAuth();
+    const payload={item_id:q.item_id,selected_letter:letter};
+    console.log('[confirmSBA] payload:', payload);
     const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer',
-      {method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({item_id:q.item_id,selected_letter:letter})});
-    if(resp.status!==200){ console.error('Validation failed'); return; }
+      {method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(resp.status!==200){ const err=await resp.text(); console.error('Validation failed:', resp.status, err); return; }
     const {correct,correct_letter}=await resp.json();
     const ok=correct;
 
