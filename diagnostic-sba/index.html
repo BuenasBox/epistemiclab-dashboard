@@ -1377,7 +1377,7 @@ function startMode(mode){
       mode: accessMode,
       enforcement: 'active',
   }).then(decision=>{
-    if(decision.would_allow)startAllowedMode(mode);
+    if(decision.would_allow) startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
   });
 }
 

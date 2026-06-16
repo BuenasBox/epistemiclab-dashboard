@@ -1,8 +1,10 @@
 // Get Supabase client instance
 const supabaseClient = (() => {
-  const { createClient } = window.SupabaseClient || {};
-  if (!createClient) return null;
-  return createClient(
+  if (!window.supabase || !window.supabase.createClient) {
+    console.error('Supabase JS not loaded');
+    return null;
+  }
+  return window.supabase.createClient(
     'https://hylknjjhmxsuuwbsslkr.supabase.co',
     'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'
   );
