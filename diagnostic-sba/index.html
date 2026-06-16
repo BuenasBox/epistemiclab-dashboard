@@ -1031,6 +1031,8 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
 <script src="../shared/auth-providers/mock-auth-provider.js"></script>
 <script src="../shared/auth-provider.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../shared/auth-token.js"></script>
 <script src="../shared/access-control.js"></script>
 <script src="../shared/access-audit.js"></script>
 <script src="../shared/upgrade-gate.js"></script>
@@ -1319,9 +1321,16 @@ function bankToQ(item){
 }
 async function loadMode(mode){
   try{
-    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/rest/v1/sba_bank?select=*&limit=670',
-      {headers:{'apikey':'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'}});
-    const all=await resp.json();
+    const token=await requireAuth();
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?limit=670',
+      {headers:{'Authorization':'Bearer '+token}});
+    if(resp.status===401){
+      els.sessionState.textContent='Inicia sesión para cargar preguntas';
+      console.error('Authentication required');
+      return;
+    }
+    const {items}=await resp.json();
+    const all=items||[];
     if(!Array.isArray(all)){console.error('API returned non-array');return;}
     ACTIVE_MODE=mode;
     const recent=sbaRecent(); let selected=[];

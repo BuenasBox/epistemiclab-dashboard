@@ -712,6 +712,8 @@ html, body {
 <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
 <script src="../shared/auth-providers/mock-auth-provider.js"></script>
 <script src="../shared/auth-provider.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../shared/auth-token.js"></script>
 <script src="../shared/access-control.js"></script>
 <script src="../shared/access-audit.js"></script>
 <script src="../shared/upgrade-gate.js"></script>
@@ -1348,9 +1350,12 @@ function isEnrichedAdp(item){
 }
 async function buildSBA(mode){
   try{
-    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/rest/v1/sba_bank?select=*&limit=670',
-      {headers:{'apikey':'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'}});
-    const all=await resp.json();
+    const token=await requireAuth();
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?limit=670',
+      {headers:{'Authorization':'Bearer '+token}});
+    if(resp.status===401){console.error('Authentication required');return null;}
+    const {items}=await resp.json();
+    const all=items||[];
     if(!Array.isArray(all)){console.error('API returned non-array');return null;}
     const rec=adpRec(); let sel=[];
   // Phase Y.1 — Adaptive Weakness Engine: learner weaknesses bias selection
