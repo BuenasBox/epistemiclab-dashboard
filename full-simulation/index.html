@@ -640,13 +640,20 @@ function renderORQ(){
   $('or-stem').textContent=q.stem||q.question_text||'';
   // Phase Y.4 — Open Response Mentor: full 6-layer coaching
   if($('or-verb-coach')){
-    if(window.MentorEngine && window.MentorUI){
-      const guidance=window.MentorEngine.buildMentorGuidance(q.stem||q.question_text||'', q.topic||null);
-      $('or-verb-coach').innerHTML=window.MentorUI.renderMentorUI(guidance);
-    } else {
-      const verb=window.LI?LI.detectVerb(q.stem||q.question_text||''):null;
-      $('or-verb-coach').innerHTML=verb&&window.LI?LI.renderVerbCoach(verb):'';
-    }
+    try{
+      if(window.MentorEngine && window.MentorUI){
+        const guidance=window.MentorEngine.buildMentorGuidance(q.stem||q.question_text||'', q.topic||null);
+        if(guidance){
+          $('or-verb-coach').innerHTML=window.MentorUI.renderMentorUI(guidance);
+        } else {
+          const verb=window.LI?LI.detectVerb(q.stem||q.question_text||''):null;
+          $('or-verb-coach').innerHTML=verb&&window.LI?LI.renderVerbCoach(verb):'';
+        }
+      } else {
+        const verb=window.LI?LI.detectVerb(q.stem||q.question_text||''):null;
+        $('or-verb-coach').innerHTML=verb&&window.LI?LI.renderVerbCoach(verb):'';
+      }
+    }catch(e){console.log('[renderORQ mentor] fallback');}
   }
   $('or-textarea').value = STATE.or.answers[idx]||'';
   $('or-next-btn').textContent = idx<items.length-1 ? 'Guardar y continuar →' : 'Finalizar Parte 2 →';
