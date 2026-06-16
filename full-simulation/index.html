@@ -611,18 +611,23 @@ function bridgeSBA(){
 
 /* ── PHASE 2: OPEN RESPONSE ── */
 function startOR(){
-  STATE.phase='or';
-  STATE.secs.or=30*60;
-  renderORQ();
-  STATE.timers.or = setInterval(()=>{
-    STATE.secs.or=Math.max(0,STATE.secs.or-1);
-    updateTimer('ph-timer',STATE.secs.or);
-    if(!STATE.secs.or){ clearInterval(STATE.timers.or); autoAdvanceOR(); }
-  },1000);
+  try{
+    console.log('[startOR] STATE.or.items:', STATE.or.items);
+    STATE.phase='or';
+    STATE.secs.or=30*60;
+    renderORQ();
+    STATE.timers.or = setInterval(()=>{
+      STATE.secs.or=Math.max(0,STATE.secs.or-1);
+      updateTimer('ph-timer',STATE.secs.or);
+      if(!STATE.secs.or){ clearInterval(STATE.timers.or); autoAdvanceOR(); }
+    },1000);
+  }catch(e){console.error('[startOR] error:',e);}
 }
 
 function renderORQ(){
-  const items=STATE.or.items, idx=STATE.or.idx, q=items[idx];
+  try{
+    const items=STATE.or.items, idx=STATE.or.idx, q=items[idx];
+    console.log('[renderORQ] items:', items, 'idx:', idx, 'q:', q);
   if(!q){ bridgeOR(); return; }
 
   $('phase-header').style.display='flex';
@@ -646,6 +651,7 @@ function renderORQ(){
   $('or-textarea').value = STATE.or.answers[idx]||'';
   $('or-next-btn').textContent = idx<items.length-1 ? 'Guardar y continuar →' : 'Finalizar Parte 2 →';
   showScreen('screen-or');
+  }catch(e){console.error('[renderORQ] error:',e);}
 }
 
 function nextOR(){
