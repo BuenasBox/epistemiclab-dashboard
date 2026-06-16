@@ -1,0 +1,1 @@
+Edge functions get-sba-bank, validate-sba-answer, get-or-bank, evaluate-or are the authoritative source-of-truth and are deployed via Supabase. Pedagogical IP (answer keys, rubrics, feedback) is served only post-answer, server-side.
