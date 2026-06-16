@@ -1,66 +1,86 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const supabaseUrl = Deno.env.get('SUPABASE_URL');
-const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
+const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
 
-export async function handleRequest(req: Request): Promise<Response> {
-  const authHeader = req.headers.get('authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+Deno.serve(async (req: Request) => {
+  // CORS
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Allow-Headers': 'authorization, content-type',
+      },
+    });
   }
 
-  const token = authHeader.substring(7);
-  const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-
-  if (authError || !user) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
-  }
-
-  const { data: profile } = await supabase
-    .from('user_profiles')
-    .select('plan')
-    .eq('user_id', user.id)
-    .single();
-
-  const plan = profile?.plan;
-  if (!['demo', 'premium', 'full_access', 'admin', 'test'].includes(plan)) {
-    return new Response(JSON.stringify({ error: 'Access denied' }), { status: 403 });
-  }
-
-  const url = new URL(req.url);
-  const limit = Math.min(parseInt(url.searchParams.get('limit') || '25'), 100);
-  const offset = parseInt(url.searchParams.get('offset') || '0');
-  const topic = url.searchParams.get('topic');
-
-  let query = supabase.from('or_bank').select('*');
-
-  if (topic) {
-    query = query.eq('topic', topic);
-  }
-
-  const { data: items, error } = await query
-    .range(offset, offset + limit - 1);
-
-  if (error) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
-  }
-
-  return new Response(
-    JSON.stringify({
-      items: items || [],
-      count: (items || []).length,
-      watermark: {
-        user_id: user.id,
-        issued_at: new Date().toISOString(),
-        expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-      }
-    }),
-    {
-      headers: { 'Content-Type': 'application/json' },
-      status: 200
+  try {
+    // Auth: require JWT token
+    const authHeader = req.headers.get('authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(JSON.stringify({ error: 'Unauthorized: missing token' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
-  );
-}
 
-Deno.serve(handleRequest);
+    const token = authHeader.substring(7);
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Verify token
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+    if (authError || !user) {
+      return new Response(JSON.stringify({ error: 'Unauthorized: invalid token' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Query params with bounds
+    const url = new URL(req.url);
+    const limit = Math.min(parseInt(url.searchParams.get('limit') || '25'), 100);
+    const offset = Math.max(parseInt(url.searchParams.get('offset') || '0'), 0);
+    const topic = url.searchParams.get('topic');
+
+    // Fetch from database with service role key (backend-only access)
+    let query = supabase.from('or_bank').select('id,item_id,question_text,command_verb,ra_id,topic,expected_concepts,expected_structure,response_depth_target,causal_chain_target,feedback_profile');
+
+    if (topic) {
+      query = query.eq('topic', topic);
+    }
+
+    const { data: items, error } = await query.range(offset, offset + limit - 1);
+
+    if (error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    return new Response(
+      JSON.stringify({
+        items: items || [],
+        count: (items || []).length,
+        watermark: {
+          user_id: user.id,
+          issued_at: new Date().toISOString(),
+          expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        },
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
+    );
+  } catch (err) {
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+});

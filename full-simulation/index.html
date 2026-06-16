@@ -14,12 +14,8 @@
   <script src="../shared/access-audit.js"></script>
   <script src="../shared/upgrade-gate.js"></script>
   <script src="./access-gate.js"></script>
-  <script src="../adaptive-session/session_bank.js"></script>
-  <script src="../shared/sat-wine-data.js"><\/script>
-  <script src="../shared/mentor-config.js"></script>
   <script src="../shared/mentor-engine.js"></script>
   <script src="../shared/mentor-ui.js"></script>
-  <script src="../open-response-lab/lab_payload.js"></script>
   <script src="../adaptive-session/coach_data.js"></script>
   <script src="../adaptive-session/learner_intelligence.js"></script>
   <script src="../shared/learning-loop.js"></script>
@@ -442,61 +438,55 @@ function isEnrichedFS(item){
   return !!(item.feedback_by_mode || item.causal_chain || item.micro_drill);
 }
 
-function loadSBAItems(){
-  const bk = window.SESSION_BANK;
-  if(!bk||!bk.sba_items){ console.error('SESSION_BANK not loaded'); return []; }
-  const seed = Date.now();
-  const byRa = {};
-  bk.sba_items.forEach(i=>{ const r=i.ra||'RA1'; (byRa[r]=byRa[r]||[]).push(i); });
-  const out = [];
-  Object.entries(RA_DIST).forEach(([ra,need])=>{
-    let pool = byRa[ra]||[];
-    // Phase P3: enriched-first within RA bucket — preserve blueprint, prefer enriched
-    const enrichedPool = shuf(pool.filter(i=>isEnrichedFS(i)), seed + ra.charCodeAt(2));
-    const fallbackPool = shuf(pool.filter(i=>!isEnrichedFS(i)), seed + ra.charCodeAt(2) + 100);
-    pool = [...enrichedPool, ...fallbackPool];
-    out.push(...pool.slice(0,need));
-  });
-  return shuf(out, seed+1);
+async function loadSBAItems(){
+  try{
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/rest/v1/sba_bank?select=*&limit=670',
+      {headers:{'apikey':'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'}});
+    const bk=await resp.json();
+    if(!Array.isArray(bk)){ console.error('Failed to load SBA items'); return []; }
+    const seed = Date.now();
+    const byRa = {};
+    bk.forEach(i=>{ const r=i.ra||'RA1'; (byRa[r]=byRa[r]||[]).push(i); });
+    const out = [];
+    Object.entries(RA_DIST).forEach(([ra,need])=>{
+      let pool = byRa[ra]||[];
+      const enrichedPool = shuf(pool.filter(i=>isEnrichedFS(i)), seed + ra.charCodeAt(2));
+      const fallbackPool = shuf(pool.filter(i=>!isEnrichedFS(i)), seed + ra.charCodeAt(2) + 100);
+      pool = [...enrichedPool, ...fallbackPool];
+      out.push(...pool.slice(0,need));
+    });
+    return shuf(out, seed+1);
+  }catch(e){console.error('loadSBAItems error:',e);return [];}
 }
 
-function loadORItems(){
-  const pl = window.OPEN_RESPONSE_LAB_PAYLOAD;
-  if(!pl||!pl.items){ console.error('OPEN_RESPONSE_LAB_PAYLOAD not loaded'); return []; }
-  // pick 4 items: prefer mock_theory_2 session ids if available
-  const sess = pl.sessions && pl.sessions.mock_theory_2;
-  if(sess && sess.item_ids && sess.item_ids.length >= 4){
-    const idMap = {};
-    (pl.items||[]).forEach(i=>{ idMap[i.item_id]=i; });
-    const items = sess.item_ids.slice(0,4).map(id=>idMap[id]).filter(Boolean);
-    if(items.length===4) return items;
-  }
-  // fallback: random 4 from pool
-  return shuf(pl.items||[], Date.now()).slice(0,4);
+async function loadORItems(){
+  try{
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/rest/v1/or_bank?select=*&limit=106',
+      {headers:{'apikey':'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'}});
+    const items=await resp.json();
+    if(!Array.isArray(items)){ console.error('Failed to load OR items'); return []; }
+    return shuf(items, Date.now()).slice(0,4);
+  }catch(e){console.error('loadORItems error:',e);return [];}
 }
 
-function loadSATItems(){
-  // Try new wine inventory first
+async function loadSATItems(){
   if(window.WINE_INVENTORY && window.WINE_INVENTORY.length > 0){
     return shuf(window.WINE_INVENTORY, Date.now()).slice(0,2);
   }
-
-  // Fallback to legacy SESSION_BANK.sat_prompts
-  const bk = window.SESSION_BANK;
-  if(!bk||!bk.sat_prompts){ console.error('No wine inventory or sat_prompts available'); return []; }
-  return shuf(bk.sat_prompts, Date.now()).slice(0,2);
+  console.error('SAT items not available');
+  return [];
 }
 
 /* ── SIM LIFECYCLE ── */
-function startSim(){
+async function startSim(){
   if(
     !window.WSETFullSimulationGate
     || !window.WSETFullSimulationGate.canStart()
   ) return;
   STATE.session_id = 'fullsim_' + Date.now();
-  STATE.sba.items   = loadSBAItems();
-  STATE.or.items    = loadORItems();
-  STATE.sat.items   = loadSATItems();
+  STATE.sba.items   = await loadSBAItems();
+  STATE.or.items    = await loadORItems();
+  STATE.sat.items   = await loadSATItems();
   STATE.sba.idx=0; STATE.sba.correct=0; STATE.sba.attempts=[]; STATE.sba.recorded=false;
   STATE.or.idx=0;  STATE.or.answers=[];
   STATE.sat.idx=0; STATE.sat.answers=[];
