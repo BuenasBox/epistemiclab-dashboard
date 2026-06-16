@@ -684,7 +684,7 @@ textarea {
     if (!session || !session.item_ids) return null;
     const itemId = session.item_ids[state.index];
     if (!itemId) return null;
-    return payload.items && payload.items.find((item) => item.item_id === itemId);
+    return payload.items && payload.items[itemId];
   }
 
   function currentEvaluationItem() {
@@ -750,7 +750,7 @@ textarea {
       currentSession().item_ids.forEach((itemId) => {
         const fb = state.feedback[itemId];
         if (!fb) return;
-        const item = payload.items.find((it) => it.item_id === itemId);
+        const item = payload.items[itemId];
         if (!item) return;
         const cr = LI.coachOpenResponse(item.stem, state.answers[itemId] || "", item.topic, fb);
         results.push({
