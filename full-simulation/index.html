@@ -16,6 +16,7 @@
   <script src="./access-gate.js"></script>
   <script src="../shared/mentor-engine.js"></script>
   <script src="../shared/mentor-ui.js"></script>
+  <script src="../shared/sat-wine-data.js"></script>
   <script src="../adaptive-session/coach_data.js"></script>
   <script src="../adaptive-session/learner_intelligence.js"></script>
   <script src="../shared/learning-loop.js"></script>
@@ -305,6 +306,15 @@
     </div>
   </div>
 
+  <!-- OR FEEDBACK (Post-Response Mentor) -->
+  <div class="screen" id="screen-or-feedback">
+    <div class="or-label" style="margin-bottom: 20px; font-size: 13px; font-weight: 700; color: var(--gold-light)">Revisión de tu respuesta</div>
+    <div id="or-feedback-content" style="margin-bottom: 20px"></div>
+    <div class="nav-bottom">
+      <button class="btn-primary" id="or-feedback-next-btn" onclick="continueAfterORFeedback()">Continuar →</button>
+    </div>
+  </div>
+
   <!-- BRIDGE 2→3 -->
   <div class="screen" id="screen-bridge2">
     <div class="bridge-icon">✓</div>
@@ -316,6 +326,14 @@
       <div class="part-row-time">30 min</div>
     </div>
     <button class="btn-primary" onclick="startSAT()">Iniciar Parte 3 →</button>
+  </div>
+
+  <!-- SAT WINE UNAVAILABLE (fallback) -->
+  <div class="screen" id="screen-sat-unavailable">
+    <div class="bridge-icon">🍇</div>
+    <div class="bridge-title">Parte 3 · SAT</div>
+    <div class="bridge-sub">El corpus de vinos para práctica SAT no está disponible en este momento.<br>Completa las Partes 1 y 2 para finalizar el simulacro.</div>
+    <button class="btn-primary" onclick="completeSim()">Finalizar Simulacro →</button>
   </div>
 
   <!-- SAT WINE -->
@@ -649,6 +667,44 @@ function renderORQ(){
 
 function nextOR(){
   STATE.or.answers[STATE.or.idx]=$('or-textarea').value;
+  const q=STATE.or.items[STATE.or.idx];
+  const ans=$('or-textarea').value;
+  showORFeedback(q, ans, STATE.or.idx);
+}
+
+function showORFeedback(q, ans, qIdx){
+  const feedbackEl=$('or-feedback-content');
+  let feedbackHtml='';
+
+  // Guidance from MentorEngine
+  if(window.MentorEngine && window.MentorUI){
+    try{
+      const guidance=window.MentorEngine.buildMentorGuidance(q.stem||q.question_text||'', q.topic||null, ans, null);
+      if(guidance && window.MentorUI.renderMentorUI){
+        feedbackHtml+=window.MentorUI.renderMentorUI(guidance);
+      }
+    }catch(e){console.log('[showORFeedback mentor] fallback');}
+  }
+
+  // Fallback: generic coaching from LI
+  if(!feedbackHtml && window.LI && window.LI.coachOpenResponse){
+    try{
+      const coaching=window.LI.coachOpenResponse(q.stem||q.question_text||'', ans, q.topic||null, null);
+      feedbackHtml+=coaching.html||'';
+    }catch(e){console.log('[showORFeedback LI] fallback');}
+  }
+
+  // Empty answer warning
+  if(!String(ans).trim()){
+    feedbackHtml='<div style="background:rgba(228,92,92,.1);border:1px solid rgba(228,92,92,.25);border-radius:8px;padding:16px;color:var(--red);font-size:14px;margin-bottom:20px">⚠ Respuesta vacía · Proporciona una respuesta para recibir retroalimentación del mentor</div>'+feedbackHtml;
+  }
+
+  feedbackEl.innerHTML=feedbackHtml||'<div style="color:var(--text-2);font-size:14px;padding:16px">Completa tu respuesta para recibir orientación del mentor.</div>';
+  $('or-feedback-next-btn').textContent=qIdx<STATE.or.items.length-1?'Continuar a siguiente →':'Terminar Parte 2 →';
+  showScreen('screen-or-feedback');
+}
+
+function continueAfterORFeedback(){
   STATE.or.idx++;
   if(STATE.or.idx>=STATE.or.items.length){ bridgeOR(); return; }
   renderORQ();
@@ -667,11 +723,7 @@ function bridgeOR(){
 function startSAT(){
   if(!STATE.sat.items || STATE.sat.items.length===0){
     $('phase-header').style.display='none';
-    const s=document.createElement('div');
-    s.className='screen';
-    s.style.cssText='display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;padding:40px;text-align:center';
-    s.innerHTML=`<div style="font-size:24px;font-weight:700">Parte 3 · SAT</div><div style="font-size:16px;color:var(--muted);max-width:400px">Parte 3 no está disponible en este momento. El corpus de vinos SAT aún no ha sido integrado.</div><button class="btn-primary" onclick="location.reload()">Volver</button>`;
-    document.body.appendChild(s);
+    showScreen('screen-sat-unavailable');
     return;
   }
   STATE.phase='sat';
