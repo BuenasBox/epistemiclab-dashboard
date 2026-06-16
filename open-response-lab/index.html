@@ -687,13 +687,6 @@ textarea {
     return payload.items && payload.items[itemId];
   }
 
-  function currentEvaluationItem() {
-    const item = currentItem();
-    return item && payload.evaluation_by_item_id
-      ? payload.evaluation_by_item_id[item.item_id]
-      : null;
-  }
-
   function startSession(name) {
     const accessMode = {
       short_practice: "open_response_short",
@@ -807,25 +800,25 @@ textarea {
   }
 
   // P3: CONTEXTUAL ASSISTANCE SYSTEM
-  const drawer = documentRef.querySelector('[data-testid="assist-drawer"]');
-  const overlay = documentRef.querySelector('[data-testid="assist-overlay"]');
-  const mentorPanel = documentRef.querySelector('#mentor-panel');
-  const conceptsPanel = documentRef.querySelector('#concepts-panel');
-  const checklistPanel = documentRef.querySelector('#checklist-panel');
-  const drawerTitle = documentRef.querySelector('[data-testid="drawer-title"]');
-  const drawerClose = documentRef.querySelector('[data-testid="drawer-close"]');
-  const assistBtns = documentRef.querySelectorAll('[data-assist-panel]');
+  const drawer = document.querySelector('[data-testid="assist-drawer"]');
+  const overlay = document.querySelector('[data-testid="assist-overlay"]');
+  const mentorPanel = document.querySelector('#mentor-panel');
+  const conceptsPanel = document.querySelector('#concepts-panel');
+  const checklistPanel = document.querySelector('#checklist-panel');
+  const drawerTitle = document.querySelector('[data-testid="drawer-title"]');
+  const drawerClose = document.querySelector('[data-testid="drawer-close"]');
+  const assistBtns = document.querySelectorAll('[data-assist-panel]');
 
   function closeDrawer() {
     drawer.hidden = true;
     overlay.hidden = true;
-    documentRef.querySelectorAll('.drawer-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.drawer-panel').forEach(p => p.classList.remove('active'));
   }
 
   function openDrawerPanel(panelId) {
     drawer.hidden = false;
     overlay.hidden = false;
-    documentRef.querySelectorAll('.drawer-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.drawer-panel').forEach(p => p.classList.remove('active'));
 
     let panel, title;
     switch(panelId) {
@@ -962,12 +955,11 @@ textarea {
       checklistDiv.innerHTML = checklist.map(item => `<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #303944;"><label style="display: flex; gap: 8px;"><input type="checkbox" style="cursor: pointer;"> <span style="cursor: pointer;">${escapeHtml(item)}</span></label></div>`).join('');
     }
 
-    // Phase Y.4 — Open Response Mentor: full 6-layer coaching (drawer version)
+    // Phase Y.4 — Open Response Mentor (server-provided when available)
     if (els.verbCoach && window.MentorEngine && window.MentorUI) {
       const guidance = window.MentorEngine.buildMentorGuidance(questionText, item.topic);
       els.verbCoach.innerHTML = window.MentorUI.renderMentorUI(guidance);
     } else if (els.verbCoach) {
-      // Fallback to legacy verb coach
       els.verbCoach.innerHTML = verb && window.LI ? LI.renderVerbCoach(verb) : "";
     }
 
@@ -981,14 +973,12 @@ textarea {
     document.getElementById("submit-answer").style.display = state.showingFeedback ? "none" : "inline-block";
     document.getElementById("next-question").style.display = (state.answers[item.item_id] && state.showingFeedback) ? "inline-block" : "none";
     renderFeedback(itemFeedback);
-    // Phase Z — Distinction Coach: contenido + estructura del verbo + cadena causal
     const coachEl = document.querySelector("[data-testid='coach-feedback']");
     if (coachEl) {
       coachEl.innerHTML = (itemFeedback && window.LI)
         ? LI.coachOpenResponse(item.stem, state.answers[item.item_id] || "", item.topic, itemFeedback).html
         : "";
     }
-    // Phase Z — próxima ruta recomendada al finalizar
     const routeEl = document.querySelector("[data-testid='next-route']");
     if (routeEl) {
       if (state.completed && window.LI) {
