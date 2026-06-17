@@ -566,7 +566,8 @@ async function confirmSBA(){
 
   try{
     const token=await requireAuth();
-    const payload={item_id:q.item_id,selected_letter:letter};
+    const itemId=q.item_id||q.id;
+    const payload={item_id:itemId,selected_letter:letter};
     const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer',
       {method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(payload)});
     if(resp.status!==200){ console.error('Validation failed'); return; }
