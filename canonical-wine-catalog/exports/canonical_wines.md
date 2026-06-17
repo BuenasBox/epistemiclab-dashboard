@@ -3,7 +3,7 @@
 Source: D:\Descargas\Phone Link\WSET3_rebuilt.md
 Source SHA256: 91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25
 
-Profiles: 11
+Profiles: 21
 
 ## SAT_WINE_001 - Chablis
 - **canonical_id:** SAT_WINE_001
@@ -620,4 +620,564 @@ Profiles: 11
 - **section:** Condrieu / White Varieties
 - **page_reference:** 100
 - **line_reference:** ["9765-9773","9833-9849"]
+
+## SAT_WINE_012 - Mosel Riesling
+- **canonical_id:** SAT_WINE_012
+- **wine_family:** Blancos Alemania
+- **wine_name:** Mosel Riesling
+- **wine_style:** Light-bodied high-acid Riesling from steep slate slopes
+- **display_name:** Mosel Riesling
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Mosel
+- **subregion:** Middle Mosel / Saar / Ruwer
+- **appellation:** Mosel
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental; river reflection and air movement help ripening and frost protection
+- **altitude:** steep river slopes; exact altitude is less diagnostic than slope and aspect
+- **soil:** slate soils on very steep slopes next to the river
+- **viticulture:** ["best vineyards on very steep stony south-facing slopes","hand work is required on extreme slopes","head pruning with individual stakes is used to maximize grape exposure"]
+- **winemaking:** ["dry to sweet Riesling styles","sweet premium styles made by stopping fermentation early","MLF and new oak avoided to preserve fruit and acidity"]
+- **oak:** inert vessels or large old oak without new oak aroma; new oak is not a diagnostic marker
+- **sweetness:** dry to sweet, with many classic examples off-dry to medium sweet
+- **body:** light
+- **acidity:** high to very high
+- **alcohol:** low to medium; sweet styles often 8-9% abv
+- **tannin:** not_applicable
+- **color:** pale lemon
+- **aroma_profile:** ["floral notes","green apple","citrus","slate-like mineral impression"]
+- **flavour_profile:** ["green fruit","citrus","floral fruit","mineral freshness"]
+- **finish:** medium to long, acid-driven
+- **quality_level:** good to outstanding; top villages include Piesport, Bernkastel and Wehlen
+- **ageing_potential:** medium to long ageing for high-quality examples due to acidity and balance
+- **expected_sat_observations:** ["pale lemon","clear","light intensity","medium to pronounced intensity","floral","green apple","lemon","slate mineral note possible","dry to sweet","high acidity","light body","low to medium alcohol","green fruit and citrus"]
+- **common_exam_points:** ["Mosel Rieslings are lighter, lower alcohol, and higher acid than Rheingau, Rheinhessen, and Pfalz","floral and green fruit flavours predominate","Riesling is the only permitted variety for GG wines in Mosel"]
+- **common_student_errors:** ["low alcohol means simple wine","sweetness means low quality","all German Riesling tastes the same"]
+- **mentor_hints:** ["Look for low alcohol plus high acidity.","Use body to separate Mosel from Rheingau."]
+- **descriptor_whitelist:** ["pale lemon","clear","light intensity","medium to pronounced intensity","floral","green apple","lemon","slate mineral note possible","dry to sweet","high acidity","light body","low to medium alcohol","green fruit and citrus","lighter body than Rheingau, Rheinhessen, and Pfalz","lower alcohol","higher acidity","floral and green fruit profile","steep slate river slopes"]
+- **sat_constraints:** ["do not describe Mosel as full-bodied","do not claim new oak as typical"]
+- **reasoning_notes:** Regional profile anchored in WSET Mosel text; SAT calibration adds typical appearance and mineral descriptors as standard wine knowledge.
+- **display_label:** Vino Blanco - Alemania - Practica 012
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 5
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["pale lemon","clear","light intensity"],"nose":["medium to pronounced intensity","floral","green apple","lemon","slate mineral note possible"],"palate":["dry to sweet","high acidity","light body","low to medium alcohol","green fruit and citrus"],"quality":["very good to outstanding when balance, concentration, and length align"],"ageing":["high-quality Mosel Riesling can age and retain freshness"],"diagnostic_features":["lighter body than Rheingau, Rheinhessen, and Pfalz","lower alcohol","higher acidity","floral and green fruit profile","steep slate river slopes"]}
+- **pedagogical_dna:** {"core_concepts":["cool continental Riesling","slate slope viticulture","sweet-acid balance"],"learning_objectives":["distinguish Mosel from fuller German regions","connect slope and river to ripening","calibrate low alcohol with residual sugar"],"typical_misconceptions":["low alcohol means simple wine","sweetness means low quality","all German Riesling tastes the same"],"mentor_focus":["ask for body, alcohol, and acidity before region conclusion"],"exam_traps":["calling every German Riesling Mosel","forgetting dry Mosel exists","missing Saar/Ruwer higher acid possibility"],"memory_hooks":["Mosel is the featherweight Riesling with electric acidity"],"comparison_styles":["Rheingau Riesling","Riesling Kabinett","Alsace Riesling"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_016"],"frequently_confused_with":["SAT_WINE_013","SAT_WINE_017"],"distinguishing_features":["lighter and lower alcohol than Rheingau","more floral-green than Pfalz","more regional than Pradikat-specific"]}
+- **teaching_notes:** {"common_exam_points":["Mosel Rieslings are lighter, lower alcohol, and higher acid than Rheingau, Rheinhessen, and Pfalz","floral and green fruit flavours predominate","Riesling is the only permitted variety for GG wines in Mosel"],"mentor_hints":["Look for low alcohol plus high acidity.","Use body to separate Mosel from Rheingau."],"student_traps":["assuming all Mosel is sweet","missing the slate and slope logic"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10421-10520","10774-10804"],"line_reference":["10421-10520","10774-10804"],"evidence":["Mosel Rieslings are described as lighter in body, lower in alcohol, and higher in acidity than Rheingau, Rheinhessen, and Pfalz.","Floral and green fruit flavours predominate."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Mosel
+- **page_reference:** 108-110
+- **line_reference:** ["10421-10520","10774-10804"]
+
+## SAT_WINE_013 - Rheingau Riesling
+- **canonical_id:** SAT_WINE_013
+- **wine_family:** Blancos Alemania
+- **wine_name:** Rheingau Riesling
+- **wine_style:** Medium to full-bodied dry ripe peach Riesling
+- **display_name:** Rheingau Riesling
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Rheingau
+- **subregion:** Johannisberg / Rudesheim / Hochheim
+- **appellation:** Rheingau
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental moderated by south-facing Rhine and Main slopes; protected by Taunus hills
+- **altitude:** slopes on north bank of Rhine and Main; exact altitude is less diagnostic than southerly aspect
+- **soil:** varied slope soils; site exposure is emphasized by WSET
+- **viticulture:** ["vineyards on south-facing slopes","Taunus hills provide protection","humid Rhine conditions enable some BA and TBA production"]
+- **winemaking:** ["majority of Rieslings made dry","GG wines can be Riesling","sweet BA and TBA also produced in humid conditions"]
+- **oak:** inert vessels or old neutral vessels; new oak is not typical for Riesling
+- **sweetness:** mostly dry, with sweet BA and TBA possible
+- **body:** medium to full
+- **acidity:** high
+- **alcohol:** medium to high in dry styles
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["ripe peach","citrus","floral note","honey with age"]
+- **flavour_profile:** ["ripe peach","citrus","mineral freshness","honeyed development with age"]
+- **finish:** long in top dry wines
+- **quality_level:** good to outstanding; small prestigious region
+- **ageing_potential:** medium to long ageing in top dry and sweet examples
+- **expected_sat_observations:** ["pale to medium lemon","medium to pronounced intensity","ripe peach","citrus","floral nuance","honey with age","usually dry","high acidity","medium to full body","medium to high alcohol","ripe peach fruit"]
+- **common_exam_points:** ["Rheingau is small and prestigious","Riesling dominates and most wines are dry","Rieslings have medium to full body and ripe peach character"]
+- **common_student_errors:** ["German Riesling is always sweet","Rheingau equals Mosel style","peach fruit means warm climate outside Germany"]
+- **mentor_hints:** ["Ask whether the wine feels broader than Mosel.","Peach plus dry high acid points toward Rheingau/Pfalz/Rheinhessen rather than Mosel."]
+- **descriptor_whitelist:** ["pale to medium lemon","medium to pronounced intensity","ripe peach","citrus","floral nuance","honey with age","usually dry","high acidity","medium to full body","medium to high alcohol","ripe peach fruit","riper peach character","more body than Mosel","prestigious south-facing Rhine slopes","dry style dominance"]
+- **sat_constraints:** ["do not force residual sweetness into every Rheingau profile","do not describe as lower alcohol than Mosel"]
+- **reasoning_notes:** Rheingau profile uses WSET regional text and standard SAT dry Riesling calibration.
+- **display_label:** Vino Blanco - Alemania - Practica 013
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 5
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium to pronounced intensity","ripe peach","citrus","floral nuance","honey with age"],"palate":["usually dry","high acidity","medium to full body","medium to high alcohol","ripe peach fruit"],"quality":["very good to outstanding for top sites and GG wines"],"ageing":["top Rieslings can mature for years or decades"],"diagnostic_features":["riper peach character","more body than Mosel","prestigious south-facing Rhine slopes","dry style dominance"]}
+- **pedagogical_dna:** {"core_concepts":["dry German Riesling","river slope ripening","regional body calibration"],"learning_objectives":["separate Rheingau from Mosel by body and peach ripeness","recognize dry German premium Riesling","link humid Rhine to BA/TBA potential"],"typical_misconceptions":["German Riesling is always sweet","Rheingau equals Mosel style","peach fruit means warm climate outside Germany"],"mentor_focus":["anchor dry style and medium-full body"],"exam_traps":["ignoring BA/TBA role","missing Taunus protection and aspect"],"memory_hooks":["Rheingau is the peachier, broader classic dry Riesling"],"comparison_styles":["Mosel Riesling","Pfalz Riesling","Riesling Spatlese"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_014","SAT_WINE_015"],"frequently_confused_with":["SAT_WINE_012","SAT_WINE_017"],"distinguishing_features":["fuller than Mosel","more prestigious compact identity than Rheinhessen","less dry-warm extension than Pfalz"]}
+- **teaching_notes:** {"common_exam_points":["Rheingau is small and prestigious","Riesling dominates and most wines are dry","Rieslings have medium to full body and ripe peach character"],"mentor_hints":["Ask whether the wine feels broader than Mosel.","Peach plus dry high acid points toward Rheingau/Pfalz/Rheinhessen rather than Mosel."],"student_traps":["assuming low alcohol for all German Riesling","forgetting dry GG context"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10827-10842"],"line_reference":["10827-10842"],"evidence":["Rheingau Rieslings are described as medium to full bodied with ripe peach character.","The majority of wines are made dry."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Rheingau
+- **page_reference:** 111
+- **line_reference:** ["10827-10842"]
+
+## SAT_WINE_014 - Pfalz Riesling
+- **canonical_id:** SAT_WINE_014
+- **wine_family:** Blancos Alemania
+- **wine_name:** Pfalz Riesling
+- **wine_style:** Ripe fuller-bodied dry Riesling from the Mittelhaardt
+- **display_name:** Pfalz Riesling
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Pfalz
+- **subregion:** Mittelhaardt / Forst / Deidesheim
+- **appellation:** Pfalz
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool to moderate continental; driest German region due to Haardt Mountains rain shadow
+- **altitude:** steep west-side village slopes; exact altitude is less diagnostic than slope and dryness
+- **soil:** varied slope soils; WSET emphasizes dry region and established quality vineyards
+- **viticulture:** ["vineyards run in narrow strip east of the Haardt Mountains","quality vineyards surround Forst and Deidesheim","water stress can occur in very warm years"]
+- **winemaking:** ["majority of wines now made in drier styles","GG wines can be Riesling","aroma-preserving Riesling winemaking"]
+- **oak:** inert vessels or old neutral vessels; new oak is not typical for Riesling
+- **sweetness:** mostly dry, with broader German Riesling range possible
+- **body:** medium to full
+- **acidity:** high
+- **alcohol:** medium to high
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["ripe citrus","peach","stone fruit","floral hint"]
+- **flavour_profile:** ["ripe citrus","peach","stone fruit","dry mineral finish"]
+- **finish:** medium to long
+- **quality_level:** good to outstanding; long reputation for high-quality Riesling
+- **ageing_potential:** medium to long ageing for top dry examples
+- **expected_sat_observations:** ["pale to medium lemon","medium to pronounced intensity","ripe citrus","peach","stone fruit","floral hint","usually dry","high acidity","medium to full body","medium to high alcohol","ripe fruit concentration"]
+- **common_exam_points:** ["Pfalz is the second largest German wine region and the driest","Riesling is the most planted variety and has the longest quality reputation","Mittelhaardt vineyards produce ripe fuller-bodied Riesling"]
+- **common_student_errors:** ["Germany only makes delicate sweet Riesling","dry Riesling cannot be high quality","Pfalz equals Alsace"]
+- **mentor_hints:** ["Ask whether the style is dry and fuller-bodied.","Use Pfalz dryness as a causal clue."]
+- **descriptor_whitelist:** ["pale to medium lemon","medium to pronounced intensity","ripe citrus","peach","stone fruit","floral hint","usually dry","high acidity","medium to full body","medium to high alcohol","ripe fruit concentration","ripe fuller-bodied Riesling","drier style majority","Pfalz dryness and Haardt protection","Forst and Deidesheim quality core"]
+- **sat_constraints:** ["do not describe Pfalz as Germanys coolest or most delicate Riesling style"]
+- **reasoning_notes:** Pfalz profile follows WSET regional description and standard dry Riesling SAT markers.
+- **display_label:** Vino Blanco - Alemania - Practica 014
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 5
+- **confidence_score:** 0.95
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium to pronounced intensity","ripe citrus","peach","stone fruit","floral hint"],"palate":["usually dry","high acidity","medium to full body","medium to high alcohol","ripe fruit concentration"],"quality":["very good to outstanding for established Mittelhaardt sites"],"ageing":["top dry wines can mature in bottle"],"diagnostic_features":["ripe fuller-bodied Riesling","drier style majority","Pfalz dryness and Haardt protection","Forst and Deidesheim quality core"]}
+- **pedagogical_dna:** {"core_concepts":["dry German Riesling","rain shadow and ripeness","Mittelhaardt quality"],"learning_objectives":["differentiate Pfalz from Rheingau and Mosel","connect dry climate to fuller ripeness","recognize German dry style trend"],"typical_misconceptions":["Germany only makes delicate sweet Riesling","dry Riesling cannot be high quality","Pfalz equals Alsace"],"mentor_focus":["build climate-to-body reasoning"],"exam_traps":["missing water stress in warm years","forgetting Riesling is most planted in Pfalz"],"memory_hooks":["Pfalz is Germanys dry, ripe Riesling corridor beside Alsace"],"comparison_styles":["Rheingau Riesling","Rheinhessen Riesling","Alsace Riesling"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_013","SAT_WINE_015"],"frequently_confused_with":["SAT_WINE_013","SAT_WINE_005"],"distinguishing_features":["driest German region","ripe fuller-bodied style from Mittelhaardt","less low-alcohol delicacy than Mosel"]}
+- **teaching_notes:** {"common_exam_points":["Pfalz is the second largest German wine region and the driest","Riesling is the most planted variety and has the longest quality reputation","Mittelhaardt vineyards produce ripe fuller-bodied Riesling"],"mentor_hints":["Ask whether the style is dry and fuller-bodied.","Use Pfalz dryness as a causal clue."],"student_traps":["over-associating all German Riesling with Mosel delicacy","ignoring dry style majority"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10879-10922"],"line_reference":["10879-10922"],"evidence":["Pfalz is described as Germanys driest region.","Mittelhaardt vineyards produce a ripe, fuller-bodied style of Riesling and most wines are now drier."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Pfalz
+- **page_reference:** 111
+- **line_reference:** ["10879-10922"]
+
+## SAT_WINE_015 - Rheinhessen Riesling
+- **canonical_id:** SAT_WINE_015
+- **wine_family:** Blancos Alemania
+- **wine_name:** Rheinhessen Riesling
+- **wine_style:** Full-bodied Riesling from Rheinterrasse and innovative producers
+- **display_name:** Rheinhessen Riesling
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Rheinhessen
+- **subregion:** Rheinterrasse / Nierstein / Worms area
+- **appellation:** Rheinhessen
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental with warmer riper sites along the Rhine
+- **altitude:** steep west bank Rhine slopes; exact altitude is less diagnostic than slope and river exposure
+- **soil:** varied; WSET emphasizes steeply sloping vineyards around Nierstein
+- **viticulture:** ["largest vine-growing region","Rheinterrasse slopes around Nierstein have historic reputation","new growers outside historic areas produce top-quality wines"]
+- **winemaking:** ["dry and Pradikat Riesling possible","GG wines can be Riesling","modern quality-focused dry styles are important"]
+- **oak:** inert vessels or old neutral vessels; new oak is not typical for Riesling
+- **sweetness:** dry to sweet depending on category, with many quality dry styles
+- **body:** medium to full; among Germanys fullest-bodied Rieslings from Rheinterrasse
+- **acidity:** high
+- **alcohol:** medium to high in dry styles
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["ripe citrus","peach","stone fruit","floral note","honey with age"]
+- **flavour_profile:** ["ripe citrus","peach","stone fruit","mineral note","honeyed development"]
+- **finish:** medium to long
+- **quality_level:** good to outstanding; reputation for innovation and excellence
+- **ageing_potential:** medium to long ageing for top Rieslings
+- **expected_sat_observations:** ["pale to medium lemon","medium to pronounced intensity","ripe citrus","peach","stone fruit","floral note","dry to sweet","high acidity","medium to full body","medium to high alcohol in dry styles","ripe fruit concentration"]
+- **common_exam_points:** ["Rheinhessen is Germanys largest vine-growing region","Rheinterrasse around Nierstein produces some of Germanys fullest-bodied Rieslings","the region has gained reputation for innovation and excellence"]
+- **common_student_errors:** ["Rheinhessen is only inexpensive wine","largest region means lowest quality","all Riesling regions are stylistically identical"]
+- **mentor_hints:** ["Ask whether the answer needs a broad regional profile rather than a single Pradikat.","Use body and Nierstein clue."]
+- **descriptor_whitelist:** ["pale to medium lemon","medium to pronounced intensity","ripe citrus","peach","stone fruit","floral note","dry to sweet","high acidity","medium to full body","medium to high alcohol in dry styles","ripe fruit concentration","fuller-bodied German Riesling","Rheinterrasse/Nierstein identity","innovation and quality revival","Riesling plus broad regional diversity"]
+- **sat_constraints:** ["do not treat Rheinhessen as only inexpensive wine","do not conflate Rheinhessen with Rheingau"]
+- **reasoning_notes:** Rheinhessen profile focuses on Riesling style, Nierstein, and innovation from WSET regional text.
+- **display_label:** Vino Blanco - Alemania - Practica 015
+- **priority:** 2
+- **wset_importance:** HIGH
+- **practice_priority:** 4
+- **difficulty_score:** 6
+- **confidence_score:** 0.94
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium to pronounced intensity","ripe citrus","peach","stone fruit","floral note"],"palate":["dry to sweet","high acidity","medium to full body","medium to high alcohol in dry styles","ripe fruit concentration"],"quality":["good to outstanding from top Rheinterrasse and innovative producers"],"ageing":["best examples can develop honey and toast while retaining acidity"],"diagnostic_features":["fuller-bodied German Riesling","Rheinterrasse/Nierstein identity","innovation and quality revival","Riesling plus broad regional diversity"]}
+- **pedagogical_dna:** {"core_concepts":["regional diversity","full-bodied Riesling","quality revival"],"learning_objectives":["separate Rheinhessen from generic inexpensive stereotypes","recognize Rheinterrasse quality","compare fuller German Riesling regions"],"typical_misconceptions":["Rheinhessen is only inexpensive wine","largest region means lowest quality","all Riesling regions are stylistically identical"],"mentor_focus":["connect subregion reputation to style and quality"],"exam_traps":["forgetting Rheinhessen can produce top-quality wines","missing Nierstein/Rheinterrasse"],"memory_hooks":["Rheinhessen is large, innovative, and can make some of Germanys fullest Rieslings"],"comparison_styles":["Pfalz Riesling","Rheingau Riesling","Mosel Riesling"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_013","SAT_WINE_014"],"frequently_confused_with":["SAT_WINE_014","SAT_WINE_013"],"distinguishing_features":["largest region with broad variety range","Rheinterrasse produces some of Germanys fullest-bodied Rieslings","more innovation narrative than Rheingau"]}
+- **teaching_notes:** {"common_exam_points":["Rheinhessen is Germanys largest vine-growing region","Rheinterrasse around Nierstein produces some of Germanys fullest-bodied Rieslings","the region has gained reputation for innovation and excellence"],"mentor_hints":["Ask whether the answer needs a broad regional profile rather than a single Pradikat.","Use body and Nierstein clue."],"student_traps":["writing off Rheinhessen as low quality","confusing it with Rheingau by name"],"revision_priority":"medium"}
+- **reusable_knowledge_refs:** ["german_riesling_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10844-10875"],"line_reference":["10844-10875"],"evidence":["Rheinhessen is described as the largest vine-growing region.","Rheinterrasse around Nierstein produces some of the fullest-bodied Rieslings in Germany."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Rheinhessen
+- **page_reference:** 111
+- **line_reference:** ["10844-10875"]
+
+## SAT_WINE_016 - Riesling Kabinett
+- **canonical_id:** SAT_WINE_016
+- **wine_family:** Blancos Alemania
+- **wine_name:** Riesling Kabinett
+- **wine_style:** Delicate light-bodied Pradikat Riesling
+- **display_name:** Riesling Kabinett
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Germany
+- **subregion:** Pradikat category
+- **appellation:** Kabinett
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental German Riesling sites; long cool ripening preserves acidity
+- **altitude:** varies by region; steep south-facing slopes are favored in marginal climates
+- **soil:** varies by region; slate is important in Mosel examples
+- **viticulture:** ["picked at Kabinett must weight","multiple passes may be used to select grapes by ripeness","best sites maximize heat and sunlight"]
+- **winemaking:** ["best sweet styles made by stopping fermentation early","Sussreserve can sweeten but is not used for high-quality wines","MLF and new oak avoided"]
+- **oak:** no new oak; aromatic purity is the goal
+- **sweetness:** dry to medium sweet, commonly off-dry or medium sweet in classic examples
+- **body:** light
+- **acidity:** high
+- **alcohol:** 8-9% abv in sweet styles; drier styles can reach 12% abv
+- **tannin:** not_applicable
+- **color:** pale lemon
+- **aroma_profile:** ["green apple","citrus","floral notes"]
+- **flavour_profile:** ["green apple","citrus","residual sweetness balanced by acidity"]
+- **finish:** medium to long, delicate and acid-led
+- **quality_level:** good to outstanding depending on site and balance
+- **ageing_potential:** medium to long ageing in high-quality examples despite delicacy
+- **expected_sat_observations:** ["pale lemon","light intensity","medium intensity","green apple","citrus","floral note","dry to medium sweet","high acidity","light body","low alcohol in sweet styles","green apple and citrus"]
+- **common_exam_points:** ["Kabinett is the most delicate Pradikat","light body, high acidity, and green apple or citrus are key","sweet styles have 8-9% abv while drier styles can reach 12%"]
+- **common_student_errors:** ["Kabinett means low quality","sweetness is added in premium examples","low alcohol means weak wine"]
+- **mentor_hints:** ["Check whether the wine is delicate rather than concentrated.","Alcohol level is a useful clue."]
+- **descriptor_whitelist:** ["pale lemon","light intensity","medium intensity","green apple","citrus","floral note","dry to medium sweet","high acidity","light body","low alcohol in sweet styles","green apple and citrus","most delicate Pradikat","green apple or citrus","8-9% abv sweet style"]
+- **sat_constraints:** ["do not describe Kabinett as rich or botrytised by default"]
+- **reasoning_notes:** Kabinett profile follows WSET Pradikat description with standard SAT appearance and balance markers.
+- **display_label:** Vino Blanco - Alemania - Practica 016
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 5
+- **confidence_score:** 0.98
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["pale lemon","light intensity"],"nose":["medium intensity","green apple","citrus","floral note"],"palate":["dry to medium sweet","high acidity","light body","low alcohol in sweet styles","green apple and citrus"],"quality":["good to outstanding where sweetness and acidity are finely balanced"],"ageing":["can age well when concentration and acidity are high"],"diagnostic_features":["most delicate Pradikat","light body","high acidity","green apple or citrus","8-9% abv sweet style"]}
+- **pedagogical_dna:** {"core_concepts":["Pradikat as style indicator","sweet-acid balance","low alcohol from stopped fermentation"],"learning_objectives":["identify Kabinett versus Spatlese","separate sweetness from body","use alcohol as a clue"],"typical_misconceptions":["Kabinett means low quality","sweetness is added in premium examples","low alcohol means weak wine"],"mentor_focus":["ask for balance and delicacy"],"exam_traps":["calling Kabinett Spatlese from sweetness alone","missing high acidity"],"memory_hooks":["Kabinett is the delicate Riesling on a tightrope of sugar and acid"],"comparison_styles":["Mosel Riesling","Riesling Spatlese","Alsace Riesling"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_012"],"frequently_confused_with":["SAT_WINE_017"],"distinguishing_features":["lighter and less ripe than Spatlese","less concentrated than Auslese","lower alcohol in sweet styles"]}
+- **teaching_notes:** {"common_exam_points":["Kabinett is the most delicate Pradikat","light body, high acidity, and green apple or citrus are key","sweet styles have 8-9% abv while drier styles can reach 12%"],"mentor_hints":["Check whether the wine is delicate rather than concentrated.","Alcohol level is a useful clue."],"student_traps":["equating Pradikat with quality ladder only","missing dry Kabinett possibility"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","pradikat_riesling_scale"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10494-10527"],"line_reference":["10494-10527"],"evidence":["Kabinett wines are described as the most delicate Pradikatsweine.","They are light-bodied, high acid, green apple/citrus and sweet styles have 8-9% alcohol."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Riesling - Kabinett
+- **page_reference:** 108-109
+- **line_reference:** ["10494-10527"]
+
+## SAT_WINE_017 - Riesling Spatlese
+- **canonical_id:** SAT_WINE_017
+- **wine_family:** Blancos Alemania
+- **wine_name:** Riesling Spatlese
+- **wine_style:** Riper more concentrated Pradikat Riesling
+- **display_name:** Riesling Spatlese
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Germany
+- **subregion:** Pradikat category
+- **appellation:** Spatlese
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental German Riesling sites with longer hang time for greater ripeness
+- **altitude:** varies by region; best sites maximize sunlight and warmth
+- **soil:** varies by region
+- **viticulture:** ["grapes harvested riper than Kabinett","multiple passes can select ideal grapes","long cool ripening retains acidity"]
+- **winemaking:** ["made similarly to Kabinett","fermentation may be stopped to retain sweetness","dry styles are possible up to Auslese"]
+- **oak:** no new oak; aromatic purity is the goal
+- **sweetness:** dry to medium sweet, often with residual sugar in Pradikat examples
+- **body:** light to medium, more body than Kabinett
+- **acidity:** high
+- **alcohol:** low to medium depending on sweetness; more alcohol than equivalent Kabinett when drier
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["citrus","peach","apricot","floral notes"]
+- **flavour_profile:** ["citrus","stone fruit","peach","apricot","sweet-acid balance"]
+- **finish:** medium to long
+- **quality_level:** good to outstanding depending on site and balance
+- **ageing_potential:** medium to long ageing for quality examples
+- **expected_sat_observations:** ["pale to medium lemon","medium to pronounced intensity","citrus","peach","apricot","floral note","dry to medium sweet","high acidity","light to medium body","more concentration than Kabinett","citrus and stone fruit"]
+- **common_exam_points:** ["Spatlese wines are more concentrated, riper and have more body, alcohol, and sweetness than Kabinett from the same region","citrus and stone fruit aromas are common"]
+- **common_student_errors:** ["Spatlese must be sweet","more sweetness means lower acidity","Spatlese equals botrytis"]
+- **mentor_hints:** ["Ask what changed from Kabinett: ripeness, body, alcohol, and sweetness.","Do not rely on sweetness alone."]
+- **descriptor_whitelist:** ["pale to medium lemon","medium to pronounced intensity","citrus","peach","apricot","floral note","dry to medium sweet","high acidity","light to medium body","more concentration than Kabinett","citrus and stone fruit","riper than Kabinett","more body and concentration","sweetness where relevant"]
+- **sat_constraints:** ["do not make noble rot essential for Spatlese","do not collapse Spatlese into a single sweetness level"]
+- **reasoning_notes:** Spatlese profile follows WSET category progression and standard SAT descriptors.
+- **display_label:** Vino Blanco - Alemania - Practica 017
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 6
+- **confidence_score:** 0.98
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium to pronounced intensity","citrus","peach","apricot","floral note"],"palate":["dry to medium sweet","high acidity","light to medium body","more concentration than Kabinett","citrus and stone fruit"],"quality":["very good to outstanding when ripeness and acidity are balanced"],"ageing":["can age well, developing honey and toast"],"diagnostic_features":["riper than Kabinett","more body and concentration","citrus and stone fruit","sweetness where relevant"]}
+- **pedagogical_dna:** {"core_concepts":["Pradikat ripeness progression","stone fruit development","sweet-acid balance"],"learning_objectives":["differentiate Spatlese from Kabinett and Auslese","recognize ripeness without assuming low acidity","use body and fruit profile"],"typical_misconceptions":["Spatlese must be sweet","more sweetness means lower acidity","Spatlese equals botrytis"],"mentor_focus":["calibrate concentration relative to Kabinett"],"exam_traps":["overcalling Auslese","ignoring dry Spatlese possibility"],"memory_hooks":["Spatlese is Kabinett with more ripeness and stone fruit"],"comparison_styles":["Riesling Kabinett","Riesling Auslese","Mosel Riesling"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_016","SAT_WINE_018"],"frequently_confused_with":["SAT_WINE_016","SAT_WINE_018"],"distinguishing_features":["riper and fuller than Kabinett","less rich and botrytis-influenced than Auslese","stone fruit more common"]}
+- **teaching_notes:** {"common_exam_points":["Spatlese wines are more concentrated, riper and have more body, alcohol, and sweetness than Kabinett from the same region","citrus and stone fruit aromas are common"],"mentor_hints":["Ask what changed from Kabinett: ripeness, body, alcohol, and sweetness.","Do not rely on sweetness alone."],"student_traps":["forgetting dry style possibility","calling all stone-fruited Riesling Auslese"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","pradikat_riesling_scale"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10528-10537"],"line_reference":["10528-10537"],"evidence":["Spatlese is described as more concentrated, riper and with more body, alcohol and sweetness than Kabinett.","Citrus and stone fruit aromas are common."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Riesling - Spatlese
+- **page_reference:** 109
+- **line_reference:** ["10528-10537"]
+
+## SAT_WINE_018 - Riesling Auslese
+- **canonical_id:** SAT_WINE_018
+- **wine_family:** Blancos Alemania
+- **wine_name:** Riesling Auslese
+- **wine_style:** Rich selected extra-ripe bunch Riesling
+- **display_name:** Riesling Auslese
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Germany
+- **subregion:** Pradikat category
+- **appellation:** Auslese
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental German Riesling sites with selected extra-ripe bunches
+- **altitude:** varies by region; best sites maximize sunlight and warmth
+- **soil:** varies by region
+- **viticulture:** ["made from individually selected extra-ripe bunches","noble rot can play an important role","multiple pickings support selection"]
+- **winemaking:** ["dry to sweet styles possible","fermentation may stop naturally or be stopped depending on sweetness","MLF and new oak avoided"]
+- **oak:** no new oak; aromatic purity and noble-rot complexity where present
+- **sweetness:** dry to sweet, often sweet in classic SAT examples
+- **body:** medium to full compared with Spatlese
+- **acidity:** high
+- **alcohol:** low to medium in sweet styles; medium to high in dry styles
+- **tannin:** not_applicable
+- **color:** medium lemon to gold
+- **aroma_profile:** ["ripe peach","apricot","honey","citrus peel","botrytis spice possible"]
+- **flavour_profile:** ["ripe stone fruit","honey","citrus peel","sweet-acid balance","botrytis complexity possible"]
+- **finish:** long
+- **quality_level:** very good to outstanding; richer and riper than Spatlese
+- **ageing_potential:** long ageing potential in high-quality sweet examples
+- **expected_sat_observations:** ["medium lemon","gold possible","pronounced intensity","ripe peach","apricot","honey","citrus peel","noble rot note possible","dry to sweet","high acidity","medium to full body","rich ripe fruit","long finish"]
+- **common_exam_points:** ["Auslese is made from individually selected extra-ripe bunches","wines are richer and riper than Spatlese","noble rot can play an important part regardless of dry or sweet style"]
+- **common_student_errors:** ["Auslese is always botrytised","Auslese must be sweet","richness means low acidity"]
+- **mentor_hints:** ["Look for extra ripeness and possible botrytis, but keep category boundaries clear.","Ask whether the wine is BA-level sweet and low alcohol or merely Auslese-rich."]
+- **descriptor_whitelist:** ["medium lemon","gold possible","pronounced intensity","ripe peach","apricot","honey","citrus peel","noble rot note possible","dry to sweet","high acidity","medium to full body","rich ripe fruit","long finish","selected extra-ripe bunches","richer and riper than Spatlese","noble rot can influence flavour","long sweet-acid finish"]
+- **sat_constraints:** ["do not state Auslese is always sweet","do not make noble rot essential"]
+- **reasoning_notes:** Auslese profile follows WSET Pradikat category and standard SAT sweet Riesling calibration.
+- **display_label:** Vino Blanco - Alemania - Practica 018
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 7
+- **confidence_score:** 0.98
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["medium lemon","gold possible"],"nose":["pronounced intensity","ripe peach","apricot","honey","citrus peel","noble rot note possible"],"palate":["dry to sweet","high acidity","medium to full body","rich ripe fruit","long finish"],"quality":["very good to outstanding when richness and acidity balance"],"ageing":["excellent ageing potential, especially sweet examples"],"diagnostic_features":["selected extra-ripe bunches","richer and riper than Spatlese","noble rot can influence flavour","long sweet-acid finish"]}
+- **pedagogical_dna:** {"core_concepts":["selected bunch ripeness","noble rot influence","Pradikat escalation"],"learning_objectives":["distinguish Auslese from Spatlese and BA","recognize botrytis as possible but not mandatory","assess richness without losing acidity"],"typical_misconceptions":["Auslese is always botrytised","Auslese must be sweet","richness means low acidity"],"mentor_focus":["make students justify category by ripeness and concentration"],"exam_traps":["confusing Auslese with BA/TBA","forgetting dry Auslese can exist"],"memory_hooks":["Auslese is selected bunch richness before the berry-by-berry sweet wine tier"],"comparison_styles":["Riesling Spatlese","Beerenauslese","Trockenbeerenauslese"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_017","SAT_WINE_019"],"frequently_confused_with":["SAT_WINE_017","SAT_WINE_019"],"distinguishing_features":["richer than Spatlese","less extreme and not necessarily berry-selected like BA","noble rot can play a role but is not the whole identity"]}
+- **teaching_notes:** {"common_exam_points":["Auslese is made from individually selected extra-ripe bunches","wines are richer and riper than Spatlese","noble rot can play an important part regardless of dry or sweet style"],"mentor_hints":["Look for extra ripeness and possible botrytis, but keep category boundaries clear.","Ask whether the wine is BA-level sweet and low alcohol or merely Auslese-rich."],"student_traps":["making noble rot mandatory","overcalling TBA from honey alone"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","pradikat_riesling_scale","botrytised_sweet_wine"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10538-10548"],"line_reference":["10538-10548"],"evidence":["Auslese is described as individually selected extra-ripe bunches.","Richer and riper than Spatlese, with noble rot able to play an important role."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Riesling - Auslese
+- **page_reference:** 109
+- **line_reference:** ["10538-10548"]
+
+## SAT_WINE_019 - Beerenauslese
+- **canonical_id:** SAT_WINE_019
+- **wine_family:** Blancos Alemania
+- **wine_name:** Beerenauslese
+- **wine_style:** Sweet botrytised berry-selected Riesling
+- **display_name:** Beerenauslese
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Germany
+- **subregion:** Pradikat category
+- **appellation:** Beerenauslese
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental regions where noble rot can develop in suitable humid autumn conditions
+- **altitude:** varies by site; humidity and autumn conditions are more diagnostic than altitude
+- **soil:** varies by region
+- **viticulture:** ["BA not necessarily made every year","noble rot is typical though not essential for minimum must weight","selection of very ripe affected berries requires intensive hand work"]
+- **winemaking:** ["fermentation of highly concentrated must often stops with low alcohol","MLF and new oak avoided","made as sweet wine only"]
+- **oak:** no new oak; botrytis and Riesling purity dominate
+- **sweetness:** sweet only
+- **body:** full and viscous despite low alcohol
+- **acidity:** high
+- **alcohol:** low
+- **tannin:** not_applicable
+- **color:** gold to deep gold
+- **aroma_profile:** ["honey","dried stone fruit","candied peel","flowers","apricot","botrytis spice"]
+- **flavour_profile:** ["honey","dried apricot","candied citrus peel","flowers","intense sweetness balanced by acidity"]
+- **finish:** very long
+- **quality_level:** outstanding; among the best sweet wines in the world
+- **ageing_potential:** very long ageing potential
+- **expected_sat_observations:** ["gold","deep gold possible","viscous tears","pronounced intensity","honey","dried stone fruit","candied peel","flowers","botrytis","sweet","high acidity","low alcohol","full viscous body","very concentrated dried fruit and honey"]
+- **common_exam_points:** ["BA wines are sweet and low in alcohol with honey, dried stone fruit, candied peel, and flowers","noble rot is typical for BA but not essential for the legal must weight","BA and TBA are not necessarily made every year"]
+- **common_student_errors:** ["BA is just sweeter Auslese","low alcohol means low quality","botrytis is a fault here"]
+- **mentor_hints:** ["Ask whether the profile is botrytis or frozen-grape purity.","Use low alcohol plus high sweetness as a clue."]
+- **descriptor_whitelist:** ["gold","deep gold possible","viscous tears","pronounced intensity","honey","dried stone fruit","candied peel","flowers","botrytis","sweet","high acidity","low alcohol","full viscous body","very concentrated dried fruit and honey","sweet only","noble rot typical","honey dried stone fruit candied peel flowers","not made every year"]
+- **sat_constraints:** ["do not make BA annually produced","do not describe BA as dry"]
+- **reasoning_notes:** BA profile uses WSET Pradikat and sweet winemaking passages; SAT additions clarify appearance and texture.
+- **display_label:** Vino Blanco - Alemania - Practica 019
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 8
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["gold","deep gold possible","viscous tears"],"nose":["pronounced intensity","honey","dried stone fruit","candied peel","flowers","botrytis"],"palate":["sweet","high acidity","low alcohol","full viscous body","very concentrated dried fruit and honey"],"quality":["outstanding when sweetness, acidity, concentration, and length align"],"ageing":["very long ageing potential"],"diagnostic_features":["sweet only","low alcohol","noble rot typical","honey dried stone fruit candied peel flowers","not made every year"]}
+- **pedagogical_dna:** {"core_concepts":["botrytised sweet wine","low alcohol from concentrated must","sweet-acid balance"],"learning_objectives":["distinguish BA from Auslese and TBA","recognize botrytis descriptors","understand annual rarity"],"typical_misconceptions":["BA is just sweeter Auslese","low alcohol means low quality","botrytis is a fault here"],"mentor_focus":["anchor quality in balance and concentration"],"exam_traps":["forgetting noble rot is typical but not essential for BA","confusing BA with Eiswein"],"memory_hooks":["BA is honeyed botrytis richness with Riesling acidity"],"comparison_styles":["Riesling Auslese","Trockenbeerenauslese","Eiswein"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_020"],"frequently_confused_with":["SAT_WINE_018","SAT_WINE_021"],"distinguishing_features":["sweeter and more botrytised than Auslese","less extreme than TBA","botrytis-driven unlike Eiswein purity"]}
+- **teaching_notes:** {"common_exam_points":["BA wines are sweet and low in alcohol with honey, dried stone fruit, candied peel, and flowers","noble rot is typical for BA but not essential for the legal must weight","BA and TBA are not necessarily made every year"],"mentor_hints":["Ask whether the profile is botrytis or frozen-grape purity.","Use low alcohol plus high sweetness as a clue."],"student_traps":["calling BA Eiswein from high acidity","forgetting low alcohol"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","botrytised_sweet_wine"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10549-10568","5849-5875"],"line_reference":["10549-10568","5849-5875"],"evidence":["BA/TBA wines are described as sweet and low alcohol with honey, dried stone fruit, candied peel, and flowers.","Noble rot is typical for BA but essential for TBA."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Beerenauslese and Trockenbeerenauslese
+- **page_reference:** 109-110
+- **line_reference:** ["10549-10568","5849-5875"]
+
+## SAT_WINE_020 - Trockenbeerenauslese
+- **canonical_id:** SAT_WINE_020
+- **wine_family:** Blancos Alemania
+- **wine_name:** Trockenbeerenauslese
+- **wine_style:** Extremely sweet noble-rot Riesling from shrivelled berries
+- **display_name:** Trockenbeerenauslese
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Germany
+- **subregion:** Pradikat category
+- **appellation:** Trockenbeerenauslese
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental regions with rare noble rot conditions: humid mornings and dry afternoons
+- **altitude:** varies by site; noble rot conditions are more diagnostic than altitude
+- **soil:** varies by region
+- **viticulture:** ["noble rot is essential","TBA is not necessarily made every year","berry selection is extremely labor intensive"]
+- **winemaking:** ["fermentation of extremely concentrated must stops naturally at low alcohol","made as sweet wine only","MLF and new oak avoided"]
+- **oak:** no new oak; noble rot concentration dominates
+- **sweetness:** sweet only, extremely sweet
+- **body:** full, viscous and concentrated
+- **acidity:** high
+- **alcohol:** low, sometimes around 7% abv due to sugar concentration
+- **tannin:** not_applicable
+- **color:** deep gold to amber
+- **aroma_profile:** ["honey","marmalade","dried apricot","candied peel","dried fruit","botrytis spice"]
+- **flavour_profile:** ["honey","dried stone fruit","candied citrus","marmalade","intense botrytis concentration"]
+- **finish:** exceptionally long
+- **quality_level:** outstanding; among the worlds greatest sweet wines
+- **ageing_potential:** very long ageing potential, often decades
+- **expected_sat_observations:** ["deep gold","amber possible","very viscous","pronounced intensity","honey","dried apricot","candied peel","dried fruit","botrytis complexity","lusciously sweet","high acidity","low alcohol","full viscous body","exceptionally concentrated flavours"]
+- **common_exam_points:** ["Noble rot is essential for TBA","TBA wines are sweet only and low in alcohol","German TBAs are classic examples of fermentation stopping naturally at low alcohol in very sugary must"]
+- **common_student_errors:** ["Trocken means dry in this word","TBA is the same as Eiswein","high sugar means low acidity"]
+- **mentor_hints:** ["Ask what concentrated the sugars: botrytis, not freezing.","Flag the word Trocken as a naming trap."]
+- **descriptor_whitelist:** ["deep gold","amber possible","very viscous","pronounced intensity","honey","dried apricot","candied peel","dried fruit","botrytis complexity","lusciously sweet","high acidity","low alcohol","full viscous body","exceptionally concentrated flavours","noble rot essential","sweet only","very low alcohol possible","extreme concentration","longest botrytised finish"]
+- **sat_constraints:** ["do not translate Trockenbeerenauslese as dry wine","do not describe TBA without noble rot"]
+- **reasoning_notes:** TBA profile combines WSET German Pradikat and sweet winemaking passages with standard SAT appearance.
+- **display_label:** Vino Blanco - Alemania - Practica 020
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 9
+- **confidence_score:** 0.98
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["deep gold","amber possible","very viscous"],"nose":["pronounced intensity","honey","dried apricot","candied peel","dried fruit","botrytis complexity"],"palate":["lusciously sweet","high acidity","low alcohol","full viscous body","exceptionally concentrated flavours"],"quality":["outstanding when acidity balances extreme sugar and concentration"],"ageing":["decades of ageing potential"],"diagnostic_features":["noble rot essential","sweet only","very low alcohol possible","extreme concentration","longest botrytised finish"]}
+- **pedagogical_dna:** {"core_concepts":["noble rot concentration","extreme Pradikat must weight","natural fermentation stop"],"learning_objectives":["distinguish TBA from BA and Eiswein","understand why alcohol can be very low","identify botrytis flavour set"],"typical_misconceptions":["Trocken means dry in this word","TBA is the same as Eiswein","high sugar means low acidity"],"mentor_focus":["correct the Trockenbeerenauslese naming trap directly"],"exam_traps":["thinking TBA is dry because of Trocken","missing noble rot essentiality"],"memory_hooks":["TBA is not dry: it is the shrivelled noble-rot summit"],"comparison_styles":["Beerenauslese","Eiswein","Sauternes"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_019"],"frequently_confused_with":["SAT_WINE_019","SAT_WINE_021"],"distinguishing_features":["more extreme and concentrated than BA","noble rot essential unlike Eiswein","sweet only despite Trocken in the name"]}
+- **teaching_notes:** {"common_exam_points":["Noble rot is essential for TBA","TBA wines are sweet only and low in alcohol","German TBAs are classic examples of fermentation stopping naturally at low alcohol in very sugary must"],"mentor_hints":["Ask what concentrated the sugars: botrytis, not freezing.","Flag the word Trocken as a naming trap."],"student_traps":["assuming dry from Trocken","confusing with Eiswein purity"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","botrytised_sweet_wine"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10549-10568","5849-5875"],"line_reference":["10549-10568","5849-5875"],"evidence":["Noble rot is essential to achieve the must weights for TBA.","TBA is sweet only and low in alcohol with honey, dried stone fruit, candied peel, and flowers."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Trockenbeerenauslese
+- **page_reference:** 109-110
+- **line_reference:** ["10549-10568","5849-5875"]
+
+## SAT_WINE_021 - Eiswein
+- **canonical_id:** SAT_WINE_021
+- **wine_family:** Blancos Alemania
+- **wine_name:** Eiswein
+- **wine_style:** Sweet high-acid Riesling from frozen healthy grapes
+- **display_name:** Eiswein
+- **wine_type:** BLANCO
+- **country:** Germany
+- **region:** Germany
+- **subregion:** Pradikat category
+- **appellation:** Eiswein
+- **grape_varieties:** ["Riesling"]
+- **climate:** cool continental regions cold enough for grapes to freeze on the vine
+- **altitude:** varies by site; freezing conditions and healthy grapes are more diagnostic than altitude
+- **soil:** varies by region
+- **viticulture:** ["healthy grapes left hanging into winter","grapes are picked and pressed while frozen","made infrequently and is a genuine rarity"]
+- **winemaking:** ["noble rot is not a key component","careful juice handling preserves varietal purity","MLF and new oak avoided"]
+- **oak:** no new oak; varietal purity is the focus
+- **sweetness:** sweet only
+- **body:** medium to full depending on concentration
+- **acidity:** very high
+- **alcohol:** low to medium, usually lower because sugar remains unfermented
+- **tannin:** not_applicable
+- **color:** pale gold to gold
+- **aroma_profile:** ["pure citrus","green apple","peach","floral notes","honey with age"]
+- **flavour_profile:** ["pure Riesling fruit","citrus","apple","peach","intense sweetness balanced by very high acidity"]
+- **finish:** very long, pure and acid-bright
+- **quality_level:** very good to outstanding; best examples show fine balance between acidity and sweetness
+- **ageing_potential:** long ageing potential due to acidity and sugar
+- **expected_sat_observations:** ["pale gold","gold","pronounced intensity","pure citrus","green apple","peach","floral notes","no botrytis emphasis","sweet","very high acidity","low to medium alcohol","medium to full body","pure varietal fruit","long finish"]
+- **common_exam_points:** ["Eiswein is made infrequently and is a genuine rarity","noble rot is not key; focus is varietal purity","best examples balance acidity and sweetness finely"]
+- **common_student_errors:** ["Eiswein is botrytised","all sweet German wines are BA/TBA","Eiswein is just frozen TBA"]
+- **mentor_hints:** ["Ask whether descriptors are pure fruit or botrytis honey/dried fruit.","Freezing is the concentration mechanism."]
+- **descriptor_whitelist:** ["pale gold","gold","pronounced intensity","pure citrus","green apple","peach","floral notes","no botrytis emphasis","sweet","very high acidity","low to medium alcohol","medium to full body","pure varietal fruit","long finish","frozen healthy grapes","noble rot not key","pure varietal character","very high acidity and sweetness balance","rarity"]
+- **sat_constraints:** ["do not describe noble rot as key for Eiswein","do not make Eiswein dry"]
+- **reasoning_notes:** Eiswein profile is anchored in WSET German Pradikat text and sweet winemaking freezing description.
+- **display_label:** Vino Blanco - Alemania - Practica 021
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 8
+- **confidence_score:** 0.98
+- **knowledge_summary:** {"wset_primary":["Germany is the homeland of Riesling and produces dry to lusciously sweet Riesling.","German wine regions have cool continental climates, steep south-facing slopes, and Pradikat categories based on must weight."],"standard_wine_knowledge":["Typical SAT appearance, aroma intensity, finish, and alcohol ranges are calibrated from accepted German Riesling style norms."],"derived_from_style":["Difficulty, comparison, and diagnostic features are derived from regional or Pradikat style."],"inferred_high_confidence":["Mentor traps and memory hooks are pedagogical inferences from WSET style contrasts."]}
+- **sat_fingerprint:** {"appearance":["pale gold","gold"],"nose":["pronounced intensity","pure citrus","green apple","peach","floral notes","no botrytis emphasis"],"palate":["sweet","very high acidity","low to medium alcohol","medium to full body","pure varietal fruit","long finish"],"quality":["outstanding where sweetness and acidity are finely balanced"],"ageing":["long ageing potential"],"diagnostic_features":["frozen healthy grapes","noble rot not key","pure varietal character","very high acidity and sweetness balance","rarity"]}
+- **pedagogical_dna:** {"core_concepts":["freezing grapes on the vine","varietal purity","sweet-acid balance without botrytis"],"learning_objectives":["distinguish Eiswein from BA/TBA","connect freezing to concentration","recognize purity rather than honeyed botrytis"],"typical_misconceptions":["Eiswein is botrytised","all sweet German wines are BA/TBA","Eiswein is just frozen TBA"],"mentor_focus":["ask what concentrated the sugars and whether botrytis is present"],"exam_traps":["calling Eiswein TBA because both are sweet","forgetting rarity and healthy grapes"],"memory_hooks":["Eiswein is Riesling purity frozen in place"],"comparison_styles":["Beerenauslese","Trockenbeerenauslese","Canadian Icewine"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_019","SAT_WINE_020"],"frequently_confused_with":["SAT_WINE_019","SAT_WINE_020"],"distinguishing_features":["pure fruit rather than botrytis honey-candied peel profile","noble rot not key","freezing rather than fungal dehydration"]}
+- **teaching_notes:** {"common_exam_points":["Eiswein is made infrequently and is a genuine rarity","noble rot is not key; focus is varietal purity","best examples balance acidity and sweetness finely"],"mentor_hints":["Ask whether descriptors are pure fruit or botrytis honey/dried fruit.","Freezing is the concentration mechanism."],"student_traps":["confusing all sweet Riesling with botrytis","missing very high acidity"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["german_riesling_core","eiswein_purity"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["10569-10582","5867-5878"],"line_reference":["10569-10582","5867-5878"],"evidence":["Eiswein is described as rare, with noble rot not a key component and focus on varietal purity.","Freezing grapes on the vine concentrates sugar in Germany and Icewine in Canada."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-03-BATCH-002","schema_version":"CWP-02"}
+- **chapter:** 22 Germany
+- **section:** Eiswein
+- **page_reference:** 110
+- **line_reference:** ["10569-10582","5867-5878"]
 

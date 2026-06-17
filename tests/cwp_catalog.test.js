@@ -17,18 +17,39 @@ const requiredComparison = ['similar_profiles', 'frequently_confused_with', 'dis
 const requiredTeaching = ['common_exam_points', 'mentor_hints', 'student_traps', 'revision_priority'];
 
 assert.deepStrictEqual(result.errors, []);
-assert.strictEqual(profiles.length, 11);
+assert.strictEqual(profiles.length, 21);
 assert.strictEqual(new Set(profiles.map((p) => p.canonical_id)).size, profiles.length);
 assert(profiles.every((p) => p.source.file === 'D:\\Descargas\\Phone Link\\WSET3_rebuilt.md'));
 assert(profiles.every((p) => p.canonical_source.sha256 === '91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25'));
 assert(profiles.every((p) => p.wine_type === 'BLANCO'));
-assert(profiles.every((p) => p.country === 'France'));
+assert(profiles.every((p) => ['France', 'Germany'].includes(p.country)));
+assert.strictEqual(profiles.filter((p) => p.country === 'France').length, 11);
+assert.strictEqual(profiles.filter((p) => p.country === 'Germany').length, 10);
 assert(!JSON.stringify(profiles).includes('not_stated_in_source'));
 assert(profiles.every((p) => p.source.line_references.every((lineRef) => {
   const match = lineRef.match(/^(\d+)-(\d+)$/);
   return match && Number(match[1]) <= Number(match[2]);
 })));
-assert.deepStrictEqual(profiles.map((p) => p.canonical_id), Array.from({ length: 11 }, (_, i) => `SAT_WINE_${String(i + 1).padStart(3, '0')}`));
+assert.deepStrictEqual(profiles.map((p) => p.canonical_id), Array.from({ length: 21 }, (_, i) => `SAT_WINE_${String(i + 1).padStart(3, '0')}`));
+
+const germanyProfiles = profiles.filter((p) => p.country === 'Germany');
+assert.deepStrictEqual(germanyProfiles.map((p) => p.canonical_id), Array.from({ length: 10 }, (_, i) => `SAT_WINE_${String(i + 12).padStart(3, '0')}`));
+assert.deepStrictEqual(germanyProfiles.map((p) => p.wine_name), [
+  'Mosel Riesling',
+  'Rheingau Riesling',
+  'Pfalz Riesling',
+  'Rheinhessen Riesling',
+  'Riesling Kabinett',
+  'Riesling Spatlese',
+  'Riesling Auslese',
+  'Beerenauslese',
+  'Trockenbeerenauslese',
+  'Eiswein',
+]);
+assert(new Set(germanyProfiles.map((p) => p.region)).has('Mosel'));
+assert(new Set(germanyProfiles.map((p) => p.region)).has('Rheingau'));
+assert(new Set(germanyProfiles.map((p) => p.region)).has('Pfalz'));
+assert(new Set(germanyProfiles.map((p) => p.region)).has('Rheinhessen'));
 
 profiles.forEach((profile) => {
   assert.strictEqual(typeof profile.wine_name, 'string');

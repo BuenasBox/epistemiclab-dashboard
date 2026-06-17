@@ -25,6 +25,22 @@
     "low_acid_aromatic_viognier": {
       "diagnostic_features": ["full body", "low acidity", "high alcohol", "stone fruit", "floral perfume"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "german_riesling_core": {
+      "diagnostic_features": ["naturally high acidity", "green fruit to peach spectrum", "dry to lusciously sweet range", "low to medium alcohol depending on sweetness"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "pradikat_riesling_scale": {
+      "diagnostic_features": ["Kabinett delicacy", "Spatlese greater ripeness", "Auslese selected extra-ripe bunches", "must weight category as style indicator"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "botrytised_sweet_wine": {
+      "diagnostic_features": ["noble rot", "honey", "dried stone fruit", "candied peel", "flowers", "low alcohol", "high sweetness"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "eiswein_purity": {
+      "diagnostic_features": ["frozen healthy grapes", "pure varietal character", "high acidity", "high sweetness", "no noble rot focus"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {
