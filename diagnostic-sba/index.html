@@ -1299,9 +1299,10 @@ function sbaShuf(arr,seed){
   for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
-// Phase P3: Detect enrichment by presence of pedagogical fields
+// Phase P3: enrichment is signalled by a server-derived boolean flag.
+// The pedagogical content itself is NOT shipped to the browser.
 function isEnriched(item){
-  return !!(item.feedback_by_mode || item.causal_chain || item.micro_drill);
+  return !!item.enriched;
 }
 const MOCK_RA={RA1:8,RA2:28,RA3:5,RA4:5,RA5:4};
 function bankToQ(item){
@@ -1310,12 +1311,15 @@ function bankToQ(item){
     topic:item.topic||'—', ra:item.ra||'—', difficulty:item.difficulty||'—',
     cognitive_skill:item.ra?('RA: '+item.ra):'—', est_time:'45–90 s',
     text:item.text||'', options:item.options||[],
-    correct_index:typeof item.correct_index==='number'?item.correct_index:0,
-    correct_letter:item.correct_letter||'A',
-    feedback_by_mode:item.feedback_by_mode||null, causal_chain:item.causal_chain||null,
-    distractor_traps:item.distractor_traps||null, misconception:item.misconception||null,
-    cross_exam_challenge:item.cross_exam_challenge||null, sat_relevance:item.sat_relevance||null,
-    micro_drill:item.micro_drill||null,
+    enriched:!!item.enriched,
+    // Answer key and pedagogical result are resolved server-side AFTER the
+    // student submits (validate-sba-answer). They are intentionally null here so
+    // the browser never receives the correct answer or the feedback in advance.
+    correct_index:null, correct_letter:null,
+    feedback_by_mode:null, causal_chain:null,
+    distractor_traps:null, misconception:null,
+    cross_exam_challenge:null, sat_relevance:null,
+    micro_drill:null,
   };
 }
 async function loadMode(mode){
@@ -1454,8 +1458,9 @@ function mentorLabel() {
 // Fallback determinista por pregunta (auditoría Z.2): se usa cuando el banco
 // no incluye feedback_by_mode. Construido solo con campos existentes del ítem.
 function fallbackFeedback(q) {
-  const letter = String.fromCharCode(65 + q.correct_index);
-  const correctTxt = (q.options && q.options[q.correct_index]) || '';
+  const idx = (typeof q.correct_index === 'number') ? q.correct_index : 0;
+  const letter = String.fromCharCode(65 + idx);
+  const correctTxt = (q.options && q.options[idx]) || '';
   return `La respuesta correcta es ${letter}: «${correctTxt}». ` +
     `Tema: ${q.topic} · ${q.ra}. Repasa este concepto en tu material WSET L3 antes de la siguiente sesión.`;
 }
@@ -1909,10 +1914,38 @@ function reSelectOption(i) {
 function confirmCross() { goToReveal(); }
 function hardLock()     { goToReveal(); }
 
-function goToReveal() {
+async function goToReveal() {
   stopTimer();
   const q = currentQ();
-  const isCorrect = STATE.selectedOption === q.correct_index;
+  // Server-side grading + post-answer pedagogical result. The browser submits
+  // the chosen option; the backend decides correctness and returns ONLY the
+  // final result the student is allowed to see.
+  let isCorrect = false;
+  try {
+    const token = await requireAuth();
+    const selLetter = (typeof STATE.selectedOption === 'number')
+      ? String.fromCharCode(65 + STATE.selectedOption) : '';
+    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
+      method:'POST',
+      headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
+      body: JSON.stringify({ item_id:q.id, selected_letter:selLetter, mode:STATE.mentorMode })
+    });
+    if (resp.ok) {
+      const r = await resp.json();
+      isCorrect = !!r.correct;
+      if (typeof r.correct_index === 'number') q.correct_index = r.correct_index;
+      q.correct_letter = r.correct_letter || q.correct_letter;
+      q.causal_chain = r.causal_chain || null;
+      q.micro_drill = r.micro_drill || null;
+      q.feedback_by_mode = r.feedback ? { mentor:r.feedback, trainer:r.feedback, reviewer:r.feedback } : null;
+    } else {
+      console.error('validate-sba-answer status:', resp.status);
+      isCorrect = (typeof q.correct_index==='number') && (STATE.selectedOption === q.correct_index);
+    }
+  } catch(e){
+    console.error('validate-sba-answer error:', e);
+    isCorrect = (typeof q.correct_index==='number') && (STATE.selectedOption === q.correct_index);
+  }
   STATE.session.answered++;
   if (isCorrect) STATE.session.correct++;
   if (!isCorrect && STATE.selectedConfidence === 'seguro') STATE.session.overconfident++;
@@ -1931,10 +1964,11 @@ function goToReveal() {
 // -----------------------------------------------------------------------
 function renderReveal() {
   const q = currentQ();
-  const isCorrect = STATE.selectedOption === q.correct_index;
+  const isCorrect = (typeof q.correct_index === 'number') && (STATE.selectedOption === q.correct_index);
   const timing = getTimingBand(STATE.timeElapsed);
   const isOverconf = !isCorrect && STATE.selectedConfidence === 'seguro';
   const _fbm=q.feedback_by_mode||{}; const feedback=_fbm[STATE.mentorMode]||_fbm.mentor||fallbackFeedback(q);
+  const correctIdx = (typeof q.correct_index === 'number') ? q.correct_index : -1;
 
   document.getElementById('mainContent').innerHTML = `
     <div class="fade-in">
@@ -1948,7 +1982,7 @@ function renderReveal() {
           <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
             ${isCorrect
               ? 'Bien razonado.'
-              : `La correcta era: <strong style="color:var(--green)">${String.fromCharCode(65 + q.correct_index)}</strong>`}
+              : (correctIdx>=0 ? `La correcta era: <strong style="color:var(--green)">${String.fromCharCode(65 + correctIdx)}</strong>` : '')}
           </div>
         </div>
       </div>
@@ -1979,7 +2013,7 @@ function renderReveal() {
         <div class="options-list">
           ${q.options.map((o, i) => `
             <button class="option-btn ${
-              i === q.correct_index ? 'correct-reveal' :
+              i === correctIdx ? 'correct-reveal' :
               (i === STATE.selectedOption && !isCorrect) ? 'wrong-reveal' : 'neutral-reveal'
             }" disabled>
               <span class="opt-letter">${String.fromCharCode(65+i)}</span>
