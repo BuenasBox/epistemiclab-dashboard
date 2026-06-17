@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Laboratorio SAT · EpistemicLab</title>
+<style>
+  :root{
+    --bg:#1a1119; --panel:#241823; --panel2:#2e1f2c; --ink:#f5ecf2; --muted:#b79fb0;
+    --wine:#7b2740; --wine2:#9c3354; --gold:#c9a227; --line:#3d2c39;
+    --ok:#3fa86b; --warn:#d99a2b; --block:#c1483f; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%,#2a1a26,#1a1119);color:var(--ink);min-height:100vh}
+  .wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
+  header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .brand{font-weight:700;letter-spacing:.3px}
+  .brand b{color:var(--gold)}
+  a.back{color:var(--muted);text-decoration:none;font-size:14px}
+  a.back:hover{color:var(--ink)}
+  h1{font-size:26px;margin:6px 0 2px}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 18px;line-height:1.5}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px;margin-bottom:16px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .glass{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 0 8px}
+  .glass svg{filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+  .wine-label{font-size:18px;font-weight:600}
+  .chip{display:inline-block;font-size:12.5px;color:var(--gold);border:1px solid var(--line);
+    border-radius:999px;padding:3px 12px;background:rgba(201,162,39,.08)}
+  .btn{appearance:none;border:0;cursor:pointer;border-radius:12px;font-size:15px;font-weight:600;
+    padding:13px 18px;color:#fff;background:linear-gradient(180deg,var(--wine2),var(--wine));
+    transition:transform .06s ease,filter .2s}
+  .btn:hover{filter:brightness(1.08)} .btn:active{transform:translateY(1px)}
+  .btn.full{width:100%}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+  .steps{display:flex;gap:6px;margin:4px 0 18px;flex-wrap:wrap}
+  .step{flex:1;min-width:54px;text-align:center;font-size:11px;color:var(--muted);padding-bottom:8px;
+    border-bottom:3px solid var(--line)}
+  .step.active{color:var(--ink);border-color:var(--gold)}
+  .step.done{color:var(--ok);border-color:var(--ok)}
+  .decision{margin:0 0 18px}
+  .decision h3{font-size:16px;margin:0 0 10px}
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{appearance:none;border:1px solid var(--line);background:var(--panel2);color:var(--ink);
+    border-radius:999px;padding:9px 15px;font-size:14px;cursor:pointer;transition:.15s}
+  .opt:hover{border-color:var(--wine2)}
+  .opt.sel{background:var(--wine);border-color:var(--wine2);color:#fff;font-weight:600}
+  .fb{margin-top:10px;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;display:none}
+  .fb.show{display:block}
+  .fb.info{background:rgba(63,168,107,.12);border:1px solid rgba(63,168,107,.4)}
+  .fb.warn{background:rgba(217,154,43,.12);border:1px solid rgba(217,154,43,.45)}
+  .fb.block{background:rgba(193,72,63,.12);border:1px solid rgba(193,72,63,.45)}
+  .fb .sev{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:4px}
+  .fb .hint{color:var(--muted);margin-top:6px;font-size:13.5px}
+  .fb .bicl{margin-top:6px;color:var(--gold);font-size:13.5px}
+  .phase-title{font-size:20px;margin:2px 0 2px}
+  .phase-sub{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+  .row{display:flex;gap:10px;margin-top:8px}
+  .muted{color:var(--muted)} .center{text-align:center}
+  .summary-li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:9px 0;font-size:14px}
+  .summary-li span:last-child{color:var(--gold)}
+  .spin{display:inline-block;width:18px;height:18px;border:3px solid var(--line);border-top-color:var(--gold);
+    border-radius:50%;animation:sp 1s linear infinite;vertical-align:middle}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .err{color:var(--block);font-size:14px}
+  @media(max-width:480px){ h1{font-size:22px} .card{padding:16px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Epistemic<b>Lab</b></div>
+    <a class="back" href="../index.html">← Volver</a>
+  </header>
+
+  <!-- INTRO -->
+  <section id="screen-intro">
+    <h1>Laboratorio de Cata SAT</h1>
+    <p class="sub">Practica el Systematic Approach to Tasting paso a paso. Observa, infiere y comprométete con un juicio — como en una mesa de cata real. Esto es entrenamiento formativo, no un examen.</p>
+    <div class="card">
+      <h3 style="margin:0 0 12px">Elige un modo</h3>
+      <button class="btn full" id="mode-blind">🍷 Cata a ciegas</button>
+      <p class="muted" style="font-size:13px;margin:12px 2px 0">En la cata a ciegas no verás país, región ni variedad: deberás deducir desde la copa. (Otros modos llegarán pronto.)</p>
+    </div>
+    <div id="intro-err" class="err"></div>
+  </section>
+
+  <!-- LOADING -->
+  <section id="screen-loading" style="display:none">
+    <div class="card center"><span class="spin"></span><p class="muted">Preparando tu copa…</p></div>
+  </section>
+
+  <!-- TASTING -->
+  <section id="screen-tasting" style="display:none">
+    <div class="card">
+      <div class="glass">
+        <svg width="64" height="84" viewBox="0 0 64 84" aria-hidden="true">
+          <ellipse cx="32" cy="78" rx="20" ry="4" fill="rgba(0,0,0,.35)"/>
+          <rect x="30" y="46" width="4" height="26" fill="#d9c7d2"/>
+          <rect x="18" y="72" width="28" height="4" rx="2" fill="#d9c7d2"/>
+          <path d="M14 8 Q32 2 50 8 Q50 34 32 46 Q14 34 14 8 Z" fill="rgba(255,255,255,.05)" stroke="#6a5562"/>
+          <path id="liquid" d="M16 18 Q32 14 48 18 Q47 33 32 44 Q17 33 16 18 Z" fill="#7b2740"/>
+        </svg>
+        <div class="wine-label" id="wine-label">Vino</div>
+        <span class="chip" id="wine-chip">—</span>
+      </div>
+    </div>
+
+    <div class="steps" id="steps"></div>
+
+    <div class="card">
+      <div class="phase-title" id="phase-title"></div>
+      <p class="phase-sub" id="phase-sub"></p>
+      <div id="decisions"></div>
+      <div class="row">
+        <button class="btn ghost" id="btn-prev" style="display:none">← Fase anterior</button>
+        <button class="btn full" id="btn-next" disabled>Siguiente fase →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="screen-summary" style="display:none">
+    <h1>Práctica completada</h1>
+    <p class="sub" id="summary-msg"></p>
+    <div class="card" id="summary-box"></div>
+    <div class="card">
+      <p class="muted" style="margin:0 0 12px;font-size:13.5px">Recuerda: el SAT premia el razonamiento (observación → inferencia → causa → juicio) y el compromiso con una conclusión, no acertar a ciegas.</p>
+      <button class="btn full" id="btn-restart">Practicar con otro vino</button>
+    </div>
+  </section>
+</div>
+
+<!-- Auth / Supabase (mismo patrón que el resto de la app) -->
+<script src="../shared/session-store.js"></script>
+<script src="../shared/supabase-public-config.js"></script>
+<script src="../shared/auth-providers/supabase-auth-provider.js"></script>
+<script src="../shared/auth-providers/mock-auth-provider.js"></script>
+<script src="../shared/auth-provider.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../shared/auth-token.js"></script>
+<script>
+(function(){
+  "use strict";
+  var CFG = (window.WSET_SUPABASE_CONFIG || {url:'https://hylknjjhmxsuuwbsslkr.supabase.co'});
+  var FN = CFG.url + '/functions/v1/';
+
+  // ---- Vocabulario render-safe (etiquetas WSET; NO es la respuesta) ----
+  var LABELS = {
+    claridad:{claro:'Claro',turbio:'Turbio (¿defecto?)'},
+    intensidad_aspecto:{'pálida':'Pálida',media:'Media',profunda:'Profunda'},
+    color_blanco:{'verde_limón':'Verde limón','amarillo_limón':'Amarillo limón',dorado:'Dorado','ámbar':'Ámbar','marrón':'Marrón'},
+    color_tinto:{'púrpura':'Púrpura','rubí':'Rubí',granate:'Granate',teja:'Teja','marrón':'Marrón'},
+    color_rosado:{rosado:'Rosado','salmón':'Salmón',naranja:'Naranja'},
+    'condición':{limpia:'Limpia',no_limpia:'No limpia (¿defecto?)'},
+    intensidad_nariz:{ligera:'Ligera',media_menos:'Media (−)',media:'Media','media_más':'Media (+)',pronunciada:'Pronunciada'},
+    'evolución':{joven:'Joven','en_evolución':'En evolución',evolucionado:'Evolucionado',cansado:'Pasó su mejor momento'},
+    dulzor:{seco:'Seco',casi_seco:'Casi seco',semiseco:'Semiseco',semidulce:'Semidulce',dulce:'Dulce',muy_dulce:'Muy dulce'},
+    acidez:{baja:'Baja',media_menos:'Media (−)',media:'Media','media_más':'Media (+)',alta:'Alta'},
+    tanino:{bajo:'Bajo',medio_menos:'Medio (−)',medio:'Medio','medio_más':'Medio (+)',alto:'Alto'},
+    alcohol:{bajo:'Bajo',medio:'Medio',alto:'Alto'},
+    cuerpo:{poco:'Ligero',medio_menos:'Medio (−)',medio:'Medio','medio_más':'Medio (+)',mucho:'Con cuerpo'},
+    intensidad_sabor:{ligera:'Ligera',media_menos:'Media (−)',media:'Media','media_más':'Media (+)',pronunciada:'Pronunciada'},
+    final:{corto:'Corto',medio_menos:'Medio (−)',medio:'Medio','medio_más':'Medio (+)',largo:'Largo'},
+    'evaluación_calidad':{defectuoso:'Defectuoso',pobre:'Pobre',aceptable:'Aceptable',bueno:'Bueno',muy_bueno:'Muy bueno',excelente:'Excelente'},
+    potencial_guarda:{demasiado_joven:'Demasiado joven',se_puede_beber_ahora:'Beber ahora (con guarda)',para_mayor_envejecimiento:'Para mayor guarda',beber_ahora_no_adecuado:'Beber ahora (sin guarda)',demasiado_viejo:'Demasiado viejo'}
+  };
+  var DEC_TITLE = {
+    claridad:'Claridad',intensidad_aspecto:'Intensidad del color',color_blanco:'Color',color_tinto:'Color',color_rosado:'Color',
+    'condición':'Condición',intensidad_nariz:'Intensidad aromática','evolución':'Desarrollo',
+    dulzor:'Dulzor',acidez:'Acidez',tanino:'Taninos',alcohol:'Alcohol',cuerpo:'Cuerpo',intensidad_sabor:'Intensidad de sabor',final:'Final',
+    'evaluación_calidad':'Nivel de calidad',potencial_guarda:'Potencial de guarda'
+  };
+  var PHASES = [
+    {id:'ASPECTO', title:'Aspecto · la vista', sub:'¿Qué te dice la copa antes de olerla?', decisions:['claridad','intensidad_aspecto','__color__']},
+    {id:'NARIZ', title:'Nariz · el olfato', sub:'Intensidad y familias de aroma. Aún no concluyas.', decisions:['condición','intensidad_nariz','evolución']},
+    {id:'PALADAR', title:'Paladar · la boca', sub:'Contrasta la estructura con lo que la nariz sugirió.', decisions:['dulzor','acidez','__tanino__','alcohol','cuerpo','intensidad_sabor','final']},
+    {id:'EVALUACION_CALIDAD', title:'Evaluación de calidad', sub:'Comprométete con un nivel y justifícalo (BICL).', decisions:['evaluación_calidad']},
+    {id:'POTENCIAL_GUARDA', title:'Potencial de guarda', sub:'Deriva la guarda de la estructura, no de la etiqueta.', decisions:['potencial_guarda']}
+  ];
+
+  var S = { wine:null, attemptId:null, phaseIdx:0, answers:{}, decisionsCount:0 };
+
+  function $(id){return document.getElementById(id);}
+  function show(id){['screen-intro','screen-loading','screen-tasting','screen-summary'].forEach(function(s){$(s).style.display=(s===id)?'block':'none';});}
+
+  async function authHeaders(json){
+    var token = await requireAuth();
+    var h = {'Authorization':'Bearer '+token};
+    if(json) h['Content-Type']='application/json';
+    return h;
+  }
+
+  function resolveDecisions(phase){
+    return phase.decisions.map(function(d){
+      if(d==='__color__'){ return S.wine.wine_type==='TINTO'?'color_tinto':(S.wine.wine_type==='ROSADO'?'color_rosado':'color_blanco'); }
+      if(d==='__tanino__'){ return (S.wine.wine_type==='TINTO'||S.wine.wine_type==='ROSADO')?'tanino':null; }
+      return d;
+    }).filter(Boolean);
+  }
+
+  async function startPractice(){
+    show('screen-loading');
+    try{
+      // 1) get-sat-wines
+      var hr = await authHeaders(false);
+      var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation', {headers:hr});
+      if(!wr.ok) throw new Error('No se pudo cargar el inventario de cata.');
+      var wd = await wr.json();
+      var list = wd.wines||[];
+      if(!list.length) throw new Error('No hay vinos disponibles ahora mismo.');
+      S.wine = list[Math.floor(Math.random()*list.length)];
+      // 2) start-sat-attempt
+      var hp = await authHeaders(true);
+      var sr = await fetch(FN+'start-sat-attempt', {method:'POST',headers:hp,
+        body:JSON.stringify({wine_id:S.wine.id,mode:'blind_simulation',source:'canonical_wine'})});
+      var sd = await sr.json();
+      if(!sr.ok || !sd.attempt_id) throw new Error('No se pudo iniciar la práctica.');
+      S.attemptId = sd.attempt_id; S.phaseIdx=0; S.answers={}; S.decisionsCount=0;
+      renderTasting();
+    }catch(e){
+      show('screen-intro'); $('intro-err').textContent = e.message || String(e);
+    }
+  }
+
+  function renderTasting(){
+    show('screen-tasting');
+    var wt = S.wine.wine_type;
+    $('wine-label').textContent = S.wine.display_label || 'Vino';
+    $('wine-chip').textContent = wt==='TINTO'?'Cata a ciegas · tinto':(wt==='ROSADO'?'Cata a ciegas · rosado':'Cata a ciegas · blanco');
+    $('liquid').setAttribute('fill', wt==='TINTO'?'#5a1730':(wt==='ROSADO'?'#d98aa3':'#e9d27a'));
+    // steps
+    var steps = PHASES.map(function(p,i){
+      var cls = i<S.phaseIdx?'step done':(i===S.phaseIdx?'step active':'step');
+      return '<div class="'+cls+'">'+(i+1)+'</div>';
+    }).join('');
+    $('steps').innerHTML = steps;
+    renderPhase();
+  }
+
+  function renderPhase(){
+    var phase = PHASES[S.phaseIdx];
+    $('phase-title').textContent = phase.title;
+    $('phase-sub').textContent = phase.sub;
+    var decs = resolveDecisions(phase);
+    var html = decs.map(function(dn){
+      var opts = Object.keys(LABELS[dn]).map(function(val){
+        var sel = (S.answers[dn] && S.answers[dn].value===val)?' sel':'';
+        return '<button class="opt'+sel+'" data-dec="'+dn+'" data-val="'+val+'">'+LABELS[dn][val]+'</button>';
+      }).join('');
+      return '<div class="decision"><h3>'+DEC_TITLE[dn]+'</h3><div class="opts">'+opts+'</div>'+
+        '<div class="fb" id="fb-'+dn+'"></div></div>';
+    }).join('');
+    $('decisions').innerHTML = html;
+    Array.prototype.forEach.call(document.querySelectorAll('.opt'), function(b){
+      b.addEventListener('click', function(){ onSelect(b.getAttribute('data-dec'), b.getAttribute('data-val')); });
+    });
+    $('btn-prev').style.display = S.phaseIdx>0?'inline-block':'none';
+    $('btn-next').textContent = (S.phaseIdx===PHASES.length-1)?'Finalizar práctica →':'Siguiente fase →';
+    refreshNext();
+  }
+
+  function refreshNext(){
+    var decs = resolveDecisions(PHASES[S.phaseIdx]);
+    var allDone = decs.every(function(dn){ return S.answers[dn]; });
+    $('btn-next').disabled = !allDone;
+  }
+
+  async function onSelect(dn, val){
+    var phase = PHASES[S.phaseIdx];
+    Array.prototype.forEach.call(document.querySelectorAll('.opt[data-dec="'+dn+'"]'), function(b){
+      b.classList.toggle('sel', b.getAttribute('data-val')===val);
+    });
+    var fb = $('fb-'+dn); fb.className='fb show info'; fb.innerHTML='<span class="spin"></span>';
+    try{
+      var hp = await authHeaders(true);
+      var r = await fetch(FN+'evaluate-sat', {method:'POST',headers:hp,
+        body:JSON.stringify({wine_id:S.wine.id,phase:phase.id,decision_name:dn,selected_value:val,attempt_id:S.attemptId})});
+      var b = await r.json();
+      if(!r.ok || !b.ok) throw new Error(b.error||'Error al evaluar.');
+      if(!S.answers[dn]) S.decisionsCount++;
+      S.answers[dn] = {value:val, label:LABELS[dn][val]};
+      var sevClass = b.severity==='BLOQUEANTE'?'block':(b.severity==='ADVERTENCIA'?'warn':'info');
+      var html = '<span class="sev">'+b.severity+'</span>'+ (b.feedback_message||'');
+      if(b.reasoning_hint) html += '<div class="hint">'+b.reasoning_hint+'</div>';
+      if(b.bicl_signal) html += '<div class="bicl">'+b.bicl_signal+'</div>';
+      if(b.next_step) html += '<div class="hint">'+b.next_step+'</div>';
+      fb.className='fb show '+sevClass; fb.innerHTML = html;
+      refreshNext();
+    }catch(e){
+      fb.className='fb show block'; fb.innerHTML='<span class="sev">Error</span>'+(e.message||String(e));
+    }
+  }
+
+  function nextPhase(){
+    if(S.phaseIdx < PHASES.length-1){ S.phaseIdx++; renderTasting(); window.scrollTo(0,0); }
+    else { renderSummary(); }
+  }
+  function prevPhase(){ if(S.phaseIdx>0){ S.phaseIdx--; renderTasting(); window.scrollTo(0,0); } }
+
+  function renderSummary(){
+    show('screen-summary');
+    $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(S.wine.display_label||'tu vino')+'.';
+    var rows = '';
+    PHASES.forEach(function(p){
+      resolveDecisions(p).forEach(function(dn){
+        if(S.answers[dn]) rows += '<div class="summary-li"><span>'+DEC_TITLE[dn]+'</span><span>'+S.answers[dn].label+'</span></div>';
+      });
+    });
+    $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    $('mode-blind').addEventListener('click', startPractice);
+    $('btn-next').addEventListener('click', nextPhase);
+    $('btn-prev').addEventListener('click', prevPhase);
+    $('btn-restart').addEventListener('click', function(){ show('screen-intro'); $('intro-err').textContent=''; });
+  });
+})();
+</script>
+</body>
+</html>
