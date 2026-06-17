@@ -13,8 +13,8 @@
     {
       code: 'demo',
       label: 'Demo',
-      includedModules: ['Diagnostic SBA', 'Open Response Lab'],
-      limitations: ['Acceso temporal', 'Full Simulation no incluido'],
+      includedModules: ['Cabina SBA', 'Laboratorio de Respuesta Abierta'],
+      limitations: ['Acceso temporal', 'Simulacro Completo no incluido'],
       recommendedUse: 'Conocer la plataforma y realizar un diagnóstico.',
       cta: { label: 'Iniciar sesión', href: '/login/' },
     },
@@ -22,12 +22,12 @@
       code: 'premium',
       label: 'Premium',
       includedModules: [
-        'Diagnostic SBA',
+        'Cabina SBA',
         'Adaptive Express',
-        'Open Response Lab',
+        'Laboratorio de Respuesta Abierta',
         'SAT Sprint',
       ],
-      limitations: ['Full Simulation no incluido'],
+      limitations: ['Simulacro Completo no incluido'],
       recommendedUse: 'Practicar con mayor frecuencia y dificultad.',
       cta: { label: 'Mejorar acceso', href: '/login/' },
     },
@@ -36,7 +36,7 @@
       label: 'Acceso Completo',
       includedModules: [
         'Todos los módulos Premium',
-        'Full Simulation',
+        'Simulacro Completo',
         'Modos estándar y simulacros',
       ],
       limitations: ['Sujeto a la vigencia de la cuenta'],
@@ -192,6 +192,7 @@
       if (plan.code === 'demo') {
         cta.href = plan.cta.href;
         cta.textContent = plan.cta.label;
+        cta.dataset.authenticatedCta = 'true';
       } else {
         cta.type = 'button';
         cta.dataset.upgradeRequest = 'true';
@@ -210,6 +211,14 @@
     });
 
     return mount;
+  }
+
+  function updateAuthenticatedCtas(documentRef, authenticated) {
+    if (!documentRef) return;
+    documentRef.querySelectorAll('[data-authenticated-cta]').forEach(function (cta) {
+      cta.textContent = authenticated ? 'Mi perfil' : 'Iniciar sesión';
+      cta.setAttribute('href', authenticated ? '/profile/' : '/login/');
+    });
   }
 
   function initializeUpgradePage(documentRef, options) {
@@ -241,6 +250,19 @@
     var auth = access.AuthProvider.createAuthProvider({
       provider: supabaseProvider,
       sessionStore: sessionStore,
+    });
+
+    auth.resolve().then(function (snapshot) {
+      updateAuthenticatedCtas(
+        documentRef,
+        Boolean(
+          snapshot
+          && snapshot.authentication
+          && snapshot.authentication.status === 'authenticated'
+        )
+      );
+    }).catch(function () {
+      updateAuthenticatedCtas(documentRef, false);
     });
 
     if (modal) {
@@ -373,5 +395,6 @@
     initializeUpgradePage: initializeUpgradePage,
     renderPlanGrid: renderPlanGrid,
     showUpgradeModal: showUpgradeModal,
+    updateAuthenticatedCtas: updateAuthenticatedCtas,
   };
 });

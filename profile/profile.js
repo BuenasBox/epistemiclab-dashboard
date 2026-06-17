@@ -17,9 +17,9 @@
     full_access: 'Acceso Completo',
   };
   var EXPERIENCE_LABELS = {
-    sba: 'Diagnostic SBA',
+    sba: 'Cabina SBA',
     sat: 'SAT',
-    or: 'Open Response Lab',
+    or: 'Laboratorio de Respuesta Abierta',
   };
 
   function escapeHtml(value) {

@@ -146,7 +146,7 @@
       return {
         experience: 'open_response',
         reason: 'Ya practicaste suficiente SBA. Mejora tu articulación en respuestas abiertas.',
-        label: 'Ir a Open Response Lab'
+        label: 'Ir al Laboratorio de Respuesta Abierta'
       };
     }
     // If they've done OR, suggest SAT
@@ -162,7 +162,7 @@
       return {
         experience: 'full_simulation',
         reason: 'Estás listo para el simulacro completo. Practica bajo presión de tiempo.',
-        label: 'Ir a Full Simulation'
+        label: 'Ir al Simulacro Completo'
       };
     }
     // Default: more SBA

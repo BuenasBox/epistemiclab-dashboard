@@ -21,7 +21,7 @@
       return {
         priority: 'continue_sba',
         experience: 'diagnostic_sba',
-        reason: 'Build foundation with more SBA practice',
+        reason: 'Construye base con más práctica SBA',
         label: 'Práctica SBA — Fundación',
         url: '/diagnostic-sba/',
         icon: '🎯'
@@ -32,7 +32,7 @@
       return {
         priority: 'try_adaptive',
         experience: 'adaptive_session',
-        reason: 'Focus on your weak areas with Adaptive Session',
+        reason: 'Enfócate en tus áreas débiles con la Sesión Adaptativa',
         label: 'Sesión Adaptativa — Debilidades',
         url: '/adaptive-session/',
         icon: '📊'
@@ -43,7 +43,7 @@
       return {
         priority: 'try_or',
         experience: 'open_response',
-        reason: 'Practice answering with command verbs (explain, justify, compare...)',
+        reason: 'Practica respuestas con command verbs: explain, justify, compare...',
         label: 'Respuesta Abierta — Articulación',
         url: '/open-response-lab/',
         icon: '✍️'
@@ -54,7 +54,7 @@
       return {
         priority: 'try_sat_sprint',
         experience: 'sat_sprint',
-        reason: 'Calibrate your quality assessment with a single wine',
+        reason: 'Calibra tu evaluación de calidad con un solo vino',
         label: 'SAT Sprint — Calibración',
         url: '/adaptive-session/?mode=sat_sprint',
         icon: '🍷'
@@ -65,8 +65,8 @@
       return {
         priority: 'full_simulation',
         experience: 'full_simulation',
-        reason: 'Take the full exam simulation: SBA → OR → SAT under time pressure',
-        label: 'Simulacro Completo — WSET Exam',
+        reason: 'Realiza el simulacro completo: SBA, respuesta abierta y SAT bajo presión de tiempo',
+        label: 'Simulacro Completo — WSET Nivel 3',
         url: '/full-simulation/',
         icon: '🏆'
       };
@@ -75,7 +75,7 @@
     return {
       priority: 'continue_practice',
       experience: 'adaptive_session',
-      reason: 'Continue improving your weak areas',
+        reason: 'Continúa mejorando tus áreas débiles',
       label: 'Seguir Practicando',
       url: '/adaptive-session/',
       icon: '🔄'
@@ -88,14 +88,14 @@
     if (!rec) return '';
 
     var html = '<div style="background:linear-gradient(135deg,#1a2332 0%,#0f1519 100%);border:1px solid #4a7c8c;border-radius:8px;padding:16px;margin:12px 0">' +
-      '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px">YOUR LEARNING PATH</div>' +
+      '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px">TU RUTA DE APRENDIZAJE</div>' +
       '<div style="background:#0f1519;border-radius:6px;padding:14px;margin-bottom:12px;border-left:3px solid #4a7c8c">' +
       '<div style="display:flex;align-items:flex-start;gap:12px">' +
       '<span style="font-size:20px">' + (rec.icon || '→') + '</span>' +
       '<div>' +
       '<div style="color:#d5a84f;font-weight:600;font-size:13px">' + rec.label + '</div>' +
       '<div style="color:#aab4bd;font-size:12px;margin:6px 0">' + rec.reason + '</div>' +
-      '<a href="' + rec.url + '" style="display:inline-block;margin-top:8px;color:#65b7c7;text-decoration:none;font-weight:600;font-size:12px;padding:6px 12px;background:#0d2a30;border-radius:4px;border:1px solid #2a5a63">Start →</a>' +
+      '<a href="' + rec.url + '" style="display:inline-block;margin-top:8px;color:#65b7c7;text-decoration:none;font-weight:600;font-size:12px;padding:6px 12px;background:#0d2a30;border-radius:4px;border:1px solid #2a5a63">Comenzar →</a>' +
       '</div></div></div>' +
       '<div style="color:#525e6e;font-size:10px">Tu camino personalizado basado en tu historial de aprendizaje.</div>' +
       '</div>';
@@ -106,11 +106,11 @@
   function renderSessionBreadcrumb(currentExperience) {
     var a = root.LI && root.LI.analytics ? root.LI.analytics() : null;
     var steps = [
-      { name: 'SBA Foundation', count: a ? a.sbaSessions : 0, current: currentExperience === 'sba' },
-      { name: 'Adaptive Practice', count: a ? a.sbaSessions - (a.sbaSessions > 0 ? 1 : 0) : 0, current: currentExperience === 'adaptive' },
-      { name: 'Open Response', count: a ? a.orSessions : 0, current: currentExperience === 'or' },
-      { name: 'SAT Calibration', count: a ? a.satSessions : 0, current: currentExperience === 'sat' },
-      { name: 'Full Simulation', count: 0, current: currentExperience === 'simulation' }
+      { name: 'Base SBA', count: a ? a.sbaSessions : 0, current: currentExperience === 'sba' },
+      { name: 'Práctica adaptativa', count: a ? a.sbaSessions - (a.sbaSessions > 0 ? 1 : 0) : 0, current: currentExperience === 'adaptive' },
+      { name: 'Respuesta abierta', count: a ? a.orSessions : 0, current: currentExperience === 'or' },
+      { name: 'Calibración SAT', count: a ? a.satSessions : 0, current: currentExperience === 'sat' },
+      { name: 'Simulacro Completo', count: 0, current: currentExperience === 'simulation' }
     ];
 
     var html = '<div style="display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap">';

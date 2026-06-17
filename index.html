@@ -1201,7 +1201,7 @@
               <span class="training-step__number">01</span>
               <span class="training-step__status" data-training-status>Comprobando acceso</span>
             </div>
-            <h4>Diagnóstico SBA</h4>
+            <h4>Cabina SBA</h4>
             <p>Detecta fortalezas y áreas de revisión con práctica objetiva.</p>
             <a class="training-step__cta" href="/diagnostic-sba/" data-training-cta>Entrenar ahora</a>
           </article>
@@ -1252,7 +1252,7 @@
     <div class="experiences-grid">
       <a href="./diagnostic-sba/" class="exp-card">
         <div class="exp-number">1</div>
-        <h3 class="exp-title">Diagnóstico SBA</h3>
+        <h3 class="exp-title">Cabina SBA</h3>
         <p class="exp-desc">Identifica tus fortalezas y áreas de mejora desde el primer día. Practica con cientos de preguntas alineadas con WSET Level 3 y recibe orientación formativa para enfocar tu estudio.</p>
         <div class="exp-features">
           <div class="exp-feature"><span>✓</span> <span>Más de 700 preguntas SBA</span></div>
@@ -1376,11 +1376,11 @@
           </div>
           <div class="plan-feature">
             <div class="plan-feature-check">✓</div>
-            <span>Laboratorio OR: 2 preguntas</span>
+            <span>Laboratorio de Respuesta Abierta: 2 preguntas</span>
           </div>
           <div class="plan-feature">
             <div class="plan-feature-check">✗</div>
-            <span style="opacity:0.5">Full Simulation</span>
+            <span style="opacity:0.5">Simulacro Completo</span>
           </div>
         </div>
 
@@ -1397,7 +1397,7 @@
         <div class="plan-features">
           <div class="plan-feature">
             <div class="plan-feature-check">✓</div>
-            <span>Diagnostic SBA: Todos los items</span>
+            <span>Cabina SBA: Todos los items</span>
           </div>
           <div class="plan-feature">
             <div class="plan-feature-check">✓</div>
@@ -1405,11 +1405,11 @@
           </div>
           <div class="plan-feature">
             <div class="plan-feature-check">✓</div>
-            <span>Laboratorio OR: Todas las preguntas</span>
+            <span>Laboratorio de Respuesta Abierta: Todas las preguntas</span>
           </div>
           <div class="plan-feature">
             <div class="plan-feature-check">✗</div>
-            <span style="opacity:0.5">Full Simulation (1 por mes)</span>
+            <span style="opacity:0.5">Simulacro Completo (1 por mes)</span>
           </div>
         </div>
 
@@ -1420,7 +1420,7 @@
         <div class="plan-name">Acceso Completo</div>
         <div class="plan-price">$29</div>
         <p class="plan-period">mensual</p>
-        <p class="plan-desc">Acceso ilimitado. Full Simulation sin restricciones. Para estudiantes que se preparan intensamente.</p>
+        <p class="plan-desc">Acceso ilimitado. Simulacro Completo sin restricciones. Para estudiantes que se preparan intensamente.</p>
 
         <div class="plan-features">
           <div class="plan-feature">
@@ -1429,7 +1429,7 @@
           </div>
           <div class="plan-feature">
             <div class="plan-feature-check">✓</div>
-            <span>Full Simulation: Ilimitado</span>
+            <span>Simulacro Completo: Ilimitado</span>
           </div>
           <div class="plan-feature">
             <div class="plan-feature-check">✓</div>
@@ -1482,9 +1482,9 @@
   <div class="footer-content">
     <div class="footer-col">
       <div class="footer-title">Experiencias</div>
-      <a href="./diagnostic-sba/" class="footer-link">Diagnostic SBA Cockpit</a>
+      <a href="./diagnostic-sba/" class="footer-link">Cabina SBA</a>
       <a href="./adaptive-session/" class="footer-link">Sesión Adaptativa</a>
-      <a href="./open-response-lab/" class="footer-link">Laboratorio OR</a>
+      <a href="./open-response-lab/" class="footer-link">Laboratorio de Respuesta Abierta</a>
       <a href="./full-simulation/" class="footer-link">Simulacro Completo</a>
     </div>
     <div class="footer-col">
@@ -1496,14 +1496,14 @@
     </div>
     <div class="footer-col">
       <div class="footer-title">Legal</div>
-      <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Términos</a>
-      <a href="#" class="footer-link">WSET Disclaimer</a>
+      <span class="footer-link" aria-disabled="true">Privacidad</span>
+      <span class="footer-link" aria-disabled="true">Términos</span>
+      <span class="footer-link" aria-disabled="true">Declaración WSET</span>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <div class="footer-copyright">© 2025 EpistemicLab. Todos los derechos reservados. Entrenamiento formativo local.</div>
+    <div class="footer-copyright">© <span data-current-year>2026</span> EpistemicLab. Todos los derechos reservados. Entrenamiento formativo local.</div>
     <div class="footer-legal">
       <span style="color: rgba(100,120,155,0.72)">No es un examinador oficial · Propósito educativo · WSET es marca registrada</span>
     </div>
@@ -1564,6 +1564,10 @@
     }
   }
 
+  var currentYear = document.querySelector('[data-current-year]');
+  if (currentYear) {
+    currentYear.textContent = String(new Date().getFullYear());
+  }
   // Smooth scroll para navegación
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {

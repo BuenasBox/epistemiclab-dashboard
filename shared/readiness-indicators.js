@@ -150,11 +150,11 @@
     var signals = [];
 
     if (sessionHistory.length >= 10) {
-      signals.push('Substantial practice: 10+ sessions completed');
+      signals.push('Práctica sustancial: 10 o más sesiones completadas');
     }
 
     if (learnerState.strongTopics && learnerState.strongTopics.length >= 3) {
-      signals.push('Multiple topics mastered (3+)');
+      signals.push('Varios temas dominados (3 o más)');
     }
 
     // Positive velocity
@@ -162,12 +162,12 @@
       var recent = sessionHistory.slice(-2);
       var improvement = computeSessionScore(recent[1]) - computeSessionScore(recent[0]);
       if (improvement > 0.1) {
-        signals.push('Recent improvement trend');
+        signals.push('Tendencia reciente de mejora');
       }
     }
 
     if (!signals.length) {
-      signals.push('Consistent engagement (continue practicing)');
+      signals.push('Práctica constante; continúa entrenando');
     }
 
     return signals;

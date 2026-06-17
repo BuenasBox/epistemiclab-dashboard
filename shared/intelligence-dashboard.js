@@ -194,21 +194,21 @@
     if (readiness) {
       if (readiness.sba_readiness !== undefined) {
         html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
-          '<span>SBA Readiness:</span>' +
+          '<span>Preparación SBA:</span>' +
           '<span style="color:' + (readiness.sba_readiness > 0.6 ? '#2ec27e' : '#f6b73c') + '">' +
           (readiness.sba_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';
       }
       if (readiness.sat_observation_readiness !== undefined) {
         html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
-          '<span>SAT Observation Readiness:</span>' +
+          '<span>Preparación SAT:</span>' +
           '<span style="color:' + (readiness.sat_observation_readiness > 0.5 ? '#2ec27e' : '#f6b73c') + '">' +
           (readiness.sat_observation_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';
       }
       if (readiness.or_structure_readiness !== undefined) {
         html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
-          '<span>OR Structure Readiness:</span>' +
+          '<span>Preparación de respuesta abierta:</span>' +
           '<span style="color:' + (readiness.or_structure_readiness > 0.5 ? '#2ec27e' : '#f6b73c') + '">' +
           (readiness.or_structure_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';

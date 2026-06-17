@@ -75,7 +75,7 @@
       }
     }
 
-    return problems.length > 0 ? problems[0] : 'General practice needed';
+    return problems.length > 0 ? problems[0] : 'Necesitas práctica general';
   }
 
   /**
@@ -112,7 +112,7 @@
       return 'Targeted drill on the persistent weakness topic';
     }
 
-    return 'Systematic practice to strengthen weak areas';
+    return 'Práctica sistemática para fortalecer áreas débiles';
   }
 
   /**
@@ -120,11 +120,11 @@
    */
   function recommendLocation(problem) {
     if (problem.includes('Structural gaps')) {
-      return 'Open Response Lab (command verb practice)';
+      return 'Laboratorio de Respuesta Abierta (práctica de command verbs)';
     }
 
     if (problem.includes('Consistency')) {
-      return 'SAT Sprint or Diagnostic SBA (quality calibration)';
+      return 'SAT Sprint o Cabina SBA (calibración de calidad)';
     }
 
     if (problem.includes('Recurring')) {
@@ -182,7 +182,7 @@
     // Significance
     html += '<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944;margin-bottom:12px">' +
       '<span style="font-size:11px;color:#a7b0be">Significancia:</span>' +
-      '<span style="font-size:11px;color:' + (coaching.significance === 'high' ? '#e45c5c' : '#f6b73c') + '">' + coaching.significance.toUpperCase() + '</span>' +
+      '<span style="font-size:11px;color:' + (coaching.significance === 'high' ? '#e45c5c' : '#f6b73c') + '">' + (coaching.significance === 'high' ? 'ALTA' : 'MODERADA') + '</span>' +
       '</div>';
 
     // Recommendation

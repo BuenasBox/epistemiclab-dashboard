@@ -20,16 +20,16 @@
 
   var ACCESS_AUDIT_STORAGE_KEY = 'wset_access_audit_v1';
   var EXPERIENCE_LABELS = {
-    diagnostic_sba: 'Diagnostic SBA',
-    adaptive_session: 'Adaptive Session',
-    open_response_lab: 'Open Response Lab',
-    full_simulation: 'Full Simulation',
+    diagnostic_sba: 'Cabina SBA',
+    adaptive_session: 'Sesión Adaptativa',
+    open_response_lab: 'Laboratorio de Respuesta Abierta',
+    full_simulation: 'Simulacro Completo',
   };
   var PLAN_LABELS = {
     demo: 'Demo',
     premium: 'Premium',
-    full_access: 'Full Access',
-    anonymous: 'Anonymous',
+    full_access: 'Acceso Completo',
+    anonymous: 'Anónimo',
   };
 
   function allowedModulesForUser(user) {
@@ -37,21 +37,21 @@
 
     var modules = [];
     if (user.plan === 'demo') {
-      modules = ['Diagnostic SBA', 'Open Response Lab'];
+      modules = ['Cabina SBA', 'Laboratorio de Respuesta Abierta'];
     } else if (user.plan === 'premium') {
       modules = [
-        'Diagnostic SBA',
+        'Cabina SBA',
         'Adaptive Express',
-        'Open Response Lab',
+        'Laboratorio de Respuesta Abierta',
         'SAT Sprint',
       ];
     } else if (user.plan === 'full_access') {
       modules = [
-        'Diagnostic SBA',
-        'Adaptive Session',
-        'Open Response Lab',
+        'Cabina SBA',
+        'Sesión Adaptativa',
+        'Laboratorio de Respuesta Abierta',
         'SAT',
-        'Full Simulation',
+        'Simulacro Completo',
       ];
     }
 
