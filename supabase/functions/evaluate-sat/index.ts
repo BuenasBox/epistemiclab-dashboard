@@ -1,7 +1,7 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 // ============================================================================
-// SAT-3 — evaluate-sat  (COACHING FORMATIVO, NO scoring oficial)
+// SAT-3/SAT-4 — evaluate-sat  (COACHING FORMATIVO, NO scoring oficial)
 // Port del contrato canónico (tools/sat_decision_engine):
 //   - SATEngineAPI.evaluate_decision  -> firma del input
 //   - DecisionEngineOutput            -> forma del output (valid/severity/...)
@@ -9,11 +9,11 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 //   - rule_catalog / RuleSeverity     -> INFORMATIVA | ADVERTENCIA | BLOQUEANTE
 //   - razonamiento inverso            -> reasoning_hint por fase
 //   - BICL                            -> bicl_signal en EVALUACION_CALIDAD
+//   - SessionState (persistence)      -> snapshot por (phase, decision_name)
 //
-// El motor canónico valida descriptor contra whitelist + reglas; el juicio
-// de calidad por-vino (Reasoning Layer) es una fase posterior y NO se improvisa
-// aquí. La identidad del vino y expected_sat_observations permanecen server-side.
-// Gobernanza: safe_for_examiner=false, examiner_scoring_allowed=false.
+// SAT-4: si llega attempt_id, registra la decisión en sat_attempts (verificando
+// propiedad). Stateless si no llega. Identidad del vino y expected_sat_observations
+// permanecen server-side. Gobernanza: safe_for_examiner=false.
 // ============================================================================
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
@@ -36,7 +36,6 @@ const PHASE_NEXT: Record<string, string> = {
 const ALLOWED_MODES = ['blind_simulation', 'bottle_guided', 'label_simulation'];
 
 // ---- SAT-006 descriptor whitelist (port literal de descriptor_library.py) ----
-// decision_name -> { phase, wine_types?: [...], options: [valores válidos] }
 type Scale = { phase: string; wine_types?: string[]; options: string[] };
 const SCALES: Record<string, Scale> = {
   // ASPECTO
@@ -120,9 +119,7 @@ Deno.serve(async (req: Request) => {
       return jsonResponse({ ok: false, error: `Unknown decision_name: ${decision_name}` }, 400);
     }
 
-    // 3) Resolver vino con service_role (bypassa RLS). NO seleccionamos `canonical`:
-    //    el coaching de SAT-3 no requiere las observaciones esperadas, que quedan
-    //    server-side. Solo confirmamos existencia y obtenemos wine_type (render-safe).
+    // 3) Resolver vino con service_role (bypassa RLS). NO seleccionamos canonical.
     const { data: wine, error: wineErr } = await supabase
       .from('sat_wines')
       .select('id,wine_type')
@@ -159,7 +156,7 @@ Deno.serve(async (req: Request) => {
       feedback_message = `'${selected_value}' no es un descriptor válido para ${decision_name}.`;
       applied_rules.push('DESCRIPTOR_VALIDATION_FAILED');
     } else if (scale.wine_types && !scale.wine_types.includes(wineType)) {
-      // (c) compatibilidad con el tipo de vino (no revela identidad; wine_type ya es render-safe)
+      // (c) compatibilidad con el tipo de vino (no revela identidad)
       severity = 'ADVERTENCIA';
       feedback_message = `La escala '${decision_name}' no corresponde a un vino ${wineType}. Revisa qué dimensión estás evaluando.`;
       applied_rules.push('WINE_TYPE_SCALE_MISMATCH');
@@ -181,8 +178,56 @@ Deno.serve(async (req: Request) => {
           : 'Has cerrado el SAT. Revisa la coherencia observación → inferencia → causa → juicio.')
       : 'Corrige la selección con un descriptor válido antes de continuar.';
 
-    // Persistencia: SAT-4. Aceptamos attempt_id sin escribir todavía (no bloquea SAT-3).
-    const persisted = false;
+    // --- Persistencia SAT-4 (solo si hay attempt_id; stateless si no) ---
+    let persisted = false;
+    let attempt_state: Record<string, unknown> | null = null;
+    if (attempt_id) {
+      const { data: att, error: attErr } = await supabase
+        .from('sat_attempts')
+        .select('id,user_id,decisions,completed_phases,current_phase,status')
+        .eq('id', attempt_id)
+        .maybeSingle();
+      if (attErr) {
+        return jsonResponse({ ok: false, error: attErr.message }, 500);
+      }
+      // 404 si no existe o no pertenece al usuario (no revelar existencia ajena)
+      if (!att || att.user_id !== user.id) {
+        return jsonResponse({ ok: false, error: 'attempt not found' }, 404);
+      }
+      // Snapshot SessionDecisionSnapshot; replace por (phase, decision_name)
+      const snapshot = {
+        phase,
+        decision_name,
+        selected_value,
+        rule_ids_applied: applied_rules,
+        timestamp: new Date().toISOString(),
+        is_final: false,
+      };
+      const prev = Array.isArray(att.decisions) ? att.decisions : [];
+      const decisions = prev.filter(
+        (d: any) => !(d && d.phase === phase && d.decision_name === decision_name)
+      );
+      decisions.push(snapshot);
+
+      const { data: upd, error: updErr } = await supabase
+        .from('sat_attempts')
+        .update({ decisions, current_phase: phase, updated_at: new Date().toISOString() })
+        .eq('id', attempt_id)
+        .eq('user_id', user.id)
+        .select('id,current_phase,completed_phases,status')
+        .single();
+      if (updErr) {
+        return jsonResponse({ ok: false, error: updErr.message }, 500);
+      }
+      persisted = true;
+      attempt_state = {
+        attempt_id: upd.id,
+        current_phase: upd.current_phase,
+        completed_phases: upd.completed_phases,
+        decisions_count: decisions.length,
+        status: upd.status,
+      };
+    }
 
     return jsonResponse({
       ok: true,
@@ -191,7 +236,7 @@ Deno.serve(async (req: Request) => {
       phase,
       decision_name,
       selected_value,
-      wine_type: wineType,            // render-safe; NO revela identidad
+      wine_type: wineType,
       feedback_message,
       reasoning_hint: REASONING_HINT[phase],
       bicl_signal,
@@ -202,6 +247,7 @@ Deno.serve(async (req: Request) => {
       observation_text_echo: observation_text ? true : false,
       attempt_id,
       persisted,
+      attempt_state,
       governance: {
         safe_for_examiner: false,
         examiner_scoring_allowed: false,
