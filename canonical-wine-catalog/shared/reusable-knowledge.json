@@ -1,0 +1,35 @@
+{
+  "schema_version": "CWP-02",
+  "descriptor_packs": {
+    "white_wine_sat_core": {
+      "appearance": ["pale lemon", "medium lemon", "gold"],
+      "palate": ["dry", "medium body", "high acidity", "medium finish", "long finish"],
+      "knowledge_origin": "STANDARD_WINE_KNOWLEDGE"
+    },
+    "cool_climate_high_acid_white": {
+      "diagnostic_features": ["high acidity", "citrus or green fruit", "freshness-led structure", "moderate alcohol"],
+      "knowledge_origin": "DERIVED_FROM_STYLE"
+    },
+    "premium_chardonnay_winemaking": {
+      "winemaking_markers": ["barrel fermentation", "lees maturation", "malolactic conversion", "subtle toasty oak"],
+      "knowledge_origin": "STANDARD_WINE_KNOWLEDGE"
+    },
+    "aromatic_alsace_white": {
+      "diagnostic_features": ["pronounced aromatic profile", "ripe fruit expression", "low disease pressure", "aroma-preserving winemaking"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "loire_high_acid_white": {
+      "diagnostic_features": ["high acidity", "cool Loire climate", "fresh fruit", "ageing contrast between Sauvignon Blanc and Chenin Blanc"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "low_acid_aromatic_viognier": {
+      "diagnostic_features": ["full body", "low acidity", "high alcohol", "stone fruit", "floral perfume"],
+      "knowledge_origin": "WSET_PRIMARY"
+    }
+  },
+  "visibility_layers": {
+    "PUBLIC": "Safe for generic catalog display.",
+    "TRAINING": "Visible only in guided learning, mentor and adaptive training modes.",
+    "SERVER_ONLY": "Reasoning, examiner and traceability material that must not be exposed to the frontend."
+  }
+}
