@@ -174,25 +174,25 @@
     acidez:{baja:'Baja',media_menos:'Media (−)',media:'Media','media_más':'Media (+)',alta:'Alta'},
     tanino:{bajo:'Bajo',medio_menos:'Medio (−)',medio:'Medio','medio_más':'Medio (+)',alto:'Alto'},
     alcohol:{bajo:'Bajo',medio:'Medio',alto:'Alto'},
-    cuerpo:{poco:'Ligero',medio_menos:'Medio (−)',medio:'Medio','medio_más':'Medio (+)',mucho:'Con cuerpo'},
+    cuerpo:{poco:'Poco',medio_menos:'Medio (−)',medio:'Medio','medio_más':'Medio (+)',mucho:'Mucho'},
     intensidad_sabor:{ligera:'Ligera',media_menos:'Media (−)',media:'Media','media_más':'Media (+)',pronunciada:'Pronunciada'},
     final:{corto:'Corto',medio_menos:'Medio (−)',medio:'Medio','medio_más':'Medio (+)',largo:'Largo'},
     'evaluación_calidad':{defectuoso:'Defectuoso',pobre:'Pobre',aceptable:'Aceptable',bueno:'Bueno',muy_bueno:'Muy bueno',excelente:'Excelente'},
-    potencial_guarda:{demasiado_joven:'Demasiado joven',se_puede_beber_ahora:'Beber ahora (con guarda)',para_mayor_envejecimiento:'Para mayor guarda',beber_ahora_no_adecuado:'Beber ahora (sin guarda)',demasiado_viejo:'Demasiado viejo'}
+    potencial_guarda:{demasiado_joven:'Demasiado joven',se_puede_beber_ahora:'Se puede beber ahora, pero tiene potencial para el envejecimiento',beber_ahora_no_adecuado:'Beber ahora: no adecuado para el envejecimiento o para un mayor envejecimiento',demasiado_viejo:'Demasiado viejo'}
   };
   var DEC_TITLE = {
     claridad:'Claridad',intensidad_aspecto:'Intensidad del color',color_blanco:'Color',color_tinto:'Color',color_rosado:'Color',
-    'condición':'Condición',intensidad_nariz:'Intensidad aromática','evolución':'Desarrollo',
+    'condición':'Condición',intensidad_nariz:'Intensidad aromática','evolución':'Evolución',
     dulzor:'Dulzor',acidez:'Acidez',tanino:'Taninos',alcohol:'Alcohol',cuerpo:'Cuerpo',intensidad_sabor:'Intensidad de sabor',final:'Final',
-    'evaluación_calidad':'Nivel de calidad',potencial_guarda:'Potencial de guarda'
+    'evaluación_calidad':'Nivel de calidad',potencial_guarda:'Estado para el consumo / Potencial para el envejecimiento'
   };
-  var PHASE_NAME = {ASPECTO:'Aspecto',NARIZ:'Nariz',PALADAR:'Paladar',EVALUACION_CALIDAD:'Evaluación de calidad',POTENCIAL_GUARDA:'Potencial de guarda'};
+  var PHASE_NAME = {ASPECTO:'Aspecto',NARIZ:'Nariz',PALADAR:'Paladar',EVALUACION_CALIDAD:'Evaluación de calidad',POTENCIAL_GUARDA:'Estado para el consumo / Potencial para el envejecimiento'};
   var PHASES = [
     {id:'ASPECTO', title:'Aspecto · la vista', sub:'¿Qué te dice la copa antes de olerla?', decisions:['claridad','intensidad_aspecto','__color__']},
     {id:'NARIZ', title:'Nariz · el olfato', sub:'Intensidad y familias de aroma. Aún no concluyas.', decisions:['condición','intensidad_nariz','evolución']},
     {id:'PALADAR', title:'Paladar · la boca', sub:'Contrasta la estructura con lo que la nariz sugirió.', decisions:['dulzor','acidez','__tanino__','alcohol','cuerpo','intensidad_sabor','final']},
     {id:'EVALUACION_CALIDAD', title:'Evaluación de calidad', sub:'Comprométete con un nivel y justifícalo (BICL).', decisions:['evaluación_calidad']},
-    {id:'POTENCIAL_GUARDA', title:'Potencial de guarda', sub:'Deriva la guarda de la estructura, no de la etiqueta.', decisions:['potencial_guarda']}
+    {id:'POTENCIAL_GUARDA', title:'Estado para el consumo / Potencial para el envejecimiento', sub:'Decide el estado para el consumo y el potencial para el envejecimiento a partir de la estructura observada.', decisions:['potencial_guarda']}
   ];
 
   var S = { wine:null, attemptId:null, phaseIdx:0, answers:{}, decisionsCount:0 };
@@ -207,12 +207,33 @@
     return h;
   }
 
+  // Capa de perfil escalable: la pantalla es una PLANTILLA. Un futuro perfil de
+  // vino (biblioteca de ~70 perfiles o modo "Mi botella") puede llegar en
+  // S.wine.render_profile y sobreescribir dinámicamente: decisiones por fase,
+  // escala de color, escalas/ opciones permitidas y etiquetas. Si no llega, se
+  // usan los valores SAT-006 por defecto (comportamiento actual intacto).
+  function profile(){ return (S.wine && S.wine.render_profile) || {}; }
+
   function resolveDecisions(phase){
+    var pr=profile();
+    if(pr.decisions && pr.decisions[phase.id]){
+      return pr.decisions[phase.id].filter(function(dn){ return LABELS[dn]; });
+    }
     return phase.decisions.map(function(d){
-      if(d==='__color__'){ return S.wine.wine_type==='TINTO'?'color_tinto':(S.wine.wine_type==='ROSADO'?'color_rosado':'color_blanco'); }
+      if(d==='__color__'){
+        if(pr.color_scale) return pr.color_scale;
+        return S.wine.wine_type==='TINTO'?'color_tinto':(S.wine.wine_type==='ROSADO'?'color_rosado':'color_blanco');
+      }
       if(d==='__tanino__'){ return (S.wine.wine_type==='TINTO'||S.wine.wine_type==='ROSADO')?'tanino':null; }
       return d;
     }).filter(Boolean);
+  }
+
+  // Opciones a mostrar para una decisión: subconjunto del perfil si existe, si no todas (SAT-006).
+  function optionValues(dn){
+    var pr=profile();
+    if(pr.options && pr.options[dn]) return pr.options[dn].filter(function(v){ return LABELS[dn][v]; });
+    return Object.keys(LABELS[dn]);
   }
 
   function requestEntry(){
@@ -265,7 +286,7 @@
     $('phase-sub').textContent = phase.sub;
     var decs = resolveDecisions(phase);
     var html = decs.map(function(dn){
-      var opts = Object.keys(LABELS[dn]).map(function(val){
+      var opts = optionValues(dn).map(function(val){
         var sel = (S.answers[dn] && S.answers[dn].value===val)?' sel':'';
         return '<button class="opt'+sel+'" data-dec="'+dn+'" data-val="'+val+'">'+LABELS[dn][val]+'</button>';
       }).join('');
