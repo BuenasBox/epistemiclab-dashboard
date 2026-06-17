@@ -41,6 +41,18 @@
     "eiswein_purity": {
       "diagnostic_features": ["frozen healthy grapes", "pure varietal character", "high acidity", "high sweetness", "no noble rot focus"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "austrian_gruner_veltliner_core": {
+      "diagnostic_features": ["naturally high acidity", "citrus or stone fruit", "white pepper", "stainless steel or old oak", "honey and toast with age"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "wachau_dry_white_core": {
+      "diagnostic_features": ["high-quality dry wine", "steep terraced south-facing Danube vineyards", "high concentration", "Grüner Veltliner or Riesling"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "neusiedlersee_botrytised_sweet_white": {
+      "diagnostic_features": ["autumn mists", "botrytis", "Welschriesling", "sweet wine", "high acidity", "lake and wetland influence"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {
