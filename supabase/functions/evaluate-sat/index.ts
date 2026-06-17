@@ -1,19 +1,13 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 // ============================================================================
-// SAT-3/SAT-4 — evaluate-sat  (COACHING FORMATIVO, NO scoring oficial)
+// evaluate-sat  (COACHING FORMATIVO, NO scoring oficial)
 // Port del contrato canónico (tools/sat_decision_engine):
-//   - SATEngineAPI.evaluate_decision  -> firma del input
-//   - DecisionEngineOutput            -> forma del output (valid/severity/...)
-//   - descriptor_library (SAT-006)    -> whitelist de decisiones/opciones
-//   - rule_catalog / RuleSeverity     -> INFORMATIVA | ADVERTENCIA | BLOQUEANTE
-//   - razonamiento inverso            -> reasoning_hint por fase
-//   - BICL                            -> bicl_signal en EVALUACION_CALIDAD
-//   - SessionState (persistence)      -> snapshot por (phase, decision_name)
-//
-// SAT-4: si llega attempt_id, registra la decisión en sat_attempts (verificando
-// propiedad). Stateless si no llega. Identidad del vino y expected_sat_observations
-// permanecen server-side. Gobernanza: safe_for_examiner=false.
+//   SATEngineAPI.evaluate_decision / DecisionEngineOutput / descriptor_library
+//   (SAT-006 whitelist) / RuleSeverity / razonamiento inverso / BICL / SessionState.
+// SAT-6A: capa de variación del mentor (por phase/decision/value/severity) y
+// terminología SAT oficial. Sin Reasoning Layer: el juicio por-vino contra
+// expected_sat_observations sigue server-side y NO se expone. safe_for_examiner=false.
 // ============================================================================
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
@@ -27,28 +21,28 @@ const corsHeaders = {
 
 const PHASES = ['ASPECTO', 'NARIZ', 'PALADAR', 'EVALUACION_CALIDAD', 'POTENCIAL_GUARDA'];
 const PHASE_NEXT: Record<string, string> = {
-  ASPECTO: 'NARIZ',
-  NARIZ: 'PALADAR',
-  PALADAR: 'EVALUACION_CALIDAD',
-  EVALUACION_CALIDAD: 'POTENCIAL_GUARDA',
-  POTENCIAL_GUARDA: '',
+  ASPECTO: 'NARIZ', NARIZ: 'PALADAR', PALADAR: 'EVALUACION_CALIDAD',
+  EVALUACION_CALIDAD: 'POTENCIAL_GUARDA', POTENCIAL_GUARDA: '',
+};
+// Nombres SAT oficiales para mostrar (sin "Desarrollo" ni "Potencial de guarda")
+const PHASE_LABEL: Record<string, string> = {
+  ASPECTO: 'Aspecto', NARIZ: 'Nariz', PALADAR: 'Paladar',
+  EVALUACION_CALIDAD: 'Evaluación de calidad',
+  POTENCIAL_GUARDA: 'Estado para el consumo / Potencial para el envejecimiento',
 };
 const ALLOWED_MODES = ['blind_simulation', 'bottle_guided', 'label_simulation'];
 
 // ---- SAT-006 descriptor whitelist (port literal de descriptor_library.py) ----
 type Scale = { phase: string; wine_types?: string[]; options: string[] };
 const SCALES: Record<string, Scale> = {
-  // ASPECTO
   claridad:            { phase: 'ASPECTO', options: ['claro', 'turbio'] },
   intensidad_aspecto:  { phase: 'ASPECTO', options: ['pálida', 'media', 'profunda'] },
   color_blanco:        { phase: 'ASPECTO', wine_types: ['BLANCO'], options: ['verde_limón', 'amarillo_limón', 'dorado', 'ámbar', 'marrón'] },
   color_rosado:        { phase: 'ASPECTO', wine_types: ['ROSADO'], options: ['rosado', 'salmón', 'naranja'] },
   color_tinto:         { phase: 'ASPECTO', wine_types: ['TINTO'], options: ['púrpura', 'rubí', 'granate', 'teja', 'marrón'] },
-  // NARIZ
   'condición':         { phase: 'NARIZ', options: ['limpia', 'no_limpia'] },
   intensidad_nariz:    { phase: 'NARIZ', options: ['ligera', 'media_menos', 'media', 'media_más', 'pronunciada'] },
   'evolución':         { phase: 'NARIZ', options: ['joven', 'en_evolución', 'evolucionado', 'cansado'] },
-  // PALADAR
   dulzor:              { phase: 'PALADAR', options: ['seco', 'casi_seco', 'semiseco', 'semidulce', 'dulce', 'muy_dulce'] },
   acidez:              { phase: 'PALADAR', options: ['baja', 'media_menos', 'media', 'media_más', 'alta'] },
   tanino:              { phase: 'PALADAR', wine_types: ['TINTO', 'ROSADO'], options: ['bajo', 'medio_menos', 'medio', 'medio_más', 'alto'] },
@@ -57,33 +51,72 @@ const SCALES: Record<string, Scale> = {
   burbuja:             { phase: 'PALADAR', options: ['delicada', 'cremosa', 'agresiva'] },
   intensidad_sabor:    { phase: 'PALADAR', options: ['ligera', 'media_menos', 'media', 'media_más', 'pronunciada'] },
   final:               { phase: 'PALADAR', options: ['corto', 'medio_menos', 'medio', 'medio_más', 'largo'] },
-  // CONCLUSIONES
   'evaluación_calidad':{ phase: 'EVALUACION_CALIDAD', options: ['defectuoso', 'pobre', 'aceptable', 'bueno', 'muy_bueno', 'excelente'] },
   potencial_guarda:    { phase: 'POTENCIAL_GUARDA', options: ['demasiado_joven', 'se_puede_beber_ahora', 'para_mayor_envejecimiento', 'beber_ahora_no_adecuado', 'demasiado_viejo'] },
 };
 
-const REASONING_HINT: Record<string, string> = {
-  ASPECTO: 'Observa color e intensidad y deja que sugieran una hipótesis (edad, variedad, clima). Observación → inferencia: aún no concluyas.',
-  NARIZ: 'Desde la intensidad y las familias aromáticas, infiere causas posibles (clima, crianza, evolución). Mantén la hipótesis abierta.',
-  PALADAR: 'Contrasta la estructura (acidez, alcohol, cuerpo, tanino) con lo que nariz y aspecto sugirieron. Busca coherencia o contradicción.',
-  EVALUACION_CALIDAD: 'Comprométete con un nivel y justifícalo. No evites el juicio: la falta de compromiso es el error central del SAT.',
-  POTENCIAL_GUARDA: 'Deriva el potencial de guarda de la estructura observada (acidez, tanino, concentración de fruta), no de la etiqueta.',
+// Pista de razonamiento por decisión (cada fase se siente distinta)
+const REASONING_BY_DECISION: Record<string, string> = {
+  claridad: 'La claridad es una observación, no un juicio: anótala y continúa reuniendo evidencia visual.',
+  intensidad_aspecto: 'Inclina la copa sobre fondo blanco: la intensidad del color insinúa concentración y edad, sin adelantar la variedad.',
+  color_blanco: 'El matiz orienta sobre edad y estilo. Obsérvalo sin concluir todavía la identidad.',
+  color_rosado: 'El matiz del rosado sugiere método y edad. Descríbelo sin adelantar la variedad.',
+  color_tinto: 'El matiz (de púrpura a teja) insinúa edad y evolución. Obsérvalo sin concluir la variedad.',
+  'condición': 'Decide si el vino está limpio o si hay indicios de defecto antes de describir aromas.',
+  intensidad_nariz: 'Calibra cuánta intensidad aromática percibes: es una hipótesis de partida, no una identificación.',
+  'evolución': 'Distingue aromas primarios (juventud) de notas terciarias: la evolución orienta sobre la edad.',
+  dulzor: 'Confirma el dulzor en boca y contrástalo con lo que la nariz te sugirió.',
+  acidez: 'Siente la salivación: la acidez debería ser coherente con el clima que infieres en nariz.',
+  tanino: 'Evalúa textura y astringencia del tanino y relaciónalo con el cuerpo y la fruta percibidos.',
+  alcohol: 'El calor en el final indica el alcohol; contrástalo con el cuerpo y no lo confundas con dulzor.',
+  cuerpo: 'El cuerpo integra alcohol, extracto y azúcar. ¿Es coherente con la intensidad de la nariz?',
+  burbuja: 'Describe la textura de la burbuja; relaciónala con el método y el estilo del vino.',
+  intensidad_sabor: 'Compara la intensidad de sabor con la de la nariz: ¿se confirman o se contradicen?',
+  final: 'La longitud del final es una señal de calidad: mídela en segundos tras catar.',
+  'evaluación_calidad': 'Comprométete con un nivel y justifícalo con BICL: Balance, Intensidad, Complejidad y Longitud. No evites el juicio.',
+  potencial_guarda: 'Decide el estado para el consumo y el potencial para el envejecimiento a partir de la estructura (acidez, tanino, fruta) y la evolución observada.',
+};
+
+// Voz del mentor por fase (cuando la decisión es válida)
+const FEEDBACK_OK_BY_PHASE: Record<string, string> = {
+  ASPECTO: 'Observación de aspecto registrada. Mantén la mirada analítica: aún estás reuniendo evidencia.',
+  NARIZ: 'Anotado en nariz. Trátalo como una hipótesis aromática que el paladar deberá confirmar o corregir.',
+  PALADAR: 'Registrado en paladar. Comprueba si esta estructura es coherente con lo que la nariz prometía.',
+  EVALUACION_CALIDAD: 'Juicio de calidad registrado. Sostenlo con Balance, Intensidad, Complejidad y Longitud.',
+  POTENCIAL_GUARDA: 'Conclusión registrada. Justifica el estado para el consumo con la estructura y la evolución, no con la etiqueta.',
+};
+
+// Matiz enológico general por (decision_name|selected_value) — válido para cualquier vino,
+// nunca revela país/región/variedad/productor/añada.
+const VALUE_NUANCE: Record<string, string> = {
+  'claridad|turbio': 'Un vino turbio puede indicar un posible defecto o falta de clarificación: tenlo presente.',
+  'condición|no_limpia': 'Si la condición no es limpia, sospecha un defecto antes de seguir describiendo.',
+  'acidez|alta': 'Una acidez alta es coherente con climas frescos o vendimias tempranas.',
+  'acidez|baja': 'Una acidez baja suele asociarse a climas cálidos; verifica el equilibrio del conjunto.',
+  'tanino|alto': 'Taninos altos sugieren extracción marcada o variedades estructuradas; evalúa su madurez.',
+  'tanino|bajo': 'Taninos bajos pueden venir de la variedad o de una extracción suave.',
+  'alcohol|alto': 'Un alcohol alto apunta a uvas muy maduras o clima cálido.',
+  'alcohol|bajo': 'Un alcohol bajo puede indicar clima fresco o vendimia temprana.',
+  'dulzor|dulce': 'Un dulzor marcado exige una acidez que lo equilibre para sostener la calidad.',
+  'dulzor|muy_dulce': 'En vinos muy dulces, la acidez es clave para que no resulten empalagosos.',
+  'intensidad_nariz|pronunciada': 'Una nariz pronunciada es una señal a favor de la intensidad como criterio de calidad.',
+  'intensidad_nariz|ligera': 'Una nariz ligera no implica baja calidad: obsérvala junto a la finura y la longitud.',
+  'evolución|evolucionado': 'Las notas terciarias indican evolución; valora si suman complejidad.',
+  'evolución|cansado': 'Si el vino parece cansado, considera si ha pasado su mejor momento.',
+  'final|largo': 'Un final largo es una de las señales más fiables de calidad.',
+  'final|corto': 'Un final corto resta puntos de calidad aunque la fruta sea agradable.',
 };
 
 function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), {
-    status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    status, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   });
 }
 
 Deno.serve(async (req: Request) => {
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders });
-  }
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
 
   try {
-    // 1) JWT obligatorio
     const authHeader = req.headers.get('authorization');
     if (!authHeader?.startsWith('Bearer ')) {
       return jsonResponse({ ok: false, error: 'Unauthorized: missing token' }, 401);
@@ -95,7 +128,6 @@ Deno.serve(async (req: Request) => {
       return jsonResponse({ ok: false, error: 'Unauthorized: invalid token' }, 401);
     }
 
-    // 2) Input
     let payload: any = {};
     try { payload = await req.json(); } catch { payload = {}; }
     const wine_id = payload.wine_id;
@@ -106,37 +138,19 @@ Deno.serve(async (req: Request) => {
     const mode = (payload.mode || 'blind_simulation');
     const attempt_id = payload.attempt_id ?? null;
 
-    if (!ALLOWED_MODES.includes(mode)) {
-      return jsonResponse({ ok: false, error: `Invalid mode: ${mode}` }, 400);
-    }
-    if (!wine_id) {
-      return jsonResponse({ ok: false, error: 'Missing wine_id' }, 400);
-    }
-    if (!phase || !PHASES.includes(phase)) {
-      return jsonResponse({ ok: false, error: `Invalid phase: ${phase}` }, 400);
-    }
-    if (!decision_name || !(decision_name in SCALES)) {
-      return jsonResponse({ ok: false, error: `Unknown decision_name: ${decision_name}` }, 400);
-    }
+    if (!ALLOWED_MODES.includes(mode)) return jsonResponse({ ok: false, error: `Invalid mode: ${mode}` }, 400);
+    if (!wine_id) return jsonResponse({ ok: false, error: 'Missing wine_id' }, 400);
+    if (!phase || !PHASES.includes(phase)) return jsonResponse({ ok: false, error: `Invalid phase: ${phase}` }, 400);
+    if (!decision_name || !(decision_name in SCALES)) return jsonResponse({ ok: false, error: `Unknown decision_name: ${decision_name}` }, 400);
 
-    // 3) Resolver vino con service_role (bypassa RLS). NO seleccionamos canonical.
+    // service_role (bypassa RLS). NO seleccionamos canonical.
     const { data: wine, error: wineErr } = await supabase
-      .from('sat_wines')
-      .select('id,wine_type')
-      .eq('id', wine_id)
-      .maybeSingle();
-
-    if (wineErr) {
-      return jsonResponse({ ok: false, error: wineErr.message }, 500);
-    }
-    if (!wine) {
-      return jsonResponse({ ok: false, error: `wine_id not found: ${wine_id}` }, 404);
-    }
+      .from('sat_wines').select('id,wine_type').eq('id', wine_id).maybeSingle();
+    if (wineErr) return jsonResponse({ ok: false, error: wineErr.message }, 500);
+    if (!wine) return jsonResponse({ ok: false, error: `wine_id not found: ${wine_id}` }, 404);
     const wineType = wine.wine_type;
-
     const scale = SCALES[decision_name];
 
-    // --- Evaluación determinista (port de engine.evaluate_decision) ---
     let valid = true;
     let severity = 'INFORMATIVA';
     let feedback_message = '';
@@ -144,29 +158,30 @@ Deno.serve(async (req: Request) => {
     const enabled_options = scale.options;
     const blocked_options: string[] = [];
 
-    // (a) decision_name debe pertenecer a la fase declarada
     if (scale.phase !== phase) {
       return jsonResponse({ ok: false, error: `decision_name '${decision_name}' no pertenece a la fase ${phase}` }, 400);
     }
 
-    // (b) whitelist de descriptor (SAT-006) -> inválido = BLOQUEANTE
     if (!scale.options.includes(selected_value)) {
-      valid = false;
-      severity = 'BLOQUEANTE';
+      valid = false; severity = 'BLOQUEANTE';
       feedback_message = `'${selected_value}' no es un descriptor válido para ${decision_name}.`;
       applied_rules.push('DESCRIPTOR_VALIDATION_FAILED');
     } else if (scale.wine_types && !scale.wine_types.includes(wineType)) {
-      // (c) compatibilidad con el tipo de vino (no revela identidad)
       severity = 'ADVERTENCIA';
       feedback_message = `La escala '${decision_name}' no corresponde a un vino ${wineType}. Revisa qué dimensión estás evaluando.`;
       applied_rules.push('WINE_TYPE_SCALE_MISMATCH');
     } else {
+      // Voz de mentor variada: fase + matiz por (decisión|valor)
       severity = 'INFORMATIVA';
-      feedback_message = 'Observación registrada. Sigue construyendo tu razonamiento sin saltar a la conclusión.';
+      let msg = FEEDBACK_OK_BY_PHASE[phase] || 'Observación registrada.';
+      const nuance = VALUE_NUANCE[decision_name + '|' + selected_value];
+      if (nuance) msg += ' ' + nuance;
+      feedback_message = msg;
       applied_rules.push('DESCRIPTOR_OK');
     }
 
-    // BICL solo en evaluación de calidad (scaffolding, no la respuesta)
+    const reasoning_hint = REASONING_BY_DECISION[decision_name] || '';
+
     const bicl_signal = (phase === 'EVALUACION_CALIDAD' && valid)
       ? 'Justifica con BICL: ¿hay Balance entre componentes? ¿qué Intensidad de sabor? ¿cuánta Complejidad? ¿qué Longitud de final? Compromete un nivel y susténtalo.'
       : null;
@@ -174,91 +189,41 @@ Deno.serve(async (req: Request) => {
     const nextPhase = PHASE_NEXT[phase];
     const next_step = valid
       ? (nextPhase
-          ? `Completa las demás decisiones de ${phase} y avanza a ${nextPhase}.`
+          ? `Completa las demás decisiones de ${PHASE_LABEL[phase]} y avanza a ${PHASE_LABEL[nextPhase]}.`
           : 'Has cerrado el SAT. Revisa la coherencia observación → inferencia → causa → juicio.')
       : 'Corrige la selección con un descriptor válido antes de continuar.';
 
-    // --- Persistencia SAT-4 (solo si hay attempt_id; stateless si no) ---
+    // Persistencia SAT-4
     let persisted = false;
     let attempt_state: Record<string, unknown> | null = null;
     if (attempt_id) {
       const { data: att, error: attErr } = await supabase
-        .from('sat_attempts')
-        .select('id,user_id,decisions,completed_phases,current_phase,status')
-        .eq('id', attempt_id)
-        .maybeSingle();
-      if (attErr) {
-        return jsonResponse({ ok: false, error: attErr.message }, 500);
-      }
-      // 404 si no existe o no pertenece al usuario (no revelar existencia ajena)
-      if (!att || att.user_id !== user.id) {
-        return jsonResponse({ ok: false, error: 'attempt not found' }, 404);
-      }
-      // Snapshot SessionDecisionSnapshot; replace por (phase, decision_name)
-      const snapshot = {
-        phase,
-        decision_name,
-        selected_value,
-        rule_ids_applied: applied_rules,
-        timestamp: new Date().toISOString(),
-        is_final: false,
-      };
+        .from('sat_attempts').select('id,user_id,decisions,completed_phases,current_phase,status')
+        .eq('id', attempt_id).maybeSingle();
+      if (attErr) return jsonResponse({ ok: false, error: attErr.message }, 500);
+      if (!att || att.user_id !== user.id) return jsonResponse({ ok: false, error: 'attempt not found' }, 404);
+      const snapshot = { phase, decision_name, selected_value, rule_ids_applied: applied_rules, timestamp: new Date().toISOString(), is_final: false };
       const prev = Array.isArray(att.decisions) ? att.decisions : [];
-      const decisions = prev.filter(
-        (d: any) => !(d && d.phase === phase && d.decision_name === decision_name)
-      );
+      const decisions = prev.filter((d: any) => !(d && d.phase === phase && d.decision_name === decision_name));
       decisions.push(snapshot);
-
       const { data: upd, error: updErr } = await supabase
         .from('sat_attempts')
         .update({ decisions, current_phase: phase, updated_at: new Date().toISOString() })
-        .eq('id', attempt_id)
-        .eq('user_id', user.id)
-        .select('id,current_phase,completed_phases,status')
-        .single();
-      if (updErr) {
-        return jsonResponse({ ok: false, error: updErr.message }, 500);
-      }
+        .eq('id', attempt_id).eq('user_id', user.id)
+        .select('id,current_phase,completed_phases,status').single();
+      if (updErr) return jsonResponse({ ok: false, error: updErr.message }, 500);
       persisted = true;
-      attempt_state = {
-        attempt_id: upd.id,
-        current_phase: upd.current_phase,
-        completed_phases: upd.completed_phases,
-        decisions_count: decisions.length,
-        status: upd.status,
-      };
+      attempt_state = { attempt_id: upd.id, current_phase: upd.current_phase, completed_phases: upd.completed_phases, decisions_count: decisions.length, status: upd.status };
     }
 
     return jsonResponse({
-      ok: true,
-      valid,
-      severity,
-      phase,
-      decision_name,
-      selected_value,
-      wine_type: wineType,
-      feedback_message,
-      reasoning_hint: REASONING_HINT[phase],
-      bicl_signal,
-      next_step,
-      enabled_options,
-      blocked_options,
-      applied_rules,
+      ok: true, valid, severity, phase, decision_name, selected_value, wine_type: wineType,
+      feedback_message, reasoning_hint, bicl_signal, next_step,
+      enabled_options, blocked_options, applied_rules,
       observation_text_echo: observation_text ? true : false,
-      attempt_id,
-      persisted,
-      attempt_state,
-      governance: {
-        safe_for_examiner: false,
-        examiner_scoring_allowed: false,
-        official_scoring: false,
-        formative_only: true,
-      },
-      watermark: {
-        user_id: user.id,
-        issued_at: new Date().toISOString(),
-        expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
-      },
+      attempt_id, persisted, attempt_state,
+      governance: { safe_for_examiner: false, examiner_scoring_allowed: false, official_scoring: false, formative_only: true },
+      watermark: { user_id: user.id, issued_at: new Date().toISOString(), expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString() },
     }, 200);
   } catch (err) {
     return jsonResponse({ ok: false, error: String(err) }, 500);
