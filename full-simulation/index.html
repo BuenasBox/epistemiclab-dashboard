@@ -575,7 +575,7 @@ async function confirmSBA(){
     const ok=correct;
 
     if(ok) STATE.sba.correct++;
-    STATE.sba.attempts.push({question_id:q.item_id,ra_id:q.ra,topic:q.topic,correct:ok});
+    STATE.sba.attempts.push({question_id:q.item_id||q.id,ra_id:q.ra,topic:q.topic,correct:ok});
 
     const correctIdx=correct_letter.charCodeAt(0)-65;
     document.querySelectorAll('.opt').forEach((el,j)=>{
