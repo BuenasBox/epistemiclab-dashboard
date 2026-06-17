@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Laboratorio SAT · EpistemicLab</title>
+<link rel="stylesheet" href="../shared/upgrade-gate.css">
 <style>
   :root{
     --bg:#1a1119; --panel:#241823; --panel2:#2e1f2c; --ink:#f5ecf2; --muted:#b79fb0;
@@ -15,16 +16,13 @@
     background:radial-gradient(1200px 600px at 50% -10%,#2a1a26,#1a1119);color:var(--ink);min-height:100vh}
   .wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
   header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-  .brand{font-weight:700;letter-spacing:.3px}
-  .brand b{color:var(--gold)}
-  a.back{color:var(--muted);text-decoration:none;font-size:14px}
-  a.back:hover{color:var(--ink)}
+  .brand{font-weight:700;letter-spacing:.3px} .brand b{color:var(--gold)}
+  a.back{color:var(--muted);text-decoration:none;font-size:14px} a.back:hover{color:var(--ink)}
   h1{font-size:26px;margin:6px 0 2px}
   .sub{color:var(--muted);font-size:15px;margin:0 0 18px;line-height:1.5}
   .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
     border-radius:var(--radius);padding:20px;margin-bottom:16px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
   .glass{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 0 8px}
-  .glass svg{filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
   .wine-label{font-size:18px;font-weight:600}
   .chip{display:inline-block;font-size:12.5px;color:var(--gold);border:1px solid var(--line);
     border-radius:999px;padding:3px 12px;background:rgba(201,162,39,.08)}
@@ -36,12 +34,10 @@
   .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
   .btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
   .steps{display:flex;gap:6px;margin:4px 0 18px;flex-wrap:wrap}
-  .step{flex:1;min-width:54px;text-align:center;font-size:11px;color:var(--muted);padding-bottom:8px;
-    border-bottom:3px solid var(--line)}
+  .step{flex:1;min-width:54px;text-align:center;font-size:11px;color:var(--muted);padding-bottom:8px;border-bottom:3px solid var(--line)}
   .step.active{color:var(--ink);border-color:var(--gold)}
   .step.done{color:var(--ok);border-color:var(--ok)}
-  .decision{margin:0 0 18px}
-  .decision h3{font-size:16px;margin:0 0 10px}
+  .decision{margin:0 0 18px} .decision h3{font-size:16px;margin:0 0 10px}
   .opts{display:flex;flex-wrap:wrap;gap:8px}
   .opt{appearance:none;border:1px solid var(--line);background:var(--panel2);color:var(--ink);
     border-radius:999px;padding:9px 15px;font-size:14px;cursor:pointer;transition:.15s}
@@ -61,6 +57,12 @@
   .muted{color:var(--muted)} .center{text-align:center}
   .summary-li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:9px 0;font-size:14px}
   .summary-li span:last-child{color:var(--gold)}
+  .tally{display:flex;gap:10px;flex-wrap:wrap;margin:2px 0 4px}
+  .pill{font-size:13px;border-radius:999px;padding:5px 12px;border:1px solid var(--line)}
+  .pill.ok{color:var(--ok);border-color:rgba(63,168,107,.5)}
+  .pill.warn{color:var(--warn);border-color:rgba(217,154,43,.5)}
+  .pill.block{color:var(--block);border-color:rgba(193,72,63,.5)}
+  .ph-done{display:flex;align-items:center;gap:8px;font-size:14px;padding:7px 0;color:var(--ok)}
   .spin{display:inline-block;width:18px;height:18px;border:3px solid var(--line);border-top-color:var(--gold);
     border-radius:50%;animation:sp 1s linear infinite;vertical-align:middle}
   @keyframes sp{to{transform:rotate(360deg)}}
@@ -75,10 +77,9 @@
     <a class="back" href="../index.html">← Volver</a>
   </header>
 
-  <!-- INTRO -->
   <section id="screen-intro">
-    <h1>Laboratorio de Cata SAT</h1>
-    <p class="sub">Practica el Systematic Approach to Tasting paso a paso. Observa, infiere y comprométete con un juicio — como en una mesa de cata real. Esto es entrenamiento formativo, no un examen.</p>
+    <h1>Laboratorio SAT</h1>
+    <p class="sub">Cata a ciegas guiada · WSET Nivel 3. Observa, infiere y comprométete con un juicio — como en una mesa de cata real. Entrenamiento formativo, no un examen.</p>
     <div class="card">
       <h3 style="margin:0 0 12px">Elige un modo</h3>
       <button class="btn full" id="mode-blind">🍷 Cata a ciegas</button>
@@ -87,12 +88,10 @@
     <div id="intro-err" class="err"></div>
   </section>
 
-  <!-- LOADING -->
   <section id="screen-loading" style="display:none">
     <div class="card center"><span class="spin"></span><p class="muted">Preparando tu copa…</p></div>
   </section>
 
-  <!-- TASTING -->
   <section id="screen-tasting" style="display:none">
     <div class="card">
       <div class="glass">
@@ -107,9 +106,7 @@
         <span class="chip" id="wine-chip">—</span>
       </div>
     </div>
-
     <div class="steps" id="steps"></div>
-
     <div class="card">
       <div class="phase-title" id="phase-title"></div>
       <p class="phase-sub" id="phase-sub"></p>
@@ -121,19 +118,32 @@
     </div>
   </section>
 
-  <!-- SUMMARY -->
   <section id="screen-summary" style="display:none">
     <h1>Práctica completada</h1>
     <p class="sub" id="summary-msg"></p>
-    <div class="card" id="summary-box"></div>
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:16px">Fases completadas</h3>
+      <div id="phases-box"></div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:16px">Señales del mentor</h3>
+      <div class="tally" id="tally-box"></div>
+      <p class="muted" style="font-size:13px;margin:6px 0 0">Sin puntuación oficial ni aprobado/reprobado: estas señales reflejan cómo construiste el razonamiento.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:16px">Tus decisiones</h3>
+      <div id="summary-box"></div>
+    </div>
     <div class="card">
       <p class="muted" style="margin:0 0 12px;font-size:13.5px">Recuerda: el SAT premia el razonamiento (observación → inferencia → causa → juicio) y el compromiso con una conclusión, no acertar a ciegas.</p>
-      <button class="btn full" id="btn-restart">Practicar con otro vino</button>
+      <div class="row">
+        <button class="btn full" id="btn-restart">Nueva cata</button>
+        <button class="btn ghost" id="btn-home">Volver al inicio</button>
+      </div>
     </div>
   </section>
 </div>
 
-<!-- Auth / Supabase (mismo patrón que el resto de la app) -->
 <script src="../shared/session-store.js"></script>
 <script src="../shared/supabase-public-config.js"></script>
 <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
@@ -141,13 +151,15 @@
 <script src="../shared/auth-provider.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../shared/auth-token.js"></script>
+<script src="../shared/access-control.js"></script>
+<script src="../shared/upgrade-gate.js"></script>
+<script src="../shared/mode-access-gate.js"></script>
 <script>
 (function(){
   "use strict";
   var CFG = (window.WSET_SUPABASE_CONFIG || {url:'https://hylknjjhmxsuuwbsslkr.supabase.co'});
   var FN = CFG.url + '/functions/v1/';
 
-  // ---- Vocabulario render-safe (etiquetas WSET; NO es la respuesta) ----
   var LABELS = {
     claridad:{claro:'Claro',turbio:'Turbio (¿defecto?)'},
     intensidad_aspecto:{'pálida':'Pálida',media:'Media',profunda:'Profunda'},
@@ -173,6 +185,7 @@
     dulzor:'Dulzor',acidez:'Acidez',tanino:'Taninos',alcohol:'Alcohol',cuerpo:'Cuerpo',intensidad_sabor:'Intensidad de sabor',final:'Final',
     'evaluación_calidad':'Nivel de calidad',potencial_guarda:'Potencial de guarda'
   };
+  var PHASE_NAME = {ASPECTO:'Aspecto',NARIZ:'Nariz',PALADAR:'Paladar',EVALUACION_CALIDAD:'Evaluación de calidad',POTENCIAL_GUARDA:'Potencial de guarda'};
   var PHASES = [
     {id:'ASPECTO', title:'Aspecto · la vista', sub:'¿Qué te dice la copa antes de olerla?', decisions:['claridad','intensidad_aspecto','__color__']},
     {id:'NARIZ', title:'Nariz · el olfato', sub:'Intensidad y familias de aroma. Aún no concluyas.', decisions:['condición','intensidad_nariz','evolución']},
@@ -201,10 +214,17 @@
     }).filter(Boolean);
   }
 
+  function requestEntry(){
+    $('intro-err').textContent='';
+    if(!window.WSETModeAccessGate){ $('intro-err').textContent='No se pudo verificar tu acceso. Inténtalo de nuevo.'; return; }
+    window.WSETModeAccessGate.request({
+      route:'/sat-lab/', experience:'sat_lab', mode:'sat_sprint', enforcement:'active'
+    }).then(function(d){ if(d && d.would_allow) startPractice(); });
+  }
+
   async function startPractice(){
     show('screen-loading');
     try{
-      // 1) get-sat-wines
       var hr = await authHeaders(false);
       var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation', {headers:hr});
       if(!wr.ok) throw new Error('No se pudo cargar el inventario de cata.');
@@ -212,7 +232,6 @@
       var list = wd.wines||[];
       if(!list.length) throw new Error('No hay vinos disponibles ahora mismo.');
       S.wine = list[Math.floor(Math.random()*list.length)];
-      // 2) start-sat-attempt
       var hp = await authHeaders(true);
       var sr = await fetch(FN+'start-sat-attempt', {method:'POST',headers:hp,
         body:JSON.stringify({wine_id:S.wine.id,mode:'blind_simulation',source:'canonical_wine'})});
@@ -231,7 +250,6 @@
     $('wine-label').textContent = S.wine.display_label || 'Vino';
     $('wine-chip').textContent = wt==='TINTO'?'Cata a ciegas · tinto':(wt==='ROSADO'?'Cata a ciegas · rosado':'Cata a ciegas · blanco');
     $('liquid').setAttribute('fill', wt==='TINTO'?'#5a1730':(wt==='ROSADO'?'#d98aa3':'#e9d27a'));
-    // steps
     var steps = PHASES.map(function(p,i){
       var cls = i<S.phaseIdx?'step done':(i===S.phaseIdx?'step active':'step');
       return '<div class="'+cls+'">'+(i+1)+'</div>';
@@ -250,8 +268,7 @@
         var sel = (S.answers[dn] && S.answers[dn].value===val)?' sel':'';
         return '<button class="opt'+sel+'" data-dec="'+dn+'" data-val="'+val+'">'+LABELS[dn][val]+'</button>';
       }).join('');
-      return '<div class="decision"><h3>'+DEC_TITLE[dn]+'</h3><div class="opts">'+opts+'</div>'+
-        '<div class="fb" id="fb-'+dn+'"></div></div>';
+      return '<div class="decision"><h3>'+DEC_TITLE[dn]+'</h3><div class="opts">'+opts+'</div><div class="fb" id="fb-'+dn+'"></div></div>';
     }).join('');
     $('decisions').innerHTML = html;
     Array.prototype.forEach.call(document.querySelectorAll('.opt'), function(b){
@@ -264,8 +281,7 @@
 
   function refreshNext(){
     var decs = resolveDecisions(PHASES[S.phaseIdx]);
-    var allDone = decs.every(function(dn){ return S.answers[dn]; });
-    $('btn-next').disabled = !allDone;
+    $('btn-next').disabled = !decs.every(function(dn){ return S.answers[dn]; });
   }
 
   async function onSelect(dn, val){
@@ -281,7 +297,7 @@
       var b = await r.json();
       if(!r.ok || !b.ok) throw new Error(b.error||'Error al evaluar.');
       if(!S.answers[dn]) S.decisionsCount++;
-      S.answers[dn] = {value:val, label:LABELS[dn][val]};
+      S.answers[dn] = {value:val, label:LABELS[dn][val], severity:b.severity, phase:phase.id};
       var sevClass = b.severity==='BLOQUEANTE'?'block':(b.severity==='ADVERTENCIA'?'warn':'info');
       var html = '<span class="sev">'+b.severity+'</span>'+ (b.feedback_message||'');
       if(b.reasoning_hint) html += '<div class="hint">'+b.reasoning_hint+'</div>';
@@ -294,15 +310,29 @@
     }
   }
 
-  function nextPhase(){
-    if(S.phaseIdx < PHASES.length-1){ S.phaseIdx++; renderTasting(); window.scrollTo(0,0); }
-    else { renderSummary(); }
+  async function nextPhase(){
+    if(S.phaseIdx < PHASES.length-1){ S.phaseIdx++; renderTasting(); window.scrollTo(0,0); return; }
+    $('btn-next').disabled=true; $('btn-next').textContent='Cerrando práctica…';
+    try{
+      var hp = await authHeaders(true);
+      await fetch(FN+'complete-sat-attempt', {method:'POST',headers:hp,body:JSON.stringify({attempt_id:S.attemptId})});
+    }catch(e){}
+    renderSummary(); window.scrollTo(0,0);
   }
   function prevPhase(){ if(S.phaseIdx>0){ S.phaseIdx--; renderTasting(); window.scrollTo(0,0); } }
 
   function renderSummary(){
     show('screen-summary');
     $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(S.wine.display_label||'tu vino')+'.';
+    $('phases-box').innerHTML = PHASES.map(function(p){
+      return '<div class="ph-done">✓ '+PHASE_NAME[p.id]+'</div>';
+    }).join('');
+    var tally={INFORMATIVA:0,ADVERTENCIA:0,BLOQUEANTE:0};
+    Object.keys(S.answers).forEach(function(dn){ var s=S.answers[dn].severity; if(tally[s]!=null)tally[s]++; });
+    $('tally-box').innerHTML =
+      '<span class="pill ok">Informativas: '+tally.INFORMATIVA+'</span>'+
+      '<span class="pill warn">Advertencias: '+tally.ADVERTENCIA+'</span>'+
+      '<span class="pill block">Bloqueantes: '+tally.BLOQUEANTE+'</span>';
     var rows = '';
     PHASES.forEach(function(p){
       resolveDecisions(p).forEach(function(dn){
@@ -313,10 +343,11 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    $('mode-blind').addEventListener('click', startPractice);
+    $('mode-blind').addEventListener('click', requestEntry);
     $('btn-next').addEventListener('click', nextPhase);
     $('btn-prev').addEventListener('click', prevPhase);
     $('btn-restart').addEventListener('click', function(){ show('screen-intro'); $('intro-err').textContent=''; });
+    $('btn-home').addEventListener('click', function(){ window.location.href='../index.html'; });
   });
 })();
 </script>
