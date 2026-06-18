@@ -112,10 +112,100 @@ for (const name of ['canonical_wines.md', 'canonical_wines.csv', 'canonical_wine
   assert(fs.existsSync(path.join(exportDir, name)), `${name} was not generated`);
 }
 
+for (const name of ['render_profiles.blind.json', 'render_profiles.debrief.json', 'render_profiles.training.json']) {
+  assert(fs.existsSync(path.join(exportDir, name)), `${name} was not generated`);
+}
+
 const jsonlRows = fs.readFileSync(path.join(exportDir, 'canonical_wines.jsonl'), 'utf8').trim().split(/\r?\n/);
 assert.strictEqual(jsonlRows.length, profiles.length);
 
 const csvRows = fs.readFileSync(path.join(exportDir, 'canonical_wines.csv'), 'utf8').trim().split(/\r?\n/);
 assert.strictEqual(csvRows.length - 1, profiles.length);
 
+const blindRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.blind.json'), 'utf8'));
+const debriefRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.debrief.json'), 'utf8'));
+const trainingRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.training.json'), 'utf8'));
+assert.strictEqual(blindRenderProfiles.length, profiles.length);
+assert.strictEqual(debriefRenderProfiles.length, profiles.length);
+assert.strictEqual(trainingRenderProfiles.length, profiles.length);
+
+const blindForbiddenKeys = new Set([
+  'canonical',
+  'expected_sat_observations',
+  'sat_fingerprint',
+  'source',
+  'canonical_source',
+  'grape_varieties',
+  'country',
+  'region',
+  'subregion',
+  'appellation',
+  'wine_name',
+  'display_name',
+  'wine_style',
+]);
+const blindForbiddenStrings = [
+  'Chablis',
+  'Chardonnay',
+  'France',
+  'Burgundy',
+  'Alsace',
+  'Loire',
+  'Sancerre',
+  'Pouilly',
+  'Condrieu',
+  'Viognier',
+  'Riesling',
+  'Gewurztraminer',
+  'Pinot Gris',
+  'Muscat',
+];
+const debriefForbiddenKeys = new Set([
+  'canonical',
+  'expected_sat_observations',
+  'source',
+  'canonical_source',
+  'field_metadata',
+  'descriptor_whitelist',
+  'reasoning_notes',
+  'mentor_hints',
+  'sat_constraints',
+]);
+
+assertNoForbiddenKeys(blindRenderProfiles, blindForbiddenKeys, 'blind render profiles');
+const blindText = JSON.stringify(blindRenderProfiles);
+blindForbiddenStrings.forEach((value) => {
+  assert(!blindText.includes(value), `blind render profiles leaked ${value}`);
+});
+blindRenderProfiles.forEach((profile, index) => {
+  assert.strictEqual(profile.mode, 'blind');
+  assert.strictEqual(profile.render_id, `BLIND_${String(index + 1).padStart(3, '0')}`);
+  assert(!JSON.stringify(profile).includes('SAT_WINE_'), `${profile.render_id} leaked canonical id`);
+});
+
+assertNoForbiddenKeys(debriefRenderProfiles, debriefForbiddenKeys, 'debrief render profiles');
+assertNoForbiddenKeys(trainingRenderProfiles, debriefForbiddenKeys, 'training render profiles');
+for (const collection of [debriefRenderProfiles, trainingRenderProfiles]) {
+  const text = JSON.stringify(collection);
+  assert(!text.includes('SERVER_ONLY'), 'render profiles leaked SERVER_ONLY metadata');
+  collection.forEach((profile) => {
+    assert(profile.canonical_id, 'debrief/training profile missing canonical_id');
+    assert(profile.identity?.display_name, `${profile.canonical_id} missing display identity`);
+    assert(profile.pedagogy?.core_concepts, `${profile.canonical_id} missing safe pedagogy`);
+    assert(profile.comparison?.distinguishing_features, `${profile.canonical_id} missing safe comparison`);
+  });
+}
+
 console.log('CWP catalog validation passed');
+
+function assertNoForbiddenKeys(value, forbiddenKeys, context) {
+  if (Array.isArray(value)) {
+    value.forEach((entry, index) => assertNoForbiddenKeys(entry, forbiddenKeys, `${context}[${index}]`));
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  Object.entries(value).forEach(([key, child]) => {
+    assert(!forbiddenKeys.has(key), `${context} contains forbidden key ${key}`);
+    assertNoForbiddenKeys(child, forbiddenKeys, `${context}.${key}`);
+  });
+}

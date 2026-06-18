@@ -10,6 +10,9 @@ const EXPORT_NAMES = {
   jsonl: 'canonical_wines.jsonl',
   sql: 'canonical_wines.sql',
   xlsx: 'canonical_wines.xlsx',
+  renderBlind: 'render_profiles.blind.json',
+  renderDebrief: 'render_profiles.debrief.json',
+  renderTraining: 'render_profiles.training.json',
 };
 
 const COLUMNS = [
@@ -303,6 +306,118 @@ function exportProfiles(profiles, exportDir) {
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.jsonl), toJsonl(profiles), 'utf8');
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.sql), toSql(profiles), 'utf8');
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.xlsx), toXlsx(profiles));
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderBlind), toPrettyJson(toBlindRenderProfiles(profiles)), 'utf8');
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderDebrief), toPrettyJson(toDebriefRenderProfiles(profiles, 'debrief')), 'utf8');
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderTraining), toPrettyJson(toDebriefRenderProfiles(profiles, 'training')), 'utf8');
+}
+
+function toPrettyJson(value) {
+  return `${JSON.stringify(value, null, 2)}\n`;
+}
+
+function toBlindRenderProfiles(profiles) {
+  return profiles.map((profile, index) => ({
+    render_id: `BLIND_${String(index + 1).padStart(3, '0')}`,
+    mode: 'blind',
+    identity: {
+      display_label: genericWineLabel(profile.wine_type),
+      wine_type: profile.wine_type,
+      practice_mode: 'blind_tasting',
+      difficulty_score: profile.difficulty_score,
+      difficulty_band: difficultyBand(profile.difficulty_score),
+      wset_importance: profile.wset_importance,
+      practice_priority: profile.practice_priority,
+      confidence_score: profile.confidence_score,
+    },
+    glass: {
+      wine_type: profile.wine_type,
+    },
+    sat_prompt: {
+      workflow: 'sat_blind',
+      sections: ['appearance', 'nose', 'palate', 'quality', 'readiness'],
+      reveal_policy: 'identity_hidden_until_commitment',
+    },
+  }));
+}
+
+function toDebriefRenderProfiles(profiles, mode) {
+  return profiles.map((profile) => ({
+    canonical_id: profile.canonical_id,
+    mode,
+    identity: {
+      display_name: profile.display_name,
+      wine_name: profile.wine_name,
+      wine_family: profile.wine_family,
+      wine_style: profile.wine_style,
+      wine_type: profile.wine_type,
+      country: profile.country,
+      region: profile.region,
+      subregion: profile.subregion,
+      appellation: profile.appellation,
+      grape_varieties: profile.grape_varieties,
+      display_label: profile.display_label,
+      difficulty_score: profile.difficulty_score,
+      difficulty_band: difficultyBand(profile.difficulty_score),
+      wset_importance: profile.wset_importance,
+      practice_priority: profile.practice_priority,
+      confidence_score: profile.confidence_score,
+    },
+    style_markers: {
+      climate: profile.climate,
+      altitude: profile.altitude,
+      soil: profile.soil,
+      viticulture: profile.viticulture,
+      winemaking: profile.winemaking,
+      oak: profile.oak,
+      sweetness: profile.sweetness,
+      body: profile.body,
+      acidity: profile.acidity,
+      alcohol: profile.alcohol,
+      tannin: profile.tannin,
+      color: profile.color,
+      aroma_profile: profile.aroma_profile,
+      flavour_profile: profile.flavour_profile,
+      finish: profile.finish,
+      quality_level: profile.quality_level,
+      ageing_potential: profile.ageing_potential,
+    },
+    pedagogy: {
+      core_concepts: profile.pedagogical_dna.core_concepts,
+      learning_objectives: profile.pedagogical_dna.learning_objectives,
+      typical_misconceptions: profile.pedagogical_dna.typical_misconceptions,
+      mentor_focus: profile.pedagogical_dna.mentor_focus,
+      exam_traps: profile.pedagogical_dna.exam_traps,
+      memory_hooks: profile.pedagogical_dna.memory_hooks,
+      comparison_styles: profile.pedagogical_dna.comparison_styles,
+    },
+    comparison: {
+      similar_profiles: profile.comparison_engine.similar_profiles,
+      frequently_confused_with: profile.comparison_engine.frequently_confused_with,
+      distinguishing_features: profile.comparison_engine.distinguishing_features,
+    },
+    teaching: {
+      common_exam_points: profile.teaching_notes.common_exam_points,
+      student_traps: profile.teaching_notes.student_traps,
+      revision_priority: profile.teaching_notes.revision_priority,
+    },
+    reusable_knowledge_refs: profile.reusable_knowledge_refs,
+  }));
+}
+
+function genericWineLabel(wineType) {
+  const type = String(wineType || '').toUpperCase();
+  if (type === 'TINTO') return 'Vino tinto - practica a ciegas';
+  if (type === 'ROSADO') return 'Vino rosado - practica a ciegas';
+  if (type === 'ESPUMOSO') return 'Vino espumoso - practica a ciegas';
+  if (type === 'DULCE') return 'Vino dulce - practica a ciegas';
+  if (type === 'FORTIFICADO') return 'Vino fortificado - practica a ciegas';
+  return 'Vino blanco - practica a ciegas';
+}
+
+function difficultyBand(score) {
+  if (score >= 8) return 'advanced';
+  if (score >= 5) return 'intermediate';
+  return 'foundation';
 }
 
 function toMarkdown(profiles) {
