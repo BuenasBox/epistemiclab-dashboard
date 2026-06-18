@@ -1,101 +1,101 @@
-id,prioridad_wset,estilo_wset,pais,region,appellation,variedad,categoria,estado,perfiles_cwp,nota
-WSET_STYLE_001,Imprescindible,Bordeaux AC genérico tinto,France,Bordeaux,Bordeaux AC,Cabernet Sauvignon / Merlot / Cabernet Franc,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_052; SAT_WINE_053,"El catálogo cubre Left Bank y Right Bank, pero no un perfil genérico Bordeaux AC."
-WSET_STYLE_002,Imprescindible,Cru Bourgeois o Haut-Médoc Cru Classé,France,Bordeaux,Haut-Médoc / Médoc,Cabernet Sauvignon-dominant blend,tinto,CUBIERTO,SAT_WINE_052,Perfil Left Bank Bordeaux cubre Médoc/Graves y Cabernet Sauvignon dominante.
-WSET_STYLE_003,Imprescindible,Saint-Émilion Grand Cru o Pomerol,France,Bordeaux,Saint-Émilion Grand Cru / Pomerol,Merlot-dominant blend,tinto,CUBIERTO,SAT_WINE_053,Perfil Right Bank Bordeaux cubre Saint-Émilion y Pomerol.
-WSET_STYLE_004,Imprescindible,Sauternes o Barsac,France,Bordeaux,Sauternes / Barsac,Sémillon / Sauvignon Blanc / Muscadelle,dulce,FALTANTE,,No hay perfil de Bordeaux dulce botrytizado.
-WSET_STYLE_005,Opcional,"Saint-Émilion, Pomerol o Haut-Médoc de añada más antigua",France,Bordeaux,Saint-Émilion / Pomerol / Haut-Médoc,Bordeaux blend,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_052; SAT_WINE_053,"Hay perfiles de origen, pero no perfil específico de evolución por añada antigua."
-WSET_STYLE_006,Opcional,Bordeaux AC genérico blanco seco,France,Bordeaux,Bordeaux AC,Sauvignon Blanc / Sémillon,blanco,FALTANTE,,No hay perfil de Bordeaux blanco seco.
-WSET_STYLE_007,Opcional,Graves o Pessac-Léognan blanco seco con roble,France,Bordeaux,Graves / Pessac-Léognan,Sauvignon Blanc / Sémillon,blanco,FALTANTE,,No hay perfil de Bordeaux blanco seco con crianza en roble.
-WSET_STYLE_008,Opcional,Cahors o Madiran,France,Dordogne / South West France,Cahors / Madiran,Malbec / Tannat,tinto,FALTANTE,,Sudoeste francés no está representado.
-WSET_STYLE_009,Imprescindible,Bourgogne Rouge AC,France,Burgundy,Bourgogne Rouge,Pinot Noir,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_054,"Hay Côte d'Or Pinot Noir, pero no Bourgogne Rouge genérico."
-WSET_STYLE_010,Imprescindible,Côte d’Or Village o Premier Cru tinto,France,Burgundy,Côte d’Or Village / Premier Cru,Pinot Noir,tinto,CUBIERTO,SAT_WINE_054,Perfil Côte d'Or Red Burgundy cubre village/premier/grand cru.
-WSET_STYLE_011,Imprescindible,"Beaujolais AC, Beaujolais Villages o Cru",France,Beaujolais,Beaujolais / Villages / Cru,Gamay,tinto,CUBIERTO,SAT_WINE_055,Perfil Beaujolais Villages / Cru cubre el estilo.
-WSET_STYLE_012,Imprescindible,Chablis Village o Premier Cru,France,Burgundy,Chablis,Chardonnay,blanco,CUBIERTO,SAT_WINE_001,Perfil Chablis cubre village/premier/grand cru.
-WSET_STYLE_013,Imprescindible,Côte d’Or Village o Premier Cru blanco,France,Burgundy,Meursault / Puligny-Montrachet / Chassagne-Montrachet,Chardonnay,blanco,CUBIERTO,SAT_WINE_002,Perfil Côte de Beaune white Burgundy cubre el estilo.
-WSET_STYLE_014,Opcional,Otro vino de Beaujolais,France,Beaujolais,Beaujolais,Gamay,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_055,"El catálogo cubre Villages/Cru, no un Beaujolais AC separado."
-WSET_STYLE_015,Opcional,Mâcon o Mâcon Villages,France,Burgundy,Mâcon / Mâcon Villages,Chardonnay,blanco,CUBIERTO,SAT_WINE_003,Perfil Mâcon / Mâcon Villages cubre el estilo.
-WSET_STYLE_016,Imprescindible,Alsace Riesling seco o casi seco,France,Alsace,Alsace / Alsace Grand Cru,Riesling,blanco,CUBIERTO,SAT_WINE_005,Perfil Alsace Riesling cubre seco a off-dry.
-WSET_STYLE_017,Imprescindible,Alsace Gewurztraminer seco o casi seco,France,Alsace,Alsace / Alsace Grand Cru,Gewurztraminer,blanco,CUBIERTO,SAT_WINE_006,Perfil Alsace Gewurztraminer cubre el estilo.
-WSET_STYLE_018,Imprescindible,Alsace Pinot Gris seco o casi seco,France,Alsace,Alsace / Alsace Grand Cru,Pinot Gris,blanco,CUBIERTO,SAT_WINE_007,Perfil Alsace Pinot Gris cubre el estilo.
-WSET_STYLE_019,Opcional,Alsace Vendanges Tardives o Sélection de Grains Nobles,France,Alsace,VT / SGN,Riesling / Gewurztraminer / Pinot Gris / Muscat,dulce,PARCIALMENTE CUBIERTO,SAT_WINE_006; SAT_WINE_007; SAT_WINE_008,"Las appellations VT/SGN aparecen en perfiles, pero no hay perfil dulce dedicado."
-WSET_STYLE_020,Imprescindible,Chenin Blanc seco premium del Loire,France,Loire Valley,Savennières / Vouvray / Anjou,Chenin Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_010,"Perfil Loire Chenin Blanc es amplio seco-dulce, no específicamente seco premium."
-WSET_STYLE_021,Imprescindible,Sancerre o Pouilly-Fumé,France,Loire Valley,Sancerre / Pouilly-Fumé,Sauvignon Blanc,blanco,CUBIERTO,SAT_WINE_009,Perfil Sancerre / Pouilly-Fumé cubre el estilo.
-WSET_STYLE_022,Imprescindible,Cabernet Franc premium del Loire,France,Loire Valley,Chinon / Bourgueil / Saumur-Champigny,Cabernet Franc,tinto,FALTANTE,,No hay perfil Loire Cabernet Franc.
-WSET_STYLE_023,Opcional,Muscadet o Muscadet Sur Lie,France,Loire Valley,Muscadet / Muscadet Sèvre et Maine,Melon Blanc,blanco,FALTANTE,,No hay perfil Muscadet.
-WSET_STYLE_024,Imprescindible,Syrah premium del Norte del Ródano,France,Northern Rhône,Côte-Rôtie / Hermitage / Crozes-Hermitage,Syrah,tinto,CUBIERTO,SAT_WINE_056,Perfil Northern Rhone Syrah cubre el estilo premium.
-WSET_STYLE_025,Imprescindible,Châteauneuf-du-Pape o Gigondas,France,Southern Rhône,Châteauneuf-du-Pape / Gigondas,Grenache / Syrah / Mourvèdre,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_057,Châteauneuf-du-Pape está cubierto; Gigondas no tiene perfil propio.
-WSET_STYLE_026,Imprescindible,Côtes du Rhône o Côtes du Rhône Villages,France,Southern Rhône,Côtes du Rhône / Villages,Grenache / Syrah / Mourvèdre,tinto,FALTANTE,,No hay perfil de Côtes du Rhône genérico o villages.
-WSET_STYLE_027,Opcional,Syrah del Norte del Ródano de precio medio,France,Northern Rhône,Crozes-Hermitage / Saint-Joseph,Syrah,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_056,"Perfil existente cubre Syrah del norte, pero no segmento de precio medio."
-WSET_STYLE_028,Opcional,Condrieu,France,Northern Rhône,Condrieu / Château-Grillet,Viognier,blanco,CUBIERTO,SAT_WINE_011,Perfil Condrieu cubre el estilo.
-WSET_STYLE_029,Opcional,"Corbières, Fitou o Minervois",France,South of France,Corbières / Fitou / Minervois,Grenache / Syrah / Carignan / Mourvèdre,tinto,FALTANTE,,No hay perfil de tintos del sur de Francia.
-WSET_STYLE_030,Opcional,IGP de variedad internacional del sur de Francia,France,South of France,Pays d’Oc / IGP,Cabernet Sauvignon / Merlot / Chardonnay / Sauvignon Blanc,blanco/tinto,FALTANTE,,No hay perfil Pays d’Oc/IGP internacional.
-WSET_STYLE_031,Opcional,Rosado Côtes de Provence o sur del Ródano,France,Provence / Southern Rhône,Côtes de Provence / Tavel / Lirac,Grenache / Cinsault / Syrah,rosado,FALTANTE,,No hay perfiles rosados.
-WSET_STYLE_032,Imprescindible,Riesling alemán con azúcar residual (Kabinett o Spätlese),Germany,Germany,Kabinett / Spätlese,Riesling,blanco/dulce,CUBIERTO,SAT_WINE_016; SAT_WINE_017,Perfiles Kabinett y Spätlese cubren el estilo.
-WSET_STYLE_033,Imprescindible,Riesling seco VDP,Germany,Mosel / Rheingau / Pfalz / Rheinhessen,VDP / trocken,Riesling,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_012; SAT_WINE_013; SAT_WINE_014; SAT_WINE_015,"Hay Rieslings regionales, pero no perfil VDP/trocken dedicado."
-WSET_STYLE_034,Opcional,Riesling Auslese o Beerenauslese botrytizado,Germany,Germany,Auslese / Beerenauslese,Riesling,dulce,CUBIERTO,SAT_WINE_018; SAT_WINE_019,Auslese y BA tienen perfiles.
-WSET_STYLE_035,Opcional,Eiswein,Germany,Germany,Eiswein,Riesling,dulce,CUBIERTO,SAT_WINE_021,Perfil Eiswein cubre el estilo.
-WSET_STYLE_036,Imprescindible,Grüner Veltliner austríaco,Austria,Niederösterreich,Wachau / Weinviertel / Kamptal / Kremstal,Grüner Veltliner,blanco,DUPLICADO / SOLAPADO,SAT_WINE_022; SAT_WINE_024; SAT_WINE_025; SAT_WINE_026,Un estilo WSET está cubierto por cuatro perfiles regionales; útil pedagógicamente pero solapado.
-WSET_STYLE_037,Imprescindible,Tokaji Aszú,Hungary,Tokaj,Tokaj,Furmint / Hárslevelű / Sárga Muskotály,dulce,FALTANTE,,Hungría/Tokaj no está representado.
-WSET_STYLE_038,Opcional,Naoussa o Nemea,Greece,Naoussa / Nemea,Naoussa PDO / Nemea PDO,Xinomavro / Agiorgitiko,tinto,FALTANTE,,El catálogo solo cubre Santorini blanco; no hay tintos griegos.
-WSET_STYLE_039,Imprescindible,Barolo o Barbaresco,Italy,Piemonte,Barolo / Barbaresco,Nebbiolo,tinto,DUPLICADO / SOLAPADO,SAT_WINE_060; SAT_WINE_061,La alternativa WSET está cubierta por dos perfiles separados.
-WSET_STYLE_040,Imprescindible,Valpolicella o Valpolicella Classico,Italy,Veneto,Valpolicella / Classico,Corvina blend,tinto,CUBIERTO,SAT_WINE_058,Perfil Valpolicella cubre el estilo.
-WSET_STYLE_041,Imprescindible,Amarone della Valpolicella,Italy,Veneto,Amarone della Valpolicella DOCG,Corvina blend,tinto,CUBIERTO,SAT_WINE_059,Perfil Amarone cubre el estilo.
-WSET_STYLE_042,Imprescindible,Chianti,Italy,Tuscany,Chianti DOCG,Sangiovese,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_063,"Chianti Classico cubre el núcleo, pero no Chianti genérico."
-WSET_STYLE_043,Imprescindible,Chianti Classico Riserva o Brunello di Montalcino,Italy,Tuscany,Chianti Classico / Brunello di Montalcino,Sangiovese,tinto,DUPLICADO / SOLAPADO,SAT_WINE_063; SAT_WINE_064,"La alternativa WSET está cubierta por dos perfiles, aunque Chianti Classico no especifica Riserva."
-WSET_STYLE_044,Imprescindible,Tinto del sur de Italia (p. ej. Taurasi),Italy,Southern Italy,Taurasi / Puglia / Basilicata / Sicily,Aglianico / Negroamaro / Primitivo / Nero d’Avola,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_065,"Taurasi cubre un ejemplo, pero no Puglia/Basilicata/Sicilia."
-WSET_STYLE_045,Opcional,Pinot Grigio del Veneto,Italy,Veneto,Pinot Grigio delle Venezie / Veneto,Pinot Grigio,blanco,FALTANTE,,No hay perfil Pinot Grigio del Veneto.
-WSET_STYLE_046,Opcional,"Pinot Grigio Alto Adige, Trentino o Friuli",Italy,North-East Italy,Alto Adige / Trentino / Friuli,Pinot Grigio,blanco,DUPLICADO / SOLAPADO,SAT_WINE_028; SAT_WINE_029; SAT_WINE_030,La alternativa WSET está cubierta por tres perfiles.
-WSET_STYLE_047,Opcional,Soave o Soave Classico,Italy,Veneto,Soave / Soave Classico,Garganega,blanco,CUBIERTO,SAT_WINE_031,Perfil Soave Classico cubre el estilo.
-WSET_STYLE_048,Imprescindible,Rioja Reserva o Gran Reserva,Spain,Rioja,Rioja DOCa,Tempranillo blend,tinto,CUBIERTO,SAT_WINE_066,Perfil Rioja Reserva cubre el estilo.
-WSET_STYLE_049,Imprescindible,Ribera del Duero,Spain,Ribera del Duero,Ribera del Duero DO,Tempranillo,tinto,CUBIERTO,SAT_WINE_067,Perfil Ribera del Duero cubre el estilo.
-WSET_STYLE_050,Imprescindible,Priorat,Spain,Priorat,Priorat DOCa,Garnacha / Cariñena,tinto,CUBIERTO,SAT_WINE_068,Perfil Priorat cubre el estilo.
-WSET_STYLE_051,Imprescindible,Rías Baixas o Rueda,Spain,Rías Baixas / Rueda,Rías Baixas DO / Rueda DO,Albariño / Verdejo,blanco,DUPLICADO / SOLAPADO,SAT_WINE_038; SAT_WINE_039,La alternativa WSET está cubierta por dos perfiles.
-WSET_STYLE_052,Opcional,Monastrell (p. ej. Jumilla),Spain,Levante,Jumilla / Yecla,Monastrell,tinto,FALTANTE,,No hay perfil Monastrell/Jumilla.
-WSET_STYLE_053,Opcional,"Douro, Dão o Alentejo tinto",Portugal,Douro / Dão / Alentejo,Douro DOC / Dão DOC / Alentejo,Touriga Nacional / Tinta Roriz / blends,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_069; SAT_WINE_070,Douro y Dão cubiertos; Alentejo no.
-WSET_STYLE_054,Imprescindible,California Cabernet Sauvignon o Merlot premium,USA,California,Napa / Sonoma,Cabernet Sauvignon / Merlot,tinto,FALTANTE,,No hay perfiles tintos de California.
-WSET_STYLE_055,Imprescindible,California Zinfandel,USA,California,Dry Creek Valley / Lodi,Zinfandel,tinto,FALTANTE,,No hay perfil Zinfandel.
-WSET_STYLE_056,Imprescindible,California Chardonnay premium,USA,California,Sonoma / Santa Barbara / coastal AVAs,Chardonnay,blanco,CUBIERTO,SAT_WINE_044; SAT_WINE_045,California/Sonoma Chardonnay cubren el estilo.
-WSET_STYLE_057,Opcional,Willamette Valley Pinot Noir,USA,Oregon,Willamette Valley,Pinot Noir,tinto,FALTANTE,,No hay perfil Oregon Pinot Noir.
-WSET_STYLE_058,Opcional,California Pinot Noir premium,USA,California,Sonoma / Santa Barbara,Pinot Noir,tinto,FALTANTE,,No hay perfil California Pinot Noir.
-WSET_STYLE_059,Opcional,White Zinfandel,USA,California,California,Zinfandel,rosado,FALTANTE,,No hay perfiles rosados ni White Zinfandel.
-WSET_STYLE_060,Opcional,Icewine,Canada,Ontario / British Columbia,Niagara Peninsula / Okanagan Valley,Vidal / Riesling,dulce,FALTANTE,,Canadá no está representado.
-WSET_STYLE_061,Imprescindible,Chile Carmenère premium,Chile,Cachapoal / Colchagua,Cachapoal / Colchagua,Carmenère,tinto,FALTANTE,,No hay perfil Carmenère.
-WSET_STYLE_062,Imprescindible,Chile tinto económico de volumen,Chile,Central Valley,Central Valley,Cabernet Sauvignon / Merlot / Carmenère / Syrah,tinto,FALTANTE,,No hay perfil de tinto chileno de volumen.
-WSET_STYLE_063,Opcional,Chile Cabernet Sauvignon premium,Chile,Maipo / Cachapoal / Colchagua,Maipo / Cachapoal / Colchagua,Cabernet Sauvignon,tinto,FALTANTE,,No hay perfil Chile Cabernet Sauvignon.
-WSET_STYLE_064,Opcional,Chile Chardonnay o Sauvignon Blanc,Chile,Casablanca / San Antonio,Casablanca / San Antonio,Chardonnay / Sauvignon Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_046,Sauvignon Blanc costero cubierto; Chardonnay chileno falta.
-WSET_STYLE_065,Imprescindible,Argentina Malbec de precio medio,Argentina,Mendoza,Mendoza,Malbec,tinto,FALTANTE,,No hay perfil Malbec argentino.
-WSET_STYLE_066,Imprescindible,Argentina Torrontés premium,Argentina,Salta,Cafayate,Torrontés,blanco,CUBIERTO,SAT_WINE_047,Perfil Salta Torrontes cubre el estilo.
-WSET_STYLE_067,Opcional,Argentina Cabernet Sauvignon o mezcla premium,Argentina,Mendoza,Mendoza / Uco / Luján de Cuyo,Cabernet Sauvignon / Bordeaux blend,tinto,FALTANTE,,No hay perfil de Cabernet/mezcla argentina.
-WSET_STYLE_068,Opcional,Argentina Malbec premium,Argentina,Uco / Luján de Cuyo,Valle de Uco / Luján de Cuyo,Malbec,tinto,FALTANTE,,No hay perfil Malbec premium.
-WSET_STYLE_069,Imprescindible,South Africa Pinotage premium,South Africa,Western Cape,Stellenbosch / Paarl / Swartland,Pinotage,tinto,FALTANTE,,No hay perfil Pinotage.
-WSET_STYLE_070,Imprescindible,South Africa Chenin Blanc con roble premium,South Africa,Western Cape,Swartland,Chenin Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_048,Perfil Chenin Blanc sudafricano amplio; no específicamente con roble premium.
-WSET_STYLE_071,Opcional,South Africa Cabernet Sauvignon premium,South Africa,Western Cape,Stellenbosch,Cabernet Sauvignon,tinto,FALTANTE,,No hay perfil Cabernet Sauvignon sudafricano.
-WSET_STYLE_072,Opcional,Marca económica tinto/blanco de volumen,South Africa,Western Cape,Western Cape,varias,blanco/tinto,FALTANTE,,No hay arquetipo de marca económica de volumen.
-WSET_STYLE_073,Imprescindible,Australia Shiraz premium,Australia,South Australia,Barossa / McLaren Vale,Shiraz,tinto,FALTANTE,,No hay perfil Shiraz australiano.
-WSET_STYLE_074,Imprescindible,Australia Cabernet Sauvignon o mezcla Cabernet premium,Australia,Coonawarra / Margaret River,Coonawarra / Margaret River,Cabernet Sauvignon / blend,tinto,FALTANTE,,No hay perfil Cabernet australiano.
-WSET_STYLE_075,Imprescindible,Australia Grenache o mezcla Grenache premium,Australia,McLaren Vale,McLaren Vale,Grenache,tinto,FALTANTE,,No hay perfil Grenache australiano.
-WSET_STYLE_076,Imprescindible,Eden Valley o Clare Valley Riesling,Australia,Eden Valley / Clare Valley,Eden Valley / Clare Valley,Riesling,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_050,Clare Valley cubierto; Eden Valley falta.
-WSET_STYLE_077,Imprescindible,Hunter Valley Semillon,Australia,Hunter Valley,Hunter Valley GI,Semillon,blanco,CUBIERTO,SAT_WINE_049,Perfil Hunter Valley Semillon cubre el estilo.
-WSET_STYLE_078,Imprescindible,Australia Chardonnay premium,Australia,Yarra / Mornington / Tasmania,Yarra Valley / Mornington Peninsula / Tasmania,Chardonnay,blanco,FALTANTE,,No hay perfil Chardonnay australiano premium.
-WSET_STYLE_079,Opcional,Australia Shiraz de otro estilo o nivel,Australia,Australia,Barossa / McLaren Vale / otros,Shiraz,tinto,FALTANTE,,No hay perfil Shiraz base.
-WSET_STYLE_080,Opcional,Australia Pinot Noir premium,Australia,Yarra / Mornington / Tasmania,Yarra Valley / Mornington Peninsula / Tasmania,Pinot Noir,tinto,FALTANTE,,No hay perfil Pinot Noir australiano.
-WSET_STYLE_081,Imprescindible,New Zealand Pinot Noir,New Zealand,Central Otago / Martinborough / Marlborough,regional GI,Pinot Noir,tinto,FALTANTE,,No hay perfil Pinot Noir neozelandés.
-WSET_STYLE_082,Imprescindible,New Zealand Sauvignon Blanc premium,New Zealand,Marlborough,Marlborough GI,Sauvignon Blanc,blanco,CUBIERTO,SAT_WINE_051,Perfil Marlborough Sauvignon Blanc cubre el estilo.
-WSET_STYLE_083,Opcional,Hawke’s Bay tinto estilo Burdeos o Syrah,New Zealand,Hawke’s Bay,Hawke’s Bay GI,Bordeaux blend / Syrah,tinto,FALTANTE,,No hay perfil Hawke’s Bay tinto.
-WSET_STYLE_084,Opcional,New Zealand Chardonnay premium,New Zealand,Marlborough / Gisborne,Marlborough / Gisborne,Chardonnay,blanco,FALTANTE,,No hay perfil Chardonnay neozelandés.
-WSET_STYLE_085,Opcional,New Zealand Sauvignon Blanc con roble,New Zealand,Marlborough,Marlborough GI,Sauvignon Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_051,"Variedad/región cubierta, pero no estilo con roble."
-WSET_STYLE_086,Opcional,Vino naranja de cualquier país/región,Any,Any,Any,varias,fuera_de_alcance,FUERA DE ALCANCE,,Categoría no solicitada por CWP-AUDIT-01; documentada como fuera de alcance.
-WSET_STYLE_087,Imprescindible,Champagne non-vintage,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_088,Opcional,Champagne vintage o prestige cuvée,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_089,Opcional,Crémant,France,Alsace / Burgundy / Loire,Crémant d’Alsace / Bourgogne / Loire,varias,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_090,Imprescindible,Asti,Italy,Piemonte,Asti DOCG,Muscat Blanc à Petits Grains,espumoso/dulce,FALTANTE,,No hay perfiles espumosos dulces.
-WSET_STYLE_091,Imprescindible,Prosecco,Italy,Veneto / Friuli,Prosecco / Conegliano-Valdobbiadene,Glera,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_092,Imprescindible,Cava,Spain,Catalonia / Spain,Cava DO,Macabeo / Xarel-lo / Parellada,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_093,Imprescindible,Espumoso método tradicional de Australia/NZ/Sudáfrica/EE. UU.,Australia / New Zealand / South Africa / USA,Tasmania / Marlborough / Cap Classique / California,regional,Chardonnay / Pinot Noir,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_094,Imprescindible,Fino o Manzanilla,Spain,Jerez,Jerez-Xérès-Sherry / Manzanilla-Sanlúcar,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
-WSET_STYLE_095,Imprescindible,Amontillado seco u Oloroso seco,Spain,Jerez,Jerez-Xérès-Sherry,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
-WSET_STYLE_096,Opcional,Jerez Medium o Cream,Spain,Jerez,Jerez-Xérès-Sherry,Palomino + PX/Moscatel,fortificado/dulce,FALTANTE,,No hay perfiles generosos/Jerez dulce.
-WSET_STYLE_097,Imprescindible,Oporto LBV u Oporto Vintage,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,FALTANTE,,No hay perfiles Oporto.
-WSET_STYLE_098,Imprescindible,Porto Tawny con indicación de edad,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,FALTANTE,,No hay perfiles Oporto Tawny.
-WSET_STYLE_099,Opcional,Muscat de Beaumes-de-Venise,France,Southern Rhône,Muscat de Beaumes-de-Venise,Muscat,fortificado/dulce,FALTANTE,,No hay perfiles moscateles encabezados.
-WSET_STYLE_100,Opcional,Rutherglen Muscat,Australia,Rutherglen,Rutherglen,Muscat,fortificado/dulce,FALTANTE,,No hay perfiles moscateles encabezados.
+id,source_line_or_heading,prioridad_wset,estilo_wset,pais,region,appellation,variedad,categoria,estado,perfiles_cwp,nota
+WSET_STYLE_001,1520,Imprescindible,Bordeaux AC genérico tinto,France,Bordeaux,Bordeaux AC,Cabernet Sauvignon / Merlot / Cabernet Franc,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_052; SAT_WINE_053,"El catálogo cubre Left Bank y Right Bank, pero no un perfil genérico Bordeaux AC."
+WSET_STYLE_002,1521,Imprescindible,Cru Bourgeois o Haut-Médoc Cru Classé,France,Bordeaux,Haut-Médoc / Médoc,Cabernet Sauvignon-dominant blend,tinto,CUBIERTO,SAT_WINE_052,Perfil Left Bank Bordeaux cubre Médoc/Graves y Cabernet Sauvignon dominante.
+WSET_STYLE_003,1522,Imprescindible,Saint-Émilion Grand Cru o Pomerol,France,Bordeaux,Saint-Émilion Grand Cru / Pomerol,Merlot-dominant blend,tinto,CUBIERTO,SAT_WINE_053,Perfil Right Bank Bordeaux cubre Saint-Émilion y Pomerol.
+WSET_STYLE_004,1526,Imprescindible,Sauternes o Barsac,France,Bordeaux,Sauternes / Barsac,Sémillon / Sauvignon Blanc / Muscadelle,dulce,FALTANTE,,No hay perfil de Bordeaux dulce botrytizado.
+WSET_STYLE_005,1532,Opcional,"Saint-Émilion, Pomerol o Haut-Médoc de añada más antigua",France,Bordeaux,Saint-Émilion / Pomerol / Haut-Médoc,Bordeaux blend,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_052; SAT_WINE_053,"Hay perfiles de origen, pero no perfil específico de evolución por añada antigua."
+WSET_STYLE_006,1536,Opcional,Bordeaux AC genérico blanco seco,France,Bordeaux,Bordeaux AC,Sauvignon Blanc / Sémillon,blanco,FALTANTE,,No hay perfil de Bordeaux blanco seco.
+WSET_STYLE_007,1537,Opcional,Graves o Pessac-Léognan blanco seco con roble,France,Bordeaux,Graves / Pessac-Léognan,Sauvignon Blanc / Sémillon,blanco,FALTANTE,,No hay perfil de Bordeaux blanco seco con crianza en roble.
+WSET_STYLE_008,1544,Opcional,Cahors o Madiran,France,Dordogne / South West France,Cahors / Madiran,Malbec / Tannat,tinto,FALTANTE,,Sudoeste francés no está representado.
+WSET_STYLE_009,1562,Imprescindible,Bourgogne Rouge AC,France,Burgundy,Bourgogne Rouge,Pinot Noir,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_054,"Hay Côte d'Or Pinot Noir, pero no Bourgogne Rouge genérico."
+WSET_STYLE_010,1563,Imprescindible,Côte d’Or Village o Premier Cru tinto,France,Burgundy,Côte d’Or Village / Premier Cru,Pinot Noir,tinto,CUBIERTO,SAT_WINE_054,Perfil Côte d'Or Red Burgundy cubre village/premier/grand cru.
+WSET_STYLE_011,1564,Imprescindible,"Beaujolais AC, Beaujolais Villages o Cru",France,Beaujolais,Beaujolais / Villages / Cru,Gamay,tinto,CUBIERTO,SAT_WINE_055,Perfil Beaujolais Villages / Cru cubre el estilo.
+WSET_STYLE_012,1566,Imprescindible,Chablis Village o Premier Cru,France,Burgundy,Chablis,Chardonnay,blanco,CUBIERTO,SAT_WINE_001,Perfil Chablis cubre village/premier/grand cru.
+WSET_STYLE_013,1567,Imprescindible,Côte d’Or Village o Premier Cru blanco,France,Burgundy,Meursault / Puligny-Montrachet / Chassagne-Montrachet,Chardonnay,blanco,CUBIERTO,SAT_WINE_002,Perfil Côte de Beaune white Burgundy cubre el estilo.
+WSET_STYLE_014,1569,Opcional,Otro vino de Beaujolais,France,Beaujolais,Beaujolais,Gamay,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_055,"El catálogo cubre Villages/Cru, no un Beaujolais AC separado."
+WSET_STYLE_015,1571,Opcional,Mâcon o Mâcon Villages,France,Burgundy,Mâcon / Mâcon Villages,Chardonnay,blanco,CUBIERTO,SAT_WINE_003,Perfil Mâcon / Mâcon Villages cubre el estilo.
+WSET_STYLE_016,1576-1577,Imprescindible,Alsace Riesling seco o casi seco,France,Alsace,Alsace / Alsace Grand Cru,Riesling,blanco,CUBIERTO,SAT_WINE_005,Perfil Alsace Riesling cubre seco a off-dry.
+WSET_STYLE_017,1576-1578,Imprescindible,Alsace Gewurztraminer seco o casi seco,France,Alsace,Alsace / Alsace Grand Cru,Gewurztraminer,blanco,CUBIERTO,SAT_WINE_006,Perfil Alsace Gewurztraminer cubre el estilo.
+WSET_STYLE_018,1576-1579,Imprescindible,Alsace Pinot Gris seco o casi seco,France,Alsace,Alsace / Alsace Grand Cru,Pinot Gris,blanco,CUBIERTO,SAT_WINE_007,Perfil Alsace Pinot Gris cubre el estilo.
+WSET_STYLE_019,1585-1586,Opcional,Alsace Vendanges Tardives o Sélection de Grains Nobles,France,Alsace,VT / SGN,Riesling / Gewurztraminer / Pinot Gris / Muscat,dulce,PARCIALMENTE CUBIERTO,SAT_WINE_006; SAT_WINE_007; SAT_WINE_008,"Las appellations VT/SGN aparecen en perfiles, pero no hay perfil dulce dedicado."
+WSET_STYLE_020,1629,Imprescindible,Chenin Blanc seco premium del Loire,France,Loire Valley,Savennières / Vouvray / Anjou,Chenin Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_010,"Perfil Loire Chenin Blanc es amplio seco-dulce, no específicamente seco premium."
+WSET_STYLE_021,1630,Imprescindible,Sancerre o Pouilly-Fumé,France,Loire Valley,Sancerre / Pouilly-Fumé,Sauvignon Blanc,blanco,CUBIERTO,SAT_WINE_009,Perfil Sancerre / Pouilly-Fumé cubre el estilo.
+WSET_STYLE_022,1632,Imprescindible,Cabernet Franc premium del Loire,France,Loire Valley,Chinon / Bourgueil / Saumur-Champigny,Cabernet Franc,tinto,FALTANTE,,No hay perfil Loire Cabernet Franc.
+WSET_STYLE_023,1634,Opcional,Muscadet o Muscadet Sur Lie,France,Loire Valley,Muscadet / Muscadet Sèvre et Maine,Melon Blanc,blanco,FALTANTE,,No hay perfil Muscadet.
+WSET_STYLE_024,1636,Imprescindible,Syrah premium del Norte del Ródano,France,Northern Rhône,Côte-Rôtie / Hermitage / Crozes-Hermitage,Syrah,tinto,CUBIERTO,SAT_WINE_056,Perfil Northern Rhone Syrah cubre el estilo premium.
+WSET_STYLE_025,1637,Imprescindible,Châteauneuf-du-Pape o Gigondas,France,Southern Rhône,Châteauneuf-du-Pape / Gigondas,Grenache / Syrah / Mourvèdre,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_057,Châteauneuf-du-Pape está cubierto; Gigondas no tiene perfil propio.
+WSET_STYLE_026,1638,Imprescindible,Côtes du Rhône o Côtes du Rhône Villages,France,Southern Rhône,Côtes du Rhône / Villages,Grenache / Syrah / Mourvèdre,tinto,FALTANTE,,No hay perfil de Côtes du Rhône genérico o villages.
+WSET_STYLE_027,1640,Opcional,Syrah del Norte del Ródano de precio medio,France,Northern Rhône,Crozes-Hermitage / Saint-Joseph,Syrah,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_056,"Perfil existente cubre Syrah del norte, pero no segmento de precio medio."
+WSET_STYLE_028,1642,Opcional,Condrieu,France,Northern Rhône,Condrieu / Château-Grillet,Viognier,blanco,CUBIERTO,SAT_WINE_011,Perfil Condrieu cubre el estilo.
+WSET_STYLE_029,1644,Opcional,"Corbières, Fitou o Minervois",France,South of France,Corbières / Fitou / Minervois,Grenache / Syrah / Carignan / Mourvèdre,tinto,FALTANTE,,No hay perfil de tintos del sur de Francia.
+WSET_STYLE_030,1645,Opcional,IGP de variedad internacional del sur de Francia,France,South of France,Pays d’Oc / IGP,Cabernet Sauvignon / Merlot / Chardonnay / Sauvignon Blanc,blanco/tinto,FALTANTE,,No hay perfil Pays d’Oc/IGP internacional.
+WSET_STYLE_031,1647-1648,Opcional,Rosado Côtes de Provence o sur del Ródano,France,Provence / Southern Rhône,Côtes de Provence / Tavel / Lirac,Grenache / Cinsault / Syrah,rosado,FALTANTE,,No hay perfiles rosados.
+WSET_STYLE_032,1650,Imprescindible,Riesling alemán con azúcar residual (Kabinett o Spätlese),Germany,Germany,Kabinett / Spätlese,Riesling,blanco/dulce,CUBIERTO,SAT_WINE_016; SAT_WINE_017,Perfiles Kabinett y Spätlese cubren el estilo.
+WSET_STYLE_033,1651,Imprescindible,Riesling seco VDP,Germany,Mosel / Rheingau / Pfalz / Rheinhessen,VDP / trocken,Riesling,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_012; SAT_WINE_013; SAT_WINE_014; SAT_WINE_015,"Hay Rieslings regionales, pero no perfil VDP/trocken dedicado."
+WSET_STYLE_034,1653,Opcional,Riesling Auslese o Beerenauslese botrytizado,Germany,Germany,Auslese / Beerenauslese,Riesling,dulce,CUBIERTO,SAT_WINE_018; SAT_WINE_019,Auslese y BA tienen perfiles.
+WSET_STYLE_035,1654,Opcional,Eiswein,Germany,Germany,Eiswein,Riesling,dulce,CUBIERTO,SAT_WINE_021,Perfil Eiswein cubre el estilo.
+WSET_STYLE_036,1658,Imprescindible,Grüner Veltliner austríaco,Austria,Niederösterreich,Wachau / Weinviertel / Kamptal / Kremstal,Grüner Veltliner,blanco,DUPLICADO / SOLAPADO,SAT_WINE_022; SAT_WINE_024; SAT_WINE_025; SAT_WINE_026,Un estilo WSET está cubierto por cuatro perfiles regionales; útil pedagógicamente pero solapado.
+WSET_STYLE_037,1714,Imprescindible,Tokaji Aszú,Hungary,Tokaj,Tokaj,Furmint / Hárslevelű / Sárga Muskotály,dulce,FALTANTE,,Hungría/Tokaj no está representado.
+WSET_STYLE_038,1738,Opcional,Naoussa o Nemea,Greece,Naoussa / Nemea,Naoussa PDO / Nemea PDO,Xinomavro / Agiorgitiko,tinto,FALTANTE,,El catálogo solo cubre Santorini blanco; no hay tintos griegos.
+WSET_STYLE_039,1740,Imprescindible,Barolo o Barbaresco,Italy,Piemonte,Barolo / Barbaresco,Nebbiolo,tinto,DUPLICADO / SOLAPADO,SAT_WINE_060; SAT_WINE_061,La alternativa WSET está cubierta por dos perfiles separados.
+WSET_STYLE_040,1741,Imprescindible,Valpolicella o Valpolicella Classico,Italy,Veneto,Valpolicella / Classico,Corvina blend,tinto,CUBIERTO,SAT_WINE_058,Perfil Valpolicella cubre el estilo.
+WSET_STYLE_041,1742,Imprescindible,Amarone della Valpolicella,Italy,Veneto,Amarone della Valpolicella DOCG,Corvina blend,tinto,CUBIERTO,SAT_WINE_059,Perfil Amarone cubre el estilo.
+WSET_STYLE_042,1743,Imprescindible,Chianti,Italy,Tuscany,Chianti DOCG,Sangiovese,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_063,"Chianti Classico cubre el núcleo, pero no Chianti genérico."
+WSET_STYLE_043,1744,Imprescindible,Chianti Classico Riserva o Brunello di Montalcino,Italy,Tuscany,Chianti Classico / Brunello di Montalcino,Sangiovese,tinto,DUPLICADO / SOLAPADO,SAT_WINE_063; SAT_WINE_064,"La alternativa WSET está cubierta por dos perfiles, aunque Chianti Classico no especifica Riserva."
+WSET_STYLE_044,1745,Imprescindible,Tinto del sur de Italia (p. ej. Taurasi),Italy,Southern Italy,Taurasi / Puglia / Basilicata / Sicily,Aglianico / Negroamaro / Primitivo / Nero d’Avola,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_065,"Taurasi cubre un ejemplo, pero no Puglia/Basilicata/Sicilia."
+WSET_STYLE_045,1747,Opcional,Pinot Grigio del Veneto,Italy,Veneto,Pinot Grigio delle Venezie / Veneto,Pinot Grigio,blanco,FALTANTE,,No hay perfil Pinot Grigio del Veneto.
+WSET_STYLE_046,1749,Opcional,"Pinot Grigio Alto Adige, Trentino o Friuli",Italy,North-East Italy,Alto Adige / Trentino / Friuli,Pinot Grigio,blanco,DUPLICADO / SOLAPADO,SAT_WINE_028; SAT_WINE_029; SAT_WINE_030,La alternativa WSET está cubierta por tres perfiles.
+WSET_STYLE_047,1750,Opcional,Soave o Soave Classico,Italy,Veneto,Soave / Soave Classico,Garganega,blanco,CUBIERTO,SAT_WINE_031,Perfil Soave Classico cubre el estilo.
+WSET_STYLE_048,1752,Imprescindible,Rioja Reserva o Gran Reserva,Spain,Rioja,Rioja DOCa,Tempranillo blend,tinto,CUBIERTO,SAT_WINE_066,Perfil Rioja Reserva cubre el estilo.
+WSET_STYLE_049,1753,Imprescindible,Ribera del Duero,Spain,Ribera del Duero,Ribera del Duero DO,Tempranillo,tinto,CUBIERTO,SAT_WINE_067,Perfil Ribera del Duero cubre el estilo.
+WSET_STYLE_050,1754,Imprescindible,Priorat,Spain,Priorat,Priorat DOCa,Garnacha / Cariñena,tinto,CUBIERTO,SAT_WINE_068,Perfil Priorat cubre el estilo.
+WSET_STYLE_051,1756,Imprescindible,Rías Baixas o Rueda,Spain,Rías Baixas / Rueda,Rías Baixas DO / Rueda DO,Albariño / Verdejo,blanco,DUPLICADO / SOLAPADO,SAT_WINE_038; SAT_WINE_039,La alternativa WSET está cubierta por dos perfiles.
+WSET_STYLE_052,1758,Opcional,Monastrell (p. ej. Jumilla),Spain,Levante,Jumilla / Yecla,Monastrell,tinto,FALTANTE,,No hay perfil Monastrell/Jumilla.
+WSET_STYLE_053,1760,Opcional,"Douro, Dão o Alentejo tinto",Portugal,Douro / Dão / Alentejo,Douro DOC / Dão DOC / Alentejo,Touriga Nacional / Tinta Roriz / blends,tinto,PARCIALMENTE CUBIERTO,SAT_WINE_069; SAT_WINE_070,Douro y Dão cubiertos; Alentejo no.
+WSET_STYLE_054,1762-1763,Imprescindible,California Cabernet Sauvignon o Merlot premium,USA,California,Napa / Sonoma,Cabernet Sauvignon / Merlot,tinto,FALTANTE,,No hay perfiles tintos de California.
+WSET_STYLE_055,1764,Imprescindible,California Zinfandel,USA,California,Dry Creek Valley / Lodi,Zinfandel,tinto,FALTANTE,,No hay perfil Zinfandel.
+WSET_STYLE_056,1766-1767,Imprescindible,California Chardonnay premium,USA,California,Sonoma / Santa Barbara / coastal AVAs,Chardonnay,blanco,CUBIERTO,SAT_WINE_044; SAT_WINE_045,California/Sonoma Chardonnay cubren el estilo.
+WSET_STYLE_057,1769,Opcional,Willamette Valley Pinot Noir,USA,Oregon,Willamette Valley,Pinot Noir,tinto,FALTANTE,,No hay perfil Oregon Pinot Noir.
+WSET_STYLE_058,1770-1771,Opcional,California Pinot Noir premium,USA,California,Sonoma / Santa Barbara,Pinot Noir,tinto,FALTANTE,,No hay perfil California Pinot Noir.
+WSET_STYLE_059,1775,Opcional,White Zinfandel,USA,California,California,Zinfandel,rosado,FALTANTE,,No hay perfiles rosados ni White Zinfandel.
+WSET_STYLE_060,1779,Opcional,Icewine,Canada,Ontario / British Columbia,Niagara Peninsula / Okanagan Valley,Vidal / Riesling,dulce,FALTANTE,,Canadá no está representado.
+WSET_STYLE_061,1799,Imprescindible,Chile Carmenère premium,Chile,Cachapoal / Colchagua,Cachapoal / Colchagua,Carmenère,tinto,FALTANTE,,No hay perfil Carmenère.
+WSET_STYLE_062,1801,Imprescindible,Chile tinto económico de volumen,Chile,Central Valley,Central Valley,Cabernet Sauvignon / Merlot / Carmenère / Syrah,tinto,FALTANTE,,No hay perfil de tinto chileno de volumen.
+WSET_STYLE_063,1802-1803,Opcional,Chile Cabernet Sauvignon premium,Chile,Maipo / Cachapoal / Colchagua,Maipo / Cachapoal / Colchagua,Cabernet Sauvignon,tinto,FALTANTE,,No hay perfil Chile Cabernet Sauvignon.
+WSET_STYLE_064,1805,Opcional,Chile Chardonnay o Sauvignon Blanc,Chile,Casablanca / San Antonio,Casablanca / San Antonio,Chardonnay / Sauvignon Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_046,Sauvignon Blanc costero cubierto; Chardonnay chileno falta.
+WSET_STYLE_065,1807,Imprescindible,Argentina Malbec de precio medio,Argentina,Mendoza,Mendoza,Malbec,tinto,FALTANTE,,No hay perfil Malbec argentino.
+WSET_STYLE_066,1809,Imprescindible,Argentina Torrontés premium,Argentina,Salta,Cafayate,Torrontés,blanco,CUBIERTO,SAT_WINE_047,Perfil Salta Torrontes cubre el estilo.
+WSET_STYLE_067,1811,Opcional,Argentina Cabernet Sauvignon o mezcla premium,Argentina,Mendoza,Mendoza / Uco / Luján de Cuyo,Cabernet Sauvignon / Bordeaux blend,tinto,FALTANTE,,No hay perfil de Cabernet/mezcla argentina.
+WSET_STYLE_068,1812,Opcional,Argentina Malbec premium,Argentina,Uco / Luján de Cuyo,Valle de Uco / Luján de Cuyo,Malbec,tinto,FALTANTE,,No hay perfil Malbec premium.
+WSET_STYLE_069,1814,Imprescindible,South Africa Pinotage premium,South Africa,Western Cape,Stellenbosch / Paarl / Swartland,Pinotage,tinto,FALTANTE,,No hay perfil Pinotage.
+WSET_STYLE_070,1816,Imprescindible,South Africa Chenin Blanc con roble premium,South Africa,Western Cape,Swartland,Chenin Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_048,Perfil Chenin Blanc sudafricano amplio; no específicamente con roble premium.
+WSET_STYLE_071,1818,Opcional,South Africa Cabernet Sauvignon premium,South Africa,Western Cape,Stellenbosch,Cabernet Sauvignon,tinto,FALTANTE,,No hay perfil Cabernet Sauvignon sudafricano.
+WSET_STYLE_072,1822,Opcional,Marca económica tinto/blanco de volumen,South Africa,Western Cape,Western Cape,varias,blanco/tinto,FALTANTE,,No hay arquetipo de marca económica de volumen.
+WSET_STYLE_073,1845,Imprescindible,Australia Shiraz premium,Australia,South Australia,Barossa / McLaren Vale,Shiraz,tinto,FALTANTE,,No hay perfil Shiraz australiano.
+WSET_STYLE_074,1846-1847,Imprescindible,Australia Cabernet Sauvignon o mezcla Cabernet premium,Australia,Coonawarra / Margaret River,Coonawarra / Margaret River,Cabernet Sauvignon / blend,tinto,FALTANTE,,No hay perfil Cabernet australiano.
+WSET_STYLE_075,1848,Imprescindible,Australia Grenache o mezcla Grenache premium,Australia,McLaren Vale,McLaren Vale,Grenache,tinto,FALTANTE,,No hay perfil Grenache australiano.
+WSET_STYLE_076,1850,Imprescindible,Eden Valley o Clare Valley Riesling,Australia,Eden Valley / Clare Valley,Eden Valley / Clare Valley,Riesling,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_050,Clare Valley cubierto; Eden Valley falta.
+WSET_STYLE_077,1851,Imprescindible,Hunter Valley Semillon,Australia,Hunter Valley,Hunter Valley GI,Semillon,blanco,CUBIERTO,SAT_WINE_049,Perfil Hunter Valley Semillon cubre el estilo.
+WSET_STYLE_078,1852-1853,Imprescindible,Australia Chardonnay premium,Australia,Yarra / Mornington / Tasmania,Yarra Valley / Mornington Peninsula / Tasmania,Chardonnay,blanco,FALTANTE,,No hay perfil Chardonnay australiano premium.
+WSET_STYLE_079,1855,Opcional,Australia Shiraz de otro estilo o nivel,Australia,Australia,Barossa / McLaren Vale / otros,Shiraz,tinto,FALTANTE,,No hay perfil Shiraz base.
+WSET_STYLE_080,1856-1857,Opcional,Australia Pinot Noir premium,Australia,Yarra / Mornington / Tasmania,Yarra Valley / Mornington Peninsula / Tasmania,Pinot Noir,tinto,FALTANTE,,No hay perfil Pinot Noir australiano.
+WSET_STYLE_081,1872,Imprescindible,New Zealand Pinot Noir,New Zealand,Central Otago / Martinborough / Marlborough,regional GI,Pinot Noir,tinto,FALTANTE,,No hay perfil Pinot Noir neozelandés.
+WSET_STYLE_082,1874,Imprescindible,New Zealand Sauvignon Blanc premium,New Zealand,Marlborough,Marlborough GI,Sauvignon Blanc,blanco,CUBIERTO,SAT_WINE_051,Perfil Marlborough Sauvignon Blanc cubre el estilo.
+WSET_STYLE_083,1876-1877,Opcional,Hawke’s Bay tinto estilo Burdeos o Syrah,New Zealand,Hawke’s Bay,Hawke’s Bay GI,Bordeaux blend / Syrah,tinto,FALTANTE,,No hay perfil Hawke’s Bay tinto.
+WSET_STYLE_084,1879,Opcional,New Zealand Chardonnay premium,New Zealand,Marlborough / Gisborne,Marlborough / Gisborne,Chardonnay,blanco,FALTANTE,,No hay perfil Chardonnay neozelandés.
+WSET_STYLE_085,1880,Opcional,New Zealand Sauvignon Blanc con roble,New Zealand,Marlborough,Marlborough GI,Sauvignon Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_051,"Variedad/región cubierta, pero no estilo con roble."
+WSET_STYLE_086,1887,Opcional,Vino naranja de cualquier país/región,Any,Any,Any,varias,fuera_de_alcance,FUERA DE ALCANCE,,Categoría no solicitada por CWP-AUDIT-01; documentada como fuera de alcance.
+WSET_STYLE_087,1909,Imprescindible,Champagne non-vintage,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,FALTANTE,,No hay perfiles espumosos.
+WSET_STYLE_088,1911,Opcional,Champagne vintage o prestige cuvée,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,FALTANTE,,No hay perfiles espumosos.
+WSET_STYLE_089,1913,Opcional,Crémant,France,Alsace / Burgundy / Loire,Crémant d’Alsace / Bourgogne / Loire,varias,espumoso,FALTANTE,,No hay perfiles espumosos.
+WSET_STYLE_090,1915,Imprescindible,Asti,Italy,Piemonte,Asti DOCG,Muscat Blanc à Petits Grains,espumoso/dulce,FALTANTE,,No hay perfiles espumosos dulces.
+WSET_STYLE_091,1915,Imprescindible,Prosecco,Italy,Veneto / Friuli,Prosecco / Conegliano-Valdobbiadene,Glera,espumoso,FALTANTE,,No hay perfiles espumosos.
+WSET_STYLE_092,1917,Imprescindible,Cava,Spain,Catalonia / Spain,Cava DO,Macabeo / Xarel-lo / Parellada,espumoso,FALTANTE,,No hay perfiles espumosos.
+WSET_STYLE_093,1922-1923,Imprescindible,Espumoso método tradicional de Australia/NZ/Sudáfrica/EE. UU.,Australia / New Zealand / South Africa / USA,Tasmania / Marlborough / Cap Classique / California,regional,Chardonnay / Pinot Noir,espumoso,FALTANTE,,No hay perfiles espumosos.
+WSET_STYLE_094,1939,Imprescindible,Fino o Manzanilla,Spain,Jerez,Jerez-Xérès-Sherry / Manzanilla-Sanlúcar,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
+WSET_STYLE_095,1940,Imprescindible,Amontillado seco u Oloroso seco,Spain,Jerez,Jerez-Xérès-Sherry,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
+WSET_STYLE_096,1942,Opcional,Jerez Medium o Cream,Spain,Jerez,Jerez-Xérès-Sherry,Palomino + PX/Moscatel,fortificado/dulce,FALTANTE,,No hay perfiles generosos/Jerez dulce.
+WSET_STYLE_097,1944,Imprescindible,Oporto LBV u Oporto Vintage,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,FALTANTE,,No hay perfiles Oporto.
+WSET_STYLE_098,1945,Imprescindible,Porto Tawny con indicación de edad,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,FALTANTE,,No hay perfiles Oporto Tawny.
+WSET_STYLE_099,1950,Opcional,Muscat de Beaumes-de-Venise,France,Southern Rhône,Muscat de Beaumes-de-Venise,Muscat,fortificado/dulce,FALTANTE,,No hay perfiles moscateles encabezados.
+WSET_STYLE_100,1951,Opcional,Rutherglen Muscat,Australia,Rutherglen,Rutherglen,Muscat,fortificado/dulce,FALTANTE,,No hay perfiles moscateles encabezados.
