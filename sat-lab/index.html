@@ -462,7 +462,7 @@
       wset_level:WSET_LEVEL, practice_number:practiceNumberOf(S.wine),
       objective:blindObjective(), motivational:blindMotivational(null),
       importance:null, priority:null, difficulty:null, difficulty_score:null };
-    if($('wine-label')) $('wine-label').textContent = id.display_label || S.wine.display_label || 'Vino';
+    if($('wine-label')) $('wine-label').textContent = S.wine.display_label || id.display_label || 'Vino';
     var b='';
     if(id.wine_type) b+='<span class="sat-hb type">'+id.wine_type+'</span>';
     if(id.practice_number) b+='<span class="sat-hb">Práctica '+id.practice_number+'</span>';
@@ -567,7 +567,7 @@
     var _dp=$('debrief-panel'); if(_dp){ _dp.style.display='none'; _dp.innerHTML=''; }
     var _cp=$('compare-panel'); if(_cp){ _cp.style.display='none'; _cp.innerHTML=''; }
     if (window.SATWineGlass && $('glass-mount-summary')) { var sg=SATWineGlass.mount($('glass-mount-summary')); sg.update(glassState(false)); }
-    $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(S.wine.display_label||'tu vino')+'.';
+    $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT.';
     $('phases-box').innerHTML = PHASES.map(function(p){
       return '<div class="ph-done">✓ '+PHASE_NAME[p.id]+'</div>';
     }).join('');
@@ -578,11 +578,10 @@
       '<span class="pill warn">Advertencias: '+tally.ADVERTENCIA+'</span>'+
       '<span class="pill block">Bloqueantes: '+tally.BLOQUEANTE+'</span>';
     // Informe pedagógico: hero + fortalezas/áreas (solo señales del mentor, nunca la respuesta).
-    if($('report-title')) $('report-title').textContent = S.wine.display_label || 'Tu cata';
+    if($('report-title')) $('report-title').textContent = 'Tu cata';
     if($('report-badges')){
       var wt2=S.wine.wine_type, rb='';
       if(wt2) rb+='<span class="sat-hb type">'+wt2+'</span>';
-      var pn=practiceNumberOf(S.wine); if(pn) rb+='<span class="sat-hb">Práctica '+pn+'</span>';
       rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
       $('report-badges').innerHTML=rb;
     }
@@ -615,6 +614,7 @@
     });
     $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
     loadRecommend();
+    loadRevealHeader();
   }
 
   // ============================================================================
@@ -623,8 +623,38 @@
   // No se expone canonical completo, expected raw, source refs, scoring ni pass/fail.
   // ============================================================================
   var POST = { debrief:null, comparison:null, recommend:null };
+  // ===== SAT-FINISH-01A: capa de presentación en español (NO altera contratos) =====
+  var COUNTRY_ES={France:'Francia',Germany:'Alemania',Italy:'Italia',Spain:'España',Portugal:'Portugal',Greece:'Grecia',Austria:'Austria',USA:'Estados Unidos','United States':'Estados Unidos','New Zealand':'Nueva Zelanda','South Africa':'Sudáfrica',Argentina:'Argentina',Chile:'Chile',Australia:'Australia'};
+  function countryEs(c){ return (c&&COUNTRY_ES[c])||c||''; }
+  var PRIORITY_ES={high:'alta',medium:'media',low:'baja'};
+  function prioEs(p){ return (p&&PRIORITY_ES[String(p).toLowerCase()])||p; }
+  // Traductor pragmático de patrones frecuentes WSET (solo presentación de lo renderizado).
+  var ES_PAIRS=[
+    ['medium to pronounced','media a pronunciada'],['pale to medium lemon','limón pálido a medio'],['medium to full','media a alta'],
+    ['medium-minus','media (−)'],['medium minus','media (−)'],['medium-plus','media (+)'],['medium plus','media (+)'],
+    ['bone dry','completamente seco'],['off-dry','semiseco'],['off dry','semiseco'],['residual sugar','azúcar residual'],
+    ['stone fruit','fruta de hueso'],['green fruit','fruta verde'],['red fruit','fruta roja'],['black fruit','fruta negra'],['dried fruit','fruta seca'],['tree fruit','fruta de árbol'],['stewed fruit','fruta cocida'],['stone or steely','mineral o acerado'],
+    ['very good','muy bueno'],['high quality','alta calidad'],['ageing potential','potencial de guarda'],['bottle ageing','guarda en botella'],['bottle age','guarda en botella'],['bottle evolution','evolución en botella'],['capable of','capaz de'],['drink now','beber ahora'],['not applicable','no aplica'],
+    ['in the best examples','en los mejores ejemplos'],['in best examples','en los mejores ejemplos'],['best examples','mejores ejemplos'],
+    ['medium','media'],['high','alta'],['low','baja'],['pronounced','pronunciada'],['light','ligera'],['full','pronunciada'],['pale','pálido'],['deep','profundo'],['dry','seco'],['sweet','dulce'],
+    ['acidity','acidez'],['tannins','taninos'],['tannin','tanino'],['body','cuerpo'],['intensity','intensidad'],['finish','final'],['flavours','sabores'],['flavour','sabor'],['flavors','sabores'],['flavor','sabor'],['palate','paladar'],
+    ['citrus','cítricos'],['lemon','limón'],['lime','lima'],['grapefruit','pomelo'],['apple','manzana'],['pear','pera'],['peach','melocotón'],['apricot','albaricoque'],['cherry','cereza'],['plum','ciruela'],['honey','miel'],['blossom','flor'],['spice','especias'],['spicy','especiado'],['pepper','pimienta'],['oak','roble'],['toast','tostado'],['vanilla','vainilla'],['tobacco','tabaco'],['leather','cuero'],['herbaceous','herbáceo'],['savoury','sabroso'],['earthy','terroso'],['stony','mineral'],['steely','acerado'],
+    ['ripe','maduro'],['fresh','fresco'],['young','joven'],['firm','firme'],['concentrated','concentrado'],['concentration','concentración'],['balance','equilibrio'],['length','longitud'],['complexity','complejidad'],['quality','calidad'],['character','carácter'],
+    ['outstanding','excelente'],['good','bueno'],['acceptable','aceptable'],['poor','pobre'],
+    ['ageing','guarda'],['evolve','evolucionar'],['evolution','evolución'],
+    ['ruby','rubí'],['garnet','granate'],['purple','púrpura'],['amber','ámbar'],['golden','dorado'],['gold','dorado'],['green','verde'],['red','roja'],['white','blanco'],
+    ['fruit','fruta'],['styles','estilos'],['style','estilo'],['examples','ejemplos'],
+    [' to ',' a '],[' and ',' y '],[' or ',' o '],[' with ',' con '],[' very ',' muy '],[' not ',' no '],[' for ',' para '],[' than ',' que '],[' more ',' más '],[' less ',' menos '],[' can ',' puede '],[' possible',' posible'],[' shown by',' mostrada por']
+  ];
+  var ES_DICT=ES_PAIRS.map(function(p){
+    var en=p[0], esc=en.replace(/[-/\\^$*+?.()|[\]{}]/g,'\\$&');
+    var rx=(/^\s|\s$/.test(en))? new RegExp(esc,'gi') : new RegExp('\\b'+esc+'\\b','gi');
+    return [rx,p[1]];
+  });
+  function presentEs(t){ if(t==null) return t; var s=String(t); for(var i=0;i<ES_DICT.length;i++) s=s.replace(ES_DICT[i][0],ES_DICT[i][1]); return s; }
+
   function escP(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-  function ppList(arr){ if(!arr||!arr.length) return ''; return arr.map(function(x){ return '<div class="pp-li">'+escP(x)+'</div>'; }).join(''); }
+  function ppList(arr){ if(!arr||!arr.length) return ''; return arr.map(function(x){ return '<div class="pp-li">'+escP(presentEs(x))+'</div>'; }).join(''); }
   function uniqP(a){ var seen={},o=[]; (a||[]).forEach(function(x){ if(x&&!seen[x]){ seen[x]=1; o.push(x); } }); return o; }
   function fetchPost(file, key){
     if(!S.finished) return Promise.reject(new Error('Contrato post-cata bloqueado antes de finalizar.'));
@@ -645,10 +675,10 @@
   function renderDebrief(d){
     var si=d.safe_identity||{}, dna=d.pedagogical_dna||{}, tn=d.teaching_notes||{}, ce=d.comparison_engine||{};
     function chip(v,cls){ return v?('<span class="sat-hb '+(cls||'')+'">'+escP(v)+'</span>'):''; }
-    var rev=chip(si.wine_family)+chip(si.country)+chip(si.region);
+    var rev=chip(si.wine_family)+chip(countryEs(si.country))+chip(si.region);
     if(si.appellation) rev+=chip(si.appellation);
     (si.grape_varieties||[]).forEach(function(g){ rev+=chip(g,'type'); });
-    var why=(si.wset_importance==='CORE'?'Estilo núcleo del examen WSET. ':'')+(tn.revision_priority?('Prioridad de repaso: '+escP(tn.revision_priority)+'. '):'')+(si.wine_style?escP(si.wine_style):'');
+    var why=(si.wset_importance==='CORE'?'Estilo núcleo del examen WSET. ':'')+(tn.revision_priority?('Prioridad de repaso: '+escP(prioEs(tn.revision_priority))+'. '):'')+(si.wine_style?escP(presentEs(si.wine_style)):'');
     var traps=uniqP([].concat(dna.typical_misconceptions||[], d.exam_traps||[], tn.student_traps||[]));
     var sim=uniqP([].concat(dna.comparison_styles||[]));
     var h='<h3 style="margin:0 0 4px;font-size:17px">Debrief — '+escP(si.display_name||'Vino')+'</h3>';
@@ -719,13 +749,13 @@
     var bands=(c.descriptor_bands&&c.descriptor_bands.palate)||{};
     var tn=c.teaching_notes||{}, av=c.acceptable_variations||{};
     var h='<h3 style="margin:0 0 4px;font-size:17px">Comparación con el modelo</h3>';
-    if(tn.comparison_prompt) h+='<p class="cmp-intro">'+escP(tn.comparison_prompt)+'</p>';
+    if(tn.comparison_prompt) h+='<p class="cmp-intro">'+escP(presentEs(tn.comparison_prompt))+'</p>';
     var order=['dulzor','acidez','tanino','alcohol','cuerpo'];
     var rows='';
     order.forEach(function(dn){
       var a=S.answers[dn]; if(!a) return;
       var band=bands[CMP_BAND_ATTR[dn]];
-      var bandTxt = (band==null)?'—':(band==='not_applicable'?'No aplica':String(band));
+      var bandTxt = (band==null)?'—':(band==='not_applicable'?'No aplica':presentEs(String(band)));
       var tone = (band==='not_applicable')? {t:'No aplica',cls:'na'} : cmpTone(dn, a.value, String(band));
       var toneHtml = tone? '<span class="tone '+tone.cls+'">'+tone.t+'</span>' : '<span class="tone na">Referencia</span>';
       rows+='<div class="cmp-row"><span><b>'+escP(DEC_TITLE[dn])+'</b><br><span class="lab">Tú: '+escP(a.label)+'</span></span>'
@@ -748,12 +778,31 @@
       var r=j[S.wine.id]; if(!r||!r.recommended_next||!r.recommended_next.length){ box.innerHTML=''; return; }
       var nextId=r.recommended_next[0];
       var h='<div class="pp-sec" style="margin:6px 0 0"><h4>Siguiente práctica recomendada</h4>';
-      if(r.reason) h+='<div class="pp-li" style="padding-left:0">'+escP(r.reason)+'</div>';
+      if(r.reason) h+='<div class="pp-li" style="padding-left:0">'+escP(presentEs(r.reason))+'</div>';
       h+='<button class="btn" id="btn-start-rec" data-id="'+escP(nextId)+'" style="margin-top:10px">Iniciar práctica recomendada</button></div>';
       box.innerHTML=h;
       var b=$('btn-start-rec'); if(b) b.addEventListener('click', function(){ startRecommended(b.getAttribute('data-id')); });
     }).catch(function(){ box.innerHTML=''; });
   }
+  // Revela la identidad real SOLO tras finalizar, desde post_tasting_debrief.json.
+  function loadRevealHeader(){
+    fetchPost('post_tasting_debrief.json','debrief').then(function(j){
+      var d=j[S.wine.id], si=d&&d.safe_identity; if(!si) return;
+      if($('report-title')) $('report-title').textContent = si.display_name || 'Tu cata';
+      if($('summary-msg')) $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(si.display_name||'tu vino')+'.';
+      if($('report-badges')){
+        var rb='';
+        if(si.wine_type) rb+='<span class="sat-hb type">'+escP(si.wine_type)+'</span>';
+        if(si.country) rb+='<span class="sat-hb">'+escP(countryEs(si.country))+'</span>';
+        if(si.region) rb+='<span class="sat-hb">'+escP(si.region)+'</span>';
+        if(si.appellation && si.appellation!==si.region) rb+='<span class="sat-hb">'+escP(si.appellation)+'</span>';
+        (si.grape_varieties||[]).forEach(function(g){ rb+='<span class="sat-hb type">'+escP(g)+'</span>'; });
+        rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
+        $('report-badges').innerHTML=rb;
+      }
+    }).catch(function(){});
+  }
+
   function startRecommended(id){
     var b=$('btn-start-rec'); if(b){ b.disabled=true; b.textContent='Cargando…'; }
     requireAuth().then(function(token){
