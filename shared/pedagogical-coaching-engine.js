@@ -75,7 +75,7 @@
       }
     }
 
-    return problems.length > 0 ? problems[0] : 'General practice needed';
+    return problems.length > 0 ? problems[0] : 'Se recomienda práctica general';
   }
 
   /**
@@ -112,7 +112,7 @@
       return 'Targeted drill on the persistent weakness topic';
     }
 
-    return 'Systematic practice to strengthen weak areas';
+    return 'Práctica sistemática para reforzar áreas débiles';
   }
 
   /**
@@ -131,7 +131,7 @@
       return 'Adaptive Session (targeted topic drill)';
     }
 
-    return 'Any practice experience appropriate to weakness';
+    return 'Cualquier experiencia de práctica adecuada a la debilidad detectada';
   }
 
   /**
@@ -150,7 +150,7 @@
       return 'The topic appears in weak list for 0 of next 3 sessions';
     }
 
-    return 'Improvement in success rate over next 5 attempts';
+    return 'Mejora en la tasa de acierto durante los próximos 5 intentos';
   }
 
   /**

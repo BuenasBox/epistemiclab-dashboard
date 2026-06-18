@@ -194,14 +194,14 @@
     if (readiness) {
       if (readiness.sba_readiness !== undefined) {
         html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
-          '<span>SBA Readiness:</span>' +
+          '<span>Preparación SBA:</span>' +
           '<span style="color:' + (readiness.sba_readiness > 0.6 ? '#2ec27e' : '#f6b73c') + '">' +
           (readiness.sba_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';
       }
       if (readiness.sat_observation_readiness !== undefined) {
         html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
-          '<span>SAT Observation Readiness:</span>' +
+          '<span>Preparación en observación SAT:</span>' +
           '<span style="color:' + (readiness.sat_observation_readiness > 0.5 ? '#2ec27e' : '#f6b73c') + '">' +
           (readiness.sat_observation_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';
@@ -219,6 +219,39 @@
     return html;
   }
 
+  function recommendationUrlFor(rec) {
+    var target = rec && rec.target ? String(rec.target) : '';
+    var type = rec && rec.type ? String(rec.type) : '';
+
+    if (target.indexOf('sat') !== -1 || type.indexOf('sat') !== -1) {
+      return '/sat-lab/';
+    }
+    if (target.indexOf('express') !== -1 || target.indexOf('diagnostic') !== -1 || type.indexOf('diagnostic') !== -1) {
+      return '/diagnostic-sba/';
+    }
+    if (target.indexOf('full') !== -1 || type.indexOf('comprehensive') !== -1) {
+      return '/full-simulation/';
+    }
+    if (target.indexOf('practice_') === 0 || target.indexOf('clarify_') === 0 || target.indexOf('deepen_') === 0) {
+      return '/adaptive-session/';
+    }
+
+    return '';
+  }
+
+  function renderRecommendationAction(rec, label, secondary) {
+    var url = recommendationUrlFor(rec);
+    var baseStyle = secondary
+      ? 'flex:1;padding:10px;background:transparent;color:#22d3ee;border:1px solid #22d3ee;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer;text-align:center;text-decoration:none'
+      : 'flex:1;padding:10px;background:#22d3ee;color:#0f1115;border:none;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer;text-align:center;text-decoration:none';
+
+    if (url) {
+      return '<a href="' + url + '" style="' + baseStyle + '">' + label + '</a>';
+    }
+
+    return '<button type="button" disabled aria-disabled="true" style="' + baseStyle + ';opacity:.68;cursor:not-allowed">' + label + '</button>';
+  }
+
   /**
    * Recommended next action card
    */
@@ -228,19 +261,21 @@
     }
 
     var rec = recommendation.primary;
+    var secondary = recommendation.secondary;
     var confidence = Math.round((recommendation.confidence || 0.5) * 100);
+    var hasPrimaryUrl = !!recommendationUrlFor(rec);
+    var hasSecondaryUrl = !!recommendationUrlFor(secondary);
 
     var html = '<div style="background:linear-gradient(135deg, rgba(34, 211, 238, .1), rgba(45, 223, 145, .05));border:1px solid rgba(34, 211, 238, .25);border-radius:8px;padding:14px;margin-bottom:16px">' +
       '<h2 style="font-size:13px;font-weight:700;color:#22d3ee;margin:0 0 10px">🎯 Próximo Paso Recomendado</h2>' +
       '<div style="font-size:12px;color:#f5f7fa;line-height:1.5;margin-bottom:10px">' + rec.reason + '</div>' +
       '<div style="display:flex;gap:12px;margin-bottom:8px">' +
-      '<button onclick="alert(\'Iniciando ' + rec.target + '\')" style="flex:1;padding:10px;background:#22d3ee;color:#0f1115;border:none;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer">' +
-      'Comenzar Ahora' +
-      '</button>' +
-      '<button onclick="alert(\'Ver opción secundaria\')" style="flex:1;padding:10px;background:transparent;color:#22d3ee;border:1px solid #22d3ee;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer">' +
-      'Alternativa' +
-      '</button>' +
+      renderRecommendationAction(rec, 'Comenzar ahora', false) +
+      renderRecommendationAction(secondary, 'Alternativa', true) +
       '</div>' +
+      (!hasPrimaryUrl || !hasSecondaryUrl
+        ? '<div role="status" style="font-size:11px;color:#aab4bd;margin:0 0 8px">Práctica recomendada preparada. Selecciona una experiencia disponible para continuar.</div>'
+        : '') +
       '<div style="font-size:10px;color:#525e6e">Confianza: ' + confidence + '%</div>' +
       '</div>';
 

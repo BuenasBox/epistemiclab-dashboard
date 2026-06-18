@@ -31,9 +31,9 @@
   function buildAdaptiveRecommendation(weaknessProfiles, misconceptions, learningEvents, learningVelocity) {
     if (!weaknessProfiles || weaknessProfiles.length === 0) {
       return {
-        primary: { type: 'start_curriculum', target: 'foundational_sat', reason: 'Begin with SAT appearance fundamentals' },
-        secondary: { type: 'diagnostic_sba', target: 'express_10', reason: 'Diagnostic assessment for baseline' },
-        longTerm: { type: 'comprehensive_review', target: 'full_wset_l3', reason: 'Build complete WSET L3 knowledge' },
+        primary: { type: 'start_curriculum', target: 'foundational_sat', reason: 'Empieza por los fundamentos del aspecto en SAT' },
+        secondary: { type: 'diagnostic_sba', target: 'express_10', reason: 'Diagnóstico inicial para establecer tu punto de partida' },
+        longTerm: { type: 'comprehensive_review', target: 'full_wset_l3', reason: 'Construye una base completa de WSET Nivel 3' },
         confidence: 0.3,
         governance: { formative_only: true }
       };

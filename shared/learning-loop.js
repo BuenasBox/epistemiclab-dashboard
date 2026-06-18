@@ -95,7 +95,7 @@
       '<div>' +
       '<div style="color:#d5a84f;font-weight:600;font-size:13px">' + rec.label + '</div>' +
       '<div style="color:#aab4bd;font-size:12px;margin:6px 0">' + rec.reason + '</div>' +
-      '<a href="' + rec.url + '" style="display:inline-block;margin-top:8px;color:#65b7c7;text-decoration:none;font-weight:600;font-size:12px;padding:6px 12px;background:#0d2a30;border-radius:4px;border:1px solid #2a5a63">Start →</a>' +
+      '<a href="' + rec.url + '" style="display:inline-block;margin-top:8px;color:#65b7c7;text-decoration:none;font-weight:600;font-size:12px;padding:6px 12px;background:#0d2a30;border-radius:4px;border:1px solid #2a5a63">Empezar →</a>' +
       '</div></div></div>' +
       '<div style="color:#525e6e;font-size:10px">Tu camino personalizado basado en tu historial de aprendizaje.</div>' +
       '</div>';

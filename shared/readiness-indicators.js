@@ -167,7 +167,7 @@
     }
 
     if (!signals.length) {
-      signals.push('Consistent engagement (continue practicing)');
+      signals.push('Participación constante: continúa practicando');
     }
 
     return signals;
