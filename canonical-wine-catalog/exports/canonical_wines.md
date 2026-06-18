@@ -3,7 +3,7 @@
 Source: D:\Descargas\Phone Link\WSET3_rebuilt.md
 Source SHA256: 91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25
 
-Profiles: 57
+Profiles: 65
 
 ## SAT_WINE_001 - Chablis
 - **canonical_id:** SAT_WINE_001
@@ -3196,4 +3196,452 @@ Profiles: 57
 - **section:** Châteauneuf-du-Pape / Grenache blends
 - **page_reference:** 102-103
 - **line_reference:** ["9896-9960","10018-10042"]
+
+## SAT_WINE_058 - Valpolicella
+- **canonical_id:** SAT_WINE_058
+- **wine_family:** Tintos Italia
+- **wine_name:** Valpolicella
+- **wine_style:** Fresh high-acid Corvina-based Veneto red
+- **display_name:** Valpolicella
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Veneto
+- **subregion:** Valpolicella
+- **appellation:** Valpolicella DOC / Valpolicella Classico DOC
+- **grape_varieties:** ["Corvina"]
+- **climate:** warm Veneto climate with foothill and plain contrasts
+- **altitude:** foothills north-west of Verona and flatter southern sites
+- **soil:** limestone, clay and volcanic foothills; gravel and sand in warmer flatter south
+- **viticulture:** ["Corvina is the main grape","foothill fruit has more acidity","plain fruit is fruitier with less acidity"]
+- **winemaking:** ["simple fruity red winemaking","rarely oaked","made to drink immediately"]
+- **oak:** rarely oaked
+- **sweetness:** dry
+- **body:** light to medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** low to medium
+- **color:** pale to medium ruby
+- **aroma_profile:** ["red cherry","red plum","fresh herbs"]
+- **flavour_profile:** ["red cherry","fresh red fruit","light tannin"]
+- **finish:** short to medium
+- **quality_level:** good; simple fruity styles predominate
+- **ageing_potential:** drink young
+- **expected_sat_observations:** ["pale to medium ruby","medium to pronounced intensity","red cherry","red plum","fresh herbs","dry","high acidity","light to medium body","medium alcohol","low to medium tannin","red cherry","fresh red fruit","light tannin"]
+- **common_exam_points:** ["Corvina is the main grape of Valpolicella","Valpolicella is simple and fruity with light tannins","wines are made to drink immediately"]
+- **common_student_errors:** ["Valpolicella is always full-bodied","all Veneto red is Amarone","pale colour means Pinot Noir"]
+- **mentor_hints:** ["Compare structure directly against Amarone.","Ask whether tannin and body are too light for passito."]
+- **descriptor_whitelist:** ["pale to medium ruby","red cherry","red plum","fresh herbs","dry","high acidity","light to medium body","medium alcohol","low to medium tannin","red cherry","fresh red fruit","light tannin","lighter and fresher than Amarone","more cherry-acid Corvina than Gamay raspberry","rarely oaked"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Veneto - Valpolicella evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 058
+- **priority:** 2
+- **wset_importance:** HIGH
+- **practice_priority:** 4
+- **difficulty_score:** 4
+- **confidence_score:** 0.95
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["pale to medium ruby"],"nose":["medium to pronounced intensity","red cherry","red plum","fresh herbs"],"palate":["dry","high acidity","light to medium body","medium alcohol","low to medium tannin","red cherry","fresh red fruit","light tannin"],"quality":["good; simple fruity styles predominate"],"ageing":["drink young"],"diagnostic_features":["valpolicella_corvina_core","lighter and fresher than Amarone","more cherry-acid Corvina than Gamay raspberry"]}
+- **pedagogical_dna:** {"core_concepts":["Corvina freshness","Valpolicella immediacy","Veneto red baseline"],"learning_objectives":["identify Valpolicella structure","separate simple Valpolicella from Amarone","connect Corvina to high acidity"],"typical_misconceptions":["Valpolicella is always full-bodied","all Veneto red is Amarone","pale colour means Pinot Noir"],"mentor_focus":["ask for red cherry, high acidity and light tannin"],"exam_traps":["calling simple Valpolicella Beaujolais","overstating oak"],"memory_hooks":["Valpolicella is fresh Corvina red cherry"],"comparison_styles":["Amarone della Valpolicella","Beaujolais Villages / Cru"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_059","SAT_WINE_055"],"frequently_confused_with":["SAT_WINE_055","SAT_WINE_059"],"distinguishing_features":["lighter and fresher than Amarone","more cherry-acid Corvina than Gamay raspberry","rarely oaked"]}
+- **teaching_notes:** {"common_exam_points":["Corvina is the main grape of Valpolicella","Valpolicella is simple and fruity with light tannins","wines are made to drink immediately"],"mentor_hints":["Compare structure directly against Amarone.","Ask whether tannin and body are too light for passito."],"student_traps":["confusing Valpolicella with Amarone","missing high acidity"],"revision_priority":"medium"}
+- **reusable_knowledge_refs:** ["valpolicella_corvina_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["11884-11901"],"line_reference":["11884-11901"],"evidence":["Valpolicella is north-west of Verona; Corvina is the main grape with moderate colour, low to medium tannin and high acidity.","The wines are simple and fruity with light tannins and red cherry flavours, rarely oaked and made to drink immediately."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Veneto - Valpolicella
+- **page_reference:** 123
+- **line_reference:** ["11884-11901"]
+
+## SAT_WINE_059 - Amarone della Valpolicella
+- **canonical_id:** SAT_WINE_059
+- **wine_family:** Tintos Italia
+- **wine_name:** Amarone della Valpolicella
+- **wine_style:** Full-bodied dry or off-dry passito red from Veneto
+- **display_name:** Amarone della Valpolicella
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Veneto
+- **subregion:** Valpolicella
+- **appellation:** Amarone della Valpolicella DOCG
+- **grape_varieties:** ["Corvina"]
+- **climate:** warm Veneto with grapes picked early for passito drying
+- **altitude:** Valpolicella drying-fruit source vineyards
+- **soil:** varied Veneto soils; drying process is the diagnostic marker
+- **viticulture:** ["grapes picked early while still high in acidity","grapes dried indoors to concentrate sugars and flavours","fruit must be healthy for drying"]
+- **winemaking:** ["passito method","fermentation starts in winter","usually aged in large oak casks"]
+- **oak:** usually large oak casks
+- **sweetness:** dry to off-dry
+- **body:** full
+- **acidity:** medium to high
+- **alcohol:** high
+- **tannin:** medium to high
+- **color:** deep ruby to garnet
+- **aroma_profile:** ["dried cherry","red berry","spice","raisins","chocolate"]
+- **flavour_profile:** ["concentrated red berry","spice","dried fruit","warming alcohol"]
+- **finish:** long
+- **quality_level:** very good to outstanding; iconic passito dry red
+- **ageing_potential:** long ageing potential
+- **expected_sat_observations:** ["deep ruby to garnet","medium to pronounced intensity","dried cherry","red berry","spice","raisins","chocolate","dry to off-dry","medium to high acidity","full body","high alcohol","medium to high tannin","concentrated red berry","spice","dried fruit","warming alcohol"]
+- **common_exam_points:** ["Amarone is dry or off-dry","passito dries grapes indoors","Amarone is full-bodied and high alcohol"]
+- **common_student_errors:** ["Amarone is sweet like Recioto","all dried-grape wines are dessert wines","high alcohol means New World"]
+- **mentor_hints:** ["Ask whether sweetness is residual or perceived from alcohol/dried fruit.","Use passito as the causal link."]
+- **descriptor_whitelist:** ["deep ruby to garnet","dried cherry","red berry","spice","raisins","chocolate","dry to off-dry","medium to high acidity","full body","high alcohol","medium to high tannin","concentrated red berry","spice","dried fruit","warming alcohol","much fuller than Valpolicella","dried fruit passito signature","not fortified like Port"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Veneto - Passito method / Amarone evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 059
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 7
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["deep ruby to garnet"],"nose":["medium to pronounced intensity","dried cherry","red berry","spice","raisins","chocolate"],"palate":["dry to off-dry","medium to high acidity","full body","high alcohol","medium to high tannin","concentrated red berry","spice","dried fruit"],"quality":["very good to outstanding; iconic passito dry red"],"ageing":["long ageing potential"],"diagnostic_features":["amarone_passito_core","much fuller than Valpolicella","dried fruit passito signature"]}
+- **pedagogical_dna:** {"core_concepts":["passito concentration","dry/off-dry high-alcohol red","Veneto Amarone identity"],"learning_objectives":["identify Amarone structure","connect drying to concentration","separate Amarone from Recioto and Valpolicella"],"typical_misconceptions":["Amarone is sweet like Recioto","all dried-grape wines are dessert wines","high alcohol means New World"],"mentor_focus":["ask if dried fruit and alcohol are structural not just age"],"exam_traps":["calling Amarone Port","missing acidity retained by early harvest"],"memory_hooks":["Amarone is dried-grape power, not fortified sweetness"],"comparison_styles":["Valpolicella","Chateauneuf-du-Pape Rouge","Vintage Port"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_058","SAT_WINE_057"],"frequently_confused_with":["SAT_WINE_058","SAT_WINE_057"],"distinguishing_features":["much fuller than Valpolicella","dried fruit passito signature","not fortified like Port"]}
+- **teaching_notes:** {"common_exam_points":["Amarone is dry or off-dry","passito dries grapes indoors","Amarone is full-bodied and high alcohol"],"mentor_hints":["Ask whether sweetness is residual or perceived from alcohol/dried fruit.","Use passito as the causal link."],"student_traps":["assuming Amarone is fortified","confusing Amarone and Recioto"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["amarone_passito_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["11903-11920"],"line_reference":["11903-11920"],"evidence":["Amarone della Valpolicella DOCG wines are dry or off-dry, full-bodied, high alcohol, medium to high tannin and intensely concentrated red berry and spice flavours.","The passito method dries grapes indoors, concentrating sugars and flavours; Amarone is usually aged in large oak casks."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Veneto - Passito method / Amarone
+- **page_reference:** 123
+- **line_reference:** ["11903-11920"]
+
+## SAT_WINE_060 - Barolo
+- **canonical_id:** SAT_WINE_060
+- **wine_family:** Tintos Italia
+- **wine_name:** Barolo
+- **wine_style:** Structured ageworthy Nebbiolo from south-facing Piemonte slopes
+- **display_name:** Barolo
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Piemonte
+- **subregion:** Barolo
+- **appellation:** Barolo DOCG
+- **grape_varieties:** ["Nebbiolo"]
+- **climate:** moderate continental Piemonte with fog and hillside variation
+- **altitude:** 300 to 500 metre south-facing slopes
+- **soil:** hillside sites with aspect and altitude differences
+- **viticulture:** ["Barolo must be entirely Nebbiolo","Nebbiolo ripens slowly at altitude","best wines can come from named vineyards or crus"]
+- **winemaking:** ["aged three years before release with 18 months in oak","traditional large oak or modern shorter oak choices","benefits from bottle ageing"]
+- **oak:** oak ageing required; large casks or smaller barrels depending on producer
+- **sweetness:** dry
+- **body:** full
+- **acidity:** high
+- **alcohol:** medium to high
+- **tannin:** high
+- **color:** pale garnet to medium ruby
+- **aroma_profile:** ["sour cherry","herbs","dried flowers","tar","leather"]
+- **flavour_profile:** ["sour cherry","herbs","firm tannin","earthy complexity"]
+- **finish:** long
+- **quality_level:** outstanding for top sites and vintages
+- **ageing_potential:** long ageing potential
+- **expected_sat_observations:** ["pale garnet to medium ruby","medium to pronounced intensity","sour cherry","herbs","dried flowers","tar","leather","dry","high acidity","full body","medium to high alcohol","high tannin","sour cherry","herbs","firm tannin","earthy complexity"]
+- **common_exam_points:** ["Barolo must be 100 percent Nebbiolo","Barolo must be aged three years before release","all Barolo benefits from bottle ageing"]
+- **common_student_errors:** ["pale colour means light body","Nebbiolo lacks tannin","all Piemonte red is Barolo"]
+- **mentor_hints:** ["Ask if colour misleads the student away from tannin.","Use legal ageing as a memory peg."]
+- **descriptor_whitelist:** ["pale garnet to medium ruby","sour cherry","herbs","dried flowers","tar","leather","dry","high acidity","full body","medium to high alcohol","high tannin","sour cherry","herbs","firm tannin","earthy complexity","higher altitude and longer ageing than Barbaresco","more Nebbiolo perfume than Sangiovese","pale colour with high tannin"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Piemonte - Barolo evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 060
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 8
+- **confidence_score:** 0.98
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["pale garnet to medium ruby"],"nose":["medium to pronounced intensity","sour cherry","herbs","dried flowers","tar","leather"],"palate":["dry","high acidity","full body","medium to high alcohol","high tannin","sour cherry","herbs","firm tannin"],"quality":["outstanding for top sites and vintages"],"ageing":["long ageing potential"],"diagnostic_features":["barolo_nebbiolo_core","higher altitude and longer ageing than Barbaresco","more Nebbiolo perfume than Sangiovese"]}
+- **pedagogical_dna:** {"core_concepts":["Nebbiolo structure","Barolo ageing law","site and cru identity"],"learning_objectives":["identify Barolo tannin-acid profile","connect ageing to tar/leather complexity","separate Barolo from Barbaresco"],"typical_misconceptions":["pale colour means light body","Nebbiolo lacks tannin","all Piemonte red is Barolo"],"mentor_focus":["ask whether tannin and acidity are both high despite pale colour"],"exam_traps":["calling Barolo Pinot Noir from colour","missing ageing requirement"],"memory_hooks":["Barolo is pale but fierce: acid, tannin, tar and time"],"comparison_styles":["Barbaresco","Brunello di Montalcino","Left Bank Bordeaux"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_061","SAT_WINE_064"],"frequently_confused_with":["SAT_WINE_061","SAT_WINE_052"],"distinguishing_features":["higher altitude and longer ageing than Barbaresco","more Nebbiolo perfume than Sangiovese","pale colour with high tannin"]}
+- **teaching_notes:** {"common_exam_points":["Barolo must be 100 percent Nebbiolo","Barolo must be aged three years before release","all Barolo benefits from bottle ageing"],"mentor_hints":["Ask if colour misleads the student away from tannin.","Use legal ageing as a memory peg."],"student_traps":["underestimating tannin because colour is pale","confusing Barolo and Barbaresco"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["barolo_nebbiolo_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12029-12066"],"line_reference":["12029-12066"],"evidence":["Barolo DOCG must be entirely Nebbiolo from steep south-facing slopes; Nebbiolo has high acidity and tannins with sour cherry, herbs and sometimes dried flowers.","Barolo must be aged three years, including 18 months in oak, and benefits from bottle ageing developing truffle, tar and leather."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Piemonte - Barolo
+- **page_reference:** 124
+- **line_reference:** ["12029-12066"]
+
+## SAT_WINE_061 - Barbaresco
+- **canonical_id:** SAT_WINE_061
+- **wine_family:** Tintos Italia
+- **wine_name:** Barbaresco
+- **wine_style:** Nebbiolo from lower-altitude Piemonte slopes with earlier ripening fruit
+- **display_name:** Barbaresco
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Piemonte
+- **subregion:** Barbaresco
+- **appellation:** Barbaresco DOCG
+- **grape_varieties:** ["Nebbiolo"]
+- **climate:** moderate continental Piemonte with lower-altitude Barbaresco sites
+- **altitude:** 200 to 400 metre south-facing slopes
+- **soil:** slope sites near local river influence
+- **viticulture:** ["Nebbiolo ripens earlier than Barolo here","lower altitude gives fruitier less perfumed wines","wines have acidity and tannin to age"]
+- **winemaking:** ["aged two years before release with nine months in oak","fewer village mentions than Barolo","single vineyard or cru may indicate higher quality"]
+- **oak:** oak ageing required
+- **sweetness:** dry
+- **body:** medium to full
+- **acidity:** high
+- **alcohol:** medium to high
+- **tannin:** high
+- **color:** pale garnet to medium ruby
+- **aroma_profile:** ["red cherry","sour cherry","herbs","rose","earth"]
+- **flavour_profile:** ["red cherry","herbs","firm tannin","savoury finish"]
+- **finish:** long
+- **quality_level:** very good to outstanding
+- **ageing_potential:** medium to long ageing
+- **expected_sat_observations:** ["pale garnet to medium ruby","medium to pronounced intensity","red cherry","sour cherry","herbs","rose","earth","dry","high acidity","medium to full body","medium to high alcohol","high tannin","red cherry","herbs","firm tannin","savoury finish"]
+- **common_exam_points:** ["Barbaresco has lower altitude than Barolo","Nebbiolo ripens earlier here","Barbaresco must age two years before release"]
+- **common_student_errors:** ["Barbaresco is simple Barolo","lower altitude means no ageing","Nebbiolo always smells the same"]
+- **mentor_hints:** ["Ask if the student can explain why it is not Barolo.","Use lower altitude as the causal hook."]
+- **descriptor_whitelist:** ["pale garnet to medium ruby","red cherry","sour cherry","herbs","rose","earth","dry","high acidity","medium to full body","medium to high alcohol","high tannin","red cherry","herbs","firm tannin","savoury finish","fruitier and less perfumed than Barolo","shorter ageing requirement","same Nebbiolo acid-tannin spine"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Piemonte - Barbaresco evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 061
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 7
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["pale garnet to medium ruby"],"nose":["medium to pronounced intensity","red cherry","sour cherry","herbs","rose","earth"],"palate":["dry","high acidity","medium to full body","medium to high alcohol","high tannin","red cherry","herbs","firm tannin"],"quality":["very good to outstanding"],"ageing":["medium to long ageing"],"diagnostic_features":["barbaresco_nebbiolo_core","fruitier and less perfumed than Barolo","shorter ageing requirement"]}
+- **pedagogical_dna:** {"core_concepts":["Barbaresco versus Barolo","Nebbiolo fruit and structure","legal ageing contrast"],"learning_objectives":["distinguish Barbaresco from Barolo","identify Nebbiolo despite fruitier profile","connect lower altitude to earlier ripening"],"typical_misconceptions":["Barbaresco is simple Barolo","lower altitude means no ageing","Nebbiolo always smells the same"],"mentor_focus":["ask whether Nebbiolo structure is present with a fruitier tone"],"exam_traps":["overcalling Barolo","ignoring legal ageing contrast"],"memory_hooks":["Barbaresco is Nebbiolo a little earlier and fruitier"],"comparison_styles":["Barolo","Red Burgundy","Brunello di Montalcino"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_060"],"frequently_confused_with":["SAT_WINE_060","SAT_WINE_054"],"distinguishing_features":["fruitier and less perfumed than Barolo","shorter ageing requirement","same Nebbiolo acid-tannin spine"]}
+- **teaching_notes:** {"common_exam_points":["Barbaresco has lower altitude than Barolo","Nebbiolo ripens earlier here","Barbaresco must age two years before release"],"mentor_hints":["Ask if the student can explain why it is not Barolo.","Use lower altitude as the causal hook."],"student_traps":["collapsing all Nebbiolo into Barolo","missing Barbaresco ageing law"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["barbaresco_nebbiolo_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12068-12080"],"line_reference":["12068-12080"],"evidence":["Barbaresco is renowned for Nebbiolo, with lower altitude than Barolo, earlier ripening, fruitier and less perfumed wines.","Barbaresco has similar acidity and tannin levels and must be aged two years with nine months in oak."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Piemonte - Barbaresco
+- **page_reference:** 124
+- **line_reference:** ["12068-12080"]
+
+## SAT_WINE_062 - Barbera d'Asti
+- **canonical_id:** SAT_WINE_062
+- **wine_family:** Tintos Italia
+- **wine_name:** Barbera d'Asti
+- **wine_style:** High-acid low-tannin Barbera from Piemonte
+- **display_name:** Barbera d'Asti
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Piemonte
+- **subregion:** Asti
+- **appellation:** Barbera d'Asti DOCG
+- **grape_varieties:** ["Barbera"]
+- **climate:** moderate continental Piemonte
+- **altitude:** hills around Asti and Alba
+- **soil:** not specified by WSET; grape and appellation are key
+- **viticulture:** ["Barbera is the most widely planted black grape in Asti/Alba area","Barbera is late ripening","Barbera d'Asti is often regarded as higher quality than Barbera d'Alba"]
+- **winemaking:** ["youthful fruity no-oak style or barrel-aged spicy style","oak may add spice","drunk young or aged several years for best examples"]
+- **oak:** none in youthful styles; barrel-aged versions show spice
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** low to medium
+- **color:** medium ruby
+- **aroma_profile:** ["red cherry","plum","black pepper","spice"]
+- **flavour_profile:** ["red cherry","plum","high-acid palate","soft tannin"]
+- **finish:** medium
+- **quality_level:** good to very good; Barbera d'Asti often higher quality
+- **ageing_potential:** short to medium ageing for best examples
+- **expected_sat_observations:** ["medium ruby","medium to pronounced intensity","red cherry","plum","black pepper","spice","dry","high acidity","medium body","medium alcohol","low to medium tannin","red cherry","plum","high-acid palate","soft tannin"]
+- **common_exam_points:** ["Barbera is the most widely planted black grape around Asti and Alba","Barbera d'Asti is often regarded as higher quality","Barbera has high acidity and low to medium tannin"]
+- **common_student_errors:** ["high acidity means high tannin","all Piemonte red is Nebbiolo","Barbera cannot age"]
+- **mentor_hints:** ["Ask for tannin-acid contrast.","Use Barbera as the Piemonte non-Nebbiolo foil."]
+- **descriptor_whitelist:** ["medium ruby","red cherry","plum","black pepper","spice","dry","high acidity","medium body","medium alcohol","low to medium tannin","red cherry","plum","high-acid palate","soft tannin","lower tannin than Nebbiolo","more plum-cherry than Sangiovese herbs","higher acidity than Valpolicella with deeper colour"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Piemonte - Asti and Alba evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 062
+- **priority:** 2
+- **wset_importance:** HIGH
+- **practice_priority:** 4
+- **difficulty_score:** 5
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["medium ruby"],"nose":["medium to pronounced intensity","red cherry","plum","black pepper","spice"],"palate":["dry","high acidity","medium body","medium alcohol","low to medium tannin","red cherry","plum","high-acid palate"],"quality":["good to very good; Barbera d'Asti often higher quality"],"ageing":["short to medium ageing for best examples"],"diagnostic_features":["barbera_asti_core","lower tannin than Nebbiolo","more plum-cherry than Sangiovese herbs"]}
+- **pedagogical_dna:** {"core_concepts":["Barbera acid-tannin contrast","Asti quality cue","oak style choice"],"learning_objectives":["identify high-acid low-tannin Barbera","separate Barbera from Nebbiolo","understand youthful versus barrel-aged styles"],"typical_misconceptions":["high acidity means high tannin","all Piemonte red is Nebbiolo","Barbera cannot age"],"mentor_focus":["ask whether acidity is high but tannin is relatively soft"],"exam_traps":["calling Barbera Nebbiolo","missing low tannin"],"memory_hooks":["Barbera is Piemonte red with acid turned up and tannin turned down"],"comparison_styles":["Barolo","Chianti Classico","Valpolicella"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_060","SAT_WINE_063"],"frequently_confused_with":["SAT_WINE_060","SAT_WINE_063"],"distinguishing_features":["lower tannin than Nebbiolo","more plum-cherry than Sangiovese herbs","higher acidity than Valpolicella with deeper colour"]}
+- **teaching_notes:** {"common_exam_points":["Barbera is the most widely planted black grape around Asti and Alba","Barbera d'Asti is often regarded as higher quality","Barbera has high acidity and low to medium tannin"],"mentor_hints":["Ask for tannin-acid contrast.","Use Barbera as the Piemonte non-Nebbiolo foil."],"student_traps":["assuming Piemonte equals Nebbiolo","overcalling tannin"],"revision_priority":"medium"}
+- **reusable_knowledge_refs:** ["barbera_asti_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12082-12105"],"line_reference":["12082-12105"],"evidence":["Barbera is the most widely planted black grape in the Asti and Alba area and Barbera d'Asti DOCG is often regarded as higher quality.","It has medium to deep colour, low to medium tannins, high acidity, red cherries, plums and sometimes black pepper; styles can be youthful fruity or barrel-aged spicy."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Piemonte - Asti and Alba
+- **page_reference:** 124
+- **line_reference:** ["12082-12105"]
+
+## SAT_WINE_063 - Chianti Classico
+- **canonical_id:** SAT_WINE_063
+- **wine_family:** Tintos Italia
+- **wine_name:** Chianti Classico
+- **wine_style:** High-acid Sangiovese from elevated Chianti Classico vineyards
+- **display_name:** Chianti Classico
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Tuscany
+- **subregion:** Chianti Classico
+- **appellation:** Chianti Classico DOCG
+- **grape_varieties:** ["Sangiovese"]
+- **climate:** warm central Italian climate moderated by altitude in Apennine foothills
+- **altitude:** higher-altitude Chianti Classico vineyards
+- **soil:** not specified by WSET; elevation and foothill setting are key
+- **viticulture:** ["Chianti is based on Sangiovese","Chianti Classico vineyards are at higher altitudes than Chianti DOCG","higher altitude slows ripening and increases acidity and herbal aromas"]
+- **winemaking:** ["red fermentation with ageing depending on level","Riserva and Gran Selezione have higher ageing/designation expectations","large and small oak use varies"]
+- **oak:** variable oak depending on producer and category
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** high
+- **alcohol:** medium to high
+- **tannin:** medium to high
+- **color:** medium ruby
+- **aroma_profile:** ["red cherry","red plum","dried herbs","violet","earth"]
+- **flavour_profile:** ["sour cherry","red plum","herbal notes","firm acidity"]
+- **finish:** medium to long
+- **quality_level:** very good to outstanding for top Classico levels
+- **ageing_potential:** medium to long ageing for Riserva and Gran Selezione
+- **expected_sat_observations:** ["medium ruby","medium to pronounced intensity","red cherry","red plum","dried herbs","violet","earth","dry","high acidity","medium body","medium to high alcohol","medium to high tannin","sour cherry","red plum","herbal notes","firm acidity"]
+- **common_exam_points:** ["Chianti is based on Sangiovese","Chianti Classico has its own DOCG","higher altitude gives greater acidity and herbal aromas"]
+- **common_student_errors:** ["Chianti Classico is just a sub-zone of Chianti","all Sangiovese is full-bodied","herbal notes mean underripe"]
+- **mentor_hints:** ["Ask whether high acidity comes with Sangiovese tannin/herbs.","Use Classico geography in debrief."]
+- **descriptor_whitelist:** ["medium ruby","red cherry","red plum","dried herbs","violet","earth","dry","high acidity","medium body","medium to high alcohol","medium to high tannin","sour cherry","red plum","herbal notes","firm acidity","more herbal and Sangiovese than Barbera","less full-bodied than Brunello","Classico higher-altitude source"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Tuscany - Chianti / Chianti Classico evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 063
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 6
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["medium ruby"],"nose":["medium to pronounced intensity","red cherry","red plum","dried herbs","violet","earth"],"palate":["dry","high acidity","medium body","medium to high alcohol","medium to high tannin","sour cherry","red plum","herbal notes"],"quality":["very good to outstanding for top Classico levels"],"ageing":["medium to long ageing for Riserva and Gran Selezione"],"diagnostic_features":["chianti_classico_sangiovese_core","more herbal and Sangiovese than Barbera","less full-bodied than Brunello"]}
+- **pedagogical_dna:** {"core_concepts":["Sangiovese acidity","Chianti Classico altitude","Tuscan classification"],"learning_objectives":["identify Chianti Classico markers","connect altitude to acidity and herbs","separate Sangiovese from Barbera"],"typical_misconceptions":["Chianti Classico is just a sub-zone of Chianti","all Sangiovese is full-bodied","herbal notes mean underripe"],"mentor_focus":["ask for sour cherry, herbs and high acidity"],"exam_traps":["calling it Barbera from acidity alone","missing Classico status"],"memory_hooks":["Chianti Classico is Sangiovese lifted by altitude"],"comparison_styles":["Brunello di Montalcino","Barbera d'Asti","Vino Nobile di Montepulciano"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_064","SAT_WINE_062"],"frequently_confused_with":["SAT_WINE_062","SAT_WINE_064"],"distinguishing_features":["more herbal and Sangiovese than Barbera","less full-bodied than Brunello","Classico higher-altitude source"]}
+- **teaching_notes:** {"common_exam_points":["Chianti is based on Sangiovese","Chianti Classico has its own DOCG","higher altitude gives greater acidity and herbal aromas"],"mentor_hints":["Ask whether high acidity comes with Sangiovese tannin/herbs.","Use Classico geography in debrief."],"student_traps":["confusing Chianti and Chianti Classico","overlooking Sangiovese acidity"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["chianti_classico_sangiovese_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12190-12225"],"line_reference":["12190-12225"],"evidence":["Chianti is based on Sangiovese; Chianti Classico DOCG is separate and its higher altitude vineyards slow ripening, giving greater acidity and more herbal aromas.","Chianti Classico Riserva and Gran Selezione are higher designations."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 28 Central Italy
+- **section:** Tuscany - Chianti / Chianti Classico
+- **page_reference:** 126-127
+- **line_reference:** ["12190-12225"]
+
+## SAT_WINE_064 - Brunello di Montalcino
+- **canonical_id:** SAT_WINE_064
+- **wine_family:** Tintos Italia
+- **wine_name:** Brunello di Montalcino
+- **wine_style:** Fuller-bodied ageworthy Sangiovese from Montalcino
+- **display_name:** Brunello di Montalcino
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Tuscany
+- **subregion:** Montalcino
+- **appellation:** Brunello di Montalcino DOCG
+- **grape_varieties:** ["Sangiovese"]
+- **climate:** warmer southern Tuscany moderated by altitude and sea breezes
+- **altitude:** hills around Montalcino
+- **soil:** not specified by WSET; warmth and hill exposure matter
+- **viticulture:** ["Montalcino conditions create more intense fuller Sangiovese","Brunello regulations require long ageing","style is more powerful than Chianti"]
+- **winemaking:** ["must be aged for five years before sale","two years must be in oak","long maturation supports complexity"]
+- **oak:** oak ageing required; two years in oak
+- **sweetness:** dry
+- **body:** full
+- **acidity:** high
+- **alcohol:** high
+- **tannin:** high
+- **color:** medium to deep ruby to garnet
+- **aroma_profile:** ["red cherry","plum","dried herbs","leather","spice"]
+- **flavour_profile:** ["red cherry","plum","firm tannin","savoury oak complexity"]
+- **finish:** long
+- **quality_level:** outstanding in top examples
+- **ageing_potential:** long ageing potential
+- **expected_sat_observations:** ["medium to deep ruby to garnet","medium to pronounced intensity","red cherry","plum","dried herbs","leather","spice","dry","high acidity","full body","high alcohol","high tannin","red cherry","plum","firm tannin","savoury oak complexity"]
+- **common_exam_points:** ["Brunello is fuller-bodied than Chianti","Brunello must age before sale","two years must be in oak"]
+- **common_student_errors:** ["Brunello is a separate grape","all Sangiovese is medium-bodied","oak means Bordeaux"]
+- **mentor_hints:** ["Ask if the power level exceeds Chianti Classico.","Use legal ageing as a diagnostic anchor."]
+- **descriptor_whitelist:** ["medium to deep ruby to garnet","red cherry","plum","dried herbs","leather","spice","dry","high acidity","full body","high alcohol","high tannin","red cherry","plum","firm tannin","savoury oak complexity","fuller than Chianti Classico","Sangiovese red cherry and herbs rather than Nebbiolo tar","mandatory long ageing"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Tuscany - Brunello di Montalcino evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 064
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 7
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["medium to deep ruby to garnet"],"nose":["medium to pronounced intensity","red cherry","plum","dried herbs","leather","spice"],"palate":["dry","high acidity","full body","high alcohol","high tannin","red cherry","plum","firm tannin"],"quality":["outstanding in top examples"],"ageing":["long ageing potential"],"diagnostic_features":["brunello_sangiovese_core","fuller than Chianti Classico","Sangiovese red cherry and herbs rather than Nebbiolo tar"]}
+- **pedagogical_dna:** {"core_concepts":["powerful Sangiovese","Brunello ageing law","Montalcino versus Chianti"],"learning_objectives":["distinguish Brunello from Chianti Classico","identify full-bodied Sangiovese","connect oak ageing to complexity"],"typical_misconceptions":["Brunello is a separate grape","all Sangiovese is medium-bodied","oak means Bordeaux"],"mentor_focus":["ask whether Sangiovese acidity is carried by more body and tannin"],"exam_traps":["calling Brunello Chianti","forgetting ageing requirements"],"memory_hooks":["Brunello is Sangiovese turned fuller and longer-aged"],"comparison_styles":["Chianti Classico","Barolo","Taurasi"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_063","SAT_WINE_060"],"frequently_confused_with":["SAT_WINE_063","SAT_WINE_060"],"distinguishing_features":["fuller than Chianti Classico","Sangiovese red cherry and herbs rather than Nebbiolo tar","mandatory long ageing"]}
+- **teaching_notes:** {"common_exam_points":["Brunello is fuller-bodied than Chianti","Brunello must age before sale","two years must be in oak"],"mentor_hints":["Ask if the power level exceeds Chianti Classico.","Use legal ageing as a diagnostic anchor."],"student_traps":["thinking Brunello is a grape","missing Sangiovese identity"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["brunello_sangiovese_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12238-12249"],"line_reference":["12238-12249"],"evidence":["Brunello di Montalcino is more intense and fuller-bodied than Chianti.","Regulations stipulate long ageing before sale, two years of which must be in oak."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 28 Central Italy
+- **section:** Tuscany - Brunello di Montalcino
+- **page_reference:** 127
+- **line_reference:** ["12238-12249"]
+
+## SAT_WINE_065 - Taurasi
+- **canonical_id:** SAT_WINE_065
+- **wine_family:** Tintos Italia
+- **wine_name:** Taurasi
+- **wine_style:** Prestigious ageworthy Aglianico from Campania
+- **display_name:** Taurasi
+- **wine_type:** TINTO
+- **country:** Italy
+- **region:** Campania
+- **subregion:** Taurasi
+- **appellation:** Taurasi DOCG
+- **grape_varieties:** ["Aglianico"]
+- **climate:** southern Italy with varied mountains, valleys and coastal plains enabling quality reds
+- **altitude:** inland Campanian sites suited to Aglianico
+- **soil:** not specified by WSET; grape prestige and appellation are key
+- **viticulture:** ["Aglianico is the most prestigious black grape of southern Italy","it is at its best in Taurasi DOCG","late-ripening structured grape"]
+- **winemaking:** ["structured red winemaking","oak maturation commonly used for premium ageworthy styles","requires time to soften tannin"]
+- **oak:** oak commonly used in premium styles
+- **sweetness:** dry
+- **body:** full
+- **acidity:** high
+- **alcohol:** medium to high
+- **tannin:** high
+- **color:** deep ruby to garnet
+- **aroma_profile:** ["black cherry","black plum","earth","smoke","dried herbs"]
+- **flavour_profile:** ["black fruit","earth","firm tannin","savoury spice"]
+- **finish:** long
+- **quality_level:** very good to outstanding; Taurasi is the benchmark for Aglianico
+- **ageing_potential:** long ageing potential
+- **expected_sat_observations:** ["deep ruby to garnet","medium to pronounced intensity","black cherry","black plum","earth","smoke","dried herbs","dry","high acidity","full body","medium to high alcohol","high tannin","black fruit","earth","firm tannin","savoury spice"]
+- **common_exam_points:** ["Aglianico is the most prestigious black grape of southern Italy","Taurasi DOCG is its best expression","Aglianico is a key Campanian red"]
+- **common_student_errors:** ["southern Italy only makes soft fruity reds","Aglianico is low acid","all Italian ageworthy reds are Nebbiolo"]
+- **mentor_hints:** ["Ask if the student can name a southern Italian ageworthy red.","Use Taurasi as the Aglianico anchor."]
+- **descriptor_whitelist:** ["deep ruby to garnet","black cherry","black plum","earth","smoke","dried herbs","dry","high acidity","full body","medium to high alcohol","high tannin","black fruit","earth","firm tannin","savoury spice","darker and more southern than Nebbiolo","more black-fruited than Sangiovese","Aglianico benchmark Taurasi"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Campania - Aglianico / Taurasi evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Italia - Practica 065
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 8
+- **confidence_score:** 0.95
+- **knowledge_summary:** {"wset_primary":["Selected Italian red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["deep ruby to garnet"],"nose":["medium to pronounced intensity","black cherry","black plum","earth","smoke","dried herbs"],"palate":["dry","high acidity","full body","medium to high alcohol","high tannin","black fruit","earth","firm tannin"],"quality":["very good to outstanding; Taurasi is the benchmark for Aglianico"],"ageing":["long ageing potential"],"diagnostic_features":["taurasi_aglianico_core","darker and more southern than Nebbiolo","more black-fruited than Sangiovese"]}
+- **pedagogical_dna:** {"core_concepts":["southern Italian premium red","Aglianico structure","Taurasi benchmark"],"learning_objectives":["identify Aglianico power","separate Taurasi from Sangiovese and Nebbiolo","connect southern Italy to ageworthy reds"],"typical_misconceptions":["southern Italy only makes soft fruity reds","Aglianico is low acid","all Italian ageworthy reds are Nebbiolo"],"mentor_focus":["ask for high tannin and acidity with dark fruit"],"exam_traps":["calling Taurasi Barolo from tannin alone","forgetting Campania reds"],"memory_hooks":["Taurasi is southern Italy's stern Aglianico benchmark"],"comparison_styles":["Barolo","Brunello di Montalcino","Left Bank Bordeaux"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_060","SAT_WINE_064"],"frequently_confused_with":["SAT_WINE_060","SAT_WINE_064"],"distinguishing_features":["darker and more southern than Nebbiolo","more black-fruited than Sangiovese","Aglianico benchmark Taurasi"]}
+- **teaching_notes:** {"common_exam_points":["Aglianico is the most prestigious black grape of southern Italy","Taurasi DOCG is its best expression","Aglianico is a key Campanian red"],"mentor_hints":["Ask if the student can name a southern Italian ageworthy red.","Use Taurasi as the Aglianico anchor."],"student_traps":["forgetting Taurasi","confusing all high-tannin Italian reds with Barolo"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["taurasi_aglianico_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12451-12456"],"line_reference":["12451-12456"],"evidence":["Aglianico is the most prestigious black grape of the south.","Aglianico is grown in a number of regions but is at its best in Taurasi DOCG."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-11-BATCH-008","schema_version":"CWP-02"}
+- **chapter:** 29 Southern Italy
+- **section:** Campania - Aglianico / Taurasi
+- **page_reference:** 129
+- **line_reference:** ["12451-12456"]
 

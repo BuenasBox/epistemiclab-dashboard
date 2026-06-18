@@ -7101,5 +7101,999 @@
     "reusable_knowledge_refs": [
       "southern_rhone_grenache_core"
     ]
+  },
+  {
+    "canonical_id": "SAT_WINE_058",
+    "render_id": "TRAINING_058",
+    "mode": "training",
+    "identity": {
+      "display_name": "Valpolicella",
+      "wine_name": "Valpolicella",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Fresh high-acid Corvina-based Veneto red",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Veneto",
+      "subregion": "Valpolicella",
+      "appellation": "Valpolicella DOC / Valpolicella Classico DOC",
+      "grape_varieties": [
+        "Corvina"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 058",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "confidence_score": 0.95
+    },
+    "style_markers": {
+      "climate": "warm Veneto climate with foothill and plain contrasts",
+      "altitude": "foothills north-west of Verona and flatter southern sites",
+      "soil": "limestone, clay and volcanic foothills; gravel and sand in warmer flatter south",
+      "viticulture": [
+        "Corvina is the main grape",
+        "foothill fruit has more acidity",
+        "plain fruit is fruitier with less acidity"
+      ],
+      "winemaking": [
+        "simple fruity red winemaking",
+        "rarely oaked",
+        "made to drink immediately"
+      ],
+      "oak": "rarely oaked",
+      "sweetness": "dry",
+      "body": "light to medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "low to medium",
+      "color": "pale to medium ruby",
+      "aroma_profile": [
+        "red cherry",
+        "red plum",
+        "fresh herbs"
+      ],
+      "flavour_profile": [
+        "red cherry",
+        "fresh red fruit",
+        "light tannin"
+      ],
+      "finish": "short to medium",
+      "quality_level": "good; simple fruity styles predominate",
+      "ageing_potential": "drink young"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Corvina freshness",
+        "Valpolicella immediacy",
+        "Veneto red baseline"
+      ],
+      "learning_objectives": [
+        "identify Valpolicella structure",
+        "separate simple Valpolicella from Amarone",
+        "connect Corvina to high acidity"
+      ],
+      "typical_misconceptions": [
+        "Valpolicella is always full-bodied",
+        "all Veneto red is Amarone",
+        "pale colour means Pinot Noir"
+      ],
+      "mentor_focus": [
+        "ask for red cherry, high acidity and light tannin"
+      ],
+      "exam_traps": [
+        "calling simple Valpolicella Beaujolais",
+        "overstating oak"
+      ],
+      "memory_hooks": [
+        "Valpolicella is fresh Corvina red cherry"
+      ],
+      "comparison_styles": [
+        "Amarone della Valpolicella",
+        "Beaujolais Villages / Cru"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_059",
+        "SAT_WINE_055"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_055",
+        "SAT_WINE_059"
+      ],
+      "distinguishing_features": [
+        "lighter and fresher than Amarone",
+        "more cherry-acid Corvina than Gamay raspberry",
+        "rarely oaked"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Corvina is the main grape of Valpolicella",
+        "Valpolicella is simple and fruity with light tannins",
+        "wines are made to drink immediately"
+      ],
+      "student_traps": [
+        "confusing Valpolicella with Amarone",
+        "missing high acidity"
+      ],
+      "revision_priority": "medium"
+    },
+    "reusable_knowledge_refs": [
+      "valpolicella_corvina_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_059",
+    "render_id": "TRAINING_059",
+    "mode": "training",
+    "identity": {
+      "display_name": "Amarone della Valpolicella",
+      "wine_name": "Amarone della Valpolicella",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Full-bodied dry or off-dry passito red from Veneto",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Veneto",
+      "subregion": "Valpolicella",
+      "appellation": "Amarone della Valpolicella DOCG",
+      "grape_varieties": [
+        "Corvina"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 059",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "warm Veneto with grapes picked early for passito drying",
+      "altitude": "Valpolicella drying-fruit source vineyards",
+      "soil": "varied Veneto soils; drying process is the diagnostic marker",
+      "viticulture": [
+        "grapes picked early while still high in acidity",
+        "grapes dried indoors to concentrate sugars and flavours",
+        "fruit must be healthy for drying"
+      ],
+      "winemaking": [
+        "passito method",
+        "fermentation starts in winter",
+        "usually aged in large oak casks"
+      ],
+      "oak": "usually large oak casks",
+      "sweetness": "dry to off-dry",
+      "body": "full",
+      "acidity": "medium to high",
+      "alcohol": "high",
+      "tannin": "medium to high",
+      "color": "deep ruby to garnet",
+      "aroma_profile": [
+        "dried cherry",
+        "red berry",
+        "spice",
+        "raisins",
+        "chocolate"
+      ],
+      "flavour_profile": [
+        "concentrated red berry",
+        "spice",
+        "dried fruit",
+        "warming alcohol"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; iconic passito dry red",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "passito concentration",
+        "dry/off-dry high-alcohol red",
+        "Veneto Amarone identity"
+      ],
+      "learning_objectives": [
+        "identify Amarone structure",
+        "connect drying to concentration",
+        "separate Amarone from Recioto and Valpolicella"
+      ],
+      "typical_misconceptions": [
+        "Amarone is sweet like Recioto",
+        "all dried-grape wines are dessert wines",
+        "high alcohol means New World"
+      ],
+      "mentor_focus": [
+        "ask if dried fruit and alcohol are structural not just age"
+      ],
+      "exam_traps": [
+        "calling Amarone Port",
+        "missing acidity retained by early harvest"
+      ],
+      "memory_hooks": [
+        "Amarone is dried-grape power, not fortified sweetness"
+      ],
+      "comparison_styles": [
+        "Valpolicella",
+        "Chateauneuf-du-Pape Rouge",
+        "Vintage Port"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_058",
+        "SAT_WINE_057"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_058",
+        "SAT_WINE_057"
+      ],
+      "distinguishing_features": [
+        "much fuller than Valpolicella",
+        "dried fruit passito signature",
+        "not fortified like Port"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Amarone is dry or off-dry",
+        "passito dries grapes indoors",
+        "Amarone is full-bodied and high alcohol"
+      ],
+      "student_traps": [
+        "assuming Amarone is fortified",
+        "confusing Amarone and Recioto"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "amarone_passito_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_060",
+    "render_id": "TRAINING_060",
+    "mode": "training",
+    "identity": {
+      "display_name": "Barolo",
+      "wine_name": "Barolo",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Structured ageworthy Nebbiolo from south-facing Piemonte slopes",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "Barolo",
+      "appellation": "Barolo DOCG",
+      "grape_varieties": [
+        "Nebbiolo"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 060",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.98
+    },
+    "style_markers": {
+      "climate": "moderate continental Piemonte with fog and hillside variation",
+      "altitude": "300 to 500 metre south-facing slopes",
+      "soil": "hillside sites with aspect and altitude differences",
+      "viticulture": [
+        "Barolo must be entirely Nebbiolo",
+        "Nebbiolo ripens slowly at altitude",
+        "best wines can come from named vineyards or crus"
+      ],
+      "winemaking": [
+        "aged three years before release with 18 months in oak",
+        "traditional large oak or modern shorter oak choices",
+        "benefits from bottle ageing"
+      ],
+      "oak": "oak ageing required; large casks or smaller barrels depending on producer",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "high",
+      "alcohol": "medium to high",
+      "tannin": "high",
+      "color": "pale garnet to medium ruby",
+      "aroma_profile": [
+        "sour cherry",
+        "herbs",
+        "dried flowers",
+        "tar",
+        "leather"
+      ],
+      "flavour_profile": [
+        "sour cherry",
+        "herbs",
+        "firm tannin",
+        "earthy complexity"
+      ],
+      "finish": "long",
+      "quality_level": "outstanding for top sites and vintages",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Nebbiolo structure",
+        "Barolo ageing law",
+        "site and cru identity"
+      ],
+      "learning_objectives": [
+        "identify Barolo tannin-acid profile",
+        "connect ageing to tar/leather complexity",
+        "separate Barolo from Barbaresco"
+      ],
+      "typical_misconceptions": [
+        "pale colour means light body",
+        "Nebbiolo lacks tannin",
+        "all Piemonte red is Barolo"
+      ],
+      "mentor_focus": [
+        "ask whether tannin and acidity are both high despite pale colour"
+      ],
+      "exam_traps": [
+        "calling Barolo Pinot Noir from colour",
+        "missing ageing requirement"
+      ],
+      "memory_hooks": [
+        "Barolo is pale but fierce: acid, tannin, tar and time"
+      ],
+      "comparison_styles": [
+        "Barbaresco",
+        "Brunello di Montalcino",
+        "Left Bank Bordeaux"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_061",
+        "SAT_WINE_064"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_061",
+        "SAT_WINE_052"
+      ],
+      "distinguishing_features": [
+        "higher altitude and longer ageing than Barbaresco",
+        "more Nebbiolo perfume than Sangiovese",
+        "pale colour with high tannin"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Barolo must be 100 percent Nebbiolo",
+        "Barolo must be aged three years before release",
+        "all Barolo benefits from bottle ageing"
+      ],
+      "student_traps": [
+        "underestimating tannin because colour is pale",
+        "confusing Barolo and Barbaresco"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "barolo_nebbiolo_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_061",
+    "render_id": "TRAINING_061",
+    "mode": "training",
+    "identity": {
+      "display_name": "Barbaresco",
+      "wine_name": "Barbaresco",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Nebbiolo from lower-altitude Piemonte slopes with earlier ripening fruit",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "Barbaresco",
+      "appellation": "Barbaresco DOCG",
+      "grape_varieties": [
+        "Nebbiolo"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 061",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "moderate continental Piemonte with lower-altitude Barbaresco sites",
+      "altitude": "200 to 400 metre south-facing slopes",
+      "soil": "slope sites near local river influence",
+      "viticulture": [
+        "Nebbiolo ripens earlier than Barolo here",
+        "lower altitude gives fruitier less perfumed wines",
+        "wines have acidity and tannin to age"
+      ],
+      "winemaking": [
+        "aged two years before release with nine months in oak",
+        "fewer village mentions than Barolo",
+        "single vineyard or cru may indicate higher quality"
+      ],
+      "oak": "oak ageing required",
+      "sweetness": "dry",
+      "body": "medium to full",
+      "acidity": "high",
+      "alcohol": "medium to high",
+      "tannin": "high",
+      "color": "pale garnet to medium ruby",
+      "aroma_profile": [
+        "red cherry",
+        "sour cherry",
+        "herbs",
+        "rose",
+        "earth"
+      ],
+      "flavour_profile": [
+        "red cherry",
+        "herbs",
+        "firm tannin",
+        "savoury finish"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding",
+      "ageing_potential": "medium to long ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Barbaresco versus Barolo",
+        "Nebbiolo fruit and structure",
+        "legal ageing contrast"
+      ],
+      "learning_objectives": [
+        "distinguish Barbaresco from Barolo",
+        "identify Nebbiolo despite fruitier profile",
+        "connect lower altitude to earlier ripening"
+      ],
+      "typical_misconceptions": [
+        "Barbaresco is simple Barolo",
+        "lower altitude means no ageing",
+        "Nebbiolo always smells the same"
+      ],
+      "mentor_focus": [
+        "ask whether Nebbiolo structure is present with a fruitier tone"
+      ],
+      "exam_traps": [
+        "overcalling Barolo",
+        "ignoring legal ageing contrast"
+      ],
+      "memory_hooks": [
+        "Barbaresco is Nebbiolo a little earlier and fruitier"
+      ],
+      "comparison_styles": [
+        "Barolo",
+        "Red Burgundy",
+        "Brunello di Montalcino"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_060"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_060",
+        "SAT_WINE_054"
+      ],
+      "distinguishing_features": [
+        "fruitier and less perfumed than Barolo",
+        "shorter ageing requirement",
+        "same Nebbiolo acid-tannin spine"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Barbaresco has lower altitude than Barolo",
+        "Nebbiolo ripens earlier here",
+        "Barbaresco must age two years before release"
+      ],
+      "student_traps": [
+        "collapsing all Nebbiolo into Barolo",
+        "missing Barbaresco ageing law"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "barbaresco_nebbiolo_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_062",
+    "render_id": "TRAINING_062",
+    "mode": "training",
+    "identity": {
+      "display_name": "Barbera d'Asti",
+      "wine_name": "Barbera d'Asti",
+      "wine_family": "Tintos Italia",
+      "wine_style": "High-acid low-tannin Barbera from Piemonte",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "Asti",
+      "appellation": "Barbera d'Asti DOCG",
+      "grape_varieties": [
+        "Barbera"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 062",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "moderate continental Piemonte",
+      "altitude": "hills around Asti and Alba",
+      "soil": "not specified by WSET; grape and appellation are key",
+      "viticulture": [
+        "Barbera is the most widely planted black grape in Asti/Alba area",
+        "Barbera is late ripening",
+        "Barbera d'Asti is often regarded as higher quality than Barbera d'Alba"
+      ],
+      "winemaking": [
+        "youthful fruity no-oak style or barrel-aged spicy style",
+        "oak may add spice",
+        "drunk young or aged several years for best examples"
+      ],
+      "oak": "none in youthful styles; barrel-aged versions show spice",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "low to medium",
+      "color": "medium ruby",
+      "aroma_profile": [
+        "red cherry",
+        "plum",
+        "black pepper",
+        "spice"
+      ],
+      "flavour_profile": [
+        "red cherry",
+        "plum",
+        "high-acid palate",
+        "soft tannin"
+      ],
+      "finish": "medium",
+      "quality_level": "good to very good; Barbera d'Asti often higher quality",
+      "ageing_potential": "short to medium ageing for best examples"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Barbera acid-tannin contrast",
+        "Asti quality cue",
+        "oak style choice"
+      ],
+      "learning_objectives": [
+        "identify high-acid low-tannin Barbera",
+        "separate Barbera from Nebbiolo",
+        "understand youthful versus barrel-aged styles"
+      ],
+      "typical_misconceptions": [
+        "high acidity means high tannin",
+        "all Piemonte red is Nebbiolo",
+        "Barbera cannot age"
+      ],
+      "mentor_focus": [
+        "ask whether acidity is high but tannin is relatively soft"
+      ],
+      "exam_traps": [
+        "calling Barbera Nebbiolo",
+        "missing low tannin"
+      ],
+      "memory_hooks": [
+        "Barbera is Piemonte red with acid turned up and tannin turned down"
+      ],
+      "comparison_styles": [
+        "Barolo",
+        "Chianti Classico",
+        "Valpolicella"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_060",
+        "SAT_WINE_063"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_060",
+        "SAT_WINE_063"
+      ],
+      "distinguishing_features": [
+        "lower tannin than Nebbiolo",
+        "more plum-cherry than Sangiovese herbs",
+        "higher acidity than Valpolicella with deeper colour"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Barbera is the most widely planted black grape around Asti and Alba",
+        "Barbera d'Asti is often regarded as higher quality",
+        "Barbera has high acidity and low to medium tannin"
+      ],
+      "student_traps": [
+        "assuming Piemonte equals Nebbiolo",
+        "overcalling tannin"
+      ],
+      "revision_priority": "medium"
+    },
+    "reusable_knowledge_refs": [
+      "barbera_asti_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_063",
+    "render_id": "TRAINING_063",
+    "mode": "training",
+    "identity": {
+      "display_name": "Chianti Classico",
+      "wine_name": "Chianti Classico",
+      "wine_family": "Tintos Italia",
+      "wine_style": "High-acid Sangiovese from elevated Chianti Classico vineyards",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Tuscany",
+      "subregion": "Chianti Classico",
+      "appellation": "Chianti Classico DOCG",
+      "grape_varieties": [
+        "Sangiovese"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 063",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "warm central Italian climate moderated by altitude in Apennine foothills",
+      "altitude": "higher-altitude Chianti Classico vineyards",
+      "soil": "not specified by WSET; elevation and foothill setting are key",
+      "viticulture": [
+        "Chianti is based on Sangiovese",
+        "Chianti Classico vineyards are at higher altitudes than Chianti DOCG",
+        "higher altitude slows ripening and increases acidity and herbal aromas"
+      ],
+      "winemaking": [
+        "red fermentation with ageing depending on level",
+        "Riserva and Gran Selezione have higher ageing/designation expectations",
+        "large and small oak use varies"
+      ],
+      "oak": "variable oak depending on producer and category",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "high",
+      "alcohol": "medium to high",
+      "tannin": "medium to high",
+      "color": "medium ruby",
+      "aroma_profile": [
+        "red cherry",
+        "red plum",
+        "dried herbs",
+        "violet",
+        "earth"
+      ],
+      "flavour_profile": [
+        "sour cherry",
+        "red plum",
+        "herbal notes",
+        "firm acidity"
+      ],
+      "finish": "medium to long",
+      "quality_level": "very good to outstanding for top Classico levels",
+      "ageing_potential": "medium to long ageing for Riserva and Gran Selezione"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Sangiovese acidity",
+        "Chianti Classico altitude",
+        "Tuscan classification"
+      ],
+      "learning_objectives": [
+        "identify Chianti Classico markers",
+        "connect altitude to acidity and herbs",
+        "separate Sangiovese from Barbera"
+      ],
+      "typical_misconceptions": [
+        "Chianti Classico is just a sub-zone of Chianti",
+        "all Sangiovese is full-bodied",
+        "herbal notes mean underripe"
+      ],
+      "mentor_focus": [
+        "ask for sour cherry, herbs and high acidity"
+      ],
+      "exam_traps": [
+        "calling it Barbera from acidity alone",
+        "missing Classico status"
+      ],
+      "memory_hooks": [
+        "Chianti Classico is Sangiovese lifted by altitude"
+      ],
+      "comparison_styles": [
+        "Brunello di Montalcino",
+        "Barbera d'Asti",
+        "Vino Nobile di Montepulciano"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_064",
+        "SAT_WINE_062"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_062",
+        "SAT_WINE_064"
+      ],
+      "distinguishing_features": [
+        "more herbal and Sangiovese than Barbera",
+        "less full-bodied than Brunello",
+        "Classico higher-altitude source"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Chianti is based on Sangiovese",
+        "Chianti Classico has its own DOCG",
+        "higher altitude gives greater acidity and herbal aromas"
+      ],
+      "student_traps": [
+        "confusing Chianti and Chianti Classico",
+        "overlooking Sangiovese acidity"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "chianti_classico_sangiovese_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_064",
+    "render_id": "TRAINING_064",
+    "mode": "training",
+    "identity": {
+      "display_name": "Brunello di Montalcino",
+      "wine_name": "Brunello di Montalcino",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Fuller-bodied ageworthy Sangiovese from Montalcino",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Tuscany",
+      "subregion": "Montalcino",
+      "appellation": "Brunello di Montalcino DOCG",
+      "grape_varieties": [
+        "Sangiovese"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 064",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "warmer southern Tuscany moderated by altitude and sea breezes",
+      "altitude": "hills around Montalcino",
+      "soil": "not specified by WSET; warmth and hill exposure matter",
+      "viticulture": [
+        "Montalcino conditions create more intense fuller Sangiovese",
+        "Brunello regulations require long ageing",
+        "style is more powerful than Chianti"
+      ],
+      "winemaking": [
+        "must be aged for five years before sale",
+        "two years must be in oak",
+        "long maturation supports complexity"
+      ],
+      "oak": "oak ageing required; two years in oak",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "high",
+      "alcohol": "high",
+      "tannin": "high",
+      "color": "medium to deep ruby to garnet",
+      "aroma_profile": [
+        "red cherry",
+        "plum",
+        "dried herbs",
+        "leather",
+        "spice"
+      ],
+      "flavour_profile": [
+        "red cherry",
+        "plum",
+        "firm tannin",
+        "savoury oak complexity"
+      ],
+      "finish": "long",
+      "quality_level": "outstanding in top examples",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "powerful Sangiovese",
+        "Brunello ageing law",
+        "Montalcino versus Chianti"
+      ],
+      "learning_objectives": [
+        "distinguish Brunello from Chianti Classico",
+        "identify full-bodied Sangiovese",
+        "connect oak ageing to complexity"
+      ],
+      "typical_misconceptions": [
+        "Brunello is a separate grape",
+        "all Sangiovese is medium-bodied",
+        "oak means Bordeaux"
+      ],
+      "mentor_focus": [
+        "ask whether Sangiovese acidity is carried by more body and tannin"
+      ],
+      "exam_traps": [
+        "calling Brunello Chianti",
+        "forgetting ageing requirements"
+      ],
+      "memory_hooks": [
+        "Brunello is Sangiovese turned fuller and longer-aged"
+      ],
+      "comparison_styles": [
+        "Chianti Classico",
+        "Barolo",
+        "Taurasi"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_063",
+        "SAT_WINE_060"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_063",
+        "SAT_WINE_060"
+      ],
+      "distinguishing_features": [
+        "fuller than Chianti Classico",
+        "Sangiovese red cherry and herbs rather than Nebbiolo tar",
+        "mandatory long ageing"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Brunello is fuller-bodied than Chianti",
+        "Brunello must age before sale",
+        "two years must be in oak"
+      ],
+      "student_traps": [
+        "thinking Brunello is a grape",
+        "missing Sangiovese identity"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "brunello_sangiovese_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_065",
+    "render_id": "TRAINING_065",
+    "mode": "training",
+    "identity": {
+      "display_name": "Taurasi",
+      "wine_name": "Taurasi",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Prestigious ageworthy Aglianico from Campania",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Campania",
+      "subregion": "Taurasi",
+      "appellation": "Taurasi DOCG",
+      "grape_varieties": [
+        "Aglianico"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 065",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.95
+    },
+    "style_markers": {
+      "climate": "southern Italy with varied mountains, valleys and coastal plains enabling quality reds",
+      "altitude": "inland Campanian sites suited to Aglianico",
+      "soil": "not specified by WSET; grape prestige and appellation are key",
+      "viticulture": [
+        "Aglianico is the most prestigious black grape of southern Italy",
+        "it is at its best in Taurasi DOCG",
+        "late-ripening structured grape"
+      ],
+      "winemaking": [
+        "structured red winemaking",
+        "oak maturation commonly used for premium ageworthy styles",
+        "requires time to soften tannin"
+      ],
+      "oak": "oak commonly used in premium styles",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "high",
+      "alcohol": "medium to high",
+      "tannin": "high",
+      "color": "deep ruby to garnet",
+      "aroma_profile": [
+        "black cherry",
+        "black plum",
+        "earth",
+        "smoke",
+        "dried herbs"
+      ],
+      "flavour_profile": [
+        "black fruit",
+        "earth",
+        "firm tannin",
+        "savoury spice"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; Taurasi is the benchmark for Aglianico",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "southern Italian premium red",
+        "Aglianico structure",
+        "Taurasi benchmark"
+      ],
+      "learning_objectives": [
+        "identify Aglianico power",
+        "separate Taurasi from Sangiovese and Nebbiolo",
+        "connect southern Italy to ageworthy reds"
+      ],
+      "typical_misconceptions": [
+        "southern Italy only makes soft fruity reds",
+        "Aglianico is low acid",
+        "all Italian ageworthy reds are Nebbiolo"
+      ],
+      "mentor_focus": [
+        "ask for high tannin and acidity with dark fruit"
+      ],
+      "exam_traps": [
+        "calling Taurasi Barolo from tannin alone",
+        "forgetting Campania reds"
+      ],
+      "memory_hooks": [
+        "Taurasi is southern Italy's stern Aglianico benchmark"
+      ],
+      "comparison_styles": [
+        "Barolo",
+        "Brunello di Montalcino",
+        "Left Bank Bordeaux"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_060",
+        "SAT_WINE_064"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_060",
+        "SAT_WINE_064"
+      ],
+      "distinguishing_features": [
+        "darker and more southern than Nebbiolo",
+        "more black-fruited than Sangiovese",
+        "Aglianico benchmark Taurasi"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Aglianico is the most prestigious black grape of southern Italy",
+        "Taurasi DOCG is its best expression",
+        "Aglianico is a key Campanian red"
+      ],
+      "student_traps": [
+        "forgetting Taurasi",
+        "confusing all high-tannin Italian reds with Barolo"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "taurasi_aglianico_core"
+    ]
   }
 ]

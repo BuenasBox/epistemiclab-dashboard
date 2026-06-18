@@ -157,6 +157,38 @@
     "southern_rhone_grenache_core": {
       "diagnostic_features": ["Southern Rhône", "Grenache-dominant blends", "Syrah and Mourvèdre support", "warm climate", "full-bodied spicy red fruit", "Châteauneuf-du-Pape"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "valpolicella_corvina_core": {
+      "diagnostic_features": ["Corvina", "Valpolicella", "red cherry", "high acidity", "light tannins", "simple fruity immediate drinking"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "amarone_passito_core": {
+      "diagnostic_features": ["Amarone della Valpolicella", "passito method", "dried grapes", "dry or off-dry", "full body", "high alcohol", "concentrated red berry and spice"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "barolo_nebbiolo_core": {
+      "diagnostic_features": ["Barolo", "Nebbiolo", "south-facing slopes", "high acidity", "high tannin", "sour cherry", "herbs", "tar leather truffle with age"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "barbaresco_nebbiolo_core": {
+      "diagnostic_features": ["Barbaresco", "Nebbiolo", "lower altitude than Barolo", "earlier ripening", "fruitier and less perfumed", "ageworthy acidity and tannin"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "barbera_asti_core": {
+      "diagnostic_features": ["Barbera d'Asti", "high acidity", "low to medium tannin", "red cherry", "plum", "youthful fruity or barrel-aged spicy style"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "chianti_classico_sangiovese_core": {
+      "diagnostic_features": ["Chianti Classico", "Sangiovese", "higher altitude than Chianti DOCG", "greater acidity", "herbal aromas", "Riserva and Gran Selezione"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "brunello_sangiovese_core": {
+      "diagnostic_features": ["Brunello di Montalcino", "Sangiovese", "more intense and fuller-bodied than Chianti", "long ageing requirement", "oak ageing"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "taurasi_aglianico_core": {
+      "diagnostic_features": ["Taurasi", "Aglianico", "prestigious southern black grape", "high acidity", "high tannin", "ageworthy structure"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {
