@@ -105,6 +105,34 @@
     "santorini_assyrtiko_core": {
       "diagnostic_features": ["windswept volcanic island", "basket-trained vines", "Assyrtiko", "dry white reputation", "ripe citrus", "stone fruit", "natural high acidity"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "california_chardonnay_core": {
+      "diagnostic_features": ["California Chardonnay", "wide style range", "peach and banana fruit", "oak hazelnut butter in traditional premium styles", "cooler restrained examples"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "chile_coastal_sauvignon_core": {
+      "diagnostic_features": ["Casablanca and San Antonio", "cooler vineyard sites", "high acidity", "ripe apple", "citrus", "tropical fruit", "sometimes herbaceous"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "argentina_torrontes_core": {
+      "diagnostic_features": ["Argentina white signature variety", "Salta Cafayate high altitude", "intense fruity floral perfume", "medium body", "medium acidity", "stone fruit", "melon"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "south_africa_chenin_core": {
+      "diagnostic_features": ["most widely planted South African variety", "dry and sweet styles", "stone fruit", "old bush vines", "concentrated complex flavours", "barrel fermentation and ageing possible"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "hunter_semillon_core": {
+      "diagnostic_features": ["Hunter Valley Semillon", "early harvested", "low alcohol", "high acidity", "inert vessels", "neutral when young", "honey and toast with age"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "australian_riesling_core": {
+      "diagnostic_features": ["Clare and Eden Valleys", "lime lemon grapefruit", "unoaked", "high acidity", "dry or slightly off-dry", "toast honey petrol with age"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "marlborough_sauvignon_core": {
+      "diagnostic_features": ["New Zealand flagship grape", "Marlborough", "elderflower", "passion fruit", "high acidity", "green bell pepper", "gooseberry", "cool inert fermentation"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {

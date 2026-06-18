@@ -213,5 +213,45 @@
     "blind": "BLIND_043",
     "debrief": "DEBRIEF_043",
     "training": "TRAINING_043"
+  },
+  "SAT_WINE_044": {
+    "blind": "BLIND_044",
+    "debrief": "DEBRIEF_044",
+    "training": "TRAINING_044"
+  },
+  "SAT_WINE_045": {
+    "blind": "BLIND_045",
+    "debrief": "DEBRIEF_045",
+    "training": "TRAINING_045"
+  },
+  "SAT_WINE_046": {
+    "blind": "BLIND_046",
+    "debrief": "DEBRIEF_046",
+    "training": "TRAINING_046"
+  },
+  "SAT_WINE_047": {
+    "blind": "BLIND_047",
+    "debrief": "DEBRIEF_047",
+    "training": "TRAINING_047"
+  },
+  "SAT_WINE_048": {
+    "blind": "BLIND_048",
+    "debrief": "DEBRIEF_048",
+    "training": "TRAINING_048"
+  },
+  "SAT_WINE_049": {
+    "blind": "BLIND_049",
+    "debrief": "DEBRIEF_049",
+    "training": "TRAINING_049"
+  },
+  "SAT_WINE_050": {
+    "blind": "BLIND_050",
+    "debrief": "DEBRIEF_050",
+    "training": "TRAINING_050"
+  },
+  "SAT_WINE_051": {
+    "blind": "BLIND_051",
+    "debrief": "DEBRIEF_051",
+    "training": "TRAINING_051"
   }
 }

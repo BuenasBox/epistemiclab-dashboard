@@ -5351,5 +5351,1011 @@
       "santorini_assyrtiko_core",
       "cool_climate_high_acid_white"
     ]
+  },
+  {
+    "canonical_id": "SAT_WINE_044",
+    "render_id": "TRAINING_044",
+    "mode": "training",
+    "identity": {
+      "display_name": "California Chardonnay",
+      "wine_name": "California Chardonnay",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Broad California Chardonnay style range",
+      "wine_type": "BLANCO",
+      "country": "USA",
+      "region": "California",
+      "subregion": "Statewide / coastal premium regions",
+      "appellation": "California AVA / regional AVAs",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - USA - Practica 044",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "wide California climate range; cooler coastal regions give more restrained premium Chardonnay",
+      "altitude": "coastal valleys and cooler AVAs such as Los Carneros and Russian River Valley",
+      "soil": "varied; WSET emphasizes climate and winemaking style range",
+      "viticulture": [
+        "Chardonnay is the most planted grape in California",
+        "cooler premium regions now make restrained examples",
+        "Central Valley gives inexpensive fruity wines"
+      ],
+      "winemaking": [
+        "range from inexpensive fruity wines to premium barrel-influenced styles",
+        "oak staves or chips may be used in inexpensive wines",
+        "premium styles may show oak, butter and hazelnut or more restrained less-oak handling"
+      ],
+      "oak": "variable; traditional premium styles may show obvious oak, hazelnut and butter",
+      "sweetness": "dry",
+      "body": "medium to full",
+      "acidity": "medium",
+      "alcohol": "medium to high",
+      "tannin": "not_applicable",
+      "color": "medium lemon to gold",
+      "aroma_profile": [
+        "peach",
+        "banana",
+        "citrus",
+        "oak",
+        "butter"
+      ],
+      "flavour_profile": [
+        "peach",
+        "banana",
+        "citrus",
+        "toasty oak",
+        "buttery texture"
+      ],
+      "finish": "medium to long",
+      "quality_level": "good to outstanding depending on region and producer",
+      "ageing_potential": "short to medium ageing; premium examples can age"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "California Chardonnay style range",
+        "oak and malolactic signatures",
+        "cooler premium restraint"
+      ],
+      "learning_objectives": [
+        "identify New World Chardonnay markers",
+        "separate oak from grape identity",
+        "contrast warm and cool California styles"
+      ],
+      "typical_misconceptions": [
+        "all California Chardonnay is heavily oaked",
+        "butter always means fault",
+        "Chardonnay has one fixed style"
+      ],
+      "mentor_focus": [
+        "ask whether oak, body and fruit ripeness align"
+      ],
+      "exam_traps": [
+        "overcalling Burgundy",
+        "ignoring cooler restrained California examples"
+      ],
+      "memory_hooks": [
+        "California Chardonnay spans butter-oak tradition and cooler restraint"
+      ],
+      "comparison_styles": [
+        "Sonoma Coast Chardonnay",
+        "White Rioja Viura",
+        "Fiano di Avellino"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_045",
+        "SAT_WINE_040"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_036"
+      ],
+      "distinguishing_features": [
+        "more overt peach-banana and oak than Chablis",
+        "broader than Sonoma Coast examples",
+        "not Viura oxidative nutty Rioja"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Chardonnay is California's most planted grape",
+        "premium California Chardonnay formerly had full body, high alcohol, low acidity and oak/butter/hazelnut",
+        "cooler regions now produce restrained examples"
+      ],
+      "student_traps": [
+        "calling all oaked whites Chardonnay",
+        "missing restrained modern styles"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "california_chardonnay_core",
+      "premium_chardonnay_winemaking"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_045",
+    "render_id": "TRAINING_045",
+    "mode": "training",
+    "identity": {
+      "display_name": "Sonoma Coast Chardonnay",
+      "wine_name": "Sonoma Coast Chardonnay",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Cool Pacific-influenced premium Sonoma Chardonnay",
+      "wine_type": "BLANCO",
+      "country": "USA",
+      "region": "Sonoma Coast",
+      "subregion": "Sonoma County",
+      "appellation": "Sonoma Coast AVA",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - USA - Practica 045",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "confidence_score": 0.94
+    },
+    "style_markers": {
+      "climate": "cool Pacific-influenced Sonoma Coast climate with south-facing slopes used to maximize ripening",
+      "altitude": "coastal slopes influenced by cold Pacific Ocean",
+      "soil": "not specified by WSET; Pacific influence and slope aspect are key",
+      "viticulture": [
+        "vineyards often planted on south-facing slopes",
+        "cold Pacific Ocean strongly influences climate",
+        "nearby Sonoma AVAs include high-quality Chardonnay areas"
+      ],
+      "winemaking": [
+        "premium cool-climate Chardonnay production",
+        "oak and lees may be used but restraint is expected",
+        "fruit ripens slowly in cool coastal conditions"
+      ],
+      "oak": "moderate, often integrated; not necessarily overt",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "medium to high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale to medium lemon",
+      "aroma_profile": [
+        "citrus",
+        "green apple",
+        "peach",
+        "subtle oak",
+        "lees"
+      ],
+      "flavour_profile": [
+        "citrus",
+        "peach",
+        "fresh acidity",
+        "subtle oak texture"
+      ],
+      "finish": "medium to long",
+      "quality_level": "very good to outstanding",
+      "ageing_potential": "medium ageing for best examples"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "cool coastal California Chardonnay",
+        "Pacific fog and slope effect",
+        "premium restrained style"
+      ],
+      "learning_objectives": [
+        "separate Sonoma Coast from broader California Chardonnay",
+        "identify cool-climate Chardonnay features",
+        "link Pacific influence to acidity"
+      ],
+      "typical_misconceptions": [
+        "Sonoma is always warm",
+        "California Chardonnay must be full and buttery",
+        "cool climate means underripe"
+      ],
+      "mentor_focus": [
+        "ask whether acidity and restrained oak suggest coastal origin"
+      ],
+      "exam_traps": [
+        "overgeneralizing California Chardonnay",
+        "calling it Chablis from acidity alone"
+      ],
+      "memory_hooks": [
+        "Sonoma Coast is California Chardonnay in a cooler Pacific key"
+      ],
+      "comparison_styles": [
+        "California Chardonnay",
+        "Chablis",
+        "Margaret River Chardonnay"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_044",
+        "SAT_WINE_001"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_003"
+      ],
+      "distinguishing_features": [
+        "cooler and more acid-led than generic California Chardonnay",
+        "more new-world fruit than Chablis",
+        "Pacific influence is central"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Sonoma Coast is influenced by the cold Pacific Ocean",
+        "Russian River Valley is known for elegant Chardonnay",
+        "Sonoma Valley also produces high-quality Chardonnay"
+      ],
+      "student_traps": [
+        "assuming all California is hot",
+        "missing Sonoma Coast restraint"
+      ],
+      "revision_priority": "medium"
+    },
+    "reusable_knowledge_refs": [
+      "california_chardonnay_core",
+      "premium_chardonnay_winemaking"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_046",
+    "render_id": "TRAINING_046",
+    "mode": "training",
+    "identity": {
+      "display_name": "Chile Coastal Sauvignon Blanc",
+      "wine_name": "Chile Coastal Sauvignon Blanc",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Cool coastal Chilean Sauvignon Blanc with ripe fruit and high acidity",
+      "wine_type": "BLANCO",
+      "country": "Chile",
+      "region": "Casablanca / San Antonio",
+      "subregion": "Coastal Chile",
+      "appellation": "Casablanca Valley / San Antonio Valley",
+      "grape_varieties": [
+        "Sauvignon Blanc"
+      ],
+      "display_label": "Vino Blanco - Chile - Practica 046",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "cooler coastal sites influenced by Pacific conditions",
+      "altitude": "coastal valleys west of Chile's central areas",
+      "soil": "not specified by WSET; coastal cooling is key",
+      "viticulture": [
+        "Sauvignon Blanc performs particularly well in cooler sites",
+        "Casablanca and San Antonio yield excellent wines",
+        "some examples gain texture from lees and oak"
+      ],
+      "winemaking": [
+        "cool fermentation to preserve fruit",
+        "some lees stirring and oak for richness",
+        "fresh aromatic Sauvignon Blanc style"
+      ],
+      "oak": "usually unoaked; some examples use lees and oak for texture",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale lemon",
+      "aroma_profile": [
+        "ripe apple",
+        "citrus",
+        "tropical fruit",
+        "herbaceous notes"
+      ],
+      "flavour_profile": [
+        "ripe apple",
+        "citrus",
+        "tropical fruit",
+        "fresh high-acid palate"
+      ],
+      "finish": "medium to long",
+      "quality_level": "very good; excellent examples from cooler coastal valleys",
+      "ageing_potential": "drink young to short ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "coastal Chile freshness",
+        "Sauvignon Blanc fruit spectrum",
+        "lees/oak texture option"
+      ],
+      "learning_objectives": [
+        "identify Chilean Sauvignon Blanc",
+        "separate Chile from New Zealand Sauvignon",
+        "connect cool coastal valleys to acidity"
+      ],
+      "typical_misconceptions": [
+        "all Chile is warm Central Valley",
+        "herbaceous always means Loire",
+        "lees texture means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask for ripe apple/citrus/tropical plus high acidity"
+      ],
+      "exam_traps": [
+        "calling it Marlborough automatically",
+        "missing Casablanca/San Antonio"
+      ],
+      "memory_hooks": [
+        "Chile coastal Sauvignon is ripe-fruited and high-acid"
+      ],
+      "comparison_styles": [
+        "Marlborough Sauvignon Blanc",
+        "Sancerre",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_051",
+        "SAT_WINE_009"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_051",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "riper apple and tropical fruit than Sancerre",
+        "less benchmark elderflower/passionfruit than Marlborough",
+        "cool coastal Chile context"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Sauvignon Blanc performs well in Casablanca and San Antonio",
+        "wines have high acidity and intense fruity flavours",
+        "some examples gain texture from lees stirring and oak"
+      ],
+      "student_traps": [
+        "defaulting all Sauvignon to Marlborough",
+        "ignoring lees/oak texture"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "chile_coastal_sauvignon_core",
+      "cool_climate_high_acid_white"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_047",
+    "render_id": "TRAINING_047",
+    "mode": "training",
+    "identity": {
+      "display_name": "Salta Torrontes",
+      "wine_name": "Salta Torrontes",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "High-altitude aromatic Argentine Torrontes",
+      "wine_type": "BLANCO",
+      "country": "Argentina",
+      "region": "Salta",
+      "subregion": "Cafayate",
+      "appellation": "Salta / Cafayate GI",
+      "grape_varieties": [
+        "Torrontes"
+      ],
+      "display_label": "Vino Blanco - Argentina - Practica 047",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "high-altitude arid Argentine vineyards near Cafayate",
+      "altitude": "very high-altitude vineyards close to Cafayate in Salta Province",
+      "soil": "not specified by WSET; altitude is the key quality driver",
+      "viticulture": [
+        "many best Torrontes examples come from high-altitude Cafayate",
+        "aromatic variety harvested for freshness",
+        "released in the year of harvest"
+      ],
+      "winemaking": [
+        "inert temperature-controlled fermentation",
+        "early release",
+        "aroma preservation is central"
+      ],
+      "oak": "unoaked",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "medium",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale lemon",
+      "aroma_profile": [
+        "floral perfume",
+        "stone fruit",
+        "melon",
+        "grape blossom"
+      ],
+      "flavour_profile": [
+        "stone fruit",
+        "melon",
+        "floral dry palate"
+      ],
+      "finish": "medium",
+      "quality_level": "good to very good; best high-altitude examples are concentrated and pure",
+      "ageing_potential": "drink young"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Argentina white signature",
+        "high-altitude aromatic freshness",
+        "inert winemaking"
+      ],
+      "learning_objectives": [
+        "identify Torrontes aromatics",
+        "connect Salta altitude to purity",
+        "avoid confusing perfume with Muscat"
+      ],
+      "typical_misconceptions": [
+        "Argentina is only Malbec",
+        "floral dry whites must be Muscat",
+        "Torrontes is sweet by default"
+      ],
+      "mentor_focus": [
+        "ask for floral perfume with medium acidity"
+      ],
+      "exam_traps": [
+        "calling it Gewurztraminer",
+        "assuming sweetness from perfume"
+      ],
+      "memory_hooks": [
+        "Torrontes is Argentina's floral high-altitude white"
+      ],
+      "comparison_styles": [
+        "Muscat d'Alsace",
+        "Frascati",
+        "Santorini Assyrtiko"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_011",
+        "SAT_WINE_034"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_011",
+        "SAT_WINE_043"
+      ],
+      "distinguishing_features": [
+        "more stone fruit and melon than Muscat",
+        "medium acidity rather than Assyrtiko high acidity",
+        "Salta altitude context"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Torrontes is Argentina's white signature variety",
+        "best examples come from high-altitude Cafayate",
+        "wines are aromatic and usually fermented in inert vessels"
+      ],
+      "student_traps": [
+        "assuming aromatic means sweet",
+        "forgetting Argentina whites"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "argentina_torrontes_core",
+      "white_wine_sat_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_048",
+    "render_id": "TRAINING_048",
+    "mode": "training",
+    "identity": {
+      "display_name": "South Africa Chenin Blanc",
+      "wine_name": "South Africa Chenin Blanc",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "South African Chenin Blanc from easy stone fruit to old-vine textured styles",
+      "wine_type": "BLANCO",
+      "country": "South Africa",
+      "region": "Western Cape / Swartland",
+      "subregion": "Cape wine regions",
+      "appellation": "Western Cape WO / Swartland WO",
+      "grape_varieties": [
+        "Chenin Blanc"
+      ],
+      "display_label": "Vino Blanco - South Africa - Practica 048",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "warm South African climate moderated in cooler sites; old bush vines and dry farming can concentrate fruit",
+      "altitude": "old bush-vine sites, especially Swartland, may be dry-farmed",
+      "soil": "not specified by WSET; old vines and dry farming are key markers",
+      "viticulture": [
+        "Chenin Blanc is South Africa's most widely planted variety",
+        "old bush vines give concentration and complexity",
+        "Swartland is recognized for old vine Chenin"
+      ],
+      "winemaking": [
+        "dry and sweet styles possible",
+        "basic wines are easy-drinking stone fruit",
+        "barrel fermentation and ageing can add body and toasty oak"
+      ],
+      "oak": "variable; premium wines may use barrel fermentation and ageing",
+      "sweetness": "dry",
+      "body": "medium to full",
+      "acidity": "medium to high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "medium lemon",
+      "aroma_profile": [
+        "stone fruit",
+        "apple",
+        "honey",
+        "toasty oak"
+      ],
+      "flavour_profile": [
+        "stone fruit",
+        "apple",
+        "textured palate",
+        "toasty oak in premium examples"
+      ],
+      "finish": "medium to long",
+      "quality_level": "good to outstanding; old bush-vine examples can be concentrated and complex",
+      "ageing_potential": "medium ageing for concentrated examples"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "South African Chenin identity",
+        "old bush-vine concentration",
+        "barrel texture option"
+      ],
+      "learning_objectives": [
+        "identify South African Chenin",
+        "separate Chenin from Chardonnay",
+        "connect old vines to concentration"
+      ],
+      "typical_misconceptions": [
+        "South Africa is only Sauvignon or red blends",
+        "Chenin is always simple",
+        "oak texture means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether stone fruit and texture could be Chenin"
+      ],
+      "exam_traps": [
+        "calling premium Chenin Chardonnay",
+        "ignoring old bush vine clue"
+      ],
+      "memory_hooks": [
+        "South African Chenin moves from easy stone fruit to old-vine texture"
+      ],
+      "comparison_styles": [
+        "Vouvray Chenin Blanc",
+        "Fiano di Avellino",
+        "California Chardonnay"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_007",
+        "SAT_WINE_036"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044",
+        "SAT_WINE_007"
+      ],
+      "distinguishing_features": [
+        "more New World stone fruit than Loire Chenin",
+        "less varietal Chardonnay oak signature",
+        "old bush-vine South Africa context"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Chenin Blanc is South Africa's most widely planted variety",
+        "old bush vines can give concentration and complexity",
+        "barrel fermentation and ageing can add body and toasty oak"
+      ],
+      "student_traps": [
+        "overlooking Chenin as South Africa core",
+        "confusing all barrel texture with Chardonnay"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "south_africa_chenin_core",
+      "white_wine_sat_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_049",
+    "render_id": "TRAINING_049",
+    "mode": "training",
+    "identity": {
+      "display_name": "Hunter Valley Semillon",
+      "wine_name": "Hunter Valley Semillon",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Early-harvest unoaked Hunter Valley Semillon built for bottle age",
+      "wine_type": "BLANCO",
+      "country": "Australia",
+      "region": "Hunter Valley",
+      "subregion": "New South Wales",
+      "appellation": "Hunter Valley GI",
+      "grape_varieties": [
+        "Semillon"
+      ],
+      "display_label": "Vino Blanco - Australia - Practica 049",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.98
+    },
+    "style_markers": {
+      "climate": "hot humid Hunter Valley climate",
+      "altitude": "low-altitude Hunter Valley vineyards",
+      "soil": "not specified by WSET; early harvest and winemaking define style",
+      "viticulture": [
+        "Semillon is the most planted Hunter Valley grape",
+        "harvested early at low sugar and high acidity",
+        "style is unique to Australia"
+      ],
+      "winemaking": [
+        "oxygen contact kept to a minimum",
+        "inert vessels for fermentation and storage",
+        "bottled young almost neutral then develops with age"
+      ],
+      "oak": "unoaked",
+      "sweetness": "dry",
+      "body": "light",
+      "acidity": "high",
+      "alcohol": "low",
+      "tannin": "not_applicable",
+      "color": "pale lemon",
+      "aroma_profile": [
+        "lemon",
+        "grass",
+        "neutral young fruit",
+        "honey with age",
+        "toast with age"
+      ],
+      "flavour_profile": [
+        "lemon",
+        "neutral young palate",
+        "high-acid light body",
+        "honey and toast with age"
+      ],
+      "finish": "long with age",
+      "quality_level": "very good to outstanding; best examples can age 20 years or more",
+      "ageing_potential": "very long ageing for best examples"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Australian unique Semillon",
+        "age transformation without oak",
+        "early harvest structure"
+      ],
+      "learning_objectives": [
+        "identify Hunter Semillon",
+        "separate age-derived toast from oak",
+        "connect low alcohol and high acidity"
+      ],
+      "typical_misconceptions": [
+        "toast always means oak",
+        "Hunter Valley is only Shiraz",
+        "neutral young wine means low quality"
+      ],
+      "mentor_focus": [
+        "ask whether low alcohol and high acidity can explain longevity"
+      ],
+      "exam_traps": [
+        "calling it oaked Chardonnay with age",
+        "missing Semillon despite neutrality"
+      ],
+      "memory_hooks": [
+        "Hunter Semillon starts quiet and ages into honeyed toast"
+      ],
+      "comparison_styles": [
+        "Australian Riesling",
+        "Muscadet",
+        "White Bordeaux"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_050",
+        "SAT_WINE_008"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044",
+        "SAT_WINE_008"
+      ],
+      "distinguishing_features": [
+        "lower alcohol than most Chardonnay",
+        "toast develops without oak",
+        "unique Hunter early-harvest Semillon style"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Hunter Semillon is harvested early",
+        "oxygen is minimized and inert vessels are used",
+        "best examples develop honey and toast and can age 20 years or more"
+      ],
+      "student_traps": [
+        "mistaking bottle-aged Semillon for oaked Chardonnay",
+        "undervaluing neutral young examples"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "hunter_semillon_core",
+      "cool_climate_high_acid_white"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_050",
+    "render_id": "TRAINING_050",
+    "mode": "training",
+    "identity": {
+      "display_name": "Clare Valley Riesling",
+      "wine_name": "Clare Valley Riesling",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Dry high-acid lime-led Australian Riesling",
+      "wine_type": "BLANCO",
+      "country": "Australia",
+      "region": "Clare Valley",
+      "subregion": "South Australia",
+      "appellation": "Clare Valley GI",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Australia - Practica 050",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "South Australian region suited to dry high-acid Riesling",
+      "altitude": "elevated Clare Valley sites within South Australia",
+      "soil": "not specified by WSET; regional suitability and style are key",
+      "viticulture": [
+        "Clare Valley is a classic Riesling region",
+        "Riesling is the regional speciality",
+        "dry high-acid style is central"
+      ],
+      "winemaking": [
+        "unoaked Riesling production",
+        "dry or slightly off-dry styles",
+        "bottle ageing develops toast, honey and petrol"
+      ],
+      "oak": "unoaked",
+      "sweetness": "dry to slightly off-dry",
+      "body": "light to medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale lemon",
+      "aroma_profile": [
+        "lime",
+        "lemon",
+        "grapefruit",
+        "petrol with age",
+        "honey with age"
+      ],
+      "flavour_profile": [
+        "lime",
+        "lemon",
+        "grapefruit",
+        "high-acid dry palate",
+        "toast and honey with age"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; classic Australian Riesling region",
+      "ageing_potential": "medium to long ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Australian dry Riesling",
+        "citrus intensity and age development",
+        "Clare regional identity"
+      ],
+      "learning_objectives": [
+        "identify lime-led Australian Riesling",
+        "separate dry Riesling from German sweetness",
+        "connect petrol/toast to bottle age"
+      ],
+      "typical_misconceptions": [
+        "all Riesling is sweet",
+        "petrol is a fault",
+        "Australia only makes full-bodied whites"
+      ],
+      "mentor_focus": [
+        "ask for lime, dry palate and high acidity"
+      ],
+      "exam_traps": [
+        "calling it German Kabinett",
+        "assuming petrol means old faulty wine"
+      ],
+      "memory_hooks": [
+        "Clare Riesling is dry lime lightning with ageworthy petrol-honey"
+      ],
+      "comparison_styles": [
+        "Eden Valley Riesling",
+        "Wachau Riesling",
+        "Riesling Kabinett"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_023",
+        "SAT_WINE_016"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_016",
+        "SAT_WINE_023"
+      ],
+      "distinguishing_features": [
+        "drier and more lime-driven than Kabinett",
+        "less full than Wachau dry Riesling",
+        "Australian regional identity"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Australian Riesling is unoaked and high acid",
+        "classic regions include Clare and Eden Valleys",
+        "Clare Valley Riesling is a speciality"
+      ],
+      "student_traps": [
+        "defaulting to Germany",
+        "missing dry Australian Riesling"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "australian_riesling_core",
+      "cool_climate_high_acid_white"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_051",
+    "render_id": "TRAINING_051",
+    "mode": "training",
+    "identity": {
+      "display_name": "Marlborough Sauvignon Blanc",
+      "wine_name": "Marlborough Sauvignon Blanc",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Pungent high-acid Marlborough Sauvignon Blanc",
+      "wine_type": "BLANCO",
+      "country": "New Zealand",
+      "region": "Marlborough",
+      "subregion": "South Island",
+      "appellation": "Marlborough GI",
+      "grape_varieties": [
+        "Sauvignon Blanc"
+      ],
+      "display_label": "Vino Blanco - New Zealand - Practica 051",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.98
+    },
+    "style_markers": {
+      "climate": "sunny South Island climate with Wairau and Awatere valley contrasts; Awatere is drier, cooler and windier",
+      "altitude": "Wairau and Awatere estuary valleys with varied aspects and altitudes",
+      "soil": "not specified by WSET; valley and climate differences are key",
+      "viticulture": [
+        "Sauvignon Blanc makes up the majority of Marlborough plantings",
+        "Wairau can show tropical fruit",
+        "Awatere gives higher acidity and herbaceous character"
+      ],
+      "winemaking": [
+        "cool inert fermentation preserves fruity aromas",
+        "some producers make oak-matured styles",
+        "benchmark aromatic Sauvignon style"
+      ],
+      "oak": "usually unoaked; some oak-matured styles exist",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale lemon",
+      "aroma_profile": [
+        "elderflower",
+        "passion fruit",
+        "green bell pepper",
+        "gooseberry",
+        "citrus"
+      ],
+      "flavour_profile": [
+        "passion fruit",
+        "gooseberry",
+        "green bell pepper",
+        "high-acid dry palate"
+      ],
+      "finish": "medium to long",
+      "quality_level": "very good to outstanding; global benchmark for Sauvignon Blanc",
+      "ageing_potential": "drink young to short ageing; oak-matured styles may hold longer"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "New Zealand benchmark Sauvignon",
+        "Marlborough valley contrast",
+        "cool inert fermentation"
+      ],
+      "learning_objectives": [
+        "identify Marlborough Sauvignon Blanc",
+        "separate Wairau tropical and Awatere herbaceous styles",
+        "contrast with Chile Sauvignon"
+      ],
+      "typical_misconceptions": [
+        "all Sauvignon Blanc is Loire",
+        "Marlborough always only passion fruit",
+        "oak-matured Sauvignon is impossible"
+      ],
+      "mentor_focus": [
+        "ask for pungent aromatics and high acidity"
+      ],
+      "exam_traps": [
+        "calling every aromatic high-acid white Marlborough",
+        "missing Awatere herbaceous profile"
+      ],
+      "memory_hooks": [
+        "Marlborough Sauvignon is elderflower, passionfruit, gooseberry and acid"
+      ],
+      "comparison_styles": [
+        "Chile Coastal Sauvignon Blanc",
+        "Sancerre",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_046",
+        "SAT_WINE_009"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_046",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "more pungent elderflower/passion fruit than Chile",
+        "more gooseberry and bell pepper than Rueda",
+        "global benchmark Sauvignon profile"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Sauvignon Blanc is New Zealand's flagship grape",
+        "Marlborough is the major centre and Sauvignon Blanc majority planting",
+        "Awatere Sauvignon has higher acidity and herbaceous character"
+      ],
+      "student_traps": [
+        "overusing Marlborough as a default answer",
+        "ignoring Chile as a comparator"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "marlborough_sauvignon_core",
+      "cool_climate_high_acid_white"
+    ]
   }
 ]

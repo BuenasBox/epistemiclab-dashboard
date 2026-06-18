@@ -1,0 +1,3736 @@
+[
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "USA",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_044",
+    "wine_name": "California Chardonnay",
+    "wine_style": "Broad California Chardonnay style range",
+    "display_name": "California Chardonnay",
+    "display_label": "Vino Blanco - USA - Practica 044",
+    "region": "California",
+    "subregion": "Statewide / coastal premium regions",
+    "appellation": "California AVA / regional AVAs",
+    "grape_varieties": [
+      "Chardonnay"
+    ],
+    "climate": "wide California climate range; cooler coastal regions give more restrained premium Chardonnay",
+    "altitude": "coastal valleys and cooler AVAs such as Los Carneros and Russian River Valley",
+    "soil": "varied; WSET emphasizes climate and winemaking style range",
+    "viticulture": [
+      "Chardonnay is the most planted grape in California",
+      "cooler premium regions now make restrained examples",
+      "Central Valley gives inexpensive fruity wines"
+    ],
+    "winemaking": [
+      "range from inexpensive fruity wines to premium barrel-influenced styles",
+      "oak staves or chips may be used in inexpensive wines",
+      "premium styles may show oak, butter and hazelnut or more restrained less-oak handling"
+    ],
+    "oak": "variable; traditional premium styles may show obvious oak, hazelnut and butter",
+    "sweetness": "dry",
+    "body": "medium to full",
+    "acidity": "medium",
+    "alcohol": "medium to high",
+    "color": "medium lemon to gold",
+    "aroma_profile": [
+      "peach",
+      "banana",
+      "citrus",
+      "oak",
+      "butter"
+    ],
+    "flavour_profile": [
+      "peach",
+      "banana",
+      "citrus",
+      "toasty oak",
+      "buttery texture"
+    ],
+    "finish": "medium to long",
+    "quality_level": "good to outstanding depending on region and producer",
+    "ageing_potential": "short to medium ageing; premium examples can age",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET White grape varieties - Chardonnay evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 5,
+    "confidence_score": 0.96,
+    "reusable_knowledge_refs": [
+      "california_chardonnay_core",
+      "premium_chardonnay_winemaking"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "medium lemon to gold"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "peach",
+        "banana",
+        "citrus",
+        "oak",
+        "butter"
+      ],
+      "palate": [
+        "dry",
+        "medium acidity",
+        "medium to full body",
+        "medium to high alcohol",
+        "peach",
+        "banana",
+        "citrus"
+      ],
+      "quality": [
+        "good to outstanding depending on region and producer"
+      ],
+      "ageing": [
+        "short to medium ageing; premium examples can age"
+      ],
+      "diagnostic_features": [
+        "california_chardonnay_core",
+        "premium_chardonnay_winemaking",
+        "more overt peach-banana and oak than Chablis",
+        "broader than Sonoma Coast examples"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "California Chardonnay style range",
+        "oak and malolactic signatures",
+        "cooler premium restraint"
+      ],
+      "learning_objectives": [
+        "identify New World Chardonnay markers",
+        "separate oak from grape identity",
+        "contrast warm and cool California styles"
+      ],
+      "typical_misconceptions": [
+        "all California Chardonnay is heavily oaked",
+        "butter always means fault",
+        "Chardonnay has one fixed style"
+      ],
+      "mentor_focus": [
+        "ask whether oak, body and fruit ripeness align"
+      ],
+      "exam_traps": [
+        "overcalling Burgundy",
+        "ignoring cooler restrained California examples"
+      ],
+      "memory_hooks": [
+        "California Chardonnay spans butter-oak tradition and cooler restraint"
+      ],
+      "comparison_styles": [
+        "Sonoma Coast Chardonnay",
+        "White Rioja Viura",
+        "Fiano di Avellino"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_045",
+        "SAT_WINE_040"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_036"
+      ],
+      "distinguishing_features": [
+        "more overt peach-banana and oak than Chablis",
+        "broader than Sonoma Coast examples",
+        "not Viura oxidative nutty Rioja"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Chardonnay is California's most planted grape",
+        "premium California Chardonnay formerly had full body, high alcohol, low acidity and oak/butter/hazelnut",
+        "cooler regions now produce restrained examples"
+      ],
+      "mentor_hints": [
+        "Ask what evidence supports Chardonnay beyond oak.",
+        "Use California style range as the teaching frame."
+      ],
+      "student_traps": [
+        "calling all oaked whites Chardonnay",
+        "missing restrained modern styles"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "33 California",
+    "section": "White grape varieties - Chardonnay",
+    "page_reference": "144",
+    "line_reference": [
+      "13901-13913"
+    ],
+    "expected_sat_observations": [
+      "medium lemon to gold",
+      "medium to pronounced intensity",
+      "peach",
+      "banana",
+      "citrus",
+      "oak",
+      "butter",
+      "dry",
+      "medium acidity",
+      "medium to full body",
+      "medium to high alcohol",
+      "peach",
+      "banana",
+      "citrus",
+      "toasty oak",
+      "buttery texture"
+    ],
+    "common_exam_points": [
+      "Chardonnay is California's most planted grape",
+      "premium California Chardonnay formerly had full body, high alcohol, low acidity and oak/butter/hazelnut",
+      "cooler regions now produce restrained examples"
+    ],
+    "common_student_errors": [
+      "all California Chardonnay is heavily oaked",
+      "butter always means fault",
+      "Chardonnay has one fixed style"
+    ],
+    "mentor_hints": [
+      "Ask what evidence supports Chardonnay beyond oak.",
+      "Use California style range as the teaching frame."
+    ],
+    "descriptor_whitelist": [
+      "medium lemon to gold",
+      "peach",
+      "banana",
+      "citrus",
+      "oak",
+      "butter",
+      "dry",
+      "medium acidity",
+      "medium to full body",
+      "medium to high alcohol",
+      "peach",
+      "banana",
+      "citrus",
+      "toasty oak",
+      "buttery texture",
+      "more overt peach-banana and oak than Chablis",
+      "broader than Sonoma Coast examples",
+      "not Viura oxidative nutty Rioja"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "13901-13913"
+      ],
+      "line_reference": [
+        "13901-13913"
+      ],
+      "evidence": [
+        "Chardonnay is the most planted grape in California with styles from fruity Central Valley to premium fuller oak-influenced wines.",
+        "Today California also produces restrained premium Chardonnay with less oak from cooler regions such as Los Carneros and Russian River Valley."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "USA",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_045",
+    "wine_name": "Sonoma Coast Chardonnay",
+    "wine_style": "Cool Pacific-influenced premium Sonoma Chardonnay",
+    "display_name": "Sonoma Coast Chardonnay",
+    "display_label": "Vino Blanco - USA - Practica 045",
+    "region": "Sonoma Coast",
+    "subregion": "Sonoma County",
+    "appellation": "Sonoma Coast AVA",
+    "grape_varieties": [
+      "Chardonnay"
+    ],
+    "climate": "cool Pacific-influenced Sonoma Coast climate with south-facing slopes used to maximize ripening",
+    "altitude": "coastal slopes influenced by cold Pacific Ocean",
+    "soil": "not specified by WSET; Pacific influence and slope aspect are key",
+    "viticulture": [
+      "vineyards often planted on south-facing slopes",
+      "cold Pacific Ocean strongly influences climate",
+      "nearby Sonoma AVAs include high-quality Chardonnay areas"
+    ],
+    "winemaking": [
+      "premium cool-climate Chardonnay production",
+      "oak and lees may be used but restraint is expected",
+      "fruit ripens slowly in cool coastal conditions"
+    ],
+    "oak": "moderate, often integrated; not necessarily overt",
+    "sweetness": "dry",
+    "body": "medium",
+    "acidity": "medium to high",
+    "alcohol": "medium",
+    "color": "pale to medium lemon",
+    "aroma_profile": [
+      "citrus",
+      "green apple",
+      "peach",
+      "subtle oak",
+      "lees"
+    ],
+    "flavour_profile": [
+      "citrus",
+      "peach",
+      "fresh acidity",
+      "subtle oak texture"
+    ],
+    "finish": "medium to long",
+    "quality_level": "very good to outstanding",
+    "ageing_potential": "medium ageing for best examples",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Sonoma and Mendocino Counties evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "HIGH",
+    "practice_priority": 4,
+    "difficulty_score": 6,
+    "confidence_score": 0.94,
+    "reusable_knowledge_refs": [
+      "california_chardonnay_core",
+      "premium_chardonnay_winemaking"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale to medium lemon"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "citrus",
+        "green apple",
+        "peach",
+        "subtle oak",
+        "lees"
+      ],
+      "palate": [
+        "dry",
+        "medium to high acidity",
+        "medium body",
+        "medium alcohol",
+        "citrus",
+        "peach",
+        "fresh acidity"
+      ],
+      "quality": [
+        "very good to outstanding"
+      ],
+      "ageing": [
+        "medium ageing for best examples"
+      ],
+      "diagnostic_features": [
+        "california_chardonnay_core",
+        "premium_chardonnay_winemaking",
+        "cooler and more acid-led than generic California Chardonnay",
+        "more new-world fruit than Chablis"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "cool coastal California Chardonnay",
+        "Pacific fog and slope effect",
+        "premium restrained style"
+      ],
+      "learning_objectives": [
+        "separate Sonoma Coast from broader California Chardonnay",
+        "identify cool-climate Chardonnay features",
+        "link Pacific influence to acidity"
+      ],
+      "typical_misconceptions": [
+        "Sonoma is always warm",
+        "California Chardonnay must be full and buttery",
+        "cool climate means underripe"
+      ],
+      "mentor_focus": [
+        "ask whether acidity and restrained oak suggest coastal origin"
+      ],
+      "exam_traps": [
+        "overgeneralizing California Chardonnay",
+        "calling it Chablis from acidity alone"
+      ],
+      "memory_hooks": [
+        "Sonoma Coast is California Chardonnay in a cooler Pacific key"
+      ],
+      "comparison_styles": [
+        "California Chardonnay",
+        "Chablis",
+        "Margaret River Chardonnay"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_044",
+        "SAT_WINE_001"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_003"
+      ],
+      "distinguishing_features": [
+        "cooler and more acid-led than generic California Chardonnay",
+        "more new-world fruit than Chablis",
+        "Pacific influence is central"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Sonoma Coast is influenced by the cold Pacific Ocean",
+        "Russian River Valley is known for elegant Chardonnay",
+        "Sonoma Valley also produces high-quality Chardonnay"
+      ],
+      "mentor_hints": [
+        "Ask if fruit ripeness and oak point outside Burgundy.",
+        "Use fog/Pacific influence as debrief causal logic."
+      ],
+      "student_traps": [
+        "assuming all California is hot",
+        "missing Sonoma Coast restraint"
+      ],
+      "revision_priority": "medium"
+    },
+    "chapter": "33 California",
+    "section": "Sonoma and Mendocino Counties",
+    "page_reference": "146",
+    "line_reference": [
+      "14068-14103"
+    ],
+    "expected_sat_observations": [
+      "pale to medium lemon",
+      "medium to pronounced intensity",
+      "citrus",
+      "green apple",
+      "peach",
+      "subtle oak",
+      "lees",
+      "dry",
+      "medium to high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "peach",
+      "fresh acidity",
+      "subtle oak texture"
+    ],
+    "common_exam_points": [
+      "Sonoma Coast is influenced by the cold Pacific Ocean",
+      "Russian River Valley is known for elegant Chardonnay",
+      "Sonoma Valley also produces high-quality Chardonnay"
+    ],
+    "common_student_errors": [
+      "Sonoma is always warm",
+      "California Chardonnay must be full and buttery",
+      "cool climate means underripe"
+    ],
+    "mentor_hints": [
+      "Ask if fruit ripeness and oak point outside Burgundy.",
+      "Use fog/Pacific influence as debrief causal logic."
+    ],
+    "descriptor_whitelist": [
+      "pale to medium lemon",
+      "citrus",
+      "green apple",
+      "peach",
+      "subtle oak",
+      "lees",
+      "dry",
+      "medium to high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "peach",
+      "fresh acidity",
+      "subtle oak texture",
+      "cooler and more acid-led than generic California Chardonnay",
+      "more new-world fruit than Chablis",
+      "Pacific influence is central"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "14068-14103"
+      ],
+      "line_reference": [
+        "14068-14103"
+      ],
+      "evidence": [
+        "Russian River Valley is cool and foggy and best known for high-quality elegant Pinot Noir and Chardonnay.",
+        "Sonoma Coast is strongly influenced by the cold Pacific Ocean with south-facing slopes to maximize ripening; Sonoma Valley produces high-quality Chardonnays."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "Chile",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_046",
+    "wine_name": "Chile Coastal Sauvignon Blanc",
+    "wine_style": "Cool coastal Chilean Sauvignon Blanc with ripe fruit and high acidity",
+    "display_name": "Chile Coastal Sauvignon Blanc",
+    "display_label": "Vino Blanco - Chile - Practica 046",
+    "region": "Casablanca / San Antonio",
+    "subregion": "Coastal Chile",
+    "appellation": "Casablanca Valley / San Antonio Valley",
+    "grape_varieties": [
+      "Sauvignon Blanc"
+    ],
+    "climate": "cooler coastal sites influenced by Pacific conditions",
+    "altitude": "coastal valleys west of Chile's central areas",
+    "soil": "not specified by WSET; coastal cooling is key",
+    "viticulture": [
+      "Sauvignon Blanc performs particularly well in cooler sites",
+      "Casablanca and San Antonio yield excellent wines",
+      "some examples gain texture from lees and oak"
+    ],
+    "winemaking": [
+      "cool fermentation to preserve fruit",
+      "some lees stirring and oak for richness",
+      "fresh aromatic Sauvignon Blanc style"
+    ],
+    "oak": "usually unoaked; some examples use lees and oak for texture",
+    "sweetness": "dry",
+    "body": "medium",
+    "acidity": "high",
+    "alcohol": "medium",
+    "color": "pale lemon",
+    "aroma_profile": [
+      "ripe apple",
+      "citrus",
+      "tropical fruit",
+      "herbaceous notes"
+    ],
+    "flavour_profile": [
+      "ripe apple",
+      "citrus",
+      "tropical fruit",
+      "fresh high-acid palate"
+    ],
+    "finish": "medium to long",
+    "quality_level": "very good; excellent examples from cooler coastal valleys",
+    "ageing_potential": "drink young to short ageing",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET White varieties evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 5,
+    "confidence_score": 0.96,
+    "reusable_knowledge_refs": [
+      "chile_coastal_sauvignon_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale lemon"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "ripe apple",
+        "citrus",
+        "tropical fruit",
+        "herbaceous notes"
+      ],
+      "palate": [
+        "dry",
+        "high acidity",
+        "medium body",
+        "medium alcohol",
+        "ripe apple",
+        "citrus",
+        "tropical fruit"
+      ],
+      "quality": [
+        "very good; excellent examples from cooler coastal valleys"
+      ],
+      "ageing": [
+        "drink young to short ageing"
+      ],
+      "diagnostic_features": [
+        "chile_coastal_sauvignon_core",
+        "cool_climate_high_acid_white",
+        "riper apple and tropical fruit than Sancerre",
+        "less benchmark elderflower/passionfruit than Marlborough"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "coastal Chile freshness",
+        "Sauvignon Blanc fruit spectrum",
+        "lees/oak texture option"
+      ],
+      "learning_objectives": [
+        "identify Chilean Sauvignon Blanc",
+        "separate Chile from New Zealand Sauvignon",
+        "connect cool coastal valleys to acidity"
+      ],
+      "typical_misconceptions": [
+        "all Chile is warm Central Valley",
+        "herbaceous always means Loire",
+        "lees texture means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask for ripe apple/citrus/tropical plus high acidity"
+      ],
+      "exam_traps": [
+        "calling it Marlborough automatically",
+        "missing Casablanca/San Antonio"
+      ],
+      "memory_hooks": [
+        "Chile coastal Sauvignon is ripe-fruited and high-acid"
+      ],
+      "comparison_styles": [
+        "Marlborough Sauvignon Blanc",
+        "Sancerre",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_051",
+        "SAT_WINE_009"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_051",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "riper apple and tropical fruit than Sancerre",
+        "less benchmark elderflower/passionfruit than Marlborough",
+        "cool coastal Chile context"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Sauvignon Blanc performs well in Casablanca and San Antonio",
+        "wines have high acidity and intense fruity flavours",
+        "some examples gain texture from lees stirring and oak"
+      ],
+      "mentor_hints": [
+        "Ask if the fruit is Chile-ripe rather than Marlborough-pungent.",
+        "Use coastal valley names after reveal."
+      ],
+      "student_traps": [
+        "defaulting all Sauvignon to Marlborough",
+        "ignoring lees/oak texture"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "36 Chile",
+    "section": "White varieties",
+    "page_reference": "153",
+    "line_reference": [
+      "14584-14599"
+    ],
+    "expected_sat_observations": [
+      "pale lemon",
+      "medium to pronounced intensity",
+      "ripe apple",
+      "citrus",
+      "tropical fruit",
+      "herbaceous notes",
+      "dry",
+      "high acidity",
+      "medium body",
+      "medium alcohol",
+      "ripe apple",
+      "citrus",
+      "tropical fruit",
+      "fresh high-acid palate"
+    ],
+    "common_exam_points": [
+      "Sauvignon Blanc performs well in Casablanca and San Antonio",
+      "wines have high acidity and intense fruity flavours",
+      "some examples gain texture from lees stirring and oak"
+    ],
+    "common_student_errors": [
+      "all Chile is warm Central Valley",
+      "herbaceous always means Loire",
+      "lees texture means Chardonnay"
+    ],
+    "mentor_hints": [
+      "Ask if the fruit is Chile-ripe rather than Marlborough-pungent.",
+      "Use coastal valley names after reveal."
+    ],
+    "descriptor_whitelist": [
+      "pale lemon",
+      "ripe apple",
+      "citrus",
+      "tropical fruit",
+      "herbaceous notes",
+      "dry",
+      "high acidity",
+      "medium body",
+      "medium alcohol",
+      "ripe apple",
+      "citrus",
+      "tropical fruit",
+      "fresh high-acid palate",
+      "riper apple and tropical fruit than Sancerre",
+      "less benchmark elderflower/passionfruit than Marlborough",
+      "cool coastal Chile context"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "14584-14599"
+      ],
+      "line_reference": [
+        "14584-14599"
+      ],
+      "evidence": [
+        "Chile's white plantings are dominated by Sauvignon Blanc and Chardonnay.",
+        "Sauvignon Blanc performs particularly well in cooler Casablanca and San Antonio Valleys, giving high acidity, intense fruity flavours, ripe apple, citrus, tropical fruit and sometimes herbaceous notes."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "Argentina",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_047",
+    "wine_name": "Salta Torrontes",
+    "wine_style": "High-altitude aromatic Argentine Torrontes",
+    "display_name": "Salta Torrontes",
+    "display_label": "Vino Blanco - Argentina - Practica 047",
+    "region": "Salta",
+    "subregion": "Cafayate",
+    "appellation": "Salta / Cafayate GI",
+    "grape_varieties": [
+      "Torrontes"
+    ],
+    "climate": "high-altitude arid Argentine vineyards near Cafayate",
+    "altitude": "very high-altitude vineyards close to Cafayate in Salta Province",
+    "soil": "not specified by WSET; altitude is the key quality driver",
+    "viticulture": [
+      "many best Torrontes examples come from high-altitude Cafayate",
+      "aromatic variety harvested for freshness",
+      "released in the year of harvest"
+    ],
+    "winemaking": [
+      "inert temperature-controlled fermentation",
+      "early release",
+      "aroma preservation is central"
+    ],
+    "oak": "unoaked",
+    "sweetness": "dry",
+    "body": "medium",
+    "acidity": "medium",
+    "alcohol": "medium",
+    "color": "pale lemon",
+    "aroma_profile": [
+      "floral perfume",
+      "stone fruit",
+      "melon",
+      "grape blossom"
+    ],
+    "flavour_profile": [
+      "stone fruit",
+      "melon",
+      "floral dry palate"
+    ],
+    "finish": "medium",
+    "quality_level": "good to very good; best high-altitude examples are concentrated and pure",
+    "ageing_potential": "drink young",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Torrontes / Salta evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 5,
+    "confidence_score": 0.97,
+    "reusable_knowledge_refs": [
+      "argentina_torrontes_core",
+      "white_wine_sat_core"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale lemon"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "floral perfume",
+        "stone fruit",
+        "melon",
+        "grape blossom"
+      ],
+      "palate": [
+        "dry",
+        "medium acidity",
+        "medium body",
+        "medium alcohol",
+        "stone fruit",
+        "melon",
+        "floral dry palate"
+      ],
+      "quality": [
+        "good to very good; best high-altitude examples are concentrated and pure"
+      ],
+      "ageing": [
+        "drink young"
+      ],
+      "diagnostic_features": [
+        "argentina_torrontes_core",
+        "white_wine_sat_core",
+        "more stone fruit and melon than Muscat",
+        "medium acidity rather than Assyrtiko high acidity"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Argentina white signature",
+        "high-altitude aromatic freshness",
+        "inert winemaking"
+      ],
+      "learning_objectives": [
+        "identify Torrontes aromatics",
+        "connect Salta altitude to purity",
+        "avoid confusing perfume with Muscat"
+      ],
+      "typical_misconceptions": [
+        "Argentina is only Malbec",
+        "floral dry whites must be Muscat",
+        "Torrontes is sweet by default"
+      ],
+      "mentor_focus": [
+        "ask for floral perfume with medium acidity"
+      ],
+      "exam_traps": [
+        "calling it Gewurztraminer",
+        "assuming sweetness from perfume"
+      ],
+      "memory_hooks": [
+        "Torrontes is Argentina's floral high-altitude white"
+      ],
+      "comparison_styles": [
+        "Muscat d'Alsace",
+        "Frascati",
+        "Santorini Assyrtiko"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_011",
+        "SAT_WINE_034"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_011",
+        "SAT_WINE_043"
+      ],
+      "distinguishing_features": [
+        "more stone fruit and melon than Muscat",
+        "medium acidity rather than Assyrtiko high acidity",
+        "Salta altitude context"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Torrontes is Argentina's white signature variety",
+        "best examples come from high-altitude Cafayate",
+        "wines are aromatic and usually fermented in inert vessels"
+      ],
+      "mentor_hints": [
+        "Ask whether aroma is floral but palate is dry and medium-acid.",
+        "Use altitude to explain purity."
+      ],
+      "student_traps": [
+        "assuming aromatic means sweet",
+        "forgetting Argentina whites"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "37 Argentina",
+    "section": "Torrontes / Salta",
+    "page_reference": "157-158",
+    "line_reference": [
+      "15081-15097",
+      "15124-15135"
+    ],
+    "expected_sat_observations": [
+      "pale lemon",
+      "medium to pronounced intensity",
+      "floral perfume",
+      "stone fruit",
+      "melon",
+      "grape blossom",
+      "dry",
+      "medium acidity",
+      "medium body",
+      "medium alcohol",
+      "stone fruit",
+      "melon",
+      "floral dry palate"
+    ],
+    "common_exam_points": [
+      "Torrontes is Argentina's white signature variety",
+      "best examples come from high-altitude Cafayate",
+      "wines are aromatic and usually fermented in inert vessels"
+    ],
+    "common_student_errors": [
+      "Argentina is only Malbec",
+      "floral dry whites must be Muscat",
+      "Torrontes is sweet by default"
+    ],
+    "mentor_hints": [
+      "Ask whether aroma is floral but palate is dry and medium-acid.",
+      "Use altitude to explain purity."
+    ],
+    "descriptor_whitelist": [
+      "pale lemon",
+      "floral perfume",
+      "stone fruit",
+      "melon",
+      "grape blossom",
+      "dry",
+      "medium acidity",
+      "medium body",
+      "medium alcohol",
+      "stone fruit",
+      "melon",
+      "floral dry palate",
+      "more stone fruit and melon than Muscat",
+      "medium acidity rather than Assyrtiko high acidity",
+      "Salta altitude context"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "15081-15097",
+        "15124-15135"
+      ],
+      "line_reference": [
+        "15081-15097",
+        "15124-15135"
+      ],
+      "evidence": [
+        "Torrontes is Argentina's white signature variety and many best examples come from high-altitude vineyards in Cafayate, Salta.",
+        "It has intense fruity floral perfume, medium body and acidity, stone fruit and melon, usually fermented in inert temperature-controlled vessels and released young."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "South Africa",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_048",
+    "wine_name": "South Africa Chenin Blanc",
+    "wine_style": "South African Chenin Blanc from easy stone fruit to old-vine textured styles",
+    "display_name": "South Africa Chenin Blanc",
+    "display_label": "Vino Blanco - South Africa - Practica 048",
+    "region": "Western Cape / Swartland",
+    "subregion": "Cape wine regions",
+    "appellation": "Western Cape WO / Swartland WO",
+    "grape_varieties": [
+      "Chenin Blanc"
+    ],
+    "climate": "warm South African climate moderated in cooler sites; old bush vines and dry farming can concentrate fruit",
+    "altitude": "old bush-vine sites, especially Swartland, may be dry-farmed",
+    "soil": "not specified by WSET; old vines and dry farming are key markers",
+    "viticulture": [
+      "Chenin Blanc is South Africa's most widely planted variety",
+      "old bush vines give concentration and complexity",
+      "Swartland is recognized for old vine Chenin"
+    ],
+    "winemaking": [
+      "dry and sweet styles possible",
+      "basic wines are easy-drinking stone fruit",
+      "barrel fermentation and ageing can add body and toasty oak"
+    ],
+    "oak": "variable; premium wines may use barrel fermentation and ageing",
+    "sweetness": "dry",
+    "body": "medium to full",
+    "acidity": "medium to high",
+    "alcohol": "medium",
+    "color": "medium lemon",
+    "aroma_profile": [
+      "stone fruit",
+      "apple",
+      "honey",
+      "toasty oak"
+    ],
+    "flavour_profile": [
+      "stone fruit",
+      "apple",
+      "textured palate",
+      "toasty oak in premium examples"
+    ],
+    "finish": "medium to long",
+    "quality_level": "good to outstanding; old bush-vine examples can be concentrated and complex",
+    "ageing_potential": "medium ageing for concentrated examples",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET White varieties / Swartland evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 6,
+    "confidence_score": 0.96,
+    "reusable_knowledge_refs": [
+      "south_africa_chenin_core",
+      "white_wine_sat_core"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "medium lemon"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "stone fruit",
+        "apple",
+        "honey",
+        "toasty oak"
+      ],
+      "palate": [
+        "dry",
+        "medium to high acidity",
+        "medium to full body",
+        "medium alcohol",
+        "stone fruit",
+        "apple",
+        "textured palate"
+      ],
+      "quality": [
+        "good to outstanding; old bush-vine examples can be concentrated and complex"
+      ],
+      "ageing": [
+        "medium ageing for concentrated examples"
+      ],
+      "diagnostic_features": [
+        "south_africa_chenin_core",
+        "white_wine_sat_core",
+        "more New World stone fruit than Loire Chenin",
+        "less varietal Chardonnay oak signature"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "South African Chenin identity",
+        "old bush-vine concentration",
+        "barrel texture option"
+      ],
+      "learning_objectives": [
+        "identify South African Chenin",
+        "separate Chenin from Chardonnay",
+        "connect old vines to concentration"
+      ],
+      "typical_misconceptions": [
+        "South Africa is only Sauvignon or red blends",
+        "Chenin is always simple",
+        "oak texture means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether stone fruit and texture could be Chenin"
+      ],
+      "exam_traps": [
+        "calling premium Chenin Chardonnay",
+        "ignoring old bush vine clue"
+      ],
+      "memory_hooks": [
+        "South African Chenin moves from easy stone fruit to old-vine texture"
+      ],
+      "comparison_styles": [
+        "Vouvray Chenin Blanc",
+        "Fiano di Avellino",
+        "California Chardonnay"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_007",
+        "SAT_WINE_036"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044",
+        "SAT_WINE_007"
+      ],
+      "distinguishing_features": [
+        "more New World stone fruit than Loire Chenin",
+        "less varietal Chardonnay oak signature",
+        "old bush-vine South Africa context"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Chenin Blanc is South Africa's most widely planted variety",
+        "old bush vines can give concentration and complexity",
+        "barrel fermentation and ageing can add body and toasty oak"
+      ],
+      "mentor_hints": [
+        "Ask whether acidity and texture fit Chenin rather than Chardonnay.",
+        "Use old vines as a quality explanation."
+      ],
+      "student_traps": [
+        "overlooking Chenin as South Africa core",
+        "confusing all barrel texture with Chardonnay"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "38 South Africa",
+    "section": "White varieties / Swartland",
+    "page_reference": "161-162",
+    "line_reference": [
+      "15357-15367",
+      "15591-15604"
+    ],
+    "expected_sat_observations": [
+      "medium lemon",
+      "medium to pronounced intensity",
+      "stone fruit",
+      "apple",
+      "honey",
+      "toasty oak",
+      "dry",
+      "medium to high acidity",
+      "medium to full body",
+      "medium alcohol",
+      "stone fruit",
+      "apple",
+      "textured palate",
+      "toasty oak in premium examples"
+    ],
+    "common_exam_points": [
+      "Chenin Blanc is South Africa's most widely planted variety",
+      "old bush vines can give concentration and complexity",
+      "barrel fermentation and ageing can add body and toasty oak"
+    ],
+    "common_student_errors": [
+      "South Africa is only Sauvignon or red blends",
+      "Chenin is always simple",
+      "oak texture means Chardonnay"
+    ],
+    "mentor_hints": [
+      "Ask whether acidity and texture fit Chenin rather than Chardonnay.",
+      "Use old vines as a quality explanation."
+    ],
+    "descriptor_whitelist": [
+      "medium lemon",
+      "stone fruit",
+      "apple",
+      "honey",
+      "toasty oak",
+      "dry",
+      "medium to high acidity",
+      "medium to full body",
+      "medium alcohol",
+      "stone fruit",
+      "apple",
+      "textured palate",
+      "toasty oak in premium examples",
+      "more New World stone fruit than Loire Chenin",
+      "less varietal Chardonnay oak signature",
+      "old bush-vine South Africa context"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "15357-15367",
+        "15591-15604"
+      ],
+      "line_reference": [
+        "15357-15367",
+        "15591-15604"
+      ],
+      "evidence": [
+        "Chenin Blanc is South Africa's most widely planted variety and producers make great wines in sweet and dry styles.",
+        "Old bush vines can offer more concentrated complex flavours and fuller texture; Swartland is a source of old vine Chenin."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "Australia",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_049",
+    "wine_name": "Hunter Valley Semillon",
+    "wine_style": "Early-harvest unoaked Hunter Valley Semillon built for bottle age",
+    "display_name": "Hunter Valley Semillon",
+    "display_label": "Vino Blanco - Australia - Practica 049",
+    "region": "Hunter Valley",
+    "subregion": "New South Wales",
+    "appellation": "Hunter Valley GI",
+    "grape_varieties": [
+      "Semillon"
+    ],
+    "climate": "hot humid Hunter Valley climate",
+    "altitude": "low-altitude Hunter Valley vineyards",
+    "soil": "not specified by WSET; early harvest and winemaking define style",
+    "viticulture": [
+      "Semillon is the most planted Hunter Valley grape",
+      "harvested early at low sugar and high acidity",
+      "style is unique to Australia"
+    ],
+    "winemaking": [
+      "oxygen contact kept to a minimum",
+      "inert vessels for fermentation and storage",
+      "bottled young almost neutral then develops with age"
+    ],
+    "oak": "unoaked",
+    "sweetness": "dry",
+    "body": "light",
+    "acidity": "high",
+    "alcohol": "low",
+    "color": "pale lemon",
+    "aroma_profile": [
+      "lemon",
+      "grass",
+      "neutral young fruit",
+      "honey with age",
+      "toast with age"
+    ],
+    "flavour_profile": [
+      "lemon",
+      "neutral young palate",
+      "high-acid light body",
+      "honey and toast with age"
+    ],
+    "finish": "long with age",
+    "quality_level": "very good to outstanding; best examples can age 20 years or more",
+    "ageing_potential": "very long ageing for best examples",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Semillon / Hunter Valley evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 7,
+    "confidence_score": 0.98,
+    "reusable_knowledge_refs": [
+      "hunter_semillon_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale lemon"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "lemon",
+        "grass",
+        "neutral young fruit",
+        "honey with age",
+        "toast with age"
+      ],
+      "palate": [
+        "dry",
+        "high acidity",
+        "light body",
+        "low alcohol",
+        "lemon",
+        "neutral young palate",
+        "high-acid light body"
+      ],
+      "quality": [
+        "very good to outstanding; best examples can age 20 years or more"
+      ],
+      "ageing": [
+        "very long ageing for best examples"
+      ],
+      "diagnostic_features": [
+        "hunter_semillon_core",
+        "cool_climate_high_acid_white",
+        "lower alcohol than most Chardonnay",
+        "toast develops without oak"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Australian unique Semillon",
+        "age transformation without oak",
+        "early harvest structure"
+      ],
+      "learning_objectives": [
+        "identify Hunter Semillon",
+        "separate age-derived toast from oak",
+        "connect low alcohol and high acidity"
+      ],
+      "typical_misconceptions": [
+        "toast always means oak",
+        "Hunter Valley is only Shiraz",
+        "neutral young wine means low quality"
+      ],
+      "mentor_focus": [
+        "ask whether low alcohol and high acidity can explain longevity"
+      ],
+      "exam_traps": [
+        "calling it oaked Chardonnay with age",
+        "missing Semillon despite neutrality"
+      ],
+      "memory_hooks": [
+        "Hunter Semillon starts quiet and ages into honeyed toast"
+      ],
+      "comparison_styles": [
+        "Australian Riesling",
+        "Muscadet",
+        "White Bordeaux"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_050",
+        "SAT_WINE_008"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044",
+        "SAT_WINE_008"
+      ],
+      "distinguishing_features": [
+        "lower alcohol than most Chardonnay",
+        "toast develops without oak",
+        "unique Hunter early-harvest Semillon style"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Hunter Semillon is harvested early",
+        "oxygen is minimized and inert vessels are used",
+        "best examples develop honey and toast and can age 20 years or more"
+      ],
+      "mentor_hints": [
+        "Ask if toast could be bottle age rather than barrel.",
+        "Use low alcohol as a decisive clue."
+      ],
+      "student_traps": [
+        "mistaking bottle-aged Semillon for oaked Chardonnay",
+        "undervaluing neutral young examples"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "39 Australia",
+    "section": "Semillon / Hunter Valley",
+    "page_reference": "165, 169",
+    "line_reference": [
+      "15916-15930",
+      "16306-16318"
+    ],
+    "expected_sat_observations": [
+      "pale lemon",
+      "medium to pronounced intensity",
+      "lemon",
+      "grass",
+      "neutral young fruit",
+      "honey with age",
+      "toast with age",
+      "dry",
+      "high acidity",
+      "light body",
+      "low alcohol",
+      "lemon",
+      "neutral young palate",
+      "high-acid light body",
+      "honey and toast with age"
+    ],
+    "common_exam_points": [
+      "Hunter Semillon is harvested early",
+      "oxygen is minimized and inert vessels are used",
+      "best examples develop honey and toast and can age 20 years or more"
+    ],
+    "common_student_errors": [
+      "toast always means oak",
+      "Hunter Valley is only Shiraz",
+      "neutral young wine means low quality"
+    ],
+    "mentor_hints": [
+      "Ask if toast could be bottle age rather than barrel.",
+      "Use low alcohol as a decisive clue."
+    ],
+    "descriptor_whitelist": [
+      "pale lemon",
+      "lemon",
+      "grass",
+      "neutral young fruit",
+      "honey with age",
+      "toast with age",
+      "dry",
+      "high acidity",
+      "light body",
+      "low alcohol",
+      "lemon",
+      "neutral young palate",
+      "high-acid light body",
+      "honey and toast with age",
+      "lower alcohol than most Chardonnay",
+      "toast develops without oak",
+      "unique Hunter early-harvest Semillon style"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "15916-15930",
+        "16306-16318"
+      ],
+      "line_reference": [
+        "15916-15930",
+        "16306-16318"
+      ],
+      "evidence": [
+        "Hunter Valley is the classic region for Australian Semillon, harvested early with low sugar and high acidity.",
+        "Inert vessels and minimal oxygen produce low-alcohol almost neutral young wines that develop honey and toast with bottle age; best can age 20 years or more."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "Australia",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_050",
+    "wine_name": "Clare Valley Riesling",
+    "wine_style": "Dry high-acid lime-led Australian Riesling",
+    "display_name": "Clare Valley Riesling",
+    "display_label": "Vino Blanco - Australia - Practica 050",
+    "region": "Clare Valley",
+    "subregion": "South Australia",
+    "appellation": "Clare Valley GI",
+    "grape_varieties": [
+      "Riesling"
+    ],
+    "climate": "South Australian region suited to dry high-acid Riesling",
+    "altitude": "elevated Clare Valley sites within South Australia",
+    "soil": "not specified by WSET; regional suitability and style are key",
+    "viticulture": [
+      "Clare Valley is a classic Riesling region",
+      "Riesling is the regional speciality",
+      "dry high-acid style is central"
+    ],
+    "winemaking": [
+      "unoaked Riesling production",
+      "dry or slightly off-dry styles",
+      "bottle ageing develops toast, honey and petrol"
+    ],
+    "oak": "unoaked",
+    "sweetness": "dry to slightly off-dry",
+    "body": "light to medium",
+    "acidity": "high",
+    "alcohol": "medium",
+    "color": "pale lemon",
+    "aroma_profile": [
+      "lime",
+      "lemon",
+      "grapefruit",
+      "petrol with age",
+      "honey with age"
+    ],
+    "flavour_profile": [
+      "lime",
+      "lemon",
+      "grapefruit",
+      "high-acid dry palate",
+      "toast and honey with age"
+    ],
+    "finish": "long",
+    "quality_level": "very good to outstanding; classic Australian Riesling region",
+    "ageing_potential": "medium to long ageing",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Riesling / Clare Valley evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 6,
+    "confidence_score": 0.97,
+    "reusable_knowledge_refs": [
+      "australian_riesling_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale lemon"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "lime",
+        "lemon",
+        "grapefruit",
+        "petrol with age",
+        "honey with age"
+      ],
+      "palate": [
+        "dry to slightly off-dry",
+        "high acidity",
+        "light to medium body",
+        "medium alcohol",
+        "lime",
+        "lemon",
+        "grapefruit"
+      ],
+      "quality": [
+        "very good to outstanding; classic Australian Riesling region"
+      ],
+      "ageing": [
+        "medium to long ageing"
+      ],
+      "diagnostic_features": [
+        "australian_riesling_core",
+        "cool_climate_high_acid_white",
+        "drier and more lime-driven than Kabinett",
+        "less full than Wachau dry Riesling"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Australian dry Riesling",
+        "citrus intensity and age development",
+        "Clare regional identity"
+      ],
+      "learning_objectives": [
+        "identify lime-led Australian Riesling",
+        "separate dry Riesling from German sweetness",
+        "connect petrol/toast to bottle age"
+      ],
+      "typical_misconceptions": [
+        "all Riesling is sweet",
+        "petrol is a fault",
+        "Australia only makes full-bodied whites"
+      ],
+      "mentor_focus": [
+        "ask for lime, dry palate and high acidity"
+      ],
+      "exam_traps": [
+        "calling it German Kabinett",
+        "assuming petrol means old faulty wine"
+      ],
+      "memory_hooks": [
+        "Clare Riesling is dry lime lightning with ageworthy petrol-honey"
+      ],
+      "comparison_styles": [
+        "Eden Valley Riesling",
+        "Wachau Riesling",
+        "Riesling Kabinett"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_023",
+        "SAT_WINE_016"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_016",
+        "SAT_WINE_023"
+      ],
+      "distinguishing_features": [
+        "drier and more lime-driven than Kabinett",
+        "less full than Wachau dry Riesling",
+        "Australian regional identity"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Australian Riesling is unoaked and high acid",
+        "classic regions include Clare and Eden Valleys",
+        "Clare Valley Riesling is a speciality"
+      ],
+      "mentor_hints": [
+        "Ask whether sweetness is assumed or observed.",
+        "Use lime intensity as the memory anchor."
+      ],
+      "student_traps": [
+        "defaulting to Germany",
+        "missing dry Australian Riesling"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "39 Australia",
+    "section": "Riesling / Clare Valley",
+    "page_reference": "165-166",
+    "line_reference": [
+      "15932-15942",
+      "16000-16002"
+    ],
+    "expected_sat_observations": [
+      "pale lemon",
+      "medium to pronounced intensity",
+      "lime",
+      "lemon",
+      "grapefruit",
+      "petrol with age",
+      "honey with age",
+      "dry to slightly off-dry",
+      "high acidity",
+      "light to medium body",
+      "medium alcohol",
+      "lime",
+      "lemon",
+      "grapefruit",
+      "high-acid dry palate",
+      "toast and honey with age"
+    ],
+    "common_exam_points": [
+      "Australian Riesling is unoaked and high acid",
+      "classic regions include Clare and Eden Valleys",
+      "Clare Valley Riesling is a speciality"
+    ],
+    "common_student_errors": [
+      "all Riesling is sweet",
+      "petrol is a fault",
+      "Australia only makes full-bodied whites"
+    ],
+    "mentor_hints": [
+      "Ask whether sweetness is assumed or observed.",
+      "Use lime intensity as the memory anchor."
+    ],
+    "descriptor_whitelist": [
+      "pale lemon",
+      "lime",
+      "lemon",
+      "grapefruit",
+      "petrol with age",
+      "honey with age",
+      "dry to slightly off-dry",
+      "high acidity",
+      "light to medium body",
+      "medium alcohol",
+      "lime",
+      "lemon",
+      "grapefruit",
+      "high-acid dry palate",
+      "toast and honey with age",
+      "drier and more lime-driven than Kabinett",
+      "less full than Wachau dry Riesling",
+      "Australian regional identity"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "15932-15942",
+        "16000-16002"
+      ],
+      "line_reference": [
+        "15932-15942",
+        "16000-16002"
+      ],
+      "evidence": [
+        "Australian Riesling has lime, lemon and grapefruit in youth, developing toast, honey and petrol; it is unoaked, high acid and usually dry or slightly off-dry.",
+        "Classic regions include Eden and Clare Valleys; Riesling is the speciality of Clare Valley."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos Nuevo Mundo",
+    "wine_type": "BLANCO",
+    "country": "New Zealand",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-09-BATCH-006",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected New World white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_051",
+    "wine_name": "Marlborough Sauvignon Blanc",
+    "wine_style": "Pungent high-acid Marlborough Sauvignon Blanc",
+    "display_name": "Marlborough Sauvignon Blanc",
+    "display_label": "Vino Blanco - New Zealand - Practica 051",
+    "region": "Marlborough",
+    "subregion": "South Island",
+    "appellation": "Marlborough GI",
+    "grape_varieties": [
+      "Sauvignon Blanc"
+    ],
+    "climate": "sunny South Island climate with Wairau and Awatere valley contrasts; Awatere is drier, cooler and windier",
+    "altitude": "Wairau and Awatere estuary valleys with varied aspects and altitudes",
+    "soil": "not specified by WSET; valley and climate differences are key",
+    "viticulture": [
+      "Sauvignon Blanc makes up the majority of Marlborough plantings",
+      "Wairau can show tropical fruit",
+      "Awatere gives higher acidity and herbaceous character"
+    ],
+    "winemaking": [
+      "cool inert fermentation preserves fruity aromas",
+      "some producers make oak-matured styles",
+      "benchmark aromatic Sauvignon style"
+    ],
+    "oak": "usually unoaked; some oak-matured styles exist",
+    "sweetness": "dry",
+    "body": "medium",
+    "acidity": "high",
+    "alcohol": "medium",
+    "color": "pale lemon",
+    "aroma_profile": [
+      "elderflower",
+      "passion fruit",
+      "green bell pepper",
+      "gooseberry",
+      "citrus"
+    ],
+    "flavour_profile": [
+      "passion fruit",
+      "gooseberry",
+      "green bell pepper",
+      "high-acid dry palate"
+    ],
+    "finish": "medium to long",
+    "quality_level": "very good to outstanding; global benchmark for Sauvignon Blanc",
+    "ageing_potential": "drink young to short ageing; oak-matured styles may hold longer",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Sauvignon Blanc / Marlborough evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 5,
+    "confidence_score": 0.98,
+    "reusable_knowledge_refs": [
+      "marlborough_sauvignon_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale lemon"
+      ],
+      "nose": [
+        "medium to pronounced intensity",
+        "elderflower",
+        "passion fruit",
+        "green bell pepper",
+        "gooseberry",
+        "citrus"
+      ],
+      "palate": [
+        "dry",
+        "high acidity",
+        "medium body",
+        "medium alcohol",
+        "passion fruit",
+        "gooseberry",
+        "green bell pepper"
+      ],
+      "quality": [
+        "very good to outstanding; global benchmark for Sauvignon Blanc"
+      ],
+      "ageing": [
+        "drink young to short ageing; oak-matured styles may hold longer"
+      ],
+      "diagnostic_features": [
+        "marlborough_sauvignon_core",
+        "cool_climate_high_acid_white",
+        "more pungent elderflower/passion fruit than Chile",
+        "more gooseberry and bell pepper than Rueda"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "New Zealand benchmark Sauvignon",
+        "Marlborough valley contrast",
+        "cool inert fermentation"
+      ],
+      "learning_objectives": [
+        "identify Marlborough Sauvignon Blanc",
+        "separate Wairau tropical and Awatere herbaceous styles",
+        "contrast with Chile Sauvignon"
+      ],
+      "typical_misconceptions": [
+        "all Sauvignon Blanc is Loire",
+        "Marlborough always only passion fruit",
+        "oak-matured Sauvignon is impossible"
+      ],
+      "mentor_focus": [
+        "ask for pungent aromatics and high acidity"
+      ],
+      "exam_traps": [
+        "calling every aromatic high-acid white Marlborough",
+        "missing Awatere herbaceous profile"
+      ],
+      "memory_hooks": [
+        "Marlborough Sauvignon is elderflower, passionfruit, gooseberry and acid"
+      ],
+      "comparison_styles": [
+        "Chile Coastal Sauvignon Blanc",
+        "Sancerre",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_046",
+        "SAT_WINE_009"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_046",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "more pungent elderflower/passion fruit than Chile",
+        "more gooseberry and bell pepper than Rueda",
+        "global benchmark Sauvignon profile"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Sauvignon Blanc is New Zealand's flagship grape",
+        "Marlborough is the major centre and Sauvignon Blanc majority planting",
+        "Awatere Sauvignon has higher acidity and herbaceous character"
+      ],
+      "mentor_hints": [
+        "Ask if the aromatic intensity is truly pungent Sauvignon.",
+        "Use Wairau/Awatere contrast in debrief."
+      ],
+      "student_traps": [
+        "overusing Marlborough as a default answer",
+        "ignoring Chile as a comparator"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "40 New Zealand",
+    "section": "Sauvignon Blanc / Marlborough",
+    "page_reference": "170-172",
+    "line_reference": [
+      "16454-16467",
+      "16576-16598"
+    ],
+    "expected_sat_observations": [
+      "pale lemon",
+      "medium to pronounced intensity",
+      "elderflower",
+      "passion fruit",
+      "green bell pepper",
+      "gooseberry",
+      "citrus",
+      "dry",
+      "high acidity",
+      "medium body",
+      "medium alcohol",
+      "passion fruit",
+      "gooseberry",
+      "green bell pepper",
+      "high-acid dry palate"
+    ],
+    "common_exam_points": [
+      "Sauvignon Blanc is New Zealand's flagship grape",
+      "Marlborough is the major centre and Sauvignon Blanc majority planting",
+      "Awatere Sauvignon has higher acidity and herbaceous character"
+    ],
+    "common_student_errors": [
+      "all Sauvignon Blanc is Loire",
+      "Marlborough always only passion fruit",
+      "oak-matured Sauvignon is impossible"
+    ],
+    "mentor_hints": [
+      "Ask if the aromatic intensity is truly pungent Sauvignon.",
+      "Use Wairau/Awatere contrast in debrief."
+    ],
+    "descriptor_whitelist": [
+      "pale lemon",
+      "elderflower",
+      "passion fruit",
+      "green bell pepper",
+      "gooseberry",
+      "citrus",
+      "dry",
+      "high acidity",
+      "medium body",
+      "medium alcohol",
+      "passion fruit",
+      "gooseberry",
+      "green bell pepper",
+      "high-acid dry palate",
+      "more pungent elderflower/passion fruit than Chile",
+      "more gooseberry and bell pepper than Rueda",
+      "global benchmark Sauvignon profile"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "16454-16467",
+        "16576-16598"
+      ],
+      "line_reference": [
+        "16454-16467",
+        "16576-16598"
+      ],
+      "evidence": [
+        "New Zealand Sauvignon Blanc is the flagship grape with elderflower, passion fruit and high acidity, often fermented cool in inert vessels.",
+        "Marlborough is the major grape-growing centre; Sauvignon Blanc is the majority, with Awatere examples higher in acidity and herbaceous character."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  }
+]

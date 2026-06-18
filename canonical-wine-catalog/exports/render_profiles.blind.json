@@ -1245,5 +1245,237 @@
       ],
       "reveal_policy": "identity_hidden_until_commitment"
     }
+  },
+  {
+    "canonical_id": "SAT_WINE_044",
+    "render_id": "BLIND_044",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_045",
+    "render_id": "BLIND_045",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "confidence_score": 0.94
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_046",
+    "render_id": "BLIND_046",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_047",
+    "render_id": "BLIND_047",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_048",
+    "render_id": "BLIND_048",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_049",
+    "render_id": "BLIND_049",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.98
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_050",
+    "render_id": "BLIND_050",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_051",
+    "render_id": "BLIND_051",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.98
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
   }
 ]
