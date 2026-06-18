@@ -69,11 +69,20 @@
     if(has(id.importance)) badges += '<span class="wic-badge type">'+esc(id.importance)+'</span>';
     if(has(id.confidence)) badges += '<span class="wic-badge">Confianza '+esc(id.confidence)+'</span>';
     if(has(id.priority)) badges += '<span class="wic-badge">Prioridad '+esc(id.priority)+'</span>';
+    if(has(id.wset_level)) badges += '<span class="wic-badge wset">'+esc(id.wset_level)+'</span>';
+    if(has(id.practice_number)) badges += '<span class="wic-badge">Práctica '+esc(id.practice_number)+'</span>';
+
+    // Meta del hero: objetivo pedagógico + mensaje motivador (sin revelar identidad)
+    var heroMeta = '';
+    if(has(id.objective)) heroMeta += '<div class="wic-objective"><span class="wic-obj-ic" aria-hidden="true">🎯</span><span>'+esc(id.objective)+'</span></div>';
+    if(has(id.motivational)) heroMeta += '<div class="wic-motiv">'+esc(id.motivational)+'</div>';
+    if(heroMeta) heroMeta = '<div class="wic-hero-meta">'+heroMeta+'</div>';
 
     var head = '<div class="wic-head"><div class="wic-head-main">'
       + '<div class="wic-eyebrow">Panel de práctica</div>'
       + '<div class="wic-title">'+esc(id.display_label || 'Práctica de cata')+'</div>'
       + (badges ? '<div class="wic-badges">'+badges+'</div>' : '')
+      + heroMeta
       + '</div>' + glassSlot(p.glass) + '</div>';
 
     // ---- Secciones (grid) ----

@@ -29,11 +29,20 @@
 .wic-badge{ font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:999px;
   border:1px solid var(--wic-line); background:rgba(255,255,255,.04); color:var(--wic-ink); white-space:nowrap; }
 .wic-badge.type{ color:var(--wic-gold); border-color:rgba(201,162,39,.4); }
+.wic-badge.wset{ color:#cdb7ff; border-color:rgba(150,120,220,.45); background:rgba(150,120,220,.10); }
 .wic-badge.diff-1,.wic-badge.diff-2{ color:var(--wic-ok); border-color:rgba(63,168,107,.4); }
 .wic-badge.diff-3{ color:var(--wic-warn); border-color:rgba(217,154,43,.4); }
 .wic-badge.diff-4,.wic-badge.diff-5{ color:#e0796f; border-color:rgba(224,121,111,.45); }
 .wic-glass-slot{ flex:0 0 auto; width:96px; }
 @media(max-width:560px){ .wic-glass-slot{ width:74px; } .wic-title{ font-size:18px; } }
+
+/* Meta del hero: objetivo pedagógico + mensaje motivador */
+.wic-hero-meta{ margin-top:12px; display:flex; flex-direction:column; gap:8px; }
+.wic-objective{ display:flex; gap:8px; align-items:flex-start; font-size:13.5px; line-height:1.45;
+  color:var(--wic-ink); background:rgba(201,162,39,.07); border:1px solid rgba(201,162,39,.22);
+  border-radius:12px; padding:9px 12px; }
+.wic-obj-ic{ flex:0 0 auto; }
+.wic-motiv{ font-size:13px; font-style:italic; color:var(--wic-muted); line-height:1.5; padding-left:2px; }
 
 /* Medidor de dificultad */
 .wic-meter{ display:inline-flex; gap:4px; vertical-align:middle; margin-left:8px; }

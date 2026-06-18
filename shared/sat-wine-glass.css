@@ -1,52 +1,52 @@
 /* ============================================================================
-   SATWineGlass — copa de cata dinámica (SVG + CSS, sin librerías).
+   SATWineGlass — copa de cata dinámica y realista (SVG + CSS, sin librerías).
    Representa SOLO el estado declarado por el estudiante. Nunca la respuesta.
-   Reutilizable en: SAT Lab, Full Simulation Parte 3, Bottle Guided, Label
-   Simulation e informes post-cata.
+   El líquido sigue la geometría interior del cáliz (path Bézier): nunca un
+   rectángulo. Reutilizable en SAT Lab, informes y futuros modos.
    ============================================================================ */
 
-.swg-root{ display:inline-block; width:100%; max-width:220px; }
+.swg-root{ display:inline-block; width:100%; max-width:230px; }
 .swg-svg{ width:100%; height:auto; display:block; overflow:visible; }
 
-/* Vino */
-.swg-wine{ transition: fill .35s ease, opacity .35s ease; }
-.swg-surface{ transition: fill .35s ease, opacity .35s ease; }
-.swg-density{ transition: opacity .35s ease; }
+/* Vino: transición suave de forma (nivel), color, intensidad */
+.swg-wine{ transition: d .5s ease, fill .4s ease, opacity .4s ease; }
+.swg-density{ transition: d .5s ease, opacity .4s ease; }
+.swg-surface, .swg-surface-rim{ transition: cy .5s ease, rx .5s ease, d .5s ease, opacity .4s ease; }
+.swg-root[data-empty="1"] .swg-surface, .swg-root[data-empty="1"] .swg-surface-rim{ opacity:0; }
 
-/* Neblina (turbio) */
-.swg-haze{ opacity:0; transition: opacity .35s ease; }
-.swg-root[data-clarity="turbio"] .swg-haze{ opacity:.55; }
+/* Brillo del menisco (sutil) */
+.swg-surface{ animation: swg-shimmer 4.5s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
 
-/* Lágrimas / piernas (alcohol) */
-.swg-leg{ opacity:0; transition: opacity .35s ease; }
-.swg-leg.on{ opacity:.5; }
-.swg-leg-drop{ opacity:0; }
-.swg-leg.on .swg-leg-drop{ opacity:.7; animation: swg-drip 3.2s ease-in infinite; }
+/* Turbidez: SOLO dentro del líquido (la capa está recortada al propio líquido) */
+.swg-haze{ opacity:0; transition: opacity .4s ease; }
+.swg-root[data-clarity="turbio"] .swg-haze{ opacity:.6; }
 
-/* Burbujas (espumosos) */
-.swg-bubbles{ opacity:0; transition: opacity .35s ease; }
+/* Lágrimas / piernas (alcohol): nacen del borde interno y descienden */
+.swg-tear-drop{ opacity:0; animation: swg-tear-fall 3s ease-in infinite; animation-delay: var(--swg-delay,0s); }
+.swg-tear line{ vector-effect:non-scaling-stroke; }
+
+/* Burbujas (espumosos) — listas para activarse, ascienden dentro del líquido */
+.swg-bubbles{ opacity:0; transition: opacity .4s ease; }
 .swg-root[data-bubbles="on"] .swg-bubbles{ opacity:1; }
-.swg-bubble{ animation: swg-rise 3.6s linear infinite; }
-.swg-bubble:nth-child(2){ animation-delay:.7s }
-.swg-bubble:nth-child(3){ animation-delay:1.3s }
-.swg-bubble:nth-child(4){ animation-delay:1.9s }
-.swg-bubble:nth-child(5){ animation-delay:2.5s }
+.swg-bubble{ animation: swg-rise 3.8s linear infinite; transform-box:fill-box; transform-origin:center; }
+.swg-bubble:nth-child(2){ animation-delay:.6s } .swg-bubble:nth-child(3){ animation-delay:1.1s }
+.swg-bubble:nth-child(4){ animation-delay:1.7s } .swg-bubble:nth-child(5){ animation-delay:2.3s }
+.swg-bubble:nth-child(6){ animation-delay:.9s } .swg-bubble:nth-child(7){ animation-delay:1.9s }
 
-/* Ondas aromáticas (Nariz) */
-.swg-aroma{ opacity:0; transition: opacity .4s ease; }
-.swg-root[data-aroma="on"] .swg-aroma{ opacity:.5; }
-.swg-root[data-aroma="on"][data-aroma-strong="1"] .swg-aroma{ opacity:.85; }
-.swg-wave{ animation: swg-waft 3.4s ease-in-out infinite; transform-origin:center bottom; }
-.swg-wave:nth-child(2){ animation-delay:.6s }
-.swg-wave:nth-child(3){ animation-delay:1.2s }
+/* Ondas aromáticas (Nariz) — ascienden y se desvanecen */
+.swg-aroma{ opacity:0; transition: opacity .45s ease; }
+.swg-root[data-aroma="on"] .swg-aroma{ opacity:.55; }
+.swg-root[data-aroma="on"][data-aroma-strong="1"] .swg-aroma{ opacity:.9; }
+.swg-wave{ animation: swg-waft 3.6s ease-in-out infinite; transform-box:fill-box; transform-origin:center bottom; }
+.swg-wave:nth-child(2){ animation-delay:.7s } .swg-wave:nth-child(3){ animation-delay:1.3s }
 
-@keyframes swg-rise{ 0%{ transform: translateY(0); opacity:0 } 15%{opacity:.8} 100%{ transform: translateY(-46px); opacity:0 } }
-@keyframes swg-drip{ 0%{ transform: translateY(0); opacity:0 } 20%{opacity:.7} 100%{ transform: translateY(20px); opacity:0 } }
-@keyframes swg-waft{ 0%,100%{ transform: translateX(0) scaleY(1) } 50%{ transform: translateX(2px) scaleY(1.06) } }
+@keyframes swg-rise{ 0%{ transform: translateY(0); opacity:0 } 12%{ opacity:.85 } 100%{ transform: translateY(-42px); opacity:0 } }
+@keyframes swg-tear-fall{ 0%{ transform: translateY(0); opacity:0 } 14%{ opacity:.85 } 90%{ opacity:.5 } 100%{ transform: translateY(var(--swg-fall,16px)); opacity:0 } }
+@keyframes swg-waft{ 0%,100%{ transform: translateY(0) scaleY(1); } 50%{ transform: translateY(-3px) scaleY(1.08); } }
+@keyframes swg-shimmer{ 0%,100%{ opacity:.12 } 50%{ opacity:.24 } }
 
-/* Accesibilidad: respetar reduce-motion (sin animación, estado visible) */
+/* Accesibilidad: respetar reduce-motion (estado visible, sin animación) */
 @media (prefers-reduced-motion: reduce){
-  .swg-bubble, .swg-leg.on .swg-leg-drop, .swg-wave{ animation: none !important; }
-  .swg-leg.on .swg-leg-drop{ opacity:.5; }
-  .swg-bubble{ opacity:.7; }
+  .swg-bubble, .swg-tear-drop, .swg-wave, .swg-surface{ animation: none !important; }
+  .swg-tear-drop{ opacity:.55; }
 }
