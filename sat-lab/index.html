@@ -6,6 +6,7 @@
 <title>Laboratorio SAT · EpistemicLab</title>
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <link rel="stylesheet" href="../shared/sat-wine-glass.css">
+<link rel="stylesheet" href="../shared/wine-intelligence-card.css">
 <style>
   :root{
     --bg:#1a1119; --panel:#241823; --panel2:#2e1f2c; --ink:#f5ecf2; --muted:#b79fb0;
@@ -87,6 +88,8 @@
       <button class="btn full" id="mode-blind">🍷 Cata a ciegas</button>
       <p class="muted" style="font-size:13px;margin:12px 2px 0">En la cata a ciegas no verás país, región ni variedad: deberás deducir desde la copa. (Otros modos llegarán pronto.)</p>
     </div>
+    <p class="muted" style="font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin:18px 2px 8px">Vista previa · Panel de inteligencia</p>
+    <div id="wic-demo"></div>
     <div id="intro-err" class="err"></div>
   </section>
 
@@ -164,6 +167,7 @@
 <script src="../shared/upgrade-gate.js"></script>
 <script src="../shared/mode-access-gate.js"></script>
 <script src="../shared/sat-wine-glass.js"></script>
+<script src="../shared/wine-intelligence-card.js"></script>
 <script>
 (function(){
   "use strict";
@@ -399,7 +403,19 @@
     $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
   }
 
+  // Demo del motor WineIntelligenceCard (datos mock seguros; sin identidad real).
+  var WIC_DEMO = {
+    identity: { display_label:'Vino blanco — práctica guiada', wine_type:'BLANCO', practice_mode:'Cata a ciegas', difficulty:'Intermedio', difficulty_score:3, recommended_level:'WSET Nivel 3', related_ra:'RA1 · Factores que influyen en el estilo' },
+    glass: { wineType:'BLANCO', colour:'amarillo_limón', intensity:'media', clarity:'claro', alcohol:'medio', body:'medio' },
+    progress: { percent:40, attempts:2, current_phase:'Paladar', strengths:['Acidez','Intensidad aromática'], weaknesses:['Compromiso de calidad'], mastered:['Claridad','Dulzor'], pending:['Justificación BICL','Potencial para el envejecimiento'] },
+    pedagogy: { core_concepts:['Acidez como marcador de clima','Intensidad como criterio de calidad','Razonamiento inverso'], learning_objectives:['Justificar la calidad con BICL','Inferir el clima desde la estructura','Comprometerse con un juicio'], mentor_focus:'Comprométete con un nivel de calidad y susténtalo; no evadas el juicio.', misconceptions:['Confundir cuerpo con dulzor','Interpretar acidez alta como defecto'], exam_traps:['Describir sin concluir','Sobre-describir aromas sin estructura'], memory_hooks:['Acidez = la boca saliva','Final largo = señal de calidad'] },
+    comparison: { confused_with:[], distinguishing_features:[], similar_profiles:[], next_recommended:null },
+    sat_state: { appearance:'Pendiente', nose:'Pendiente', palate:'En curso', quality:'Pendiente', ageing:'Pendiente' },
+    teaching_notes:'Demostración del motor visual. Al conectar el catálogo canónico, mostrará el perfil real de cada práctica.'
+  };
+
   document.addEventListener('DOMContentLoaded', function(){
+    if(window.WineIntelligenceCard && $('wic-demo')){ WineIntelligenceCard.mount($('wic-demo'), WIC_DEMO); }
     $('mode-blind').addEventListener('click', requestEntry);
     $('btn-next').addEventListener('click', nextPhase);
     $('btn-prev').addEventListener('click', prevPhase);
