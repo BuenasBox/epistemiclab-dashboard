@@ -3,7 +3,7 @@
 Source: D:\Descargas\Phone Link\WSET3_rebuilt.md
 Source SHA256: 91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25
 
-Profiles: 27
+Profiles: 37
 
 ## SAT_WINE_001 - Chablis
 - **canonical_id:** SAT_WINE_001
@@ -1516,4 +1516,564 @@ Profiles: 27
 - **section:** Burgenland / Neusiedlersee
 - **page_reference:** 114-115
 - **line_reference:** ["11001-11007","11173-11215"]
+
+## SAT_WINE_028 - Alto Adige Pinot Grigio
+- **canonical_id:** SAT_WINE_028
+- **wine_family:** Blancos Italia
+- **wine_name:** Alto Adige Pinot Grigio
+- **wine_style:** Alpine dry Pinot Grigio with high acidity and citrus-green fruit
+- **display_name:** Alto Adige Pinot Grigio
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Alto Adige
+- **subregion:** Trentino-Alto Adige
+- **appellation:** Alto Adige DOC
+- **grape_varieties:** ["Pinot Grigio"]
+- **climate:** moderate alpine climate with short dry summers, low rainfall and large diurnal range at altitude
+- **altitude:** terraced south-east and south-west-facing valley sides of the River Adige
+- **soil:** mountain terraces; WSET emphasizes altitude, aspect and diurnal range rather than a single soil type
+- **viticulture:** ["terraced vineyards on valley sides","altitude creates large diurnal range","conditions suit aromatic whites"]
+- **winemaking:** ["dry white winemaking","protective handling typical for Pinot Grigio","cool fermentation to preserve citrus and green fruit"]
+- **oak:** typically unoaked; oak is not diagnostic
+- **sweetness:** dry
+- **body:** light to medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** not_applicable
+- **color:** pale lemon
+- **aroma_profile:** ["citrus","green apple","pear","fresh herbs"]
+- **flavour_profile:** ["citrus","green fruit","crisp dry palate"]
+- **finish:** medium
+- **quality_level:** good to very good; notable regional white style
+- **ageing_potential:** drink young to short ageing for freshness
+- **expected_sat_observations:** ["pale lemon","medium intensity","citrus","green apple","pear","fresh herbs","dry","high acidity","light to medium body","medium alcohol","citrus","green fruit","crisp dry palate"]
+- **common_exam_points:** ["Alto Adige is Italy's most northerly wine region","Pinot Grigio is the most notable white wine","large diurnal range supports aromatic whites"]
+- **common_student_errors:** ["Pinot Grigio is always simple","all Italian whites are warm-climate and low acid","green fruit means Sauvignon Blanc"]
+- **mentor_hints:** ["Ask whether the fruit profile is neutral-citrus rather than overtly aromatic.","Use altitude as the causal structure."]
+- **descriptor_whitelist:** ["pale lemon","citrus","green apple","pear","fresh herbs","dry","high acidity","light to medium body","medium alcohol","citrus","green fruit","crisp dry palate","higher acidity than warmer valley-floor Trentino","lighter than Friuli Pinot Grigio","less floral than Gavi"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Trentino-Alto Adige - Alto Adige evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 028
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 4
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale lemon"],"nose":["medium intensity","citrus","green apple","pear","fresh herbs"],"palate":["dry","high acidity","light to medium body","medium alcohol","citrus","green fruit","crisp dry palate"],"quality":["good to very good; notable regional white style"],"ageing":["drink young to short ageing for freshness"],"diagnostic_features":["italian_pinot_grigio_core","cool_climate_high_acid_white","higher acidity than warmer valley-floor Trentino","lighter than Friuli Pinot Grigio"]}
+- **pedagogical_dna:** {"core_concepts":["Italian alpine white wines","Pinot Grigio freshness","altitude and diurnal range"],"learning_objectives":["identify dry high-acid Pinot Grigio","link Alto Adige to alpine freshness","avoid confusing neutral freshness with poor quality"],"typical_misconceptions":["Pinot Grigio is always simple","all Italian whites are warm-climate and low acid","green fruit means Sauvignon Blanc"],"mentor_focus":["anchor acidity, body and green fruit before naming grape"],"exam_traps":["calling it Sauvignon Blanc from green fruit alone","missing Alto Adige altitude"],"memory_hooks":["Alto Adige Pinot Grigio is mountain-fresh, dry and citrus-led"],"comparison_styles":["Trentino Pinot Grigio / Chardonnay","Friuli Pinot Grigio","Gavi"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_029","SAT_WINE_030"],"frequently_confused_with":["SAT_WINE_009","SAT_WINE_031"],"distinguishing_features":["higher acidity than warmer valley-floor Trentino","lighter than Friuli Pinot Grigio","less floral than Gavi"]}
+- **teaching_notes:** {"common_exam_points":["Alto Adige is Italy's most northerly wine region","Pinot Grigio is the most notable white wine","large diurnal range supports aromatic whites"],"mentor_hints":["Ask whether the fruit profile is neutral-citrus rather than overtly aromatic.","Use altitude as the causal structure."],"student_traps":["overcalling Sauvignon Blanc","forgetting Alto Adige DOC"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["italian_pinot_grigio_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["11695-11717"],"line_reference":["11695-11717"],"evidence":["Alto Adige is Italy's most northerly region with terraced valley-side vineyards and large diurnal range.","The most notable white wine is Pinot Grigio, dry, light to medium body, high acidity and citrus and green fruit flavours."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Trentino-Alto Adige - Alto Adige
+- **page_reference:** 121
+- **line_reference:** ["11695-11717"]
+
+## SAT_WINE_029 - Trentino Pinot Grigio / Chardonnay
+- **canonical_id:** SAT_WINE_029
+- **wine_family:** Blancos Italia
+- **wine_name:** Trentino Pinot Grigio / Chardonnay
+- **wine_style:** Moderate northern Italian valley white from Pinot Grigio or Chardonnay
+- **display_name:** Trentino Pinot Grigio / Chardonnay
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Trentino
+- **subregion:** Trentino-Alto Adige
+- **appellation:** Trentino DOC
+- **grape_varieties:** ["Pinot Grigio","Chardonnay"]
+- **climate:** dry summers and low rainfall; slightly warmer than Alto Adige due to southerly latitude and lower-altitude vineyards
+- **altitude:** valley floor and slopes on both sides of a wider valley
+- **soil:** varied valley and slope sites; WSET emphasizes altitude and valley position
+- **viticulture:** ["vines on valley floor and slopes","lower altitude sites give riper fruit","higher altitude sites resemble Alto Adige whites"]
+- **winemaking:** ["fresh dry white production","cool fermentation common for fruit expression","usually stainless steel"]
+- **oak:** usually unoaked or neutral; oak is not central to the style
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** medium
+- **alcohol:** medium
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["ripe stone fruit","citrus","pear"]
+- **flavour_profile:** ["ripe stone fruit","citrus","fresh dry palate"]
+- **finish:** medium
+- **quality_level:** good to very good; regional DOC style
+- **ageing_potential:** drink young to short ageing
+- **expected_sat_observations:** ["pale to medium lemon","medium intensity","ripe stone fruit","citrus","pear","dry","medium acidity","medium body","medium alcohol","ripe stone fruit","citrus","fresh dry palate"]
+- **common_exam_points:** ["Trentino is directly south of Alto Adige","main varieties are Chardonnay and Pinot Grigio","valley-floor wines tend to be medium-bodied with medium acidity and ripe stone fruit"]
+- **common_student_errors:** ["all Trentino whites are alpine and high acid","Chardonnay always shows oak","Pinot Grigio cannot show stone fruit"]
+- **mentor_hints:** ["Ask where the fruit sits on the green-to-stone-fruit spectrum.","Use valley position to explain structure."]
+- **descriptor_whitelist:** ["pale to medium lemon","ripe stone fruit","citrus","pear","dry","medium acidity","medium body","medium alcohol","ripe stone fruit","citrus","fresh dry palate","riper and broader than Alto Adige","less tropical and full than Friuli","less Garganega pear and almond than Soave"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Trentino evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 029
+- **priority:** 2
+- **wset_importance:** HIGH
+- **practice_priority:** 4
+- **difficulty_score:** 5
+- **confidence_score:** 0.94
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium intensity","ripe stone fruit","citrus","pear"],"palate":["dry","medium acidity","medium body","medium alcohol","ripe stone fruit","citrus","fresh dry palate"],"quality":["good to very good; regional DOC style"],"ageing":["drink young to short ageing"],"diagnostic_features":["italian_pinot_grigio_core","white_wine_sat_core","riper and broader than Alto Adige","less tropical and full than Friuli"]}
+- **pedagogical_dna:** {"core_concepts":["site altitude gradient","northern Italian fresh whites","Pinot Grigio and Chardonnay overlap"],"learning_objectives":["separate Trentino valley fruit from Alto Adige freshness","recognize medium-bodied northern Italian white","avoid assuming all Pinot Grigio is high acid"],"typical_misconceptions":["all Trentino whites are alpine and high acid","Chardonnay always shows oak","Pinot Grigio cannot show stone fruit"],"mentor_focus":["ask whether acidity is medium rather than high and fruit is riper"],"exam_traps":["overcalling Alto Adige","forcing oak because Chardonnay is possible"],"memory_hooks":["Trentino sits one step warmer and riper than Alto Adige"],"comparison_styles":["Alto Adige Pinot Grigio","Friuli Pinot Grigio","Soave Classico"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_028","SAT_WINE_030"],"frequently_confused_with":["SAT_WINE_028","SAT_WINE_003"],"distinguishing_features":["riper and broader than Alto Adige","less tropical and full than Friuli","less Garganega pear and almond than Soave"]}
+- **teaching_notes:** {"common_exam_points":["Trentino is directly south of Alto Adige","main varieties are Chardonnay and Pinot Grigio","valley-floor wines tend to be medium-bodied with medium acidity and ripe stone fruit"],"mentor_hints":["Ask where the fruit sits on the green-to-stone-fruit spectrum.","Use valley position to explain structure."],"student_traps":["treating Trentino as identical to Alto Adige","assuming Chardonnay means obvious oak"],"revision_priority":"medium"}
+- **reusable_knowledge_refs:** ["italian_pinot_grigio_core","white_wine_sat_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["11763-11800"],"line_reference":["11763-11800"],"evidence":["Trentino is slightly warmer than Alto Adige and has vines on valley floor and slopes.","Main varieties are Chardonnay and Pinot Grigio; valley-floor whites are medium-bodied with medium acidity and ripe stone fruit."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Trentino
+- **page_reference:** 121-122
+- **line_reference:** ["11763-11800"]
+
+## SAT_WINE_030 - Friuli Pinot Grigio
+- **canonical_id:** SAT_WINE_030
+- **wine_family:** Blancos Italia
+- **wine_name:** Friuli Pinot Grigio
+- **wine_style:** Rich north-east Italian Pinot Grigio from Friuli-Venezia Giulia
+- **display_name:** Friuli Pinot Grigio
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Friuli-Venezia Giulia
+- **subregion:** Friuli / Collio / Colli Orientali
+- **appellation:** Friuli Grave DOC / Collio DOC / Colli Orientali DOC
+- **grape_varieties:** ["Pinot Grigio"]
+- **climate:** moderate continental foothills in the north and warm maritime plain near the Adriatic in the south
+- **altitude:** foothill sites in Collio and Colli Orientali for premium concentration; plains for simpler styles
+- **soil:** varied foothill and plain soils; WSET emphasizes hills versus plain
+- **viticulture:** ["large number of grape varieties planted","hills produce premium concentrated whites","plain fruit can produce simple fruity whites"]
+- **winemaking:** ["dry white winemaking","protective fermentation for fruit","premium examples may use texture-building handling"]
+- **oak:** usually unoaked or neutral; oak is not the main diagnostic marker
+- **sweetness:** dry
+- **body:** medium to full
+- **acidity:** medium to high
+- **alcohol:** medium to high
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["juicy peach","tropical fruit","pear","red apple"]
+- **flavour_profile:** ["juicy peach","tropical fruit","ripe orchard fruit","rounded dry palate"]
+- **finish:** medium to long
+- **quality_level:** good to very good; premium hill examples can be concentrated
+- **ageing_potential:** drink young to medium ageing for best concentrated whites
+- **expected_sat_observations:** ["pale to medium lemon","medium intensity","juicy peach","tropical fruit","pear","red apple","dry","medium to high acidity","medium to full body","medium to high alcohol","juicy peach","tropical fruit","ripe orchard fruit","rounded dry palate"]
+- **common_exam_points:** ["Pinot Grigio is prevalent in Friuli-Venezia Giulia","Friuli produces some of Italy's richest Pinot Grigio","Collio and Colli Orientali are known for premium concentrated whites"]
+- **common_student_errors:** ["Pinot Grigio is always light","tropical fruit means New World","Friuli is only simple Friuli Grave"]
+- **mentor_hints:** ["Probe body and fruit ripeness before naming Pinot Grigio.","Use the hills/plain split to explain quality."]
+- **descriptor_whitelist:** ["pale to medium lemon","juicy peach","tropical fruit","pear","red apple","dry","medium to high acidity","medium to full body","medium to high alcohol","juicy peach","tropical fruit","ripe orchard fruit","rounded dry palate","more body and tropical fruit than Alto Adige","less floral-high-acid than Gavi","less pear-almond Garganega than Soave"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Friuli-Venezia Giulia evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 030
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 5
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium intensity","juicy peach","tropical fruit","pear","red apple"],"palate":["dry","medium to high acidity","medium to full body","medium to high alcohol","juicy peach","tropical fruit","ripe orchard fruit"],"quality":["good to very good; premium hill examples can be concentrated"],"ageing":["drink young to medium ageing for best concentrated whites"],"diagnostic_features":["friuli_rich_white_core","italian_pinot_grigio_core","more body and tropical fruit than Alto Adige","less floral-high-acid than Gavi"]}
+- **pedagogical_dna:** {"core_concepts":["Friuli richness","Pinot Grigio style range","hill versus plain quality"],"learning_objectives":["recognize richer Pinot Grigio","contrast Friuli with Alto Adige","connect Collio and Colli Orientali to premium whites"],"typical_misconceptions":["Pinot Grigio is always light","tropical fruit means New World","Friuli is only simple Friuli Grave"],"mentor_focus":["ask whether body and fruit ripeness exceed alpine Pinot Grigio"],"exam_traps":["calling rich Pinot Grigio Chardonnay","missing Collio/Colli Orientali premium context"],"memory_hooks":["Friuli is the richer Pinot Grigio lane in Italy"],"comparison_styles":["Alto Adige Pinot Grigio","Trentino Pinot Grigio / Chardonnay","Gavi"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_029","SAT_WINE_028"],"frequently_confused_with":["SAT_WINE_003","SAT_WINE_031"],"distinguishing_features":["more body and tropical fruit than Alto Adige","less floral-high-acid than Gavi","less pear-almond Garganega than Soave"]}
+- **teaching_notes:** {"common_exam_points":["Pinot Grigio is prevalent in Friuli-Venezia Giulia","Friuli produces some of Italy's richest Pinot Grigio","Collio and Colli Orientali are known for premium concentrated whites"],"mentor_hints":["Probe body and fruit ripeness before naming Pinot Grigio.","Use the hills/plain split to explain quality."],"student_traps":["assuming Pinot Grigio must be neutral","confusing richness with oak"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["friuli_rich_white_core","italian_pinot_grigio_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["11802-11826"],"line_reference":["11802-11826"],"evidence":["Friuli-Venezia Giulia produces some of the richest Pinot Grigio in Italy.","The medium- to full-bodied wines display juicy peach and tropical fruit flavours; Collio and Colli Orientali are premium concentrated white wine areas."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Friuli-Venezia Giulia
+- **page_reference:** 122
+- **line_reference:** ["11802-11826"]
+
+## SAT_WINE_031 - Soave Classico
+- **canonical_id:** SAT_WINE_031
+- **wine_family:** Blancos Italia
+- **wine_name:** Soave Classico
+- **wine_style:** Foothill Garganega white from limestone, clay and volcanic soils
+- **display_name:** Soave Classico
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Veneto
+- **subregion:** Soave foothills
+- **appellation:** Soave Classico DOC
+- **grape_varieties:** ["Garganega"]
+- **climate:** warm Veneto climate moderated by altitude in the foothills and large diurnal range
+- **altitude:** foothills north of Soave on cooler elevated sites
+- **soil:** limestone and clay with some volcanic rocks; cool soils slow ripening
+- **viticulture:** ["foothill fruit has full flavour ripeness and high acidity","plain fruit is fruitier with medium acidity","Classico indicates foothill source"]
+- **winemaking:** ["dry white production","small amounts of other white grapes may be blended","no new oak aromas or flavours typical"]
+- **oak:** no new oak aromas or flavours typical
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** medium to high
+- **alcohol:** medium
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["pear","red apple","stone fruit","white pepper","almond with age"]
+- **flavour_profile:** ["pear","red apple","stone fruit","subtle white pepper","almond and honey with age"]
+- **finish:** medium to long
+- **quality_level:** good to very good; best examples can age
+- **ageing_potential:** medium ageing for best Classico examples
+- **expected_sat_observations:** ["pale to medium lemon","medium intensity","pear","red apple","stone fruit","white pepper","almond with age","dry","medium to high acidity","medium body","medium alcohol","pear","red apple","stone fruit","subtle white pepper","almond and honey with age"]
+- **common_exam_points:** ["Soave is east of Verona","Garganega is the main variety","Soave Classico comes from foothills and best examples can age"]
+- **common_student_errors:** ["white pepper always means Grüner Veltliner","Soave is always simple","Italian whites all lack ageing potential"]
+- **mentor_hints:** ["Ask if the spice note is white pepper without oak support.","Tie Classico to foothill soils and acidity."]
+- **descriptor_whitelist:** ["pale to medium lemon","pear","red apple","stone fruit","white pepper","almond with age","dry","medium to high acidity","medium body","medium alcohol","pear","red apple","stone fruit","subtle white pepper","almond and honey with age","more pear and almond than Pinot Grigio","less floral and lighter than Gavi","less fennel-lemon than Verdicchio"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Veneto - Soave evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 031
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 5
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium intensity","pear","red apple","stone fruit","white pepper","almond with age"],"palate":["dry","medium to high acidity","medium body","medium alcohol","pear","red apple","stone fruit"],"quality":["good to very good; best examples can age"],"ageing":["medium ageing for best Classico examples"],"diagnostic_features":["soave_garganega_core","central_italy_fresh_white_core","more pear and almond than Pinot Grigio","less floral and lighter than Gavi"]}
+- **pedagogical_dna:** {"core_concepts":["Garganega identity","Classico foothill quality","no-new-oak Italian white"],"learning_objectives":["identify Soave structural markers","distinguish Classico foothills from plain Soave","separate white pepper from oak"],"typical_misconceptions":["white pepper always means Grüner Veltliner","Soave is always simple","Italian whites all lack ageing potential"],"mentor_focus":["ask for pear, apple, medium body and no new oak"],"exam_traps":["calling it Pinot Grigio from neutrality","missing Classico foothill quality"],"memory_hooks":["Soave Classico is Garganega: pear, apple, stone fruit, no new oak"],"comparison_styles":["Friuli Pinot Grigio","Gavi","Verdicchio dei Castelli di Jesi"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_030","SAT_WINE_035"],"frequently_confused_with":["SAT_WINE_030","SAT_WINE_032"],"distinguishing_features":["more pear and almond than Pinot Grigio","less floral and lighter than Gavi","less fennel-lemon than Verdicchio"]}
+- **teaching_notes:** {"common_exam_points":["Soave is east of Verona","Garganega is the main variety","Soave Classico comes from foothills and best examples can age"],"mentor_hints":["Ask if the spice note is white pepper without oak support.","Tie Classico to foothill soils and acidity."],"student_traps":["assuming Soave means low quality","adding new oak to the tasting note"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["soave_garganega_core","central_italy_fresh_white_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["11857-11882"],"line_reference":["11857-11882"],"evidence":["Soave foothills have limestone, clay and volcanic rocks that slow ripening, leading to full flavour ripeness and high acidity.","Garganega wines have medium to high acidity, medium body, pears, red apple, stone fruit and sometimes white pepper, without new oak; best examples age with almond and honey."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Veneto - Soave
+- **page_reference:** 122-123
+- **line_reference:** ["11857-11882"]
+
+## SAT_WINE_032 - Gavi
+- **canonical_id:** SAT_WINE_032
+- **wine_family:** Blancos Italia
+- **wine_name:** Gavi
+- **wine_style:** Pale high-acid Cortese white from south-eastern Piemonte
+- **display_name:** Gavi
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Piemonte
+- **subregion:** South-eastern Piemonte
+- **appellation:** Gavi DOCG / Cortese di Gavi DOCG
+- **grape_varieties:** ["Cortese"]
+- **climate:** moderate continental Piemonte with altitude and sea breezes in Gavi hills
+- **altitude:** hills where altitude supports long slow ripening
+- **soil:** hillside sites; WSET emphasizes altitude and sea breezes rather than named soil
+- **viticulture:** ["altitude and sea breezes lengthen ripening","Cortese keeps natural high acidity","Gavi di Gavi can indicate grapes from the town of Gavi"]
+- **winemaking:** ["protective winemaking is the norm","cool fermentation in stainless steel","some producers use techniques for added texture"]
+- **oak:** typically stainless steel; oak not diagnostic
+- **sweetness:** dry
+- **body:** light
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** not_applicable
+- **color:** pale lemon
+- **aroma_profile:** ["floral notes","citrus","green apple","pear"]
+- **flavour_profile:** ["citrus","green apple","pear","floral lift"]
+- **finish:** medium
+- **quality_level:** good to very good
+- **ageing_potential:** drink young to short ageing; freshness is central
+- **expected_sat_observations:** ["pale lemon","medium intensity","floral notes","citrus","green apple","pear","dry","high acidity","light body","medium alcohol","citrus","green apple","pear","floral lift"]
+- **common_exam_points:** ["Gavi is in south-eastern Piemonte","Cortese has natural high acidity and floral character","Gavi may be labelled Gavi DOCG or Cortese di Gavi DOCG"]
+- **common_student_errors:** ["Piemonte is only red wines","floral white must be aromatic Alsace","all Italian white DOCGs are full-bodied"]
+- **mentor_hints:** ["Ask if the profile is floral and light rather than neutral.","Use Cortese acidity as the anchor."]
+- **descriptor_whitelist:** ["pale lemon","floral notes","citrus","green apple","pear","dry","high acidity","light body","medium alcohol","citrus","green apple","pear","floral lift","more floral and lighter than Soave","less fennel and almond than Verdicchio","less ripe than Friuli Pinot Grigio"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Piemonte - Gavi evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 032
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 4
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale lemon"],"nose":["medium intensity","floral notes","citrus","green apple","pear"],"palate":["dry","high acidity","light body","medium alcohol","citrus","green apple","pear"],"quality":["good to very good"],"ageing":["drink young to short ageing; freshness is central"],"diagnostic_features":["gavi_cortese_core","cool_climate_high_acid_white","more floral and lighter than Soave","less fennel and almond than Verdicchio"]}
+- **pedagogical_dna:** {"core_concepts":["Cortese high acidity","Piemonte white identity","protective winemaking"],"learning_objectives":["identify pale high-acid Gavi","separate Cortese from Pinot Grigio","link altitude and sea breezes to freshness"],"typical_misconceptions":["Piemonte is only red wines","floral white must be aromatic Alsace","all Italian white DOCGs are full-bodied"],"mentor_focus":["ask for pale colour, light body and high acidity together"],"exam_traps":["calling Gavi Pinot Grigio","missing DOCG/Cortese link"],"memory_hooks":["Gavi is Cortese: pale, light, floral, high-acid"],"comparison_styles":["Alto Adige Pinot Grigio","Soave Classico","Verdicchio dei Castelli di Jesi"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_028","SAT_WINE_035"],"frequently_confused_with":["SAT_WINE_031","SAT_WINE_033"],"distinguishing_features":["more floral and lighter than Soave","less fennel and almond than Verdicchio","less ripe than Friuli Pinot Grigio"]}
+- **teaching_notes:** {"common_exam_points":["Gavi is in south-eastern Piemonte","Cortese has natural high acidity and floral character","Gavi may be labelled Gavi DOCG or Cortese di Gavi DOCG"],"mentor_hints":["Ask if the profile is floral and light rather than neutral.","Use Cortese acidity as the anchor."],"student_traps":["forgetting Piemonte whites","mistaking floral notes for Muscat"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["gavi_cortese_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12114-12125"],"line_reference":["12114-12125"],"evidence":["Gavi vines grow in hills where altitude and sea breezes result in long slow ripening of Cortese, emphasizing high acidity and floral character.","Wines are pale and light-bodied, with high acidity and citrus, green apples and pears; protective winemaking and cool stainless steel are normal."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 27 Northern Italy
+- **section:** Piemonte - Gavi
+- **page_reference:** 125
+- **line_reference:** ["12114-12125"]
+
+## SAT_WINE_033 - Orvieto
+- **canonical_id:** SAT_WINE_033
+- **wine_family:** Blancos Italia
+- **wine_name:** Orvieto
+- **wine_style:** Fresh Umbrian white blend of Grechetto and Trebbiano
+- **display_name:** Orvieto
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Umbria
+- **subregion:** Orvieto
+- **appellation:** Orvieto DOC
+- **grape_varieties:** ["Grechetto","Trebbiano"]
+- **climate:** continental central Italian climate similar to Tuscany but without Mediterranean influence
+- **altitude:** hills around Orvieto; WSET emphasizes continental inland conditions
+- **soil:** not specified by WSET for this style; regional inland conditions are the key marker
+- **viticulture:** ["blend led by Grechetto and Trebbiano","best examples tend to have more Grechetto","central inland freshness retained"]
+- **winemaking:** ["protective winemaking","cool fermentation in stainless steel","fresh fruit-led style"]
+- **oak:** unoaked; stainless steel freshness is diagnostic
+- **sweetness:** dry
+- **body:** light
+- **acidity:** medium to high
+- **alcohol:** medium
+- **tannin:** not_applicable
+- **color:** pale lemon
+- **aroma_profile:** ["ripe grapefruit","peach","citrus"]
+- **flavour_profile:** ["ripe grapefruit","peach","fresh citrus","clean dry finish"]
+- **finish:** medium
+- **quality_level:** good; best examples with more Grechetto can be very good
+- **ageing_potential:** drink young
+- **expected_sat_observations:** ["pale lemon","medium intensity","ripe grapefruit","peach","citrus","dry","medium to high acidity","light body","medium alcohol","ripe grapefruit","peach","fresh citrus","clean dry finish"]
+- **common_exam_points:** ["Orvieto DOC is a blend of Grechetto and Trebbiano","best examples tend to have more Grechetto","cool stainless steel fermentation is used"]
+- **common_student_errors:** ["central Italy is only red wine","Trebbiano blends are always poor","all Italian whites are Pinot Grigio"]
+- **mentor_hints:** ["Ask if the blend evidence points to Grechetto/Trebbiano.","Compare with Frascati using Malvasia orange blossom."]
+- **descriptor_whitelist:** ["pale lemon","ripe grapefruit","peach","citrus","dry","medium to high acidity","light body","medium alcohol","ripe grapefruit","peach","fresh citrus","clean dry finish","riper grapefruit and peach than Frascati","less floral than Malvasia-led Frascati","less high-acid and floral than Gavi"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Umbria - Orvieto evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 033
+- **priority:** 2
+- **wset_importance:** HIGH
+- **practice_priority:** 4
+- **difficulty_score:** 4
+- **confidence_score:** 0.95
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale lemon"],"nose":["medium intensity","ripe grapefruit","peach","citrus"],"palate":["dry","medium to high acidity","light body","medium alcohol","ripe grapefruit","peach","fresh citrus"],"quality":["good; best examples with more Grechetto can be very good"],"ageing":["drink young"],"diagnostic_features":["central_italy_fresh_white_core","white_wine_sat_core","riper grapefruit and peach than Frascati","less floral than Malvasia-led Frascati"]}
+- **pedagogical_dna:** {"core_concepts":["central Italian white blends","protective winemaking","Grechetto quality role"],"learning_objectives":["recognize Orvieto as a fresh blend","connect Grechetto proportion to quality","separate Orvieto from Frascati"],"typical_misconceptions":["central Italy is only red wine","Trebbiano blends are always poor","all Italian whites are Pinot Grigio"],"mentor_focus":["ask whether fruit is grapefruit-peach rather than floral-orange"],"exam_traps":["confusing Orvieto with Frascati","omitting Grechetto"],"memory_hooks":["Orvieto is Umbria freshness: Grechetto, Trebbiano, grapefruit and peach"],"comparison_styles":["Frascati","Gavi","Soave Classico"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_034"],"frequently_confused_with":["SAT_WINE_034","SAT_WINE_032"],"distinguishing_features":["riper grapefruit and peach than Frascati","less floral than Malvasia-led Frascati","less high-acid and floral than Gavi"]}
+- **teaching_notes:** {"common_exam_points":["Orvieto DOC is a blend of Grechetto and Trebbiano","best examples tend to have more Grechetto","cool stainless steel fermentation is used"],"mentor_hints":["Ask if the blend evidence points to Grechetto/Trebbiano.","Compare with Frascati using Malvasia orange blossom."],"student_traps":["using Trebbiano as a synonym for low quality","missing Umbria"],"revision_priority":"medium"}
+- **reusable_knowledge_refs:** ["central_italy_fresh_white_core","white_wine_sat_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12333-12343"],"line_reference":["12333-12343"],"evidence":["Umbria is continental and known for Orvieto DOC, a blend of Grechetto, Trebbiano and often other local grapes.","Orvieto is light-bodied with medium to high acidity and ripe grapefruit and peach; made protectively with cool stainless steel fermentation."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 28 Central Italy
+- **section:** Umbria - Orvieto
+- **page_reference:** 127
+- **line_reference:** ["12333-12343"]
+
+## SAT_WINE_034 - Frascati
+- **canonical_id:** SAT_WINE_034
+- **wine_family:** Blancos Italia
+- **wine_name:** Frascati
+- **wine_style:** Fresh Lazio white blend of Malvasia and Trebbiano
+- **display_name:** Frascati
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Lazio
+- **subregion:** Hills south of Rome
+- **appellation:** Frascati DOC
+- **grape_varieties:** ["Malvasia","Trebbiano"]
+- **climate:** hills south of Rome cooled by altitude and nearby small lakes
+- **altitude:** hills south of Rome with altitude cooling
+- **soil:** not specified by WSET; lake and altitude cooling are the key markers
+- **viticulture:** ["white grapes benefit from altitude and lake cooling","Malvasia and Trebbiano are blended","freshness is protected"]
+- **winemaking:** ["fresh unoaked style","protective white winemaking","cool fermentation typical for fresh fruit"]
+- **oak:** unoaked
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** medium to high
+- **alcohol:** medium
+- **tannin:** not_applicable
+- **color:** pale lemon
+- **aroma_profile:** ["citrus fruit","orange blossom","floral notes"]
+- **flavour_profile:** ["citrus","fresh dry palate","floral orange blossom nuance"]
+- **finish:** medium
+- **quality_level:** good
+- **ageing_potential:** drink young
+- **expected_sat_observations:** ["pale lemon","medium intensity","citrus fruit","orange blossom","floral notes","dry","medium to high acidity","medium body","medium alcohol","citrus","fresh dry palate","floral orange blossom nuance"]
+- **common_exam_points:** ["Frascati DOC is the best-known Lazio wine","vineyards are cooled by altitude and nearby lakes","Malvasia and Trebbiano are usually made fresh and unoaked"]
+- **common_student_errors:** ["Frascati is always neutral","Lazio is irrelevant for WSET whites","floral notes always mean Gewurztraminer"]
+- **mentor_hints:** ["Use orange blossom as the Malvasia clue.","Ask whether the structure is fresh but medium-bodied."]
+- **descriptor_whitelist:** ["pale lemon","citrus fruit","orange blossom","floral notes","dry","medium to high acidity","medium body","medium alcohol","citrus","fresh dry palate","floral orange blossom nuance","more floral orange blossom than Orvieto","medium body rather than Gavi light body","less pear-almond than Soave"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Lazio - Frascati evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 034
+- **priority:** 2
+- **wset_importance:** HIGH
+- **practice_priority:** 4
+- **difficulty_score:** 4
+- **confidence_score:** 0.95
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale lemon"],"nose":["medium intensity","citrus fruit","orange blossom","floral notes"],"palate":["dry","medium to high acidity","medium body","medium alcohol","citrus","fresh dry palate","floral orange blossom nuance"],"quality":["good"],"ageing":["drink young"],"diagnostic_features":["central_italy_fresh_white_core","white_wine_sat_core","more floral orange blossom than Orvieto","medium body rather than Gavi light body"]}
+- **pedagogical_dna:** {"core_concepts":["Lazio fresh whites","Malvasia floral contribution","altitude and lake cooling"],"learning_objectives":["identify Frascati structure","separate Frascati from Orvieto","recognize Malvasia orange blossom"],"typical_misconceptions":["Frascati is always neutral","Lazio is irrelevant for WSET whites","floral notes always mean Gewurztraminer"],"mentor_focus":["ask for citrus plus orange blossom in an unoaked frame"],"exam_traps":["calling it Orvieto from Trebbiano alone","missing lake and altitude cooling"],"memory_hooks":["Frascati is Rome-hills freshness with Malvasia orange blossom"],"comparison_styles":["Orvieto","Gavi","Soave Classico"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_033"],"frequently_confused_with":["SAT_WINE_033","SAT_WINE_032"],"distinguishing_features":["more floral orange blossom than Orvieto","medium body rather than Gavi light body","less pear-almond than Soave"]}
+- **teaching_notes:** {"common_exam_points":["Frascati DOC is the best-known Lazio wine","vineyards are cooled by altitude and nearby lakes","Malvasia and Trebbiano are usually made fresh and unoaked"],"mentor_hints":["Use orange blossom as the Malvasia clue.","Ask whether the structure is fresh but medium-bodied."],"student_traps":["forgetting Lazio in white wine study","overcalling aromatic intensity"],"revision_priority":"medium"}
+- **reusable_knowledge_refs:** ["central_italy_fresh_white_core","white_wine_sat_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12350-12359"],"line_reference":["12350-12359"],"evidence":["Frascati DOC is in hills south of Rome cooled by altitude and nearby lakes.","It is a blend of Malvasia and Trebbiano, fresh and unoaked, medium body, medium to high acidity, citrus and sometimes orange blossom."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 28 Central Italy
+- **section:** Lazio - Frascati
+- **page_reference:** 127
+- **line_reference:** ["12350-12359"]
+
+## SAT_WINE_035 - Verdicchio dei Castelli di Jesi
+- **canonical_id:** SAT_WINE_035
+- **wine_family:** Blancos Italia
+- **wine_name:** Verdicchio dei Castelli di Jesi
+- **wine_style:** High-acid Marche Verdicchio with lemon, fennel and almond
+- **display_name:** Verdicchio dei Castelli di Jesi
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Marche
+- **subregion:** Castelli di Jesi
+- **appellation:** Verdicchio dei Castelli di Jesi DOC
+- **grape_varieties:** ["Verdicchio"]
+- **climate:** eastern side of the Apennines with central Italian conditions; WSET emphasizes regional grape style
+- **altitude:** hilly central Italian sites around Castelli di Jesi
+- **soil:** not specified by WSET for this style
+- **viticulture:** ["Verdicchio is the key grape","many wines are simple and fruity","best examples have concentration and can age"]
+- **winemaking:** ["fresh dry white production","protective handling for fruit","best examples may be made for bottle development"]
+- **oak:** not diagnostic; almond and honey can come with bottle age
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** not_applicable
+- **color:** pale to medium lemon
+- **aroma_profile:** ["green apple","lemon","fennel","almond","honey with age"]
+- **flavour_profile:** ["green apple","lemon","fennel","almond","honeyed notes with age"]
+- **finish:** medium to long
+- **quality_level:** good to very good; best examples can develop complexity
+- **ageing_potential:** short to medium ageing; best examples develop honey and almond
+- **expected_sat_observations:** ["pale to medium lemon","medium intensity","green apple","lemon","fennel","almond","honey with age","dry","high acidity","medium body","medium alcohol","green apple","lemon","fennel","almond","honeyed notes with age"]
+- **common_exam_points:** ["Marche is best known for Verdicchio whites","Verdicchio dei Castelli di Jesi is the most famous","best examples age with honey and almond"]
+- **common_student_errors:** ["almond always means oak","Verdicchio is only simple","central Italy is red-only"]
+- **mentor_hints:** ["Ask whether almond appears with freshness rather than oak.","Use fennel as the diagnostic anchor."]
+- **descriptor_whitelist:** ["pale to medium lemon","green apple","lemon","fennel","almond","honey with age","dry","high acidity","medium body","medium alcohol","green apple","lemon","fennel","almond","honeyed notes with age","fennel and lemon more diagnostic than Soave pear","more almond-fennel than Gavi floral pear","higher acidity than Orvieto"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Marche - Verdicchio evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 035
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 5
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["pale to medium lemon"],"nose":["medium intensity","green apple","lemon","fennel","almond","honey with age"],"palate":["dry","high acidity","medium body","medium alcohol","green apple","lemon","fennel"],"quality":["good to very good; best examples can develop complexity"],"ageing":["short to medium ageing; best examples develop honey and almond"],"diagnostic_features":["verdicchio_core","central_italy_fresh_white_core","fennel and lemon more diagnostic than Soave pear","more almond-fennel than Gavi floral pear"]}
+- **pedagogical_dna:** {"core_concepts":["Verdicchio varietal identity","Italian white ageing beyond oak","Marche regional marker"],"learning_objectives":["identify fennel-almond Verdicchio","separate almond age notes from oak","connect Marche to Verdicchio"],"typical_misconceptions":["almond always means oak","Verdicchio is only simple","central Italy is red-only"],"mentor_focus":["ask for lemon, fennel and almond together"],"exam_traps":["calling it Soave from almond alone","missing high acidity"],"memory_hooks":["Verdicchio is lemon, fennel, almond and high acidity"],"comparison_styles":["Soave Classico","Gavi","Orvieto"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_031","SAT_WINE_032"],"frequently_confused_with":["SAT_WINE_031","SAT_WINE_033"],"distinguishing_features":["fennel and lemon more diagnostic than Soave pear","more almond-fennel than Gavi floral pear","higher acidity than Orvieto"]}
+- **teaching_notes:** {"common_exam_points":["Marche is best known for Verdicchio whites","Verdicchio dei Castelli di Jesi is the most famous","best examples age with honey and almond"],"mentor_hints":["Ask whether almond appears with freshness rather than oak.","Use fennel as the diagnostic anchor."],"student_traps":["missing Verdicchio because it seems neutral","confusing almond with new oak"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["verdicchio_core","central_italy_fresh_white_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12361-12375"],"line_reference":["12361-12375"],"evidence":["Marche is best known for white wines made from Verdicchio, especially Verdicchio dei Castelli di Jesi DOC.","Verdicchio is high in acidity with green apples, lemons, fennel and almond; best examples develop honey and almonds with age."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 28 Central Italy
+- **section:** Marche - Verdicchio
+- **page_reference:** 127-128
+- **line_reference:** ["12361-12375"]
+
+## SAT_WINE_036 - Fiano di Avellino
+- **canonical_id:** SAT_WINE_036
+- **wine_family:** Blancos Italia
+- **wine_name:** Fiano di Avellino
+- **wine_style:** Medium- to full-bodied Campanian Fiano with stone fruit and ageworthy wax-honey complexity
+- **display_name:** Fiano di Avellino
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Campania
+- **subregion:** Avellino
+- **appellation:** Fiano di Avellino DOCG
+- **grape_varieties:** ["Fiano"]
+- **climate:** southern Italian region with varied mountains, valleys and coastal plains enabling quality whites
+- **altitude:** inland Campanian appellation with elevation influence implied by regional mountains and valleys
+- **soil:** not specified by WSET for Fiano di Avellino in this passage
+- **viticulture:** ["Fiano produces some of Campania's best whites","better examples can be selected for ageing","grown in Campania and other southern regions"]
+- **winemaking:** ["often made to drink young","better examples may be matured in oak","can age in bottle"]
+- **oak:** often none for youthful examples; better examples may be matured in oak
+- **sweetness:** dry
+- **body:** medium to full
+- **acidity:** medium
+- **alcohol:** medium to high
+- **tannin:** not_applicable
+- **color:** medium lemon
+- **aroma_profile:** ["stone fruit","melon","mango","wax with age","honey with age"]
+- **flavour_profile:** ["stone fruit","melon","mango","rounded dry palate","wax and honey with age"]
+- **finish:** medium to long
+- **quality_level:** very good to outstanding in best DOCG examples
+- **ageing_potential:** medium to long ageing for better examples
+- **expected_sat_observations:** ["medium lemon","medium intensity","stone fruit","melon","mango","wax with age","honey with age","dry","medium acidity","medium to full body","medium to high alcohol","stone fruit","melon","mango","rounded dry palate","wax and honey with age"]
+- **common_exam_points:** ["Fiano di Avellino DOCG is a key Campanian white","Fiano has medium acidity and medium to full body","better examples can age with wax and honey"]
+- **common_student_errors:** ["southern Italy only makes reds","medium acidity means low quality","oak-aged white must be Chardonnay"]
+- **mentor_hints:** ["Ask whether acidity is medium and body is fuller than Greco.","Use wax and honey as development markers."]
+- **descriptor_whitelist:** ["medium lemon","stone fruit","melon","mango","wax with age","honey with age","dry","medium acidity","medium to full body","medium to high alcohol","stone fruit","melon","mango","rounded dry palate","wax and honey with age","fuller and lower acid than Greco","more mango-melon than Friuli Pinot Grigio","more wax-honey than Soave"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Campania - Fiano and Greco evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 036
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 6
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["medium lemon"],"nose":["medium intensity","stone fruit","melon","mango","wax with age","honey with age"],"palate":["dry","medium acidity","medium to full body","medium to high alcohol","stone fruit","melon","mango"],"quality":["very good to outstanding in best DOCG examples"],"ageing":["medium to long ageing for better examples"],"diagnostic_features":["campania_fiano_greco_core","white_wine_sat_core","fuller and lower acid than Greco","more mango-melon than Friuli Pinot Grigio"]}
+- **pedagogical_dna:** {"core_concepts":["Campanian premium whites","Fiano texture and fruit","ageworthy southern white"],"learning_objectives":["identify Fiano body and fruit profile","distinguish Fiano from Greco","connect wax-honey development to ageing"],"typical_misconceptions":["southern Italy only makes reds","medium acidity means low quality","oak-aged white must be Chardonnay"],"mentor_focus":["ask whether body and tropical-stone fruit point to Fiano"],"exam_traps":["confusing Fiano with Greco","calling oak-matured Fiano Chardonnay"],"memory_hooks":["Fiano is Campania's rounder wax-and-honey white"],"comparison_styles":["Greco di Tufo","Friuli Pinot Grigio","Soave Classico"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_037"],"frequently_confused_with":["SAT_WINE_037","SAT_WINE_030"],"distinguishing_features":["fuller and lower acid than Greco","more mango-melon than Friuli Pinot Grigio","more wax-honey than Soave"]}
+- **teaching_notes:** {"common_exam_points":["Fiano di Avellino DOCG is a key Campanian white","Fiano has medium acidity and medium to full body","better examples can age with wax and honey"],"mentor_hints":["Ask whether acidity is medium and body is fuller than Greco.","Use wax and honey as development markers."],"student_traps":["forgetting southern Italian whites","mistaking texture for Chardonnay"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["campania_fiano_greco_core","white_wine_sat_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12431-12449"],"line_reference":["12431-12449"],"evidence":["Fiano and Greco arguably produce the best white wines in Campania; many best examples come from Fiano di Avellino DOCG and Greco di Tufo DOCG.","Fiano has medium acidity, medium to full body, stone fruit, melons and mango; better examples are matured in oak and age with wax and honey."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 29 Southern Italy
+- **section:** Campania - Fiano and Greco
+- **page_reference:** 129
+- **line_reference:** ["12431-12449"]
+
+## SAT_WINE_037 - Greco di Tufo
+- **canonical_id:** SAT_WINE_037
+- **wine_family:** Blancos Italia
+- **wine_name:** Greco di Tufo
+- **wine_style:** Lean high-acid Campanian Greco with green apple, stone fruit and passion fruit
+- **display_name:** Greco di Tufo
+- **wine_type:** BLANCO
+- **country:** Italy
+- **region:** Campania
+- **subregion:** Tufo
+- **appellation:** Greco di Tufo DOCG
+- **grape_varieties:** ["Greco"]
+- **climate:** southern Italian region with varied mountains, valleys and coastal plains enabling quality whites
+- **altitude:** inland Campanian appellation with elevation influence implied by regional mountains and valleys
+- **soil:** not specified by WSET for Greco di Tufo in this passage
+- **viticulture:** ["Greco produces some of Campania's best whites","best examples come from Greco di Tufo DOCG","acidity is a key structural marker"]
+- **winemaking:** ["most producers ferment in stainless steel","some use old oak","lees stirring may enhance texture"]
+- **oak:** stainless steel common; some old oak may be used, not new-oak dominated
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** high
+- **alcohol:** medium to high
+- **tannin:** not_applicable
+- **color:** medium lemon
+- **aroma_profile:** ["green apple","stone fruit","passion fruit","honey with age","mushroom with age"]
+- **flavour_profile:** ["green apple","stone fruit","passion fruit","lean high-acid palate","honey and mushroom with age"]
+- **finish:** medium to long
+- **quality_level:** very good to outstanding in best DOCG examples
+- **ageing_potential:** medium ageing; best examples develop honey and mushroom
+- **expected_sat_observations:** ["medium lemon","medium intensity","green apple","stone fruit","passion fruit","honey with age","mushroom with age","dry","high acidity","medium body","medium to high alcohol","green apple","stone fruit","passion fruit","lean high-acid palate","honey and mushroom with age"]
+- **common_exam_points:** ["Greco di Tufo DOCG is a key Campanian white","Greco has more acidity and leaner body than Fiano","best examples can age with honey and mushroom notes"]
+- **common_student_errors:** ["southern whites are always low acid","Greco and Fiano are interchangeable","mushroom age notes mean fault"]
+- **mentor_hints:** ["Compare directly with Fiano before final identification.","Ask whether passion fruit is supported by Italian structure rather than Sauvignon Blanc aromatics."]
+- **descriptor_whitelist:** ["medium lemon","green apple","stone fruit","passion fruit","honey with age","mushroom with age","dry","high acidity","medium body","medium to high alcohol","green apple","stone fruit","passion fruit","lean high-acid palate","honey and mushroom with age","higher acidity and leaner body than Fiano","more passion fruit than Gavi","less fennel-almond than Verdicchio"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Campania - Fiano and Greco evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Blanco - Italia - Practica 037
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 6
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Italy white wine profiles are supported by the WSET Northern, Central and Southern Italy chapters.","The selected regions and appellations are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT appearance, finish and diagnostic calibration use widely accepted Italian white wine style norms where WSET is not granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional, grape and style contrasts."],"inferred_high_confidence":["Mentor focus and memory hooks are pedagogical inferences from the WSET style descriptions."]}
+- **sat_fingerprint:** {"appearance":["medium lemon"],"nose":["medium intensity","green apple","stone fruit","passion fruit","honey with age","mushroom with age"],"palate":["dry","high acidity","medium body","medium to high alcohol","green apple","stone fruit","passion fruit"],"quality":["very good to outstanding in best DOCG examples"],"ageing":["medium ageing; best examples develop honey and mushroom"],"diagnostic_features":["campania_fiano_greco_core","cool_climate_high_acid_white","higher acidity and leaner body than Fiano","more passion fruit than Gavi"]}
+- **pedagogical_dna:** {"core_concepts":["Greco high-acid structure","Campanian white comparison","lees/old-oak texture"],"learning_objectives":["distinguish Greco from Fiano","identify high-acid southern Italian white","connect stainless steel and old oak options to texture"],"typical_misconceptions":["southern whites are always low acid","Greco and Fiano are interchangeable","mushroom age notes mean fault"],"mentor_focus":["ask whether the wine is leaner and higher acid than Fiano"],"exam_traps":["calling Greco Sauvignon Blanc from passion fruit","overstating new oak"],"memory_hooks":["Greco is the leaner, higher-acid Campanian white"],"comparison_styles":["Fiano di Avellino","Gavi","Verdicchio dei Castelli di Jesi"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_036","SAT_WINE_032"],"frequently_confused_with":["SAT_WINE_036","SAT_WINE_009"],"distinguishing_features":["higher acidity and leaner body than Fiano","more passion fruit than Gavi","less fennel-almond than Verdicchio"]}
+- **teaching_notes:** {"common_exam_points":["Greco di Tufo DOCG is a key Campanian white","Greco has more acidity and leaner body than Fiano","best examples can age with honey and mushroom notes"],"mentor_hints":["Compare directly with Fiano before final identification.","Ask whether passion fruit is supported by Italian structure rather than Sauvignon Blanc aromatics."],"student_traps":["confusing Greco and Fiano","misreading mushroom development as fault"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["campania_fiano_greco_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["12431-12449"],"line_reference":["12431-12449"],"evidence":["Greco has more acidity and is leaner in body than Fiano, producing green apple, stone fruit and passion fruit flavours.","Most producers ferment in stainless steel, some use old oak and lees stirring; best examples age with honey and mushrooms."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-07-BATCH-004","schema_version":"CWP-02"}
+- **chapter:** 29 Southern Italy
+- **section:** Campania - Fiano and Greco
+- **page_reference:** 129
+- **line_reference:** ["12431-12449"]
 

@@ -133,5 +133,55 @@
     "blind": "BLIND_027",
     "debrief": "DEBRIEF_027",
     "training": "TRAINING_027"
+  },
+  "SAT_WINE_028": {
+    "blind": "BLIND_028",
+    "debrief": "DEBRIEF_028",
+    "training": "TRAINING_028"
+  },
+  "SAT_WINE_029": {
+    "blind": "BLIND_029",
+    "debrief": "DEBRIEF_029",
+    "training": "TRAINING_029"
+  },
+  "SAT_WINE_030": {
+    "blind": "BLIND_030",
+    "debrief": "DEBRIEF_030",
+    "training": "TRAINING_030"
+  },
+  "SAT_WINE_031": {
+    "blind": "BLIND_031",
+    "debrief": "DEBRIEF_031",
+    "training": "TRAINING_031"
+  },
+  "SAT_WINE_032": {
+    "blind": "BLIND_032",
+    "debrief": "DEBRIEF_032",
+    "training": "TRAINING_032"
+  },
+  "SAT_WINE_033": {
+    "blind": "BLIND_033",
+    "debrief": "DEBRIEF_033",
+    "training": "TRAINING_033"
+  },
+  "SAT_WINE_034": {
+    "blind": "BLIND_034",
+    "debrief": "DEBRIEF_034",
+    "training": "TRAINING_034"
+  },
+  "SAT_WINE_035": {
+    "blind": "BLIND_035",
+    "debrief": "DEBRIEF_035",
+    "training": "TRAINING_035"
+  },
+  "SAT_WINE_036": {
+    "blind": "BLIND_036",
+    "debrief": "DEBRIEF_036",
+    "training": "TRAINING_036"
+  },
+  "SAT_WINE_037": {
+    "blind": "BLIND_037",
+    "debrief": "DEBRIEF_037",
+    "training": "TRAINING_037"
   }
 }

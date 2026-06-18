@@ -53,6 +53,34 @@
     "neusiedlersee_botrytised_sweet_white": {
       "diagnostic_features": ["autumn mists", "botrytis", "Welschriesling", "sweet wine", "high acidity", "lake and wetland influence"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "italian_pinot_grigio_core": {
+      "diagnostic_features": ["dry", "light to medium body", "high acidity in alpine sites", "citrus", "green fruit", "protective winemaking"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "friuli_rich_white_core": {
+      "diagnostic_features": ["richer Pinot Grigio", "medium to full body", "juicy peach", "tropical fruit", "premium hill concentration"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "soave_garganega_core": {
+      "diagnostic_features": ["Garganega", "medium to high acidity", "medium body", "pear", "red apple", "stone fruit", "no new oak", "almond and honey with age"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "gavi_cortese_core": {
+      "diagnostic_features": ["Cortese", "natural high acidity", "floral character", "pale colour", "light body", "citrus", "green apple", "pear"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "central_italy_fresh_white_core": {
+      "diagnostic_features": ["protective winemaking", "cool stainless steel fermentation", "medium to high acidity", "fresh citrus or orchard fruit", "unoaked style"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "verdicchio_core": {
+      "diagnostic_features": ["naturally high acidity", "green apple", "lemon", "fennel", "almond", "honey and almond with age"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "campania_fiano_greco_core": {
+      "diagnostic_features": ["Campania white DOCGs", "Fiano stone fruit melon mango", "Greco higher acidity and leaner body", "stainless steel or old oak and lees stirring", "honeyed bottle age"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {
