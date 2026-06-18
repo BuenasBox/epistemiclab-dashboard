@@ -1,0 +1,2781 @@
+[
+  {
+    "wine_family": "Blancos España / Portugal / Grecia",
+    "wine_type": "BLANCO",
+    "country": "Spain",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-08-BATCH-005",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected Iberian and Greek white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_038",
+    "wine_name": "Rueda Verdejo",
+    "wine_style": "Fresh to textured Verdejo from continental Rueda",
+    "display_name": "Rueda Verdejo",
+    "display_label": "Vino Blanco - Spain - Practica 038",
+    "region": "Rueda",
+    "subregion": "Castilla y Leon",
+    "appellation": "Rueda DO",
+    "grape_varieties": [
+      "Verdejo"
+    ],
+    "climate": "continental climate with cool summer nights",
+    "altitude": "high inland plateau between Toro and Ribera del Duero",
+    "soil": "not specified by WSET; continental climate and cool nights are the key markers",
+    "viticulture": [
+      "Rueda focuses on white wine production",
+      "cool summer nights suit Verdejo",
+      "blended whites must contain at least 50 percent Verdejo"
+    ],
+    "winemaking": [
+      "protective winemaking for light high-acid melon and peach styles",
+      "skin contact and barrel fermentation can make richer fuller-bodied styles",
+      "Sauvignon Blanc may be blended or labelled varietally"
+    ],
+    "oak": "usually unoaked in fresh styles; richer styles may be barrel-fermented",
+    "sweetness": "dry",
+    "body": "light to medium",
+    "acidity": "high",
+    "alcohol": "medium",
+    "color": "pale lemon",
+    "aroma_profile": [
+      "melon",
+      "peach",
+      "citrus",
+      "herbal notes"
+    ],
+    "flavour_profile": [
+      "melon",
+      "peach",
+      "citrus",
+      "fresh dry palate"
+    ],
+    "finish": "medium",
+    "quality_level": "good to very good; styles range from simple fruity to richer barrel-fermented versions",
+    "ageing_potential": "drink young to short ageing for fresh styles",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Rueda / Verdejo evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 5,
+    "confidence_score": 0.96,
+    "reusable_knowledge_refs": [
+      "rueda_verdejo_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale lemon"
+      ],
+      "nose": [
+        "medium intensity",
+        "melon",
+        "peach",
+        "citrus",
+        "herbal notes"
+      ],
+      "palate": [
+        "dry",
+        "high acidity",
+        "light to medium body",
+        "medium alcohol",
+        "melon",
+        "peach",
+        "citrus"
+      ],
+      "quality": [
+        "good to very good; styles range from simple fruity to richer barrel-fermented versions"
+      ],
+      "ageing": [
+        "drink young to short ageing for fresh styles"
+      ],
+      "diagnostic_features": [
+        "rueda_verdejo_core",
+        "cool_climate_high_acid_white",
+        "melon and peach rather than Albariño citrus-stone fruit",
+        "Rueda continental rather than Atlantic damp climate"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Verdejo oxidation sensitivity",
+        "Rueda white wine identity",
+        "protective versus richer winemaking"
+      ],
+      "learning_objectives": [
+        "identify Verdejo structure",
+        "connect Rueda to white wine production",
+        "separate Verdejo from Sauvignon Blanc"
+      ],
+      "typical_misconceptions": [
+        "Rueda is a red-wine region",
+        "Verdejo always tastes like Sauvignon Blanc",
+        "barrel fermentation means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether melon-peach high-acid fruit points to Verdejo"
+      ],
+      "exam_traps": [
+        "calling all Rueda Sauvignon Blanc",
+        "forgetting Verdejo minimum in blends"
+      ],
+      "memory_hooks": [
+        "Rueda is Verdejo country: cool nights, melon, peach, high acidity"
+      ],
+      "comparison_styles": [
+        "Rias Baixas Albarino",
+        "Gavi",
+        "Alto Adige Pinot Grigio"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_039",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_028"
+      ],
+      "distinguishing_features": [
+        "melon and peach rather than Albariño citrus-stone fruit",
+        "Rueda continental rather than Atlantic damp climate",
+        "possible richer barrel-fermented Verdejo style"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Verdejo is highly susceptible to oxidation",
+        "Rueda focuses on white wine production",
+        "Rueda blends must contain at least 50 percent Verdejo"
+      ],
+      "mentor_hints": [
+        "Probe whether the Sauvignon-like profile still has Verdejo melon and peach.",
+        "Ask if winemaking is protective or richer barrel-fermented."
+      ],
+      "student_traps": [
+        "overcalling Sauvignon Blanc",
+        "missing Rueda as a white specialist"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "30 Spain",
+    "section": "Rueda / Verdejo",
+    "page_reference": "133, 137",
+    "line_reference": [
+      "12801-12808",
+      "13287-13302"
+    ],
+    "expected_sat_observations": [
+      "pale lemon",
+      "medium intensity",
+      "melon",
+      "peach",
+      "citrus",
+      "herbal notes",
+      "dry",
+      "high acidity",
+      "light to medium body",
+      "medium alcohol",
+      "melon",
+      "peach",
+      "citrus",
+      "fresh dry palate"
+    ],
+    "common_exam_points": [
+      "Verdejo is highly susceptible to oxidation",
+      "Rueda focuses on white wine production",
+      "Rueda blends must contain at least 50 percent Verdejo"
+    ],
+    "common_student_errors": [
+      "Rueda is a red-wine region",
+      "Verdejo always tastes like Sauvignon Blanc",
+      "barrel fermentation means Chardonnay"
+    ],
+    "mentor_hints": [
+      "Probe whether the Sauvignon-like profile still has Verdejo melon and peach.",
+      "Ask if winemaking is protective or richer barrel-fermented."
+    ],
+    "descriptor_whitelist": [
+      "pale lemon",
+      "melon",
+      "peach",
+      "citrus",
+      "herbal notes",
+      "dry",
+      "high acidity",
+      "light to medium body",
+      "medium alcohol",
+      "melon",
+      "peach",
+      "citrus",
+      "fresh dry palate",
+      "melon and peach rather than Albariño citrus-stone fruit",
+      "Rueda continental rather than Atlantic damp climate",
+      "possible richer barrel-fermented Verdejo style"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "12801-12808",
+        "13287-13302"
+      ],
+      "line_reference": [
+        "12801-12808",
+        "13287-13302"
+      ],
+      "evidence": [
+        "Verdejo can be made protectively into a light-bodied high-acid melon and peach style or richer with skin contact and barrel fermentation.",
+        "Rueda focuses on white wine production; its continental climate with cool summer nights is ideal for Verdejo."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos España / Portugal / Grecia",
+    "wine_type": "BLANCO",
+    "country": "Spain",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-08-BATCH-005",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected Iberian and Greek white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_039",
+    "wine_name": "Rias Baixas Albarino",
+    "wine_style": "Refreshing Atlantic Albariño with high acidity and ripe stone fruit",
+    "display_name": "Rias Baixas Albarino",
+    "display_label": "Vino Blanco - Spain - Practica 039",
+    "region": "Rias Baixas",
+    "subregion": "North-west Spain",
+    "appellation": "Rias Baixas DO",
+    "grape_varieties": [
+      "Albarino"
+    ],
+    "climate": "moderate damp Atlantic climate, cooler and wetter than most of Spain",
+    "altitude": "coastal and low hill Atlantic vineyards",
+    "soil": "not specified by WSET; damp Atlantic setting is the key marker",
+    "viticulture": [
+      "humid conditions make mildew and rot common",
+      "pergolas encourage air circulation",
+      "Albariño has thick skins that resist fungal disease"
+    ],
+    "winemaking": [
+      "most Albariño is refreshing and unoaked",
+      "some richer styles use oak or lees contact",
+      "fruit and acidity are preserved"
+    ],
+    "oak": "usually unoaked; occasional touch of oak or lees in richer styles",
+    "sweetness": "dry",
+    "body": "medium",
+    "acidity": "high",
+    "alcohol": "medium",
+    "color": "pale to medium lemon",
+    "aroma_profile": [
+      "citrus",
+      "stone fruit",
+      "peach",
+      "saline freshness"
+    ],
+    "flavour_profile": [
+      "citrus",
+      "stone fruit",
+      "ripe peach",
+      "refreshing high-acid palate"
+    ],
+    "finish": "medium to long",
+    "quality_level": "very good; among Spain's most celebrated white wines",
+    "ageing_potential": "drink young to short ageing; richer styles may hold longer",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET North West - Rias Baixas / Albariño evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 5,
+    "confidence_score": 0.97,
+    "reusable_knowledge_refs": [
+      "rias_baixas_albarino_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale to medium lemon"
+      ],
+      "nose": [
+        "medium intensity",
+        "citrus",
+        "stone fruit",
+        "peach",
+        "saline freshness"
+      ],
+      "palate": [
+        "dry",
+        "high acidity",
+        "medium body",
+        "medium alcohol",
+        "citrus",
+        "stone fruit",
+        "ripe peach"
+      ],
+      "quality": [
+        "very good; among Spain's most celebrated white wines"
+      ],
+      "ageing": [
+        "drink young to short ageing; richer styles may hold longer"
+      ],
+      "diagnostic_features": [
+        "rias_baixas_albarino_core",
+        "cool_climate_high_acid_white",
+        "more Atlantic and stone-fruited than Rueda",
+        "higher alcohol and ripeness than classic Vinho Verde"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Atlantic Spain whites",
+        "Albariño thick skin and acidity",
+        "pergola disease management"
+      ],
+      "learning_objectives": [
+        "identify Rias Baixas Albariño",
+        "connect damp climate to pergola training",
+        "separate Albariño from Verdejo"
+      ],
+      "typical_misconceptions": [
+        "Spain is too hot for high-acid whites",
+        "all Albariño is oaked",
+        "pergola is only for Italy"
+      ],
+      "mentor_focus": [
+        "ask for Atlantic freshness plus ripe stone fruit"
+      ],
+      "exam_traps": [
+        "calling it Sauvignon Blanc from acidity alone",
+        "forgetting fungal pressure"
+      ],
+      "memory_hooks": [
+        "Rías Baixas is Atlantic Albariño: damp, pergola, citrus-stone fruit"
+      ],
+      "comparison_styles": [
+        "Rueda Verdejo",
+        "Vinho Verde",
+        "Gavi"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_038",
+        "SAT_WINE_041"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_032"
+      ],
+      "distinguishing_features": [
+        "more Atlantic and stone-fruited than Rueda",
+        "higher alcohol and ripeness than classic Vinho Verde",
+        "less floral than Gavi"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Rias Baixas is the most celebrated north-west Spanish white area",
+        "Albariño is naturally high in acidity",
+        "pergolas help air circulation in damp conditions"
+      ],
+      "mentor_hints": [
+        "Ask if disease pressure and pergola logic fit the region.",
+        "Use ripe stone fruit to avoid defaulting to Sauvignon Blanc."
+      ],
+      "student_traps": [
+        "forgetting north-west Spain",
+        "underestimating Albariño quality"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "30 Spain",
+    "section": "North West - Rias Baixas / Albariño",
+    "page_reference": "133, 137",
+    "line_reference": [
+      "12810-12818",
+      "13304-13324"
+    ],
+    "expected_sat_observations": [
+      "pale to medium lemon",
+      "medium intensity",
+      "citrus",
+      "stone fruit",
+      "peach",
+      "saline freshness",
+      "dry",
+      "high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "stone fruit",
+      "ripe peach",
+      "refreshing high-acid palate"
+    ],
+    "common_exam_points": [
+      "Rias Baixas is the most celebrated north-west Spanish white area",
+      "Albariño is naturally high in acidity",
+      "pergolas help air circulation in damp conditions"
+    ],
+    "common_student_errors": [
+      "Spain is too hot for high-acid whites",
+      "all Albariño is oaked",
+      "pergola is only for Italy"
+    ],
+    "mentor_hints": [
+      "Ask if disease pressure and pergola logic fit the region.",
+      "Use ripe stone fruit to avoid defaulting to Sauvignon Blanc."
+    ],
+    "descriptor_whitelist": [
+      "pale to medium lemon",
+      "citrus",
+      "stone fruit",
+      "peach",
+      "saline freshness",
+      "dry",
+      "high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "stone fruit",
+      "ripe peach",
+      "refreshing high-acid palate",
+      "more Atlantic and stone-fruited than Rueda",
+      "higher alcohol and ripeness than classic Vinho Verde",
+      "less floral than Gavi"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "12810-12818",
+        "13304-13324"
+      ],
+      "line_reference": [
+        "12810-12818",
+        "13304-13324"
+      ],
+      "evidence": [
+        "Albariño is grown in north-west Spain, is thick-skinned, naturally high in acidity and gives citrus and stone fruit wines.",
+        "Rias Baixas has a moderate damp Atlantic climate; most Albariño is refreshing and unoaked with high acidity and ripe stone fruit."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos España / Portugal / Grecia",
+    "wine_type": "BLANCO",
+    "country": "Spain",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-08-BATCH-005",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected Iberian and Greek white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_040",
+    "wine_name": "White Rioja Viura",
+    "wine_style": "Viura-based white Rioja from traditional oxidative oak to modern fruit-led styles",
+    "display_name": "White Rioja Viura",
+    "display_label": "Vino Blanco - Spain - Practica 040",
+    "region": "Rioja",
+    "subregion": "Rioja Alta / Rioja Alavesa / Rioja Oriental",
+    "appellation": "Rioja DOCa",
+    "grape_varieties": [
+      "Viura"
+    ],
+    "climate": "Rioja is protected from Atlantic weather by mountains with varied subregional influences",
+    "altitude": "foothill and valley sites across Rioja; WSET emphasizes regional winemaking over altitude for white Rioja",
+    "soil": "not specified by WSET for white Rioja in this passage",
+    "viticulture": [
+      "Viura is the most widely planted white variety in Rioja",
+      "eight white varieties are approved",
+      "regional ageing and oak culture affect style"
+    ],
+    "winemaking": [
+      "traditional white Rioja aged for extended periods in American oak",
+      "traditional style developed deep golden colour and nutty flavours",
+      "modern styles minimize oxygen to preserve fruit; some are barrel-fermented in a less oxidative style"
+    ],
+    "oak": "American oak and barrel fermentation can be important, but modern styles may show less oxidation",
+    "sweetness": "dry",
+    "body": "medium",
+    "acidity": "medium to high",
+    "alcohol": "medium",
+    "color": "medium lemon to gold depending on style",
+    "aroma_profile": [
+      "citrus",
+      "apple",
+      "nutty notes",
+      "vanilla",
+      "subtle spice"
+    ],
+    "flavour_profile": [
+      "citrus",
+      "apple",
+      "nutty oxidative notes",
+      "spicy oak",
+      "fresh fruit in modern styles"
+    ],
+    "finish": "medium to long",
+    "quality_level": "good to very good; style depends strongly on producer and oxygen/oak choices",
+    "ageing_potential": "short to medium ageing; traditional oxidative styles can show developed character",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Rioja - White Rioja evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 6,
+    "confidence_score": 0.95,
+    "reusable_knowledge_refs": [
+      "white_rioja_viura_core",
+      "white_wine_sat_core"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "medium lemon to gold depending on style"
+      ],
+      "nose": [
+        "medium intensity",
+        "citrus",
+        "apple",
+        "nutty notes",
+        "vanilla",
+        "subtle spice"
+      ],
+      "palate": [
+        "dry",
+        "medium to high acidity",
+        "medium body",
+        "medium alcohol",
+        "citrus",
+        "apple",
+        "nutty oxidative notes"
+      ],
+      "quality": [
+        "good to very good; style depends strongly on producer and oxygen/oak choices"
+      ],
+      "ageing": [
+        "short to medium ageing; traditional oxidative styles can show developed character"
+      ],
+      "diagnostic_features": [
+        "white_rioja_viura_core",
+        "white_wine_sat_core",
+        "more oak/oxygen signature than Rueda",
+        "less Garganega pear-almond than Soave"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Rioja white style range",
+        "Viura identity",
+        "oxidative versus modern winemaking"
+      ],
+      "learning_objectives": [
+        "identify oak/oxygen choices in white Rioja",
+        "separate Viura Rioja from neutral Spanish whites",
+        "understand traditional versus modern style"
+      ],
+      "typical_misconceptions": [
+        "Rioja only makes red wine",
+        "all white Rioja is oxidised",
+        "all oak-aged white wine is Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether nutty oak-derived development points to Rioja"
+      ],
+      "exam_traps": [
+        "missing Viura",
+        "assuming deep gold means sweet"
+      ],
+      "memory_hooks": [
+        "White Rioja is Viura shaped by oak and oxygen decisions"
+      ],
+      "comparison_styles": [
+        "Rueda Verdejo",
+        "Soave Classico",
+        "Fiano di Avellino"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_038",
+        "SAT_WINE_031"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_036"
+      ],
+      "distinguishing_features": [
+        "more oak/oxygen signature than Rueda",
+        "less Garganega pear-almond than Soave",
+        "Spanish Viura identity rather than Chardonnay"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Viura is the most widely planted white Rioja variety",
+        "traditional styles used extended American oak ageing",
+        "modern styles use less oxygen to preserve fruit"
+      ],
+      "mentor_hints": [
+        "Ask whether oak is stylistic Rioja rather than Chardonnay evidence.",
+        "Separate colour from sweetness."
+      ],
+      "student_traps": [
+        "forgetting white Rioja",
+        "overcalling oxidation as fault"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "30 Spain",
+    "section": "Rioja - White Rioja",
+    "page_reference": "134",
+    "line_reference": [
+      "13047-13076"
+    ],
+    "expected_sat_observations": [
+      "medium lemon to gold depending on style",
+      "medium intensity",
+      "citrus",
+      "apple",
+      "nutty notes",
+      "vanilla",
+      "subtle spice",
+      "dry",
+      "medium to high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "apple",
+      "nutty oxidative notes",
+      "spicy oak",
+      "fresh fruit in modern styles"
+    ],
+    "common_exam_points": [
+      "Viura is the most widely planted white Rioja variety",
+      "traditional styles used extended American oak ageing",
+      "modern styles use less oxygen to preserve fruit"
+    ],
+    "common_student_errors": [
+      "Rioja only makes red wine",
+      "all white Rioja is oxidised",
+      "all oak-aged white wine is Chardonnay"
+    ],
+    "mentor_hints": [
+      "Ask whether oak is stylistic Rioja rather than Chardonnay evidence.",
+      "Separate colour from sweetness."
+    ],
+    "descriptor_whitelist": [
+      "medium lemon to gold depending on style",
+      "citrus",
+      "apple",
+      "nutty notes",
+      "vanilla",
+      "subtle spice",
+      "dry",
+      "medium to high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "apple",
+      "nutty oxidative notes",
+      "spicy oak",
+      "fresh fruit in modern styles",
+      "more oak/oxygen signature than Rueda",
+      "less Garganega pear-almond than Soave",
+      "Spanish Viura identity rather than Chardonnay"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "13047-13076"
+      ],
+      "line_reference": [
+        "13047-13076"
+      ],
+      "evidence": [
+        "The most widely planted white variety in Rioja is Viura.",
+        "Traditional white Rioja was aged in American oak and developed deep golden colour and nutty flavours; modern styles preserve fruit and some are barrel-fermented less oxidatively."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos España / Portugal / Grecia",
+    "wine_type": "BLANCO",
+    "country": "Portugal",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-08-BATCH-005",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected Iberian and Greek white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_041",
+    "wine_name": "Vinho Verde",
+    "wine_style": "Low-alcohol high-acid north-west Portuguese white with slight spritz",
+    "display_name": "Vinho Verde",
+    "display_label": "Vino Blanco - Portugal - Practica 041",
+    "region": "Vinho Verde",
+    "subregion": "North-west Portugal",
+    "appellation": "Vinho Verde DOC",
+    "grape_varieties": [
+      "Loureiro",
+      "Arinto"
+    ],
+    "climate": "moderate maritime climate near the Atlantic with high annual rainfall",
+    "altitude": "humid north-west Portuguese vineyards; altitude is not the key WSET marker",
+    "soil": "not specified by WSET; rainfall and Atlantic influence dominate the style",
+    "viticulture": [
+      "high precipitation can cause excessive canopy and disease",
+      "modern vineyards moved away from traditional pergolas",
+      "spur-pruned VSP improves airflow and mechanisation"
+    ],
+    "winemaking": [
+      "classic whites are pale lemon, high acid and low alcohol",
+      "lower-alcohol wines are usually off-dry",
+      "traditional slight sparkling sensation enhances freshness"
+    ],
+    "oak": "unoaked",
+    "sweetness": "dry to off-dry",
+    "body": "light",
+    "acidity": "high",
+    "alcohol": "low",
+    "color": "pale lemon",
+    "aroma_profile": [
+      "citrus",
+      "green apple",
+      "floral notes"
+    ],
+    "flavour_profile": [
+      "citrus",
+      "green apple",
+      "slight spritz",
+      "fresh high-acid palate"
+    ],
+    "finish": "short to medium",
+    "quality_level": "good; freshness and drinkability are central",
+    "ageing_potential": "drink young",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Vinho Verde evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 4,
+    "confidence_score": 0.97,
+    "reusable_knowledge_refs": [
+      "vinho_verde_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale lemon"
+      ],
+      "nose": [
+        "medium intensity",
+        "citrus",
+        "green apple",
+        "floral notes"
+      ],
+      "palate": [
+        "dry to off-dry",
+        "high acidity",
+        "light body",
+        "low alcohol",
+        "citrus",
+        "green apple",
+        "slight spritz"
+      ],
+      "quality": [
+        "good; freshness and drinkability are central"
+      ],
+      "ageing": [
+        "drink young"
+      ],
+      "diagnostic_features": [
+        "vinho_verde_core",
+        "cool_climate_high_acid_white",
+        "lower alcohol and spritz versus Rias Baixas",
+        "more off-dry possibility than Muscadet"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Portuguese Atlantic freshness",
+        "low alcohol high acidity",
+        "spritz and off-dry balance"
+      ],
+      "learning_objectives": [
+        "identify classic Vinho Verde",
+        "connect high rainfall to canopy management",
+        "separate Vinho Verde from Albariño"
+      ],
+      "typical_misconceptions": [
+        "all Portuguese whites are fortified-related",
+        "spritz means sparkling wine category",
+        "off-dry means low acidity"
+      ],
+      "mentor_focus": [
+        "ask for low alcohol, high acidity and slight spritz"
+      ],
+      "exam_traps": [
+        "calling Vinho Verde Albariño because Alvarinho exists",
+        "missing off-dry possibility"
+      ],
+      "memory_hooks": [
+        "Vinho Verde is pale, low-alcohol, high-acid and lightly spritzy"
+      ],
+      "comparison_styles": [
+        "Rias Baixas Albarino",
+        "Muscadet",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_039"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_039",
+        "SAT_WINE_008"
+      ],
+      "distinguishing_features": [
+        "lower alcohol and spritz versus Rias Baixas",
+        "more off-dry possibility than Muscadet",
+        "Atlantic Portugal rather than north-west Spain"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Vinho Verde is in north-west Portugal",
+        "high rainfall requires canopy management",
+        "classic whites are pale, high-acid and low-alcohol with slight sparkle"
+      ],
+      "mentor_hints": [
+        "Ask for alcohol level before naming Albariño.",
+        "Use spritz as a clue but not as full sparkling classification."
+      ],
+      "student_traps": [
+        "forgetting Portuguese still whites",
+        "overlooking low alcohol"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "31 Portugal",
+    "section": "Vinho Verde",
+    "page_reference": "139",
+    "line_reference": [
+      "13446-13472"
+    ],
+    "expected_sat_observations": [
+      "pale lemon",
+      "medium intensity",
+      "citrus",
+      "green apple",
+      "floral notes",
+      "dry to off-dry",
+      "high acidity",
+      "light body",
+      "low alcohol",
+      "citrus",
+      "green apple",
+      "slight spritz",
+      "fresh high-acid palate"
+    ],
+    "common_exam_points": [
+      "Vinho Verde is in north-west Portugal",
+      "high rainfall requires canopy management",
+      "classic whites are pale, high-acid and low-alcohol with slight sparkle"
+    ],
+    "common_student_errors": [
+      "all Portuguese whites are fortified-related",
+      "spritz means sparkling wine category",
+      "off-dry means low acidity"
+    ],
+    "mentor_hints": [
+      "Ask for alcohol level before naming Albariño.",
+      "Use spritz as a clue but not as full sparkling classification."
+    ],
+    "descriptor_whitelist": [
+      "pale lemon",
+      "citrus",
+      "green apple",
+      "floral notes",
+      "dry to off-dry",
+      "high acidity",
+      "light body",
+      "low alcohol",
+      "citrus",
+      "green apple",
+      "slight spritz",
+      "fresh high-acid palate",
+      "lower alcohol and spritz versus Rias Baixas",
+      "more off-dry possibility than Muscadet",
+      "Atlantic Portugal rather than north-west Spain"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "13446-13472"
+      ],
+      "line_reference": [
+        "13446-13472"
+      ],
+      "evidence": [
+        "Vinho Verde has a moderate maritime climate near the Atlantic with high rainfall and disease pressure.",
+        "Classic white Vinho Verde is pale lemon, high in acidity, low in alcohol, often off-dry at lower alcohol, and traditionally has slight spritz."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos España / Portugal / Grecia",
+    "wine_type": "BLANCO",
+    "country": "Portugal",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-08-BATCH-005",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected Iberian and Greek white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_042",
+    "wine_name": "Dao Encruzado",
+    "wine_style": "Dão Encruzado from light fresh to richer barrel-fermented white",
+    "display_name": "Dao Encruzado",
+    "display_label": "Vino Blanco - Portugal - Practica 042",
+    "region": "Dao",
+    "subregion": "Central Portugal",
+    "appellation": "Dao DOC",
+    "grape_varieties": [
+      "Encruzado"
+    ],
+    "climate": "mountainous inland region with cold wet winters, warm dry summers and significant day-night temperature variation",
+    "altitude": "vineyards on gentler hills and slopes between 200 and 400 metres",
+    "soil": "not specified by WSET for Encruzado; mountainous slope setting is the key marker",
+    "viticulture": [
+      "vines planted on hills and slopes",
+      "day-night temperature variation supports quality grapes",
+      "Encruzado is the leading white variety"
+    ],
+    "winemaking": [
+      "styles range from light and fresh to richer barrel-fermented versions",
+      "fresh styles preserve fruit",
+      "barrel fermentation can add texture"
+    ],
+    "oak": "none in fresh styles; richer examples may be barrel-fermented",
+    "sweetness": "dry",
+    "body": "medium",
+    "acidity": "medium to high",
+    "alcohol": "medium",
+    "color": "pale to medium lemon",
+    "aroma_profile": [
+      "citrus",
+      "apple",
+      "pear",
+      "subtle toast in barrel styles"
+    ],
+    "flavour_profile": [
+      "citrus",
+      "pear",
+      "fresh dry palate",
+      "textured barrel-fermented notes"
+    ],
+    "finish": "medium",
+    "quality_level": "good to very good",
+    "ageing_potential": "short to medium ageing for richer examples",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Dão evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 2,
+    "wset_importance": "HIGH",
+    "practice_priority": 4,
+    "difficulty_score": 5,
+    "confidence_score": 0.94,
+    "reusable_knowledge_refs": [
+      "dao_encruzado_core",
+      "white_wine_sat_core"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale to medium lemon"
+      ],
+      "nose": [
+        "medium intensity",
+        "citrus",
+        "apple",
+        "pear",
+        "subtle toast in barrel styles"
+      ],
+      "palate": [
+        "dry",
+        "medium to high acidity",
+        "medium body",
+        "medium alcohol",
+        "citrus",
+        "pear",
+        "fresh dry palate"
+      ],
+      "quality": [
+        "good to very good"
+      ],
+      "ageing": [
+        "short to medium ageing for richer examples"
+      ],
+      "diagnostic_features": [
+        "dao_encruzado_core",
+        "white_wine_sat_core",
+        "more medium-bodied than Vinho Verde",
+        "less Rioja oxidative oak identity"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Dão white identity",
+        "Encruzado style range",
+        "barrel fermentation as optional texture"
+      ],
+      "learning_objectives": [
+        "recognize Encruzado as Dão white grape",
+        "separate fresh and barrel-fermented expressions",
+        "connect altitude range to quality"
+      ],
+      "typical_misconceptions": [
+        "Dão only matters for reds",
+        "Portuguese white grapes are not WSET relevant",
+        "barrel-fermented means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether the style range fits Encruzado rather than a single aromatic grape"
+      ],
+      "exam_traps": [
+        "ignoring Portugal beyond Vinho Verde",
+        "overstating oak"
+      ],
+      "memory_hooks": [
+        "Dão Encruzado can be fresh or barrel-textured from mountain slopes"
+      ],
+      "comparison_styles": [
+        "Vinho Verde",
+        "White Rioja Viura",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_040"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "more medium-bodied than Vinho Verde",
+        "less Rioja oxidative oak identity",
+        "Portuguese Encruzado rather than Verdejo"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Dão vineyards lie between 200 and 400 metres",
+        "day-night variation supports high-quality grapes",
+        "best Dão whites are Encruzado"
+      ],
+      "mentor_hints": [
+        "Ask whether Portugal and barrel fermentation are both plausible.",
+        "Avoid using oak alone as a Chardonnay shortcut."
+      ],
+      "student_traps": [
+        "forgetting Encruzado",
+        "collapsing all Portuguese whites into Vinho Verde"
+      ],
+      "revision_priority": "medium"
+    },
+    "chapter": "31 Portugal",
+    "section": "Dão",
+    "page_reference": "140",
+    "line_reference": [
+      "13555-13574"
+    ],
+    "expected_sat_observations": [
+      "pale to medium lemon",
+      "medium intensity",
+      "citrus",
+      "apple",
+      "pear",
+      "subtle toast in barrel styles",
+      "dry",
+      "medium to high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "pear",
+      "fresh dry palate",
+      "textured barrel-fermented notes"
+    ],
+    "common_exam_points": [
+      "Dão vineyards lie between 200 and 400 metres",
+      "day-night variation supports high-quality grapes",
+      "best Dão whites are Encruzado"
+    ],
+    "common_student_errors": [
+      "Dão only matters for reds",
+      "Portuguese white grapes are not WSET relevant",
+      "barrel-fermented means Chardonnay"
+    ],
+    "mentor_hints": [
+      "Ask whether Portugal and barrel fermentation are both plausible.",
+      "Avoid using oak alone as a Chardonnay shortcut."
+    ],
+    "descriptor_whitelist": [
+      "pale to medium lemon",
+      "citrus",
+      "apple",
+      "pear",
+      "subtle toast in barrel styles",
+      "dry",
+      "medium to high acidity",
+      "medium body",
+      "medium alcohol",
+      "citrus",
+      "pear",
+      "fresh dry palate",
+      "textured barrel-fermented notes",
+      "more medium-bodied than Vinho Verde",
+      "less Rioja oxidative oak identity",
+      "Portuguese Encruzado rather than Verdejo"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "13555-13574"
+      ],
+      "line_reference": [
+        "13555-13574"
+      ],
+      "evidence": [
+        "Dão is mountainous with vines between 200 and 400 metres and significant day-night temperature variation.",
+        "The best Dão whites are made from Encruzado and range from light and fresh to richer barrel-fermented versions."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  },
+  {
+    "wine_family": "Blancos España / Portugal / Grecia",
+    "wine_type": "BLANCO",
+    "country": "Greece",
+    "tannin": "not_applicable",
+    "canonical_source": {
+      "title": "WSET3_rebuilt.md",
+      "sha256": "91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25",
+      "batch": "CWP-08-BATCH-005",
+      "schema_version": "CWP-02"
+    },
+    "knowledge_summary": {
+      "wset_primary": [
+        "Selected Iberian and Greek white profiles are explicitly described in WSET3_rebuilt.md."
+      ],
+      "standard_wine_knowledge": [
+        "SAT sensory calibration uses accepted style norms where WSET is less granular."
+      ],
+      "derived_from_style": [
+        "Difficulty and comparisons derive from WSET regional and grape contrasts."
+      ],
+      "inferred_high_confidence": [
+        "Mentor hints and memory hooks are pedagogical inferences."
+      ]
+    },
+    "canonical_id": "SAT_WINE_043",
+    "wine_name": "Santorini Assyrtiko",
+    "wine_style": "Dry volcanic Assyrtiko with ripe citrus, stone fruit and natural high acidity",
+    "display_name": "Santorini Assyrtiko",
+    "display_label": "Vino Blanco - Greece - Practica 043",
+    "region": "Santorini",
+    "subregion": "Aegean Islands",
+    "appellation": "Santorini PDO",
+    "grape_varieties": [
+      "Assyrtiko"
+    ],
+    "climate": "hot Mediterranean Greece moderated by sea, altitude and strong island winds; very dry growing season",
+    "altitude": "windswept volcanic island sites; vines are trained very low in baskets",
+    "soil": "volcanic island soils; WSET emphasizes Santorini as a volcanic island",
+    "viticulture": [
+      "strong winds require basket-trained vines",
+      "fruit grows inside the low basket shape",
+      "native varieties are adapted to hot arid conditions"
+    ],
+    "winemaking": [
+      "dry white Assyrtiko has the highest reputation",
+      "concentrated ripe citrus and stone fruit flavours",
+      "sweet Vinsanto also exists but this profile is dry Assyrtiko"
+    ],
+    "oak": "typically not a primary marker for dry Assyrtiko",
+    "sweetness": "dry",
+    "body": "medium to full",
+    "acidity": "high",
+    "alcohol": "medium to high",
+    "color": "pale to medium lemon",
+    "aroma_profile": [
+      "ripe citrus",
+      "stone fruit",
+      "mineral saline notes"
+    ],
+    "flavour_profile": [
+      "ripe citrus",
+      "stone fruit",
+      "concentrated dry palate",
+      "saline mineral finish"
+    ],
+    "finish": "long",
+    "quality_level": "very good to outstanding; Santorini Assyrtiko has the highest reputation among Santorini wines",
+    "ageing_potential": "medium ageing for concentrated dry examples",
+    "sat_constraints": [
+      "do not expose identity fields in blind render profiles",
+      "do not add markers that contradict WSET style evidence"
+    ],
+    "reasoning_notes": "Profile uses WSET Santorini PDO evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.",
+    "priority": 1,
+    "wset_importance": "CORE",
+    "practice_priority": 5,
+    "difficulty_score": 7,
+    "confidence_score": 0.97,
+    "reusable_knowledge_refs": [
+      "santorini_assyrtiko_core",
+      "cool_climate_high_acid_white"
+    ],
+    "sat_fingerprint": {
+      "appearance": [
+        "pale to medium lemon"
+      ],
+      "nose": [
+        "medium intensity",
+        "ripe citrus",
+        "stone fruit",
+        "mineral saline notes"
+      ],
+      "palate": [
+        "dry",
+        "high acidity",
+        "medium to full body",
+        "medium to high alcohol",
+        "ripe citrus",
+        "stone fruit",
+        "concentrated dry palate"
+      ],
+      "quality": [
+        "very good to outstanding; Santorini Assyrtiko has the highest reputation among Santorini wines"
+      ],
+      "ageing": [
+        "medium ageing for concentrated dry examples"
+      ],
+      "diagnostic_features": [
+        "santorini_assyrtiko_core",
+        "cool_climate_high_acid_white",
+        "riper and more concentrated than Chablis",
+        "volcanic basket-vine context"
+      ]
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Greek native varieties",
+        "Santorini volcanic island identity",
+        "high acidity in hot climate"
+      ],
+      "learning_objectives": [
+        "identify dry Assyrtiko structure",
+        "connect wind to basket training",
+        "separate Assyrtiko from Riesling or Sauvignon Blanc"
+      ],
+      "typical_misconceptions": [
+        "hot Greece cannot make high-acid whites",
+        "Santorini only makes sweet wine",
+        "mineral saline notes identify Chablis"
+      ],
+      "mentor_focus": [
+        "ask whether high acidity comes with ripe citrus concentration and volcanic island context"
+      ],
+      "exam_traps": [
+        "calling it Chablis because of acidity and minerality",
+        "forgetting basket training"
+      ],
+      "memory_hooks": [
+        "Santorini Assyrtiko is hot-island concentration with high-acid backbone"
+      ],
+      "comparison_styles": [
+        "Chablis",
+        "Gavi",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_001",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_009"
+      ],
+      "distinguishing_features": [
+        "riper and more concentrated than Chablis",
+        "volcanic basket-vine context",
+        "high acidity despite hot Mediterranean setting"
+      ]
+    },
+    "teaching_notes": {
+      "common_exam_points": [
+        "Santorini is a windswept volcanic island",
+        "vines are trained low in baskets",
+        "Assyrtiko dry whites have ripe citrus, stone fruit and natural high acidity"
+      ],
+      "mentor_hints": [
+        "Ask how a hot climate wine can retain high acidity.",
+        "Use basket training as a source clue after debrief."
+      ],
+      "student_traps": [
+        "confusing minerality with Chablis",
+        "missing Greece as WSET core region"
+      ],
+      "revision_priority": "high"
+    },
+    "chapter": "25 Greece",
+    "section": "Santorini PDO",
+    "page_reference": "118-119",
+    "line_reference": [
+      "11419-11430",
+      "11505-11530"
+    ],
+    "expected_sat_observations": [
+      "pale to medium lemon",
+      "medium intensity",
+      "ripe citrus",
+      "stone fruit",
+      "mineral saline notes",
+      "dry",
+      "high acidity",
+      "medium to full body",
+      "medium to high alcohol",
+      "ripe citrus",
+      "stone fruit",
+      "concentrated dry palate",
+      "saline mineral finish"
+    ],
+    "common_exam_points": [
+      "Santorini is a windswept volcanic island",
+      "vines are trained low in baskets",
+      "Assyrtiko dry whites have ripe citrus, stone fruit and natural high acidity"
+    ],
+    "common_student_errors": [
+      "hot Greece cannot make high-acid whites",
+      "Santorini only makes sweet wine",
+      "mineral saline notes identify Chablis"
+    ],
+    "mentor_hints": [
+      "Ask how a hot climate wine can retain high acidity.",
+      "Use basket training as a source clue after debrief."
+    ],
+    "descriptor_whitelist": [
+      "pale to medium lemon",
+      "ripe citrus",
+      "stone fruit",
+      "mineral saline notes",
+      "dry",
+      "high acidity",
+      "medium to full body",
+      "medium to high alcohol",
+      "ripe citrus",
+      "stone fruit",
+      "concentrated dry palate",
+      "saline mineral finish",
+      "riper and more concentrated than Chablis",
+      "volcanic basket-vine context",
+      "high acidity despite hot Mediterranean setting"
+    ],
+    "source": {
+      "file": "D:\\Descargas\\Phone Link\\WSET3_rebuilt.md",
+      "line_references": [
+        "11419-11430",
+        "11505-11530"
+      ],
+      "line_reference": [
+        "11419-11430",
+        "11505-11530"
+      ],
+      "evidence": [
+        "Santorini is a windswept volcanic island where vines are trained low into baskets to protect them from strong winds.",
+        "White wines made from Assyrtiko have the highest reputation, with ripe citrus and stone fruit balanced by natural high acidity."
+      ]
+    },
+    "field_metadata": {
+      "wine_family": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_type": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "country": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "tannin": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "knowledge_summary": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "canonical_id": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "wine_style": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_name": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "display_label": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "PUBLIC"
+      },
+      "region": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "subregion": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "appellation": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "grape_varieties": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "PUBLIC"
+      },
+      "climate": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "altitude": {
+        "knowledge_origin": "DERIVED_FROM_STYLE",
+        "visibility_level": "TRAINING"
+      },
+      "soil": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "viticulture": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "winemaking": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "oak": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sweetness": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "body": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "acidity": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "alcohol": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "color": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "aroma_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "flavour_profile": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "finish": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "quality_level": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "ageing_potential": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "TRAINING"
+      },
+      "sat_constraints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "reasoning_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "wset_importance": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "practice_priority": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "difficulty_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "confidence_score": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "PUBLIC"
+      },
+      "reusable_knowledge_refs": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "sat_fingerprint": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "TRAINING"
+      },
+      "pedagogical_dna": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "comparison_engine": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "teaching_notes": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "TRAINING"
+      },
+      "chapter": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "section": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "page_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "line_reference": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "expected_sat_observations": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_exam_points": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "common_student_errors": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "mentor_hints": {
+        "knowledge_origin": "INFERRED_HIGH_CONFIDENCE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "descriptor_whitelist": {
+        "knowledge_origin": "STANDARD_WINE_KNOWLEDGE",
+        "visibility_level": "SERVER_ONLY"
+      },
+      "source": {
+        "knowledge_origin": "WSET_PRIMARY",
+        "visibility_level": "SERVER_ONLY"
+      }
+    }
+  }
+]

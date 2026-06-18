@@ -4602,5 +4602,754 @@
       "campania_fiano_greco_core",
       "cool_climate_high_acid_white"
     ]
+  },
+  {
+    "canonical_id": "SAT_WINE_038",
+    "render_id": "TRAINING_038",
+    "mode": "training",
+    "identity": {
+      "display_name": "Rueda Verdejo",
+      "wine_name": "Rueda Verdejo",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Fresh to textured Verdejo from continental Rueda",
+      "wine_type": "BLANCO",
+      "country": "Spain",
+      "region": "Rueda",
+      "subregion": "Castilla y Leon",
+      "appellation": "Rueda DO",
+      "grape_varieties": [
+        "Verdejo"
+      ],
+      "display_label": "Vino Blanco - Spain - Practica 038",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "continental climate with cool summer nights",
+      "altitude": "high inland plateau between Toro and Ribera del Duero",
+      "soil": "not specified by WSET; continental climate and cool nights are the key markers",
+      "viticulture": [
+        "Rueda focuses on white wine production",
+        "cool summer nights suit Verdejo",
+        "blended whites must contain at least 50 percent Verdejo"
+      ],
+      "winemaking": [
+        "protective winemaking for light high-acid melon and peach styles",
+        "skin contact and barrel fermentation can make richer fuller-bodied styles",
+        "Sauvignon Blanc may be blended or labelled varietally"
+      ],
+      "oak": "usually unoaked in fresh styles; richer styles may be barrel-fermented",
+      "sweetness": "dry",
+      "body": "light to medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale lemon",
+      "aroma_profile": [
+        "melon",
+        "peach",
+        "citrus",
+        "herbal notes"
+      ],
+      "flavour_profile": [
+        "melon",
+        "peach",
+        "citrus",
+        "fresh dry palate"
+      ],
+      "finish": "medium",
+      "quality_level": "good to very good; styles range from simple fruity to richer barrel-fermented versions",
+      "ageing_potential": "drink young to short ageing for fresh styles"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Verdejo oxidation sensitivity",
+        "Rueda white wine identity",
+        "protective versus richer winemaking"
+      ],
+      "learning_objectives": [
+        "identify Verdejo structure",
+        "connect Rueda to white wine production",
+        "separate Verdejo from Sauvignon Blanc"
+      ],
+      "typical_misconceptions": [
+        "Rueda is a red-wine region",
+        "Verdejo always tastes like Sauvignon Blanc",
+        "barrel fermentation means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether melon-peach high-acid fruit points to Verdejo"
+      ],
+      "exam_traps": [
+        "calling all Rueda Sauvignon Blanc",
+        "forgetting Verdejo minimum in blends"
+      ],
+      "memory_hooks": [
+        "Rueda is Verdejo country: cool nights, melon, peach, high acidity"
+      ],
+      "comparison_styles": [
+        "Rias Baixas Albarino",
+        "Gavi",
+        "Alto Adige Pinot Grigio"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_039",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_028"
+      ],
+      "distinguishing_features": [
+        "melon and peach rather than Albariño citrus-stone fruit",
+        "Rueda continental rather than Atlantic damp climate",
+        "possible richer barrel-fermented Verdejo style"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Verdejo is highly susceptible to oxidation",
+        "Rueda focuses on white wine production",
+        "Rueda blends must contain at least 50 percent Verdejo"
+      ],
+      "student_traps": [
+        "overcalling Sauvignon Blanc",
+        "missing Rueda as a white specialist"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "rueda_verdejo_core",
+      "cool_climate_high_acid_white"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_039",
+    "render_id": "TRAINING_039",
+    "mode": "training",
+    "identity": {
+      "display_name": "Rias Baixas Albarino",
+      "wine_name": "Rias Baixas Albarino",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Refreshing Atlantic Albariño with high acidity and ripe stone fruit",
+      "wine_type": "BLANCO",
+      "country": "Spain",
+      "region": "Rias Baixas",
+      "subregion": "North-west Spain",
+      "appellation": "Rias Baixas DO",
+      "grape_varieties": [
+        "Albarino"
+      ],
+      "display_label": "Vino Blanco - Spain - Practica 039",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "moderate damp Atlantic climate, cooler and wetter than most of Spain",
+      "altitude": "coastal and low hill Atlantic vineyards",
+      "soil": "not specified by WSET; damp Atlantic setting is the key marker",
+      "viticulture": [
+        "humid conditions make mildew and rot common",
+        "pergolas encourage air circulation",
+        "Albariño has thick skins that resist fungal disease"
+      ],
+      "winemaking": [
+        "most Albariño is refreshing and unoaked",
+        "some richer styles use oak or lees contact",
+        "fruit and acidity are preserved"
+      ],
+      "oak": "usually unoaked; occasional touch of oak or lees in richer styles",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale to medium lemon",
+      "aroma_profile": [
+        "citrus",
+        "stone fruit",
+        "peach",
+        "saline freshness"
+      ],
+      "flavour_profile": [
+        "citrus",
+        "stone fruit",
+        "ripe peach",
+        "refreshing high-acid palate"
+      ],
+      "finish": "medium to long",
+      "quality_level": "very good; among Spain's most celebrated white wines",
+      "ageing_potential": "drink young to short ageing; richer styles may hold longer"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Atlantic Spain whites",
+        "Albariño thick skin and acidity",
+        "pergola disease management"
+      ],
+      "learning_objectives": [
+        "identify Rias Baixas Albariño",
+        "connect damp climate to pergola training",
+        "separate Albariño from Verdejo"
+      ],
+      "typical_misconceptions": [
+        "Spain is too hot for high-acid whites",
+        "all Albariño is oaked",
+        "pergola is only for Italy"
+      ],
+      "mentor_focus": [
+        "ask for Atlantic freshness plus ripe stone fruit"
+      ],
+      "exam_traps": [
+        "calling it Sauvignon Blanc from acidity alone",
+        "forgetting fungal pressure"
+      ],
+      "memory_hooks": [
+        "Rías Baixas is Atlantic Albariño: damp, pergola, citrus-stone fruit"
+      ],
+      "comparison_styles": [
+        "Rueda Verdejo",
+        "Vinho Verde",
+        "Gavi"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_038",
+        "SAT_WINE_041"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_032"
+      ],
+      "distinguishing_features": [
+        "more Atlantic and stone-fruited than Rueda",
+        "higher alcohol and ripeness than classic Vinho Verde",
+        "less floral than Gavi"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Rias Baixas is the most celebrated north-west Spanish white area",
+        "Albariño is naturally high in acidity",
+        "pergolas help air circulation in damp conditions"
+      ],
+      "student_traps": [
+        "forgetting north-west Spain",
+        "underestimating Albariño quality"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "rias_baixas_albarino_core",
+      "cool_climate_high_acid_white"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_040",
+    "render_id": "TRAINING_040",
+    "mode": "training",
+    "identity": {
+      "display_name": "White Rioja Viura",
+      "wine_name": "White Rioja Viura",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Viura-based white Rioja from traditional oxidative oak to modern fruit-led styles",
+      "wine_type": "BLANCO",
+      "country": "Spain",
+      "region": "Rioja",
+      "subregion": "Rioja Alta / Rioja Alavesa / Rioja Oriental",
+      "appellation": "Rioja DOCa",
+      "grape_varieties": [
+        "Viura"
+      ],
+      "display_label": "Vino Blanco - Spain - Practica 040",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.95
+    },
+    "style_markers": {
+      "climate": "Rioja is protected from Atlantic weather by mountains with varied subregional influences",
+      "altitude": "foothill and valley sites across Rioja; WSET emphasizes regional winemaking over altitude for white Rioja",
+      "soil": "not specified by WSET for white Rioja in this passage",
+      "viticulture": [
+        "Viura is the most widely planted white variety in Rioja",
+        "eight white varieties are approved",
+        "regional ageing and oak culture affect style"
+      ],
+      "winemaking": [
+        "traditional white Rioja aged for extended periods in American oak",
+        "traditional style developed deep golden colour and nutty flavours",
+        "modern styles minimize oxygen to preserve fruit; some are barrel-fermented in a less oxidative style"
+      ],
+      "oak": "American oak and barrel fermentation can be important, but modern styles may show less oxidation",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "medium to high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "medium lemon to gold depending on style",
+      "aroma_profile": [
+        "citrus",
+        "apple",
+        "nutty notes",
+        "vanilla",
+        "subtle spice"
+      ],
+      "flavour_profile": [
+        "citrus",
+        "apple",
+        "nutty oxidative notes",
+        "spicy oak",
+        "fresh fruit in modern styles"
+      ],
+      "finish": "medium to long",
+      "quality_level": "good to very good; style depends strongly on producer and oxygen/oak choices",
+      "ageing_potential": "short to medium ageing; traditional oxidative styles can show developed character"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Rioja white style range",
+        "Viura identity",
+        "oxidative versus modern winemaking"
+      ],
+      "learning_objectives": [
+        "identify oak/oxygen choices in white Rioja",
+        "separate Viura Rioja from neutral Spanish whites",
+        "understand traditional versus modern style"
+      ],
+      "typical_misconceptions": [
+        "Rioja only makes red wine",
+        "all white Rioja is oxidised",
+        "all oak-aged white wine is Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether nutty oak-derived development points to Rioja"
+      ],
+      "exam_traps": [
+        "missing Viura",
+        "assuming deep gold means sweet"
+      ],
+      "memory_hooks": [
+        "White Rioja is Viura shaped by oak and oxygen decisions"
+      ],
+      "comparison_styles": [
+        "Rueda Verdejo",
+        "Soave Classico",
+        "Fiano di Avellino"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_038",
+        "SAT_WINE_031"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_036"
+      ],
+      "distinguishing_features": [
+        "more oak/oxygen signature than Rueda",
+        "less Garganega pear-almond than Soave",
+        "Spanish Viura identity rather than Chardonnay"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Viura is the most widely planted white Rioja variety",
+        "traditional styles used extended American oak ageing",
+        "modern styles use less oxygen to preserve fruit"
+      ],
+      "student_traps": [
+        "forgetting white Rioja",
+        "overcalling oxidation as fault"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "white_rioja_viura_core",
+      "white_wine_sat_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_041",
+    "render_id": "TRAINING_041",
+    "mode": "training",
+    "identity": {
+      "display_name": "Vinho Verde",
+      "wine_name": "Vinho Verde",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Low-alcohol high-acid north-west Portuguese white with slight spritz",
+      "wine_type": "BLANCO",
+      "country": "Portugal",
+      "region": "Vinho Verde",
+      "subregion": "North-west Portugal",
+      "appellation": "Vinho Verde DOC",
+      "grape_varieties": [
+        "Loureiro",
+        "Arinto"
+      ],
+      "display_label": "Vino Blanco - Portugal - Practica 041",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "moderate maritime climate near the Atlantic with high annual rainfall",
+      "altitude": "humid north-west Portuguese vineyards; altitude is not the key WSET marker",
+      "soil": "not specified by WSET; rainfall and Atlantic influence dominate the style",
+      "viticulture": [
+        "high precipitation can cause excessive canopy and disease",
+        "modern vineyards moved away from traditional pergolas",
+        "spur-pruned VSP improves airflow and mechanisation"
+      ],
+      "winemaking": [
+        "classic whites are pale lemon, high acid and low alcohol",
+        "lower-alcohol wines are usually off-dry",
+        "traditional slight sparkling sensation enhances freshness"
+      ],
+      "oak": "unoaked",
+      "sweetness": "dry to off-dry",
+      "body": "light",
+      "acidity": "high",
+      "alcohol": "low",
+      "tannin": "not_applicable",
+      "color": "pale lemon",
+      "aroma_profile": [
+        "citrus",
+        "green apple",
+        "floral notes"
+      ],
+      "flavour_profile": [
+        "citrus",
+        "green apple",
+        "slight spritz",
+        "fresh high-acid palate"
+      ],
+      "finish": "short to medium",
+      "quality_level": "good; freshness and drinkability are central",
+      "ageing_potential": "drink young"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Portuguese Atlantic freshness",
+        "low alcohol high acidity",
+        "spritz and off-dry balance"
+      ],
+      "learning_objectives": [
+        "identify classic Vinho Verde",
+        "connect high rainfall to canopy management",
+        "separate Vinho Verde from Albariño"
+      ],
+      "typical_misconceptions": [
+        "all Portuguese whites are fortified-related",
+        "spritz means sparkling wine category",
+        "off-dry means low acidity"
+      ],
+      "mentor_focus": [
+        "ask for low alcohol, high acidity and slight spritz"
+      ],
+      "exam_traps": [
+        "calling Vinho Verde Albariño because Alvarinho exists",
+        "missing off-dry possibility"
+      ],
+      "memory_hooks": [
+        "Vinho Verde is pale, low-alcohol, high-acid and lightly spritzy"
+      ],
+      "comparison_styles": [
+        "Rias Baixas Albarino",
+        "Muscadet",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_039"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_039",
+        "SAT_WINE_008"
+      ],
+      "distinguishing_features": [
+        "lower alcohol and spritz versus Rias Baixas",
+        "more off-dry possibility than Muscadet",
+        "Atlantic Portugal rather than north-west Spain"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Vinho Verde is in north-west Portugal",
+        "high rainfall requires canopy management",
+        "classic whites are pale, high-acid and low-alcohol with slight sparkle"
+      ],
+      "student_traps": [
+        "forgetting Portuguese still whites",
+        "overlooking low alcohol"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "vinho_verde_core",
+      "cool_climate_high_acid_white"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_042",
+    "render_id": "TRAINING_042",
+    "mode": "training",
+    "identity": {
+      "display_name": "Dao Encruzado",
+      "wine_name": "Dao Encruzado",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Dão Encruzado from light fresh to richer barrel-fermented white",
+      "wine_type": "BLANCO",
+      "country": "Portugal",
+      "region": "Dao",
+      "subregion": "Central Portugal",
+      "appellation": "Dao DOC",
+      "grape_varieties": [
+        "Encruzado"
+      ],
+      "display_label": "Vino Blanco - Portugal - Practica 042",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "confidence_score": 0.94
+    },
+    "style_markers": {
+      "climate": "mountainous inland region with cold wet winters, warm dry summers and significant day-night temperature variation",
+      "altitude": "vineyards on gentler hills and slopes between 200 and 400 metres",
+      "soil": "not specified by WSET for Encruzado; mountainous slope setting is the key marker",
+      "viticulture": [
+        "vines planted on hills and slopes",
+        "day-night temperature variation supports quality grapes",
+        "Encruzado is the leading white variety"
+      ],
+      "winemaking": [
+        "styles range from light and fresh to richer barrel-fermented versions",
+        "fresh styles preserve fruit",
+        "barrel fermentation can add texture"
+      ],
+      "oak": "none in fresh styles; richer examples may be barrel-fermented",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "medium to high",
+      "alcohol": "medium",
+      "tannin": "not_applicable",
+      "color": "pale to medium lemon",
+      "aroma_profile": [
+        "citrus",
+        "apple",
+        "pear",
+        "subtle toast in barrel styles"
+      ],
+      "flavour_profile": [
+        "citrus",
+        "pear",
+        "fresh dry palate",
+        "textured barrel-fermented notes"
+      ],
+      "finish": "medium",
+      "quality_level": "good to very good",
+      "ageing_potential": "short to medium ageing for richer examples"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Dão white identity",
+        "Encruzado style range",
+        "barrel fermentation as optional texture"
+      ],
+      "learning_objectives": [
+        "recognize Encruzado as Dão white grape",
+        "separate fresh and barrel-fermented expressions",
+        "connect altitude range to quality"
+      ],
+      "typical_misconceptions": [
+        "Dão only matters for reds",
+        "Portuguese white grapes are not WSET relevant",
+        "barrel-fermented means Chardonnay"
+      ],
+      "mentor_focus": [
+        "ask whether the style range fits Encruzado rather than a single aromatic grape"
+      ],
+      "exam_traps": [
+        "ignoring Portugal beyond Vinho Verde",
+        "overstating oak"
+      ],
+      "memory_hooks": [
+        "Dão Encruzado can be fresh or barrel-textured from mountain slopes"
+      ],
+      "comparison_styles": [
+        "Vinho Verde",
+        "White Rioja Viura",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_040"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "more medium-bodied than Vinho Verde",
+        "less Rioja oxidative oak identity",
+        "Portuguese Encruzado rather than Verdejo"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Dão vineyards lie between 200 and 400 metres",
+        "day-night variation supports high-quality grapes",
+        "best Dão whites are Encruzado"
+      ],
+      "student_traps": [
+        "forgetting Encruzado",
+        "collapsing all Portuguese whites into Vinho Verde"
+      ],
+      "revision_priority": "medium"
+    },
+    "reusable_knowledge_refs": [
+      "dao_encruzado_core",
+      "white_wine_sat_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_043",
+    "render_id": "TRAINING_043",
+    "mode": "training",
+    "identity": {
+      "display_name": "Santorini Assyrtiko",
+      "wine_name": "Santorini Assyrtiko",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Dry volcanic Assyrtiko with ripe citrus, stone fruit and natural high acidity",
+      "wine_type": "BLANCO",
+      "country": "Greece",
+      "region": "Santorini",
+      "subregion": "Aegean Islands",
+      "appellation": "Santorini PDO",
+      "grape_varieties": [
+        "Assyrtiko"
+      ],
+      "display_label": "Vino Blanco - Greece - Practica 043",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "hot Mediterranean Greece moderated by sea, altitude and strong island winds; very dry growing season",
+      "altitude": "windswept volcanic island sites; vines are trained very low in baskets",
+      "soil": "volcanic island soils; WSET emphasizes Santorini as a volcanic island",
+      "viticulture": [
+        "strong winds require basket-trained vines",
+        "fruit grows inside the low basket shape",
+        "native varieties are adapted to hot arid conditions"
+      ],
+      "winemaking": [
+        "dry white Assyrtiko has the highest reputation",
+        "concentrated ripe citrus and stone fruit flavours",
+        "sweet Vinsanto also exists but this profile is dry Assyrtiko"
+      ],
+      "oak": "typically not a primary marker for dry Assyrtiko",
+      "sweetness": "dry",
+      "body": "medium to full",
+      "acidity": "high",
+      "alcohol": "medium to high",
+      "tannin": "not_applicable",
+      "color": "pale to medium lemon",
+      "aroma_profile": [
+        "ripe citrus",
+        "stone fruit",
+        "mineral saline notes"
+      ],
+      "flavour_profile": [
+        "ripe citrus",
+        "stone fruit",
+        "concentrated dry palate",
+        "saline mineral finish"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; Santorini Assyrtiko has the highest reputation among Santorini wines",
+      "ageing_potential": "medium ageing for concentrated dry examples"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Greek native varieties",
+        "Santorini volcanic island identity",
+        "high acidity in hot climate"
+      ],
+      "learning_objectives": [
+        "identify dry Assyrtiko structure",
+        "connect wind to basket training",
+        "separate Assyrtiko from Riesling or Sauvignon Blanc"
+      ],
+      "typical_misconceptions": [
+        "hot Greece cannot make high-acid whites",
+        "Santorini only makes sweet wine",
+        "mineral saline notes identify Chablis"
+      ],
+      "mentor_focus": [
+        "ask whether high acidity comes with ripe citrus concentration and volcanic island context"
+      ],
+      "exam_traps": [
+        "calling it Chablis because of acidity and minerality",
+        "forgetting basket training"
+      ],
+      "memory_hooks": [
+        "Santorini Assyrtiko is hot-island concentration with high-acid backbone"
+      ],
+      "comparison_styles": [
+        "Chablis",
+        "Gavi",
+        "Rueda Verdejo"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_001",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_009"
+      ],
+      "distinguishing_features": [
+        "riper and more concentrated than Chablis",
+        "volcanic basket-vine context",
+        "high acidity despite hot Mediterranean setting"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Santorini is a windswept volcanic island",
+        "vines are trained low in baskets",
+        "Assyrtiko dry whites have ripe citrus, stone fruit and natural high acidity"
+      ],
+      "student_traps": [
+        "confusing minerality with Chablis",
+        "missing Greece as WSET core region"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "santorini_assyrtiko_core",
+      "cool_climate_high_acid_white"
+    ]
   }
 ]

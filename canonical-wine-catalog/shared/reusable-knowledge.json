@@ -81,6 +81,30 @@
     "campania_fiano_greco_core": {
       "diagnostic_features": ["Campania white DOCGs", "Fiano stone fruit melon mango", "Greco higher acidity and leaner body", "stainless steel or old oak and lees stirring", "honeyed bottle age"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "rueda_verdejo_core": {
+      "diagnostic_features": ["Rueda white wine focus", "Verdejo", "continental climate with cool nights", "light high-acid melon and peach", "protective winemaking or richer barrel-fermented styles"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "rias_baixas_albarino_core": {
+      "diagnostic_features": ["Atlantic damp climate", "pergola training", "Albariño", "naturally high acidity", "citrus", "stone fruit", "refreshing unoaked style"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "white_rioja_viura_core": {
+      "diagnostic_features": ["Viura", "white Rioja", "traditional American oak and oxidative nutty style", "modern low-oxygen fruit preservation", "barrel-fermented less oxidative style"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "vinho_verde_core": {
+      "diagnostic_features": ["north-west Portugal", "moderate maritime climate", "high rainfall", "pale lemon", "high acidity", "low alcohol", "slight sparkling sensation", "Loureiro and Arinto"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "dao_encruzado_core": {
+      "diagnostic_features": ["Dão mountainous area", "200 to 400 metres", "day-night temperature variation", "Encruzado", "light fresh to richer barrel-fermented whites"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "santorini_assyrtiko_core": {
+      "diagnostic_features": ["windswept volcanic island", "basket-trained vines", "Assyrtiko", "dry white reputation", "ripe citrus", "stone fruit", "natural high acidity"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {
