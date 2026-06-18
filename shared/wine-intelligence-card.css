@@ -1,0 +1,92 @@
+/* ============================================================================
+   WineIntelligenceCard — panel de inteligencia de aprendizaje del vino.
+   Motor visual reutilizable: renderiza un render_profile SEGURO (solo campos
+   pedagógicos declarados). Oculta secciones sin datos. Responsive + accesible.
+   Convive con SATWineGlass (ranura de copa, sin duplicar lógica).
+   NUNCA muestra canonical / expected / respuestas / país-región-cepa (salvo
+   que el modo lo permita) / productor / añada / flags internos.
+   ============================================================================ */
+
+.wic{
+  --wic-bg1:#241823; --wic-bg2:#2e1f2c; --wic-ink:#f5ecf2; --wic-muted:#b79fb0;
+  --wic-wine:#7b2740; --wic-wine2:#9c3354; --wic-gold:#c9a227; --wic-line:#3d2c39;
+  --wic-ok:#3fa86b; --wic-warn:#d99a2b; --wic-info:#5b8cd6;
+  position:relative; color:var(--wic-ink);
+  background:linear-gradient(160deg,#2a1b28,#1d131b);
+  border:1px solid var(--wic-line); border-radius:18px; padding:18px;
+  box-shadow:0 10px 40px rgba(0,0,0,.35); overflow:hidden;
+}
+.wic::before{ content:""; position:absolute; inset:0;
+  background:radial-gradient(600px 200px at 100% -20%,rgba(201,162,39,.10),transparent); pointer-events:none; }
+.wic *{ box-sizing:border-box; }
+
+/* Cabecera */
+.wic-head{ display:flex; gap:16px; align-items:flex-start; justify-content:space-between; }
+.wic-head-main{ min-width:0; }
+.wic-eyebrow{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--wic-gold); }
+.wic-title{ font-size:21px; font-weight:800; margin:4px 0 8px; line-height:1.2; }
+.wic-badges{ display:flex; flex-wrap:wrap; gap:6px; }
+.wic-badge{ font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:999px;
+  border:1px solid var(--wic-line); background:rgba(255,255,255,.04); color:var(--wic-ink); white-space:nowrap; }
+.wic-badge.type{ color:var(--wic-gold); border-color:rgba(201,162,39,.4); }
+.wic-badge.diff-1,.wic-badge.diff-2{ color:var(--wic-ok); border-color:rgba(63,168,107,.4); }
+.wic-badge.diff-3{ color:var(--wic-warn); border-color:rgba(217,154,43,.4); }
+.wic-badge.diff-4,.wic-badge.diff-5{ color:#e0796f; border-color:rgba(224,121,111,.45); }
+.wic-glass-slot{ flex:0 0 auto; width:96px; }
+@media(max-width:560px){ .wic-glass-slot{ width:74px; } .wic-title{ font-size:18px; } }
+
+/* Medidor de dificultad */
+.wic-meter{ display:inline-flex; gap:4px; vertical-align:middle; margin-left:8px; }
+.wic-meter i{ width:7px; height:7px; border-radius:50%; background:var(--wic-line); display:inline-block; }
+.wic-meter i.on{ background:var(--wic-gold); }
+
+/* Grid de secciones */
+.wic-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:16px; }
+.wic-sec{ background:rgba(0,0,0,.18); border:1px solid var(--wic-line); border-radius:14px; padding:13px 14px; }
+.wic-sec h4{ margin:0 0 10px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--wic-muted); }
+.wic-row{ display:flex; justify-content:space-between; gap:10px; font-size:13.5px; padding:3px 0; }
+.wic-row span:last-child{ color:var(--wic-gold); text-align:right; }
+
+/* Chips */
+.wic-chips{ display:flex; flex-wrap:wrap; gap:6px; }
+.wic-chip{ font-size:12px; padding:4px 10px; border-radius:999px; border:1px solid var(--wic-line);
+  background:rgba(255,255,255,.03); }
+.wic-chip.ok{ color:var(--wic-ok); border-color:rgba(63,168,107,.35); }
+.wic-chip.warn{ color:var(--wic-warn); border-color:rgba(217,154,43,.35); }
+.wic-chip.gold{ color:var(--wic-gold); border-color:rgba(201,162,39,.35); }
+.wic-chip.muted{ color:var(--wic-muted); }
+
+/* Listas pedagógicas */
+.wic-list{ margin:0; padding:0; list-style:none; }
+.wic-list li{ position:relative; padding:5px 0 5px 16px; font-size:13.5px; line-height:1.45; color:var(--wic-ink); }
+.wic-list li::before{ content:""; position:absolute; left:0; top:11px; width:6px; height:6px; border-radius:50%;
+  background:var(--wic-wine2); }
+.wic-list.traps li::before{ background:#e0796f; }
+.wic-list.hooks li::before{ background:var(--wic-gold); }
+.wic-focus{ font-size:13.5px; line-height:1.5; color:var(--wic-ink); }
+.wic-sublabel{ font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--wic-muted); margin:10px 0 5px; }
+
+/* Barra de progreso */
+.wic-prog{ height:9px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; }
+.wic-prog > i{ display:block; height:100%; width:0; border-radius:999px;
+  background:linear-gradient(90deg,var(--wic-wine2),var(--wic-gold)); transition:width .5s ease; }
+.wic-prog-meta{ display:flex; justify-content:space-between; font-size:12px; color:var(--wic-muted); margin:6px 0 2px; }
+
+/* Estado SAT (fases) */
+.wic-phases{ display:flex; flex-wrap:wrap; gap:6px; }
+.wic-phase{ font-size:11.5px; padding:4px 9px; border-radius:8px; border:1px solid var(--wic-line);
+  background:rgba(255,255,255,.03); color:var(--wic-muted); }
+.wic-phase.done{ color:var(--wic-ok); border-color:rgba(63,168,107,.35); }
+.wic-phase.active{ color:var(--wic-gold); border-color:rgba(201,162,39,.45); }
+
+.wic-notes{ margin-top:14px; font-size:13px; color:var(--wic-muted); line-height:1.55;
+  border-top:1px solid var(--wic-line); padding-top:12px; }
+
+/* Microinteracciones */
+.wic-sec{ transition:transform .15s ease, border-color .15s ease; }
+.wic-sec:hover{ transform:translateY(-2px); border-color:rgba(201,162,39,.3); }
+
+@media (prefers-reduced-motion: reduce){
+  .wic-sec, .wic-prog > i{ transition:none; }
+  .wic-sec:hover{ transform:none; }
+}
