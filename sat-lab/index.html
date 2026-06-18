@@ -71,6 +71,68 @@
   .err{color:var(--block);font-size:14px}
   .glass-mount{width:100%;max-width:200px;display:flex;justify-content:center}
   @media(max-width:480px){ h1{font-size:22px} .card{padding:16px} }
+
+  /* ===== SAT-UX-06 Premium Experience Pass (frontend) ===== */
+  /* Hero de práctica (pantalla de cata) */
+  .sat-hero{ display:flex; gap:18px; align-items:stretch; justify-content:space-between; }
+  .sat-hero-main{ min-width:0; flex:1; }
+  .sat-hero-eyebrow{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
+  .sat-hero-title{ font-size:23px; font-weight:800; line-height:1.15; margin:5px 0 10px; }
+  .sat-hero-badges{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .sat-hb{ font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:999px;
+    border:1px solid var(--line); background:rgba(255,255,255,.04); white-space:nowrap; display:inline-flex; gap:6px; align-items:center; }
+  .sat-hb.type{ color:var(--gold); border-color:rgba(201,162,39,.4); }
+  .sat-hb.wset{ color:#cdb7ff; border-color:rgba(150,120,220,.45); background:rgba(150,120,220,.10); }
+  .sat-hb.imp{ color:#7fd6a8; border-color:rgba(63,168,107,.4); }
+  .sat-hb .mtr{ display:inline-flex; gap:3px; }
+  .sat-hb .mtr i{ width:6px; height:6px; border-radius:50%; background:var(--line); }
+  .sat-hb .mtr i.on{ background:var(--gold); }
+  .sat-hero-objective{ display:flex; gap:8px; align-items:flex-start; font-size:13.5px; line-height:1.45;
+    background:rgba(201,162,39,.07); border:1px solid rgba(201,162,39,.22); border-radius:12px; padding:9px 12px; }
+  .sat-hero-motiv{ font-size:13px; font-style:italic; color:var(--muted); line-height:1.5; margin-top:8px; }
+  .sat-hero-glass{ flex:0 0 auto; width:128px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .sat-hero-glasscap{ font-size:11px; color:var(--muted); text-align:center; line-height:1.3; }
+  @media(max-width:560px){ .sat-hero{ flex-direction:column-reverse; align-items:center; text-align:center; }
+    .sat-hero-glass{ width:108px; } .sat-hero-badges,.sat-hero-objective{ justify-content:center; }
+    .sat-hero-objective{ text-align:left; } }
+
+  /* Mentor visual (feedback con personalidad) */
+  .fb{ position:relative; padding-left:42px; }
+  .fb .mentor-ic{ position:absolute; left:12px; top:11px; font-size:18px; line-height:1; }
+  .fb .sev{ display:inline-flex; align-items:center; gap:6px; }
+  .fb.info{ border-left:3px solid var(--ok); }
+  .fb.warn{ border-left:3px solid var(--warn); }
+  .fb.block{ border-left:3px solid var(--block); }
+  .fb .hint, .fb .bicl, .fb .step{ display:block; padding-left:20px; position:relative; }
+  .fb .hint::before{ content:"🧠"; position:absolute; left:0; top:0; }
+  .fb .bicl::before{ content:"🔎"; position:absolute; left:0; top:0; }
+  .fb .step::before{ content:"➡"; position:absolute; left:0; top:0; }
+
+  /* Informe final (resumen pedagógico) */
+  .report-hero{ background:linear-gradient(160deg,#2a1b28,#1d131b); border:1px solid var(--line);
+    border-radius:18px; padding:18px; margin-bottom:16px; display:flex; gap:18px; align-items:center; }
+  .report-hero .rh-main{ flex:1; min-width:0; }
+  .report-hero .rh-eyebrow{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
+  .report-hero .rh-title{ font-size:22px; font-weight:800; margin:4px 0 8px; }
+  .report-hero .rh-badges{ display:flex; flex-wrap:wrap; gap:6px; }
+  .report-hero .sat-hero-glass{ width:108px; }
+  .report-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:620px){ .report-grid{ grid-template-columns:1fr; } .report-hero{ flex-direction:column; text-align:center; } }
+  .rep-li{ position:relative; padding:7px 0 7px 22px; font-size:13.7px; line-height:1.45; border-bottom:1px solid var(--line); }
+  .rep-li:last-child{ border-bottom:0; }
+  .rep-li.ok::before{ content:"✔"; position:absolute; left:0; top:7px; color:var(--ok); }
+  .rep-li.warn::before{ content:"●"; position:absolute; left:0; top:7px; color:var(--warn); }
+  .rep-li .pick{ color:var(--muted); }
+  .rep-empty{ color:var(--muted); font-size:13px; }
+  .nextprep{ font-size:13.7px; line-height:1.5; color:var(--ink); }
+  /* Slots reservados (Debrief / PDF / Comparación) — preparados, no activos */
+  .reserved{ display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+  .reserved .slot{ flex:1; min-width:150px; border:1px dashed var(--line); border-radius:12px; padding:12px;
+    color:var(--muted); background:rgba(255,255,255,.02); opacity:.75; }
+  .reserved .slot b{ display:block; color:var(--ink); font-size:13.5px; margin-bottom:3px; font-weight:700; }
+  .reserved .slot small{ font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold); }
+  .btn[aria-disabled="true"]{ opacity:.45; cursor:not-allowed; filter:none; pointer-events:none; }
+
 </style>
 </head>
 <body>
@@ -98,19 +160,24 @@
   </section>
 
   <section id="screen-tasting" style="display:none">
-    <div class="card">
-      <div class="glass">
+    <div class="card sat-hero">
+      <div class="sat-hero-main">
+        <div class="sat-hero-eyebrow" id="hero-eyebrow">Cata a ciegas · WSET Nivel 3</div>
+        <div class="sat-hero-title" id="wine-label">Vino</div>
+        <div class="sat-hero-badges" id="hero-badges"></div>
+        <div class="sat-hero-objective" id="hero-objective" style="display:none"></div>
+        <div class="sat-hero-motiv" id="hero-motiv"></div>
+        <span class="chip" id="wine-chip" hidden>—</span>
+      </div>
+      <div class="sat-hero-glass">
         <div id="glass-mount" class="glass-mount" role="img" aria-label="Copa de cata">
-          <!-- Fallback sin JS: copa estática -->
           <svg width="64" height="84" viewBox="0 0 64 84" aria-hidden="true">
+            <path d="M14 8 Q32 2 50 8 Q50 34 32 46 Q14 34 14 8 Z" fill="rgba(255,255,255,.05)" stroke="#6a5562"/>
             <rect x="30" y="46" width="4" height="26" fill="#d9c7d2"/>
             <rect x="18" y="72" width="28" height="4" rx="2" fill="#d9c7d2"/>
-            <path d="M14 8 Q32 2 50 8 Q50 34 32 46 Q14 34 14 8 Z" fill="rgba(255,255,255,.05)" stroke="#6a5562"/>
-            <path d="M16 18 Q32 14 48 18 Q47 33 32 44 Q17 33 16 18 Z" fill="#7b2740"/>
           </svg>
         </div>
-        <div class="wine-label" id="wine-label">Vino</div>
-        <span class="chip" id="wine-chip">—</span>
+        <div class="sat-hero-glasscap" id="hero-glasscap">Tu copa refleja lo que declaras</div>
       </div>
     </div>
     <div class="steps" id="steps"></div>
@@ -126,30 +193,71 @@
   </section>
 
   <section id="screen-summary" style="display:none">
-    <h1>Práctica completada</h1>
+    <h1>Informe de práctica</h1>
     <p class="sub" id="summary-msg"></p>
-    <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Así describiste visualmente este vino</h3>
-      <div id="glass-mount-summary" class="glass-mount" style="margin:0 auto" role="img" aria-label="Copa final de cata"></div>
+
+    <div class="report-hero">
+      <div class="rh-main">
+        <div class="rh-eyebrow">Resumen pedagógico · Cata a ciegas</div>
+        <div class="rh-title" id="report-title">Tu cata</div>
+        <div class="rh-badges" id="report-badges"></div>
+      </div>
+      <div class="sat-hero-glass">
+        <div id="glass-mount-summary" class="glass-mount" role="img" aria-label="Copa final de cata"></div>
+        <div class="sat-hero-glasscap">Tu copa, según lo que declaraste</div>
+      </div>
     </div>
+
     <div class="card">
       <h3 style="margin:0 0 10px;font-size:16px">Fases completadas</h3>
       <div id="phases-box"></div>
     </div>
+
+    <div class="report-grid">
+      <div class="card" style="margin:0">
+        <h3 style="margin:0 0 10px;font-size:16px">Fortalezas detectadas</h3>
+        <div id="strengths-box"></div>
+      </div>
+      <div class="card" style="margin:0">
+        <h3 style="margin:0 0 10px;font-size:16px">Aspectos por reforzar</h3>
+        <div id="areas-box"></div>
+      </div>
+    </div>
+
     <div class="card">
       <h3 style="margin:0 0 10px;font-size:16px">Señales del mentor</h3>
       <div class="tally" id="tally-box"></div>
       <p class="muted" style="font-size:13px;margin:6px 0 0">Sin puntuación oficial ni aprobado/reprobado: estas señales reflejan cómo construiste el razonamiento.</p>
     </div>
+
     <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Tus decisiones</h3>
+      <h3 style="margin:0 0 10px;font-size:16px">Resumen de tus decisiones</h3>
       <div id="summary-box"></div>
     </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:16px">Preparación para la siguiente práctica</h3>
+      <div class="nextprep" id="nextprep-box"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:16px">Próximamente</h3>
+      <div class="reserved">
+        <div class="slot"><small>Próximamente</small><b>Debrief guiado</b>Repaso razonado del vino y de tus inferencias.</div>
+        <div class="slot"><small>Próximamente</small><b>Informe en PDF</b>Exporta esta práctica para revisarla más tarde.</div>
+        <div class="slot"><small>Próximamente</small><b>Comparación con el modelo</b>Contrasta tu cata con la referencia del mentor.</div>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn ghost" id="btn-debrief" aria-disabled="true" title="Disponible próximamente">Ver debrief</button>
+        <button class="btn ghost" id="btn-pdf" aria-disabled="true" title="Disponible próximamente">Descargar PDF</button>
+      </div>
+    </div>
+
     <div class="card">
       <p class="muted" style="margin:0 0 12px;font-size:13.5px">Recuerda: el SAT premia el razonamiento (observación → inferencia → causa → juicio) y el compromiso con una conclusión, no acertar a ciegas.</p>
       <div class="row">
-        <button class="btn full" id="btn-restart">Nueva cata</button>
-        <button class="btn ghost" id="btn-home">Volver al inicio</button>
+        <button class="btn full" id="btn-restart">Nueva práctica</button>
+        <button class="btn ghost" id="btn-home">Volver</button>
       </div>
     </div>
   </section>
@@ -217,6 +325,7 @@
     function v(k){ return a[k] ? a[k].value : null; }
     return {
       wineType: S.wine && S.wine.wine_type,
+      fill: 0.5,
       clarity: v('claridad'),
       colour: v('color_blanco') || v('color_tinto') || v('color_rosado'),
       intensity: v('intensidad_aspecto'),
@@ -307,12 +416,37 @@
     }
   }
 
+  // Hero premium de la practica: construido desde el render_profile.blind (campos seguros).
+  function buildHero(){
+    var prof = (typeof resolveBlindProfile==='function') ? resolveBlindProfile(S.wine.id) : null;
+    var id = prof ? mapBlindToCard(prof, S.wine).identity : {
+      wine_type:S.wine.wine_type, display_label:S.wine.display_label,
+      wset_level:WSET_LEVEL, practice_number:practiceNumberOf(S.wine),
+      objective:blindObjective(), motivational:blindMotivational(null),
+      importance:null, priority:null, difficulty:null, difficulty_score:null };
+    if($('wine-label')) $('wine-label').textContent = id.display_label || S.wine.display_label || 'Vino';
+    var b='';
+    if(id.wine_type) b+='<span class="sat-hb type">'+id.wine_type+'</span>';
+    if(id.practice_number) b+='<span class="sat-hb">Práctica '+id.practice_number+'</span>';
+    if(id.difficulty){ var sc=parseInt(id.difficulty_score,10)||0, dots=''; var lit=Math.max(1,Math.min(5,Math.round(sc/2)));
+      for(var i=1;i<=5;i++) dots+='<i class="'+(i<=lit?'on':'')+'"></i>';
+      b+='<span class="sat-hb">'+id.difficulty+' <span class="mtr">'+dots+'</span></span>'; }
+    if(id.importance) b+='<span class="sat-hb imp">'+id.importance+'</span>';
+    if(id.priority) b+='<span class="sat-hb">Prioridad '+id.priority+'</span>';
+    if(id.wset_level) b+='<span class="sat-hb wset">'+id.wset_level+'</span>';
+    if($('hero-badges')) $('hero-badges').innerHTML=b;
+    var obj=$('hero-objective');
+    if(obj){ if(id.objective){ obj.style.display=''; obj.innerHTML='<span aria-hidden="true">🎯</span><span>'+id.objective+'</span>'; } else obj.style.display='none'; }
+    if($('hero-motiv')) $('hero-motiv').textContent=id.motivational||'';
+  }
+
   function renderTasting(){
     show('screen-tasting');
     var wt = S.wine.wine_type;
     $('wine-label').textContent = S.wine.display_label || 'Vino';
     $('wine-chip').textContent = wt==='TINTO'?'Cata a ciegas · tinto':(wt==='ROSADO'?'Cata a ciegas · rosado':'Cata a ciegas · blanco');
     updateGlass();
+    buildHero();
     var steps = PHASES.map(function(p,i){
       var cls = i<S.phaseIdx?'step done':(i===S.phaseIdx?'step active':'step');
       return '<div class="'+cls+'">'+(i+1)+'</div>';
@@ -361,12 +495,16 @@
       if(!r.ok || !b.ok) throw new Error(b.error||'Error al evaluar.');
       if(!S.answers[dn]) S.decisionsCount++;
       S.answers[dn] = {value:val, label:LABELS[dn][val], severity:b.severity, phase:phase.id};
-      var sevClass = b.severity==='BLOQUEANTE'?'block':(b.severity==='ADVERTENCIA'?'warn':'info');
-      var html = '<span class="sev">'+b.severity+'</span>'+ (b.feedback_message||'');
+      var SEV={INFORMATIVA:{cls:'info',ic:'💡',name:'Observación'},
+               ADVERTENCIA:{cls:'warn',ic:'⚠',name:'Atención'},
+               BLOQUEANTE:{cls:'block',ic:'🎯',name:'Punto crítico'}};
+      var sv = SEV[b.severity] || SEV.INFORMATIVA;
+      var html = '<span class="mentor-ic" aria-hidden="true">'+sv.ic+'</span>'
+        + '<span class="sev">'+sv.name+'</span>'+ (b.feedback_message||'');
       if(b.reasoning_hint) html += '<div class="hint">'+b.reasoning_hint+'</div>';
       if(b.bicl_signal) html += '<div class="bicl">'+b.bicl_signal+'</div>';
-      if(b.next_step) html += '<div class="hint">'+b.next_step+'</div>';
-      fb.className='fb show '+sevClass; fb.innerHTML = html;
+      if(b.next_step) html += '<div class="step">'+b.next_step+'</div>';
+      fb.className='fb show '+sv.cls; fb.innerHTML = html;
       refreshNext(); updateGlass();
     }catch(e){
       fb.className='fb show block'; fb.innerHTML='<span class="sev">Error</span>'+(e.message||String(e));
@@ -397,6 +535,36 @@
       '<span class="pill ok">Informativas: '+tally.INFORMATIVA+'</span>'+
       '<span class="pill warn">Advertencias: '+tally.ADVERTENCIA+'</span>'+
       '<span class="pill block">Bloqueantes: '+tally.BLOQUEANTE+'</span>';
+    // Informe pedagógico: hero + fortalezas/áreas (solo señales del mentor, nunca la respuesta).
+    if($('report-title')) $('report-title').textContent = S.wine.display_label || 'Tu cata';
+    if($('report-badges')){
+      var wt2=S.wine.wine_type, rb='';
+      if(wt2) rb+='<span class="sat-hb type">'+wt2+'</span>';
+      var pn=practiceNumberOf(S.wine); if(pn) rb+='<span class="sat-hb">Práctica '+pn+'</span>';
+      rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
+      $('report-badges').innerHTML=rb;
+    }
+    var strengths=[], areas=[];
+    PHASES.forEach(function(p){
+      var decs=resolveDecisions(p), clean=decs.length>0;
+      decs.forEach(function(dn){
+        var a=S.answers[dn];
+        if(!a){ clean=false; return; }
+        if(a.severity!=='INFORMATIVA'){ clean=false; areas.push({t:DEC_TITLE[dn], v:a.label}); }
+      });
+      if(clean) strengths.push(PHASE_NAME[p.id]);
+    });
+    var sHtml='';
+    if(tally.BLOQUEANTE===0 && tally.ADVERTENCIA===0) sHtml+='<div class="rep-li ok">Cata coherente: sin señales de alerta del mentor.</div>';
+    sHtml += strengths.map(function(n){ return '<div class="rep-li ok">Fase sólida: '+n+'</div>'; }).join('');
+    if($('strengths-box')) $('strengths-box').innerHTML = sHtml || '<div class="rep-empty">Sigue practicando para consolidar fortalezas.</div>';
+    var aHtml = areas.length
+      ? areas.map(function(x){ return '<div class="rep-li warn">'+x.t+' <span class="pick">— elegiste: '+x.v+'</span></div>'; }).join('')
+      : '<div class="rep-li ok">Sin aspectos marcados para reforzar en esta práctica.</div>';
+    if($('areas-box')) $('areas-box').innerHTML = aHtml;
+    if($('nextprep-box')) $('nextprep-box').textContent = areas.length
+      ? 'Repasa los puntos marcados arriba y repite con un vino del mismo tipo para afianzar el criterio.'
+      : 'Excelente coherencia. Prueba un vino de mayor dificultad para seguir progresando.';
     var rows = '';
     PHASES.forEach(function(p){
       resolveDecisions(p).forEach(function(dn){
@@ -419,7 +587,23 @@
     if(band && m[band]) return m[band];
     sc=parseInt(sc,10)||0; return sc<=2?'Iniciación':(sc<=4?'Intermedio':(sc<=6?'Avanzado':'Experto'));
   }
-  function mapBlindToCard(item){
+  var WSET_LEVEL='WSET Nivel 3';
+  function practiceNumberOf(wine){
+    if(!wine) return null;
+    var m=String(wine.id||'').match(/(\d+)\s*$/); if(m) return String(parseInt(m[1],10));
+    m=String(wine.display_label||'').match(/(\d+)\s*$/); return m?m[1]:null;
+  }
+  function blindObjective(){
+    return 'Deduce el perfil del vino con el método SAT: observa, infiere y comprométete con un juicio, sin pistas de identidad.';
+  }
+  function blindMotivational(band){
+    var m={ foundation:'Un buen punto de partida para afianzar el método paso a paso.',
+            intermediate:'Un reto equilibrado para pulir tu razonamiento estructurado.',
+            advanced:'Exige precisión: confía en la estructura y sostén tus inferencias.',
+            expert:'Nivel de examen: máxima atención al detalle y a la coherencia.' };
+    return m[band] || 'Confía en el método: cada observación construye tu conclusión.';
+  }
+  function mapBlindToCard(item, wine){
     var id=(item&&item.identity)||{};
     return {
       identity:{
@@ -430,7 +614,11 @@
         difficulty_score: id.difficulty_score || null,
         importance: (id.wset_importance==='CORE'?'Núcleo del examen':(id.wset_importance||null)),
         confidence: (typeof id.confidence_score==='number'? Math.round(id.confidence_score*100)+'%':null),
-        priority: (id.practice_priority!=null? (id.practice_priority+'/5'):null)
+        priority: (id.practice_priority!=null? (id.practice_priority+'/5'):null),
+        wset_level: WSET_LEVEL,
+        practice_number: practiceNumberOf(wine),
+        objective: blindObjective(),
+        motivational: blindMotivational(id.difficulty_band)
       },
       glass: (item&&item.glass&&item.glass.wine_type)?{ wineType:item.glass.wine_type }:null
     };
@@ -456,7 +644,7 @@
     if(!(window.WineIntelligenceCard && $('wic-demo'))) return;
     if(!wine){ $('wic-demo').innerHTML=''; return; }
     var prof = resolveBlindProfile(wine.id);
-    if(prof){ WineIntelligenceCard.mount($('wic-demo'), mapBlindToCard(prof)); return; }
+    if(prof){ WineIntelligenceCard.mount($('wic-demo'), mapBlindToCard(prof, wine)); return; }
     // Fallback sin perfil en el mapa: refleja al menos el tipo del vino real (sin identidad)
     var wt=wine.wine_type;
     WineIntelligenceCard.mount($('wic-demo'), {
