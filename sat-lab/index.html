@@ -287,7 +287,7 @@
       var wine = previewWine;
       if(!wine){
         var hr = await authHeaders(false);
-        var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation', {headers:hr});
+        var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation&limit=70', {headers:hr});
         if(!wr.ok) throw new Error('No se pudo cargar el inventario de cata.');
         var wd = await wr.json();
         var list = wd.wines||[];
@@ -469,7 +469,7 @@
   function previewPracticeWine(){
     if(!$('wic-demo')) return;
     requireAuth().then(function(token){
-      return fetch(FN+'get-sat-wines?mode=blind_simulation', {headers:{'Authorization':'Bearer '+token}});
+      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=70', {headers:{'Authorization':'Bearer '+token}});
     }).then(function(r){ return r.json(); }).then(function(wd){
       var list=(wd&&wd.wines)||[];
       if(!list.length){ previewWine=null; $('wic-demo').innerHTML=''; return; }
