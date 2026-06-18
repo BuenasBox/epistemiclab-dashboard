@@ -267,7 +267,6 @@
     }).filter(Boolean);
   }
 
-  // Opciones a mostrar para una decisión: subconjunto del perfil si existe, si no todas (SAT-006).
   function optionValues(dn){
     var pr=profile();
     if(pr.options && pr.options[dn]) return pr.options[dn].filter(function(v){ return LABELS[dn][v]; });
@@ -403,19 +402,42 @@
     $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
   }
 
-  // Demo del motor WineIntelligenceCard (datos mock seguros; sin identidad real).
-  var WIC_DEMO = {
-    identity: { display_label:'Vino blanco — práctica guiada', wine_type:'BLANCO', practice_mode:'Cata a ciegas', difficulty:'Intermedio', difficulty_score:3, recommended_level:'WSET Nivel 3', related_ra:'RA1 · Factores que influyen en el estilo' },
-    glass: { wineType:'BLANCO', colour:'amarillo_limón', intensity:'media', clarity:'claro', alcohol:'medio', body:'medio' },
-    progress: { percent:40, attempts:2, current_phase:'Paladar', strengths:['Acidez','Intensidad aromática'], weaknesses:['Compromiso de calidad'], mastered:['Claridad','Dulzor'], pending:['Justificación BICL','Potencial para el envejecimiento'] },
-    pedagogy: { core_concepts:['Acidez como marcador de clima','Intensidad como criterio de calidad','Razonamiento inverso'], learning_objectives:['Justificar la calidad con BICL','Inferir el clima desde la estructura','Comprometerse con un juicio'], mentor_focus:'Comprométete con un nivel de calidad y susténtalo; no evadas el juicio.', misconceptions:['Confundir cuerpo con dulzor','Interpretar acidez alta como defecto'], exam_traps:['Describir sin concluir','Sobre-describir aromas sin estructura'], memory_hooks:['Acidez = la boca saliva','Final largo = señal de calidad'] },
-    comparison: { confused_with:[], distinguishing_features:[], similar_profiles:[], next_recommended:null },
-    sat_state: { appearance:'Pendiente', nose:'Pendiente', palate:'En curso', quality:'Pendiente', ageing:'Pendiente' },
-    teaching_notes:'Demostración del motor visual. Al conectar el catálogo canónico, mostrará el perfil real de cada práctica.'
-  };
+  // SAT-UX-04: consumo del CONTRATO SEGURO del catalogo (solo render_profiles.blind.json).
+  // El canonical completo NO llega al navegador. Solo se lee este export blind-safe.
+  function blindDiffLabel(band, sc){
+    var m={foundation:'Fundamento',intermediate:'Intermedio',advanced:'Avanzado',expert:'Experto'};
+    if(band && m[band]) return m[band];
+    sc=parseInt(sc,10)||0; return sc<=2?'Iniciación':(sc<=4?'Intermedio':(sc<=6?'Avanzado':'Experto'));
+  }
+  function mapBlindToCard(item){
+    var id=(item&&item.identity)||{};
+    return {
+      identity:{
+        display_label: id.display_label || 'Práctica a ciegas',
+        wine_type: id.wine_type || null,
+        practice_mode: 'Cata a ciegas',
+        difficulty: blindDiffLabel(id.difficulty_band, id.difficulty_score),
+        difficulty_score: id.difficulty_score || null,
+        importance: (id.wset_importance==='CORE'?'Núcleo del examen':(id.wset_importance||null)),
+        confidence: (typeof id.confidence_score==='number'? Math.round(id.confidence_score*100)+'%':null),
+        priority: (id.practice_priority!=null? (id.practice_priority+'/5'):null)
+      },
+      glass: (item&&item.glass&&item.glass.wine_type)?{ wineType:item.glass.wine_type }:null
+    };
+  }
+  function loadBlindCard(){
+    if(!(window.WineIntelligenceCard && $('wic-demo'))) return;
+    fetch('../canonical-wine-catalog/exports/render_profiles.blind.json')
+      .then(function(r){ return r.json(); })
+      .then(function(list){
+        if(!Array.isArray(list) || !list.length){ $('wic-demo').innerHTML=''; return; }
+        WineIntelligenceCard.mount($('wic-demo'), mapBlindToCard(list[0]));
+      })
+      .catch(function(){ $('wic-demo').innerHTML=''; });
+  }
 
   document.addEventListener('DOMContentLoaded', function(){
-    if(window.WineIntelligenceCard && $('wic-demo')){ WineIntelligenceCard.mount($('wic-demo'), WIC_DEMO); }
+    loadBlindCard();
     $('mode-blind').addEventListener('click', requestEntry);
     $('btn-next').addEventListener('click', nextPhase);
     $('btn-prev').addEventListener('click', prevPhase);
