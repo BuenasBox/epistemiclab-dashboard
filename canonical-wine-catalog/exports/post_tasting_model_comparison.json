@@ -10004,5 +10004,782 @@
         "missing New World fruit ripeness"
       ]
     }
+  },
+  "SAT_WINE_094": {
+    "canonical_id": "SAT_WINE_094",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon",
+        "persistent fine bubbles"
+      ],
+      "nose_model": [
+        "green apple",
+        "lemon",
+        "brioche",
+        "toast"
+      ],
+      "palate_model": [
+        "dry to off-dry",
+        "high acidity",
+        "light to medium body",
+        "persistent mousse"
+      ],
+      "quality_model": [
+        "good to outstanding",
+        "autolytic complexity"
+      ],
+      "ageing_consumption_model": [
+        "reserve wine and lees ageing add complexity"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "green apple",
+          "lemon",
+          "brioche",
+          "toast",
+          "yeast"
+        ]
+      },
+      "palate": {
+        "sweetness": "brut to extra brut commonly, with dosage balancing high acidity",
+        "acidity": "high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "none",
+        "flavour_profile": [
+          "citrus",
+          "apple",
+          "biscuit",
+          "bread dough",
+          "toast"
+        ],
+        "finish": "medium to long"
+      },
+      "quality": {
+        "quality_level": "good to outstanding"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now; better examples can develop autolytic and tertiary complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "green apple",
+          "lemon",
+          "brioche",
+          "toast",
+          "yeast"
+        ],
+        "flavour_profile": [
+          "citrus",
+          "apple",
+          "biscuit",
+          "bread dough",
+          "toast"
+        ],
+        "diagnostic_features": [
+          "traditional method",
+          "high acidity",
+          "autolysis",
+          "non-vintage blend"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "Separate method character from origin: mousse and autolysis are not enough without Champagne-level acidity and profile."
+      ],
+      "student_traps": [
+        "assuming all Champagne is vintage",
+        "missing dosage when judging dryness",
+        "calling every autolytic sparkling wine Champagne"
+      ]
+    }
+  },
+  "SAT_WINE_095": {
+    "canonical_id": "SAT_WINE_095",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon to medium gold",
+        "fine persistent bubbles"
+      ],
+      "nose_model": [
+        "citrus",
+        "ripe apple",
+        "brioche",
+        "toast",
+        "nut"
+      ],
+      "palate_model": [
+        "dry",
+        "high acidity",
+        "medium body",
+        "creamy mousse",
+        "long finish"
+      ],
+      "quality_model": [
+        "very good to outstanding",
+        "greater autolytic and bottle-age complexity"
+      ],
+      "ageing_consumption_model": [
+        "can develop nutty, honeyed, toasty complexity"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon to medium gold"
+      },
+      "nose": {
+        "aroma_profile": [
+          "lemon",
+          "apple",
+          "brioche",
+          "toast",
+          "almond",
+          "honey"
+        ]
+      },
+      "palate": {
+        "sweetness": "brut commonly",
+        "acidity": "high",
+        "body": "medium",
+        "alcohol": "medium",
+        "tannin": "none",
+        "flavour_profile": [
+          "citrus",
+          "ripe apple",
+          "pastry",
+          "toast",
+          "nut",
+          "cream"
+        ],
+        "finish": "long"
+      },
+      "quality": {
+        "quality_level": "very good to outstanding"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "capable of bottle ageing with toast, nut and honey development"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "lemon",
+          "apple",
+          "brioche",
+          "toast",
+          "almond",
+          "honey"
+        ],
+        "flavour_profile": [
+          "citrus",
+          "ripe apple",
+          "pastry",
+          "toast",
+          "nut",
+          "cream"
+        ],
+        "diagnostic_features": [
+          "traditional method",
+          "vintage or prestige selection",
+          "long lees ageing",
+          "premium Champagne concentration"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "Look for the same Champagne skeleton as NV, then ask whether concentration, autolysis and finish are elevated."
+      ],
+      "student_traps": [
+        "treating prestige cuvee as simply older NV",
+        "forgetting that vintage Champagne depends on declared year conditions",
+        "overcalling sweetness because of richness"
+      ]
+    }
+  },
+  "SAT_WINE_096": {
+    "canonical_id": "SAT_WINE_096",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon",
+        "persistent bubbles"
+      ],
+      "nose_model": [
+        "apple",
+        "pear",
+        "lemon",
+        "biscuit"
+      ],
+      "palate_model": [
+        "dry to off-dry",
+        "medium to high acidity",
+        "light to medium body",
+        "mousse"
+      ],
+      "quality_model": [
+        "good to very good",
+        "moderate autolytic complexity"
+      ],
+      "ageing_consumption_model": [
+        "usually early drinking"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "apple",
+          "lemon",
+          "pear",
+          "bread dough",
+          "biscuit"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry to off-dry depending on dosage",
+        "acidity": "medium to high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "none",
+        "flavour_profile": [
+          "citrus",
+          "orchard fruit",
+          "biscuit",
+          "cream"
+        ],
+        "finish": "medium"
+      },
+      "quality": {
+        "quality_level": "good to very good"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "generally for early drinking; best examples can gain some autolytic complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "apple",
+          "lemon",
+          "pear",
+          "bread dough",
+          "biscuit"
+        ],
+        "flavour_profile": [
+          "citrus",
+          "orchard fruit",
+          "biscuit",
+          "cream"
+        ],
+        "diagnostic_features": [
+          "traditional method",
+          "French Cremant appellation",
+          "fresh fruit",
+          "subtle autolysis"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "Use method markers first, then keep the origin label generic until debrief."
+      ],
+      "student_traps": [
+        "calling Cremant Champagne",
+        "expecting the same intensity or price tier as Champagne",
+        "ignoring regional grape signatures"
+      ]
+    }
+  },
+  "SAT_WINE_097": {
+    "canonical_id": "SAT_WINE_097",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon",
+        "persistent bubbles"
+      ],
+      "nose_model": [
+        "lemon",
+        "apple",
+        "pear",
+        "biscuit",
+        "almond"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high acidity",
+        "light to medium body",
+        "mousse"
+      ],
+      "quality_model": [
+        "good to very good",
+        "traditional-method complexity"
+      ],
+      "ageing_consumption_model": [
+        "usually ready to drink; premium longer-aged styles can develop"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "lemon",
+          "green apple",
+          "pear",
+          "bread dough",
+          "almond"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry to off-dry depending on dosage",
+        "acidity": "medium to high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "none",
+        "flavour_profile": [
+          "citrus",
+          "apple",
+          "pear",
+          "biscuit",
+          "almond"
+        ],
+        "finish": "medium"
+      },
+      "quality": {
+        "quality_level": "good to very good"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "mostly early drinking; premium examples with longer lees ageing can develop more complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "lemon",
+          "green apple",
+          "pear",
+          "bread dough",
+          "almond"
+        ],
+        "flavour_profile": [
+          "citrus",
+          "apple",
+          "pear",
+          "biscuit",
+          "almond"
+        ],
+        "diagnostic_features": [
+          "traditional method",
+          "Cava DO",
+          "Macabeo Xarel-lo Parellada",
+          "moderate autolysis"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "Traditional method plus Mediterranean fruit and moderate autolysis points toward Cava rather than Champagne."
+      ],
+      "student_traps": [
+        "assuming tank method because it is often inexpensive",
+        "overcalling Champagne from bottle-fermentation notes",
+        "forgetting local Spanish grape varieties"
+      ]
+    }
+  },
+  "SAT_WINE_098": {
+    "canonical_id": "SAT_WINE_098",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon",
+        "bubbles"
+      ],
+      "nose_model": [
+        "grape",
+        "orange blossom",
+        "peach",
+        "floral"
+      ],
+      "palate_model": [
+        "sweet",
+        "low alcohol",
+        "medium acidity",
+        "light body",
+        "frothy mousse"
+      ],
+      "quality_model": [
+        "good to very good",
+        "primary aromatic intensity"
+      ],
+      "ageing_consumption_model": [
+        "best consumed young"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "grape",
+          "orange blossom",
+          "peach",
+          "pear",
+          "floral"
+        ]
+      },
+      "palate": {
+        "sweetness": "sweet",
+        "acidity": "medium",
+        "body": "light",
+        "alcohol": "low",
+        "tannin": "none",
+        "flavour_profile": [
+          "grapey fruit",
+          "peach",
+          "pear",
+          "orange blossom",
+          "sweet citrus"
+        ],
+        "finish": "medium"
+      },
+      "quality": {
+        "quality_level": "good to very good"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink young to preserve primary fruit and floral aromas"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "grape",
+          "orange blossom",
+          "peach",
+          "pear",
+          "floral"
+        ],
+        "flavour_profile": [
+          "grapey fruit",
+          "peach",
+          "pear",
+          "orange blossom",
+          "sweet citrus"
+        ],
+        "diagnostic_features": [
+          "Asti method",
+          "Muscat aroma",
+          "sweetness",
+          "low alcohol"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "Low alcohol plus sweet grapey floral aroma is the fast diagnostic route."
+      ],
+      "student_traps": [
+        "calling Asti dry",
+        "confusing Asti with Prosecco because both are Italian sparkling wines",
+        "missing low alcohol as a key clue"
+      ]
+    }
+  },
+  "SAT_WINE_099": {
+    "canonical_id": "SAT_WINE_099",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon",
+        "bubbles"
+      ],
+      "nose_model": [
+        "pear",
+        "apple",
+        "white peach",
+        "floral"
+      ],
+      "palate_model": [
+        "brut to extra dry",
+        "medium to high acidity",
+        "light to medium body",
+        "fresh fruit"
+      ],
+      "quality_model": [
+        "good to very good",
+        "primary fruit expression"
+      ],
+      "ageing_consumption_model": [
+        "best consumed young"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "pear",
+          "apple",
+          "white peach",
+          "lemon",
+          "floral"
+        ]
+      },
+      "palate": {
+        "sweetness": "brut to extra dry; residual sugar may be perceptible",
+        "acidity": "medium to high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "none",
+        "flavour_profile": [
+          "pear",
+          "apple",
+          "peach",
+          "citrus",
+          "blossom"
+        ],
+        "finish": "short to medium"
+      },
+      "quality": {
+        "quality_level": "good to very good"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink young for freshness and primary fruit"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "pear",
+          "apple",
+          "white peach",
+          "lemon",
+          "floral"
+        ],
+        "flavour_profile": [
+          "pear",
+          "apple",
+          "peach",
+          "citrus",
+          "blossom"
+        ],
+        "diagnostic_features": [
+          "tank method",
+          "Glera",
+          "pear and apple fruit",
+          "minimal autolysis"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "If the bubbles are fruit-led rather than bread-led, think tank method before traditional method."
+      ],
+      "student_traps": [
+        "expecting autolytic brioche notes",
+        "confusing extra dry with fully dry",
+        "calling Prosecco traditional method"
+      ]
+    }
+  },
+  "SAT_WINE_100": {
+    "canonical_id": "SAT_WINE_100",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon",
+        "persistent bubbles"
+      ],
+      "nose_model": [
+        "lemon",
+        "apple",
+        "white peach",
+        "biscuit",
+        "toast"
+      ],
+      "palate_model": [
+        "dry",
+        "high acidity",
+        "light to medium body",
+        "persistent mousse"
+      ],
+      "quality_model": [
+        "good to outstanding",
+        "traditional-method complexity"
+      ],
+      "ageing_consumption_model": [
+        "premium examples can develop more autolysis with bottle age"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "lemon",
+          "green apple",
+          "white peach",
+          "biscuit",
+          "toast"
+        ]
+      },
+      "palate": {
+        "sweetness": "brut commonly",
+        "acidity": "high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "none",
+        "flavour_profile": [
+          "citrus",
+          "apple",
+          "stone fruit",
+          "biscuit",
+          "cream"
+        ],
+        "finish": "medium to long"
+      },
+      "quality": {
+        "quality_level": "good to outstanding"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now; premium examples can gain autolytic and nutty complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "lemon",
+          "green apple",
+          "white peach",
+          "biscuit",
+          "toast"
+        ],
+        "flavour_profile": [
+          "citrus",
+          "apple",
+          "stone fruit",
+          "biscuit",
+          "cream"
+        ],
+        "diagnostic_features": [
+          "traditional method",
+          "New World cool-climate fruit",
+          "Chardonnay Pinot Noir base",
+          "autolytic biscuit notes"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "Use method first, then decide whether fruit ripeness and origin clues move it away from Champagne."
+      ],
+      "student_traps": [
+        "defaulting every traditional-method sparkling to Champagne",
+        "forgetting New World examples in WSET LO3",
+        "ignoring fruit ripeness differences versus Champagne"
+      ]
+    }
   }
 }

@@ -7620,5 +7620,620 @@
       "official_scoring": false,
       "safe_for_examiner": false
     }
+  },
+  "SAT_WINE_094": {
+    "canonical_id": "SAT_WINE_094",
+    "debrief_render_id": "DEBRIEF_094",
+    "safe_identity": {
+      "display_name": "Champagne Non-Vintage",
+      "wine_name": "Champagne Non-Vintage",
+      "wine_family": "WSET Official Sparkling Wines",
+      "wine_style": "Traditional-method non-vintage Champagne",
+      "wine_type": "ESPUMOSO",
+      "country": "France",
+      "region": "Champagne",
+      "subregion": "Champagne",
+      "appellation": "Champagne AC",
+      "grape_varieties": [
+        "Chardonnay",
+        "Pinot Noir",
+        "Meunier"
+      ],
+      "display_label": "Practica WSET 094 - Vino espumoso",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "traditional method",
+        "non-vintage blending",
+        "lees autolysis",
+        "dosage balance"
+      ],
+      "learning_objectives": [
+        "identify Champagne NV as a benchmark sparkling style",
+        "connect reserve wines to consistency",
+        "explain high acid base wine logic"
+      ],
+      "typical_misconceptions": [
+        "assuming all Champagne is vintage",
+        "missing dosage when judging dryness",
+        "calling every autolytic sparkling wine Champagne"
+      ],
+      "comparison_styles": [
+        "Cava",
+        "Cremant",
+        "traditional method New World sparkling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Champagne is vintage",
+        "missing dosage when judging dryness",
+        "calling every autolytic sparkling wine Champagne"
+      ],
+      "revision_priority": "High: official WSET essential sparkling tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_095",
+        "SAT_WINE_096",
+        "SAT_WINE_097",
+        "SAT_WINE_100"
+      ],
+      "frequently_confused_with": [
+        "Cava",
+        "Cremant",
+        "premium New World traditional method sparkling"
+      ],
+      "distinguishing_features": [
+        "higher acidity and chalky cool-climate tension",
+        "reserve wine complexity",
+        "fine persistent mousse"
+      ]
+    },
+    "mentor_focus": [
+      "Separate method character from origin: mousse and autolysis are not enough without Champagne-level acidity and profile."
+    ],
+    "exam_traps": [
+      "confusing Cava or Cremant with Champagne solely from autolysis"
+    ],
+    "memory_hooks": [
+      "NV equals house style plus reserve wine consistency"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_095": {
+    "canonical_id": "SAT_WINE_095",
+    "debrief_render_id": "DEBRIEF_095",
+    "safe_identity": {
+      "display_name": "Champagne Vintage / Prestige Cuvee",
+      "wine_name": "Champagne Vintage / Prestige Cuvee",
+      "wine_family": "WSET Official Sparkling Wines",
+      "wine_style": "Premium vintage or prestige cuvee Champagne",
+      "wine_type": "ESPUMOSO",
+      "country": "France",
+      "region": "Champagne",
+      "subregion": "Champagne",
+      "appellation": "Champagne AC",
+      "grape_varieties": [
+        "Chardonnay",
+        "Pinot Noir",
+        "Meunier"
+      ],
+      "display_label": "Practica WSET 095 - Vino espumoso",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "HIGH",
+      "practice_priority": 2
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "vintage declaration",
+        "prestige cuvee selection",
+        "extended lees ageing",
+        "premium quality assessment"
+      ],
+      "learning_objectives": [
+        "distinguish NV from vintage/prestige Champagne",
+        "explain concentration and ageing cues",
+        "connect finish length to quality"
+      ],
+      "typical_misconceptions": [
+        "treating prestige cuvee as simply older NV",
+        "forgetting that vintage Champagne depends on declared year conditions",
+        "overcalling sweetness because of richness"
+      ],
+      "comparison_styles": [
+        "Champagne Non-Vintage",
+        "Cremant",
+        "Cava"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "treating prestige cuvee as simply older NV",
+        "forgetting that vintage Champagne depends on declared year conditions",
+        "overcalling sweetness because of richness"
+      ],
+      "revision_priority": "Medium-high: official WSET optional sparkling tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_094",
+        "SAT_WINE_096",
+        "SAT_WINE_097"
+      ],
+      "frequently_confused_with": [
+        "non-vintage Champagne",
+        "premium Cava",
+        "premium Cremant"
+      ],
+      "distinguishing_features": [
+        "greater concentration",
+        "longer finish",
+        "more pronounced lees and bottle-age complexity"
+      ]
+    },
+    "mentor_focus": [
+      "Look for the same Champagne skeleton as NV, then ask whether concentration, autolysis and finish are elevated."
+    ],
+    "exam_traps": [
+      "assuming all Champagne vintage is sweeter",
+      "confusing autolytic richness with low acidity"
+    ],
+    "memory_hooks": [
+      "prestige/vintage equals Champagne skeleton plus more selection and time"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_096": {
+    "canonical_id": "SAT_WINE_096",
+    "debrief_render_id": "DEBRIEF_096",
+    "safe_identity": {
+      "display_name": "Cremant",
+      "wine_name": "Cremant",
+      "wine_family": "WSET Official Sparkling Wines",
+      "wine_style": "Traditional-method French Cremant",
+      "wine_type": "ESPUMOSO",
+      "country": "France",
+      "region": "Alsace / Burgundy / Loire",
+      "subregion": "regional Cremant appellations",
+      "appellation": "Cremant d'Alsace / Cremant de Bourgogne / Cremant de Loire",
+      "grape_varieties": [
+        "Chardonnay",
+        "Pinot Blanc",
+        "Chenin Blanc",
+        "Pinot Noir"
+      ],
+      "display_label": "Practica WSET 096 - Vino espumoso",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 2
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "traditional method outside Champagne",
+        "regional permitted varieties",
+        "lees-derived notes"
+      ],
+      "learning_objectives": [
+        "differentiate Cremant from Champagne",
+        "recognize autolysis at lower intensity",
+        "explain regional variety variation"
+      ],
+      "typical_misconceptions": [
+        "calling Cremant Champagne",
+        "expecting the same intensity or price tier as Champagne",
+        "ignoring regional grape signatures"
+      ],
+      "comparison_styles": [
+        "Champagne Non-Vintage",
+        "Cava",
+        "traditional method New World sparkling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling Cremant Champagne",
+        "expecting the same intensity or price tier as Champagne",
+        "ignoring regional grape signatures"
+      ],
+      "revision_priority": "Medium-high: official WSET optional sparkling tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_094",
+        "SAT_WINE_097",
+        "SAT_WINE_100"
+      ],
+      "frequently_confused_with": [
+        "Champagne",
+        "Cava",
+        "New World traditional method sparkling"
+      ],
+      "distinguishing_features": [
+        "usually less intense than Champagne",
+        "regional grape variation",
+        "fresh fruit with moderate autolysis"
+      ]
+    },
+    "mentor_focus": [
+      "Use method markers first, then keep the origin label generic until debrief."
+    ],
+    "exam_traps": [
+      "over-identifying all autolytic sparkling as Champagne"
+    ],
+    "memory_hooks": [
+      "Cremant equals traditional method France, outside Champagne"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_097": {
+    "canonical_id": "SAT_WINE_097",
+    "debrief_render_id": "DEBRIEF_097",
+    "safe_identity": {
+      "display_name": "Cava",
+      "wine_name": "Cava",
+      "wine_family": "WSET Official Sparkling Wines",
+      "wine_style": "Traditional-method Cava",
+      "wine_type": "ESPUMOSO",
+      "country": "Spain",
+      "region": "Catalonia / Spain",
+      "subregion": "Penedes / permitted Cava zones",
+      "appellation": "Cava DO",
+      "grape_varieties": [
+        "Macabeo",
+        "Xarel-lo",
+        "Parellada"
+      ],
+      "display_label": "Practica WSET 097 - Vino espumoso",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "traditional method",
+        "Spanish local grapes",
+        "non-vintage dry sparkling",
+        "lees ageing"
+      ],
+      "learning_objectives": [
+        "identify Cava as a required WSET sparkling style",
+        "distinguish Cava from Champagne and Prosecco",
+        "connect method to autolysis"
+      ],
+      "typical_misconceptions": [
+        "assuming tank method because it is often inexpensive",
+        "overcalling Champagne from bottle-fermentation notes",
+        "forgetting local Spanish grape varieties"
+      ],
+      "comparison_styles": [
+        "Champagne Non-Vintage",
+        "Cremant",
+        "Prosecco"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming tank method because it is often inexpensive",
+        "overcalling Champagne from bottle-fermentation notes",
+        "forgetting local Spanish grape varieties"
+      ],
+      "revision_priority": "High: official WSET essential sparkling tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_094",
+        "SAT_WINE_096",
+        "SAT_WINE_100"
+      ],
+      "frequently_confused_with": [
+        "Champagne",
+        "Cremant",
+        "traditional method New World sparkling"
+      ],
+      "distinguishing_features": [
+        "Spanish local grapes",
+        "often less intense autolysis than Champagne",
+        "Mediterranean fruit profile"
+      ]
+    },
+    "mentor_focus": [
+      "Traditional method plus Mediterranean fruit and moderate autolysis points toward Cava rather than Champagne."
+    ],
+    "exam_traps": [
+      "confusing all traditional method sparkling with Champagne"
+    ],
+    "memory_hooks": [
+      "Cava equals Spanish traditional method with local grapes"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_098": {
+    "canonical_id": "SAT_WINE_098",
+    "debrief_render_id": "DEBRIEF_098",
+    "safe_identity": {
+      "display_name": "Asti",
+      "wine_name": "Asti",
+      "wine_family": "WSET Official Sparkling Wines",
+      "wine_style": "Sweet sparkling Asti",
+      "wine_type": "ESPUMOSO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "Asti",
+      "appellation": "Asti DOCG",
+      "grape_varieties": [
+        "Muscat Blanc a Petits Grains"
+      ],
+      "display_label": "Practica WSET 098 - Vino espumoso",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Asti method",
+        "Muscat aromatics",
+        "fermentation stopped for sweetness",
+        "low alcohol"
+      ],
+      "learning_objectives": [
+        "identify sweet low-alcohol sparkling structure",
+        "separate Asti from Prosecco",
+        "connect production method to primary fruit"
+      ],
+      "typical_misconceptions": [
+        "calling Asti dry",
+        "confusing Asti with Prosecco because both are Italian sparkling wines",
+        "missing low alcohol as a key clue"
+      ],
+      "comparison_styles": [
+        "Prosecco",
+        "Moscato-style aromatic whites",
+        "German sweet Riesling for sweetness-acid balance"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling Asti dry",
+        "confusing Asti with Prosecco because both are Italian sparkling wines",
+        "missing low alcohol as a key clue"
+      ],
+      "revision_priority": "High: official WSET essential sparkling tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_099",
+        "SAT_WINE_017",
+        "SAT_WINE_006"
+      ],
+      "frequently_confused_with": [
+        "Prosecco",
+        "off-dry aromatic white wine",
+        "sweet Riesling"
+      ],
+      "distinguishing_features": [
+        "low alcohol",
+        "sweet sparkling profile",
+        "grapey Muscat and floral aromas"
+      ]
+    },
+    "mentor_focus": [
+      "Low alcohol plus sweet grapey floral aroma is the fast diagnostic route."
+    ],
+    "exam_traps": [
+      "assuming all sparkling wine is dry",
+      "using country alone to confuse Asti and Prosecco"
+    ],
+    "memory_hooks": [
+      "Asti equals sweet, low alcohol, grapey Muscat"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_099": {
+    "canonical_id": "SAT_WINE_099",
+    "debrief_render_id": "DEBRIEF_099",
+    "safe_identity": {
+      "display_name": "Prosecco",
+      "wine_name": "Prosecco",
+      "wine_family": "WSET Official Sparkling Wines",
+      "wine_style": "Tank-method Prosecco",
+      "wine_type": "ESPUMOSO",
+      "country": "Italy",
+      "region": "Veneto / Friuli",
+      "subregion": "Prosecco DOC / Conegliano-Valdobbiadene",
+      "appellation": "Prosecco DOC / Conegliano-Valdobbiadene DOCG",
+      "grape_varieties": [
+        "Glera"
+      ],
+      "display_label": "Practica WSET 099 - Vino espumoso",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "tank method",
+        "primary fruit preservation",
+        "Glera",
+        "DOC versus DOCG hierarchy"
+      ],
+      "learning_objectives": [
+        "identify fruit-led sparkling wine",
+        "differentiate Prosecco from Cava and Champagne",
+        "explain tank method impact"
+      ],
+      "typical_misconceptions": [
+        "expecting autolytic brioche notes",
+        "confusing extra dry with fully dry",
+        "calling Prosecco traditional method"
+      ],
+      "comparison_styles": [
+        "Asti",
+        "Cava",
+        "Champagne Non-Vintage"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "expecting autolytic brioche notes",
+        "confusing extra dry with fully dry",
+        "calling Prosecco traditional method"
+      ],
+      "revision_priority": "High: official WSET essential sparkling tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_098",
+        "SAT_WINE_097",
+        "SAT_WINE_094"
+      ],
+      "frequently_confused_with": [
+        "Asti",
+        "Cava",
+        "simple sparkling wine from other countries"
+      ],
+      "distinguishing_features": [
+        "tank method fruit profile",
+        "Glera pear character",
+        "minimal autolysis compared with traditional method wines"
+      ]
+    },
+    "mentor_focus": [
+      "If the bubbles are fruit-led rather than bread-led, think tank method before traditional method."
+    ],
+    "exam_traps": [
+      "looking for bread notes where tank method should preserve fruit"
+    ],
+    "memory_hooks": [
+      "Prosecco equals pear, peach, bubbles and tank method freshness"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_100": {
+    "canonical_id": "SAT_WINE_100",
+    "debrief_render_id": "DEBRIEF_100",
+    "safe_identity": {
+      "display_name": "New World Traditional Method Sparkling",
+      "wine_name": "New World Traditional Method Sparkling",
+      "wine_family": "WSET Official Sparkling Wines",
+      "wine_style": "Traditional-method sparkling wine from Australia, New Zealand, South Africa or USA",
+      "wine_type": "ESPUMOSO",
+      "country": "Australia",
+      "region": "Tasmania",
+      "subregion": "Tasmania",
+      "appellation": "Tasmania GI",
+      "grape_varieties": [
+        "Chardonnay",
+        "Pinot Noir"
+      ],
+      "display_label": "Practica WSET 100 - Vino espumoso",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "traditional method beyond Champagne",
+        "cool-climate New World sparkling",
+        "Chardonnay Pinot Noir base",
+        "autolysis and dosage"
+      ],
+      "learning_objectives": [
+        "cover WSET New World traditional-method sparkling requirement",
+        "distinguish method from origin",
+        "compare Tasmania with Champagne and Cava"
+      ],
+      "typical_misconceptions": [
+        "defaulting every traditional-method sparkling to Champagne",
+        "forgetting New World examples in WSET LO3",
+        "ignoring fruit ripeness differences versus Champagne"
+      ],
+      "comparison_styles": [
+        "Champagne Non-Vintage",
+        "Cava",
+        "Cremant"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "defaulting every traditional-method sparkling to Champagne",
+        "forgetting New World examples in WSET LO3",
+        "ignoring fruit ripeness differences versus Champagne"
+      ],
+      "revision_priority": "High: official WSET essential sparkling tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_094",
+        "SAT_WINE_096",
+        "SAT_WINE_097"
+      ],
+      "frequently_confused_with": [
+        "Champagne",
+        "Cava",
+        "Cremant"
+      ],
+      "distinguishing_features": [
+        "New World fruit ripeness",
+        "Tasmanian cool-climate profile",
+        "less Champagne-specific reserve wine identity"
+      ]
+    },
+    "mentor_focus": [
+      "Use method first, then decide whether fruit ripeness and origin clues move it away from Champagne."
+    ],
+    "exam_traps": [
+      "using method as origin proof",
+      "forgetting New World sparkling in LO3"
+    ],
+    "memory_hooks": [
+      "New World traditional method equals Champagne toolkit, different place signal"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
   }
 }

@@ -85,13 +85,13 @@ WSET_STYLE_083,1876-1877,Opcional,Hawke’s Bay tinto estilo Burdeos o Syrah,New
 WSET_STYLE_084,1879,Opcional,New Zealand Chardonnay premium,New Zealand,Marlborough / Gisborne,Marlborough / Gisborne,Chardonnay,blanco,FALTANTE,,No hay perfil Chardonnay neozelandés.
 WSET_STYLE_085,1880,Opcional,New Zealand Sauvignon Blanc con roble,New Zealand,Marlborough,Marlborough GI,Sauvignon Blanc,blanco,PARCIALMENTE CUBIERTO,SAT_WINE_051,"Variedad/región cubierta, pero no estilo con roble."
 WSET_STYLE_086,1887,Opcional,Vino naranja de cualquier país/región,Any,Any,Any,varias,fuera_de_alcance,FUERA DE ALCANCE,,Categoría no solicitada por CWP-AUDIT-01; documentada como fuera de alcance.
-WSET_STYLE_087,1909,Imprescindible,Champagne non-vintage,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_088,1911,Opcional,Champagne vintage o prestige cuvée,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_089,1913,Opcional,Crémant,France,Alsace / Burgundy / Loire,Crémant d’Alsace / Bourgogne / Loire,varias,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_090,1915,Imprescindible,Asti,Italy,Piemonte,Asti DOCG,Muscat Blanc à Petits Grains,espumoso/dulce,FALTANTE,,No hay perfiles espumosos dulces.
-WSET_STYLE_091,1915,Imprescindible,Prosecco,Italy,Veneto / Friuli,Prosecco / Conegliano-Valdobbiadene,Glera,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_092,1917,Imprescindible,Cava,Spain,Catalonia / Spain,Cava DO,Macabeo / Xarel-lo / Parellada,espumoso,FALTANTE,,No hay perfiles espumosos.
-WSET_STYLE_093,1922-1923,Imprescindible,Espumoso método tradicional de Australia/NZ/Sudáfrica/EE. UU.,Australia / New Zealand / South Africa / USA,Tasmania / Marlborough / Cap Classique / California,regional,Chardonnay / Pinot Noir,espumoso,FALTANTE,,No hay perfiles espumosos.
+WSET_STYLE_087,1909,Imprescindible,Champagne non-vintage,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,CUBIERTO,SAT_WINE_094,Batch 011 agrega Champagne non-vintage.
+WSET_STYLE_088,1911,Opcional,Champagne vintage o prestige cuvée,France,Champagne,Champagne,Chardonnay / Pinot Noir / Meunier,espumoso,CUBIERTO,SAT_WINE_095,Batch 011 agrega Champagne vintage / prestige cuvée.
+WSET_STYLE_089,1913,Opcional,Crémant,France,Alsace / Burgundy / Loire,Crémant d’Alsace / Bourgogne / Loire,varias,espumoso,CUBIERTO,SAT_WINE_096,Batch 011 agrega Crémant como espumoso oficial opcional.
+WSET_STYLE_090,1915,Imprescindible,Asti,Italy,Piemonte,Asti DOCG,Muscat Blanc à Petits Grains,espumoso/dulce,CUBIERTO,SAT_WINE_098,Batch 011 agrega Asti dulce espumoso.
+WSET_STYLE_091,1915,Imprescindible,Prosecco,Italy,Veneto / Friuli,Prosecco / Conegliano-Valdobbiadene,Glera,espumoso,CUBIERTO,SAT_WINE_099,Batch 011 agrega Prosecco.
+WSET_STYLE_092,1917,Imprescindible,Cava,Spain,Catalonia / Spain,Cava DO,Macabeo / Xarel-lo / Parellada,espumoso,CUBIERTO,SAT_WINE_097,Batch 011 agrega Cava.
+WSET_STYLE_093,1922-1923,Imprescindible,Espumoso método tradicional de Australia/NZ/Sudáfrica/EE. UU.,Australia / New Zealand / South Africa / USA,Tasmania / Marlborough / Cap Classique / California,regional,Chardonnay / Pinot Noir,espumoso,CUBIERTO,SAT_WINE_100,Batch 011 agrega un ejemplo de método tradicional del Nuevo Mundo representado por Tasmania.
 WSET_STYLE_094,1939,Imprescindible,Fino o Manzanilla,Spain,Jerez,Jerez-Xérès-Sherry / Manzanilla-Sanlúcar,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
 WSET_STYLE_095,1940,Imprescindible,Amontillado seco u Oloroso seco,Spain,Jerez,Jerez-Xérès-Sherry,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
 WSET_STYLE_096,1942,Opcional,Jerez Medium o Cream,Spain,Jerez,Jerez-Xérès-Sherry,Palomino + PX/Moscatel,fortificado/dulce,FALTANTE,,No hay perfiles generosos/Jerez dulce.

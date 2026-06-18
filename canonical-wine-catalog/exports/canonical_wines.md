@@ -3,7 +3,7 @@
 Source: D:\Descargas\Phone Link\WSET3_rebuilt.md
 Source SHA256: 91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25
 
-Profiles: 93
+Profiles: 100
 
 ## SAT_WINE_001 - Chablis
 - **canonical_id:** SAT_WINE_001
@@ -5212,4 +5212,396 @@ Profiles: 93
 - **section:** Central Otago / Martinborough / Marlborough / regional GI
 - **page_reference:** WSET specification pp. 21-23 / rebuilt book supporting chapter
 - **line_reference:** ["1872-1872"]
+
+## SAT_WINE_094 - Champagne Non-Vintage
+- **canonical_id:** SAT_WINE_094
+- **wine_family:** WSET Official Sparkling Wines
+- **wine_name:** Champagne Non-Vintage
+- **wine_style:** Traditional-method non-vintage Champagne
+- **display_name:** Champagne Non-Vintage
+- **wine_type:** ESPUMOSO
+- **country:** France
+- **region:** Champagne
+- **subregion:** Champagne
+- **appellation:** Champagne AC
+- **grape_varieties:** ["Chardonnay","Pinot Noir","Meunier"]
+- **climate:** cool continental Champagne climate with high acid base wines and vintage variability
+- **altitude:** slope exposure and village classification are more diagnostic than a single altitude value
+- **soil:** chalk-dominant soils with water retention and drainage benefits
+- **viticulture:** ["cool-climate disease and frost pressure","high-acid grapes suitable for sparkling base wine"]
+- **winemaking:** ["traditional method","second fermentation in bottle","blend across varieties, villages and reserve wines","lees ageing before disgorgement","dosage after disgorgement"]
+- **oak:** usually limited; some base wines or reserve components may see old oak depending on producer
+- **sweetness:** brut to extra brut commonly, with dosage balancing high acidity
+- **body:** light to medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** none
+- **color:** pale lemon
+- **aroma_profile:** ["green apple","lemon","brioche","toast","yeast"]
+- **flavour_profile:** ["citrus","apple","biscuit","bread dough","toast"]
+- **finish:** medium to long
+- **quality_level:** good to outstanding
+- **ageing_potential:** drink now; better examples can develop autolytic and tertiary complexity
+- **expected_sat_observations:** ["pale lemon","persistent mousse","high acidity","dry to off-dry balance","citrus and apple fruit","brioche or toast autolysis"]
+- **common_exam_points:** ["Champagne non-vintage is an essential WSET tasting recommendation","non-vintage style is built through blending and reserve wines","traditional method and lees ageing create autolytic notes"]
+- **common_student_errors:** ["assuming all Champagne is vintage","missing dosage when judging dryness","calling every autolytic sparkling wine Champagne"]
+- **mentor_hints:** ["Separate method character from origin: mousse and autolysis are not enough without Champagne-level acidity and profile."]
+- **descriptor_whitelist:** ["pale lemon","persistent bubbles","high acidity","brut","green apple","lemon","brioche","toast","bread dough","yeast"]
+- **sat_constraints:** ["Do not reveal Champagne, France, grape varieties, vintage status or appellation in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies Champagne non-vintage as an imprescindible sparkling tasting style.
+- **display_label:** Practica WSET 094 - Vino espumoso
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 7
+- **confidence_score:** 0.88
+- **knowledge_summary:** Cool-climate traditional-method sparkling wine with high acidity, fine mousse, citrus/apple fruit and autolytic bread or toast notes.
+- **sat_fingerprint:** {"appearance":["pale lemon","persistent fine bubbles"],"nose":["green apple","lemon","brioche","toast"],"palate":["dry to off-dry","high acidity","light to medium body","persistent mousse"],"quality":["good to outstanding","autolytic complexity"],"ageing":["reserve wine and lees ageing add complexity"],"diagnostic_features":["traditional method","high acidity","autolysis","non-vintage blend"]}
+- **pedagogical_dna:** {"core_concepts":["traditional method","non-vintage blending","lees autolysis","dosage balance"],"learning_objectives":["identify Champagne NV as a benchmark sparkling style","connect reserve wines to consistency","explain high acid base wine logic"],"typical_misconceptions":["assuming all Champagne is vintage","missing dosage when judging dryness","calling every autolytic sparkling wine Champagne"],"mentor_focus":["Separate method character from origin: mousse and autolysis are not enough without Champagne-level acidity and profile."],"exam_traps":["confusing Cava or Cremant with Champagne solely from autolysis"],"memory_hooks":["NV equals house style plus reserve wine consistency"],"comparison_styles":["Cava","Cremant","traditional method New World sparkling"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_095","SAT_WINE_096","SAT_WINE_097","SAT_WINE_100"],"frequently_confused_with":["Cava","Cremant","premium New World traditional method sparkling"],"distinguishing_features":["higher acidity and chalky cool-climate tension","reserve wine complexity","fine persistent mousse"]}
+- **teaching_notes:** {"common_exam_points":["Champagne non-vintage is an essential WSET tasting recommendation","non-vintage style is built through blending and reserve wines","traditional method and lees ageing create autolytic notes"],"mentor_hints":["Separate method character from origin: mousse and autolysis are not enough without Champagne-level acidity and profile."],"student_traps":["assuming all Champagne is vintage","missing dosage when judging dryness","calling every autolytic sparkling wine Champagne"],"revision_priority":"High: official WSET essential sparkling tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","cool_climate_high_acid_white","premium_chardonnay_winemaking"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 42 / Champagne","line_references":["17214-17398"],"evidence":"Specification recommends Champagne non-vintage; book explains Champagne AC, traditional method, blending, quality levels and sweetness."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Sparkling wines
+- **section:** Champagne / Champagne AC
+- **page_reference:** WSET specification line 1909; WSET3 rebuilt lines 17214-17398
+- **line_reference:** ["1909-1909"]
+
+## SAT_WINE_095 - Champagne Vintage / Prestige Cuvee
+- **canonical_id:** SAT_WINE_095
+- **wine_family:** WSET Official Sparkling Wines
+- **wine_name:** Champagne Vintage / Prestige Cuvee
+- **wine_style:** Premium vintage or prestige cuvee Champagne
+- **display_name:** Champagne Vintage / Prestige Cuvee
+- **wine_type:** ESPUMOSO
+- **country:** France
+- **region:** Champagne
+- **subregion:** Champagne
+- **appellation:** Champagne AC
+- **grape_varieties:** ["Chardonnay","Pinot Noir","Meunier"]
+- **climate:** cool continental Champagne climate with vintage variation important for declared vintage wines
+- **altitude:** best village and cru sites are more diagnostic than a single altitude value
+- **soil:** chalk and limestone-influenced Champagne soils
+- **viticulture:** ["fruit selection from high-quality sites","vintage declaration only in suitable years for vintage styles"]
+- **winemaking:** ["traditional method","longer lees ageing than many non-vintage wines","vintage or prestige cuvee selection","possible oak or reserve component depending on house style","dosage after disgorgement"]
+- **oak:** usually subtle if used; prestige cuvees may include barrel-fermented base wine components
+- **sweetness:** brut commonly
+- **body:** medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** none
+- **color:** pale lemon to medium gold
+- **aroma_profile:** ["lemon","apple","brioche","toast","almond","honey"]
+- **flavour_profile:** ["citrus","ripe apple","pastry","toast","nut","cream"]
+- **finish:** long
+- **quality_level:** very good to outstanding
+- **ageing_potential:** capable of bottle ageing with toast, nut and honey development
+- **expected_sat_observations:** ["persistent mousse","high acidity","dry balance","ripe citrus and apple","pronounced autolysis","long finish"]
+- **common_exam_points:** ["WSET lists Champagne vintage or prestige cuvee as an optional tasting recommendation","vintage and prestige styles show greater concentration and ageing potential","quality level and lees influence should be explicit in SAT reasoning"]
+- **common_student_errors:** ["treating prestige cuvee as simply older NV","forgetting that vintage Champagne depends on declared year conditions","overcalling sweetness because of richness"]
+- **mentor_hints:** ["Look for the same Champagne skeleton as NV, then ask whether concentration, autolysis and finish are elevated."]
+- **descriptor_whitelist:** ["persistent bubbles","high acidity","brut","lemon","apple","brioche","toast","almond","honey","long finish"]
+- **sat_constraints:** ["Do not reveal Champagne, France, vintage, prestige cuvee, grape varieties or appellation in blind labels."]
+- **reasoning_notes:** Included because it is an official optional WSET sparkling tasting recommendation and fits cleanly within the sparkling batch.
+- **display_label:** Practica WSET 095 - Vino espumoso
+- **priority:** P1_WSET_RECOMMENDED
+- **wset_importance:** HIGH
+- **practice_priority:** 2
+- **difficulty_score:** 8
+- **confidence_score:** 0.88
+- **knowledge_summary:** Premium traditional-method Champagne with high acidity, fine mousse, deeper autolysis, longer finish and stronger ageing potential.
+- **sat_fingerprint:** {"appearance":["pale lemon to medium gold","fine persistent bubbles"],"nose":["citrus","ripe apple","brioche","toast","nut"],"palate":["dry","high acidity","medium body","creamy mousse","long finish"],"quality":["very good to outstanding","greater autolytic and bottle-age complexity"],"ageing":["can develop nutty, honeyed, toasty complexity"],"diagnostic_features":["traditional method","vintage or prestige selection","long lees ageing","premium Champagne concentration"]}
+- **pedagogical_dna:** {"core_concepts":["vintage declaration","prestige cuvee selection","extended lees ageing","premium quality assessment"],"learning_objectives":["distinguish NV from vintage/prestige Champagne","explain concentration and ageing cues","connect finish length to quality"],"typical_misconceptions":["treating prestige cuvee as simply older NV","forgetting that vintage Champagne depends on declared year conditions","overcalling sweetness because of richness"],"mentor_focus":["Look for the same Champagne skeleton as NV, then ask whether concentration, autolysis and finish are elevated."],"exam_traps":["assuming all Champagne vintage is sweeter","confusing autolytic richness with low acidity"],"memory_hooks":["prestige/vintage equals Champagne skeleton plus more selection and time"],"comparison_styles":["Champagne Non-Vintage","Cremant","Cava"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_094","SAT_WINE_096","SAT_WINE_097"],"frequently_confused_with":["non-vintage Champagne","premium Cava","premium Cremant"],"distinguishing_features":["greater concentration","longer finish","more pronounced lees and bottle-age complexity"]}
+- **teaching_notes:** {"common_exam_points":["WSET lists Champagne vintage or prestige cuvee as an optional tasting recommendation","vintage and prestige styles show greater concentration and ageing potential","quality level and lees influence should be explicit in SAT reasoning"],"mentor_hints":["Look for the same Champagne skeleton as NV, then ask whether concentration, autolysis and finish are elevated."],"student_traps":["treating prestige cuvee as simply older NV","forgetting that vintage Champagne depends on declared year conditions","overcalling sweetness because of richness"],"revision_priority":"Medium-high: official WSET optional sparkling tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","cool_climate_high_acid_white","premium_chardonnay_winemaking"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 42 / Champagne quality levels","line_references":["17158-17164","17355-17372"],"evidence":"Specification recommends vintage or prestige cuvee Champagne optionally; book explains vintage and prestige cuvee Champagne."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Sparkling wines
+- **section:** Champagne / Champagne AC
+- **page_reference:** WSET specification line 1911; WSET3 rebuilt lines 17158-17164 and 17355-17372
+- **line_reference:** ["1911-1911"]
+
+## SAT_WINE_096 - Cremant
+- **canonical_id:** SAT_WINE_096
+- **wine_family:** WSET Official Sparkling Wines
+- **wine_name:** Cremant
+- **wine_style:** Traditional-method French Cremant
+- **display_name:** Cremant
+- **wine_type:** ESPUMOSO
+- **country:** France
+- **region:** Alsace / Burgundy / Loire
+- **subregion:** regional Cremant appellations
+- **appellation:** Cremant d'Alsace / Cremant de Bourgogne / Cremant de Loire
+- **grape_varieties:** ["Chardonnay","Pinot Blanc","Chenin Blanc","Pinot Noir"]
+- **climate:** varies by French region, generally producing fresh high-acid sparkling base wines
+- **altitude:** regional and producer dependent
+- **soil:** varied limestone, clay and regional soils depending on Cremant appellation
+- **viticulture:** ["grape selection for sparkling base wine freshness","regional permitted varieties shape style"]
+- **winemaking:** ["traditional method","second fermentation in bottle","lees ageing","dosage after disgorgement"]
+- **oak:** typically none or minimal
+- **sweetness:** dry to off-dry depending on dosage
+- **body:** light to medium
+- **acidity:** medium to high
+- **alcohol:** medium
+- **tannin:** none
+- **color:** pale lemon
+- **aroma_profile:** ["apple","lemon","pear","bread dough","biscuit"]
+- **flavour_profile:** ["citrus","orchard fruit","biscuit","cream"]
+- **finish:** medium
+- **quality_level:** good to very good
+- **ageing_potential:** generally for early drinking; best examples can gain some autolytic complexity
+- **expected_sat_observations:** ["pale lemon","mousse","medium to high acidity","citrus or orchard fruit","subtle autolysis"]
+- **common_exam_points:** ["WSET lists Cremant as an optional sparkling tasting recommendation","Cremant uses traditional method but is not Champagne","regional grape choices can alter fruit profile"]
+- **common_student_errors:** ["calling Cremant Champagne","expecting the same intensity or price tier as Champagne","ignoring regional grape signatures"]
+- **mentor_hints:** ["Use method markers first, then keep the origin label generic until debrief."]
+- **descriptor_whitelist:** ["pale lemon","bubbles","medium acidity","high acidity","apple","pear","lemon","biscuit","bread dough","cream"]
+- **sat_constraints:** ["Do not reveal Cremant, France, region, grape varieties or appellation in blind labels."]
+- **reasoning_notes:** Included because Crémant is an official optional WSET sparkling recommendation and does not require a separate non-sparkling batch.
+- **display_label:** Practica WSET 096 - Vino espumoso
+- **priority:** P1_WSET_RECOMMENDED
+- **wset_importance:** HIGH
+- **practice_priority:** 2
+- **difficulty_score:** 6
+- **confidence_score:** 0.88
+- **knowledge_summary:** French traditional-method sparkling wine outside Champagne, typically fresh, dry, citrus or orchard-fruited with subtle autolysis.
+- **sat_fingerprint:** {"appearance":["pale lemon","persistent bubbles"],"nose":["apple","pear","lemon","biscuit"],"palate":["dry to off-dry","medium to high acidity","light to medium body","mousse"],"quality":["good to very good","moderate autolytic complexity"],"ageing":["usually early drinking"],"diagnostic_features":["traditional method","French Cremant appellation","fresh fruit","subtle autolysis"]}
+- **pedagogical_dna:** {"core_concepts":["traditional method outside Champagne","regional permitted varieties","lees-derived notes"],"learning_objectives":["differentiate Cremant from Champagne","recognize autolysis at lower intensity","explain regional variety variation"],"typical_misconceptions":["calling Cremant Champagne","expecting the same intensity or price tier as Champagne","ignoring regional grape signatures"],"mentor_focus":["Use method markers first, then keep the origin label generic until debrief."],"exam_traps":["over-identifying all autolytic sparkling as Champagne"],"memory_hooks":["Cremant equals traditional method France, outside Champagne"],"comparison_styles":["Champagne Non-Vintage","Cava","traditional method New World sparkling"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_094","SAT_WINE_097","SAT_WINE_100"],"frequently_confused_with":["Champagne","Cava","New World traditional method sparkling"],"distinguishing_features":["usually less intense than Champagne","regional grape variation","fresh fruit with moderate autolysis"]}
+- **teaching_notes:** {"common_exam_points":["WSET lists Cremant as an optional sparkling tasting recommendation","Cremant uses traditional method but is not Champagne","regional grape choices can alter fruit profile"],"mentor_hints":["Use method markers first, then keep the origin label generic until debrief."],"student_traps":["calling Cremant Champagne","expecting the same intensity or price tier as Champagne","ignoring regional grape signatures"],"revision_priority":"Medium-high: official WSET optional sparkling tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 42 / Sparkling wines from France","line_references":["17407-17422"],"evidence":"Specification recommends Cremant optionally; book identifies Cremant dAlsace, Cremant de Bourgogne and Cremant de Loire."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Sparkling wines
+- **section:** Alsace / Burgundy / Loire / Cremant d'Alsace / Cremant de Bourgogne / Cremant de Loire
+- **page_reference:** WSET specification line 1913; WSET3 rebuilt lines 17407-17422
+- **line_reference:** ["1913-1913"]
+
+## SAT_WINE_097 - Cava
+- **canonical_id:** SAT_WINE_097
+- **wine_family:** WSET Official Sparkling Wines
+- **wine_name:** Cava
+- **wine_style:** Traditional-method Cava
+- **display_name:** Cava
+- **wine_type:** ESPUMOSO
+- **country:** Spain
+- **region:** Catalonia / Spain
+- **subregion:** Penedes / permitted Cava zones
+- **appellation:** Cava DO
+- **grape_varieties:** ["Macabeo","Xarel-lo","Parellada"]
+- **climate:** warm Mediterranean-influenced regions with altitude and site selection preserving acidity
+- **altitude:** varies; higher sites help retain acidity
+- **soil:** varied Cava DO soils, often limestone and clay depending on zone
+- **viticulture:** ["traditional local varieties suited to sparkling wine","site selection for acidity and freshness"]
+- **winemaking:** ["traditional method","second fermentation in bottle","lees ageing","usually non-vintage and dry"]
+- **oak:** none
+- **sweetness:** dry to off-dry depending on dosage
+- **body:** light to medium
+- **acidity:** medium to high
+- **alcohol:** medium
+- **tannin:** none
+- **color:** pale lemon
+- **aroma_profile:** ["lemon","green apple","pear","bread dough","almond"]
+- **flavour_profile:** ["citrus","apple","pear","biscuit","almond"]
+- **finish:** medium
+- **quality_level:** good to very good
+- **ageing_potential:** mostly early drinking; premium examples with longer lees ageing can develop more complexity
+- **expected_sat_observations:** ["pale lemon","mousse","medium to high acidity","dry profile","citrus and apple fruit","subtle bread or almond notes"]
+- **common_exam_points:** ["Cava is an essential WSET sparkling tasting style","Cava is traditional method but generally less bready/toasty than Champagne","Macabeo, Xarel-lo and Parellada are key traditional grapes"]
+- **common_student_errors:** ["assuming tank method because it is often inexpensive","overcalling Champagne from bottle-fermentation notes","forgetting local Spanish grape varieties"]
+- **mentor_hints:** ["Traditional method plus Mediterranean fruit and moderate autolysis points toward Cava rather than Champagne."]
+- **descriptor_whitelist:** ["pale lemon","bubbles","medium acidity","high acidity","dry","lemon","apple","pear","biscuit","almond"]
+- **sat_constraints:** ["Do not reveal Cava, Spain, region, grape varieties or DO in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies Cava as an imprescindible sparkling tasting recommendation.
+- **display_label:** Practica WSET 097 - Vino espumoso
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 6
+- **confidence_score:** 0.88
+- **knowledge_summary:** Spanish traditional-method sparkling wine, commonly dry, fresh and citrus/orchard-fruited with moderate autolytic notes.
+- **sat_fingerprint:** {"appearance":["pale lemon","persistent bubbles"],"nose":["lemon","apple","pear","biscuit","almond"],"palate":["dry","medium to high acidity","light to medium body","mousse"],"quality":["good to very good","traditional-method complexity"],"ageing":["usually ready to drink; premium longer-aged styles can develop"],"diagnostic_features":["traditional method","Cava DO","Macabeo Xarel-lo Parellada","moderate autolysis"]}
+- **pedagogical_dna:** {"core_concepts":["traditional method","Spanish local grapes","non-vintage dry sparkling","lees ageing"],"learning_objectives":["identify Cava as a required WSET sparkling style","distinguish Cava from Champagne and Prosecco","connect method to autolysis"],"typical_misconceptions":["assuming tank method because it is often inexpensive","overcalling Champagne from bottle-fermentation notes","forgetting local Spanish grape varieties"],"mentor_focus":["Traditional method plus Mediterranean fruit and moderate autolysis points toward Cava rather than Champagne."],"exam_traps":["confusing all traditional method sparkling with Champagne"],"memory_hooks":["Cava equals Spanish traditional method with local grapes"],"comparison_styles":["Champagne Non-Vintage","Cremant","Prosecco"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_094","SAT_WINE_096","SAT_WINE_100"],"frequently_confused_with":["Champagne","Cremant","traditional method New World sparkling"],"distinguishing_features":["Spanish local grapes","often less intense autolysis than Champagne","Mediterranean fruit profile"]}
+- **teaching_notes:** {"common_exam_points":["Cava is an essential WSET sparkling tasting style","Cava is traditional method but generally less bready/toasty than Champagne","Macabeo, Xarel-lo and Parellada are key traditional grapes"],"mentor_hints":["Traditional method plus Mediterranean fruit and moderate autolysis points toward Cava rather than Champagne."],"student_traps":["assuming tank method because it is often inexpensive","overcalling Champagne from bottle-fermentation notes","forgetting local Spanish grape varieties"],"revision_priority":"High: official WSET essential sparkling tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","cool_climate_high_acid_white"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 42 / Cava","line_references":["17441-17474"],"evidence":"Specification recommends Cava; book explains Cava DO, traditional grapes, method and common style."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Sparkling wines
+- **section:** Catalonia / Spain / Cava DO
+- **page_reference:** WSET specification line 1917; WSET3 rebuilt lines 17441-17474
+- **line_reference:** ["1917-1917"]
+
+## SAT_WINE_098 - Asti
+- **canonical_id:** SAT_WINE_098
+- **wine_family:** WSET Official Sparkling Wines
+- **wine_name:** Asti
+- **wine_style:** Sweet sparkling Asti
+- **display_name:** Asti
+- **wine_type:** ESPUMOSO
+- **country:** Italy
+- **region:** Piemonte
+- **subregion:** Asti
+- **appellation:** Asti DOCG
+- **grape_varieties:** ["Muscat Blanc a Petits Grains"]
+- **climate:** moderate continental Piemonte climate with aromatic Muscat grown around Asti
+- **altitude:** hills around Asti and Alba; exact altitude varies by vineyard
+- **soil:** varied calcareous marls and regional hillside soils
+- **viticulture:** ["aromatic Muscat fruit harvested to preserve perfume","healthy grapes for fresh sweet sparkling production"]
+- **winemaking:** ["Asti method","single fermentation stopped to retain sweetness and dissolved carbon dioxide","made to preserve primary grape aroma"]
+- **oak:** none
+- **sweetness:** sweet
+- **body:** light
+- **acidity:** medium
+- **alcohol:** low
+- **tannin:** none
+- **color:** pale lemon
+- **aroma_profile:** ["grape","orange blossom","peach","pear","floral"]
+- **flavour_profile:** ["grapey fruit","peach","pear","orange blossom","sweet citrus"]
+- **finish:** medium
+- **quality_level:** good to very good
+- **ageing_potential:** drink young to preserve primary fruit and floral aromas
+- **expected_sat_observations:** ["pale lemon","frothy bubbles","sweet","low alcohol","medium acidity","grapey Muscat aroma","floral notes"]
+- **common_exam_points:** ["Asti is an essential WSET sparkling tasting style","Asti is sweet, low alcohol and Muscat based","Asti method preserves primary grapey aromas"]
+- **common_student_errors:** ["calling Asti dry","confusing Asti with Prosecco because both are Italian sparkling wines","missing low alcohol as a key clue"]
+- **mentor_hints:** ["Low alcohol plus sweet grapey floral aroma is the fast diagnostic route."]
+- **descriptor_whitelist:** ["pale lemon","bubbles","sweet","low alcohol","medium acidity","grape","orange blossom","peach","pear","floral"]
+- **sat_constraints:** ["Do not reveal Asti, Italy, Piemonte, Muscat or DOCG in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies Asti as an imprescindible sparkling tasting recommendation.
+- **display_label:** Practica WSET 098 - Vino espumoso
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 5
+- **confidence_score:** 0.88
+- **knowledge_summary:** Sweet low-alcohol aromatic sparkling wine from Piemonte, with grapey Muscat fruit and floral perfume.
+- **sat_fingerprint:** {"appearance":["pale lemon","bubbles"],"nose":["grape","orange blossom","peach","floral"],"palate":["sweet","low alcohol","medium acidity","light body","frothy mousse"],"quality":["good to very good","primary aromatic intensity"],"ageing":["best consumed young"],"diagnostic_features":["Asti method","Muscat aroma","sweetness","low alcohol"]}
+- **pedagogical_dna:** {"core_concepts":["Asti method","Muscat aromatics","fermentation stopped for sweetness","low alcohol"],"learning_objectives":["identify sweet low-alcohol sparkling structure","separate Asti from Prosecco","connect production method to primary fruit"],"typical_misconceptions":["calling Asti dry","confusing Asti with Prosecco because both are Italian sparkling wines","missing low alcohol as a key clue"],"mentor_focus":["Low alcohol plus sweet grapey floral aroma is the fast diagnostic route."],"exam_traps":["assuming all sparkling wine is dry","using country alone to confuse Asti and Prosecco"],"memory_hooks":["Asti equals sweet, low alcohol, grapey Muscat"],"comparison_styles":["Prosecco","Moscato-style aromatic whites","German sweet Riesling for sweetness-acid balance"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_099","SAT_WINE_017","SAT_WINE_006"],"frequently_confused_with":["Prosecco","off-dry aromatic white wine","sweet Riesling"],"distinguishing_features":["low alcohol","sweet sparkling profile","grapey Muscat and floral aromas"]}
+- **teaching_notes:** {"common_exam_points":["Asti is an essential WSET sparkling tasting style","Asti is sweet, low alcohol and Muscat based","Asti method preserves primary grapey aromas"],"mentor_hints":["Low alcohol plus sweet grapey floral aroma is the fast diagnostic route."],"student_traps":["calling Asti dry","confusing Asti with Prosecco because both are Italian sparkling wines","missing low alcohol as a key clue"],"revision_priority":"High: official WSET essential sparkling tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","aromatic_alsace_white"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 42 / Asti","line_references":["17478-17486"],"evidence":"Specification recommends Asti; book explains Asti DOCG, Asti method, sweet low-alcohol Muscat style."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Sparkling wines
+- **section:** Piemonte / Asti DOCG
+- **page_reference:** WSET specification line 1915; WSET3 rebuilt lines 17478-17486
+- **line_reference:** ["1915-1915"]
+
+## SAT_WINE_099 - Prosecco
+- **canonical_id:** SAT_WINE_099
+- **wine_family:** WSET Official Sparkling Wines
+- **wine_name:** Prosecco
+- **wine_style:** Tank-method Prosecco
+- **display_name:** Prosecco
+- **wine_type:** ESPUMOSO
+- **country:** Italy
+- **region:** Veneto / Friuli
+- **subregion:** Prosecco DOC / Conegliano-Valdobbiadene
+- **appellation:** Prosecco DOC / Conegliano-Valdobbiadene DOCG
+- **grape_varieties:** ["Glera"]
+- **climate:** moderate north-east Italian climate, with hillside DOCG sites giving fresher premium fruit
+- **altitude:** hillside sites in Conegliano-Valdobbiadene can improve freshness and concentration
+- **soil:** varied hillside and plain soils across DOC and DOCG zones
+- **viticulture:** ["Glera grown for fresh aromatic fruit","higher-quality hillside fruit in premium zones"]
+- **winemaking:** ["tank method","secondary fermentation in pressurised tank","short lees contact to preserve primary fruit","bottled under pressure"]
+- **oak:** none
+- **sweetness:** brut to extra dry; residual sugar may be perceptible
+- **body:** light to medium
+- **acidity:** medium to high
+- **alcohol:** medium
+- **tannin:** none
+- **color:** pale lemon
+- **aroma_profile:** ["pear","apple","white peach","lemon","floral"]
+- **flavour_profile:** ["pear","apple","peach","citrus","blossom"]
+- **finish:** short to medium
+- **quality_level:** good to very good
+- **ageing_potential:** drink young for freshness and primary fruit
+- **expected_sat_observations:** ["pale lemon","bubbles","medium to high acidity","fresh pear and apple fruit","little or no autolysis","possible extra dry sweetness"]
+- **common_exam_points:** ["Prosecco is an essential WSET sparkling tasting style","tank method preserves fresh primary fruit","Glera and north-east Italy are the core identity points for debrief"]
+- **common_student_errors:** ["expecting autolytic brioche notes","confusing extra dry with fully dry","calling Prosecco traditional method"]
+- **mentor_hints:** ["If the bubbles are fruit-led rather than bread-led, think tank method before traditional method."]
+- **descriptor_whitelist:** ["pale lemon","bubbles","pear","apple","peach","lemon","floral","medium acidity","high acidity","extra dry"]
+- **sat_constraints:** ["Do not reveal Prosecco, Italy, Veneto/Friuli, Glera or appellation in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies Prosecco as an imprescindible sparkling tasting recommendation.
+- **display_label:** Practica WSET 099 - Vino espumoso
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 5
+- **confidence_score:** 0.88
+- **knowledge_summary:** Fresh fruit-led tank-method sparkling wine from north-east Italy, typically pear/apple/floral with little autolysis.
+- **sat_fingerprint:** {"appearance":["pale lemon","bubbles"],"nose":["pear","apple","white peach","floral"],"palate":["brut to extra dry","medium to high acidity","light to medium body","fresh fruit"],"quality":["good to very good","primary fruit expression"],"ageing":["best consumed young"],"diagnostic_features":["tank method","Glera","pear and apple fruit","minimal autolysis"]}
+- **pedagogical_dna:** {"core_concepts":["tank method","primary fruit preservation","Glera","DOC versus DOCG hierarchy"],"learning_objectives":["identify fruit-led sparkling wine","differentiate Prosecco from Cava and Champagne","explain tank method impact"],"typical_misconceptions":["expecting autolytic brioche notes","confusing extra dry with fully dry","calling Prosecco traditional method"],"mentor_focus":["If the bubbles are fruit-led rather than bread-led, think tank method before traditional method."],"exam_traps":["looking for bread notes where tank method should preserve fruit"],"memory_hooks":["Prosecco equals pear, peach, bubbles and tank method freshness"],"comparison_styles":["Asti","Cava","Champagne Non-Vintage"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_098","SAT_WINE_097","SAT_WINE_094"],"frequently_confused_with":["Asti","Cava","simple sparkling wine from other countries"],"distinguishing_features":["tank method fruit profile","Glera pear character","minimal autolysis compared with traditional method wines"]}
+- **teaching_notes:** {"common_exam_points":["Prosecco is an essential WSET sparkling tasting style","tank method preserves fresh primary fruit","Glera and north-east Italy are the core identity points for debrief"],"mentor_hints":["If the bubbles are fruit-led rather than bread-led, think tank method before traditional method."],"student_traps":["expecting autolytic brioche notes","confusing extra dry with fully dry","calling Prosecco traditional method"],"revision_priority":"High: official WSET essential sparkling tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","italian_pinot_grigio_core"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 42 / Prosecco","line_references":["17490-17507"],"evidence":"Specification recommends Prosecco; book explains Prosecco DOC/DOCG, Glera, tank method and fruit-led style."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Sparkling wines
+- **section:** Veneto / Friuli / Prosecco DOC / Conegliano-Valdobbiadene DOCG
+- **page_reference:** WSET specification line 1915; WSET3 rebuilt lines 17490-17507
+- **line_reference:** ["1915-1915"]
+
+## SAT_WINE_100 - New World Traditional Method Sparkling
+- **canonical_id:** SAT_WINE_100
+- **wine_family:** WSET Official Sparkling Wines
+- **wine_name:** New World Traditional Method Sparkling
+- **wine_style:** Traditional-method sparkling wine from Australia, New Zealand, South Africa or USA
+- **display_name:** New World Traditional Method Sparkling
+- **wine_type:** ESPUMOSO
+- **country:** Australia
+- **region:** Tasmania
+- **subregion:** Tasmania
+- **appellation:** Tasmania GI
+- **grape_varieties:** ["Chardonnay","Pinot Noir"]
+- **climate:** cool maritime Tasmanian climate suited to high-acid traditional-method base wines
+- **altitude:** varies by Tasmanian site; cool latitude and maritime influence are key
+- **soil:** varied Tasmanian vineyard soils depending on site
+- **viticulture:** ["cool-climate Chardonnay and Pinot Noir for sparkling base wine","harvest for acidity and moderate potential alcohol"]
+- **winemaking:** ["traditional method","second fermentation in bottle","lees ageing","blend of Chardonnay and Pinot Noir","dosage after disgorgement"]
+- **oak:** usually none to subtle depending on producer and base wine handling
+- **sweetness:** brut commonly
+- **body:** light to medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** none
+- **color:** pale lemon
+- **aroma_profile:** ["lemon","green apple","white peach","biscuit","toast"]
+- **flavour_profile:** ["citrus","apple","stone fruit","biscuit","cream"]
+- **finish:** medium to long
+- **quality_level:** good to outstanding
+- **ageing_potential:** drink now; premium examples can gain autolytic and nutty complexity
+- **expected_sat_observations:** ["pale lemon","persistent mousse","high acidity","dry balance","citrus and apple fruit","biscuit or toast autolysis"]
+- **common_exam_points:** ["WSET requires at least one traditional-method sparkling wine from Australia, New Zealand, South Africa or the USA","traditional method cues should be separated from Champagne identity","cool-climate sites such as Tasmania can make premium sparkling base wines"]
+- **common_student_errors:** ["defaulting every traditional-method sparkling to Champagne","forgetting New World examples in WSET LO3","ignoring fruit ripeness differences versus Champagne"]
+- **mentor_hints:** ["Use method first, then decide whether fruit ripeness and origin clues move it away from Champagne."]
+- **descriptor_whitelist:** ["pale lemon","persistent bubbles","high acidity","dry","lemon","apple","white peach","biscuit","toast","cream"]
+- **sat_constraints:** ["Do not reveal country, Tasmania, grape varieties, traditional method region or GI in blind labels."]
+- **reasoning_notes:** Chosen to satisfy WSET imprescindible requirement for one traditional-method sparkling wine from Australia / New Zealand / South Africa / USA.
+- **display_label:** Practica WSET 100 - Vino espumoso
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 7
+- **confidence_score:** 0.88
+- **knowledge_summary:** Premium New World traditional-method sparkling profile, represented by cool-climate Tasmania with high acidity, citrus fruit and autolytic biscuit notes.
+- **sat_fingerprint:** {"appearance":["pale lemon","persistent bubbles"],"nose":["lemon","apple","white peach","biscuit","toast"],"palate":["dry","high acidity","light to medium body","persistent mousse"],"quality":["good to outstanding","traditional-method complexity"],"ageing":["premium examples can develop more autolysis with bottle age"],"diagnostic_features":["traditional method","New World cool-climate fruit","Chardonnay Pinot Noir base","autolytic biscuit notes"]}
+- **pedagogical_dna:** {"core_concepts":["traditional method beyond Champagne","cool-climate New World sparkling","Chardonnay Pinot Noir base","autolysis and dosage"],"learning_objectives":["cover WSET New World traditional-method sparkling requirement","distinguish method from origin","compare Tasmania with Champagne and Cava"],"typical_misconceptions":["defaulting every traditional-method sparkling to Champagne","forgetting New World examples in WSET LO3","ignoring fruit ripeness differences versus Champagne"],"mentor_focus":["Use method first, then decide whether fruit ripeness and origin clues move it away from Champagne."],"exam_traps":["using method as origin proof","forgetting New World sparkling in LO3"],"memory_hooks":["New World traditional method equals Champagne toolkit, different place signal"],"comparison_styles":["Champagne Non-Vintage","Cava","Cremant"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_094","SAT_WINE_096","SAT_WINE_097"],"frequently_confused_with":["Champagne","Cava","Cremant"],"distinguishing_features":["New World fruit ripeness","Tasmanian cool-climate profile","less Champagne-specific reserve wine identity"]}
+- **teaching_notes:** {"common_exam_points":["WSET requires at least one traditional-method sparkling wine from Australia, New Zealand, South Africa or the USA","traditional method cues should be separated from Champagne identity","cool-climate sites such as Tasmania can make premium sparkling base wines"],"mentor_hints":["Use method first, then decide whether fruit ripeness and origin clues move it away from Champagne."],"student_traps":["defaulting every traditional-method sparkling to Champagne","forgetting New World examples in WSET LO3","ignoring fruit ripeness differences versus Champagne"],"revision_priority":"High: official WSET essential sparkling tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","cool_climate_high_acid_white","premium_chardonnay_winemaking"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 42 / Sparkling wines of the New World","line_references":["17575-17575"],"evidence":"Specification recommends traditional-method sparkling from Australia, New Zealand, South Africa or USA; book discusses classic Champagne varieties in New World sparkling contexts."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Sparkling wines
+- **section:** Tasmania / Tasmania GI
+- **page_reference:** WSET specification lines 1922-1923; WSET3 rebuilt line 17575
+- **line_reference:** ["1922-1923"]
 

@@ -10,7 +10,14 @@ const exportDir = path.join(repoRoot, 'canonical-wine-catalog', 'exports');
 const profiles = collectProfiles(profileDir);
 const result = validateProfiles(profiles);
 const legacyProfiles = profiles.filter((p) => Number(p.canonical_id.slice(-3)) <= 70);
-const batch010Profiles = profiles.filter((p) => Number(p.canonical_id.slice(-3)) >= 71);
+const batch010Profiles = profiles.filter((p) => {
+  const id = Number(p.canonical_id.slice(-3));
+  return id >= 71 && id <= 93;
+});
+const batch011Profiles = profiles.filter((p) => {
+  const id = Number(p.canonical_id.slice(-3));
+  return id >= 94 && id <= 100;
+});
 const allowedOrigins = new Set(['WSET_PRIMARY', 'STANDARD_WINE_KNOWLEDGE', 'DERIVED_FROM_STYLE', 'INFERRED_HIGH_CONFIDENCE']);
 const allowedVisibility = new Set(['PUBLIC', 'TRAINING', 'SERVER_ONLY']);
 const requiredFingerprint = ['appearance', 'nose', 'palate', 'quality', 'ageing', 'diagnostic_features'];
@@ -73,6 +80,18 @@ const batch010Names = new Set(batch010Profiles.map((p) => p.wine_name));
   'Australian Premium Chardonnay',
   'New Zealand Pinot Noir',
 ].forEach((name) => assert(batch010Names.has(name), `Batch 010 missing ${name}`));
+
+const batch011Names = new Set(batch011Profiles.map((p) => p.wine_name));
+[
+  'Champagne Non-Vintage',
+  'Champagne Vintage / Prestige Cuvee',
+  'Cremant',
+  'Cava',
+  'Asti',
+  'Prosecco',
+  'New World Traditional Method Sparkling',
+].forEach((name) => assert(batch011Names.has(name), `Batch 011 missing ${name}`));
+assert(batch011Profiles.every((p) => p.wine_type === 'ESPUMOSO'));
 
 const franceRedProfiles = legacyProfiles.filter((p) => p.country === 'France' && p.wine_type === 'TINTO');
 assert.deepStrictEqual(franceRedProfiles.map((p) => p.canonical_id), Array.from({ length: 6 }, (_, i) => `SAT_WINE_${String(i + 52).padStart(3, '0')}`));

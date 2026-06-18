@@ -3408,5 +3408,282 @@
       "readiness",
       "identity_logic"
     ]
+  },
+  "SAT_WINE_094": {
+    "canonical_id": "SAT_WINE_094",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_095",
+      "SAT_WINE_096",
+      "SAT_WINE_097"
+    ],
+    "reason": "Continue with Champagne Vintage / Prestige Cuvee or Cremant or Cava to practise nearby style distinctions for Champagne Non-Vintage.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "ESPUMOSO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_095",
+          "SAT_WINE_096",
+          "SAT_WINE_097",
+          "SAT_WINE_100"
+        ],
+        "frequently_confused_with": [
+          "Cava",
+          "Cremant",
+          "premium New World traditional method sparkling"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_095": {
+    "canonical_id": "SAT_WINE_095",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_094",
+      "SAT_WINE_096",
+      "SAT_WINE_097"
+    ],
+    "reason": "Continue with Champagne Non-Vintage or Cremant or Cava to practise nearby style distinctions for Champagne Vintage / Prestige Cuvee.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "HIGH",
+      "practice_priority": 2,
+      "wine_type": "ESPUMOSO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_094",
+          "SAT_WINE_096",
+          "SAT_WINE_097"
+        ],
+        "frequently_confused_with": [
+          "non-vintage Champagne",
+          "premium Cava",
+          "premium Cremant"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_096": {
+    "canonical_id": "SAT_WINE_096",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_094",
+      "SAT_WINE_097",
+      "SAT_WINE_100"
+    ],
+    "reason": "Continue with Champagne Non-Vintage or Cava or New World Traditional Method Sparkling to practise nearby style distinctions for Cremant.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "HIGH",
+      "practice_priority": 2,
+      "wine_type": "ESPUMOSO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_094",
+          "SAT_WINE_097",
+          "SAT_WINE_100"
+        ],
+        "frequently_confused_with": [
+          "Champagne",
+          "Cava",
+          "New World traditional method sparkling"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_097": {
+    "canonical_id": "SAT_WINE_097",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_094",
+      "SAT_WINE_096",
+      "SAT_WINE_100"
+    ],
+    "reason": "Continue with Champagne Non-Vintage or Cremant or New World Traditional Method Sparkling to practise nearby style distinctions for Cava.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "ESPUMOSO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_094",
+          "SAT_WINE_096",
+          "SAT_WINE_100"
+        ],
+        "frequently_confused_with": [
+          "Champagne",
+          "Cremant",
+          "traditional method New World sparkling"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_098": {
+    "canonical_id": "SAT_WINE_098",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_099",
+      "SAT_WINE_017",
+      "SAT_WINE_006"
+    ],
+    "reason": "Continue with Prosecco or Riesling Spatlese or Alsace Gewurztraminer to practise nearby style distinctions for Asti.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "ESPUMOSO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_099",
+          "SAT_WINE_017",
+          "SAT_WINE_006"
+        ],
+        "frequently_confused_with": [
+          "Prosecco",
+          "off-dry aromatic white wine",
+          "sweet Riesling"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_099": {
+    "canonical_id": "SAT_WINE_099",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_098",
+      "SAT_WINE_097",
+      "SAT_WINE_094"
+    ],
+    "reason": "Continue with Asti or Cava or Champagne Non-Vintage to practise nearby style distinctions for Prosecco.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "ESPUMOSO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_098",
+          "SAT_WINE_097",
+          "SAT_WINE_094"
+        ],
+        "frequently_confused_with": [
+          "Asti",
+          "Cava",
+          "simple sparkling wine from other countries"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_100": {
+    "canonical_id": "SAT_WINE_100",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_094",
+      "SAT_WINE_096",
+      "SAT_WINE_097"
+    ],
+    "reason": "Continue with Champagne Non-Vintage or Cremant or Cava to practise nearby style distinctions for New World Traditional Method Sparkling.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "ESPUMOSO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_094",
+          "SAT_WINE_096",
+          "SAT_WINE_097"
+        ],
+        "frequently_confused_with": [
+          "Champagne",
+          "Cava",
+          "Cremant"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
   }
 }
