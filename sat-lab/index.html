@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Laboratorio SAT · EpistemicLab</title>
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
+<link rel="stylesheet" href="../shared/sat-wine-glass.css">
 <style>
   :root{
     --bg:#1a1119; --panel:#241823; --panel2:#2e1f2c; --ink:#f5ecf2; --muted:#b79fb0;
@@ -67,6 +68,7 @@
     border-radius:50%;animation:sp 1s linear infinite;vertical-align:middle}
   @keyframes sp{to{transform:rotate(360deg)}}
   .err{color:var(--block);font-size:14px}
+  .glass-mount{width:100%;max-width:200px;display:flex;justify-content:center}
   @media(max-width:480px){ h1{font-size:22px} .card{padding:16px} }
 </style>
 </head>
@@ -95,13 +97,15 @@
   <section id="screen-tasting" style="display:none">
     <div class="card">
       <div class="glass">
-        <svg width="64" height="84" viewBox="0 0 64 84" aria-hidden="true">
-          <ellipse cx="32" cy="78" rx="20" ry="4" fill="rgba(0,0,0,.35)"/>
-          <rect x="30" y="46" width="4" height="26" fill="#d9c7d2"/>
-          <rect x="18" y="72" width="28" height="4" rx="2" fill="#d9c7d2"/>
-          <path d="M14 8 Q32 2 50 8 Q50 34 32 46 Q14 34 14 8 Z" fill="rgba(255,255,255,.05)" stroke="#6a5562"/>
-          <path id="liquid" d="M16 18 Q32 14 48 18 Q47 33 32 44 Q17 33 16 18 Z" fill="#7b2740"/>
-        </svg>
+        <div id="glass-mount" class="glass-mount" role="img" aria-label="Copa de cata">
+          <!-- Fallback sin JS: copa estática -->
+          <svg width="64" height="84" viewBox="0 0 64 84" aria-hidden="true">
+            <rect x="30" y="46" width="4" height="26" fill="#d9c7d2"/>
+            <rect x="18" y="72" width="28" height="4" rx="2" fill="#d9c7d2"/>
+            <path d="M14 8 Q32 2 50 8 Q50 34 32 46 Q14 34 14 8 Z" fill="rgba(255,255,255,.05)" stroke="#6a5562"/>
+            <path d="M16 18 Q32 14 48 18 Q47 33 32 44 Q17 33 16 18 Z" fill="#7b2740"/>
+          </svg>
+        </div>
         <div class="wine-label" id="wine-label">Vino</div>
         <span class="chip" id="wine-chip">—</span>
       </div>
@@ -121,6 +125,10 @@
   <section id="screen-summary" style="display:none">
     <h1>Práctica completada</h1>
     <p class="sub" id="summary-msg"></p>
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:16px">Así describiste visualmente este vino</h3>
+      <div id="glass-mount-summary" class="glass-mount" style="margin:0 auto" role="img" aria-label="Copa final de cata"></div>
+    </div>
     <div class="card">
       <h3 style="margin:0 0 10px;font-size:16px">Fases completadas</h3>
       <div id="phases-box"></div>
@@ -155,6 +163,7 @@
 <script src="../shared/access-audit.js"></script>
 <script src="../shared/upgrade-gate.js"></script>
 <script src="../shared/mode-access-gate.js"></script>
+<script src="../shared/sat-wine-glass.js"></script>
 <script>
 (function(){
   "use strict";
@@ -196,6 +205,31 @@
   ];
 
   var S = { wine:null, attemptId:null, phaseIdx:0, answers:{}, decisionsCount:0 };
+  var glass = null;
+
+  // Estado declarado por el estudiante para la copa (NUNCA la respuesta correcta).
+  function glassState(aromaActive){
+    var a = S.answers;
+    function v(k){ return a[k] ? a[k].value : null; }
+    return {
+      wineType: S.wine && S.wine.wine_type,
+      clarity: v('claridad'),
+      colour: v('color_blanco') || v('color_tinto') || v('color_rosado'),
+      intensity: v('intensidad_aspecto'),
+      evolution: v('evolución'),
+      alcohol: v('alcohol'),
+      body: v('cuerpo'),
+      bubbles: v('burbuja'),
+      aroma: { active: !!aromaActive, intensity: v('intensidad_nariz') }
+    };
+  }
+  function updateGlass(){
+    if (!window.SATWineGlass) return;
+    var mountEl = $('glass-mount');
+    if (!mountEl) return;
+    if (!glass) glass = SATWineGlass.mount(mountEl);
+    glass.update(glassState(PHASES[S.phaseIdx] && PHASES[S.phaseIdx].id==='NARIZ'));
+  }
 
   function $(id){return document.getElementById(id);}
   function show(id){['screen-intro','screen-loading','screen-tasting','screen-summary'].forEach(function(s){$(s).style.display=(s===id)?'block':'none';});}
@@ -259,7 +293,7 @@
         body:JSON.stringify({wine_id:S.wine.id,mode:'blind_simulation',source:'canonical_wine'})});
       var sd = await sr.json();
       if(!sr.ok || !sd.attempt_id) throw new Error('No se pudo iniciar la práctica.');
-      S.attemptId = sd.attempt_id; S.phaseIdx=0; S.answers={}; S.decisionsCount=0;
+      S.attemptId = sd.attempt_id; S.phaseIdx=0; S.answers={}; S.decisionsCount=0; glass=null;
       renderTasting();
     }catch(e){
       show('screen-intro'); $('intro-err').textContent = e.message || String(e);
@@ -271,7 +305,7 @@
     var wt = S.wine.wine_type;
     $('wine-label').textContent = S.wine.display_label || 'Vino';
     $('wine-chip').textContent = wt==='TINTO'?'Cata a ciegas · tinto':(wt==='ROSADO'?'Cata a ciegas · rosado':'Cata a ciegas · blanco');
-    $('liquid').setAttribute('fill', wt==='TINTO'?'#5a1730':(wt==='ROSADO'?'#d98aa3':'#e9d27a'));
+    updateGlass();
     var steps = PHASES.map(function(p,i){
       var cls = i<S.phaseIdx?'step done':(i===S.phaseIdx?'step active':'step');
       return '<div class="'+cls+'">'+(i+1)+'</div>';
@@ -326,7 +360,7 @@
       if(b.bicl_signal) html += '<div class="bicl">'+b.bicl_signal+'</div>';
       if(b.next_step) html += '<div class="hint">'+b.next_step+'</div>';
       fb.className='fb show '+sevClass; fb.innerHTML = html;
-      refreshNext();
+      refreshNext(); updateGlass();
     }catch(e){
       fb.className='fb show block'; fb.innerHTML='<span class="sev">Error</span>'+(e.message||String(e));
     }
@@ -345,6 +379,7 @@
 
   function renderSummary(){
     show('screen-summary');
+    if (window.SATWineGlass && $('glass-mount-summary')) { var sg=SATWineGlass.mount($('glass-mount-summary')); sg.update(glassState(false)); }
     $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(S.wine.display_label||'tu vino')+'.';
     $('phases-box').innerHTML = PHASES.map(function(p){
       return '<div class="ph-done">✓ '+PHASE_NAME[p.id]+'</div>';
