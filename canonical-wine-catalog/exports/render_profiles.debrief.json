@@ -1,6 +1,7 @@
 [
   {
     "canonical_id": "SAT_WINE_001",
+    "render_id": "DEBRIEF_001",
     "mode": "debrief",
     "identity": {
       "display_name": "Chablis",
@@ -123,6 +124,7 @@
   },
   {
     "canonical_id": "SAT_WINE_002",
+    "render_id": "DEBRIEF_002",
     "mode": "debrief",
     "identity": {
       "display_name": "Cote de Beaune White Burgundy",
@@ -251,6 +253,7 @@
   },
   {
     "canonical_id": "SAT_WINE_003",
+    "render_id": "DEBRIEF_003",
     "mode": "debrief",
     "identity": {
       "display_name": "Macon / Macon Villages",
@@ -366,6 +369,7 @@
   },
   {
     "canonical_id": "SAT_WINE_004",
+    "render_id": "DEBRIEF_004",
     "mode": "debrief",
     "identity": {
       "display_name": "Pouilly-Fuisse / Saint-Veran",
@@ -481,6 +485,7 @@
   },
   {
     "canonical_id": "SAT_WINE_005",
+    "render_id": "DEBRIEF_005",
     "mode": "debrief",
     "identity": {
       "display_name": "Alsace Riesling",
@@ -604,6 +609,7 @@
   },
   {
     "canonical_id": "SAT_WINE_006",
+    "render_id": "DEBRIEF_006",
     "mode": "debrief",
     "identity": {
       "display_name": "Alsace Gewurztraminer",
@@ -725,6 +731,7 @@
   },
   {
     "canonical_id": "SAT_WINE_007",
+    "render_id": "DEBRIEF_007",
     "mode": "debrief",
     "identity": {
       "display_name": "Alsace Pinot Gris",
@@ -845,6 +852,7 @@
   },
   {
     "canonical_id": "SAT_WINE_008",
+    "render_id": "DEBRIEF_008",
     "mode": "debrief",
     "identity": {
       "display_name": "Alsace Muscat",
@@ -963,6 +971,7 @@
   },
   {
     "canonical_id": "SAT_WINE_009",
+    "render_id": "DEBRIEF_009",
     "mode": "debrief",
     "identity": {
       "display_name": "Sancerre / Pouilly-Fume Sauvignon Blanc",
@@ -1087,6 +1096,7 @@
   },
   {
     "canonical_id": "SAT_WINE_010",
+    "render_id": "DEBRIEF_010",
     "mode": "debrief",
     "identity": {
       "display_name": "Loire Chenin Blanc",
@@ -1220,6 +1230,7 @@
   },
   {
     "canonical_id": "SAT_WINE_011",
+    "render_id": "DEBRIEF_011",
     "mode": "debrief",
     "identity": {
       "display_name": "Condrieu Viognier",
@@ -1337,6 +1348,7 @@
   },
   {
     "canonical_id": "SAT_WINE_012",
+    "render_id": "DEBRIEF_012",
     "mode": "debrief",
     "identity": {
       "display_name": "Mosel Riesling",
@@ -1461,6 +1473,7 @@
   },
   {
     "canonical_id": "SAT_WINE_013",
+    "render_id": "DEBRIEF_013",
     "mode": "debrief",
     "identity": {
       "display_name": "Rheingau Riesling",
@@ -1585,6 +1598,7 @@
   },
   {
     "canonical_id": "SAT_WINE_014",
+    "render_id": "DEBRIEF_014",
     "mode": "debrief",
     "identity": {
       "display_name": "Pfalz Riesling",
@@ -1709,6 +1723,7 @@
   },
   {
     "canonical_id": "SAT_WINE_015",
+    "render_id": "DEBRIEF_015",
     "mode": "debrief",
     "identity": {
       "display_name": "Rheinhessen Riesling",
@@ -1835,6 +1850,7 @@
   },
   {
     "canonical_id": "SAT_WINE_016",
+    "render_id": "DEBRIEF_016",
     "mode": "debrief",
     "identity": {
       "display_name": "Riesling Kabinett",
@@ -1955,6 +1971,7 @@
   },
   {
     "canonical_id": "SAT_WINE_017",
+    "render_id": "DEBRIEF_017",
     "mode": "debrief",
     "identity": {
       "display_name": "Riesling Spatlese",
@@ -2079,6 +2096,7 @@
   },
   {
     "canonical_id": "SAT_WINE_018",
+    "render_id": "DEBRIEF_018",
     "mode": "debrief",
     "identity": {
       "display_name": "Riesling Auslese",
@@ -2206,6 +2224,7 @@
   },
   {
     "canonical_id": "SAT_WINE_019",
+    "render_id": "DEBRIEF_019",
     "mode": "debrief",
     "identity": {
       "display_name": "Beerenauslese",
@@ -2332,6 +2351,7 @@
   },
   {
     "canonical_id": "SAT_WINE_020",
+    "render_id": "DEBRIEF_020",
     "mode": "debrief",
     "identity": {
       "display_name": "Trockenbeerenauslese",
@@ -2458,6 +2478,7 @@
   },
   {
     "canonical_id": "SAT_WINE_021",
+    "render_id": "DEBRIEF_021",
     "mode": "debrief",
     "identity": {
       "display_name": "Eiswein",
@@ -2584,6 +2605,7 @@
   },
   {
     "canonical_id": "SAT_WINE_022",
+    "render_id": "DEBRIEF_022",
     "mode": "debrief",
     "identity": {
       "display_name": "Wachau Grüner Veltliner",
@@ -2709,6 +2731,7 @@
   },
   {
     "canonical_id": "SAT_WINE_023",
+    "render_id": "DEBRIEF_023",
     "mode": "debrief",
     "identity": {
       "display_name": "Wachau Riesling",
@@ -2833,6 +2856,7 @@
   },
   {
     "canonical_id": "SAT_WINE_024",
+    "render_id": "DEBRIEF_024",
     "mode": "debrief",
     "identity": {
       "display_name": "Weinviertel Grüner Veltliner",
@@ -2954,6 +2978,7 @@
   },
   {
     "canonical_id": "SAT_WINE_025",
+    "render_id": "DEBRIEF_025",
     "mode": "debrief",
     "identity": {
       "display_name": "Kamptal Grüner Veltliner",
@@ -3077,6 +3102,7 @@
   },
   {
     "canonical_id": "SAT_WINE_026",
+    "render_id": "DEBRIEF_026",
     "mode": "debrief",
     "identity": {
       "display_name": "Kremstal Grüner Veltliner",
@@ -3200,6 +3226,7 @@
   },
   {
     "canonical_id": "SAT_WINE_027",
+    "render_id": "DEBRIEF_027",
     "mode": "debrief",
     "identity": {
       "display_name": "Neusiedlersee / Burgenland Sweet Welschriesling",

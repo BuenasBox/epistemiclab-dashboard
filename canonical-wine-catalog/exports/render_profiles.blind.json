@@ -1,5 +1,6 @@
 [
   {
+    "canonical_id": "SAT_WINE_001",
     "render_id": "BLIND_001",
     "mode": "blind",
     "identity": {
@@ -28,6 +29,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_002",
     "render_id": "BLIND_002",
     "mode": "blind",
     "identity": {
@@ -56,6 +58,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_003",
     "render_id": "BLIND_003",
     "mode": "blind",
     "identity": {
@@ -84,6 +87,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_004",
     "render_id": "BLIND_004",
     "mode": "blind",
     "identity": {
@@ -112,6 +116,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_005",
     "render_id": "BLIND_005",
     "mode": "blind",
     "identity": {
@@ -140,6 +145,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_006",
     "render_id": "BLIND_006",
     "mode": "blind",
     "identity": {
@@ -168,6 +174,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_007",
     "render_id": "BLIND_007",
     "mode": "blind",
     "identity": {
@@ -196,6 +203,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_008",
     "render_id": "BLIND_008",
     "mode": "blind",
     "identity": {
@@ -224,6 +232,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_009",
     "render_id": "BLIND_009",
     "mode": "blind",
     "identity": {
@@ -252,6 +261,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_010",
     "render_id": "BLIND_010",
     "mode": "blind",
     "identity": {
@@ -280,6 +290,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_011",
     "render_id": "BLIND_011",
     "mode": "blind",
     "identity": {
@@ -308,6 +319,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_012",
     "render_id": "BLIND_012",
     "mode": "blind",
     "identity": {
@@ -336,6 +348,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_013",
     "render_id": "BLIND_013",
     "mode": "blind",
     "identity": {
@@ -364,6 +377,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_014",
     "render_id": "BLIND_014",
     "mode": "blind",
     "identity": {
@@ -392,6 +406,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_015",
     "render_id": "BLIND_015",
     "mode": "blind",
     "identity": {
@@ -420,6 +435,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_016",
     "render_id": "BLIND_016",
     "mode": "blind",
     "identity": {
@@ -448,6 +464,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_017",
     "render_id": "BLIND_017",
     "mode": "blind",
     "identity": {
@@ -476,6 +493,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_018",
     "render_id": "BLIND_018",
     "mode": "blind",
     "identity": {
@@ -504,6 +522,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_019",
     "render_id": "BLIND_019",
     "mode": "blind",
     "identity": {
@@ -532,6 +551,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_020",
     "render_id": "BLIND_020",
     "mode": "blind",
     "identity": {
@@ -560,6 +580,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_021",
     "render_id": "BLIND_021",
     "mode": "blind",
     "identity": {
@@ -588,6 +609,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_022",
     "render_id": "BLIND_022",
     "mode": "blind",
     "identity": {
@@ -616,6 +638,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_023",
     "render_id": "BLIND_023",
     "mode": "blind",
     "identity": {
@@ -644,6 +667,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_024",
     "render_id": "BLIND_024",
     "mode": "blind",
     "identity": {
@@ -672,6 +696,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_025",
     "render_id": "BLIND_025",
     "mode": "blind",
     "identity": {
@@ -700,6 +725,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_026",
     "render_id": "BLIND_026",
     "mode": "blind",
     "identity": {
@@ -728,6 +754,7 @@
     }
   },
   {
+    "canonical_id": "SAT_WINE_027",
     "render_id": "BLIND_027",
     "mode": "blind",
     "identity": {

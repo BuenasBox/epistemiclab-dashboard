@@ -112,7 +112,7 @@ for (const name of ['canonical_wines.md', 'canonical_wines.csv', 'canonical_wine
   assert(fs.existsSync(path.join(exportDir, name)), `${name} was not generated`);
 }
 
-for (const name of ['render_profiles.blind.json', 'render_profiles.debrief.json', 'render_profiles.training.json']) {
+for (const name of ['render_profiles.blind.json', 'render_profiles.debrief.json', 'render_profiles.training.json', 'render_profile_map.json']) {
   assert(fs.existsSync(path.join(exportDir, name)), `${name} was not generated`);
 }
 
@@ -125,9 +125,11 @@ assert.strictEqual(csvRows.length - 1, profiles.length);
 const blindRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.blind.json'), 'utf8'));
 const debriefRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.debrief.json'), 'utf8'));
 const trainingRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.training.json'), 'utf8'));
+const renderProfileMap = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profile_map.json'), 'utf8'));
 assert.strictEqual(blindRenderProfiles.length, profiles.length);
 assert.strictEqual(debriefRenderProfiles.length, profiles.length);
 assert.strictEqual(trainingRenderProfiles.length, profiles.length);
+assert.strictEqual(Object.keys(renderProfileMap).length, profiles.length);
 
 const blindForbiddenKeys = new Set([
   'canonical',
@@ -178,9 +180,16 @@ blindForbiddenStrings.forEach((value) => {
   assert(!blindText.includes(value), `blind render profiles leaked ${value}`);
 });
 blindRenderProfiles.forEach((profile, index) => {
+  const canonicalId = profiles[index].canonical_id;
+  assert.strictEqual(profile.canonical_id, canonicalId);
   assert.strictEqual(profile.mode, 'blind');
   assert.strictEqual(profile.render_id, `BLIND_${String(index + 1).padStart(3, '0')}`);
-  assert(!JSON.stringify(profile).includes('SAT_WINE_'), `${profile.render_id} leaked canonical id`);
+  assert.deepStrictEqual(renderProfileMap[canonicalId], {
+    blind: `BLIND_${String(index + 1).padStart(3, '0')}`,
+    debrief: `DEBRIEF_${String(index + 1).padStart(3, '0')}`,
+    training: `TRAINING_${String(index + 1).padStart(3, '0')}`,
+  });
+  assert(!JSON.stringify(profile).includes('Chablis'), `${profile.render_id} leaked identity`);
 });
 
 assertNoForbiddenKeys(debriefRenderProfiles, debriefForbiddenKeys, 'debrief render profiles');
@@ -190,6 +199,8 @@ for (const collection of [debriefRenderProfiles, trainingRenderProfiles]) {
   assert(!text.includes('SERVER_ONLY'), 'render profiles leaked SERVER_ONLY metadata');
   collection.forEach((profile) => {
     assert(profile.canonical_id, 'debrief/training profile missing canonical_id');
+    assert(renderProfileMap[profile.canonical_id], `${profile.canonical_id} missing render profile map entry`);
+    assert.strictEqual(profile.canonical_id, blindRenderProfiles.find((blind) => blind.canonical_id === profile.canonical_id)?.canonical_id);
     assert(profile.identity?.display_name, `${profile.canonical_id} missing display identity`);
     assert(profile.pedagogy?.core_concepts, `${profile.canonical_id} missing safe pedagogy`);
     assert(profile.comparison?.distinguishing_features, `${profile.canonical_id} missing safe comparison`);

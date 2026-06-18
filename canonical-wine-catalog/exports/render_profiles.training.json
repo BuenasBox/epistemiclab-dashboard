@@ -1,6 +1,7 @@
 [
   {
     "canonical_id": "SAT_WINE_001",
+    "render_id": "TRAINING_001",
     "mode": "training",
     "identity": {
       "display_name": "Chablis",
@@ -123,6 +124,7 @@
   },
   {
     "canonical_id": "SAT_WINE_002",
+    "render_id": "TRAINING_002",
     "mode": "training",
     "identity": {
       "display_name": "Cote de Beaune White Burgundy",
@@ -251,6 +253,7 @@
   },
   {
     "canonical_id": "SAT_WINE_003",
+    "render_id": "TRAINING_003",
     "mode": "training",
     "identity": {
       "display_name": "Macon / Macon Villages",
@@ -366,6 +369,7 @@
   },
   {
     "canonical_id": "SAT_WINE_004",
+    "render_id": "TRAINING_004",
     "mode": "training",
     "identity": {
       "display_name": "Pouilly-Fuisse / Saint-Veran",
@@ -481,6 +485,7 @@
   },
   {
     "canonical_id": "SAT_WINE_005",
+    "render_id": "TRAINING_005",
     "mode": "training",
     "identity": {
       "display_name": "Alsace Riesling",
@@ -604,6 +609,7 @@
   },
   {
     "canonical_id": "SAT_WINE_006",
+    "render_id": "TRAINING_006",
     "mode": "training",
     "identity": {
       "display_name": "Alsace Gewurztraminer",
@@ -725,6 +731,7 @@
   },
   {
     "canonical_id": "SAT_WINE_007",
+    "render_id": "TRAINING_007",
     "mode": "training",
     "identity": {
       "display_name": "Alsace Pinot Gris",
@@ -845,6 +852,7 @@
   },
   {
     "canonical_id": "SAT_WINE_008",
+    "render_id": "TRAINING_008",
     "mode": "training",
     "identity": {
       "display_name": "Alsace Muscat",
@@ -963,6 +971,7 @@
   },
   {
     "canonical_id": "SAT_WINE_009",
+    "render_id": "TRAINING_009",
     "mode": "training",
     "identity": {
       "display_name": "Sancerre / Pouilly-Fume Sauvignon Blanc",
@@ -1087,6 +1096,7 @@
   },
   {
     "canonical_id": "SAT_WINE_010",
+    "render_id": "TRAINING_010",
     "mode": "training",
     "identity": {
       "display_name": "Loire Chenin Blanc",
@@ -1220,6 +1230,7 @@
   },
   {
     "canonical_id": "SAT_WINE_011",
+    "render_id": "TRAINING_011",
     "mode": "training",
     "identity": {
       "display_name": "Condrieu Viognier",
@@ -1337,6 +1348,7 @@
   },
   {
     "canonical_id": "SAT_WINE_012",
+    "render_id": "TRAINING_012",
     "mode": "training",
     "identity": {
       "display_name": "Mosel Riesling",
@@ -1461,6 +1473,7 @@
   },
   {
     "canonical_id": "SAT_WINE_013",
+    "render_id": "TRAINING_013",
     "mode": "training",
     "identity": {
       "display_name": "Rheingau Riesling",
@@ -1585,6 +1598,7 @@
   },
   {
     "canonical_id": "SAT_WINE_014",
+    "render_id": "TRAINING_014",
     "mode": "training",
     "identity": {
       "display_name": "Pfalz Riesling",
@@ -1709,6 +1723,7 @@
   },
   {
     "canonical_id": "SAT_WINE_015",
+    "render_id": "TRAINING_015",
     "mode": "training",
     "identity": {
       "display_name": "Rheinhessen Riesling",
@@ -1835,6 +1850,7 @@
   },
   {
     "canonical_id": "SAT_WINE_016",
+    "render_id": "TRAINING_016",
     "mode": "training",
     "identity": {
       "display_name": "Riesling Kabinett",
@@ -1955,6 +1971,7 @@
   },
   {
     "canonical_id": "SAT_WINE_017",
+    "render_id": "TRAINING_017",
     "mode": "training",
     "identity": {
       "display_name": "Riesling Spatlese",
@@ -2079,6 +2096,7 @@
   },
   {
     "canonical_id": "SAT_WINE_018",
+    "render_id": "TRAINING_018",
     "mode": "training",
     "identity": {
       "display_name": "Riesling Auslese",
@@ -2206,6 +2224,7 @@
   },
   {
     "canonical_id": "SAT_WINE_019",
+    "render_id": "TRAINING_019",
     "mode": "training",
     "identity": {
       "display_name": "Beerenauslese",
@@ -2332,6 +2351,7 @@
   },
   {
     "canonical_id": "SAT_WINE_020",
+    "render_id": "TRAINING_020",
     "mode": "training",
     "identity": {
       "display_name": "Trockenbeerenauslese",
@@ -2458,6 +2478,7 @@
   },
   {
     "canonical_id": "SAT_WINE_021",
+    "render_id": "TRAINING_021",
     "mode": "training",
     "identity": {
       "display_name": "Eiswein",
@@ -2584,6 +2605,7 @@
   },
   {
     "canonical_id": "SAT_WINE_022",
+    "render_id": "TRAINING_022",
     "mode": "training",
     "identity": {
       "display_name": "Wachau Grüner Veltliner",
@@ -2709,6 +2731,7 @@
   },
   {
     "canonical_id": "SAT_WINE_023",
+    "render_id": "TRAINING_023",
     "mode": "training",
     "identity": {
       "display_name": "Wachau Riesling",
@@ -2833,6 +2856,7 @@
   },
   {
     "canonical_id": "SAT_WINE_024",
+    "render_id": "TRAINING_024",
     "mode": "training",
     "identity": {
       "display_name": "Weinviertel Grüner Veltliner",
@@ -2954,6 +2978,7 @@
   },
   {
     "canonical_id": "SAT_WINE_025",
+    "render_id": "TRAINING_025",
     "mode": "training",
     "identity": {
       "display_name": "Kamptal Grüner Veltliner",
@@ -3077,6 +3102,7 @@
   },
   {
     "canonical_id": "SAT_WINE_026",
+    "render_id": "TRAINING_026",
     "mode": "training",
     "identity": {
       "display_name": "Kremstal Grüner Veltliner",
@@ -3200,6 +3226,7 @@
   },
   {
     "canonical_id": "SAT_WINE_027",
+    "render_id": "TRAINING_027",
     "mode": "training",
     "identity": {
       "display_name": "Neusiedlersee / Burgenland Sweet Welschriesling",

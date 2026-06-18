@@ -13,6 +13,7 @@ const EXPORT_NAMES = {
   renderBlind: 'render_profiles.blind.json',
   renderDebrief: 'render_profiles.debrief.json',
   renderTraining: 'render_profiles.training.json',
+  renderMap: 'render_profile_map.json',
 };
 
 const COLUMNS = [
@@ -309,6 +310,7 @@ function exportProfiles(profiles, exportDir) {
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderBlind), toPrettyJson(toBlindRenderProfiles(profiles)), 'utf8');
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderDebrief), toPrettyJson(toDebriefRenderProfiles(profiles, 'debrief')), 'utf8');
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderTraining), toPrettyJson(toDebriefRenderProfiles(profiles, 'training')), 'utf8');
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderMap), toPrettyJson(toRenderProfileMap(profiles)), 'utf8');
 }
 
 function toPrettyJson(value) {
@@ -317,6 +319,7 @@ function toPrettyJson(value) {
 
 function toBlindRenderProfiles(profiles) {
   return profiles.map((profile, index) => ({
+    canonical_id: profile.canonical_id,
     render_id: `BLIND_${String(index + 1).padStart(3, '0')}`,
     mode: 'blind',
     identity: {
@@ -341,8 +344,10 @@ function toBlindRenderProfiles(profiles) {
 }
 
 function toDebriefRenderProfiles(profiles, mode) {
-  return profiles.map((profile) => ({
+  const prefix = mode === 'training' ? 'TRAINING' : 'DEBRIEF';
+  return profiles.map((profile, index) => ({
     canonical_id: profile.canonical_id,
+    render_id: `${prefix}_${String(index + 1).padStart(3, '0')}`,
     mode,
     identity: {
       display_name: profile.display_name,
@@ -402,6 +407,18 @@ function toDebriefRenderProfiles(profiles, mode) {
     },
     reusable_knowledge_refs: profile.reusable_knowledge_refs,
   }));
+}
+
+function toRenderProfileMap(profiles) {
+  return profiles.reduce((map, profile, index) => {
+    const serial = String(index + 1).padStart(3, '0');
+    map[profile.canonical_id] = {
+      blind: `BLIND_${serial}`,
+      debrief: `DEBRIEF_${serial}`,
+      training: `TRAINING_${serial}`,
+    };
+    return map;
+  }, {});
 }
 
 function genericWineLabel(wineType) {
