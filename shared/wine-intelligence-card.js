@@ -66,6 +66,9 @@
     if(has(id.difficulty)) badges += '<span class="wic-badge diff-'+(parseInt(id.difficulty_score,10)||3)+'">'+esc(id.difficulty)+(has(id.difficulty_score)?meter(id.difficulty_score):'')+'</span>';
     if(has(id.recommended_level)) badges += '<span class="wic-badge">'+esc(id.recommended_level)+'</span>';
     if(has(id.related_ra)) badges += '<span class="wic-badge">'+esc(id.related_ra)+'</span>';
+    if(has(id.importance)) badges += '<span class="wic-badge type">'+esc(id.importance)+'</span>';
+    if(has(id.confidence)) badges += '<span class="wic-badge">Confianza '+esc(id.confidence)+'</span>';
+    if(has(id.priority)) badges += '<span class="wic-badge">Prioridad '+esc(id.priority)+'</span>';
 
     var head = '<div class="wic-head"><div class="wic-head-main">'
       + '<div class="wic-eyebrow">Panel de práctica</div>'
