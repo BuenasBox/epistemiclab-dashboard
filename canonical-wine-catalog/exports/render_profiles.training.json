@@ -6357,5 +6357,749 @@
       "marlborough_sauvignon_core",
       "cool_climate_high_acid_white"
     ]
+  },
+  {
+    "canonical_id": "SAT_WINE_052",
+    "render_id": "TRAINING_052",
+    "mode": "training",
+    "identity": {
+      "display_name": "Left Bank Bordeaux",
+      "wine_name": "Left Bank Bordeaux",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Cabernet Sauvignon-dominant structured Bordeaux from Médoc and Graves",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Bordeaux",
+      "subregion": "Médoc / Graves",
+      "appellation": "Haut-Médoc / Pauillac / Margaux / Pessac-Léognan",
+      "grape_varieties": [
+        "Cabernet Sauvignon",
+        "Merlot",
+        "Cabernet Franc"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 052",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "moderate maritime climate with vintage variation",
+      "altitude": "gravelly Left Bank sites including Haut-Médoc and Graves",
+      "soil": "gravel soils suited to Cabernet Sauvignon",
+      "viticulture": [
+        "Cabernet Sauvignon dominates in Haut-Médoc",
+        "gravel soils aid drainage and warmth",
+        "top châteaux use careful vineyard selection"
+      ],
+      "winemaking": [
+        "top-quality red Bordeaux aged in small oak casks",
+        "blending balances ripening differences",
+        "long-term wines often use traditional fermentation and extraction"
+      ],
+      "oak": "small oak casks, often with new oak in top wines",
+      "sweetness": "dry",
+      "body": "medium to full",
+      "acidity": "medium to high",
+      "alcohol": "medium to high",
+      "tannin": "medium to high",
+      "color": "deep ruby",
+      "aroma_profile": [
+        "blackcurrant",
+        "black cherry",
+        "cedar",
+        "vanilla",
+        "tobacco"
+      ],
+      "flavour_profile": [
+        "black fruit",
+        "cedar",
+        "firm tannin",
+        "oak spice"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; top communes have high reputation",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Cabernet-led Bordeaux structure",
+        "Left Bank gravel and tannin",
+        "oak-aged ageworthy claret"
+      ],
+      "learning_objectives": [
+        "identify Cabernet-led Bordeaux",
+        "connect gravel soils to Cabernet Sauvignon",
+        "separate Left Bank from Right Bank"
+      ],
+      "typical_misconceptions": [
+        "all Bordeaux is Merlot-dominant",
+        "oak spice means Rioja",
+        "high tannin always means Italy"
+      ],
+      "mentor_focus": [
+        "ask whether tannin, black fruit and cedar point to Cabernet-led Bordeaux"
+      ],
+      "exam_traps": [
+        "confusing Left and Right Bank",
+        "missing oak ageing role"
+      ],
+      "memory_hooks": [
+        "Left Bank is Cabernet on gravel: black fruit, cedar, tannin"
+      ],
+      "comparison_styles": [
+        "Right Bank Bordeaux",
+        "Rioja Reserva",
+        "Napa Cabernet"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_053"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_053"
+      ],
+      "distinguishing_features": [
+        "more Cabernet structure than Right Bank",
+        "firmer tannin than Merlot-led styles",
+        "gravel Left Bank source"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Cabernet Sauvignon dominates in Haut-Médoc",
+        "top-quality red Bordeaux is aged in small oak casks",
+        "Left Bank includes Médoc, Graves and Sauternes"
+      ],
+      "student_traps": [
+        "mixing up Left and Right Bank",
+        "overcalling new oak"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "left_bank_bordeaux_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_053",
+    "render_id": "TRAINING_053",
+    "mode": "training",
+    "identity": {
+      "display_name": "Right Bank Bordeaux",
+      "wine_name": "Right Bank Bordeaux",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Merlot-dominant Saint-Émilion and Pomerol red Bordeaux",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Bordeaux",
+      "subregion": "Saint-Émilion / Pomerol",
+      "appellation": "Saint-Émilion Grand Cru / Pomerol",
+      "grape_varieties": [
+        "Merlot",
+        "Cabernet Franc",
+        "Cabernet Sauvignon"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 053",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "moderate maritime Bordeaux climate with Right Bank ripening differences",
+      "altitude": "plateau and slope sites in Saint-Émilion and Pomerol",
+      "soil": "warm well-drained gravel, clay and limestone sites",
+      "viticulture": [
+        "Merlot is most important in Saint-Émilion and Pomerol",
+        "Cabernet Franc is widely used in Saint-Émilion",
+        "best sites differ by drainage and warmth"
+      ],
+      "winemaking": [
+        "blended red Bordeaux production",
+        "small oak cask ageing for top wines",
+        "Merlot-led wines can be richer and spicier"
+      ],
+      "oak": "small oak casks in top wines",
+      "sweetness": "dry",
+      "body": "medium to full",
+      "acidity": "medium",
+      "alcohol": "medium to high",
+      "tannin": "medium to high",
+      "color": "deep ruby",
+      "aroma_profile": [
+        "plum",
+        "black cherry",
+        "spice",
+        "cedar",
+        "chocolate"
+      ],
+      "flavour_profile": [
+        "plum",
+        "black cherry",
+        "spice",
+        "rounded tannin"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; Pomerol and Saint-Émilion have high reputation",
+      "ageing_potential": "medium to long ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Merlot-led Bordeaux",
+        "Right Bank appellation logic",
+        "Cabernet Franc support"
+      ],
+      "learning_objectives": [
+        "identify Merlot-dominant Bordeaux",
+        "distinguish Right Bank from Left Bank",
+        "connect Pomerol richness to style"
+      ],
+      "typical_misconceptions": [
+        "all Bordeaux tastes like Cabernet",
+        "Pomerol is a classification not place",
+        "Merlot lacks ageing potential"
+      ],
+      "mentor_focus": [
+        "ask whether tannins are rounder and fruit is plummy"
+      ],
+      "exam_traps": [
+        "calling Right Bank Left Bank from Bordeaux label alone",
+        "missing Cabernet Franc"
+      ],
+      "memory_hooks": [
+        "Right Bank is Merlot generosity with Bordeaux structure"
+      ],
+      "comparison_styles": [
+        "Left Bank Bordeaux",
+        "Pomerol",
+        "Saint-Émilion"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_052"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_052"
+      ],
+      "distinguishing_features": [
+        "plummier and rounder than Left Bank",
+        "more Merlot and Cabernet Franc emphasis",
+        "Right Bank Saint-Émilion/Pomerol source"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Merlot is key in Saint-Émilion and Pomerol",
+        "Cabernet Franc is widely used in Saint-Émilion",
+        "Pomerol wines tend to be richer and spicier"
+      ],
+      "student_traps": [
+        "assuming all Bordeaux is Cabernet",
+        "forgetting Cabernet Franc"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "right_bank_bordeaux_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_054",
+    "render_id": "TRAINING_054",
+    "mode": "training",
+    "identity": {
+      "display_name": "Cote d'Or Red Burgundy",
+      "wine_name": "Cote d'Or Red Burgundy",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Côte d'Or Pinot Noir with red fruit, site expression and moderate structure",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Burgundy",
+      "subregion": "Côte d'Or",
+      "appellation": "Village / Premier Cru / Grand Cru Côte d'Or",
+      "grape_varieties": [
+        "Pinot Noir"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 054",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "cool to moderate continental Burgundy climate",
+      "altitude": "east and south-east facing limestone slopes in the Côte d'Or",
+      "soil": "varied limestone-rich Burgundy soils",
+      "viticulture": [
+        "Pinot Noir is the important black grape in Côte d'Or",
+        "site hierarchy drives quality",
+        "best vineyards have favourable aspect and drainage"
+      ],
+      "winemaking": [
+        "red Burgundy may use oak maturation",
+        "extraction must respect Pinot Noir structure",
+        "quality depends strongly on site and producer"
+      ],
+      "oak": "often old or new oak depending on producer and level",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "medium to high",
+      "alcohol": "medium",
+      "tannin": "low to medium",
+      "color": "pale to medium ruby",
+      "aroma_profile": [
+        "red cherry",
+        "raspberry",
+        "violet",
+        "earth",
+        "sweet spice"
+      ],
+      "flavour_profile": [
+        "red cherry",
+        "raspberry",
+        "earth",
+        "fine tannin"
+      ],
+      "finish": "medium to long",
+      "quality_level": "very good to outstanding at higher site levels",
+      "ageing_potential": "medium to long ageing for best sites"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Pinot Noir site expression",
+        "Burgundy hierarchy",
+        "Côte d'Or red-fruit structure"
+      ],
+      "learning_objectives": [
+        "identify red Burgundy structure",
+        "connect appellation hierarchy to quality",
+        "separate Pinot Noir from Gamay"
+      ],
+      "typical_misconceptions": [
+        "all pale red wine is simple",
+        "Burgundy is only Chardonnay",
+        "low tannin means low quality"
+      ],
+      "mentor_focus": [
+        "ask for red fruit, fine tannin and site-derived complexity"
+      ],
+      "exam_traps": [
+        "calling Burgundy Beaujolais from pale colour",
+        "overstating tannin"
+      ],
+      "memory_hooks": [
+        "Côte d'Or Pinot is red fruit plus place precision"
+      ],
+      "comparison_styles": [
+        "Beaujolais Villages / Cru",
+        "Sonoma Pinot Noir",
+        "Loire Cabernet Franc"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_055"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_055"
+      ],
+      "distinguishing_features": [
+        "more tannic and complex than Beaujolais",
+        "Pinot Noir rather than Gamay",
+        "earth and site hierarchy are central"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Burgundy is the home of Pinot Noir",
+        "Côte d'Or is the heartland of Burgundy",
+        "appellation hierarchy is based on quality"
+      ],
+      "student_traps": [
+        "equating pale colour with low quality",
+        "forgetting village hierarchy"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "red_burgundy_pinot_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_055",
+    "render_id": "TRAINING_055",
+    "mode": "training",
+    "identity": {
+      "display_name": "Beaujolais Villages / Cru",
+      "wine_name": "Beaujolais Villages / Cru",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Gamay-based Beaujolais from fruity Villages to more concentrated crus",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Beaujolais",
+      "subregion": "Beaujolais Villages / Crus",
+      "appellation": "Beaujolais Villages / Beaujolais Cru",
+      "grape_varieties": [
+        "Gamay"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 055",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "moderate continental climate south of Burgundy",
+      "altitude": "hilly northern Beaujolais for villages and crus",
+      "soil": "not specified by WSET here; granite soils are standard regional knowledge for crus",
+      "viticulture": [
+        "production is overwhelmingly red",
+        "Gamay gives fragrant raspberry wines",
+        "cru villages sit at top of hierarchy"
+      ],
+      "winemaking": [
+        "whole-bunch or semi-carbonic methods common in fruity styles",
+        "crus may use more traditional fermentation",
+        "made for fruit purity and early drinkability to medium ageing"
+      ],
+      "oak": "usually little new oak; large or neutral vessels may be used",
+      "sweetness": "dry",
+      "body": "light to medium",
+      "acidity": "medium to high",
+      "alcohol": "medium",
+      "tannin": "low",
+      "color": "pale to medium ruby",
+      "aroma_profile": [
+        "raspberry",
+        "red cherry",
+        "banana",
+        "violet",
+        "pepper"
+      ],
+      "flavour_profile": [
+        "raspberry",
+        "red cherry",
+        "juicy fruit",
+        "low tannin"
+      ],
+      "finish": "medium",
+      "quality_level": "good to very good; crus can be more concentrated",
+      "ageing_potential": "drink young to medium ageing for crus"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Gamay fruitiness",
+        "Beaujolais hierarchy",
+        "low-tannin red identification"
+      ],
+      "learning_objectives": [
+        "identify Gamay markers",
+        "separate Beaujolais from red Burgundy",
+        "understand Villages versus Cru"
+      ],
+      "typical_misconceptions": [
+        "Beaujolais is only Nouveau",
+        "banana is required in every Gamay",
+        "low tannin means poor quality"
+      ],
+      "mentor_focus": [
+        "ask whether juicy raspberry and low tannin point to Gamay"
+      ],
+      "exam_traps": [
+        "calling Beaujolais Pinot Noir",
+        "missing cru concentration"
+      ],
+      "memory_hooks": [
+        "Beaujolais is Gamay joy: raspberry, light body, low tannin"
+      ],
+      "comparison_styles": [
+        "Cote d'Or Red Burgundy",
+        "Loire Cabernet Franc",
+        "Valpolicella"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_054"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_054"
+      ],
+      "distinguishing_features": [
+        "fruitier and lower tannin than red Burgundy",
+        "Gamay rather than Pinot Noir",
+        "cru hierarchy gives concentration"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Gamay gives fragrant raspberry wines",
+        "Beaujolais hierarchy culminates in crus",
+        "Beaujolais and Nouveau are light-bodied and fruity"
+      ],
+      "student_traps": [
+        "treating all Beaujolais as Nouveau",
+        "confusing Gamay and Pinot Noir"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "beaujolais_gamay_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_056",
+    "render_id": "TRAINING_056",
+    "mode": "training",
+    "identity": {
+      "display_name": "Northern Rhone Syrah",
+      "wine_name": "Northern Rhone Syrah",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Syrah from steep northern Rhône slopes with black fruit, pepper and firm structure",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Northern Rhône",
+      "subregion": "Côte-Rôtie / Hermitage / Crozes-Hermitage",
+      "appellation": "Northern Rhône AOCs",
+      "grape_varieties": [
+        "Syrah"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 056",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "continental Rhône valley at the cool limit for Syrah with mistral influence",
+      "altitude": "steep south-facing slopes in best sites",
+      "soil": "steep granitic and mixed slope sites; WSET emphasizes slope exposure",
+      "viticulture": [
+        "Syrah is the only black variety permitted in Northern Rhône",
+        "best sites have southerly exposures on steep slopes",
+        "Hermitage is a steep south-facing slope"
+      ],
+      "winemaking": [
+        "red Syrah fermentation and oak maturation depending on appellation",
+        "some traditional co-fermentation with white varieties exists but is now rare",
+        "top wines are structured and ageworthy"
+      ],
+      "oak": "oak maturation possible; not dominated by new oak aromatics",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "medium to high",
+      "alcohol": "medium to high",
+      "tannin": "high",
+      "color": "deep ruby",
+      "aroma_profile": [
+        "blackberry",
+        "black pepper",
+        "violet",
+        "smoke",
+        "meat"
+      ],
+      "flavour_profile": [
+        "black fruit",
+        "pepper",
+        "firm tannin",
+        "savoury spice"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; Hermitage and Côte-Rôtie are benchmarks",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Northern Rhône Syrah identity",
+        "slope exposure and ripeness",
+        "pepper and savoury structure"
+      ],
+      "learning_objectives": [
+        "identify Syrah versus Grenache blend",
+        "connect steep slopes to ripening",
+        "separate Northern and Southern Rhône"
+      ],
+      "typical_misconceptions": [
+        "all Rhône reds are Grenache",
+        "pepper means oak",
+        "Syrah cannot be elegant"
+      ],
+      "mentor_focus": [
+        "ask for black fruit, pepper and firm tannin"
+      ],
+      "exam_traps": [
+        "calling it Shiraz without origin reasoning",
+        "confusing Crozes with Hermitage quality"
+      ],
+      "memory_hooks": [
+        "Northern Rhône is Syrah on steep slopes at its cool limit"
+      ],
+      "comparison_styles": [
+        "Chateauneuf-du-Pape Rouge",
+        "Australian Shiraz",
+        "Left Bank Bordeaux"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_057"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_057"
+      ],
+      "distinguishing_features": [
+        "more peppery and Syrah-driven than Southern Rhône",
+        "firmer and darker than Beaujolais",
+        "slope exposure is diagnostic"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Syrah is the only black variety in Northern Rhône",
+        "best sites have southerly exposure and steep slopes",
+        "Hermitage is full-bodied and ageworthy"
+      ],
+      "student_traps": [
+        "mixing Northern and Southern Rhône",
+        "overlooking appellation hierarchy"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "northern_rhone_syrah_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_057",
+    "render_id": "TRAINING_057",
+    "mode": "training",
+    "identity": {
+      "display_name": "Chateauneuf-du-Pape Rouge",
+      "wine_name": "Chateauneuf-du-Pape Rouge",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Full-bodied Grenache-dominant Southern Rhône blend",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Southern Rhône",
+      "subregion": "Châteauneuf-du-Pape",
+      "appellation": "Châteauneuf-du-Pape AOC",
+      "grape_varieties": [
+        "Grenache",
+        "Syrah",
+        "Mourvedre"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 057",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "warm Southern Rhône climate with mistral wind and sunny summers",
+      "altitude": "east bank of Rhône; warm sites around Châteauneuf-du-Pape",
+      "soil": "varied stones and soils; WSET emphasizes warmth and mistral",
+      "viticulture": [
+        "Grenache dominates Southern Rhône reds",
+        "Syrah and Mourvèdre support Grenache",
+        "bush vines are used to protect from wind and benefit from soil warmth"
+      ],
+      "winemaking": [
+        "Grenache-led blending",
+        "large vessels often used because new oak can overwhelm Grenache",
+        "producers vary from 100 percent Grenache to more Syrah/Mourvèdre"
+      ],
+      "oak": "usually large vessels; new oak is not a dominant marker",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "medium",
+      "alcohol": "high",
+      "tannin": "medium to high",
+      "color": "deep ruby",
+      "aroma_profile": [
+        "red plum",
+        "strawberry",
+        "baked red fruit",
+        "garrigue",
+        "sweet spice"
+      ],
+      "flavour_profile": [
+        "ripe red fruit",
+        "spice",
+        "full body",
+        "warming alcohol"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding in best examples; variable producer quality",
+      "ageing_potential": "medium to long ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Southern Rhône Grenache blends",
+        "warm-climate full body",
+        "large-vessel Grenache handling"
+      ],
+      "learning_objectives": [
+        "identify Châteauneuf structure",
+        "separate Southern Rhône from Northern Rhône",
+        "connect Grenache to alcohol and red fruit"
+      ],
+      "typical_misconceptions": [
+        "all Rhône red is Syrah",
+        "high alcohol means New World",
+        "new oak is required for premium red"
+      ],
+      "mentor_focus": [
+        "ask for full body, warm alcohol and red-fruit spice"
+      ],
+      "exam_traps": [
+        "calling it Northern Rhône from Rhône label alone",
+        "missing Grenache dominance"
+      ],
+      "memory_hooks": [
+        "Châteauneuf is warm Grenache generosity with Syrah/Mourvèdre support"
+      ],
+      "comparison_styles": [
+        "Northern Rhone Syrah",
+        "Garnacha Spain",
+        "Barossa Shiraz"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_056"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_056"
+      ],
+      "distinguishing_features": [
+        "warmer and red-fruited than Northern Rhône Syrah",
+        "Grenache-dominant rather than Syrah-only",
+        "large vessel rather than new oak focus"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Grenache dominates Southern Rhône reds",
+        "Châteauneuf-du-Pape is most famous for red wine",
+        "Syrah and Mourvèdre support Grenache"
+      ],
+      "student_traps": [
+        "confusing Rhône north and south",
+        "overstating oak"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "southern_rhone_grenache_core"
+    ]
   }
 ]

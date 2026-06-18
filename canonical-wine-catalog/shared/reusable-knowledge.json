@@ -133,6 +133,30 @@
     "marlborough_sauvignon_core": {
       "diagnostic_features": ["New Zealand flagship grape", "Marlborough", "elderflower", "passion fruit", "high acidity", "green bell pepper", "gooseberry", "cool inert fermentation"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "left_bank_bordeaux_core": {
+      "diagnostic_features": ["Left Bank", "Médoc and Graves", "Cabernet Sauvignon dominance", "gravel soils", "high tannin", "black fruit", "small oak casks"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "right_bank_bordeaux_core": {
+      "diagnostic_features": ["Saint-Émilion and Pomerol", "Merlot dominance", "Cabernet Franc support", "richer spicier style", "clay limestone or gravel sites"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "red_burgundy_pinot_core": {
+      "diagnostic_features": ["Burgundy Pinot Noir", "Côte d'Or", "red fruit", "higher site expression", "village to grand cru hierarchy", "oak possible"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "beaujolais_gamay_core": {
+      "diagnostic_features": ["Gamay", "Beaujolais Villages", "Beaujolais crus", "light to medium body", "raspberry", "low tannin", "whole bunch or semi-carbonic style"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "northern_rhone_syrah_core": {
+      "diagnostic_features": ["Northern Rhône", "Syrah only black variety", "steep slopes", "black fruit", "pepper", "full body in Hermitage", "ageworthy tannic structure"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "southern_rhone_grenache_core": {
+      "diagnostic_features": ["Southern Rhône", "Grenache-dominant blends", "Syrah and Mourvèdre support", "warm climate", "full-bodied spicy red fruit", "Châteauneuf-du-Pape"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {
