@@ -2028,5 +2028,672 @@
       ],
       "reveal_policy": "identity_hidden_until_commitment"
     }
+  },
+  {
+    "canonical_id": "SAT_WINE_071",
+    "render_id": "BLIND_071",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_072",
+    "render_id": "BLIND_072",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_073",
+    "render_id": "BLIND_073",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_074",
+    "render_id": "BLIND_074",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_075",
+    "render_id": "BLIND_075",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_076",
+    "render_id": "BLIND_076",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_077",
+    "render_id": "BLIND_077",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_078",
+    "render_id": "BLIND_078",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_079",
+    "render_id": "BLIND_079",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_080",
+    "render_id": "BLIND_080",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_081",
+    "render_id": "BLIND_081",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_082",
+    "render_id": "BLIND_082",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_083",
+    "render_id": "BLIND_083",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_084",
+    "render_id": "BLIND_084",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 3,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_085",
+    "render_id": "BLIND_085",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_086",
+    "render_id": "BLIND_086",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_087",
+    "render_id": "BLIND_087",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_088",
+    "render_id": "BLIND_088",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_089",
+    "render_id": "BLIND_089",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_090",
+    "render_id": "BLIND_090",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_091",
+    "render_id": "BLIND_091",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_092",
+    "render_id": "BLIND_092",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino blanco - practica a ciegas",
+      "wine_type": "BLANCO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "BLANCO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
+  },
+  {
+    "canonical_id": "SAT_WINE_093",
+    "render_id": "BLIND_093",
+    "mode": "blind",
+    "identity": {
+      "display_label": "Vino tinto - practica a ciegas",
+      "wine_type": "TINTO",
+      "practice_mode": "blind_tasting",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.91
+    },
+    "glass": {
+      "wine_type": "TINTO"
+    },
+    "sat_prompt": {
+      "workflow": "sat_blind",
+      "sections": [
+        "appearance",
+        "nose",
+        "palate",
+        "quality",
+        "readiness"
+      ],
+      "reveal_policy": "identity_hidden_until_commitment"
+    }
   }
 ]

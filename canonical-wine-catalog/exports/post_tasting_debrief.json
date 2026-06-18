@@ -5792,5 +5792,1833 @@
       "official_scoring": false,
       "safe_for_examiner": false
     }
+  },
+  "SAT_WINE_071": {
+    "canonical_id": "SAT_WINE_071",
+    "debrief_render_id": "DEBRIEF_071",
+    "safe_identity": {
+      "display_name": "Bordeaux AC Red",
+      "wine_name": "Bordeaux AC Red",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Generic red Bordeaux blend",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Bordeaux",
+      "subregion": "Bordeaux",
+      "appellation": "Bordeaux AC",
+      "grape_varieties": [
+        "Cabernet Sauvignon",
+        "Merlot",
+        "Cabernet Franc"
+      ],
+      "display_label": "Practica WSET 071 - Vino tinto",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "generic Bordeaux blend",
+        "regional baseline before classed examples"
+      ],
+      "learning_objectives": [
+        "recognize Bordeaux structure without overcalling appellation",
+        "contrast generic AC with Left and Right Bank profiles"
+      ],
+      "typical_misconceptions": [
+        "assuming all Bordeaux is classed growth",
+        "calling every Bordeaux Left Bank"
+      ],
+      "comparison_styles": [
+        "Left Bank Bordeaux",
+        "Right Bank Bordeaux",
+        "Chile Cabernet Sauvignon"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Bordeaux is classed growth",
+        "calling every Bordeaux Left Bank"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_052",
+        "SAT_WINE_053"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_052",
+        "SAT_WINE_053"
+      ],
+      "distinguishing_features": [
+        "less appellation-specific than Left or Right Bank profiles",
+        "usually less concentration than classed growth"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming all Bordeaux is classed growth",
+      "calling every Bordeaux Left Bank"
+    ],
+    "memory_hooks": [
+      "Bordeaux AC is the baseline claret profile."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_072": {
+    "canonical_id": "SAT_WINE_072",
+    "debrief_render_id": "DEBRIEF_072",
+    "safe_identity": {
+      "display_name": "Sauternes / Barsac",
+      "wine_name": "Sauternes / Barsac",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Botrytised sweet white Bordeaux",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Bordeaux",
+      "subregion": "Sauternais",
+      "appellation": "Sauternes / Barsac",
+      "grape_varieties": [
+        "Sémillon",
+        "Sauvignon Blanc",
+        "Muscadelle"
+      ],
+      "display_label": "Practica WSET 072 - Vino blanco",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "noble rot",
+        "sweetness-acidity balance"
+      ],
+      "learning_objectives": [
+        "identify botrytised sweet Bordeaux",
+        "separate sweetness from low acidity"
+      ],
+      "typical_misconceptions": [
+        "calling all sweet wines low acid",
+        "confusing Sauternes with German BA/TBA"
+      ],
+      "comparison_styles": [
+        "Tokaji Aszu",
+        "Beerenauslese",
+        "Alsace SGN"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all sweet wines low acid",
+        "confusing Sauternes with German BA/TBA"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_019",
+        "SAT_WINE_020"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_019",
+        "SAT_WINE_020"
+      ],
+      "distinguishing_features": [
+        "fuller and often oakier than many German sweet wines",
+        "Bordeaux grape blend rather than Riesling purity"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "calling all sweet wines low acid",
+      "confusing Sauternes with German BA/TBA"
+    ],
+    "memory_hooks": [
+      "Sauternes is honeyed Bordeaux sweetness with acidity."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_073": {
+    "canonical_id": "SAT_WINE_073",
+    "debrief_render_id": "DEBRIEF_073",
+    "safe_identity": {
+      "display_name": "Bourgogne Rouge",
+      "wine_name": "Bourgogne Rouge",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Generic red Burgundy Pinot Noir",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Burgundy",
+      "subregion": "Burgundy",
+      "appellation": "Bourgogne Rouge AC",
+      "grape_varieties": [
+        "Pinot Noir"
+      ],
+      "display_label": "Practica WSET 073 - Vino tinto",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "regional Burgundy baseline",
+        "Pinot Noir structure"
+      ],
+      "learning_objectives": [
+        "separate Bourgogne Rouge from Côte d’Or village wines",
+        "recognize Pinot Noir structure"
+      ],
+      "typical_misconceptions": [
+        "assuming all red Burgundy is premier cru quality",
+        "overstating tannin"
+      ],
+      "comparison_styles": [
+        "Côte d’Or Red Burgundy",
+        "Beaujolais",
+        "New Zealand Pinot Noir"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all red Burgundy is premier cru quality",
+        "overstating tannin"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_054"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_055"
+      ],
+      "distinguishing_features": [
+        "lighter and less site-specific than Côte d’Or villages",
+        "less banana/whole-bunch fruit than Beaujolais"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming all red Burgundy is premier cru quality",
+      "overstating tannin"
+    ],
+    "memory_hooks": [
+      "Bourgogne Rouge is Pinot Noir in regional voice."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_074": {
+    "canonical_id": "SAT_WINE_074",
+    "debrief_render_id": "DEBRIEF_074",
+    "safe_identity": {
+      "display_name": "Loire Premium Dry Chenin Blanc",
+      "wine_name": "Loire Premium Dry Chenin Blanc",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium dry Loire Chenin Blanc",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Loire Valley",
+      "subregion": "Anjou-Saumur / Touraine",
+      "appellation": "Savennières / Vouvray / Anjou",
+      "grape_varieties": [
+        "Chenin Blanc"
+      ],
+      "display_label": "Practica WSET 074 - Vino blanco",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "dry Chenin Blanc",
+        "Loire acidity"
+      ],
+      "learning_objectives": [
+        "separate dry Chenin from sweet Loire Chenin",
+        "recognize waxy high-acid Chenin"
+      ],
+      "typical_misconceptions": [
+        "assuming Chenin from Loire is always sweet",
+        "confusing high-acid Chenin with Riesling"
+      ],
+      "comparison_styles": [
+        "Loire Chenin Blanc",
+        "German Riesling",
+        "Chablis"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Chenin from Loire is always sweet",
+        "confusing high-acid Chenin with Riesling"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_010"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_005",
+        "SAT_WINE_001"
+      ],
+      "distinguishing_features": [
+        "less floral than Riesling",
+        "more waxy/quince than Chardonnay"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming Chenin from Loire is always sweet",
+      "confusing high-acid Chenin with Riesling"
+    ],
+    "memory_hooks": [
+      "Dry Loire Chenin is quince, acid and texture."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_075": {
+    "canonical_id": "SAT_WINE_075",
+    "debrief_render_id": "DEBRIEF_075",
+    "safe_identity": {
+      "display_name": "Loire Cabernet Franc",
+      "wine_name": "Loire Cabernet Franc",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium Loire Cabernet Franc",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Loire Valley",
+      "subregion": "Touraine / Anjou-Saumur",
+      "appellation": "Chinon / Bourgueil / Saumur-Champigny",
+      "grape_varieties": [
+        "Cabernet Franc"
+      ],
+      "display_label": "Practica WSET 075 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "cool-climate Cabernet Franc",
+        "herbal varietal marker"
+      ],
+      "learning_objectives": [
+        "recognize Loire Cabernet Franc",
+        "avoid confusing with Bordeaux blend"
+      ],
+      "typical_misconceptions": [
+        "calling all Cabernet Franc Bordeaux",
+        "mistaking herbaceous notes for underripeness fault"
+      ],
+      "comparison_styles": [
+        "Right Bank Bordeaux",
+        "Bordeaux AC Red",
+        "Chile Carmenere"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all Cabernet Franc Bordeaux",
+        "mistaking herbaceous notes for underripeness fault"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_053"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_071"
+      ],
+      "distinguishing_features": [
+        "lighter body and less oak than Bordeaux",
+        "more leafy red-fruited than Carmenere"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "calling all Cabernet Franc Bordeaux",
+      "mistaking herbaceous notes for underripeness fault"
+    ],
+    "memory_hooks": [
+      "Loire Cabernet Franc is fresh red fruit with leaf."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_076": {
+    "canonical_id": "SAT_WINE_076",
+    "debrief_render_id": "DEBRIEF_076",
+    "safe_identity": {
+      "display_name": "Gigondas",
+      "wine_name": "Gigondas",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Southern Rhône Grenache-dominant premium red",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Southern Rhône",
+      "subregion": "Gigondas",
+      "appellation": "Gigondas AOC",
+      "grape_varieties": [
+        "Grenache",
+        "Syrah",
+        "Mourvedre"
+      ],
+      "display_label": "Practica WSET 076 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Grenache-dominant Rhône blends",
+        "warm-climate alcohol and spice"
+      ],
+      "learning_objectives": [
+        "separate Gigondas from Châteauneuf-du-Pape",
+        "recognize Southern Rhône structure"
+      ],
+      "typical_misconceptions": [
+        "assuming all Rhône reds are Syrah",
+        "missing high alcohol clue"
+      ],
+      "comparison_styles": [
+        "Châteauneuf-du-Pape Rouge",
+        "Côtes du Rhône Villages",
+        "Australian Grenache Blend"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Rhône reds are Syrah",
+        "missing high alcohol clue"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_057"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_093"
+      ],
+      "distinguishing_features": [
+        "often less broad than Châteauneuf-du-Pape but more concentrated than basic Côtes du Rhône"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming all Rhône reds are Syrah",
+      "missing high alcohol clue"
+    ],
+    "memory_hooks": [
+      "Gigondas is Southern Rhône warmth with grip."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_077": {
+    "canonical_id": "SAT_WINE_077",
+    "debrief_render_id": "DEBRIEF_077",
+    "safe_identity": {
+      "display_name": "Côtes du Rhône Villages",
+      "wine_name": "Cotes du Rhone Villages",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Mid-level Southern Rhône Grenache blend",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Southern Rhône",
+      "subregion": "Côtes du Rhône Villages",
+      "appellation": "Côtes du Rhône / Côtes du Rhône Villages",
+      "grape_varieties": [
+        "Grenache",
+        "Syrah",
+        "Mourvedre"
+      ],
+      "display_label": "Practica WSET 077 - Vino tinto",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "regional Rhône hierarchy",
+        "Grenache blend baseline"
+      ],
+      "learning_objectives": [
+        "recognize Côtes du Rhône before premium crus",
+        "contrast regional and cru Rhône styles"
+      ],
+      "typical_misconceptions": [
+        "overcalling every Southern Rhône as Châteauneuf-du-Pape",
+        "expecting Northern Rhône Syrah pepper profile"
+      ],
+      "comparison_styles": [
+        "Gigondas",
+        "Châteauneuf-du-Pape Rouge",
+        "Rioja Reserva"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "overcalling every Southern Rhône as Châteauneuf-du-Pape",
+        "expecting Northern Rhône Syrah pepper profile"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_057",
+        "SAT_WINE_076"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_057"
+      ],
+      "distinguishing_features": [
+        "less concentration than Gigondas or Châteauneuf-du-Pape",
+        "softer and warmer than Northern Rhône Syrah"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "overcalling every Southern Rhône as Châteauneuf-du-Pape",
+      "expecting Northern Rhône Syrah pepper profile"
+    ],
+    "memory_hooks": [
+      "Côtes du Rhône Villages is the Rhône blend benchmark."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_078": {
+    "canonical_id": "SAT_WINE_078",
+    "debrief_render_id": "DEBRIEF_078",
+    "safe_identity": {
+      "display_name": "German VDP Dry Riesling",
+      "wine_name": "German VDP Dry Riesling",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Dry VDP German Riesling",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Germany",
+      "subregion": "VDP regions",
+      "appellation": "VDP / trocken Riesling",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Practica WSET 078 - Vino blanco",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "dry German Riesling",
+        "VDP quality hierarchy"
+      ],
+      "learning_objectives": [
+        "separate dry German Riesling from Prädikat off-dry styles",
+        "recognize high-acid dry Riesling"
+      ],
+      "typical_misconceptions": [
+        "assuming German Riesling is always sweet",
+        "confusing dry Riesling with Sauvignon Blanc"
+      ],
+      "comparison_styles": [
+        "Mosel Riesling",
+        "Pfalz Riesling",
+        "Clare Valley Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming German Riesling is always sweet",
+        "confusing dry Riesling with Sauvignon Blanc"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_012",
+        "SAT_WINE_014"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_016",
+        "SAT_WINE_050"
+      ],
+      "distinguishing_features": [
+        "drier than Kabinett/Spätlese",
+        "different fruit spectrum from Australian lime-led Riesling"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming German Riesling is always sweet",
+      "confusing dry Riesling with Sauvignon Blanc"
+    ],
+    "memory_hooks": [
+      "VDP trocken Riesling is German acid without sweetness."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_079": {
+    "canonical_id": "SAT_WINE_079",
+    "debrief_render_id": "DEBRIEF_079",
+    "safe_identity": {
+      "display_name": "Tokaji Aszú",
+      "wine_name": "Tokaji Aszu",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Botrytised sweet Tokaj wine",
+      "wine_type": "BLANCO",
+      "country": "Hungary",
+      "region": "Tokaj",
+      "subregion": "Tokaj",
+      "appellation": "Tokaj",
+      "grape_varieties": [
+        "Furmint",
+        "Hárslevelű",
+        "Sárga Muskotály"
+      ],
+      "display_label": "Practica WSET 079 - Vino blanco",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Tokaj Aszú",
+        "noble rot with high acidity"
+      ],
+      "learning_objectives": [
+        "recognize Tokaji Aszú as distinct from Sauternes",
+        "link Furmint acidity to balance"
+      ],
+      "typical_misconceptions": [
+        "confusing all botrytised wines with Sauternes",
+        "forgetting high acidity in sweet wines"
+      ],
+      "comparison_styles": [
+        "Sauternes / Barsac",
+        "Beerenauslese",
+        "Trockenbeerenauslese"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing all botrytised wines with Sauternes",
+        "forgetting high acidity in sweet wines"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_072",
+        "SAT_WINE_019",
+        "SAT_WINE_020"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_072"
+      ],
+      "distinguishing_features": [
+        "higher acid and orange-tea notes versus Sauternes richness"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "confusing all botrytised wines with Sauternes",
+      "forgetting high acidity in sweet wines"
+    ],
+    "memory_hooks": [
+      "Tokaji Aszú is honeyed sweetness with orange and electric acid."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_080": {
+    "canonical_id": "SAT_WINE_080",
+    "debrief_render_id": "DEBRIEF_080",
+    "safe_identity": {
+      "display_name": "Chianti",
+      "wine_name": "Chianti",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Generic Chianti Sangiovese red",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Tuscany",
+      "subregion": "Chianti",
+      "appellation": "Chianti DOCG",
+      "grape_varieties": [
+        "Sangiovese"
+      ],
+      "display_label": "Practica WSET 080 - Vino tinto",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Sangiovese structure",
+        "Chianti versus Chianti Classico"
+      ],
+      "learning_objectives": [
+        "recognize generic Chianti",
+        "avoid overcalling every Chianti as Classico Riserva"
+      ],
+      "typical_misconceptions": [
+        "assuming Chianti always has Riserva concentration",
+        "underestimating acidity"
+      ],
+      "comparison_styles": [
+        "Chianti Classico",
+        "Brunello di Montalcino",
+        "Barbera d’Asti"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Chianti always has Riserva concentration",
+        "underestimating acidity"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_063"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_064",
+        "SAT_WINE_062"
+      ],
+      "distinguishing_features": [
+        "less concentration than Chianti Classico Riserva or Brunello",
+        "more tannin than Barbera"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming Chianti always has Riserva concentration",
+      "underestimating acidity"
+    ],
+    "memory_hooks": [
+      "Chianti is Sangiovese brightness."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_081": {
+    "canonical_id": "SAT_WINE_081",
+    "debrief_render_id": "DEBRIEF_081",
+    "safe_identity": {
+      "display_name": "California Cabernet Sauvignon / Merlot",
+      "wine_name": "California Cabernet Sauvignon / Merlot",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium California Cabernet or Merlot red",
+      "wine_type": "TINTO",
+      "country": "USA",
+      "region": "California",
+      "subregion": "Napa / Sonoma",
+      "appellation": "Napa Valley / Sonoma County",
+      "grape_varieties": [
+        "Cabernet Sauvignon",
+        "Merlot"
+      ],
+      "display_label": "Practica WSET 081 - Vino tinto",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "premium California red structure",
+        "ripeness and oak"
+      ],
+      "learning_objectives": [
+        "recognize warm-climate Cabernet/Merlot",
+        "separate California from Bordeaux"
+      ],
+      "typical_misconceptions": [
+        "calling all Cabernet Bordeaux",
+        "missing high alcohol as California clue"
+      ],
+      "comparison_styles": [
+        "Left Bank Bordeaux",
+        "Chile Cabernet Sauvignon",
+        "Argentina Cabernet blend"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all Cabernet Bordeaux",
+        "missing high alcohol as California clue"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_052"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_071"
+      ],
+      "distinguishing_features": [
+        "riper fruit and higher alcohol than Bordeaux",
+        "more oak polish than generic Bordeaux"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "calling all Cabernet Bordeaux",
+      "missing high alcohol as California clue"
+    ],
+    "memory_hooks": [
+      "Premium California Cabernet is ripe black fruit plus oak."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_082": {
+    "canonical_id": "SAT_WINE_082",
+    "debrief_render_id": "DEBRIEF_082",
+    "safe_identity": {
+      "display_name": "California Zinfandel",
+      "wine_name": "California Zinfandel",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Ripe California Zinfandel",
+      "wine_type": "TINTO",
+      "country": "USA",
+      "region": "California",
+      "subregion": "Dry Creek Valley / Lodi",
+      "appellation": "Dry Creek Valley / Lodi",
+      "grape_varieties": [
+        "Zinfandel"
+      ],
+      "display_label": "Practica WSET 082 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "California Zinfandel",
+        "warm climate ripeness"
+      ],
+      "learning_objectives": [
+        "recognize Zinfandel fruit profile",
+        "separate fruit sweetness impression from residual sugar"
+      ],
+      "typical_misconceptions": [
+        "confusing jammy fruit with actual sweetness",
+        "calling it Shiraz by alcohol alone"
+      ],
+      "comparison_styles": [
+        "Australian Shiraz",
+        "California Cabernet Sauvignon",
+        "White Zinfandel"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing jammy fruit with actual sweetness",
+        "calling it Shiraz by alcohol alone"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_092"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_091"
+      ],
+      "distinguishing_features": [
+        "jammier red/black fruit than Cabernet",
+        "less pepper-meat profile than Shiraz"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "confusing jammy fruit with actual sweetness",
+      "calling it Shiraz by alcohol alone"
+    ],
+    "memory_hooks": [
+      "Zinfandel is California jam and spice."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_083": {
+    "canonical_id": "SAT_WINE_083",
+    "debrief_render_id": "DEBRIEF_083",
+    "safe_identity": {
+      "display_name": "Chile Carmenère",
+      "wine_name": "Chile Carmenere",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium Chilean Carmenere",
+      "wine_type": "TINTO",
+      "country": "Chile",
+      "region": "Cachapoal / Colchagua",
+      "subregion": "Cachapoal / Colchagua",
+      "appellation": "Cachapoal / Colchagua",
+      "grape_varieties": [
+        "Carmenère"
+      ],
+      "display_label": "Practica WSET 083 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Carmenere signature",
+        "Chile valley ripeness"
+      ],
+      "learning_objectives": [
+        "recognize Carmenere versus Cabernet Franc",
+        "link herbal notes to variety without assuming underripeness"
+      ],
+      "typical_misconceptions": [
+        "calling all herbal reds Cabernet Franc",
+        "treating green notes as a fault automatically"
+      ],
+      "comparison_styles": [
+        "Loire Cabernet Franc",
+        "California Cabernet Sauvignon",
+        "Chile Cabernet Sauvignon"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all herbal reds Cabernet Franc",
+        "treating green notes as a fault automatically"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_075",
+        "SAT_WINE_081"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_075"
+      ],
+      "distinguishing_features": [
+        "riper and fuller than Loire Cabernet Franc",
+        "softer and more herbal than many Cabernet examples"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "calling all herbal reds Cabernet Franc",
+      "treating green notes as a fault automatically"
+    ],
+    "memory_hooks": [
+      "Carmenere is Chilean black plum with green spice."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_084": {
+    "canonical_id": "SAT_WINE_084",
+    "debrief_render_id": "DEBRIEF_084",
+    "safe_identity": {
+      "display_name": "Chile Central Valley Red",
+      "wine_name": "Chile Central Valley Red",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "High-volume value Chilean red",
+      "wine_type": "TINTO",
+      "country": "Chile",
+      "region": "Central Valley",
+      "subregion": "Central Valley",
+      "appellation": "Central Valley",
+      "grape_varieties": [
+        "Cabernet Sauvignon",
+        "Merlot",
+        "Carmenère",
+        "Syrah"
+      ],
+      "display_label": "Practica WSET 084 - Vino tinto",
+      "difficulty_score": 3,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "volume wine production",
+        "value red style"
+      ],
+      "learning_objectives": [
+        "identify high-volume Chilean red profile",
+        "avoid overcalling premium appellation"
+      ],
+      "typical_misconceptions": [
+        "assuming all WSET examples are premium",
+        "overstating complexity"
+      ],
+      "comparison_styles": [
+        "Bordeaux AC Red",
+        "California Cabernet Sauvignon",
+        "South Africa value brand"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all WSET examples are premium",
+        "overstating complexity"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_071"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_081"
+      ],
+      "distinguishing_features": [
+        "less oak and concentration than premium California or Chilean reds"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming all WSET examples are premium",
+      "overstating complexity"
+    ],
+    "memory_hooks": [
+      "Central Valley red is Chilean value fruit."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_085": {
+    "canonical_id": "SAT_WINE_085",
+    "debrief_render_id": "DEBRIEF_085",
+    "safe_identity": {
+      "display_name": "Mendoza Malbec",
+      "wine_name": "Mendoza Malbec",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Mid-priced Argentine Malbec",
+      "wine_type": "TINTO",
+      "country": "Argentina",
+      "region": "Mendoza",
+      "subregion": "Mendoza",
+      "appellation": "Mendoza",
+      "grape_varieties": [
+        "Malbec"
+      ],
+      "display_label": "Practica WSET 085 - Vino tinto",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Malbec signature",
+        "high-altitude Argentina"
+      ],
+      "learning_objectives": [
+        "recognize mid-priced Mendoza Malbec",
+        "separate Malbec from Cabernet/Shiraz"
+      ],
+      "typical_misconceptions": [
+        "assuming all Malbec is premium Uco Valley",
+        "confusing deep colour with Cabernet"
+      ],
+      "comparison_styles": [
+        "California Zinfandel",
+        "Australian Shiraz",
+        "Chile Carmenere"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Malbec is premium Uco Valley",
+        "confusing deep colour with Cabernet"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_082",
+        "SAT_WINE_091"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_092"
+      ],
+      "distinguishing_features": [
+        "softer/plusher than Cabernet",
+        "less peppery than Shiraz"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming all Malbec is premium Uco Valley",
+      "confusing deep colour with Cabernet"
+    ],
+    "memory_hooks": [
+      "Mendoza Malbec is purple plum and mountain sun."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_086": {
+    "canonical_id": "SAT_WINE_086",
+    "debrief_render_id": "DEBRIEF_086",
+    "safe_identity": {
+      "display_name": "South Africa Pinotage",
+      "wine_name": "South Africa Pinotage",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium South African Pinotage",
+      "wine_type": "TINTO",
+      "country": "South Africa",
+      "region": "Western Cape",
+      "subregion": "Western Cape",
+      "appellation": "Stellenbosch / Paarl / Swartland",
+      "grape_varieties": [
+        "Pinotage"
+      ],
+      "display_label": "Practica WSET 086 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Pinotage varietal identity",
+        "Cape premium red"
+      ],
+      "learning_objectives": [
+        "recognize Pinotage markers",
+        "avoid confusing smoke/oak with fault"
+      ],
+      "typical_misconceptions": [
+        "calling smoky notes reduction automatically",
+        "confusing Pinotage with Shiraz"
+      ],
+      "comparison_styles": [
+        "Australian Shiraz",
+        "Chile Carmenere",
+        "South Africa Cabernet Sauvignon"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling smoky notes reduction automatically",
+        "confusing Pinotage with Shiraz"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_092"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_091"
+      ],
+      "distinguishing_features": [
+        "more smoky/coffee profile than Malbec or Carmenere"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "calling smoky notes reduction automatically",
+      "confusing Pinotage with Shiraz"
+    ],
+    "memory_hooks": [
+      "Pinotage is Cape dark fruit with smoke."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_087": {
+    "canonical_id": "SAT_WINE_087",
+    "debrief_render_id": "DEBRIEF_087",
+    "safe_identity": {
+      "display_name": "South Africa Oaked Chenin Blanc",
+      "wine_name": "South Africa Oaked Chenin Blanc",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium oaked South African Chenin Blanc",
+      "wine_type": "BLANCO",
+      "country": "South Africa",
+      "region": "Western Cape",
+      "subregion": "Swartland",
+      "appellation": "Swartland / Western Cape",
+      "grape_varieties": [
+        "Chenin Blanc"
+      ],
+      "display_label": "Practica WSET 087 - Vino blanco",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "premium Chenin with oak",
+        "old vine concentration"
+      ],
+      "learning_objectives": [
+        "separate oaked premium Chenin from simple Chenin",
+        "recognize Chenin acidity under oak texture"
+      ],
+      "typical_misconceptions": [
+        "calling all oaked whites Chardonnay",
+        "missing Chenin acidity"
+      ],
+      "comparison_styles": [
+        "South Africa Chenin Blanc",
+        "California Chardonnay",
+        "Loire Premium Dry Chenin Blanc"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all oaked whites Chardonnay",
+        "missing Chenin acidity"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_048",
+        "SAT_WINE_074"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044"
+      ],
+      "distinguishing_features": [
+        "more Chenin acid and apple-quince than Chardonnay",
+        "riper and oakier than many Loire examples"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "calling all oaked whites Chardonnay",
+      "missing Chenin acidity"
+    ],
+    "memory_hooks": [
+      "Cape Chenin can be textured, oaked and serious."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_088": {
+    "canonical_id": "SAT_WINE_088",
+    "debrief_render_id": "DEBRIEF_088",
+    "safe_identity": {
+      "display_name": "Australian Shiraz",
+      "wine_name": "Australian Shiraz",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium Australian Shiraz",
+      "wine_type": "TINTO",
+      "country": "Australia",
+      "region": "South Australia",
+      "subregion": "South Australia",
+      "appellation": "Barossa / McLaren Vale",
+      "grape_varieties": [
+        "Shiraz"
+      ],
+      "display_label": "Practica WSET 088 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "warm-climate Syrah/Shiraz",
+        "premium Australian red"
+      ],
+      "learning_objectives": [
+        "recognize Shiraz versus Zinfandel or Malbec",
+        "link warm climate to body and alcohol"
+      ],
+      "typical_misconceptions": [
+        "calling all peppery reds Northern Rhône",
+        "missing high alcohol clue"
+      ],
+      "comparison_styles": [
+        "Northern Rhone Syrah",
+        "California Zinfandel",
+        "Mendoza Malbec"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all peppery reds Northern Rhône",
+        "missing high alcohol clue"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_056",
+        "SAT_WINE_082"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_082",
+        "SAT_WINE_085"
+      ],
+      "distinguishing_features": [
+        "riper and fuller than Northern Rhône Syrah",
+        "more peppery than Zinfandel"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "calling all peppery reds Northern Rhône",
+      "missing high alcohol clue"
+    ],
+    "memory_hooks": [
+      "Australian Shiraz is black fruit, pepper and power."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_089": {
+    "canonical_id": "SAT_WINE_089",
+    "debrief_render_id": "DEBRIEF_089",
+    "safe_identity": {
+      "display_name": "Australian Cabernet Sauvignon Blend",
+      "wine_name": "Australian Cabernet Sauvignon Blend",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium Australian Cabernet Sauvignon or Cabernet blend",
+      "wine_type": "TINTO",
+      "country": "Australia",
+      "region": "Coonawarra / Margaret River",
+      "subregion": "Coonawarra / Margaret River",
+      "appellation": "Coonawarra / Margaret River",
+      "grape_varieties": [
+        "Cabernet Sauvignon",
+        "Merlot"
+      ],
+      "display_label": "Practica WSET 089 - Vino tinto",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Australian Cabernet regions",
+        "regional cooling influence"
+      ],
+      "learning_objectives": [
+        "recognize Coonawarra/Margaret River Cabernet style",
+        "separate from California Cabernet"
+      ],
+      "typical_misconceptions": [
+        "missing mint/eucalyptus as regional clue",
+        "calling all Cabernet Bordeaux"
+      ],
+      "comparison_styles": [
+        "California Cabernet Sauvignon / Merlot",
+        "Left Bank Bordeaux",
+        "Chile Carmenere"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "missing mint/eucalyptus as regional clue",
+        "calling all Cabernet Bordeaux"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_081",
+        "SAT_WINE_052"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_081"
+      ],
+      "distinguishing_features": [
+        "more mint/eucalyptus than California or Bordeaux examples"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "missing mint/eucalyptus as regional clue",
+      "calling all Cabernet Bordeaux"
+    ],
+    "memory_hooks": [
+      "Australian Cabernet is cassis with mint."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_090": {
+    "canonical_id": "SAT_WINE_090",
+    "debrief_render_id": "DEBRIEF_090",
+    "safe_identity": {
+      "display_name": "Australian Grenache Blend",
+      "wine_name": "Australian Grenache Blend",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium Australian Grenache or Grenache blend",
+      "wine_type": "TINTO",
+      "country": "Australia",
+      "region": "McLaren Vale",
+      "subregion": "McLaren Vale",
+      "appellation": "McLaren Vale",
+      "grape_varieties": [
+        "Grenache",
+        "Shiraz",
+        "Mourvedre"
+      ],
+      "display_label": "Practica WSET 090 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Grenache outside Rhône",
+        "GSM blending"
+      ],
+      "learning_objectives": [
+        "recognize Australian Grenache blend",
+        "separate from Southern Rhône by fruit ripeness"
+      ],
+      "typical_misconceptions": [
+        "assuming Grenache blend must be Rhône",
+        "overcalling oak"
+      ],
+      "comparison_styles": [
+        "Gigondas",
+        "Côtes du Rhône Villages",
+        "Australian Shiraz"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Grenache blend must be Rhône",
+        "overcalling oak"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_076",
+        "SAT_WINE_077"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_076"
+      ],
+      "distinguishing_features": [
+        "riper fruit than many Southern Rhône examples",
+        "softer and redder-fruited than Shiraz"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming Grenache blend must be Rhône",
+      "overcalling oak"
+    ],
+    "memory_hooks": [
+      "McLaren Vale Grenache is ripe red fruit and warmth."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_091": {
+    "canonical_id": "SAT_WINE_091",
+    "debrief_render_id": "DEBRIEF_091",
+    "safe_identity": {
+      "display_name": "Eden Valley Riesling",
+      "wine_name": "Eden Valley Riesling",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Dry high-acid Eden Valley Riesling",
+      "wine_type": "BLANCO",
+      "country": "Australia",
+      "region": "Eden Valley",
+      "subregion": "Eden Valley",
+      "appellation": "Eden Valley GI",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Practica WSET 091 - Vino blanco",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Australian Riesling regions",
+        "dry high-acid style"
+      ],
+      "learning_objectives": [
+        "recognize Eden/Clare Riesling family",
+        "separate Australian Riesling from German VDP Riesling"
+      ],
+      "typical_misconceptions": [
+        "assuming Australian Riesling is sweet",
+        "confusing lime-led Riesling with Sauvignon Blanc"
+      ],
+      "comparison_styles": [
+        "Clare Valley Riesling",
+        "German VDP Dry Riesling",
+        "Mosel Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Australian Riesling is sweet",
+        "confusing lime-led Riesling with Sauvignon Blanc"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_050",
+        "SAT_WINE_078"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_078"
+      ],
+      "distinguishing_features": [
+        "drier and more lime-led than many German examples"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming Australian Riesling is sweet",
+      "confusing lime-led Riesling with Sauvignon Blanc"
+    ],
+    "memory_hooks": [
+      "Eden Riesling is dry lime and acid."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_092": {
+    "canonical_id": "SAT_WINE_092",
+    "debrief_render_id": "DEBRIEF_092",
+    "safe_identity": {
+      "display_name": "Australian Premium Chardonnay",
+      "wine_name": "Australian Premium Chardonnay",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium cool-climate Australian Chardonnay",
+      "wine_type": "BLANCO",
+      "country": "Australia",
+      "region": "Yarra / Mornington / Tasmania",
+      "subregion": "Yarra / Mornington / Tasmania",
+      "appellation": "Yarra Valley / Mornington Peninsula / Tasmania",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Practica WSET 092 - Vino blanco",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "cool-climate New World Chardonnay",
+        "oak balance"
+      ],
+      "learning_objectives": [
+        "separate Australian Chardonnay from California Chardonnay",
+        "identify premium Chardonnay winemaking markers"
+      ],
+      "typical_misconceptions": [
+        "assuming all New World Chardonnay is high alcohol and buttery",
+        "confusing oak with sweetness"
+      ],
+      "comparison_styles": [
+        "California Chardonnay",
+        "Côte de Beaune White Burgundy",
+        "South Africa Oaked Chenin Blanc"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all New World Chardonnay is high alcohol and buttery",
+        "confusing oak with sweetness"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_044",
+        "SAT_WINE_045",
+        "SAT_WINE_087"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044",
+        "SAT_WINE_002"
+      ],
+      "distinguishing_features": [
+        "usually fresher than broad California Chardonnay",
+        "Chardonnay fruit/oak rather than Chenin texture"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming all New World Chardonnay is high alcohol and buttery",
+      "confusing oak with sweetness"
+    ],
+    "memory_hooks": [
+      "Australian premium Chardonnay is cool fruit with measured oak."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_093": {
+    "canonical_id": "SAT_WINE_093",
+    "debrief_render_id": "DEBRIEF_093",
+    "safe_identity": {
+      "display_name": "New Zealand Pinot Noir",
+      "wine_name": "New Zealand Pinot Noir",
+      "wine_family": "WSET Imprescindibles Tranquilos",
+      "wine_style": "Premium New Zealand Pinot Noir",
+      "wine_type": "TINTO",
+      "country": "New Zealand",
+      "region": "Central Otago / Martinborough / Marlborough",
+      "subregion": "Central Otago / Martinborough / Marlborough",
+      "appellation": "regional GI",
+      "grape_varieties": [
+        "Pinot Noir"
+      ],
+      "display_label": "Practica WSET 093 - Vino tinto",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "New World Pinot Noir",
+        "regional cool-climate ripeness"
+      ],
+      "learning_objectives": [
+        "recognize New Zealand Pinot Noir",
+        "separate from Burgundy and Australian Pinot"
+      ],
+      "typical_misconceptions": [
+        "assuming all Pinot Noir is Burgundy",
+        "missing New World fruit ripeness"
+      ],
+      "comparison_styles": [
+        "Bourgogne Rouge",
+        "Côte d’Or Red Burgundy",
+        "Australian Pinot Noir"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Pinot Noir is Burgundy",
+        "missing New World fruit ripeness"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_073",
+        "SAT_WINE_054"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_054"
+      ],
+      "distinguishing_features": [
+        "riper primary fruit than Bourgogne Rouge",
+        "less earthy/site-classic than Côte d’Or examples"
+      ]
+    },
+    "mentor_focus": [
+      "force structural evidence before naming the wine",
+      "separate variety markers from regional markers"
+    ],
+    "exam_traps": [
+      "assuming all Pinot Noir is Burgundy",
+      "missing New World fruit ripeness"
+    ],
+    "memory_hooks": [
+      "New Zealand Pinot is bright red fruit with cool freshness."
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
   }
 }

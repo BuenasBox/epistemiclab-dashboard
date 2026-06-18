@@ -2583,5 +2583,830 @@
       "readiness",
       "identity_logic"
     ]
+  },
+  "SAT_WINE_071": {
+    "canonical_id": "SAT_WINE_071",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_052",
+      "SAT_WINE_053"
+    ],
+    "reason": "Continue with Left Bank Bordeaux or Right Bank Bordeaux to practise nearby style distinctions for Bordeaux AC Red.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_052",
+          "SAT_WINE_053"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_052",
+          "SAT_WINE_053"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_072": {
+    "canonical_id": "SAT_WINE_072",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_019",
+      "SAT_WINE_020"
+    ],
+    "reason": "Continue with Beerenauslese or Trockenbeerenauslese to practise nearby style distinctions for Sauternes / Barsac.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_019",
+          "SAT_WINE_020"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_019",
+          "SAT_WINE_020"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_073": {
+    "canonical_id": "SAT_WINE_073",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "tannin",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_054",
+      "SAT_WINE_055"
+    ],
+    "reason": "Continue with Cote d'Or Red Burgundy or Beaujolais Villages / Cru to practise nearby style distinctions for Bourgogne Rouge.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_054"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_055"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_074": {
+    "canonical_id": "SAT_WINE_074",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_010",
+      "SAT_WINE_005",
+      "SAT_WINE_001"
+    ],
+    "reason": "Continue with Loire Chenin Blanc or Alsace Riesling or Chablis to practise nearby style distinctions for Loire Premium Dry Chenin Blanc.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_010"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_005",
+          "SAT_WINE_001"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_075": {
+    "canonical_id": "SAT_WINE_075",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_053",
+      "SAT_WINE_071"
+    ],
+    "reason": "Continue with Right Bank Bordeaux or Bordeaux AC Red to practise nearby style distinctions for Loire Cabernet Franc.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_053"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_071"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_076": {
+    "canonical_id": "SAT_WINE_076",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_057",
+      "SAT_WINE_093"
+    ],
+    "reason": "Continue with Chateauneuf-du-Pape Rouge or New Zealand Pinot Noir to practise nearby style distinctions for Gigondas.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_057"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_093"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_077": {
+    "canonical_id": "SAT_WINE_077",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_057",
+      "SAT_WINE_076"
+    ],
+    "reason": "Continue with Chateauneuf-du-Pape Rouge or Gigondas to practise nearby style distinctions for Côtes du Rhône Villages.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_057",
+          "SAT_WINE_076"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_057"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_078": {
+    "canonical_id": "SAT_WINE_078",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_012",
+      "SAT_WINE_014",
+      "SAT_WINE_016"
+    ],
+    "reason": "Continue with Mosel Riesling or Pfalz Riesling or Riesling Kabinett to practise nearby style distinctions for German VDP Dry Riesling.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_012",
+          "SAT_WINE_014"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_016",
+          "SAT_WINE_050"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_079": {
+    "canonical_id": "SAT_WINE_079",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_072",
+      "SAT_WINE_019",
+      "SAT_WINE_020"
+    ],
+    "reason": "Continue with Sauternes / Barsac or Beerenauslese or Trockenbeerenauslese to practise nearby style distinctions for Tokaji Aszú.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_072",
+          "SAT_WINE_019",
+          "SAT_WINE_020"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_072"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_080": {
+    "canonical_id": "SAT_WINE_080",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_063",
+      "SAT_WINE_064",
+      "SAT_WINE_062"
+    ],
+    "reason": "Continue with Chianti Classico or Brunello di Montalcino or Barbera d'Asti to practise nearby style distinctions for Chianti.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_063"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_064",
+          "SAT_WINE_062"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_081": {
+    "canonical_id": "SAT_WINE_081",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_052",
+      "SAT_WINE_071"
+    ],
+    "reason": "Continue with Left Bank Bordeaux or Bordeaux AC Red to practise nearby style distinctions for California Cabernet Sauvignon / Merlot.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_052"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_071"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_082": {
+    "canonical_id": "SAT_WINE_082",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_092",
+      "SAT_WINE_091"
+    ],
+    "reason": "Continue with Australian Premium Chardonnay or Eden Valley Riesling to practise nearby style distinctions for California Zinfandel.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_092"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_091"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_083": {
+    "canonical_id": "SAT_WINE_083",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_075",
+      "SAT_WINE_081"
+    ],
+    "reason": "Continue with Loire Cabernet Franc or California Cabernet Sauvignon / Merlot to practise nearby style distinctions for Chile Carmenère.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_075",
+          "SAT_WINE_081"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_075"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_084": {
+    "canonical_id": "SAT_WINE_084",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_071",
+      "SAT_WINE_081"
+    ],
+    "reason": "Continue with Bordeaux AC Red or California Cabernet Sauvignon / Merlot to practise nearby style distinctions for Chile Central Valley Red.",
+    "basis": {
+      "difficulty_score": 3,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_071"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_081"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_085": {
+    "canonical_id": "SAT_WINE_085",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_082",
+      "SAT_WINE_091",
+      "SAT_WINE_092"
+    ],
+    "reason": "Continue with California Zinfandel or Eden Valley Riesling or Australian Premium Chardonnay to practise nearby style distinctions for Mendoza Malbec.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_082",
+          "SAT_WINE_091"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_092"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_086": {
+    "canonical_id": "SAT_WINE_086",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_092",
+      "SAT_WINE_091"
+    ],
+    "reason": "Continue with Australian Premium Chardonnay or Eden Valley Riesling to practise nearby style distinctions for South Africa Pinotage.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_092"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_091"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_087": {
+    "canonical_id": "SAT_WINE_087",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_048",
+      "SAT_WINE_074",
+      "SAT_WINE_044"
+    ],
+    "reason": "Continue with South Africa Chenin Blanc or Loire Premium Dry Chenin Blanc or California Chardonnay to practise nearby style distinctions for South Africa Oaked Chenin Blanc.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_048",
+          "SAT_WINE_074"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_044"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_088": {
+    "canonical_id": "SAT_WINE_088",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_056",
+      "SAT_WINE_082",
+      "SAT_WINE_085"
+    ],
+    "reason": "Continue with Northern Rhone Syrah or California Zinfandel or Mendoza Malbec to practise nearby style distinctions for Australian Shiraz.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_056",
+          "SAT_WINE_082"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_082",
+          "SAT_WINE_085"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_089": {
+    "canonical_id": "SAT_WINE_089",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_081",
+      "SAT_WINE_052"
+    ],
+    "reason": "Continue with California Cabernet Sauvignon / Merlot or Left Bank Bordeaux to practise nearby style distinctions for Australian Cabernet Sauvignon Blend.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_081",
+          "SAT_WINE_052"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_081"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_090": {
+    "canonical_id": "SAT_WINE_090",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_076",
+      "SAT_WINE_077"
+    ],
+    "reason": "Continue with Gigondas or Côtes du Rhône Villages to practise nearby style distinctions for Australian Grenache Blend.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_076",
+          "SAT_WINE_077"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_076"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_091": {
+    "canonical_id": "SAT_WINE_091",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_050",
+      "SAT_WINE_078"
+    ],
+    "reason": "Continue with Clare Valley Riesling or German VDP Dry Riesling to practise nearby style distinctions for Eden Valley Riesling.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_050",
+          "SAT_WINE_078"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_078"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_092": {
+    "canonical_id": "SAT_WINE_092",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_044",
+      "SAT_WINE_045",
+      "SAT_WINE_087"
+    ],
+    "reason": "Continue with California Chardonnay or Sonoma Coast Chardonnay or South Africa Oaked Chenin Blanc to practise nearby style distinctions for Australian Premium Chardonnay.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_044",
+          "SAT_WINE_045",
+          "SAT_WINE_087"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_044",
+          "SAT_WINE_002"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_093": {
+    "canonical_id": "SAT_WINE_093",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_073",
+      "SAT_WINE_054"
+    ],
+    "reason": "Continue with Bourgogne Rouge or Cote d'Or Red Burgundy to practise nearby style distinctions for New Zealand Pinot Noir.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_073",
+          "SAT_WINE_054"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_054"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
   }
 }

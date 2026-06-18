@@ -7560,5 +7560,2449 @@
         "ignoring high acidity"
       ]
     }
+  },
+  "SAT_WINE_071": {
+    "canonical_id": "SAT_WINE_071",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium ruby"
+      ],
+      "nose_model": [
+        "blackcurrant",
+        "plum",
+        "redcurrant",
+        "cedar"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high",
+        "medium to full",
+        "medium to high",
+        "black fruit",
+        "red fruit",
+        "cedar"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "blackcurrant",
+          "plum",
+          "redcurrant",
+          "cedar"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium to high",
+        "body": "medium to full",
+        "alcohol": "medium to high",
+        "tannin": "medium to high",
+        "flavour_profile": [
+          "black fruit",
+          "red fruit",
+          "cedar",
+          "earth"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "blackcurrant",
+          "plum",
+          "redcurrant",
+          "cedar"
+        ],
+        "flavour_profile": [
+          "black fruit",
+          "red fruit",
+          "cedar",
+          "earth"
+        ],
+        "diagnostic_features": [
+          "Bordeaux blend structure",
+          "Cabernet-Merlot balance",
+          "firm but not necessarily classed-growth concentration"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming all Bordeaux is classed growth",
+        "calling every Bordeaux Left Bank"
+      ]
+    }
+  },
+  "SAT_WINE_072": {
+    "canonical_id": "SAT_WINE_072",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "gold"
+      ],
+      "nose_model": [
+        "honey",
+        "apricot",
+        "marmalade",
+        "dried fruit",
+        "vanilla"
+      ],
+      "palate_model": [
+        "sweet",
+        "medium to high",
+        "full",
+        "medium",
+        "honey",
+        "candied citrus",
+        "apricot"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "gold"
+      },
+      "nose": {
+        "aroma_profile": [
+          "honey",
+          "apricot",
+          "marmalade",
+          "dried fruit",
+          "vanilla"
+        ]
+      },
+      "palate": {
+        "sweetness": "sweet",
+        "acidity": "medium to high",
+        "body": "full",
+        "alcohol": "medium",
+        "tannin": "not_applicable",
+        "flavour_profile": [
+          "honey",
+          "candied citrus",
+          "apricot",
+          "botrytis spice"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "honey",
+          "apricot",
+          "marmalade",
+          "dried fruit",
+          "vanilla"
+        ],
+        "flavour_profile": [
+          "honey",
+          "candied citrus",
+          "apricot",
+          "botrytis spice"
+        ],
+        "diagnostic_features": [
+          "noble rot",
+          "sweetness balanced by acidity",
+          "Semillon-led Bordeaux sweet style"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "calling all sweet wines low acid",
+        "confusing Sauternes with German BA/TBA"
+      ]
+    }
+  },
+  "SAT_WINE_073": {
+    "canonical_id": "SAT_WINE_073",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale ruby"
+      ],
+      "nose_model": [
+        "red cherry",
+        "raspberry",
+        "redcurrant"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high",
+        "light to medium",
+        "medium",
+        "red fruit",
+        "subtle earth",
+        "light spice"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "red cherry",
+          "raspberry",
+          "redcurrant"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium to high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "low to medium",
+        "flavour_profile": [
+          "red fruit",
+          "subtle earth",
+          "light spice"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "red cherry",
+          "raspberry",
+          "redcurrant"
+        ],
+        "flavour_profile": [
+          "red fruit",
+          "subtle earth",
+          "light spice"
+        ],
+        "diagnostic_features": [
+          "Pinot Noir",
+          "generic Burgundy appellation",
+          "lighter structure than village or premier cru"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming all red Burgundy is premier cru quality",
+        "overstating tannin"
+      ]
+    }
+  },
+  "SAT_WINE_074": {
+    "canonical_id": "SAT_WINE_074",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium lemon"
+      ],
+      "nose_model": [
+        "apple",
+        "quince",
+        "citrus",
+        "honey"
+      ],
+      "palate_model": [
+        "dry",
+        "high",
+        "medium",
+        "medium",
+        "green apple",
+        "quince",
+        "lemon"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "apple",
+          "quince",
+          "citrus",
+          "honey"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "high",
+        "body": "medium",
+        "alcohol": "medium",
+        "tannin": "not_applicable",
+        "flavour_profile": [
+          "green apple",
+          "quince",
+          "lemon",
+          "waxy texture"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "apple",
+          "quince",
+          "citrus",
+          "honey"
+        ],
+        "flavour_profile": [
+          "green apple",
+          "quince",
+          "lemon",
+          "waxy texture"
+        ],
+        "diagnostic_features": [
+          "Chenin Blanc",
+          "dry premium Loire style",
+          "high acidity with apple-quince fruit"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming Chenin from Loire is always sweet",
+        "confusing high-acid Chenin with Riesling"
+      ]
+    }
+  },
+  "SAT_WINE_075": {
+    "canonical_id": "SAT_WINE_075",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium ruby"
+      ],
+      "nose_model": [
+        "redcurrant",
+        "raspberry",
+        "leafy notes",
+        "violet"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high",
+        "light to medium",
+        "medium",
+        "red fruit",
+        "herbal notes",
+        "pepper"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "redcurrant",
+          "raspberry",
+          "leafy notes",
+          "violet"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium to high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "medium",
+        "flavour_profile": [
+          "red fruit",
+          "herbal notes",
+          "pepper"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "redcurrant",
+          "raspberry",
+          "leafy notes",
+          "violet"
+        ],
+        "flavour_profile": [
+          "red fruit",
+          "herbal notes",
+          "pepper"
+        ],
+        "diagnostic_features": [
+          "Cabernet Franc",
+          "Loire leafy red fruit",
+          "moderate body and fresh acidity"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "calling all Cabernet Franc Bordeaux",
+        "mistaking herbaceous notes for underripeness fault"
+      ]
+    }
+  },
+  "SAT_WINE_076": {
+    "canonical_id": "SAT_WINE_076",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep ruby"
+      ],
+      "nose_model": [
+        "strawberry",
+        "red plum",
+        "black pepper",
+        "dried herbs"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "full",
+        "high",
+        "ripe red fruit",
+        "spice",
+        "garrigue"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "strawberry",
+          "red plum",
+          "black pepper",
+          "dried herbs"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "full",
+        "alcohol": "high",
+        "tannin": "medium to high",
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "garrigue",
+          "pepper"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "strawberry",
+          "red plum",
+          "black pepper",
+          "dried herbs"
+        ],
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "garrigue",
+          "pepper"
+        ],
+        "diagnostic_features": [
+          "Southern Rhône blend",
+          "Grenache warmth",
+          "spice and herbal garrigue"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming all Rhône reds are Syrah",
+        "missing high alcohol clue"
+      ]
+    }
+  },
+  "SAT_WINE_077": {
+    "canonical_id": "SAT_WINE_077",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium ruby"
+      ],
+      "nose_model": [
+        "red plum",
+        "strawberry",
+        "pepper",
+        "dried herbs"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "medium to full",
+        "medium to high",
+        "ripe red fruit",
+        "spice",
+        "herbal notes"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "red plum",
+          "strawberry",
+          "pepper",
+          "dried herbs"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "medium to full",
+        "alcohol": "medium to high",
+        "tannin": "medium",
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "herbal notes"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "red plum",
+          "strawberry",
+          "pepper",
+          "dried herbs"
+        ],
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "herbal notes"
+        ],
+        "diagnostic_features": [
+          "approachable Southern Rhône blend",
+          "Grenache-led fruit",
+          "moderate tannin"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "overcalling every Southern Rhône as Châteauneuf-du-Pape",
+        "expecting Northern Rhône Syrah pepper profile"
+      ]
+    }
+  },
+  "SAT_WINE_078": {
+    "canonical_id": "SAT_WINE_078",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon"
+      ],
+      "nose_model": [
+        "lime",
+        "green apple",
+        "peach",
+        "floral notes"
+      ],
+      "palate_model": [
+        "dry",
+        "high",
+        "light to medium",
+        "medium",
+        "citrus",
+        "green fruit",
+        "stone fruit"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "lime",
+          "green apple",
+          "peach",
+          "floral notes"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "not_applicable",
+        "flavour_profile": [
+          "citrus",
+          "green fruit",
+          "stone fruit",
+          "mineral impression"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "lime",
+          "green apple",
+          "peach",
+          "floral notes"
+        ],
+        "flavour_profile": [
+          "citrus",
+          "green fruit",
+          "stone fruit",
+          "mineral impression"
+        ],
+        "diagnostic_features": [
+          "dry Riesling",
+          "VDP quality focus",
+          "high acidity without residual sweetness emphasis"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming German Riesling is always sweet",
+        "confusing dry Riesling with Sauvignon Blanc"
+      ]
+    }
+  },
+  "SAT_WINE_079": {
+    "canonical_id": "SAT_WINE_079",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "amber"
+      ],
+      "nose_model": [
+        "orange peel",
+        "apricot",
+        "honey",
+        "marmalade",
+        "tea"
+      ],
+      "palate_model": [
+        "sweet",
+        "high",
+        "medium to full",
+        "medium",
+        "dried apricot",
+        "candied citrus",
+        "honey"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "amber"
+      },
+      "nose": {
+        "aroma_profile": [
+          "orange peel",
+          "apricot",
+          "honey",
+          "marmalade",
+          "tea"
+        ]
+      },
+      "palate": {
+        "sweetness": "sweet",
+        "acidity": "high",
+        "body": "medium to full",
+        "alcohol": "medium",
+        "tannin": "not_applicable",
+        "flavour_profile": [
+          "dried apricot",
+          "candied citrus",
+          "honey",
+          "spice"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "orange peel",
+          "apricot",
+          "honey",
+          "marmalade",
+          "tea"
+        ],
+        "flavour_profile": [
+          "dried apricot",
+          "candied citrus",
+          "honey",
+          "spice"
+        ],
+        "diagnostic_features": [
+          "Tokaj sweet wine",
+          "Furmint acidity",
+          "botrytised orange-honey profile"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "confusing all botrytised wines with Sauternes",
+        "forgetting high acidity in sweet wines"
+      ]
+    }
+  },
+  "SAT_WINE_080": {
+    "canonical_id": "SAT_WINE_080",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium ruby"
+      ],
+      "nose_model": [
+        "red cherry",
+        "plum",
+        "dried herbs",
+        "violet"
+      ],
+      "palate_model": [
+        "dry",
+        "high",
+        "medium",
+        "medium to high",
+        "sour cherry",
+        "red plum",
+        "herbal notes"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "red cherry",
+          "plum",
+          "dried herbs",
+          "violet"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "high",
+        "body": "medium",
+        "alcohol": "medium to high",
+        "tannin": "medium to high",
+        "flavour_profile": [
+          "sour cherry",
+          "red plum",
+          "herbal notes",
+          "spice"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "red cherry",
+          "plum",
+          "dried herbs",
+          "violet"
+        ],
+        "flavour_profile": [
+          "sour cherry",
+          "red plum",
+          "herbal notes",
+          "spice"
+        ],
+        "diagnostic_features": [
+          "Sangiovese",
+          "Chianti DOCG",
+          "high acidity and red cherry"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming Chianti always has Riserva concentration",
+        "underestimating acidity"
+      ]
+    }
+  },
+  "SAT_WINE_081": {
+    "canonical_id": "SAT_WINE_081",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep ruby"
+      ],
+      "nose_model": [
+        "blackcurrant",
+        "black cherry",
+        "plum",
+        "vanilla",
+        "cedar"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "full",
+        "high",
+        "ripe black fruit",
+        "oak spice",
+        "vanilla"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "blackcurrant",
+          "black cherry",
+          "plum",
+          "vanilla",
+          "cedar"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "full",
+        "alcohol": "high",
+        "tannin": "medium to high",
+        "flavour_profile": [
+          "ripe black fruit",
+          "oak spice",
+          "vanilla",
+          "chocolate"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "blackcurrant",
+          "black cherry",
+          "plum",
+          "vanilla",
+          "cedar"
+        ],
+        "flavour_profile": [
+          "ripe black fruit",
+          "oak spice",
+          "vanilla",
+          "chocolate"
+        ],
+        "diagnostic_features": [
+          "ripe California Cabernet/Merlot",
+          "premium oak",
+          "full body and high alcohol"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "calling all Cabernet Bordeaux",
+        "missing high alcohol as California clue"
+      ]
+    }
+  },
+  "SAT_WINE_082": {
+    "canonical_id": "SAT_WINE_082",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep ruby"
+      ],
+      "nose_model": [
+        "blackberry",
+        "strawberry jam",
+        "plum",
+        "sweet spice"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "full",
+        "high",
+        "jammy black fruit",
+        "red berries",
+        "spice"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "blackberry",
+          "strawberry jam",
+          "plum",
+          "sweet spice"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "full",
+        "alcohol": "high",
+        "tannin": "medium",
+        "flavour_profile": [
+          "jammy black fruit",
+          "red berries",
+          "spice",
+          "pepper"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "blackberry",
+          "strawberry jam",
+          "plum",
+          "sweet spice"
+        ],
+        "flavour_profile": [
+          "jammy black fruit",
+          "red berries",
+          "spice",
+          "pepper"
+        ],
+        "diagnostic_features": [
+          "Zinfandel ripeness",
+          "jammy fruit",
+          "high alcohol"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "confusing jammy fruit with actual sweetness",
+        "calling it Shiraz by alcohol alone"
+      ]
+    }
+  },
+  "SAT_WINE_083": {
+    "canonical_id": "SAT_WINE_083",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep ruby"
+      ],
+      "nose_model": [
+        "black plum",
+        "blackberry",
+        "green bell pepper",
+        "spice"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "medium to full",
+        "medium to high",
+        "ripe black fruit",
+        "herbal notes",
+        "pepper"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "black plum",
+          "blackberry",
+          "green bell pepper",
+          "spice"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "medium to full",
+        "alcohol": "medium to high",
+        "tannin": "medium",
+        "flavour_profile": [
+          "ripe black fruit",
+          "herbal notes",
+          "pepper",
+          "oak spice"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "black plum",
+          "blackberry",
+          "green bell pepper",
+          "spice"
+        ],
+        "flavour_profile": [
+          "ripe black fruit",
+          "herbal notes",
+          "pepper",
+          "oak spice"
+        ],
+        "diagnostic_features": [
+          "Carmenere herbal black fruit",
+          "Chile premium red",
+          "soft to medium tannin"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "calling all herbal reds Cabernet Franc",
+        "treating green notes as a fault automatically"
+      ]
+    }
+  },
+  "SAT_WINE_084": {
+    "canonical_id": "SAT_WINE_084",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium ruby"
+      ],
+      "nose_model": [
+        "blackcurrant",
+        "plum",
+        "red fruit"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "medium",
+        "medium",
+        "simple black fruit",
+        "red fruit",
+        "subtle spice"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "blackcurrant",
+          "plum",
+          "red fruit"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "medium",
+        "alcohol": "medium",
+        "tannin": "medium",
+        "flavour_profile": [
+          "simple black fruit",
+          "red fruit",
+          "subtle spice"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "blackcurrant",
+          "plum",
+          "red fruit"
+        ],
+        "flavour_profile": [
+          "simple black fruit",
+          "red fruit",
+          "subtle spice"
+        ],
+        "diagnostic_features": [
+          "value Chilean red",
+          "ripe accessible fruit",
+          "moderate structure"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming all WSET examples are premium",
+        "overstating complexity"
+      ]
+    }
+  },
+  "SAT_WINE_085": {
+    "canonical_id": "SAT_WINE_085",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep purple"
+      ],
+      "nose_model": [
+        "black plum",
+        "blackberry",
+        "violet",
+        "sweet spice"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "medium to full",
+        "medium to high",
+        "ripe black fruit",
+        "plum",
+        "spice"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep purple"
+      },
+      "nose": {
+        "aroma_profile": [
+          "black plum",
+          "blackberry",
+          "violet",
+          "sweet spice"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "medium to full",
+        "alcohol": "medium to high",
+        "tannin": "medium",
+        "flavour_profile": [
+          "ripe black fruit",
+          "plum",
+          "spice",
+          "chocolate"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "black plum",
+          "blackberry",
+          "violet",
+          "sweet spice"
+        ],
+        "flavour_profile": [
+          "ripe black fruit",
+          "plum",
+          "spice",
+          "chocolate"
+        ],
+        "diagnostic_features": [
+          "Malbec colour",
+          "plum and violet",
+          "Mendoza ripeness"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming all Malbec is premium Uco Valley",
+        "confusing deep colour with Cabernet"
+      ]
+    }
+  },
+  "SAT_WINE_086": {
+    "canonical_id": "SAT_WINE_086",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep ruby"
+      ],
+      "nose_model": [
+        "black cherry",
+        "plum",
+        "smoke",
+        "coffee"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "medium to full",
+        "medium to high",
+        "black fruit",
+        "smoky notes",
+        "spice"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "black cherry",
+          "plum",
+          "smoke",
+          "coffee"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "medium to full",
+        "alcohol": "medium to high",
+        "tannin": "medium to high",
+        "flavour_profile": [
+          "black fruit",
+          "smoky notes",
+          "spice",
+          "coffee"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "black cherry",
+          "plum",
+          "smoke",
+          "coffee"
+        ],
+        "flavour_profile": [
+          "black fruit",
+          "smoky notes",
+          "spice",
+          "coffee"
+        ],
+        "diagnostic_features": [
+          "Pinotage",
+          "smoky dark fruit",
+          "South African premium red"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "calling smoky notes reduction automatically",
+        "confusing Pinotage with Shiraz"
+      ]
+    }
+  },
+  "SAT_WINE_087": {
+    "canonical_id": "SAT_WINE_087",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium lemon"
+      ],
+      "nose_model": [
+        "apple",
+        "pear",
+        "stone fruit",
+        "vanilla",
+        "toast"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high",
+        "medium to full",
+        "medium to high",
+        "ripe orchard fruit",
+        "stone fruit",
+        "oak spice"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "apple",
+          "pear",
+          "stone fruit",
+          "vanilla",
+          "toast"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium to high",
+        "body": "medium to full",
+        "alcohol": "medium to high",
+        "tannin": "not_applicable",
+        "flavour_profile": [
+          "ripe orchard fruit",
+          "stone fruit",
+          "oak spice",
+          "lees texture"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "apple",
+          "pear",
+          "stone fruit",
+          "vanilla",
+          "toast"
+        ],
+        "flavour_profile": [
+          "ripe orchard fruit",
+          "stone fruit",
+          "oak spice",
+          "lees texture"
+        ],
+        "diagnostic_features": [
+          "South African Chenin",
+          "old vine concentration",
+          "oak and texture"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "calling all oaked whites Chardonnay",
+        "missing Chenin acidity"
+      ]
+    }
+  },
+  "SAT_WINE_088": {
+    "canonical_id": "SAT_WINE_088",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep purple"
+      ],
+      "nose_model": [
+        "blackberry",
+        "black plum",
+        "pepper",
+        "chocolate",
+        "vanilla"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "full",
+        "high",
+        "ripe black fruit",
+        "pepper spice",
+        "oak"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep purple"
+      },
+      "nose": {
+        "aroma_profile": [
+          "blackberry",
+          "black plum",
+          "pepper",
+          "chocolate",
+          "vanilla"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "full",
+        "alcohol": "high",
+        "tannin": "medium to high",
+        "flavour_profile": [
+          "ripe black fruit",
+          "pepper spice",
+          "oak",
+          "chocolate"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "blackberry",
+          "black plum",
+          "pepper",
+          "chocolate",
+          "vanilla"
+        ],
+        "flavour_profile": [
+          "ripe black fruit",
+          "pepper spice",
+          "oak",
+          "chocolate"
+        ],
+        "diagnostic_features": [
+          "Australian Shiraz",
+          "ripe black fruit",
+          "pepper and oak",
+          "full body"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "calling all peppery reds Northern Rhône",
+        "missing high alcohol clue"
+      ]
+    }
+  },
+  "SAT_WINE_089": {
+    "canonical_id": "SAT_WINE_089",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "deep ruby"
+      ],
+      "nose_model": [
+        "blackcurrant",
+        "mint",
+        "eucalyptus",
+        "cedar"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high",
+        "medium to full",
+        "medium to high",
+        "blackcurrant",
+        "dark fruit",
+        "mint"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "deep ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "blackcurrant",
+          "mint",
+          "eucalyptus",
+          "cedar"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium to high",
+        "body": "medium to full",
+        "alcohol": "medium to high",
+        "tannin": "medium to high",
+        "flavour_profile": [
+          "blackcurrant",
+          "dark fruit",
+          "mint",
+          "oak spice"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "blackcurrant",
+          "mint",
+          "eucalyptus",
+          "cedar"
+        ],
+        "flavour_profile": [
+          "blackcurrant",
+          "dark fruit",
+          "mint",
+          "oak spice"
+        ],
+        "diagnostic_features": [
+          "Australian Cabernet",
+          "blackcurrant with mint/eucalyptus",
+          "premium regional structure"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "missing mint/eucalyptus as regional clue",
+        "calling all Cabernet Bordeaux"
+      ]
+    }
+  },
+  "SAT_WINE_090": {
+    "canonical_id": "SAT_WINE_090",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium ruby"
+      ],
+      "nose_model": [
+        "strawberry",
+        "raspberry",
+        "red plum",
+        "sweet spice"
+      ],
+      "palate_model": [
+        "dry",
+        "medium",
+        "medium to full",
+        "high",
+        "ripe red fruit",
+        "spice",
+        "soft tannin"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "strawberry",
+          "raspberry",
+          "red plum",
+          "sweet spice"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium",
+        "body": "medium to full",
+        "alcohol": "high",
+        "tannin": "medium",
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "soft tannin",
+          "warm alcohol"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "strawberry",
+          "raspberry",
+          "red plum",
+          "sweet spice"
+        ],
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "soft tannin",
+          "warm alcohol"
+        ],
+        "diagnostic_features": [
+          "Australian Grenache/GSM",
+          "ripe red fruit",
+          "warm full style"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming Grenache blend must be Rhône",
+        "overcalling oak"
+      ]
+    }
+  },
+  "SAT_WINE_091": {
+    "canonical_id": "SAT_WINE_091",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "pale lemon"
+      ],
+      "nose_model": [
+        "lime",
+        "lemon",
+        "green apple",
+        "floral notes"
+      ],
+      "palate_model": [
+        "dry",
+        "high",
+        "light to medium",
+        "medium",
+        "lime",
+        "citrus",
+        "green apple"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "pale lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "lime",
+          "lemon",
+          "green apple",
+          "floral notes"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "high",
+        "body": "light to medium",
+        "alcohol": "medium",
+        "tannin": "not_applicable",
+        "flavour_profile": [
+          "lime",
+          "citrus",
+          "green apple",
+          "mineral impression"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "lime",
+          "lemon",
+          "green apple",
+          "floral notes"
+        ],
+        "flavour_profile": [
+          "lime",
+          "citrus",
+          "green apple",
+          "mineral impression"
+        ],
+        "diagnostic_features": [
+          "Australian dry Riesling",
+          "lime fruit",
+          "high acidity",
+          "Eden Valley alternative to Clare"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming Australian Riesling is sweet",
+        "confusing lime-led Riesling with Sauvignon Blanc"
+      ]
+    }
+  },
+  "SAT_WINE_092": {
+    "canonical_id": "SAT_WINE_092",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium lemon"
+      ],
+      "nose_model": [
+        "citrus",
+        "peach",
+        "melon",
+        "toast",
+        "vanilla"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high",
+        "medium",
+        "medium",
+        "citrus",
+        "stone fruit",
+        "oak spice"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium lemon"
+      },
+      "nose": {
+        "aroma_profile": [
+          "citrus",
+          "peach",
+          "melon",
+          "toast",
+          "vanilla"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium to high",
+        "body": "medium",
+        "alcohol": "medium",
+        "tannin": "not_applicable",
+        "flavour_profile": [
+          "citrus",
+          "stone fruit",
+          "oak spice",
+          "creaminess"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "citrus",
+          "peach",
+          "melon",
+          "toast",
+          "vanilla"
+        ],
+        "flavour_profile": [
+          "citrus",
+          "stone fruit",
+          "oak spice",
+          "creaminess"
+        ],
+        "diagnostic_features": [
+          "premium Australian Chardonnay",
+          "cooler-region freshness",
+          "oak and lees possible"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming all New World Chardonnay is high alcohol and buttery",
+        "confusing oak with sweetness"
+      ]
+    }
+  },
+  "SAT_WINE_093": {
+    "canonical_id": "SAT_WINE_093",
+    "allowed_reveal_stage": "post_commitment",
+    "comparison_mode": "formative_model_reference",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false,
+      "examiner_key_available": false
+    },
+    "model_reference": {
+      "appearance_model": [
+        "medium ruby"
+      ],
+      "nose_model": [
+        "red cherry",
+        "strawberry",
+        "plum",
+        "spice"
+      ],
+      "palate_model": [
+        "dry",
+        "medium to high",
+        "medium",
+        "medium to high",
+        "ripe red fruit",
+        "spice",
+        "subtle oak"
+      ],
+      "quality_model": [
+        "good to outstanding depending on balance, concentration, complexity and finish"
+      ],
+      "ageing_consumption_model": [
+        "ageing potential depends on structure and concentration"
+      ]
+    },
+    "descriptor_bands": {
+      "appearance": {
+        "color": "medium ruby"
+      },
+      "nose": {
+        "aroma_profile": [
+          "red cherry",
+          "strawberry",
+          "plum",
+          "spice"
+        ]
+      },
+      "palate": {
+        "sweetness": "dry",
+        "acidity": "medium to high",
+        "body": "medium",
+        "alcohol": "medium to high",
+        "tannin": "low to medium",
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "subtle oak",
+          "earth"
+        ],
+        "finish": "medium to long depending on concentration and quality level"
+      },
+      "quality": {
+        "quality_level": "good to outstanding depending on producer, site and appellation level"
+      },
+      "ageing_consumption": {
+        "ageing_potential": "drink now to medium-term ageing; best examples can develop further complexity"
+      }
+    },
+    "acceptable_variations": {
+      "style_tolerance": [
+        "Compare the student note against the style band rather than a single required phrase.",
+        "Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent."
+      ],
+      "descriptor_families": {
+        "aroma_profile": [
+          "red cherry",
+          "strawberry",
+          "plum",
+          "spice"
+        ],
+        "flavour_profile": [
+          "ripe red fruit",
+          "spice",
+          "subtle oak",
+          "earth"
+        ],
+        "diagnostic_features": [
+          "New Zealand Pinot Noir",
+          "ripe red fruit with freshness",
+          "moderate tannin"
+        ]
+      }
+    },
+    "teaching_notes": {
+      "comparison_prompt": "Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.",
+      "focus_points": [
+        "force structural evidence before naming the wine",
+        "separate variety markers from regional markers"
+      ],
+      "student_traps": [
+        "assuming all Pinot Noir is Burgundy",
+        "missing New World fruit ripeness"
+      ]
+    }
   }
 }

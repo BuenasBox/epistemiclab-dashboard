@@ -9,6 +9,8 @@ const exportDir = path.join(repoRoot, 'canonical-wine-catalog', 'exports');
 
 const profiles = collectProfiles(profileDir);
 const result = validateProfiles(profiles);
+const legacyProfiles = profiles.filter((p) => Number(p.canonical_id.slice(-3)) <= 70);
+const batch010Profiles = profiles.filter((p) => Number(p.canonical_id.slice(-3)) >= 71);
 const allowedOrigins = new Set(['WSET_PRIMARY', 'STANDARD_WINE_KNOWLEDGE', 'DERIVED_FROM_STYLE', 'INFERRED_HIGH_CONFIDENCE']);
 const allowedVisibility = new Set(['PUBLIC', 'TRAINING', 'SERVER_ONLY']);
 const requiredFingerprint = ['appearance', 'nose', 'palate', 'quality', 'ageing', 'diagnostic_features'];
@@ -17,35 +19,62 @@ const requiredComparison = ['similar_profiles', 'frequently_confused_with', 'dis
 const requiredTeaching = ['common_exam_points', 'mentor_hints', 'student_traps', 'revision_priority'];
 
 assert.deepStrictEqual(result.errors, []);
-assert.strictEqual(profiles.length, 70);
+assert(profiles.length >= 70);
 assert.strictEqual(new Set(profiles.map((p) => p.canonical_id)).size, profiles.length);
 assert(profiles.every((p) => p.source.file === 'D:\\Descargas\\Phone Link\\WSET3_rebuilt.md'));
 assert(profiles.every((p) => p.canonical_source.sha256 === '91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25'));
-assert(profiles.every((p) => ['BLANCO', 'TINTO'].includes(p.wine_type)));
-assert(profiles.every((p) => ['France', 'Germany', 'Austria', 'Italy', 'Spain', 'Portugal', 'Greece', 'USA', 'Chile', 'Argentina', 'South Africa', 'Australia', 'New Zealand'].includes(p.country)));
-assert.strictEqual(profiles.filter((p) => p.country === 'France').length, 17);
-assert.strictEqual(profiles.filter((p) => p.country === 'Germany').length, 10);
-assert.strictEqual(profiles.filter((p) => p.country === 'Austria').length, 6);
-assert.strictEqual(profiles.filter((p) => p.country === 'Italy').length, 18);
-assert.strictEqual(profiles.filter((p) => p.country === 'Spain').length, 6);
-assert.strictEqual(profiles.filter((p) => p.country === 'Portugal').length, 4);
-assert.strictEqual(profiles.filter((p) => p.country === 'Greece').length, 1);
-assert.strictEqual(profiles.filter((p) => p.country === 'USA').length, 2);
-assert.strictEqual(profiles.filter((p) => p.country === 'Chile').length, 1);
-assert.strictEqual(profiles.filter((p) => p.country === 'Argentina').length, 1);
-assert.strictEqual(profiles.filter((p) => p.country === 'South Africa').length, 1);
-assert.strictEqual(profiles.filter((p) => p.country === 'Australia').length, 2);
-assert.strictEqual(profiles.filter((p) => p.country === 'New Zealand').length, 1);
+assert(profiles.every((p) => ['BLANCO', 'TINTO', 'ROSADO', 'ESPUMOSO', 'FORTIFICADO'].includes(p.wine_type)));
+assert(profiles.every((p) => ['France', 'Germany', 'Austria', 'Hungary', 'Italy', 'Spain', 'Portugal', 'Greece', 'USA', 'Canada', 'Chile', 'Argentina', 'South Africa', 'Australia', 'New Zealand'].includes(p.country)));
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'France').length, 17);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Germany').length, 10);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Austria').length, 6);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Italy').length, 18);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Spain').length, 6);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Portugal').length, 4);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Greece').length, 1);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'USA').length, 2);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Chile').length, 1);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Argentina').length, 1);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'South Africa').length, 1);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'Australia').length, 2);
+assert.strictEqual(legacyProfiles.filter((p) => p.country === 'New Zealand').length, 1);
 assert(!JSON.stringify(profiles).includes('not_stated_in_source'));
 assert(profiles.every((p) => p.source.line_references.every((lineRef) => {
   const match = lineRef.match(/^(\d+)-(\d+)$/);
   return match && Number(match[1]) <= Number(match[2]);
 })));
-assert.deepStrictEqual(profiles.map((p) => p.canonical_id), Array.from({ length: 70 }, (_, i) => `SAT_WINE_${String(i + 1).padStart(3, '0')}`));
-assert.strictEqual(profiles.filter((p) => p.wine_type === 'BLANCO').length, 51);
-assert.strictEqual(profiles.filter((p) => p.wine_type === 'TINTO').length, 19);
+assert.deepStrictEqual(profiles.map((p) => p.canonical_id), Array.from({ length: profiles.length }, (_, i) => `SAT_WINE_${String(i + 1).padStart(3, '0')}`));
+assert.strictEqual(legacyProfiles.filter((p) => p.wine_type === 'BLANCO').length, 51);
+assert.strictEqual(legacyProfiles.filter((p) => p.wine_type === 'TINTO').length, 19);
 
-const franceRedProfiles = profiles.filter((p) => p.country === 'France' && p.wine_type === 'TINTO');
+const batch010Names = new Set(batch010Profiles.map((p) => p.wine_name));
+[
+  'Bordeaux AC Red',
+  'Sauternes / Barsac',
+  'Bourgogne Rouge',
+  'Loire Premium Dry Chenin Blanc',
+  'Loire Cabernet Franc',
+  'Gigondas',
+  'Cotes du Rhone Villages',
+  'German VDP Dry Riesling',
+  'Tokaji Aszu',
+  'Chianti',
+  'California Cabernet Sauvignon / Merlot',
+  'California Zinfandel',
+  'Chile Carmenere',
+  'Chile Central Valley Red',
+  'Mendoza Malbec',
+  'South Africa Pinotage',
+  'South Africa Oaked Chenin Blanc',
+  'Australian Shiraz',
+  'Australian Cabernet Sauvignon Blend',
+  'Australian Grenache Blend',
+  'Eden Valley Riesling',
+  'Australian Premium Chardonnay',
+  'New Zealand Pinot Noir',
+].forEach((name) => assert(batch010Names.has(name), `Batch 010 missing ${name}`));
+
+const franceRedProfiles = legacyProfiles.filter((p) => p.country === 'France' && p.wine_type === 'TINTO');
 assert.deepStrictEqual(franceRedProfiles.map((p) => p.canonical_id), Array.from({ length: 6 }, (_, i) => `SAT_WINE_${String(i + 52).padStart(3, '0')}`));
 assert.deepStrictEqual(franceRedProfiles.map((p) => p.wine_name), [
   'Left Bank Bordeaux',
@@ -56,7 +85,7 @@ assert.deepStrictEqual(franceRedProfiles.map((p) => p.wine_name), [
   'Chateauneuf-du-Pape Rouge',
 ]);
 
-const italyRedProfiles = profiles.filter((p) => p.country === 'Italy' && p.wine_type === 'TINTO');
+const italyRedProfiles = legacyProfiles.filter((p) => p.country === 'Italy' && p.wine_type === 'TINTO');
 assert.deepStrictEqual(italyRedProfiles.map((p) => p.canonical_id), Array.from({ length: 8 }, (_, i) => `SAT_WINE_${String(i + 58).padStart(3, '0')}`));
 assert.deepStrictEqual(italyRedProfiles.map((p) => p.wine_name), [
   'Valpolicella',
@@ -69,7 +98,7 @@ assert.deepStrictEqual(italyRedProfiles.map((p) => p.wine_name), [
   'Taurasi',
 ]);
 
-const iberiaRedProfiles = profiles.filter((p) => ['Spain', 'Portugal'].includes(p.country) && p.wine_type === 'TINTO');
+const iberiaRedProfiles = legacyProfiles.filter((p) => ['Spain', 'Portugal'].includes(p.country) && p.wine_type === 'TINTO');
 assert.deepStrictEqual(iberiaRedProfiles.map((p) => p.canonical_id), Array.from({ length: 5 }, (_, i) => `SAT_WINE_${String(i + 66).padStart(3, '0')}`));
 assert.deepStrictEqual(iberiaRedProfiles.map((p) => p.wine_name), [
   'Rioja Reserva',
@@ -79,7 +108,7 @@ assert.deepStrictEqual(iberiaRedProfiles.map((p) => p.wine_name), [
   'Dao Red',
 ]);
 
-const germanyProfiles = profiles.filter((p) => p.country === 'Germany');
+const germanyProfiles = legacyProfiles.filter((p) => p.country === 'Germany');
 assert.deepStrictEqual(germanyProfiles.map((p) => p.canonical_id), Array.from({ length: 10 }, (_, i) => `SAT_WINE_${String(i + 12).padStart(3, '0')}`));
 assert.deepStrictEqual(germanyProfiles.map((p) => p.wine_name), [
   'Mosel Riesling',
@@ -98,7 +127,7 @@ assert(new Set(germanyProfiles.map((p) => p.region)).has('Rheingau'));
 assert(new Set(germanyProfiles.map((p) => p.region)).has('Pfalz'));
 assert(new Set(germanyProfiles.map((p) => p.region)).has('Rheinhessen'));
 
-const austriaProfiles = profiles.filter((p) => p.country === 'Austria');
+const austriaProfiles = legacyProfiles.filter((p) => p.country === 'Austria');
 assert.deepStrictEqual(austriaProfiles.map((p) => p.canonical_id), Array.from({ length: 6 }, (_, i) => `SAT_WINE_${String(i + 22).padStart(3, '0')}`));
 assert.deepStrictEqual(austriaProfiles.map((p) => p.wine_name), [
   'Wachau Grüner Veltliner',
@@ -114,7 +143,7 @@ assert(new Set(austriaProfiles.map((p) => p.region)).has('Kamptal'));
 assert(new Set(austriaProfiles.map((p) => p.region)).has('Kremstal'));
 assert(new Set(austriaProfiles.map((p) => p.region)).has('Burgenland'));
 
-const italyProfiles = profiles.filter((p) => p.country === 'Italy' && p.wine_type === 'BLANCO');
+const italyProfiles = legacyProfiles.filter((p) => p.country === 'Italy' && p.wine_type === 'BLANCO');
 assert.deepStrictEqual(italyProfiles.map((p) => p.canonical_id), Array.from({ length: 10 }, (_, i) => `SAT_WINE_${String(i + 28).padStart(3, '0')}`));
 assert.deepStrictEqual(italyProfiles.map((p) => p.wine_name), [
   'Alto Adige Pinot Grigio',
@@ -138,7 +167,7 @@ assert(new Set(italyProfiles.map((p) => p.region)).has('Lazio'));
 assert(new Set(italyProfiles.map((p) => p.region)).has('Marche'));
 assert(new Set(italyProfiles.map((p) => p.region)).has('Campania'));
 
-const iberiaGreeceProfiles = profiles.filter((p) => ['Spain', 'Portugal', 'Greece'].includes(p.country) && p.wine_type === 'BLANCO');
+const iberiaGreeceProfiles = legacyProfiles.filter((p) => ['Spain', 'Portugal', 'Greece'].includes(p.country) && p.wine_type === 'BLANCO');
 assert.deepStrictEqual(iberiaGreeceProfiles.map((p) => p.canonical_id), Array.from({ length: 6 }, (_, i) => `SAT_WINE_${String(i + 38).padStart(3, '0')}`));
 assert.deepStrictEqual(iberiaGreeceProfiles.map((p) => p.wine_name), [
   'Rueda Verdejo',
@@ -155,7 +184,7 @@ assert(new Set(iberiaGreeceProfiles.map((p) => p.region)).has('Vinho Verde'));
 assert(new Set(iberiaGreeceProfiles.map((p) => p.region)).has('Dao'));
 assert(new Set(iberiaGreeceProfiles.map((p) => p.region)).has('Santorini'));
 
-const newWorldWhiteProfiles = profiles.filter((p) => ['USA', 'Chile', 'Argentina', 'South Africa', 'Australia', 'New Zealand'].includes(p.country));
+const newWorldWhiteProfiles = legacyProfiles.filter((p) => ['USA', 'Chile', 'Argentina', 'South Africa', 'Australia', 'New Zealand'].includes(p.country));
 assert.deepStrictEqual(newWorldWhiteProfiles.map((p) => p.canonical_id), Array.from({ length: 8 }, (_, i) => `SAT_WINE_${String(i + 44).padStart(3, '0')}`));
 assert.deepStrictEqual(newWorldWhiteProfiles.map((p) => p.wine_name), [
   'California Chardonnay',
