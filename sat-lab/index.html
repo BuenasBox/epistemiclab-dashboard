@@ -170,6 +170,81 @@
     .swg-crystal path,.swg-crystal ellipse,.swg-crystal line{ stroke:#888 !important; }
   }
 
+
+  /* ===== SAT-UX-07 Premium UX Pass (solo visual; sin lógica/datos) ===== */
+  /* P1: la copa protagonista — hero pegajoso en escritorio + copa "viva" */
+  @media (min-width:561px){
+    #screen-tasting .sat-hero{ position:sticky; top:10px; z-index:6; }
+  }
+  #screen-tasting .sat-hero .swg-svg{ animation:ux7-float 6s ease-in-out infinite; }
+  @keyframes ux7-float{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-4px) } }
+
+  /* P2: transición de fase — el contenido entra con fade + slide */
+  #decisions .decision{ animation:ux7-rise .42s cubic-bezier(.2,.7,.2,1) both; }
+  #decisions .decision:nth-child(2){ animation-delay:.05s }
+  #decisions .decision:nth-child(3){ animation-delay:.10s }
+  #decisions .decision:nth-child(4){ animation-delay:.15s }
+  #decisions .decision:nth-child(5){ animation-delay:.20s }
+  #decisions .decision:nth-child(6){ animation-delay:.25s }
+  #decisions .decision:nth-child(7){ animation-delay:.30s }
+  .phase-title, .phase-sub{ animation:ux7-fade .4s ease both; }
+  @keyframes ux7-rise{ from{ opacity:0; transform:translateY(10px) } to{ opacity:1; transform:none } }
+  @keyframes ux7-fade{ from{ opacity:0 } to{ opacity:1 } }
+
+  /* P3: barra de progreso clara (dónde estás · cuánto falta · qué sigue) */
+  .steps{ display:block; margin:6px 0 18px; }
+  .prog-track{ position:relative; height:6px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; }
+  .prog-track > i{ position:absolute; left:0; top:0; height:100%; border-radius:999px;
+    background:linear-gradient(90deg,var(--wine2),var(--gold)); transition:width .55s cubic-bezier(.2,.7,.2,1); }
+  .prog-steps{ display:flex; gap:6px; margin-top:12px; }
+  .prog-steps .step{ flex:1; min-width:0; border:0; padding:0; text-align:center; font-size:10.5px; color:var(--muted);
+    display:flex; flex-direction:column; align-items:center; gap:5px; transition:color .3s ease; }
+  .prog-steps .step .dot{ width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    border:2px solid var(--line); background:var(--panel2); font-size:11px; font-weight:700; color:var(--muted); transition:.3s ease; }
+  .prog-steps .step.done .dot{ background:var(--ok); border-color:var(--ok); color:#0d2b1c; }
+  .prog-steps .step.active{ color:var(--ink); }
+  .prog-steps .step.active .dot{ border-color:var(--gold); color:var(--gold); box-shadow:0 0 0 4px rgba(201,162,39,.15); transform:scale(1.1); }
+  .prog-steps .step .lbl{ white-space:nowrap; }
+  .prog-label{ font-size:12.5px; color:var(--muted); margin-top:11px; }
+  .prog-label b{ color:var(--gold); }
+
+  /* P4: microanimaciones (solo donde aportan) */
+  .opt{ transition:transform .12s ease, background .15s, border-color .15s; }
+  .opt:active{ transform:scale(.95); }
+  .opt.sel{ animation:ux7-pop .28s ease; }
+  @keyframes ux7-pop{ 0%{ transform:scale(.9) } 60%{ transform:scale(1.06) } 100%{ transform:scale(1) } }
+  .fb.show{ animation:ux7-fb .34s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes ux7-fb{ from{ opacity:0; transform:translateY(-6px) } to{ opacity:1; transform:none } }
+  .btn{ transition:transform .06s ease, filter .2s, box-shadow .2s; }
+  .btn:not(.ghost):hover{ box-shadow:0 8px 22px rgba(123,39,64,.45); }
+
+  /* P5: cierre del resumen — entrada con jerarquía e impacto */
+  #screen-summary > h1{ animation:ux7-fade .5s ease both; }
+  #screen-summary .report-hero{ animation:ux7-hero .55s cubic-bezier(.2,.7,.2,1) both; }
+  #screen-summary .card{ animation:ux7-rise .55s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes ux7-hero{ from{ opacity:0; transform:translateY(14px) scale(.99) } to{ opacity:1; transform:none } }
+  #screen-summary .ph-done{ animation:ux7-fade .5s ease both; }
+  #screen-summary .tally .pill{ animation:ux7-pop .42s ease both; }
+
+  /* P6: responsive / pulir móvil (sin espacios muertos ni saltos) */
+  @media (max-width:560px){
+    .wrap{ padding:16px 14px 56px; }
+    .prog-steps{ gap:4px; }
+    .prog-steps .step .lbl{ display:none; }
+    .prog-steps .step.active .lbl{ display:block; color:var(--gold); font-weight:600; }
+    .sat-hero-title{ font-size:20px; }
+    .cmp-row{ grid-template-columns:1fr; gap:4px; }
+    .cmp-row .tone{ justify-self:start; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #screen-tasting .sat-hero .swg-svg, #decisions .decision, .phase-title, .phase-sub,
+    .opt.sel, .fb.show, #screen-summary > h1, #screen-summary .report-hero,
+    #screen-summary .card, #screen-summary .ph-done, #screen-summary .tally .pill{ animation:none !important; }
+    .prog-track > i{ transition:none !important; }
+    #screen-tasting .sat-hero{ position:static !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -485,11 +560,17 @@
     $('wine-chip').textContent = wt==='TINTO'?'Cata a ciegas · tinto':(wt==='ROSADO'?'Cata a ciegas · rosado':'Cata a ciegas · blanco');
     updateGlass();
     buildHero();
-    var steps = PHASES.map(function(p,i){
+    var SHORT=['Aspecto','Nariz','Paladar','Calidad','Guarda'];
+    var pct=(PHASES.length>1?(S.phaseIdx/(PHASES.length-1))*100:0);
+    var dots = PHASES.map(function(p,i){
       var cls = i<S.phaseIdx?'step done':(i===S.phaseIdx?'step active':'step');
-      return '<div class="'+cls+'">'+(i+1)+'</div>';
+      var mark = i<S.phaseIdx?'✓':(i+1);
+      return '<div class="'+cls+'"><span class="dot">'+mark+'</span><span class="lbl">'+(SHORT[i]||('F'+(i+1)))+'</span></div>';
     }).join('');
-    $('steps').innerHTML = steps;
+    var nextName = (S.phaseIdx<PHASES.length-1)? SHORT[S.phaseIdx+1] : null;
+    $('steps').innerHTML = '<div class="prog-track"><i style="width:'+pct+'%"></i></div>'
+      + '<div class="prog-steps">'+dots+'</div>'
+      + '<div class="prog-label">Fase <b>'+(S.phaseIdx+1)+'</b> de '+PHASES.length+(nextName?(' · Siguiente: '+nextName):' · Última fase')+'</div>';
     renderPhase();
   }
 
@@ -889,7 +970,6 @@
     if(!wine){ $('wic-demo').innerHTML=''; return; }
     var prof = resolveBlindProfile(wine.id);
     if(prof){ WineIntelligenceCard.mount($('wic-demo'), mapBlindToCard(prof, wine)); return; }
-    // Fallback sin perfil en el mapa: refleja al menos el tipo del vino real (sin identidad)
     var wt=wine.wine_type;
     WineIntelligenceCard.mount($('wic-demo'), {
       identity:{ display_label:'Vino '+(wt==='TINTO'?'tinto':(wt==='ROSADO'?'rosado':'blanco'))+' — práctica a ciegas',
@@ -897,7 +977,6 @@
       glass: wt?{ wineType:wt }:null
     });
   }
-  // Preselecciona el vino REAL (get-sat-wines) y pinta la card; el mismo vino se reusa en la practica.
   function previewPracticeWine(){
     if(!$('wic-demo')) return;
     requireAuth().then(function(token){
