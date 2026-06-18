@@ -189,6 +189,26 @@
     "taurasi_aglianico_core": {
       "diagnostic_features": ["Taurasi", "Aglianico", "prestigious southern black grape", "high acidity", "high tannin", "ageworthy structure"],
       "knowledge_origin": "WSET_PRIMARY"
+    },
+    "rioja_tempranillo_core": {
+      "diagnostic_features": ["Rioja", "Tempranillo", "red fruit", "medium tannin", "Garnacha adds body and alcohol", "American oak vanilla", "oak maturation defining role"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "ribera_tempranillo_core": {
+      "diagnostic_features": ["Ribera del Duero", "Tempranillo dominant", "high altitude Meseta", "cool nights", "dark colour", "high tannin", "new oak"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "priorat_core": {
+      "diagnostic_features": ["Priorat", "old Garnacha and Cariñena", "llicorella red slate", "low yields", "deep colour", "high tannin", "black fruit", "new French oak"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "douro_red_core": {
+      "diagnostic_features": ["Douro red", "Touriga Nacional", "Touriga Franca", "Tinta Roriz", "deep colour", "full body", "ripe tannin", "black fruit", "new oak"],
+      "knowledge_origin": "WSET_PRIMARY"
+    },
+    "dao_red_core": {
+      "diagnostic_features": ["Dão red", "mountainous area", "day-night variation", "delicate red fruit", "soft tannin", "high acidity", "Touriga Nacional", "Tinta Roriz", "Jaen"],
+      "knowledge_origin": "WSET_PRIMARY"
     }
   },
   "visibility_layers": {

@@ -8095,5 +8095,630 @@
     "reusable_knowledge_refs": [
       "taurasi_aglianico_core"
     ]
+  },
+  {
+    "canonical_id": "SAT_WINE_066",
+    "render_id": "DEBRIEF_066",
+    "mode": "debrief",
+    "identity": {
+      "display_name": "Rioja Reserva",
+      "wine_name": "Rioja Reserva",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Rioja Reserva",
+      "wine_type": "TINTO",
+      "country": "Spain",
+      "region": "Rioja",
+      "subregion": "Rioja Alta / Rioja Alavesa / Rioja Oriental",
+      "appellation": "Rioja DOCa",
+      "grape_varieties": [
+        "Tempranillo",
+        "Garnacha",
+        "Mazuelo",
+        "Graciano"
+      ],
+      "display_label": "Vino Tinto - Spain - Practica 066",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "moderated by Atlantic influence in western Rioja with warmer Rioja Oriental",
+      "altitude": "500 to 800 metre vineyards in western subregions",
+      "soil": "not specified by WSET; subregion and altitude are key",
+      "viticulture": [
+        "Tempranillo is main component of most blends",
+        "Garnacha adds body and alcohol",
+        "Mazuelo and Graciano support blends"
+      ],
+      "winemaking": [
+        "traditional fermentation for long-term wines",
+        "oak maturation has defining role",
+        "American oak traditionally gives vanilla"
+      ],
+      "oak": "American oak traditional; French and other European oak increasingly used",
+      "sweetness": "dry",
+      "body": "medium to full",
+      "acidity": "medium to high",
+      "alcohol": "medium to high",
+      "tannin": "medium",
+      "color": "medium ruby to garnet",
+      "aroma_profile": [
+        "red cherry",
+        "strawberry",
+        "vanilla",
+        "dill",
+        "leather"
+      ],
+      "flavour_profile": [
+        "red fruit",
+        "vanilla oak",
+        "spice",
+        "smooth tannin"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding for top aged Rioja",
+      "ageing_potential": "medium to long ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Rioja oak identity",
+        "Tempranillo blend structure",
+        "Spanish age category logic"
+      ],
+      "learning_objectives": [
+        "identify oak-aged Rioja",
+        "separate Rioja from Ribera del Duero",
+        "connect American oak to vanilla"
+      ],
+      "typical_misconceptions": [
+        "all Spanish Tempranillo tastes identical",
+        "vanilla means New World",
+        "Garnacha is never in Rioja"
+      ],
+      "mentor_focus": [
+        "ask whether red fruit and vanilla oak point to Rioja"
+      ],
+      "exam_traps": [
+        "calling Rioja Ribera from Tempranillo alone",
+        "overlooking blend roles"
+      ],
+      "memory_hooks": [
+        "Rioja is Tempranillo red fruit framed by oak"
+      ],
+      "comparison_styles": [
+        "Ribera del Duero",
+        "Barbera d'Asti"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_067"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_067"
+      ],
+      "distinguishing_features": [
+        "more vanilla-oak and red-fruited than Ribera",
+        "less black-fruited and tannic than Priorat",
+        "Rioja subregion blend context"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Tempranillo is the main Rioja component",
+        "Garnacha adds body and alcohol",
+        "oak maturation is defining in Rioja"
+      ],
+      "student_traps": [
+        "confusing Rioja with Ribera",
+        "ignoring oak maturation"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "rioja_tempranillo_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_067",
+    "render_id": "DEBRIEF_067",
+    "mode": "debrief",
+    "identity": {
+      "display_name": "Ribera del Duero",
+      "wine_name": "Ribera del Duero",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Ribera del Duero",
+      "wine_type": "TINTO",
+      "country": "Spain",
+      "region": "Ribera del Duero",
+      "subregion": "Duero Valley",
+      "appellation": "Ribera del Duero DO",
+      "grape_varieties": [
+        "Tempranillo"
+      ],
+      "display_label": "Vino Tinto - Spain - Practica 067",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "continental, cut off from maritime influence with hot dry summers and very cold winters",
+      "altitude": "high Meseta Central vineyards, some over 850 metres",
+      "soil": "not specified by WSET; altitude and continental isolation are key",
+      "viticulture": [
+        "DO for red and rosé only",
+        "Tempranillo is dominant and often sole grape in best reds",
+        "cool nights retain acidity and fresh fruit"
+      ],
+      "winemaking": [
+        "long macerations accentuate concentration and tannin",
+        "shorter ageing in new oak barrels increasingly French",
+        "deeply coloured concentrated style"
+      ],
+      "oak": "new oak, increasingly French",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "medium to high",
+      "alcohol": "medium to high",
+      "tannin": "high",
+      "color": "deep ruby",
+      "aroma_profile": [
+        "black cherry",
+        "blackberry",
+        "plum",
+        "vanilla",
+        "toast"
+      ],
+      "flavour_profile": [
+        "black fruit",
+        "firm tannin",
+        "new oak spice",
+        "fresh acidity"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "high-altitude Tempranillo",
+        "Ribera concentration",
+        "new-oak structure"
+      ],
+      "learning_objectives": [
+        "identify Ribera del Duero",
+        "separate Ribera from Rioja",
+        "link altitude to freshness"
+      ],
+      "typical_misconceptions": [
+        "Ribera is just Rioja without oak",
+        "high alcohol means low acidity",
+        "Tempranillo always has medium tannin"
+      ],
+      "mentor_focus": [
+        "ask whether darker fruit and tannin exceed Rioja"
+      ],
+      "exam_traps": [
+        "calling all Tempranillo Rioja",
+        "missing altitude"
+      ],
+      "memory_hooks": [
+        "Ribera is high-altitude Tempranillo with grip"
+      ],
+      "comparison_styles": [
+        "Rioja Reserva",
+        "Priorat"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_066",
+        "SAT_WINE_068"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_066",
+        "SAT_WINE_068"
+      ],
+      "distinguishing_features": [
+        "darker and more tannic than Rioja",
+        "Tempranillo-dominant rather than Garnacha/Cariñena Priorat",
+        "high Meseta altitude"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Ribera is mainly red wine",
+        "Tempranillo is dominant",
+        "best wines are dark with high tannin"
+      ],
+      "student_traps": [
+        "defaulting to Rioja",
+        "forgetting Ribera's altitude"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "ribera_tempranillo_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_068",
+    "render_id": "DEBRIEF_068",
+    "mode": "debrief",
+    "identity": {
+      "display_name": "Priorat",
+      "wine_name": "Priorat",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Priorat",
+      "wine_type": "TINTO",
+      "country": "Spain",
+      "region": "Priorat",
+      "subregion": "Catalunya inland hills",
+      "appellation": "Priorat DOCa",
+      "grape_varieties": [
+        "Garnacha",
+        "Carinena"
+      ],
+      "display_label": "Vino Tinto - Spain - Practica 068",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.97
+    },
+    "style_markers": {
+      "climate": "long hot dry summers and very low rainfall",
+      "altitude": "steep inland hills from Tarragona",
+      "soil": "llicorella red slate with mica",
+      "viticulture": [
+        "old Garnacha and Cariñena vines",
+        "bush vines and steep slopes make mechanisation difficult",
+        "low nutrient soils and old vines give low yields"
+      ],
+      "winemaking": [
+        "concentrated red winemaking",
+        "new French oak commonly gives toasty aromas",
+        "some Cabernet Sauvignon may be added"
+      ],
+      "oak": "new French oak common",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "medium to high",
+      "alcohol": "high",
+      "tannin": "high",
+      "color": "deep ruby",
+      "aroma_profile": [
+        "black fruit",
+        "dried herbs",
+        "spice",
+        "toast",
+        "mineral"
+      ],
+      "flavour_profile": [
+        "concentrated black fruit",
+        "firm tannin",
+        "toasty oak",
+        "warm alcohol"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding; intense and rarely cheap",
+      "ageing_potential": "long ageing potential"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Priorat intensity",
+        "llicorella soils",
+        "old-vine Garnacha/Cariñena"
+      ],
+      "learning_objectives": [
+        "identify Priorat structure",
+        "connect low yields to intensity",
+        "separate Priorat from Ribera"
+      ],
+      "typical_misconceptions": [
+        "Priorat is just Garnacha like simple Spain",
+        "new French oak means Bordeaux",
+        "all Catalunya reds are light"
+      ],
+      "mentor_focus": [
+        "ask for deep colour, high tannin, black fruit and heat"
+      ],
+      "exam_traps": [
+        "calling Priorat Ribera",
+        "missing Cariñena role"
+      ],
+      "memory_hooks": [
+        "Priorat is slate, old vines and concentrated black fruit"
+      ],
+      "comparison_styles": [
+        "Ribera del Duero",
+        "Chateauneuf-du-Pape Rouge"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_067",
+        "SAT_WINE_057"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_067",
+        "SAT_WINE_057"
+      ],
+      "distinguishing_features": [
+        "Garnacha/Cariñena rather than Tempranillo",
+        "llicorella slate clue",
+        "more black-fruit and new French oak intensity"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Priorat uses old Garnacha and Cariñena",
+        "llicorella soils help ripening and water retention",
+        "red Priorat is deep, tannic and concentrated"
+      ],
+      "student_traps": [
+        "missing Cariñena",
+        "overlooking soil clue"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "priorat_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_069",
+    "render_id": "DEBRIEF_069",
+    "mode": "debrief",
+    "identity": {
+      "display_name": "Douro Red",
+      "wine_name": "Douro Red",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Douro Red",
+      "wine_type": "TINTO",
+      "country": "Portugal",
+      "region": "Douro",
+      "subregion": "Douro Valley",
+      "appellation": "Douro DOC",
+      "grape_varieties": [
+        "Touriga Nacional",
+        "Touriga Franca",
+        "Tinta Roriz"
+      ],
+      "display_label": "Vino Tinto - Portugal - Practica 069",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "confidence_score": 0.96
+    },
+    "style_markers": {
+      "climate": "hot inland valley east of Porto with Port-influenced viticulture",
+      "altitude": "steep Douro valley vineyards",
+      "soil": "not specified here; Douro slope context is key",
+      "viticulture": [
+        "same principal varieties as Port",
+        "Touriga Nacional is highest-quality and low yielding",
+        "unfortified wines have always been made"
+      ],
+      "winemaking": [
+        "dry red winemaking from Port varieties",
+        "best examples may mature in new oak",
+        "full-bodied black-fruited style"
+      ],
+      "oak": "new oak often gives subtle toasty aromas in best examples",
+      "sweetness": "dry",
+      "body": "full",
+      "acidity": "medium to high",
+      "alcohol": "high",
+      "tannin": "high",
+      "color": "deep ruby",
+      "aroma_profile": [
+        "blackberry",
+        "black plum",
+        "violet",
+        "toast",
+        "spice"
+      ],
+      "flavour_profile": [
+        "rich black fruit",
+        "ripe tannin",
+        "toasty oak",
+        "full body"
+      ],
+      "finish": "long",
+      "quality_level": "very good to outstanding",
+      "ageing_potential": "medium to long ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Portuguese dry red from Port varieties",
+        "Touriga Nacional quality",
+        "Douro black-fruit structure"
+      ],
+      "learning_objectives": [
+        "identify Douro red",
+        "separate dry Douro from Port",
+        "connect varieties to structure"
+      ],
+      "typical_misconceptions": [
+        "Douro only makes Port",
+        "Touriga Nacional is only for fortified wine",
+        "Portugal reds are light"
+      ],
+      "mentor_focus": [
+        "ask whether full dry red uses Port grapes"
+      ],
+      "exam_traps": [
+        "calling Douro Port",
+        "forgetting unfortified Douro"
+      ],
+      "memory_hooks": [
+        "Douro red is dry table wine from Port's powerhouse grapes"
+      ],
+      "comparison_styles": [
+        "Dao Red",
+        "Priorat"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_070",
+        "SAT_WINE_068"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_070",
+        "SAT_WINE_068"
+      ],
+      "distinguishing_features": [
+        "fuller and blacker than Dão",
+        "Portuguese varieties rather than Priorat Garnacha/Cariñena",
+        "not fortified"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Douro is oldest demarcated region",
+        "unfortified reds rely on Port varieties",
+        "red Douro is deep, full and tannic"
+      ],
+      "student_traps": [
+        "assuming all Douro is Port",
+        "missing dry red category"
+      ],
+      "revision_priority": "high"
+    },
+    "reusable_knowledge_refs": [
+      "douro_red_core"
+    ]
+  },
+  {
+    "canonical_id": "SAT_WINE_070",
+    "render_id": "DEBRIEF_070",
+    "mode": "debrief",
+    "identity": {
+      "display_name": "Dao Red",
+      "wine_name": "Dao Red",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Dao Red",
+      "wine_type": "TINTO",
+      "country": "Portugal",
+      "region": "Dao",
+      "subregion": "Central Portugal",
+      "appellation": "Dao DOC",
+      "grape_varieties": [
+        "Touriga Nacional",
+        "Tinta Roriz",
+        "Jaen",
+        "Alfrocheiro"
+      ],
+      "display_label": "Vino Tinto - Portugal - Practica 070",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "confidence_score": 0.95
+    },
+    "style_markers": {
+      "climate": "mountainous area with cold wet winters, warm dry summers and significant day-night variation",
+      "altitude": "gentle hills and slopes between 200 and 400 metres",
+      "soil": "not specified by WSET; mountain slope setting is key",
+      "viticulture": [
+        "vineyards lie between 200 and 400 metres",
+        "day-night variation provides excellent grape conditions",
+        "new high-quality plantings include Touriga Nacional, Tinta Roriz, Jaen and Alfrocheiro"
+      ],
+      "winemaking": [
+        "dry red winemaking preserving delicate red fruit",
+        "oak may be used but delicacy is central",
+        "softer tannin style than Douro"
+      ],
+      "oak": "variable; oak not the defining marker",
+      "sweetness": "dry",
+      "body": "medium",
+      "acidity": "high",
+      "alcohol": "medium",
+      "tannin": "soft to medium",
+      "color": "medium ruby",
+      "aroma_profile": [
+        "red cherry",
+        "red plum",
+        "strawberry",
+        "blackberry"
+      ],
+      "flavour_profile": [
+        "delicate red fruit",
+        "high acidity",
+        "soft tannin",
+        "fresh finish"
+      ],
+      "finish": "medium",
+      "quality_level": "good to very good",
+      "ageing_potential": "short to medium ageing"
+    },
+    "pedagogy": {
+      "core_concepts": [
+        "Dão delicacy",
+        "Portuguese mountain reds",
+        "soft tannin high acidity"
+      ],
+      "learning_objectives": [
+        "identify Dão red",
+        "separate Dão from Douro",
+        "connect diurnal range to acidity"
+      ],
+      "typical_misconceptions": [
+        "Portuguese reds are all full-bodied Douro",
+        "soft tannin means low quality",
+        "Dão is only white Encruzado"
+      ],
+      "mentor_focus": [
+        "ask if high acidity and soft tannin suggest Dão"
+      ],
+      "exam_traps": [
+        "calling Dão Douro",
+        "overstating body and tannin"
+      ],
+      "memory_hooks": [
+        "Dão is Portugal's fresher mountain red counterpoint to Douro"
+      ],
+      "comparison_styles": [
+        "Douro Red",
+        "Rioja Reserva"
+      ]
+    },
+    "comparison": {
+      "similar_profiles": [
+        "SAT_WINE_069"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_069",
+        "SAT_WINE_066"
+      ],
+      "distinguishing_features": [
+        "lighter and softer than Douro",
+        "higher acidity and delicate red fruit",
+        "mountainous Dão source"
+      ]
+    },
+    "teaching": {
+      "common_exam_points": [
+        "Dão lies at 200 to 400 metres",
+        "Dão reds show delicate red fruit, soft tannin and high acidity",
+        "Touriga Nacional, Tinta Roriz, Jaen and Alfrocheiro are planted"
+      ],
+      "student_traps": [
+        "confusing Dão with Douro",
+        "ignoring high acidity"
+      ],
+      "revision_priority": "medium"
+    },
+    "reusable_knowledge_refs": [
+      "dao_red_core"
+    ]
   }
 ]

@@ -3,7 +3,7 @@
 Source: D:\Descargas\Phone Link\WSET3_rebuilt.md
 Source SHA256: 91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25
 
-Profiles: 65
+Profiles: 70
 
 ## SAT_WINE_001 - Chablis
 - **canonical_id:** SAT_WINE_001
@@ -3644,4 +3644,284 @@ Profiles: 65
 - **section:** Campania - Aglianico / Taurasi
 - **page_reference:** 129
 - **line_reference:** ["12451-12456"]
+
+## SAT_WINE_066 - Rioja Reserva
+- **canonical_id:** SAT_WINE_066
+- **wine_family:** Tintos España / Portugal
+- **wine_name:** Rioja Reserva
+- **wine_style:** Rioja Reserva
+- **display_name:** Rioja Reserva
+- **wine_type:** TINTO
+- **country:** Spain
+- **region:** Rioja
+- **subregion:** Rioja Alta / Rioja Alavesa / Rioja Oriental
+- **appellation:** Rioja DOCa
+- **grape_varieties:** ["Tempranillo","Garnacha","Mazuelo","Graciano"]
+- **climate:** moderated by Atlantic influence in western Rioja with warmer Rioja Oriental
+- **altitude:** 500 to 800 metre vineyards in western subregions
+- **soil:** not specified by WSET; subregion and altitude are key
+- **viticulture:** ["Tempranillo is main component of most blends","Garnacha adds body and alcohol","Mazuelo and Graciano support blends"]
+- **winemaking:** ["traditional fermentation for long-term wines","oak maturation has defining role","American oak traditionally gives vanilla"]
+- **oak:** American oak traditional; French and other European oak increasingly used
+- **sweetness:** dry
+- **body:** medium to full
+- **acidity:** medium to high
+- **alcohol:** medium to high
+- **tannin:** medium
+- **color:** medium ruby to garnet
+- **aroma_profile:** ["red cherry","strawberry","vanilla","dill","leather"]
+- **flavour_profile:** ["red fruit","vanilla oak","spice","smooth tannin"]
+- **finish:** long
+- **quality_level:** very good to outstanding for top aged Rioja
+- **ageing_potential:** medium to long ageing
+- **expected_sat_observations:** ["medium ruby to garnet","medium to pronounced intensity","red cherry","strawberry","vanilla","dill","leather","dry","medium to high acidity","medium to full body","medium to high alcohol","medium tannin","red fruit","vanilla oak","spice","smooth tannin"]
+- **common_exam_points:** ["Tempranillo is the main Rioja component","Garnacha adds body and alcohol","oak maturation is defining in Rioja"]
+- **common_student_errors:** ["all Spanish Tempranillo tastes identical","vanilla means New World","Garnacha is never in Rioja"]
+- **mentor_hints:** ["Ask if oak character is American vanilla or modern spice.","Use blend roles as debrief."]
+- **descriptor_whitelist:** ["medium ruby to garnet","red cherry","strawberry","vanilla","dill","leather","dry","medium to high acidity","medium to full body","medium to high alcohol","medium tannin","red fruit","vanilla oak","spice","smooth tannin","more vanilla-oak and red-fruited than Ribera","less black-fruited and tannic than Priorat","Rioja subregion blend context"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Rioja evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Spain - Practica 066
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 6
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Selected Spain and Portugal red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["medium ruby to garnet"],"nose":["medium to pronounced intensity","red cherry","strawberry","vanilla","dill","leather"],"palate":["dry","medium to high acidity","medium to full body","medium to high alcohol","medium tannin","red fruit","vanilla oak","spice"],"quality":["very good to outstanding for top aged Rioja"],"ageing":["medium to long ageing"],"diagnostic_features":["rioja_tempranillo_core","more vanilla-oak and red-fruited than Ribera","less black-fruited and tannic than Priorat"]}
+- **pedagogical_dna:** {"core_concepts":["Rioja oak identity","Tempranillo blend structure","Spanish age category logic"],"learning_objectives":["identify oak-aged Rioja","separate Rioja from Ribera del Duero","connect American oak to vanilla"],"typical_misconceptions":["all Spanish Tempranillo tastes identical","vanilla means New World","Garnacha is never in Rioja"],"mentor_focus":["ask whether red fruit and vanilla oak point to Rioja"],"exam_traps":["calling Rioja Ribera from Tempranillo alone","overlooking blend roles"],"memory_hooks":["Rioja is Tempranillo red fruit framed by oak"],"comparison_styles":["Ribera del Duero","Barbera d'Asti"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_067"],"frequently_confused_with":["SAT_WINE_067"],"distinguishing_features":["more vanilla-oak and red-fruited than Ribera","less black-fruited and tannic than Priorat","Rioja subregion blend context"]}
+- **teaching_notes:** {"common_exam_points":["Tempranillo is the main Rioja component","Garnacha adds body and alcohol","oak maturation is defining in Rioja"],"mentor_hints":["Ask if oak character is American vanilla or modern spice.","Use blend roles as debrief."],"student_traps":["confusing Rioja with Ribera","ignoring oak maturation"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["rioja_tempranillo_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["13026-13064"],"line_reference":["13026-13064"],"evidence":["Tempranillo is the main component of most Rioja blends giving red fruit and medium tannin; Garnacha adds body and alcohol.","Oak maturation has a defining role in Rioja, traditionally American oak with pronounced vanilla."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-12-BATCH-009","schema_version":"CWP-02"}
+- **chapter:** 30 Spain
+- **section:** Rioja
+- **page_reference:** 134
+- **line_reference:** ["13026-13064"]
+
+## SAT_WINE_067 - Ribera del Duero
+- **canonical_id:** SAT_WINE_067
+- **wine_family:** Tintos España / Portugal
+- **wine_name:** Ribera del Duero
+- **wine_style:** Ribera del Duero
+- **display_name:** Ribera del Duero
+- **wine_type:** TINTO
+- **country:** Spain
+- **region:** Ribera del Duero
+- **subregion:** Duero Valley
+- **appellation:** Ribera del Duero DO
+- **grape_varieties:** ["Tempranillo"]
+- **climate:** continental, cut off from maritime influence with hot dry summers and very cold winters
+- **altitude:** high Meseta Central vineyards, some over 850 metres
+- **soil:** not specified by WSET; altitude and continental isolation are key
+- **viticulture:** ["DO for red and rosé only","Tempranillo is dominant and often sole grape in best reds","cool nights retain acidity and fresh fruit"]
+- **winemaking:** ["long macerations accentuate concentration and tannin","shorter ageing in new oak barrels increasingly French","deeply coloured concentrated style"]
+- **oak:** new oak, increasingly French
+- **sweetness:** dry
+- **body:** full
+- **acidity:** medium to high
+- **alcohol:** medium to high
+- **tannin:** high
+- **color:** deep ruby
+- **aroma_profile:** ["black cherry","blackberry","plum","vanilla","toast"]
+- **flavour_profile:** ["black fruit","firm tannin","new oak spice","fresh acidity"]
+- **finish:** long
+- **quality_level:** very good to outstanding
+- **ageing_potential:** long ageing potential
+- **expected_sat_observations:** ["deep ruby","medium to pronounced intensity","black cherry","blackberry","plum","vanilla","toast","dry","medium to high acidity","full body","medium to high alcohol","high tannin","black fruit","firm tannin","new oak spice","fresh acidity"]
+- **common_exam_points:** ["Ribera is mainly red wine","Tempranillo is dominant","best wines are dark with high tannin"]
+- **common_student_errors:** ["Ribera is just Rioja without oak","high alcohol means low acidity","Tempranillo always has medium tannin"]
+- **mentor_hints:** ["Ask if fruit/tannin profile is darker than Rioja.","Use altitude as the balancing clue."]
+- **descriptor_whitelist:** ["deep ruby","black cherry","blackberry","plum","vanilla","toast","dry","medium to high acidity","full body","medium to high alcohol","high tannin","black fruit","firm tannin","new oak spice","fresh acidity","darker and more tannic than Rioja","Tempranillo-dominant rather than Garnacha/Cariñena Priorat","high Meseta altitude"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Ribera del Duero evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Spain - Practica 067
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 7
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Selected Spain and Portugal red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["deep ruby"],"nose":["medium to pronounced intensity","black cherry","blackberry","plum","vanilla","toast"],"palate":["dry","medium to high acidity","full body","medium to high alcohol","high tannin","black fruit","firm tannin","new oak spice"],"quality":["very good to outstanding"],"ageing":["long ageing potential"],"diagnostic_features":["ribera_tempranillo_core","darker and more tannic than Rioja","Tempranillo-dominant rather than Garnacha/Cariñena Priorat"]}
+- **pedagogical_dna:** {"core_concepts":["high-altitude Tempranillo","Ribera concentration","new-oak structure"],"learning_objectives":["identify Ribera del Duero","separate Ribera from Rioja","link altitude to freshness"],"typical_misconceptions":["Ribera is just Rioja without oak","high alcohol means low acidity","Tempranillo always has medium tannin"],"mentor_focus":["ask whether darker fruit and tannin exceed Rioja"],"exam_traps":["calling all Tempranillo Rioja","missing altitude"],"memory_hooks":["Ribera is high-altitude Tempranillo with grip"],"comparison_styles":["Rioja Reserva","Priorat"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_066","SAT_WINE_068"],"frequently_confused_with":["SAT_WINE_066","SAT_WINE_068"],"distinguishing_features":["darker and more tannic than Rioja","Tempranillo-dominant rather than Garnacha/Cariñena Priorat","high Meseta altitude"]}
+- **teaching_notes:** {"common_exam_points":["Ribera is mainly red wine","Tempranillo is dominant","best wines are dark with high tannin"],"mentor_hints":["Ask if fruit/tannin profile is darker than Rioja.","Use altitude as the balancing clue."],"student_traps":["defaulting to Rioja","forgetting Ribera's altitude"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["ribera_tempranillo_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["13241-13274"],"line_reference":["13241-13274"],"evidence":["Ribera del Duero has high-altitude vineyards with cool nights that retain acidity and fresh fruit.","Tempranillo dominates the best reds, typically dark in colour with high tannin; many use long maceration and new oak."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-12-BATCH-009","schema_version":"CWP-02"}
+- **chapter:** 30 Spain
+- **section:** Ribera del Duero
+- **page_reference:** 137
+- **line_reference:** ["13241-13274"]
+
+## SAT_WINE_068 - Priorat
+- **canonical_id:** SAT_WINE_068
+- **wine_family:** Tintos España / Portugal
+- **wine_name:** Priorat
+- **wine_style:** Priorat
+- **display_name:** Priorat
+- **wine_type:** TINTO
+- **country:** Spain
+- **region:** Priorat
+- **subregion:** Catalunya inland hills
+- **appellation:** Priorat DOCa
+- **grape_varieties:** ["Garnacha","Carinena"]
+- **climate:** long hot dry summers and very low rainfall
+- **altitude:** steep inland hills from Tarragona
+- **soil:** llicorella red slate with mica
+- **viticulture:** ["old Garnacha and Cariñena vines","bush vines and steep slopes make mechanisation difficult","low nutrient soils and old vines give low yields"]
+- **winemaking:** ["concentrated red winemaking","new French oak commonly gives toasty aromas","some Cabernet Sauvignon may be added"]
+- **oak:** new French oak common
+- **sweetness:** dry
+- **body:** full
+- **acidity:** medium to high
+- **alcohol:** high
+- **tannin:** high
+- **color:** deep ruby
+- **aroma_profile:** ["black fruit","dried herbs","spice","toast","mineral"]
+- **flavour_profile:** ["concentrated black fruit","firm tannin","toasty oak","warm alcohol"]
+- **finish:** long
+- **quality_level:** very good to outstanding; intense and rarely cheap
+- **ageing_potential:** long ageing potential
+- **expected_sat_observations:** ["deep ruby","medium to pronounced intensity","black fruit","dried herbs","spice","toast","mineral","dry","medium to high acidity","full body","high alcohol","high tannin","concentrated black fruit","firm tannin","toasty oak","warm alcohol"]
+- **common_exam_points:** ["Priorat uses old Garnacha and Cariñena","llicorella soils help ripening and water retention","red Priorat is deep, tannic and concentrated"]
+- **common_student_errors:** ["Priorat is just Garnacha like simple Spain","new French oak means Bordeaux","all Catalunya reds are light"]
+- **mentor_hints:** ["Ask if the structure is Priorat intensity rather than Ribera Tempranillo.","Use llicorella as a memory hook."]
+- **descriptor_whitelist:** ["deep ruby","black fruit","dried herbs","spice","toast","mineral","dry","medium to high acidity","full body","high alcohol","high tannin","concentrated black fruit","firm tannin","toasty oak","warm alcohol","Garnacha/Cariñena rather than Tempranillo","llicorella slate clue","more black-fruit and new French oak intensity"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Priorat evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Spain - Practica 068
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 7
+- **confidence_score:** 0.97
+- **knowledge_summary:** {"wset_primary":["Selected Spain and Portugal red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["deep ruby"],"nose":["medium to pronounced intensity","black fruit","dried herbs","spice","toast","mineral"],"palate":["dry","medium to high acidity","full body","high alcohol","high tannin","concentrated black fruit","firm tannin","toasty oak"],"quality":["very good to outstanding; intense and rarely cheap"],"ageing":["long ageing potential"],"diagnostic_features":["priorat_core","Garnacha/Cariñena rather than Tempranillo","llicorella slate clue"]}
+- **pedagogical_dna:** {"core_concepts":["Priorat intensity","llicorella soils","old-vine Garnacha/Cariñena"],"learning_objectives":["identify Priorat structure","connect low yields to intensity","separate Priorat from Ribera"],"typical_misconceptions":["Priorat is just Garnacha like simple Spain","new French oak means Bordeaux","all Catalunya reds are light"],"mentor_focus":["ask for deep colour, high tannin, black fruit and heat"],"exam_traps":["calling Priorat Ribera","missing Cariñena role"],"memory_hooks":["Priorat is slate, old vines and concentrated black fruit"],"comparison_styles":["Ribera del Duero","Chateauneuf-du-Pape Rouge"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_067","SAT_WINE_057"],"frequently_confused_with":["SAT_WINE_067","SAT_WINE_057"],"distinguishing_features":["Garnacha/Cariñena rather than Tempranillo","llicorella slate clue","more black-fruit and new French oak intensity"]}
+- **teaching_notes:** {"common_exam_points":["Priorat uses old Garnacha and Cariñena","llicorella soils help ripening and water retention","red Priorat is deep, tannic and concentrated"],"mentor_hints":["Ask if the structure is Priorat intensity rather than Ribera Tempranillo.","Use llicorella as a memory hook."],"student_traps":["missing Cariñena","overlooking soil clue"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["priorat_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["13158-13238"],"line_reference":["13158-13238"],"evidence":["Priorat has old Garnacha and Cariñena vines, llicorella red slate soils, steep slopes and low yields.","Red Priorat is deeply coloured, high in tannins, medium to high alcohol, concentrated black fruit and often toasty new French oak."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-12-BATCH-009","schema_version":"CWP-02"}
+- **chapter:** 30 Spain
+- **section:** Priorat
+- **page_reference:** 135-136
+- **line_reference:** ["13158-13238"]
+
+## SAT_WINE_069 - Douro Red
+- **canonical_id:** SAT_WINE_069
+- **wine_family:** Tintos España / Portugal
+- **wine_name:** Douro Red
+- **wine_style:** Douro Red
+- **display_name:** Douro Red
+- **wine_type:** TINTO
+- **country:** Portugal
+- **region:** Douro
+- **subregion:** Douro Valley
+- **appellation:** Douro DOC
+- **grape_varieties:** ["Touriga Nacional","Touriga Franca","Tinta Roriz"]
+- **climate:** hot inland valley east of Porto with Port-influenced viticulture
+- **altitude:** steep Douro valley vineyards
+- **soil:** not specified here; Douro slope context is key
+- **viticulture:** ["same principal varieties as Port","Touriga Nacional is highest-quality and low yielding","unfortified wines have always been made"]
+- **winemaking:** ["dry red winemaking from Port varieties","best examples may mature in new oak","full-bodied black-fruited style"]
+- **oak:** new oak often gives subtle toasty aromas in best examples
+- **sweetness:** dry
+- **body:** full
+- **acidity:** medium to high
+- **alcohol:** high
+- **tannin:** high
+- **color:** deep ruby
+- **aroma_profile:** ["blackberry","black plum","violet","toast","spice"]
+- **flavour_profile:** ["rich black fruit","ripe tannin","toasty oak","full body"]
+- **finish:** long
+- **quality_level:** very good to outstanding
+- **ageing_potential:** medium to long ageing
+- **expected_sat_observations:** ["deep ruby","medium to pronounced intensity","blackberry","black plum","violet","toast","spice","dry","medium to high acidity","full body","high alcohol","high tannin","rich black fruit","ripe tannin","toasty oak","full body"]
+- **common_exam_points:** ["Douro is oldest demarcated region","unfortified reds rely on Port varieties","red Douro is deep, full and tannic"]
+- **common_student_errors:** ["Douro only makes Port","Touriga Nacional is only for fortified wine","Portugal reds are light"]
+- **mentor_hints:** ["Ask if alcohol/fortification is observed or assumed.","Use Touriga Nacional as anchor."]
+- **descriptor_whitelist:** ["deep ruby","blackberry","black plum","violet","toast","spice","dry","medium to high acidity","full body","high alcohol","high tannin","rich black fruit","ripe tannin","toasty oak","full body","fuller and blacker than Dão","Portuguese varieties rather than Priorat Garnacha/Cariñena","not fortified"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Douro evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Portugal - Practica 069
+- **priority:** 1
+- **wset_importance:** CORE
+- **practice_priority:** 5
+- **difficulty_score:** 6
+- **confidence_score:** 0.96
+- **knowledge_summary:** {"wset_primary":["Selected Spain and Portugal red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["deep ruby"],"nose":["medium to pronounced intensity","blackberry","black plum","violet","toast","spice"],"palate":["dry","medium to high acidity","full body","high alcohol","high tannin","rich black fruit","ripe tannin","toasty oak"],"quality":["very good to outstanding"],"ageing":["medium to long ageing"],"diagnostic_features":["douro_red_core","fuller and blacker than Dão","Portuguese varieties rather than Priorat Garnacha/Cariñena"]}
+- **pedagogical_dna:** {"core_concepts":["Portuguese dry red from Port varieties","Touriga Nacional quality","Douro black-fruit structure"],"learning_objectives":["identify Douro red","separate dry Douro from Port","connect varieties to structure"],"typical_misconceptions":["Douro only makes Port","Touriga Nacional is only for fortified wine","Portugal reds are light"],"mentor_focus":["ask whether full dry red uses Port grapes"],"exam_traps":["calling Douro Port","forgetting unfortified Douro"],"memory_hooks":["Douro red is dry table wine from Port's powerhouse grapes"],"comparison_styles":["Dao Red","Priorat"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_070","SAT_WINE_068"],"frequently_confused_with":["SAT_WINE_070","SAT_WINE_068"],"distinguishing_features":["fuller and blacker than Dão","Portuguese varieties rather than Priorat Garnacha/Cariñena","not fortified"]}
+- **teaching_notes:** {"common_exam_points":["Douro is oldest demarcated region","unfortified reds rely on Port varieties","red Douro is deep, full and tannic"],"mentor_hints":["Ask if alcohol/fortification is observed or assumed.","Use Touriga Nacional as anchor."],"student_traps":["assuming all Douro is Port","missing dry red category"],"revision_priority":"high"}
+- **reusable_knowledge_refs:** ["douro_red_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["13529-13550"],"line_reference":["13529-13550"],"evidence":["Douro unfortified reds rely on the same principal varieties as Port, including Touriga Nacional, Touriga Franca and Tinta Roriz.","Red Douro wines are deeply coloured, full-bodied, high in ripe tannins and rich black fruit, with best examples showing new oak toast."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-12-BATCH-009","schema_version":"CWP-02"}
+- **chapter:** 31 Portugal
+- **section:** Douro
+- **page_reference:** 140
+- **line_reference:** ["13529-13550"]
+
+## SAT_WINE_070 - Dao Red
+- **canonical_id:** SAT_WINE_070
+- **wine_family:** Tintos España / Portugal
+- **wine_name:** Dao Red
+- **wine_style:** Dao Red
+- **display_name:** Dao Red
+- **wine_type:** TINTO
+- **country:** Portugal
+- **region:** Dao
+- **subregion:** Central Portugal
+- **appellation:** Dao DOC
+- **grape_varieties:** ["Touriga Nacional","Tinta Roriz","Jaen","Alfrocheiro"]
+- **climate:** mountainous area with cold wet winters, warm dry summers and significant day-night variation
+- **altitude:** gentle hills and slopes between 200 and 400 metres
+- **soil:** not specified by WSET; mountain slope setting is key
+- **viticulture:** ["vineyards lie between 200 and 400 metres","day-night variation provides excellent grape conditions","new high-quality plantings include Touriga Nacional, Tinta Roriz, Jaen and Alfrocheiro"]
+- **winemaking:** ["dry red winemaking preserving delicate red fruit","oak may be used but delicacy is central","softer tannin style than Douro"]
+- **oak:** variable; oak not the defining marker
+- **sweetness:** dry
+- **body:** medium
+- **acidity:** high
+- **alcohol:** medium
+- **tannin:** soft to medium
+- **color:** medium ruby
+- **aroma_profile:** ["red cherry","red plum","strawberry","blackberry"]
+- **flavour_profile:** ["delicate red fruit","high acidity","soft tannin","fresh finish"]
+- **finish:** medium
+- **quality_level:** good to very good
+- **ageing_potential:** short to medium ageing
+- **expected_sat_observations:** ["medium ruby","medium to pronounced intensity","red cherry","red plum","strawberry","blackberry","dry","high acidity","medium body","medium alcohol","soft to medium tannin","delicate red fruit","high acidity","soft tannin","fresh finish"]
+- **common_exam_points:** ["Dão lies at 200 to 400 metres","Dão reds show delicate red fruit, soft tannin and high acidity","Touriga Nacional, Tinta Roriz, Jaen and Alfrocheiro are planted"]
+- **common_student_errors:** ["Portuguese reds are all full-bodied Douro","soft tannin means low quality","Dão is only white Encruzado"]
+- **mentor_hints:** ["Ask if tannin is actually ripe-high or soft-medium.","Use Dão as the Portuguese elegance contrast."]
+- **descriptor_whitelist:** ["medium ruby","red cherry","red plum","strawberry","blackberry","dry","high acidity","medium body","medium alcohol","soft to medium tannin","delicate red fruit","high acidity","soft tannin","fresh finish","lighter and softer than Douro","higher acidity and delicate red fruit","mountainous Dão source"]
+- **sat_constraints:** ["do not expose identity fields in blind render profiles","do not add markers that contradict WSET style evidence"]
+- **reasoning_notes:** Profile uses WSET Dão evidence; SAT sensory calibration uses standard style knowledge where WSET is less granular.
+- **display_label:** Vino Tinto - Portugal - Practica 070
+- **priority:** 2
+- **wset_importance:** HIGH
+- **practice_priority:** 4
+- **difficulty_score:** 5
+- **confidence_score:** 0.95
+- **knowledge_summary:** {"wset_primary":["Selected Spain and Portugal red profiles are explicitly described in WSET3_rebuilt.md."],"standard_wine_knowledge":["SAT sensory calibration uses accepted style norms where WSET is less granular."],"derived_from_style":["Difficulty and comparisons derive from WSET regional and grape contrasts."],"inferred_high_confidence":["Mentor hints and memory hooks are pedagogical inferences."]}
+- **sat_fingerprint:** {"appearance":["medium ruby"],"nose":["medium to pronounced intensity","red cherry","red plum","strawberry","blackberry"],"palate":["dry","high acidity","medium body","medium alcohol","soft to medium tannin","delicate red fruit","high acidity","soft tannin"],"quality":["good to very good"],"ageing":["short to medium ageing"],"diagnostic_features":["dao_red_core","lighter and softer than Douro","higher acidity and delicate red fruit"]}
+- **pedagogical_dna:** {"core_concepts":["Dão delicacy","Portuguese mountain reds","soft tannin high acidity"],"learning_objectives":["identify Dão red","separate Dão from Douro","connect diurnal range to acidity"],"typical_misconceptions":["Portuguese reds are all full-bodied Douro","soft tannin means low quality","Dão is only white Encruzado"],"mentor_focus":["ask if high acidity and soft tannin suggest Dão"],"exam_traps":["calling Dão Douro","overstating body and tannin"],"memory_hooks":["Dão is Portugal's fresher mountain red counterpoint to Douro"],"comparison_styles":["Douro Red","Rioja Reserva"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_069"],"frequently_confused_with":["SAT_WINE_069","SAT_WINE_066"],"distinguishing_features":["lighter and softer than Douro","higher acidity and delicate red fruit","mountainous Dão source"]}
+- **teaching_notes:** {"common_exam_points":["Dão lies at 200 to 400 metres","Dão reds show delicate red fruit, soft tannin and high acidity","Touriga Nacional, Tinta Roriz, Jaen and Alfrocheiro are planted"],"mentor_hints":["Ask if tannin is actually ripe-high or soft-medium.","Use Dão as the Portuguese elegance contrast."],"student_traps":["confusing Dão with Douro","ignoring high acidity"],"revision_priority":"medium"}
+- **reusable_knowledge_refs:** ["dao_red_core"]
+- **field_metadata:** {"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"knowledge_summary":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"canonical_id":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wine_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"wine_style":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_name":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"display_label":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"PUBLIC"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"climate":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"DERIVED_FROM_STYLE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"body":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"sat_constraints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"PUBLIC"},"reusable_knowledge_refs":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"TRAINING"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"expected_sat_observations":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"INFERRED_HIGH_CONFIDENCE","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"SERVER_ONLY"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","line_references":["13555-13572"],"line_reference":["13555-13572"],"evidence":["Dão vineyards are in a mountainous area at 200 to 400 metres with significant day-night temperature variation.","Dão reds often display delicate red fruit aromas, soft tannins and high acidity, with varieties including Touriga Nacional, Tinta Roriz, Jaen and Alfrocheiro."]}
+- **canonical_source:** {"title":"WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","batch":"CWP-12-BATCH-009","schema_version":"CWP-02"}
+- **chapter:** 31 Portugal
+- **section:** Dão
+- **page_reference:** 140
+- **line_reference:** ["13555-13572"]
 
