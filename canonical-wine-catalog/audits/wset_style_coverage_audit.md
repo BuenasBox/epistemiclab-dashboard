@@ -5,13 +5,13 @@ Alcance: solo auditoria documental del Canonical Wine Catalog. No se agregaron n
 
 ## Fuentes
 
-- Especificacion oficial WSET Nivel 3 en Vinos: `C:\Dev\WSET-AI-System-push\knowledge\official-wset\specification\wset_l3wines_specification_es_highres_aug2023_issue201.md`
-- Manual reconstruido WSET: `D:\Descargas\Phone Link\WSET3_rebuilt.md`
+- Especificaciones oficiales WSET Nivel 3 en Vinos: `C:\Dev\WSET-AI-System-push\knowledge\official-wset\specification\wset_l3wines_specification_es_highres_aug2023_issue201.md`
+- Libro oficial WSET Nivel 3 en Vinos: `D:\Descargas\Phone Link\WSET3_rebuilt.md`
 - Catalogo actual: `canonical-wine-catalog/profiles/`
 
 ## Criterio de extraccion
 
-La lista base de estilos se extrajo de la seccion oficial `Recomendaciones de Vinos para Catar`, porque es la lista de estilos de cata explicitamente nominada por la especificacion. Para evitar perder cobertura teorica, la interpretacion se contrasto contra los Bloques 1 de los Resultados de Aprendizaje 2, 3 y 4: regiones de vinos tranquilos, principales espumosos y principales generosos.
+Esta auditoria trata los dos documentos WSET como fuentes primarias separadas. Las especificaciones oficiales se usaron para extraer la lista obligatoria y recomendada de estilos, especialmente la seccion `Recomendaciones de Vinos para Catar` y los Bloques 1 de los Resultados de Aprendizaje 2, 3 y 4. El libro oficial `WSET3_rebuilt.md` se uso como fuente primaria complementaria para contrastar el contenido de regiones, variedades, estilos y los perfiles existentes del catalogo.
 
 Cada estilo fue normalizado por pais, region, appellation, variedad y categoria: blanco, tinto, rosado, espumoso, dulce, fortificado o combinaciones cuando WSET define el estilo asi.
 
