@@ -133,6 +133,43 @@
   .reserved .slot small{ font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold); }
   .btn[aria-disabled="true"]{ opacity:.45; cursor:not-allowed; filter:none; pointer-events:none; }
 
+
+  /* ===== SAT-POST-UX-01: paneles post-cata + impresión ===== */
+  .post-panel{ margin-top:14px; border-top:1px solid var(--line); padding-top:14px; }
+  .pp-reveal{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 12px; }
+  .pp-sec{ margin:12px 0; }
+  .pp-sec h4{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 6px; }
+  .pp-li{ position:relative; padding:4px 0 4px 16px; font-size:13.7px; line-height:1.45; }
+  .pp-li::before{ content:""; position:absolute; left:0; top:11px; width:6px; height:6px; border-radius:50%; background:var(--wine2); }
+  .cmp-intro{ font-size:13px; color:var(--muted); margin:0 0 10px; line-height:1.5; }
+  .cmp-row{ display:grid; grid-template-columns:1.1fr 1.2fr auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line); font-size:13.5px; }
+  .cmp-row .lab{ color:var(--muted); }
+  .cmp-row b{ font-weight:700; }
+  .tone{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; white-space:nowrap; border:1px solid var(--line); text-align:center; }
+  .tone.ok{ color:var(--ok); border-color:rgba(63,168,107,.45); }
+  .tone.near{ color:var(--gold); border-color:rgba(201,162,39,.45); }
+  .tone.warn{ color:var(--warn); border-color:rgba(217,154,43,.5); }
+  .tone.block{ color:var(--block); border-color:rgba(193,72,63,.5); }
+  .tone.na{ color:var(--muted); }
+  .recommend{ margin-top:8px; }
+  .disclaimer{ font-size:12px; color:var(--muted); border:1px dashed var(--line); border-radius:10px; padding:10px 12px; margin:0 0 16px; }
+  .print-only{ display:none; }
+  @media print{
+    @page{ margin:14mm; }
+    body{ background:#fff !important; color:#111 !important; }
+    .wrap{ max-width:none; padding:0; }
+    header.top, .steps, #screen-intro, #screen-loading, #screen-tasting,
+    #btn-restart, #btn-home, #btn-debrief, #btn-compare, #btn-print, #btn-start-rec, a.back{ display:none !important; }
+    .print-only{ display:block !important; }
+    .card, .report-hero, .post-panel{ background:#fff !important; color:#111 !important; border:1px solid #cbb !important; box-shadow:none !important; break-inside:avoid; }
+    .report-hero{ border-radius:12px; }
+    h1,h3,h4,.rh-title,.sat-hero-title,.rh-eyebrow{ color:#222 !important; }
+    .muted,.phase-sub,.rep-li .pick,.cmp-row .lab,.disclaimer{ color:#555 !important; }
+    .sat-hb,.tone,.pill,.wic-badge{ color:#222 !important; border-color:#bbb !important; background:#f6f2ee !important; }
+    .sat-hero-objective,.wic-objective{ background:#f6f1e7 !important; }
+    .swg-crystal path,.swg-crystal ellipse,.swg-crystal line{ stroke:#888 !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -193,6 +230,7 @@
   </section>
 
   <section id="screen-summary" style="display:none">
+    <div class="print-only" id="print-head"><h2 style="margin:0 0 2px">Informe de práctica SAT · EpistemicLab</h2><div id="print-date" class="muted" style="font-size:12px"></div></div>
     <h1>Informe de práctica</h1>
     <p class="sub" id="summary-msg"></p>
 
@@ -238,21 +276,21 @@
     <div class="card">
       <h3 style="margin:0 0 10px;font-size:16px">Preparación para la siguiente práctica</h3>
       <div class="nextprep" id="nextprep-box"></div>
+      <div class="recommend" id="recommend-box"></div>
     </div>
 
     <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Próximamente</h3>
-      <div class="reserved">
-        <div class="slot"><small>Próximamente</small><b>Debrief guiado</b>Repaso razonado del vino y de tus inferencias.</div>
-        <div class="slot"><small>Próximamente</small><b>Informe en PDF</b>Exporta esta práctica para revisarla más tarde.</div>
-        <div class="slot"><small>Próximamente</small><b>Comparación con el modelo</b>Contrasta tu cata con la referencia del mentor.</div>
+      <h3 style="margin:0 0 10px;font-size:16px">Profundiza en esta práctica</h3>
+      <div class="row" style="flex-wrap:wrap">
+        <button class="btn" id="btn-debrief">Ver debrief</button>
+        <button class="btn ghost" id="btn-compare">Comparación con el modelo</button>
+        <button class="btn ghost" id="btn-print">Imprimir / Descargar PDF</button>
       </div>
-      <div class="row" style="margin-top:14px">
-        <button class="btn ghost" id="btn-debrief" aria-disabled="true" title="Disponible próximamente">Ver debrief</button>
-        <button class="btn ghost" id="btn-pdf" aria-disabled="true" title="Disponible próximamente">Descargar PDF</button>
-      </div>
+      <div id="debrief-panel" class="post-panel" style="display:none"></div>
+      <div id="compare-panel" class="post-panel" style="display:none"></div>
     </div>
 
+    <p class="disclaimer" id="print-disclaimer">Práctica formativa. No es evaluación oficial WSET.</p>
     <div class="card">
       <p class="muted" style="margin:0 0 12px;font-size:13.5px">Recuerda: el SAT premia el razonamiento (observación → inferencia → causa → juicio) y el compromiso con una conclusión, no acertar a ciegas.</p>
       <div class="row">
@@ -316,7 +354,7 @@
     {id:'POTENCIAL_GUARDA', title:'Estado para el consumo / Potencial para el envejecimiento', sub:'Decide el estado para el consumo y el potencial para el envejecimiento a partir de la estructura observada.', decisions:['potencial_guarda']}
   ];
 
-  var S = { wine:null, attemptId:null, phaseIdx:0, answers:{}, decisionsCount:0 };
+  var S = { wine:null, attemptId:null, phaseIdx:0, answers:{}, decisionsCount:0, finished:false };
   var glass = null;
 
   // Estado declarado por el estudiante para la copa (NUNCA la respuesta correcta).
@@ -409,7 +447,7 @@
         body:JSON.stringify({wine_id:S.wine.id,mode:'blind_simulation',source:'canonical_wine'})});
       var sd = await sr.json();
       if(!sr.ok || !sd.attempt_id) throw new Error('No se pudo iniciar la práctica.');
-      S.attemptId = sd.attempt_id; S.phaseIdx=0; S.answers={}; S.decisionsCount=0; glass=null;
+      S.attemptId = sd.attempt_id; S.phaseIdx=0; S.answers={}; S.decisionsCount=0; glass=null; S.finished=false;
       renderTasting();
     }catch(e){
       show('screen-intro'); $('intro-err').textContent = e.message || String(e);
@@ -524,6 +562,10 @@
 
   function renderSummary(){
     show('screen-summary');
+    S.finished = true;
+    try{ if($('print-date')) $('print-date').textContent = new Date().toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'}); }catch(e){}
+    var _dp=$('debrief-panel'); if(_dp){ _dp.style.display='none'; _dp.innerHTML=''; }
+    var _cp=$('compare-panel'); if(_cp){ _cp.style.display='none'; _cp.innerHTML=''; }
     if (window.SATWineGlass && $('glass-mount-summary')) { var sg=SATWineGlass.mount($('glass-mount-summary')); sg.update(glassState(false)); }
     $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(S.wine.display_label||'tu vino')+'.';
     $('phases-box').innerHTML = PHASES.map(function(p){
@@ -572,7 +614,160 @@
       });
     });
     $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
+    loadRecommend();
   }
+
+  // ============================================================================
+  // SAT-POST-UX-01 — Contratos post-cata. SOLO se cargan tras finalizar (commit).
+  // Durante la cata jamás se descargan; el gate S.finished lo garantiza.
+  // No se expone canonical completo, expected raw, source refs, scoring ni pass/fail.
+  // ============================================================================
+  var POST = { debrief:null, comparison:null, recommend:null };
+  function escP(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function ppList(arr){ if(!arr||!arr.length) return ''; return arr.map(function(x){ return '<div class="pp-li">'+escP(x)+'</div>'; }).join(''); }
+  function uniqP(a){ var seen={},o=[]; (a||[]).forEach(function(x){ if(x&&!seen[x]){ seen[x]=1; o.push(x); } }); return o; }
+  function fetchPost(file, key){
+    if(!S.finished) return Promise.reject(new Error('Contrato post-cata bloqueado antes de finalizar.'));
+    if(POST[key]) return Promise.resolve(POST[key]);
+    return fetch('../canonical-wine-catalog/exports/'+file).then(function(r){ return r.json(); }).then(function(j){ POST[key]=j; return j; });
+  }
+
+  // ---- Ver Debrief ----
+  function toggleDebrief(){
+    var p=$('debrief-panel'); if(!p) return;
+    if(p.style.display!=='none' && p.innerHTML){ p.style.display='none'; return; }
+    p.style.display='block'; p.innerHTML='<span class="spin"></span>';
+    fetchPost('post_tasting_debrief.json','debrief').then(function(j){
+      var d=j[S.wine.id];
+      p.innerHTML = d ? renderDebrief(d) : '<p class="muted">Debrief no disponible para esta práctica.</p>';
+    }).catch(function(e){ p.innerHTML='<p class="err">'+escP(e.message||e)+'</p>'; });
+  }
+  function renderDebrief(d){
+    var si=d.safe_identity||{}, dna=d.pedagogical_dna||{}, tn=d.teaching_notes||{}, ce=d.comparison_engine||{};
+    function chip(v,cls){ return v?('<span class="sat-hb '+(cls||'')+'">'+escP(v)+'</span>'):''; }
+    var rev=chip(si.wine_family)+chip(si.country)+chip(si.region);
+    if(si.appellation) rev+=chip(si.appellation);
+    (si.grape_varieties||[]).forEach(function(g){ rev+=chip(g,'type'); });
+    var why=(si.wset_importance==='CORE'?'Estilo núcleo del examen WSET. ':'')+(tn.revision_priority?('Prioridad de repaso: '+escP(tn.revision_priority)+'. '):'')+(si.wine_style?escP(si.wine_style):'');
+    var traps=uniqP([].concat(dna.typical_misconceptions||[], d.exam_traps||[], tn.student_traps||[]));
+    var sim=uniqP([].concat(dna.comparison_styles||[]));
+    var h='<h3 style="margin:0 0 4px;font-size:17px">Debrief — '+escP(si.display_name||'Vino')+'</h3>';
+    if(rev) h+='<div class="pp-reveal">'+rev+'</div>';
+    if(why) h+='<div class="pp-sec"><h4>Por qué importa este estilo</h4><div class="pp-li" style="padding-left:0">'+why+'</div></div>';
+    if(dna.core_concepts&&dna.core_concepts.length) h+='<div class="pp-sec"><h4>Conceptos clave</h4>'+ppList(dna.core_concepts)+'</div>';
+    if(dna.learning_objectives&&dna.learning_objectives.length) h+='<div class="pp-sec"><h4>Objetivos de aprendizaje</h4>'+ppList(dna.learning_objectives)+'</div>';
+    if(traps.length) h+='<div class="pp-sec"><h4>Trampas frecuentes</h4>'+ppList(traps)+'</div>';
+    if(d.memory_hooks&&d.memory_hooks.length) h+='<div class="pp-sec"><h4>Anclas de memoria</h4>'+ppList(d.memory_hooks)+'</div>';
+    if(d.mentor_focus&&d.mentor_focus.length) h+='<div class="pp-sec"><h4>Enfoque del mentor</h4>'+ppList(d.mentor_focus)+'</div>';
+    var simBlock=ppList(sim)+ppList(ce.distinguishing_features);
+    if(simBlock) h+='<div class="pp-sec"><h4>Estilos similares o confundibles</h4>'+simBlock+'</div>';
+    var review=uniqP([].concat(tn.student_traps||[], d.exam_traps||[]));
+    if(review.length) h+='<div class="pp-sec"><h4>Qué deberías revisar</h4>'+ppList(review)+'</div>';
+    return h;
+  }
+
+  // ---- Comparación con el modelo (tono formativo, nunca correcto/incorrecto) ----
+  var CMP_SCALE={acidez:['baja','media_menos','media','media_más','alta'],dulzor:['seco','casi_seco','semiseco','semidulce','dulce','muy_dulce'],cuerpo:['poco','medio_menos','medio','medio_más','mucho'],alcohol:['bajo','medio','alto'],tanino:['bajo','medio_menos','medio','medio_más','alto']};
+  var CMP_BAND_ATTR={dulzor:'sweetness',acidez:'acidity',cuerpo:'body',alcohol:'alcohol',tanino:'tannin'};
+  function cmpBandRange(dn,text){
+    text=(text||'').toLowerCase(); var idx=[];
+    function add(i){ idx.push(i); }
+    if(dn==='acidez'||dn==='tanino'){
+      if(/\blow\b/.test(text)) add(0);
+      if(/medium[\s-]*minus/.test(text)) add(1);
+      if(/\bmedium\b/.test(text)) add(2);
+      if(/medium[\s-]*plus/.test(text)) add(3);
+      if(/\bhigh\b/.test(text)) add(4);
+    } else if(dn==='cuerpo'){
+      if(/\blight\b|\blow\b/.test(text)) add(0);
+      if(/\bmedium\b/.test(text)) add(2);
+      if(/\bfull\b/.test(text)) add(4);
+    } else if(dn==='alcohol'){
+      if(/\blow\b/.test(text)) add(0);
+      if(/\bmedium\b/.test(text)) add(1);
+      if(/\bhigh\b/.test(text)) add(2);
+    } else if(dn==='dulzor'){
+      if(/\bdry\b/.test(text)) add(0);
+      if(/off[\s-]*dry|medium[\s-]*dry/.test(text)) add(1);
+      if(/residual sugar|some sweetness/.test(text)) add(2);
+      if(/semi|medium[\s-]*sweet/.test(text)) add(3);
+      if(/\bsweet\b/.test(text)) add(4);
+    }
+    if(!idx.length) return null;
+    return [Math.min.apply(null,idx), Math.max.apply(null,idx)];
+  }
+  function cmpTone(dn,val,text){
+    var sc=CMP_SCALE[dn]; if(!sc) return null;
+    var si=sc.indexOf(val); if(si<0) return null;
+    var r=cmpBandRange(dn,text); if(!r) return null;
+    var dist = si<r[0]? r[0]-si : (si>r[1]? si-r[1] : 0);
+    if(dist===0) return {t:'Coincide',cls:'ok'};
+    if(dist===1) return {t:'Cerca',cls:'near'};
+    if(dist===2) return {t:'Revisar',cls:'warn'};
+    return {t:'Posible contradicción',cls:'block'};
+  }
+  function toggleCompare(){
+    var p=$('compare-panel'); if(!p) return;
+    if(p.style.display!=='none' && p.innerHTML){ p.style.display='none'; return; }
+    p.style.display='block'; p.innerHTML='<span class="spin"></span>';
+    fetchPost('post_tasting_model_comparison.json','comparison').then(function(j){
+      var c=j[S.wine.id];
+      p.innerHTML = c ? renderCompare(c) : '<p class="muted">Comparación no disponible para esta práctica.</p>';
+    }).catch(function(e){ p.innerHTML='<p class="err">'+escP(e.message||e)+'</p>'; });
+  }
+  function renderCompare(c){
+    var bands=(c.descriptor_bands&&c.descriptor_bands.palate)||{};
+    var tn=c.teaching_notes||{}, av=c.acceptable_variations||{};
+    var h='<h3 style="margin:0 0 4px;font-size:17px">Comparación con el modelo</h3>';
+    if(tn.comparison_prompt) h+='<p class="cmp-intro">'+escP(tn.comparison_prompt)+'</p>';
+    var order=['dulzor','acidez','tanino','alcohol','cuerpo'];
+    var rows='';
+    order.forEach(function(dn){
+      var a=S.answers[dn]; if(!a) return;
+      var band=bands[CMP_BAND_ATTR[dn]];
+      var bandTxt = (band==null)?'—':(band==='not_applicable'?'No aplica':String(band));
+      var tone = (band==='not_applicable')? {t:'No aplica',cls:'na'} : cmpTone(dn, a.value, String(band));
+      var toneHtml = tone? '<span class="tone '+tone.cls+'">'+tone.t+'</span>' : '<span class="tone na">Referencia</span>';
+      rows+='<div class="cmp-row"><span><b>'+escP(DEC_TITLE[dn])+'</b><br><span class="lab">Tú: '+escP(a.label)+'</span></span>'
+          + '<span class="lab">Modelo: '+escP(bandTxt)+'</span>'+toneHtml+'</div>';
+    });
+    if(rows) h+='<div class="pp-sec"><h4>Tu estructura vs. el modelo</h4>'+rows+'</div>';
+    var mr=c.model_reference||{};
+    var refMap=[['appearance_model','Aspecto'],['nose_model','Nariz'],['palate_model','Paladar'],['quality_model','Calidad'],['ageing_consumption_model','Estado / Guarda']];
+    var ref='';
+    refMap.forEach(function(pair){ var arr=mr[pair[0]]; if(arr&&arr.length){ ref+='<div class="pp-sec"><h4>'+pair[1]+' — referencia del modelo</h4>'+ppList(arr)+'</div>'; } });
+    if(ref) h+=ref;
+    if(av.style_tolerance&&av.style_tolerance.length) h+='<div class="pp-sec"><h4>Cómo leer esta comparación</h4>'+ppList(av.style_tolerance)+'</div>';
+    return h;
+  }
+
+  // ---- Siguiente práctica recomendada ----
+  function loadRecommend(){
+    var box=$('recommend-box'); if(!box) return; box.innerHTML='';
+    fetchPost('next_practice_recommendations.json','recommend').then(function(j){
+      var r=j[S.wine.id]; if(!r||!r.recommended_next||!r.recommended_next.length){ box.innerHTML=''; return; }
+      var nextId=r.recommended_next[0];
+      var h='<div class="pp-sec" style="margin:6px 0 0"><h4>Siguiente práctica recomendada</h4>';
+      if(r.reason) h+='<div class="pp-li" style="padding-left:0">'+escP(r.reason)+'</div>';
+      h+='<button class="btn" id="btn-start-rec" data-id="'+escP(nextId)+'" style="margin-top:10px">Iniciar práctica recomendada</button></div>';
+      box.innerHTML=h;
+      var b=$('btn-start-rec'); if(b) b.addEventListener('click', function(){ startRecommended(b.getAttribute('data-id')); });
+    }).catch(function(){ box.innerHTML=''; });
+  }
+  function startRecommended(id){
+    var b=$('btn-start-rec'); if(b){ b.disabled=true; b.textContent='Cargando…'; }
+    requireAuth().then(function(token){
+      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=70', {headers:{'Authorization':'Bearer '+token}});
+    }).then(function(r){ return r.json(); }).then(function(wd){
+      var list=(wd&&wd.wines)||[], w=null;
+      for(var i=0;i<list.length;i++){ if(list[i].id===id){ w=list[i]; break; } }
+      if(!w){ if(b){ b.disabled=false; b.textContent='Iniciar práctica recomendada'; } return; }
+      previewWine=w;
+      try{ renderCardForWine(w); }catch(e){}
+      requestEntry();
+    }).catch(function(){ if(b){ b.disabled=false; b.textContent='Iniciar práctica recomendada'; } });
+  }
+
 
   // SAT-UX-05: la card refleja el VINO REAL de la practica.
   // Resolucion: wine_id (get-sat-wines) -> render_profile_map.json (.blind) ->
@@ -673,6 +868,9 @@
     $('btn-prev').addEventListener('click', prevPhase);
     $('btn-restart').addEventListener('click', function(){ show('screen-intro'); $('intro-err').textContent=''; previewWine=null; previewPracticeWine(); });
     $('btn-home').addEventListener('click', function(){ window.location.href='../index.html'; });
+    var _bd=$('btn-debrief'); if(_bd) _bd.addEventListener('click', toggleDebrief);
+    var _bc=$('btn-compare'); if(_bc) _bc.addEventListener('click', toggleCompare);
+    var _bp=$('btn-print'); if(_bp) _bp.addEventListener('click', function(){ window.print(); });
   });
 })();
 </script>
