@@ -284,13 +284,17 @@
   async function startPractice(){
     show('screen-loading');
     try{
-      var hr = await authHeaders(false);
-      var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation', {headers:hr});
-      if(!wr.ok) throw new Error('No se pudo cargar el inventario de cata.');
-      var wd = await wr.json();
-      var list = wd.wines||[];
-      if(!list.length) throw new Error('No hay vinos disponibles ahora mismo.');
-      S.wine = list[Math.floor(Math.random()*list.length)];
+      var wine = previewWine;
+      if(!wine){
+        var hr = await authHeaders(false);
+        var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation', {headers:hr});
+        if(!wr.ok) throw new Error('No se pudo cargar el inventario de cata.');
+        var wd = await wr.json();
+        var list = wd.wines||[];
+        if(!list.length) throw new Error('No hay vinos disponibles ahora mismo.');
+        wine = list[Math.floor(Math.random()*list.length)];
+      }
+      S.wine = wine;
       var hp = await authHeaders(true);
       var sr = await fetch(FN+'start-sat-attempt', {method:'POST',headers:hp,
         body:JSON.stringify({wine_id:S.wine.id,mode:'blind_simulation',source:'canonical_wine'})});
@@ -402,8 +406,14 @@
     $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
   }
 
-  // SAT-UX-04: consumo del CONTRATO SEGURO del catalogo (solo render_profiles.blind.json).
-  // El canonical completo NO llega al navegador. Solo se lee este export blind-safe.
+  // SAT-UX-05: la card refleja el VINO REAL de la practica.
+  // Resolucion: wine_id (get-sat-wines) -> render_profile_map.json (.blind) ->
+  // render_profiles.blind.json. Solo se consume el contrato blind-safe; el
+  // canonical completo NUNCA llega al navegador, y debrief/training NO se cargan en cata.
+  var WINE_MAP = null;        // { SAT_WINE_xxx: {blind, debrief, training} }
+  var BLIND_BY_RENDER = null; // { BLIND_xxx: profile }
+  var previewWine = null;     // vino preseleccionado (reusado por la practica)
+
   function blindDiffLabel(band, sc){
     var m={foundation:'Fundamento',intermediate:'Intermedio',advanced:'Avanzado',expert:'Experto'};
     if(band && m[band]) return m[band];
@@ -425,23 +435,55 @@
       glass: (item&&item.glass&&item.glass.wine_type)?{ wineType:item.glass.wine_type }:null
     };
   }
-  function loadBlindCard(){
+  function loadCatalogIndexes(){
+    return Promise.all([
+      fetch('../canonical-wine-catalog/exports/render_profile_map.json').then(function(r){return r.json();}).catch(function(){return null;}),
+      fetch('../canonical-wine-catalog/exports/render_profiles.blind.json').then(function(r){return r.json();}).catch(function(){return null;})
+    ]).then(function(res){
+      WINE_MAP = res[0] || {};
+      var blind = Array.isArray(res[1]) ? res[1] : [];
+      BLIND_BY_RENDER = {};
+      blind.forEach(function(pr){ if(pr && pr.render_id) BLIND_BY_RENDER[pr.render_id]=pr; });
+    });
+  }
+  function resolveBlindProfile(wineId){
+    if(!WINE_MAP || !BLIND_BY_RENDER || !wineId) return null;
+    var entry = WINE_MAP[wineId];
+    var rid = entry && entry.blind;
+    return rid ? (BLIND_BY_RENDER[rid] || null) : null;
+  }
+  function renderCardForWine(wine){
     if(!(window.WineIntelligenceCard && $('wic-demo'))) return;
-    fetch('../canonical-wine-catalog/exports/render_profiles.blind.json')
-      .then(function(r){ return r.json(); })
-      .then(function(list){
-        if(!Array.isArray(list) || !list.length){ $('wic-demo').innerHTML=''; return; }
-        WineIntelligenceCard.mount($('wic-demo'), mapBlindToCard(list[0]));
-      })
-      .catch(function(){ $('wic-demo').innerHTML=''; });
+    if(!wine){ $('wic-demo').innerHTML=''; return; }
+    var prof = resolveBlindProfile(wine.id);
+    if(prof){ WineIntelligenceCard.mount($('wic-demo'), mapBlindToCard(prof)); return; }
+    // Fallback sin perfil en el mapa: refleja al menos el tipo del vino real (sin identidad)
+    var wt=wine.wine_type;
+    WineIntelligenceCard.mount($('wic-demo'), {
+      identity:{ display_label:'Vino '+(wt==='TINTO'?'tinto':(wt==='ROSADO'?'rosado':'blanco'))+' — práctica a ciegas',
+        wine_type:wt||null, practice_mode:'Cata a ciegas' },
+      glass: wt?{ wineType:wt }:null
+    });
+  }
+  // Preselecciona el vino REAL (get-sat-wines) y pinta la card; el mismo vino se reusa en la practica.
+  function previewPracticeWine(){
+    if(!$('wic-demo')) return;
+    requireAuth().then(function(token){
+      return fetch(FN+'get-sat-wines?mode=blind_simulation', {headers:{'Authorization':'Bearer '+token}});
+    }).then(function(r){ return r.json(); }).then(function(wd){
+      var list=(wd&&wd.wines)||[];
+      if(!list.length){ previewWine=null; $('wic-demo').innerHTML=''; return; }
+      previewWine = list[Math.floor(Math.random()*list.length)];
+      renderCardForWine(previewWine);
+    }).catch(function(){ previewWine=null; $('wic-demo').innerHTML=''; });
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    loadBlindCard();
+    loadCatalogIndexes().then(previewPracticeWine);
     $('mode-blind').addEventListener('click', requestEntry);
     $('btn-next').addEventListener('click', nextPhase);
     $('btn-prev').addEventListener('click', prevPhase);
-    $('btn-restart').addEventListener('click', function(){ show('screen-intro'); $('intro-err').textContent=''; });
+    $('btn-restart').addEventListener('click', function(){ show('screen-intro'); $('intro-err').textContent=''; previewWine=null; previewPracticeWine(); });
     $('btn-home').addEventListener('click', function(){ window.location.href='../index.html'; });
   });
 })();
