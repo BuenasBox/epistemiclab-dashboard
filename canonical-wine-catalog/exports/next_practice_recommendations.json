@@ -1,0 +1,2587 @@
+{
+  "SAT_WINE_001": {
+    "canonical_id": "SAT_WINE_001",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "body",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_003",
+      "SAT_WINE_009",
+      "SAT_WINE_005"
+    ],
+    "reason": "Continue with Macon / Macon Villages or Sancerre / Pouilly-Fume Sauvignon Blanc or Alsace Riesling to practise nearby style distinctions for Chablis.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_003"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_009",
+          "SAT_WINE_005"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_002": {
+    "canonical_id": "SAT_WINE_002",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_004",
+      "SAT_WINE_001",
+      "SAT_WINE_003"
+    ],
+    "reason": "Continue with Pouilly-Fuisse / Saint-Veran or Chablis or Macon / Macon Villages to practise nearby style distinctions for Cote de Beaune White Burgundy.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_004"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_001",
+          "SAT_WINE_003"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_003": {
+    "canonical_id": "SAT_WINE_003",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_004",
+      "SAT_WINE_001",
+      "SAT_WINE_002"
+    ],
+    "reason": "Continue with Pouilly-Fuisse / Saint-Veran or Chablis or Cote de Beaune White Burgundy to practise nearby style distinctions for Macon / Macon Villages.",
+    "basis": {
+      "difficulty_score": 3,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_004"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_001",
+          "SAT_WINE_002"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_004": {
+    "canonical_id": "SAT_WINE_004",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_002",
+      "SAT_WINE_003"
+    ],
+    "reason": "Continue with Cote de Beaune White Burgundy or Macon / Macon Villages to practise nearby style distinctions for Pouilly-Fuisse / Saint-Veran.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_002",
+          "SAT_WINE_003"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_003"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_005": {
+    "canonical_id": "SAT_WINE_005",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_009",
+      "SAT_WINE_001"
+    ],
+    "reason": "Continue with Sancerre / Pouilly-Fume Sauvignon Blanc or Chablis to practise nearby style distinctions for Alsace Riesling.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_009"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_001",
+          "SAT_WINE_009"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_006": {
+    "canonical_id": "SAT_WINE_006",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_007",
+      "SAT_WINE_008",
+      "SAT_WINE_011"
+    ],
+    "reason": "Continue with Alsace Pinot Gris or Alsace Muscat or Condrieu Viognier to practise nearby style distinctions for Alsace Gewurztraminer.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_007",
+          "SAT_WINE_008",
+          "SAT_WINE_011"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_008",
+          "SAT_WINE_011"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_007": {
+    "canonical_id": "SAT_WINE_007",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_006",
+      "SAT_WINE_008"
+    ],
+    "reason": "Continue with Alsace Gewurztraminer or Alsace Muscat to practise nearby style distinctions for Alsace Pinot Gris.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_006"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_006",
+          "SAT_WINE_008"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_008": {
+    "canonical_id": "SAT_WINE_008",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_006"
+    ],
+    "reason": "Continue with Alsace Gewurztraminer to practise nearby style distinctions for Alsace Muscat.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "HIGH",
+      "practice_priority": 3,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_006"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_006"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_009": {
+    "canonical_id": "SAT_WINE_009",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_001",
+      "SAT_WINE_005"
+    ],
+    "reason": "Continue with Chablis or Alsace Riesling to practise nearby style distinctions for Sancerre / Pouilly-Fume Sauvignon Blanc.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_001",
+          "SAT_WINE_005"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_001",
+          "SAT_WINE_005"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_010": {
+    "canonical_id": "SAT_WINE_010",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_005",
+      "SAT_WINE_009"
+    ],
+    "reason": "Continue with Alsace Riesling or Sancerre / Pouilly-Fume Sauvignon Blanc to practise nearby style distinctions for Loire Chenin Blanc.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_005"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_005",
+          "SAT_WINE_009"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_011": {
+    "canonical_id": "SAT_WINE_011",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_006",
+      "SAT_WINE_002"
+    ],
+    "reason": "Continue with Alsace Gewurztraminer or Cote de Beaune White Burgundy to practise nearby style distinctions for Condrieu Viognier.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_006"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_006",
+          "SAT_WINE_002"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_012": {
+    "canonical_id": "SAT_WINE_012",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_016",
+      "SAT_WINE_013",
+      "SAT_WINE_017"
+    ],
+    "reason": "Continue with Riesling Kabinett or Rheingau Riesling or Riesling Spatlese to practise nearby style distinctions for Mosel Riesling.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_016"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_013",
+          "SAT_WINE_017"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_013": {
+    "canonical_id": "SAT_WINE_013",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_014",
+      "SAT_WINE_015",
+      "SAT_WINE_012"
+    ],
+    "reason": "Continue with Pfalz Riesling or Rheinhessen Riesling or Mosel Riesling to practise nearby style distinctions for Rheingau Riesling.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_014",
+          "SAT_WINE_015"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_012",
+          "SAT_WINE_017"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_014": {
+    "canonical_id": "SAT_WINE_014",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_013",
+      "SAT_WINE_015",
+      "SAT_WINE_005"
+    ],
+    "reason": "Continue with Rheingau Riesling or Rheinhessen Riesling or Alsace Riesling to practise nearby style distinctions for Pfalz Riesling.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_013",
+          "SAT_WINE_015"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_013",
+          "SAT_WINE_005"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_015": {
+    "canonical_id": "SAT_WINE_015",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_013",
+      "SAT_WINE_014"
+    ],
+    "reason": "Continue with Rheingau Riesling or Pfalz Riesling to practise nearby style distinctions for Rheinhessen Riesling.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_013",
+          "SAT_WINE_014"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_014",
+          "SAT_WINE_013"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_016": {
+    "canonical_id": "SAT_WINE_016",
+    "if_student_struggles_with": [
+      "sweetness",
+      "acidity",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_017",
+      "SAT_WINE_018"
+    ],
+    "reason": "Progress from Kabinett to Spatlese/Auslese sweetness-acidity balance.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_012"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_017"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_017": {
+    "canonical_id": "SAT_WINE_017",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_016",
+      "SAT_WINE_018"
+    ],
+    "reason": "Continue with Riesling Kabinett or Riesling Auslese to practise nearby style distinctions for Riesling Spatlese.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_016",
+          "SAT_WINE_018"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_016",
+          "SAT_WINE_018"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_018": {
+    "canonical_id": "SAT_WINE_018",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_017",
+      "SAT_WINE_019"
+    ],
+    "reason": "Continue with Riesling Spatlese or Beerenauslese to practise nearby style distinctions for Riesling Auslese.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_017",
+          "SAT_WINE_019"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_017",
+          "SAT_WINE_019"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_019": {
+    "canonical_id": "SAT_WINE_019",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_020",
+      "SAT_WINE_018",
+      "SAT_WINE_021"
+    ],
+    "reason": "Continue with Trockenbeerenauslese or Riesling Auslese or Eiswein to practise nearby style distinctions for Beerenauslese.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_020"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_018",
+          "SAT_WINE_021"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_020": {
+    "canonical_id": "SAT_WINE_020",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_019",
+      "SAT_WINE_021"
+    ],
+    "reason": "Continue with Beerenauslese or Eiswein to practise nearby style distinctions for Trockenbeerenauslese.",
+    "basis": {
+      "difficulty_score": 9,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_019"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_019",
+          "SAT_WINE_021"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_021": {
+    "canonical_id": "SAT_WINE_021",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_019",
+      "SAT_WINE_020"
+    ],
+    "reason": "Continue with Beerenauslese or Trockenbeerenauslese to practise nearby style distinctions for Eiswein.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_019",
+          "SAT_WINE_020"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_019",
+          "SAT_WINE_020"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_022": {
+    "canonical_id": "SAT_WINE_022",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_025",
+      "SAT_WINE_026",
+      "SAT_WINE_023"
+    ],
+    "reason": "Continue with Kamptal Grüner Veltliner or Kremstal Grüner Veltliner or Wachau Riesling to practise nearby style distinctions for Wachau Grüner Veltliner.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_025",
+          "SAT_WINE_026"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_023",
+          "SAT_WINE_024"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_023": {
+    "canonical_id": "SAT_WINE_023",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_013",
+      "SAT_WINE_005",
+      "SAT_WINE_022"
+    ],
+    "reason": "Continue with Rheingau Riesling or Alsace Riesling or Wachau Grüner Veltliner to practise nearby style distinctions for Wachau Riesling.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_013",
+          "SAT_WINE_005"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_022",
+          "SAT_WINE_013"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_024": {
+    "canonical_id": "SAT_WINE_024",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "quality_judgement",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_025",
+      "SAT_WINE_026",
+      "SAT_WINE_022"
+    ],
+    "reason": "Continue with Kamptal Grüner Veltliner or Kremstal Grüner Veltliner or Wachau Grüner Veltliner to practise nearby style distinctions for Weinviertel Grüner Veltliner.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_025",
+          "SAT_WINE_026"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_022"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_025": {
+    "canonical_id": "SAT_WINE_025",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_022",
+      "SAT_WINE_026"
+    ],
+    "reason": "Continue with Wachau Grüner Veltliner or Kremstal Grüner Veltliner to practise nearby style distinctions for Kamptal Grüner Veltliner.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_022",
+          "SAT_WINE_026"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_022",
+          "SAT_WINE_026"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_026": {
+    "canonical_id": "SAT_WINE_026",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_022",
+      "SAT_WINE_025",
+      "SAT_WINE_023"
+    ],
+    "reason": "Continue with Wachau Grüner Veltliner or Kamptal Grüner Veltliner or Wachau Riesling to practise nearby style distinctions for Kremstal Grüner Veltliner.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_022",
+          "SAT_WINE_025"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_025",
+          "SAT_WINE_023"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_027": {
+    "canonical_id": "SAT_WINE_027",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_019",
+      "SAT_WINE_020",
+      "SAT_WINE_010"
+    ],
+    "reason": "Continue with Beerenauslese or Trockenbeerenauslese or Loire Chenin Blanc to practise nearby style distinctions for Neusiedlersee / Burgenland Sweet Welschriesling.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_019",
+          "SAT_WINE_020"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_020",
+          "SAT_WINE_010"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_028": {
+    "canonical_id": "SAT_WINE_028",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_029",
+      "SAT_WINE_030",
+      "SAT_WINE_009"
+    ],
+    "reason": "Continue with Trentino Pinot Grigio / Chardonnay or Friuli Pinot Grigio or Sancerre / Pouilly-Fume Sauvignon Blanc to practise nearby style distinctions for Alto Adige Pinot Grigio.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_029",
+          "SAT_WINE_030"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_009",
+          "SAT_WINE_031"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_029": {
+    "canonical_id": "SAT_WINE_029",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_028",
+      "SAT_WINE_030",
+      "SAT_WINE_003"
+    ],
+    "reason": "Continue with Alto Adige Pinot Grigio or Friuli Pinot Grigio or Macon / Macon Villages to practise nearby style distinctions for Trentino Pinot Grigio / Chardonnay.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_028",
+          "SAT_WINE_030"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_028",
+          "SAT_WINE_003"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_030": {
+    "canonical_id": "SAT_WINE_030",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "quality_judgement",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_029",
+      "SAT_WINE_028",
+      "SAT_WINE_003"
+    ],
+    "reason": "Continue with Trentino Pinot Grigio / Chardonnay or Alto Adige Pinot Grigio or Macon / Macon Villages to practise nearby style distinctions for Friuli Pinot Grigio.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_029",
+          "SAT_WINE_028"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_003",
+          "SAT_WINE_031"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_031": {
+    "canonical_id": "SAT_WINE_031",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_030",
+      "SAT_WINE_035",
+      "SAT_WINE_032"
+    ],
+    "reason": "Continue with Friuli Pinot Grigio or Verdicchio dei Castelli di Jesi or Gavi to practise nearby style distinctions for Soave Classico.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_030",
+          "SAT_WINE_035"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_030",
+          "SAT_WINE_032"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_032": {
+    "canonical_id": "SAT_WINE_032",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_028",
+      "SAT_WINE_035",
+      "SAT_WINE_031"
+    ],
+    "reason": "Continue with Alto Adige Pinot Grigio or Verdicchio dei Castelli di Jesi or Soave Classico to practise nearby style distinctions for Gavi.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_028",
+          "SAT_WINE_035"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_031",
+          "SAT_WINE_033"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_033": {
+    "canonical_id": "SAT_WINE_033",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "quality_judgement",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_034",
+      "SAT_WINE_032"
+    ],
+    "reason": "Continue with Frascati or Gavi to practise nearby style distinctions for Orvieto.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_034"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_034",
+          "SAT_WINE_032"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_034": {
+    "canonical_id": "SAT_WINE_034",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_033",
+      "SAT_WINE_032"
+    ],
+    "reason": "Continue with Orvieto or Gavi to practise nearby style distinctions for Frascati.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_033"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_033",
+          "SAT_WINE_032"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_035": {
+    "canonical_id": "SAT_WINE_035",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_031",
+      "SAT_WINE_032",
+      "SAT_WINE_033"
+    ],
+    "reason": "Continue with Soave Classico or Gavi or Orvieto to practise nearby style distinctions for Verdicchio dei Castelli di Jesi.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_031",
+          "SAT_WINE_032"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_031",
+          "SAT_WINE_033"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_036": {
+    "canonical_id": "SAT_WINE_036",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_037",
+      "SAT_WINE_030"
+    ],
+    "reason": "Continue with Greco di Tufo or Friuli Pinot Grigio to practise nearby style distinctions for Fiano di Avellino.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_037"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_037",
+          "SAT_WINE_030"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_037": {
+    "canonical_id": "SAT_WINE_037",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_036",
+      "SAT_WINE_032",
+      "SAT_WINE_009"
+    ],
+    "reason": "Continue with Fiano di Avellino or Gavi or Sancerre / Pouilly-Fume Sauvignon Blanc to practise nearby style distinctions for Greco di Tufo.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_036",
+          "SAT_WINE_032"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_036",
+          "SAT_WINE_009"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_038": {
+    "canonical_id": "SAT_WINE_038",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_039",
+      "SAT_WINE_032",
+      "SAT_WINE_009"
+    ],
+    "reason": "Continue with Rias Baixas Albarino or Gavi or Sancerre / Pouilly-Fume Sauvignon Blanc to practise nearby style distinctions for Rueda Verdejo.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_039",
+          "SAT_WINE_032"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_009",
+          "SAT_WINE_028"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_039": {
+    "canonical_id": "SAT_WINE_039",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_038",
+      "SAT_WINE_041",
+      "SAT_WINE_009"
+    ],
+    "reason": "Continue with Rueda Verdejo or Vinho Verde or Sancerre / Pouilly-Fume Sauvignon Blanc to practise nearby style distinctions for Rias Baixas Albarino.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_038",
+          "SAT_WINE_041"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_009",
+          "SAT_WINE_032"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_040": {
+    "canonical_id": "SAT_WINE_040",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_038",
+      "SAT_WINE_031",
+      "SAT_WINE_003"
+    ],
+    "reason": "Continue with Rueda Verdejo or Soave Classico or Macon / Macon Villages to practise nearby style distinctions for White Rioja Viura.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_038",
+          "SAT_WINE_031"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_003",
+          "SAT_WINE_036"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_041": {
+    "canonical_id": "SAT_WINE_041",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_039",
+      "SAT_WINE_008"
+    ],
+    "reason": "Continue with Rias Baixas Albarino or Alsace Muscat to practise nearby style distinctions for Vinho Verde.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_039"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_039",
+          "SAT_WINE_008"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_042": {
+    "canonical_id": "SAT_WINE_042",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_040",
+      "SAT_WINE_003",
+      "SAT_WINE_038"
+    ],
+    "reason": "Continue with White Rioja Viura or Macon / Macon Villages or Rueda Verdejo to practise nearby style distinctions for Dao Encruzado.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_040"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_003",
+          "SAT_WINE_038"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_043": {
+    "canonical_id": "SAT_WINE_043",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_001",
+      "SAT_WINE_032",
+      "SAT_WINE_009"
+    ],
+    "reason": "Continue with Chablis or Gavi or Sancerre / Pouilly-Fume Sauvignon Blanc to practise nearby style distinctions for Santorini Assyrtiko.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_001",
+          "SAT_WINE_032"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_001",
+          "SAT_WINE_009"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_044": {
+    "canonical_id": "SAT_WINE_044",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_045",
+      "SAT_WINE_040",
+      "SAT_WINE_003"
+    ],
+    "reason": "Continue with Sonoma Coast Chardonnay or White Rioja Viura or Macon / Macon Villages to practise nearby style distinctions for California Chardonnay.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_045",
+          "SAT_WINE_040"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_003",
+          "SAT_WINE_036"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_045": {
+    "canonical_id": "SAT_WINE_045",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_044",
+      "SAT_WINE_001",
+      "SAT_WINE_003"
+    ],
+    "reason": "Continue with California Chardonnay or Chablis or Macon / Macon Villages to practise nearby style distinctions for Sonoma Coast Chardonnay.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_044",
+          "SAT_WINE_001"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_001",
+          "SAT_WINE_003"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_046": {
+    "canonical_id": "SAT_WINE_046",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_051",
+      "SAT_WINE_009",
+      "SAT_WINE_038"
+    ],
+    "reason": "Continue with Marlborough Sauvignon Blanc or Sancerre / Pouilly-Fume Sauvignon Blanc or Rueda Verdejo to practise nearby style distinctions for Chile Coastal Sauvignon Blanc.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_051",
+          "SAT_WINE_009"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_051",
+          "SAT_WINE_038"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_047": {
+    "canonical_id": "SAT_WINE_047",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_011",
+      "SAT_WINE_034",
+      "SAT_WINE_043"
+    ],
+    "reason": "Continue with Condrieu Viognier or Frascati or Santorini Assyrtiko to practise nearby style distinctions for Salta Torrontes.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_011",
+          "SAT_WINE_034"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_011",
+          "SAT_WINE_043"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_048": {
+    "canonical_id": "SAT_WINE_048",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_007",
+      "SAT_WINE_036",
+      "SAT_WINE_044"
+    ],
+    "reason": "Continue with Alsace Pinot Gris or Fiano di Avellino or California Chardonnay to practise nearby style distinctions for South Africa Chenin Blanc.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_007",
+          "SAT_WINE_036"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_044",
+          "SAT_WINE_007"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_049": {
+    "canonical_id": "SAT_WINE_049",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_050",
+      "SAT_WINE_008",
+      "SAT_WINE_044"
+    ],
+    "reason": "Continue with Clare Valley Riesling or Alsace Muscat or California Chardonnay to practise nearby style distinctions for Hunter Valley Semillon.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_050",
+          "SAT_WINE_008"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_044",
+          "SAT_WINE_008"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_050": {
+    "canonical_id": "SAT_WINE_050",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_023",
+      "SAT_WINE_016"
+    ],
+    "reason": "Continue with Wachau Riesling or Riesling Kabinett to practise nearby style distinctions for Clare Valley Riesling.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_023",
+          "SAT_WINE_016"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_016",
+          "SAT_WINE_023"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_051": {
+    "canonical_id": "SAT_WINE_051",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_046",
+      "SAT_WINE_009",
+      "SAT_WINE_038"
+    ],
+    "reason": "Continue with Chile Coastal Sauvignon Blanc or Sancerre / Pouilly-Fume Sauvignon Blanc or Rueda Verdejo to practise nearby style distinctions for Marlborough Sauvignon Blanc.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "BLANCO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_046",
+          "SAT_WINE_009"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_046",
+          "SAT_WINE_038"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_052": {
+    "canonical_id": "SAT_WINE_052",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "tannin",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_053"
+    ],
+    "reason": "Continue with Right Bank Bordeaux to practise nearby style distinctions for Left Bank Bordeaux.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_053"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_053"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_053": {
+    "canonical_id": "SAT_WINE_053",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_052"
+    ],
+    "reason": "Continue with Left Bank Bordeaux to practise nearby style distinctions for Right Bank Bordeaux.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_052"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_052"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_054": {
+    "canonical_id": "SAT_WINE_054",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "tannin",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_055"
+    ],
+    "reason": "Continue with Beaujolais Villages / Cru to practise nearby style distinctions for Cote d'Or Red Burgundy.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_055"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_055"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_055": {
+    "canonical_id": "SAT_WINE_055",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "tannin",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_054"
+    ],
+    "reason": "Continue with Cote d'Or Red Burgundy to practise nearby style distinctions for Beaujolais Villages / Cru.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_054"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_054"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_056": {
+    "canonical_id": "SAT_WINE_056",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_057"
+    ],
+    "reason": "Continue with Chateauneuf-du-Pape Rouge to practise nearby style distinctions for Northern Rhone Syrah.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_057"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_057"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_057": {
+    "canonical_id": "SAT_WINE_057",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_056"
+    ],
+    "reason": "Continue with Northern Rhone Syrah to practise nearby style distinctions for Chateauneuf-du-Pape Rouge.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_056"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_056"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_058": {
+    "canonical_id": "SAT_WINE_058",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_059",
+      "SAT_WINE_055"
+    ],
+    "reason": "Continue with Amarone della Valpolicella or Beaujolais Villages / Cru to practise nearby style distinctions for Valpolicella.",
+    "basis": {
+      "difficulty_score": 4,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_059",
+          "SAT_WINE_055"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_055",
+          "SAT_WINE_059"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_059": {
+    "canonical_id": "SAT_WINE_059",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_058",
+      "SAT_WINE_057"
+    ],
+    "reason": "Continue with Valpolicella or Chateauneuf-du-Pape Rouge to practise nearby style distinctions for Amarone della Valpolicella.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_058",
+          "SAT_WINE_057"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_058",
+          "SAT_WINE_057"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_060": {
+    "canonical_id": "SAT_WINE_060",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "tannin",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_061",
+      "SAT_WINE_064",
+      "SAT_WINE_052"
+    ],
+    "reason": "Continue with Barbaresco or Brunello di Montalcino or Left Bank Bordeaux to practise nearby style distinctions for Barolo.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_061",
+          "SAT_WINE_064"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_061",
+          "SAT_WINE_052"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_061": {
+    "canonical_id": "SAT_WINE_061",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_060",
+      "SAT_WINE_054"
+    ],
+    "reason": "Continue with Barolo or Cote d'Or Red Burgundy to practise nearby style distinctions for Barbaresco.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_060"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_060",
+          "SAT_WINE_054"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_062": {
+    "canonical_id": "SAT_WINE_062",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "tannin",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_060",
+      "SAT_WINE_063"
+    ],
+    "reason": "Continue with Barolo or Chianti Classico to practise nearby style distinctions for Barbera d'Asti.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_060",
+          "SAT_WINE_063"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_060",
+          "SAT_WINE_063"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_063": {
+    "canonical_id": "SAT_WINE_063",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_064",
+      "SAT_WINE_062"
+    ],
+    "reason": "Continue with Brunello di Montalcino or Barbera d'Asti to practise nearby style distinctions for Chianti Classico.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_064",
+          "SAT_WINE_062"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_062",
+          "SAT_WINE_064"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_064": {
+    "canonical_id": "SAT_WINE_064",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_063",
+      "SAT_WINE_060"
+    ],
+    "reason": "Continue with Chianti Classico or Barolo to practise nearby style distinctions for Brunello di Montalcino.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_063",
+          "SAT_WINE_060"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_063",
+          "SAT_WINE_060"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_065": {
+    "canonical_id": "SAT_WINE_065",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_060",
+      "SAT_WINE_064"
+    ],
+    "reason": "Continue with Barolo or Brunello di Montalcino to practise nearby style distinctions for Taurasi.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_060",
+          "SAT_WINE_064"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_060",
+          "SAT_WINE_064"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_066": {
+    "canonical_id": "SAT_WINE_066",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_067"
+    ],
+    "reason": "Continue with Ribera del Duero to practise nearby style distinctions for Rioja Reserva.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_067"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_067"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_067": {
+    "canonical_id": "SAT_WINE_067",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "tannin",
+      "oak"
+    ],
+    "recommended_next": [
+      "SAT_WINE_066",
+      "SAT_WINE_068"
+    ],
+    "reason": "Continue with Rioja Reserva or Priorat to practise nearby style distinctions for Ribera del Duero.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_066",
+          "SAT_WINE_068"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_066",
+          "SAT_WINE_068"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_068": {
+    "canonical_id": "SAT_WINE_068",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "oak",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_067",
+      "SAT_WINE_057"
+    ],
+    "reason": "Continue with Ribera del Duero or Chateauneuf-du-Pape Rouge to practise nearby style distinctions for Priorat.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_067",
+          "SAT_WINE_057"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_067",
+          "SAT_WINE_057"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_069": {
+    "canonical_id": "SAT_WINE_069",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "quality_judgement",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_070",
+      "SAT_WINE_068"
+    ],
+    "reason": "Continue with Dao Red or Priorat to practise nearby style distinctions for Douro Red.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_070",
+          "SAT_WINE_068"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_070",
+          "SAT_WINE_068"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_070": {
+    "canonical_id": "SAT_WINE_070",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "acidity",
+      "tannin",
+      "quality_judgement"
+    ],
+    "recommended_next": [
+      "SAT_WINE_069",
+      "SAT_WINE_066"
+    ],
+    "reason": "Continue with Douro Red or Rioja Reserva to practise nearby style distinctions for Dao Red.",
+    "basis": {
+      "difficulty_score": 5,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "wine_type": "TINTO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_069"
+        ],
+        "frequently_confused_with": [
+          "SAT_WINE_069",
+          "SAT_WINE_066"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  }
+}

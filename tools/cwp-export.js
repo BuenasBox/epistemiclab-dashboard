@@ -14,6 +14,10 @@ const EXPORT_NAMES = {
   renderDebrief: 'render_profiles.debrief.json',
   renderTraining: 'render_profiles.training.json',
   renderMap: 'render_profile_map.json',
+  postTastingDebrief: 'post_tasting_debrief.json',
+  postTastingModelComparison: 'post_tasting_model_comparison.json',
+  nextPracticeRecommendations: 'next_practice_recommendations.json',
+  postTastingSchema: 'post_tasting_schema.md',
 };
 
 const COLUMNS = [
@@ -311,6 +315,10 @@ function exportProfiles(profiles, exportDir) {
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderDebrief), toPrettyJson(toDebriefRenderProfiles(profiles, 'debrief')), 'utf8');
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderTraining), toPrettyJson(toDebriefRenderProfiles(profiles, 'training')), 'utf8');
   fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.renderMap), toPrettyJson(toRenderProfileMap(profiles)), 'utf8');
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.postTastingDebrief), toPrettyJson(toPostTastingDebrief(profiles)), 'utf8');
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.postTastingModelComparison), toPrettyJson(toPostTastingModelComparison(profiles)), 'utf8');
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.nextPracticeRecommendations), toPrettyJson(toNextPracticeRecommendations(profiles)), 'utf8');
+  fs.writeFileSync(path.join(exportDir, EXPORT_NAMES.postTastingSchema), toPostTastingSchema(), 'utf8');
 }
 
 function toPrettyJson(value) {
@@ -419,6 +427,246 @@ function toRenderProfileMap(profiles) {
     };
     return map;
   }, {});
+}
+
+function toPostTastingDebrief(profiles) {
+  return profiles.reduce((map, profile, index) => {
+    map[profile.canonical_id] = {
+      canonical_id: profile.canonical_id,
+      debrief_render_id: `DEBRIEF_${String(index + 1).padStart(3, '0')}`,
+      safe_identity: safeIdentity(profile),
+      pedagogical_dna: {
+        core_concepts: profile.pedagogical_dna.core_concepts,
+        learning_objectives: profile.pedagogical_dna.learning_objectives,
+        typical_misconceptions: profile.pedagogical_dna.typical_misconceptions,
+        comparison_styles: profile.pedagogical_dna.comparison_styles,
+      },
+      teaching_notes: {
+        student_traps: profile.teaching_notes.student_traps,
+        revision_priority: profile.teaching_notes.revision_priority,
+      },
+      comparison_engine: {
+        similar_profiles: profile.comparison_engine.similar_profiles,
+        frequently_confused_with: profile.comparison_engine.frequently_confused_with,
+        distinguishing_features: profile.comparison_engine.distinguishing_features,
+      },
+      mentor_focus: profile.pedagogical_dna.mentor_focus,
+      exam_traps: profile.pedagogical_dna.exam_traps,
+      memory_hooks: profile.pedagogical_dna.memory_hooks,
+      allowed_reveal_stage: 'post_commitment',
+      governance: postTastingGovernance(),
+    };
+    return map;
+  }, {});
+}
+
+function toPostTastingModelComparison(profiles) {
+  return profiles.reduce((map, profile) => {
+    map[profile.canonical_id] = {
+      canonical_id: profile.canonical_id,
+      allowed_reveal_stage: 'post_commitment',
+      comparison_mode: 'formative_model_reference',
+      governance: {
+        ...postTastingGovernance(),
+        examiner_key_available: false,
+      },
+      model_reference: {
+        appearance_model: profile.sat_fingerprint.appearance,
+        nose_model: profile.sat_fingerprint.nose,
+        palate_model: profile.sat_fingerprint.palate,
+        quality_model: profile.sat_fingerprint.quality,
+        ageing_consumption_model: profile.sat_fingerprint.ageing,
+      },
+      descriptor_bands: {
+        appearance: {
+          color: profile.color,
+        },
+        nose: {
+          aroma_profile: profile.aroma_profile,
+        },
+        palate: {
+          sweetness: profile.sweetness,
+          acidity: profile.acidity,
+          body: profile.body,
+          alcohol: profile.alcohol,
+          tannin: profile.tannin,
+          flavour_profile: profile.flavour_profile,
+          finish: profile.finish,
+        },
+        quality: {
+          quality_level: profile.quality_level,
+        },
+        ageing_consumption: {
+          ageing_potential: profile.ageing_potential,
+        },
+      },
+      acceptable_variations: {
+        style_tolerance: [
+          'Compare the student note against the style band rather than a single required phrase.',
+          'Treat nearby intensity, body, acidity, and fruit descriptors as discussion points when the overall style logic is coherent.',
+        ],
+        descriptor_families: {
+          aroma_profile: profile.aroma_profile,
+          flavour_profile: profile.flavour_profile,
+          diagnostic_features: profile.sat_fingerprint.diagnostic_features,
+        },
+      },
+      teaching_notes: {
+        comparison_prompt: 'Use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.',
+        focus_points: profile.pedagogical_dna.mentor_focus,
+        student_traps: profile.teaching_notes.student_traps,
+      },
+    };
+    return map;
+  }, {});
+}
+
+function toNextPracticeRecommendations(profiles) {
+  const byId = new Map(profiles.map((profile) => [profile.canonical_id, profile]));
+  const overrides = {
+    SAT_WINE_016: {
+      if_student_struggles_with: ['sweetness', 'acidity', 'quality_judgement'],
+      recommended_next: ['SAT_WINE_017', 'SAT_WINE_018'],
+      reason: 'Progress from Kabinett to Spatlese/Auslese sweetness-acidity balance.',
+    },
+  };
+
+  return profiles.reduce((map, profile, index) => {
+    const fallbackNext = defaultRecommendedNext(profile, profiles, index);
+    const override = overrides[profile.canonical_id] || {};
+    const recommendedNext = (override.recommended_next || fallbackNext).filter((id) => byId.has(id) && id !== profile.canonical_id);
+
+    map[profile.canonical_id] = {
+      canonical_id: profile.canonical_id,
+      if_student_struggles_with: override.if_student_struggles_with || inferStruggleDimensions(profile),
+      recommended_next: recommendedNext.length > 0 ? recommendedNext : [profiles[(index + 1) % profiles.length].canonical_id],
+      reason: override.reason || recommendationReason(profile, recommendedNext, byId),
+      basis: {
+        difficulty_score: profile.difficulty_score,
+        wset_importance: profile.wset_importance,
+        practice_priority: profile.practice_priority,
+        wine_type: profile.wine_type,
+        comparison_engine: {
+          similar_profiles: profile.comparison_engine.similar_profiles,
+          frequently_confused_with: profile.comparison_engine.frequently_confused_with,
+        },
+      },
+      future_student_gap_inputs: [
+        'appearance',
+        'nose',
+        'palate_structure',
+        'quality_judgement',
+        'readiness',
+        'identity_logic',
+      ],
+    };
+    return map;
+  }, {});
+}
+
+function safeIdentity(profile) {
+  return {
+    display_name: profile.display_name,
+    wine_name: profile.wine_name,
+    wine_family: profile.wine_family,
+    wine_style: profile.wine_style,
+    wine_type: profile.wine_type,
+    country: profile.country,
+    region: profile.region,
+    subregion: profile.subregion,
+    appellation: profile.appellation,
+    grape_varieties: profile.grape_varieties,
+    display_label: profile.display_label,
+    difficulty_score: profile.difficulty_score,
+    difficulty_band: difficultyBand(profile.difficulty_score),
+    wset_importance: profile.wset_importance,
+    practice_priority: profile.practice_priority,
+  };
+}
+
+function postTastingGovernance() {
+  return {
+    formative_only: true,
+    official_scoring: false,
+    safe_for_examiner: false,
+  };
+}
+
+function inferStruggleDimensions(profile) {
+  const dimensions = ['identity_logic'];
+  const text = [
+    profile.sweetness,
+    profile.acidity,
+    profile.body,
+    profile.alcohol,
+    profile.tannin,
+    ...(profile.pedagogical_dna.core_concepts || []),
+    ...(profile.pedagogical_dna.typical_misconceptions || []),
+  ].join(' ').toLowerCase();
+
+  if (text.includes('sweet')) dimensions.push('sweetness');
+  if (text.includes('acid')) dimensions.push('acidity');
+  if (text.includes('tannin')) dimensions.push('tannin');
+  if (text.includes('oak')) dimensions.push('oak');
+  if (text.includes('body')) dimensions.push('body');
+  if (text.includes('quality')) dimensions.push('quality_judgement');
+  if (dimensions.length < 3) dimensions.push('aroma_descriptor_precision');
+  return Array.from(new Set(dimensions)).slice(0, 4);
+}
+
+function defaultRecommendedNext(profile, profiles, index) {
+  const candidates = [
+    ...profile.comparison_engine.similar_profiles,
+    ...profile.comparison_engine.frequently_confused_with,
+  ].filter((id) => id && id !== profile.canonical_id);
+
+  if (candidates.length > 0) return Array.from(new Set(candidates)).slice(0, 3);
+
+  return profiles
+    .filter((candidate) => candidate.canonical_id !== profile.canonical_id && candidate.wine_type === profile.wine_type)
+    .sort((a, b) => Math.abs(a.difficulty_score - profile.difficulty_score) - Math.abs(b.difficulty_score - profile.difficulty_score))
+    .slice(0, 2)
+    .map((candidate) => candidate.canonical_id)
+    .concat(profiles[(index + 1) % profiles.length].canonical_id)
+    .filter((id, candidateIndex, ids) => ids.indexOf(id) === candidateIndex && id !== profile.canonical_id)
+    .slice(0, 3);
+}
+
+function recommendationReason(profile, recommendedNext, byId) {
+  const names = recommendedNext.map((id) => byId.get(id)?.display_name).filter(Boolean);
+  if (names.length > 0) {
+    return `Continue with ${names.join(' or ')} to practise nearby style distinctions for ${profile.display_name}.`;
+  }
+  return `Continue with a nearby ${profile.wine_type.toLowerCase()} profile to reinforce the same tasting logic.`;
+}
+
+function toPostTastingSchema() {
+  return `# SAT Post-Tasting Safe Contracts
+
+These exports are for Claude-facing SAT Lab post-cata actions only. They are derived from the canonical catalog but do not expose the full canonical profile or internal evidence metadata.
+
+## Files
+
+- post_tasting_debrief.json: consume after the student has committed an attempt and identity may be revealed.
+- post_tasting_model_comparison.json: consume after commitment to compare the student's tasting note with formative model bands.
+- next_practice_recommendations.json: consume after commitment to choose deterministic next-practice suggestions.
+
+## During cata
+
+Claude may use only blind render data already approved for blind tasting. Do not load these post-cata contracts before commitment.
+
+## Post-cata
+
+Claude may show revealed identity, style markers, pedagogy, mentor focus, traps, memory hooks, formative comparison bands, and deterministic next-practice recommendations.
+
+## Never show
+
+Never show raw internal SAT expectation arrays, server-only metadata, source evidence references, raw canonical objects, examiner-only answers, scoring rubrics, binary outcomes, or official judgement language.
+
+## Governance
+
+All three JSON contracts are formative-only. They are not safe for examiner workflows and must not be used as official marking or certification evidence.
+`;
 }
 
 function genericWineLabel(wineType) {

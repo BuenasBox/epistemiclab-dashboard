@@ -1,0 +1,5796 @@
+{
+  "SAT_WINE_001": {
+    "canonical_id": "SAT_WINE_001",
+    "debrief_render_id": "DEBRIEF_001",
+    "safe_identity": {
+      "display_name": "Chablis",
+      "wine_name": "Chablis",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Cool climate unoaked Chardonnay",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Burgundy",
+      "subregion": "Chablis",
+      "appellation": "Chablis",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 001",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "cool climate Chardonnay",
+        "site hierarchy",
+        "oak absence versus subtle old oak"
+      ],
+      "learning_objectives": [
+        "separate Chardonnay variety from oak style",
+        "identify high-acid white Burgundy",
+        "connect aspect to ripeness"
+      ],
+      "typical_misconceptions": [
+        "all Chardonnay is oaky",
+        "pale neutral whites are low quality",
+        "mineral style means Sauvignon Blanc"
+      ],
+      "comparison_styles": [
+        "Sancerre Sauvignon Blanc",
+        "Macon Chardonnay",
+        "Alsace Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing high acid neutral white with Sauvignon Blanc",
+        "penalizing restraint as poor quality"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_003"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_005"
+      ],
+      "distinguishing_features": [
+        "less herbaceous than Sancerre",
+        "less aromatic than Riesling",
+        "leaner than Macon and Pouilly-Fuisse"
+      ]
+    },
+    "mentor_focus": [
+      "ask for evidence of variety versus winemaking",
+      "anchor acidity before fruit ripeness"
+    ],
+    "exam_traps": [
+      "calling it Sauvignon Blanc from green notes alone",
+      "overstating new oak",
+      "ignoring appellation level"
+    ],
+    "memory_hooks": [
+      "Chablis equals Chardonnay in a cool, acid-led voice"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_002": {
+    "canonical_id": "SAT_WINE_002",
+    "debrief_render_id": "DEBRIEF_002",
+    "safe_identity": {
+      "display_name": "Cote de Beaune White Burgundy",
+      "wine_name": "Cote de Beaune white Burgundy",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Premium barrel-fermented Chardonnay",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Burgundy",
+      "subregion": "Cote d'Or / Cote de Beaune",
+      "appellation": "Meursault / Puligny-Montrachet / Chassagne-Montrachet",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 002",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "premium Chardonnay winemaking",
+        "oak integration",
+        "Burgundy hierarchy"
+      ],
+      "learning_objectives": [
+        "link MLF and lees to texture",
+        "distinguish primary fruit from secondary aromas",
+        "assess oak balance"
+      ],
+      "typical_misconceptions": [
+        "butter means sweetness",
+        "all oak is negative",
+        "Burgundy whites are all Chablis-like"
+      ],
+      "comparison_styles": [
+        "Chablis",
+        "Pouilly-Fuisse",
+        "premium New World Chardonnay"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "mistaking MLF texture for sweetness",
+        "assuming every white Burgundy is austere"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_004"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_003"
+      ],
+      "distinguishing_features": [
+        "more oak and lees than Chablis",
+        "more prestige and complexity than Macon",
+        "less tropical richness than Pouilly-Fuisse"
+      ]
+    },
+    "mentor_focus": [
+      "make students explain why oak supports quality",
+      "separate body from sugar"
+    ],
+    "exam_traps": [
+      "listing oak without quality logic",
+      "missing ageing potential",
+      "overcalling alcohol"
+    ],
+    "memory_hooks": [
+      "Cote de Beaune Chardonnay is Burgundy with texture and architecture"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_003": {
+    "canonical_id": "SAT_WINE_003",
+    "debrief_render_id": "DEBRIEF_003",
+    "safe_identity": {
+      "display_name": "Macon / Macon Villages",
+      "wine_name": "Macon / Macon Villages",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Medium-bodied value white Burgundy Chardonnay",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Burgundy",
+      "subregion": "Maconnais",
+      "appellation": "Macon / Macon Villages",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 003",
+      "difficulty_score": 3,
+      "difficulty_band": "foundation",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "regional versus village Burgundy",
+        "value Chardonnay",
+        "MLF texture"
+      ],
+      "learning_objectives": [
+        "identify medium-acid Chardonnay",
+        "avoid assuming all Burgundy is grand cru",
+        "connect Macon Villages with ripeness"
+      ],
+      "typical_misconceptions": [
+        "Macon must be simple",
+        "creaminess means oak",
+        "medium acidity means warm climate outside Burgundy"
+      ],
+      "comparison_styles": [
+        "Chablis",
+        "Pouilly-Fuisse",
+        "Cote de Beaune white Burgundy"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling it Chablis solely because it is Chardonnay",
+        "overclaiming long ageing"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_004"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_002"
+      ],
+      "distinguishing_features": [
+        "more body than basic Chablis",
+        "less barrel complexity than Cote de Beaune",
+        "less ripe and toasty than Pouilly-Fuisse"
+      ]
+    },
+    "mentor_focus": [
+      "calibrate body and acidity against Chablis and Pouilly-Fuisse"
+    ],
+    "exam_traps": [
+      "overstating quality level",
+      "adding tropical oak markers from Pouilly-Fuisse"
+    ],
+    "memory_hooks": [
+      "Macon is the generous everyday voice of white Burgundy"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_004": {
+    "canonical_id": "SAT_WINE_004",
+    "debrief_render_id": "DEBRIEF_004",
+    "safe_identity": {
+      "display_name": "Pouilly-Fuisse / Saint-Veran",
+      "wine_name": "Pouilly-Fuisse / Saint-Veran",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Ripe Maconnais Chardonnay with barrel texture",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Burgundy",
+      "subregion": "Maconnais",
+      "appellation": "Pouilly-Fuisse / Saint-Veran",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 004",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "warm-site Chardonnay",
+        "barrel maturation",
+        "Maconnais village appellations"
+      ],
+      "learning_objectives": [
+        "distinguish Pouilly-Fuisse from Macon Villages",
+        "link slope exposure to ripeness",
+        "separate oak texture from sweetness"
+      ],
+      "typical_misconceptions": [
+        "tropical fruit means New World",
+        "toasty oak must be Cote de Beaune",
+        "medium acidity means low quality"
+      ],
+      "comparison_styles": [
+        "Macon Villages",
+        "Cote de Beaune white Burgundy",
+        "warm-climate Chardonnay"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling every ripe Chardonnay New World",
+        "ignoring the Maconnais origin"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_002",
+        "SAT_WINE_003"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003"
+      ],
+      "distinguishing_features": [
+        "riper tropical fruit than Macon",
+        "more obvious toasty oak than basic Macon",
+        "less classic Cote de Beaune prestige architecture"
+      ]
+    },
+    "mentor_focus": [
+      "ask students to prove ripeness and oak without leaving Burgundy"
+    ],
+    "exam_traps": [
+      "forgetting Saint-Veran",
+      "overstating Chablis-like acidity"
+    ],
+    "memory_hooks": [
+      "Pouilly-Fuisse is the suntrap Chardonnay of southern Burgundy"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_005": {
+    "canonical_id": "SAT_WINE_005",
+    "debrief_render_id": "DEBRIEF_005",
+    "safe_identity": {
+      "display_name": "Alsace Riesling",
+      "wine_name": "Alsace Riesling",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Dry to off-dry aromatic high-acid Riesling",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Alsace",
+      "subregion": "Alsace",
+      "appellation": "Alsace / Alsace Grand Cru",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 005",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Alsace noble varieties",
+        "dry versus residual sugar ambiguity",
+        "aromatic variety without MLF"
+      ],
+      "learning_objectives": [
+        "compare Alsace and German Riesling",
+        "recognize high acidity with medium body",
+        "handle uncertain sweetness honestly"
+      ],
+      "typical_misconceptions": [
+        "all Riesling is sweet",
+        "Alsace labels always reveal sweetness",
+        "Riesling should show oak"
+      ],
+      "comparison_styles": [
+        "German Riesling",
+        "Chablis",
+        "Sancerre"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing acidity with Sauvignon Blanc",
+        "forgetting residual sugar may appear"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_009"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_009"
+      ],
+      "distinguishing_features": [
+        "more aromatic and stone-fruited than Chablis",
+        "less herbaceous than Sauvignon Blanc",
+        "more body than many German Rieslings"
+      ]
+    },
+    "mentor_focus": [
+      "force separation of sweetness, acidity and alcohol"
+    ],
+    "exam_traps": [
+      "assuming all Alsace Riesling is bone dry",
+      "adding German low alcohol markers"
+    ],
+    "memory_hooks": [
+      "Alsace Riesling is broader and less floral than Germany, but still acid-led"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_006": {
+    "canonical_id": "SAT_WINE_006",
+    "debrief_render_id": "DEBRIEF_006",
+    "safe_identity": {
+      "display_name": "Alsace Gewurztraminer",
+      "wine_name": "Alsace Gewurztraminer",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Full-bodied low-acid aromatic Gewurztraminer",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Alsace",
+      "subregion": "Alsace",
+      "appellation": "Alsace / Alsace Grand Cru / VT / SGN",
+      "grape_varieties": [
+        "Gewurztraminer"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 006",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "aromatic variety",
+        "low acid white",
+        "texture versus sweetness"
+      ],
+      "learning_objectives": [
+        "identify Gewurztraminer signature aromatics",
+        "avoid using acidity as the only quality marker",
+        "separate perfume from sugar"
+      ],
+      "typical_misconceptions": [
+        "rose aromas mean sweetness",
+        "low acidity means poor quality",
+        "all Alsace whites are high acid"
+      ],
+      "comparison_styles": [
+        "Alsace Muscat",
+        "Alsace Pinot Gris",
+        "Viognier"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming aromatic means high acid",
+        "confusing perfume with sweetness"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_007",
+        "SAT_WINE_008",
+        "SAT_WINE_011"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_008",
+        "SAT_WINE_011"
+      ],
+      "distinguishing_features": [
+        "more lychee and rose than Pinot Gris",
+        "fuller and lower acid than Muscat",
+        "spicier than Viognier"
+      ]
+    },
+    "mentor_focus": [
+      "calibrate low acidity and high alcohol as style markers"
+    ],
+    "exam_traps": [
+      "calling it Muscat because it is grapey or floral",
+      "missing full body"
+    ],
+    "memory_hooks": [
+      "Gewurztraminer is roses, lychee, spice and texture"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_007": {
+    "canonical_id": "SAT_WINE_007",
+    "debrief_render_id": "DEBRIEF_007",
+    "safe_identity": {
+      "display_name": "Alsace Pinot Gris",
+      "wine_name": "Alsace Pinot Gris",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Rich full-bodied Pinot Gris",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Alsace",
+      "subregion": "Alsace",
+      "appellation": "Alsace / Alsace Grand Cru / VT / SGN",
+      "grape_varieties": [
+        "Pinot Gris"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 007",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Alsace Pinot Gris versus Italian Pinot Grigio",
+        "richness and alcohol",
+        "aromatic intensity spectrum"
+      ],
+      "learning_objectives": [
+        "recognize full-bodied Pinot Gris",
+        "avoid importing Pinot Grigio assumptions",
+        "compare acidity with Gewurztraminer"
+      ],
+      "typical_misconceptions": [
+        "Pinot Gris is always light and neutral",
+        "honeyed means botrytis automatically",
+        "high alcohol means sweetness"
+      ],
+      "comparison_styles": [
+        "Alsace Gewurztraminer",
+        "Alsace Riesling",
+        "Italian Pinot Grigio"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "using Pinot Grigio descriptors",
+        "missing full body"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_006"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_006",
+        "SAT_WINE_008"
+      ],
+      "distinguishing_features": [
+        "less aromatic than Gewurztraminer",
+        "richer than Muscat",
+        "more honeyed dried-fruit character than Riesling"
+      ]
+    },
+    "mentor_focus": [
+      "anchor the Alsace style before comparing globally"
+    ],
+    "exam_traps": [
+      "calling it Gewurztraminer despite lower perfume",
+      "underestimating body"
+    ],
+    "memory_hooks": [
+      "Alsace Pinot Gris is rich, honeyed and full, not crisp Pinot Grigio"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_008": {
+    "canonical_id": "SAT_WINE_008",
+    "debrief_render_id": "DEBRIEF_008",
+    "safe_identity": {
+      "display_name": "Alsace Muscat",
+      "wine_name": "Alsace Muscat",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Light to medium-bodied grapey aromatic Muscat",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Alsace",
+      "subregion": "Alsace",
+      "appellation": "Alsace / Alsace Grand Cru / VT / SGN",
+      "grape_varieties": [
+        "Muscat Blanc a Petits Grains",
+        "Muscat Ottonel"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 008",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 3
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "primary grape aroma",
+        "aromatic varieties",
+        "body calibration within Alsace"
+      ],
+      "learning_objectives": [
+        "recognize grapey Muscat markers",
+        "distinguish Muscat from Gewurztraminer",
+        "connect viticultural risk to variety choice"
+      ],
+      "typical_misconceptions": [
+        "grapey means artificial aroma",
+        "Muscat is always sweet",
+        "floral means Gewurztraminer"
+      ],
+      "comparison_styles": [
+        "Alsace Gewurztraminer",
+        "Alsace Pinot Gris",
+        "Muscat sweet wines"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Muscat is sweet",
+        "missing lower body"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_006"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_006"
+      ],
+      "distinguishing_features": [
+        "more grapey and lighter than Gewurztraminer",
+        "less rich than Pinot Gris",
+        "less stony and acid-led than Riesling"
+      ]
+    },
+    "mentor_focus": [
+      "make students compare body and acidity across Alsace noble varieties"
+    ],
+    "exam_traps": [
+      "calling it Gewurztraminer from rose alone",
+      "overstating alcohol"
+    ],
+    "memory_hooks": [
+      "Muscat smells most like grapes"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_009": {
+    "canonical_id": "SAT_WINE_009",
+    "debrief_render_id": "DEBRIEF_009",
+    "safe_identity": {
+      "display_name": "Sancerre / Pouilly-Fume Sauvignon Blanc",
+      "wine_name": "Sancerre / Pouilly-Fume",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Cool climate Loire Sauvignon Blanc",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Loire Valley",
+      "subregion": "Central Vineyards",
+      "appellation": "Sancerre / Pouilly-Fume",
+      "grape_varieties": [
+        "Sauvignon Blanc"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 009",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "cool climate Sauvignon Blanc",
+        "Central Vineyards prestige",
+        "freshness versus texture"
+      ],
+      "learning_objectives": [
+        "distinguish Loire Sauvignon from Chablis and Riesling",
+        "identify high-acid dry white structure",
+        "connect soil/site to style"
+      ],
+      "typical_misconceptions": [
+        "all Sauvignon Blanc is tropical",
+        "smoke means oak",
+        "green notes are faults"
+      ],
+      "comparison_styles": [
+        "Chablis",
+        "Alsace Riesling",
+        "Marlborough Sauvignon Blanc"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling it Chablis from mineral notes",
+        "forgetting most are not for ageing"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_001",
+        "SAT_WINE_005"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_005"
+      ],
+      "distinguishing_features": [
+        "more herbaceous than Chablis",
+        "less floral and less stone-fruited than Riesling",
+        "less tropical than Marlborough Sauvignon Blanc"
+      ]
+    },
+    "mentor_focus": [
+      "make students use aromatic family before variety guess"
+    ],
+    "exam_traps": [
+      "confusing with Chablis due to acidity and mineral descriptors",
+      "adding Marlborough tropical intensity"
+    ],
+    "memory_hooks": [
+      "Sancerre is Sauvignon with chalk, acid and green-citrus precision"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_010": {
+    "canonical_id": "SAT_WINE_010",
+    "debrief_render_id": "DEBRIEF_010",
+    "safe_identity": {
+      "display_name": "Loire Chenin Blanc",
+      "wine_name": "Loire Chenin Blanc",
+      "wine_family": "Blancos Francia",
+      "wine_style": "High-acid Chenin Blanc from dry to sweet",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Loire Valley",
+      "subregion": "Touraine / Anjou-Saumur",
+      "appellation": "Vouvray / Anjou / Savennieres / Coteaux du Layon",
+      "grape_varieties": [
+        "Chenin Blanc"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 010",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "ripeness-driven style range",
+        "sweet-acid balance",
+        "ageing potential"
+      ],
+      "learning_objectives": [
+        "handle multi-style canonical profiles",
+        "link harvest selection to sweetness",
+        "recognize Chenin ageing descriptors"
+      ],
+      "typical_misconceptions": [
+        "Chenin has one sweetness level",
+        "sweet wine is automatically low quality",
+        "high acidity excludes sweetness"
+      ],
+      "comparison_styles": [
+        "Alsace Riesling",
+        "Sauternes",
+        "Muscadet",
+        "Champagne base wine"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming sweetness means low acidity",
+        "missing noble rot descriptors in sweet styles"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_005"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_005",
+        "SAT_WINE_009"
+      ],
+      "distinguishing_features": [
+        "broader sweetness range than Sancerre",
+        "more apple-honey-hay ageing signature than Riesling",
+        "higher ageing potential than most Sauvignon Blanc"
+      ]
+    },
+    "mentor_focus": [
+      "train students to state style range and then narrow evidence"
+    ],
+    "exam_traps": [
+      "collapsing Vouvray, Savennieres and Coteaux du Layon into one body/sweetness profile",
+      "forgetting sparkling use from barely ripe fruit"
+    ],
+    "memory_hooks": [
+      "Chenin is Loire acidity wearing many levels of ripeness"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_011": {
+    "canonical_id": "SAT_WINE_011",
+    "debrief_render_id": "DEBRIEF_011",
+    "safe_identity": {
+      "display_name": "Condrieu Viognier",
+      "wine_name": "Condrieu",
+      "wine_family": "Blancos Francia",
+      "wine_style": "Full-bodied low-acid Viognier",
+      "wine_type": "BLANCO",
+      "country": "France",
+      "region": "Northern Rhone",
+      "subregion": "Condrieu",
+      "appellation": "Condrieu / Chateau-Grillet",
+      "grape_varieties": [
+        "Viognier"
+      ],
+      "display_label": "Vino Blanco - Francia - Practica 011",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Viognier varietal signature",
+        "low-acid white structure",
+        "late aroma development"
+      ],
+      "learning_objectives": [
+        "recognize low acidity in a premium white",
+        "link high sugar ripeness to alcohol and aroma",
+        "avoid confusing perfume with Gewurztraminer"
+      ],
+      "typical_misconceptions": [
+        "all premium whites are high acid",
+        "aromatic whites must be Alsace",
+        "new oak is always obvious"
+      ],
+      "comparison_styles": [
+        "Alsace Gewurztraminer",
+        "oaked Chardonnay",
+        "Northern Rhone Marsanne-Roussanne"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing oily texture with sweetness",
+        "adding forbidden blending grapes"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_006"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_006",
+        "SAT_WINE_002"
+      ],
+      "distinguishing_features": [
+        "more apricot-blossom than Gewurztraminer lychee-rose",
+        "lower acidity than Chardonnay",
+        "Viognier only in Condrieu"
+      ]
+    },
+    "mentor_focus": [
+      "make students describe palate structure before naming region"
+    ],
+    "exam_traps": [
+      "adding Marsanne or Roussanne to Condrieu",
+      "assuming off-dry is standard"
+    ],
+    "memory_hooks": [
+      "Condrieu is apricot perfume with low acid and high alcohol"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_012": {
+    "canonical_id": "SAT_WINE_012",
+    "debrief_render_id": "DEBRIEF_012",
+    "safe_identity": {
+      "display_name": "Mosel Riesling",
+      "wine_name": "Mosel Riesling",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Light-bodied high-acid Riesling from steep slate slopes",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Mosel",
+      "subregion": "Middle Mosel / Saar / Ruwer",
+      "appellation": "Mosel",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 012",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "cool continental Riesling",
+        "slate slope viticulture",
+        "sweet-acid balance"
+      ],
+      "learning_objectives": [
+        "distinguish Mosel from fuller German regions",
+        "connect slope and river to ripening",
+        "calibrate low alcohol with residual sugar"
+      ],
+      "typical_misconceptions": [
+        "low alcohol means simple wine",
+        "sweetness means low quality",
+        "all German Riesling tastes the same"
+      ],
+      "comparison_styles": [
+        "Rheingau Riesling",
+        "Riesling Kabinett",
+        "Alsace Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Mosel is sweet",
+        "missing the slate and slope logic"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_016"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_013",
+        "SAT_WINE_017"
+      ],
+      "distinguishing_features": [
+        "lighter and lower alcohol than Rheingau",
+        "more floral-green than Pfalz",
+        "more regional than Pradikat-specific"
+      ]
+    },
+    "mentor_focus": [
+      "ask for body, alcohol, and acidity before region conclusion"
+    ],
+    "exam_traps": [
+      "calling every German Riesling Mosel",
+      "forgetting dry Mosel exists",
+      "missing Saar/Ruwer higher acid possibility"
+    ],
+    "memory_hooks": [
+      "Mosel is the featherweight Riesling with electric acidity"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_013": {
+    "canonical_id": "SAT_WINE_013",
+    "debrief_render_id": "DEBRIEF_013",
+    "safe_identity": {
+      "display_name": "Rheingau Riesling",
+      "wine_name": "Rheingau Riesling",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Medium to full-bodied dry ripe peach Riesling",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Rheingau",
+      "subregion": "Johannisberg / Rudesheim / Hochheim",
+      "appellation": "Rheingau",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 013",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "dry German Riesling",
+        "river slope ripening",
+        "regional body calibration"
+      ],
+      "learning_objectives": [
+        "separate Rheingau from Mosel by body and peach ripeness",
+        "recognize dry German premium Riesling",
+        "link humid Rhine to BA/TBA potential"
+      ],
+      "typical_misconceptions": [
+        "German Riesling is always sweet",
+        "Rheingau equals Mosel style",
+        "peach fruit means warm climate outside Germany"
+      ],
+      "comparison_styles": [
+        "Mosel Riesling",
+        "Pfalz Riesling",
+        "Riesling Spatlese"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming low alcohol for all German Riesling",
+        "forgetting dry GG context"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_014",
+        "SAT_WINE_015"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_012",
+        "SAT_WINE_017"
+      ],
+      "distinguishing_features": [
+        "fuller than Mosel",
+        "more prestigious compact identity than Rheinhessen",
+        "less dry-warm extension than Pfalz"
+      ]
+    },
+    "mentor_focus": [
+      "anchor dry style and medium-full body"
+    ],
+    "exam_traps": [
+      "ignoring BA/TBA role",
+      "missing Taunus protection and aspect"
+    ],
+    "memory_hooks": [
+      "Rheingau is the peachier, broader classic dry Riesling"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_014": {
+    "canonical_id": "SAT_WINE_014",
+    "debrief_render_id": "DEBRIEF_014",
+    "safe_identity": {
+      "display_name": "Pfalz Riesling",
+      "wine_name": "Pfalz Riesling",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Ripe fuller-bodied dry Riesling from the Mittelhaardt",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Pfalz",
+      "subregion": "Mittelhaardt / Forst / Deidesheim",
+      "appellation": "Pfalz",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 014",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "dry German Riesling",
+        "rain shadow and ripeness",
+        "Mittelhaardt quality"
+      ],
+      "learning_objectives": [
+        "differentiate Pfalz from Rheingau and Mosel",
+        "connect dry climate to fuller ripeness",
+        "recognize German dry style trend"
+      ],
+      "typical_misconceptions": [
+        "Germany only makes delicate sweet Riesling",
+        "dry Riesling cannot be high quality",
+        "Pfalz equals Alsace"
+      ],
+      "comparison_styles": [
+        "Rheingau Riesling",
+        "Rheinhessen Riesling",
+        "Alsace Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "over-associating all German Riesling with Mosel delicacy",
+        "ignoring dry style majority"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_013",
+        "SAT_WINE_015"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_013",
+        "SAT_WINE_005"
+      ],
+      "distinguishing_features": [
+        "driest German region",
+        "ripe fuller-bodied style from Mittelhaardt",
+        "less low-alcohol delicacy than Mosel"
+      ]
+    },
+    "mentor_focus": [
+      "build climate-to-body reasoning"
+    ],
+    "exam_traps": [
+      "missing water stress in warm years",
+      "forgetting Riesling is most planted in Pfalz"
+    ],
+    "memory_hooks": [
+      "Pfalz is Germanys dry, ripe Riesling corridor beside Alsace"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_015": {
+    "canonical_id": "SAT_WINE_015",
+    "debrief_render_id": "DEBRIEF_015",
+    "safe_identity": {
+      "display_name": "Rheinhessen Riesling",
+      "wine_name": "Rheinhessen Riesling",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Full-bodied Riesling from Rheinterrasse and innovative producers",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Rheinhessen",
+      "subregion": "Rheinterrasse / Nierstein / Worms area",
+      "appellation": "Rheinhessen",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 015",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "regional diversity",
+        "full-bodied Riesling",
+        "quality revival"
+      ],
+      "learning_objectives": [
+        "separate Rheinhessen from generic inexpensive stereotypes",
+        "recognize Rheinterrasse quality",
+        "compare fuller German Riesling regions"
+      ],
+      "typical_misconceptions": [
+        "Rheinhessen is only inexpensive wine",
+        "largest region means lowest quality",
+        "all Riesling regions are stylistically identical"
+      ],
+      "comparison_styles": [
+        "Pfalz Riesling",
+        "Rheingau Riesling",
+        "Mosel Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "writing off Rheinhessen as low quality",
+        "confusing it with Rheingau by name"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_013",
+        "SAT_WINE_014"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_014",
+        "SAT_WINE_013"
+      ],
+      "distinguishing_features": [
+        "largest region with broad variety range",
+        "Rheinterrasse produces some of Germanys fullest-bodied Rieslings",
+        "more innovation narrative than Rheingau"
+      ]
+    },
+    "mentor_focus": [
+      "connect subregion reputation to style and quality"
+    ],
+    "exam_traps": [
+      "forgetting Rheinhessen can produce top-quality wines",
+      "missing Nierstein/Rheinterrasse"
+    ],
+    "memory_hooks": [
+      "Rheinhessen is large, innovative, and can make some of Germanys fullest Rieslings"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_016": {
+    "canonical_id": "SAT_WINE_016",
+    "debrief_render_id": "DEBRIEF_016",
+    "safe_identity": {
+      "display_name": "Riesling Kabinett",
+      "wine_name": "Riesling Kabinett",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Delicate light-bodied Pradikat Riesling",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Germany",
+      "subregion": "Pradikat category",
+      "appellation": "Kabinett",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 016",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Pradikat as style indicator",
+        "sweet-acid balance",
+        "low alcohol from stopped fermentation"
+      ],
+      "learning_objectives": [
+        "identify Kabinett versus Spatlese",
+        "separate sweetness from body",
+        "use alcohol as a clue"
+      ],
+      "typical_misconceptions": [
+        "Kabinett means low quality",
+        "sweetness is added in premium examples",
+        "low alcohol means weak wine"
+      ],
+      "comparison_styles": [
+        "Mosel Riesling",
+        "Riesling Spatlese",
+        "Alsace Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "equating Pradikat with quality ladder only",
+        "missing dry Kabinett possibility"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_012"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_017"
+      ],
+      "distinguishing_features": [
+        "lighter and less ripe than Spatlese",
+        "less concentrated than Auslese",
+        "lower alcohol in sweet styles"
+      ]
+    },
+    "mentor_focus": [
+      "ask for balance and delicacy"
+    ],
+    "exam_traps": [
+      "calling Kabinett Spatlese from sweetness alone",
+      "missing high acidity"
+    ],
+    "memory_hooks": [
+      "Kabinett is the delicate Riesling on a tightrope of sugar and acid"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_017": {
+    "canonical_id": "SAT_WINE_017",
+    "debrief_render_id": "DEBRIEF_017",
+    "safe_identity": {
+      "display_name": "Riesling Spatlese",
+      "wine_name": "Riesling Spatlese",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Riper more concentrated Pradikat Riesling",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Germany",
+      "subregion": "Pradikat category",
+      "appellation": "Spatlese",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 017",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Pradikat ripeness progression",
+        "stone fruit development",
+        "sweet-acid balance"
+      ],
+      "learning_objectives": [
+        "differentiate Spatlese from Kabinett and Auslese",
+        "recognize ripeness without assuming low acidity",
+        "use body and fruit profile"
+      ],
+      "typical_misconceptions": [
+        "Spatlese must be sweet",
+        "more sweetness means lower acidity",
+        "Spatlese equals botrytis"
+      ],
+      "comparison_styles": [
+        "Riesling Kabinett",
+        "Riesling Auslese",
+        "Mosel Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting dry style possibility",
+        "calling all stone-fruited Riesling Auslese"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_016",
+        "SAT_WINE_018"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_016",
+        "SAT_WINE_018"
+      ],
+      "distinguishing_features": [
+        "riper and fuller than Kabinett",
+        "less rich and botrytis-influenced than Auslese",
+        "stone fruit more common"
+      ]
+    },
+    "mentor_focus": [
+      "calibrate concentration relative to Kabinett"
+    ],
+    "exam_traps": [
+      "overcalling Auslese",
+      "ignoring dry Spatlese possibility"
+    ],
+    "memory_hooks": [
+      "Spatlese is Kabinett with more ripeness and stone fruit"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_018": {
+    "canonical_id": "SAT_WINE_018",
+    "debrief_render_id": "DEBRIEF_018",
+    "safe_identity": {
+      "display_name": "Riesling Auslese",
+      "wine_name": "Riesling Auslese",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Rich selected extra-ripe bunch Riesling",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Germany",
+      "subregion": "Pradikat category",
+      "appellation": "Auslese",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 018",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "selected bunch ripeness",
+        "noble rot influence",
+        "Pradikat escalation"
+      ],
+      "learning_objectives": [
+        "distinguish Auslese from Spatlese and BA",
+        "recognize botrytis as possible but not mandatory",
+        "assess richness without losing acidity"
+      ],
+      "typical_misconceptions": [
+        "Auslese is always botrytised",
+        "Auslese must be sweet",
+        "richness means low acidity"
+      ],
+      "comparison_styles": [
+        "Riesling Spatlese",
+        "Beerenauslese",
+        "Trockenbeerenauslese"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "making noble rot mandatory",
+        "overcalling TBA from honey alone"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_017",
+        "SAT_WINE_019"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_017",
+        "SAT_WINE_019"
+      ],
+      "distinguishing_features": [
+        "richer than Spatlese",
+        "less extreme and not necessarily berry-selected like BA",
+        "noble rot can play a role but is not the whole identity"
+      ]
+    },
+    "mentor_focus": [
+      "make students justify category by ripeness and concentration"
+    ],
+    "exam_traps": [
+      "confusing Auslese with BA/TBA",
+      "forgetting dry Auslese can exist"
+    ],
+    "memory_hooks": [
+      "Auslese is selected bunch richness before the berry-by-berry sweet wine tier"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_019": {
+    "canonical_id": "SAT_WINE_019",
+    "debrief_render_id": "DEBRIEF_019",
+    "safe_identity": {
+      "display_name": "Beerenauslese",
+      "wine_name": "Beerenauslese",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Sweet botrytised berry-selected Riesling",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Germany",
+      "subregion": "Pradikat category",
+      "appellation": "Beerenauslese",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 019",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "botrytised sweet wine",
+        "low alcohol from concentrated must",
+        "sweet-acid balance"
+      ],
+      "learning_objectives": [
+        "distinguish BA from Auslese and TBA",
+        "recognize botrytis descriptors",
+        "understand annual rarity"
+      ],
+      "typical_misconceptions": [
+        "BA is just sweeter Auslese",
+        "low alcohol means low quality",
+        "botrytis is a fault here"
+      ],
+      "comparison_styles": [
+        "Riesling Auslese",
+        "Trockenbeerenauslese",
+        "Eiswein"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling BA Eiswein from high acidity",
+        "forgetting low alcohol"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_020"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_018",
+        "SAT_WINE_021"
+      ],
+      "distinguishing_features": [
+        "sweeter and more botrytised than Auslese",
+        "less extreme than TBA",
+        "botrytis-driven unlike Eiswein purity"
+      ]
+    },
+    "mentor_focus": [
+      "anchor quality in balance and concentration"
+    ],
+    "exam_traps": [
+      "forgetting noble rot is typical but not essential for BA",
+      "confusing BA with Eiswein"
+    ],
+    "memory_hooks": [
+      "BA is honeyed botrytis richness with Riesling acidity"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_020": {
+    "canonical_id": "SAT_WINE_020",
+    "debrief_render_id": "DEBRIEF_020",
+    "safe_identity": {
+      "display_name": "Trockenbeerenauslese",
+      "wine_name": "Trockenbeerenauslese",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Extremely sweet noble-rot Riesling from shrivelled berries",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Germany",
+      "subregion": "Pradikat category",
+      "appellation": "Trockenbeerenauslese",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 020",
+      "difficulty_score": 9,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "noble rot concentration",
+        "extreme Pradikat must weight",
+        "natural fermentation stop"
+      ],
+      "learning_objectives": [
+        "distinguish TBA from BA and Eiswein",
+        "understand why alcohol can be very low",
+        "identify botrytis flavour set"
+      ],
+      "typical_misconceptions": [
+        "Trocken means dry in this word",
+        "TBA is the same as Eiswein",
+        "high sugar means low acidity"
+      ],
+      "comparison_styles": [
+        "Beerenauslese",
+        "Eiswein",
+        "Sauternes"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming dry from Trocken",
+        "confusing with Eiswein purity"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_019"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_019",
+        "SAT_WINE_021"
+      ],
+      "distinguishing_features": [
+        "more extreme and concentrated than BA",
+        "noble rot essential unlike Eiswein",
+        "sweet only despite Trocken in the name"
+      ]
+    },
+    "mentor_focus": [
+      "correct the Trockenbeerenauslese naming trap directly"
+    ],
+    "exam_traps": [
+      "thinking TBA is dry because of Trocken",
+      "missing noble rot essentiality"
+    ],
+    "memory_hooks": [
+      "TBA is not dry: it is the shrivelled noble-rot summit"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_021": {
+    "canonical_id": "SAT_WINE_021",
+    "debrief_render_id": "DEBRIEF_021",
+    "safe_identity": {
+      "display_name": "Eiswein",
+      "wine_name": "Eiswein",
+      "wine_family": "Blancos Alemania",
+      "wine_style": "Sweet high-acid Riesling from frozen healthy grapes",
+      "wine_type": "BLANCO",
+      "country": "Germany",
+      "region": "Germany",
+      "subregion": "Pradikat category",
+      "appellation": "Eiswein",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Alemania - Practica 021",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "freezing grapes on the vine",
+        "varietal purity",
+        "sweet-acid balance without botrytis"
+      ],
+      "learning_objectives": [
+        "distinguish Eiswein from BA/TBA",
+        "connect freezing to concentration",
+        "recognize purity rather than honeyed botrytis"
+      ],
+      "typical_misconceptions": [
+        "Eiswein is botrytised",
+        "all sweet German wines are BA/TBA",
+        "Eiswein is just frozen TBA"
+      ],
+      "comparison_styles": [
+        "Beerenauslese",
+        "Trockenbeerenauslese",
+        "Canadian Icewine"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing all sweet Riesling with botrytis",
+        "missing very high acidity"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_019",
+        "SAT_WINE_020"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_019",
+        "SAT_WINE_020"
+      ],
+      "distinguishing_features": [
+        "pure fruit rather than botrytis honey-candied peel profile",
+        "noble rot not key",
+        "freezing rather than fungal dehydration"
+      ]
+    },
+    "mentor_focus": [
+      "ask what concentrated the sugars and whether botrytis is present"
+    ],
+    "exam_traps": [
+      "calling Eiswein TBA because both are sweet",
+      "forgetting rarity and healthy grapes"
+    ],
+    "memory_hooks": [
+      "Eiswein is Riesling purity frozen in place"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_022": {
+    "canonical_id": "SAT_WINE_022",
+    "debrief_render_id": "DEBRIEF_022",
+    "safe_identity": {
+      "display_name": "Wachau Grüner Veltliner",
+      "wine_name": "Wachau Grüner Veltliner",
+      "wine_family": "Blancos Austria",
+      "wine_style": "Concentrated dry Grüner Veltliner from steep Danube terraces",
+      "wine_type": "BLANCO",
+      "country": "Austria",
+      "region": "Wachau",
+      "subregion": "Niederösterreich / Danube",
+      "appellation": "Wachau",
+      "grape_varieties": [
+        "Grüner Veltliner"
+      ],
+      "display_label": "Vino Blanco - Austria - Practica 022",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Austrian dry white identity",
+        "Grüner Veltliner typicity",
+        "terrace and exposure effect"
+      ],
+      "learning_objectives": [
+        "identify Grüner Veltliner versus Riesling",
+        "link Wachau terraces to concentration",
+        "separate white pepper from oak spice"
+      ],
+      "typical_misconceptions": [
+        "all pepper is oak",
+        "Austria is only Riesling",
+        "full body means low acidity"
+      ],
+      "comparison_styles": [
+        "Wachau Riesling",
+        "Weinviertel Grüner Veltliner",
+        "Alsace Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "missing Grüner Veltliner because of Riesling bias",
+        "overcalling sweetness from richness"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_025",
+        "SAT_WINE_026"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_023",
+        "SAT_WINE_024"
+      ],
+      "distinguishing_features": [
+        "white pepper distinguishes from Riesling",
+        "more concentrated than Weinviertel Klassik",
+        "Wachau terrace context"
+      ]
+    },
+    "mentor_focus": [
+      "ask for pepper, acidity and concentration together"
+    ],
+    "exam_traps": [
+      "calling concentrated dry Grüner Veltliner Chardonnay",
+      "forgetting old oak is not new oak flavour by default"
+    ],
+    "memory_hooks": [
+      "Wachau Grüner is dry, concentrated, high-acid and pepper-edged"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_023": {
+    "canonical_id": "SAT_WINE_023",
+    "debrief_render_id": "DEBRIEF_023",
+    "safe_identity": {
+      "display_name": "Wachau Riesling",
+      "wine_name": "Wachau Riesling",
+      "wine_family": "Blancos Austria",
+      "wine_style": "Dry medium- to full-bodied Austrian Riesling",
+      "wine_type": "BLANCO",
+      "country": "Austria",
+      "region": "Wachau",
+      "subregion": "Niederösterreich / Danube",
+      "appellation": "Wachau",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Austria - Practica 023",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "dry Austrian Riesling",
+        "Danube terrace concentration",
+        "Riesling without German Prädikat sweetness frame"
+      ],
+      "learning_objectives": [
+        "distinguish Austrian from German Riesling",
+        "separate Riesling from Grüner Veltliner",
+        "connect Wachau to dry concentration"
+      ],
+      "typical_misconceptions": [
+        "all Riesling is sweet",
+        "Austrian Riesling tastes like Grüner Veltliner",
+        "dry Riesling lacks ageing potential"
+      ],
+      "comparison_styles": [
+        "Wachau Grüner Veltliner",
+        "German Rheingau Riesling",
+        "Alsace Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Riesling and Grüner in Wachau",
+        "forgetting bottle maturation potential"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_013",
+        "SAT_WINE_005"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_022",
+        "SAT_WINE_013"
+      ],
+      "distinguishing_features": [
+        "no white pepper unlike Grüner",
+        "drier and fuller than many Mosel styles",
+        "Austrian Wachau context"
+      ]
+    },
+    "mentor_focus": [
+      "ask for dry structure and peachy primary fruit"
+    ],
+    "exam_traps": [
+      "adding white pepper from Grüner",
+      "assuming low alcohol Mosel style"
+    ],
+    "memory_hooks": [
+      "Wachau Riesling is dry, peachy, concentrated and ageworthy"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_024": {
+    "canonical_id": "SAT_WINE_024",
+    "debrief_render_id": "DEBRIEF_024",
+    "safe_identity": {
+      "display_name": "Weinviertel Grüner Veltliner",
+      "wine_name": "Weinviertel Grüner Veltliner",
+      "wine_family": "Blancos Austria",
+      "wine_style": "Light fresh fruity Grüner Veltliner Klassik",
+      "wine_type": "BLANCO",
+      "country": "Austria",
+      "region": "Weinviertel",
+      "subregion": "Niederösterreich",
+      "appellation": "Weinviertel DAC",
+      "grape_varieties": [
+        "Grüner Veltliner"
+      ],
+      "display_label": "Vino Blanco - Austria - Practica 024",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "DAC style identity",
+        "Klassik versus Reserve",
+        "Grüner Veltliner freshness"
+      ],
+      "learning_objectives": [
+        "distinguish Weinviertel from Wachau",
+        "connect DAC to grape/style rules",
+        "identify white pepper in lighter context"
+      ],
+      "typical_misconceptions": [
+        "all Grüner Veltliner is full-bodied",
+        "all Reserve rules apply to Klassik",
+        "fresh fruity means low quality"
+      ],
+      "comparison_styles": [
+        "Wachau Grüner Veltliner",
+        "Kamptal Grüner Veltliner",
+        "Muscadet"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "overstating body and oak",
+        "missing DAC restriction"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_025",
+        "SAT_WINE_026"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_022"
+      ],
+      "distinguishing_features": [
+        "lighter than Wachau",
+        "DAC grape restriction",
+        "Klassik no discernible oak"
+      ]
+    },
+    "mentor_focus": [
+      "ask for style level before quality conclusion"
+    ],
+    "exam_traps": [
+      "adding oak to Klassik",
+      "forgetting Weinviertel can only be Grüner Veltliner"
+    ],
+    "memory_hooks": [
+      "Weinviertel Klassik is Austria’s fresh peppery Grüner baseline"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_025": {
+    "canonical_id": "SAT_WINE_025",
+    "debrief_render_id": "DEBRIEF_025",
+    "safe_identity": {
+      "display_name": "Kamptal Grüner Veltliner",
+      "wine_name": "Kamptal Grüner Veltliner",
+      "wine_family": "Blancos Austria",
+      "wine_style": "High-quality dry Grüner Veltliner from Kamptal DAC",
+      "wine_type": "BLANCO",
+      "country": "Austria",
+      "region": "Kamptal",
+      "subregion": "Niederösterreich",
+      "appellation": "Kamptal DAC",
+      "grape_varieties": [
+        "Grüner Veltliner"
+      ],
+      "display_label": "Vino Blanco - Austria - Practica 025",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Kamptal DAC",
+        "Grüner Veltliner quality spectrum",
+        "dry Austrian white structure"
+      ],
+      "learning_objectives": [
+        "compare Kamptal with Wachau and Kremstal",
+        "identify pepper and high acidity",
+        "avoid over-specific Wachau assumptions"
+      ],
+      "typical_misconceptions": [
+        "Kamptal is lower quality by default",
+        "pepper means oak",
+        "all DACs have same rules as Weinviertel"
+      ],
+      "comparison_styles": [
+        "Wachau Grüner Veltliner",
+        "Kremstal Grüner Veltliner",
+        "Weinviertel Grüner Veltliner"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "overusing Wachau for all quality Austrian whites",
+        "forgetting Kamptal DAC"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_022",
+        "SAT_WINE_026"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_022",
+        "SAT_WINE_026"
+      ],
+      "distinguishing_features": [
+        "not as singularly Wachau-classification driven",
+        "more concentrated than basic Weinviertel",
+        "DAC region north of Wachau"
+      ]
+    },
+    "mentor_focus": [
+      "train regional comparison rather than isolated recall"
+    ],
+    "exam_traps": [
+      "calling every concentrated Austrian white Wachau",
+      "forgetting Kamptal can be Riesling or Grüner"
+    ],
+    "memory_hooks": [
+      "Kamptal sits north of Wachau with a similar dry white quality language"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_026": {
+    "canonical_id": "SAT_WINE_026",
+    "debrief_render_id": "DEBRIEF_026",
+    "safe_identity": {
+      "display_name": "Kremstal Grüner Veltliner",
+      "wine_name": "Kremstal Grüner Veltliner",
+      "wine_family": "Blancos Austria",
+      "wine_style": "High-quality dry Grüner Veltliner from Kremstal DAC",
+      "wine_type": "BLANCO",
+      "country": "Austria",
+      "region": "Kremstal",
+      "subregion": "Niederösterreich",
+      "appellation": "Kremstal DAC",
+      "grape_varieties": [
+        "Grüner Veltliner"
+      ],
+      "display_label": "Vino Blanco - Austria - Practica 026",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Kremstal DAC",
+        "Grüner Veltliner concentration",
+        "dry Austrian white comparison"
+      ],
+      "learning_objectives": [
+        "compare Kremstal with Kamptal and Wachau",
+        "identify Grüner Veltliner markers",
+        "connect high acidity to quality"
+      ],
+      "typical_misconceptions": [
+        "Kremstal is unrelated to Wachau style",
+        "full body removes acidity",
+        "pepper equals oak"
+      ],
+      "comparison_styles": [
+        "Kamptal Grüner Veltliner",
+        "Wachau Grüner Veltliner",
+        "Wachau Riesling"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "collapsing Kremstal into Kamptal without naming both",
+        "missing high acidity"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_022",
+        "SAT_WINE_025"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_025",
+        "SAT_WINE_023"
+      ],
+      "distinguishing_features": [
+        "paired with Kamptal in WSET as north of Wachau",
+        "pepper separates from Riesling",
+        "quality dry DAC context"
+      ]
+    },
+    "mentor_focus": [
+      "ask for variety marker first, then region precision"
+    ],
+    "exam_traps": [
+      "forgetting Kremstal appears alongside Kamptal",
+      "calling it Riesling despite pepper"
+    ],
+    "memory_hooks": [
+      "Kremstal mirrors the Wachau/Kamptal dry white language with Grüner bite"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_027": {
+    "canonical_id": "SAT_WINE_027",
+    "debrief_render_id": "DEBRIEF_027",
+    "safe_identity": {
+      "display_name": "Neusiedlersee / Burgenland Sweet Welschriesling",
+      "wine_name": "Neusiedlersee / Burgenland sweet Welschriesling",
+      "wine_family": "Blancos Austria",
+      "wine_style": "Botrytised sweet white from Neusiedlersee and Burgenland",
+      "wine_type": "BLANCO",
+      "country": "Austria",
+      "region": "Burgenland",
+      "subregion": "Neusiedlersee",
+      "appellation": "Burgenland / Neusiedlersee",
+      "grape_varieties": [
+        "Welschriesling"
+      ],
+      "display_label": "Vino Blanco - Austria - Practica 027",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "botrytised Austrian sweet wine",
+        "lake-driven mesoclimate",
+        "Welschriesling distinction"
+      ],
+      "learning_objectives": [
+        "separate Welschriesling from Riesling",
+        "connect Neusiedlersee mists to botrytis",
+        "identify sweet wine structure"
+      ],
+      "typical_misconceptions": [
+        "Welschriesling is Riesling",
+        "Austria only makes dry whites",
+        "botrytis is always a fault"
+      ],
+      "comparison_styles": [
+        "Beerenauslese",
+        "Trockenbeerenauslese",
+        "Coteaux du Layon Chenin Blanc"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Welschriesling is Riesling",
+        "forgetting botrytis can almost be guaranteed near Neusiedlersee"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_019",
+        "SAT_WINE_020"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_020",
+        "SAT_WINE_010"
+      ],
+      "distinguishing_features": [
+        "Austrian lake-mist botrytis context",
+        "Welschriesling not Riesling",
+        "Burgenland/Neusiedlersee source"
+      ]
+    },
+    "mentor_focus": [
+      "ask what environmental condition enables the style"
+    ],
+    "exam_traps": [
+      "missing Neusiedlersee as key to sweet wines",
+      "confusing Burgenland sweet wine with German TBA"
+    ],
+    "memory_hooks": [
+      "Neusiedlersee is Austria’s botrytis engine for sweet Welschriesling"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_028": {
+    "canonical_id": "SAT_WINE_028",
+    "debrief_render_id": "DEBRIEF_028",
+    "safe_identity": {
+      "display_name": "Alto Adige Pinot Grigio",
+      "wine_name": "Alto Adige Pinot Grigio",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Alpine dry Pinot Grigio with high acidity and citrus-green fruit",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Alto Adige",
+      "subregion": "Trentino-Alto Adige",
+      "appellation": "Alto Adige DOC",
+      "grape_varieties": [
+        "Pinot Grigio"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 028",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Italian alpine white wines",
+        "Pinot Grigio freshness",
+        "altitude and diurnal range"
+      ],
+      "learning_objectives": [
+        "identify dry high-acid Pinot Grigio",
+        "link Alto Adige to alpine freshness",
+        "avoid confusing neutral freshness with poor quality"
+      ],
+      "typical_misconceptions": [
+        "Pinot Grigio is always simple",
+        "all Italian whites are warm-climate and low acid",
+        "green fruit means Sauvignon Blanc"
+      ],
+      "comparison_styles": [
+        "Trentino Pinot Grigio / Chardonnay",
+        "Friuli Pinot Grigio",
+        "Gavi"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "overcalling Sauvignon Blanc",
+        "forgetting Alto Adige DOC"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_029",
+        "SAT_WINE_030"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_031"
+      ],
+      "distinguishing_features": [
+        "higher acidity than warmer valley-floor Trentino",
+        "lighter than Friuli Pinot Grigio",
+        "less floral than Gavi"
+      ]
+    },
+    "mentor_focus": [
+      "anchor acidity, body and green fruit before naming grape"
+    ],
+    "exam_traps": [
+      "calling it Sauvignon Blanc from green fruit alone",
+      "missing Alto Adige altitude"
+    ],
+    "memory_hooks": [
+      "Alto Adige Pinot Grigio is mountain-fresh, dry and citrus-led"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_029": {
+    "canonical_id": "SAT_WINE_029",
+    "debrief_render_id": "DEBRIEF_029",
+    "safe_identity": {
+      "display_name": "Trentino Pinot Grigio / Chardonnay",
+      "wine_name": "Trentino Pinot Grigio / Chardonnay",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Moderate northern Italian valley white from Pinot Grigio or Chardonnay",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Trentino",
+      "subregion": "Trentino-Alto Adige",
+      "appellation": "Trentino DOC",
+      "grape_varieties": [
+        "Pinot Grigio",
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 029",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "site altitude gradient",
+        "northern Italian fresh whites",
+        "Pinot Grigio and Chardonnay overlap"
+      ],
+      "learning_objectives": [
+        "separate Trentino valley fruit from Alto Adige freshness",
+        "recognize medium-bodied northern Italian white",
+        "avoid assuming all Pinot Grigio is high acid"
+      ],
+      "typical_misconceptions": [
+        "all Trentino whites are alpine and high acid",
+        "Chardonnay always shows oak",
+        "Pinot Grigio cannot show stone fruit"
+      ],
+      "comparison_styles": [
+        "Alto Adige Pinot Grigio",
+        "Friuli Pinot Grigio",
+        "Soave Classico"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "treating Trentino as identical to Alto Adige",
+        "assuming Chardonnay means obvious oak"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_028",
+        "SAT_WINE_030"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_028",
+        "SAT_WINE_003"
+      ],
+      "distinguishing_features": [
+        "riper and broader than Alto Adige",
+        "less tropical and full than Friuli",
+        "less Garganega pear and almond than Soave"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether acidity is medium rather than high and fruit is riper"
+    ],
+    "exam_traps": [
+      "overcalling Alto Adige",
+      "forcing oak because Chardonnay is possible"
+    ],
+    "memory_hooks": [
+      "Trentino sits one step warmer and riper than Alto Adige"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_030": {
+    "canonical_id": "SAT_WINE_030",
+    "debrief_render_id": "DEBRIEF_030",
+    "safe_identity": {
+      "display_name": "Friuli Pinot Grigio",
+      "wine_name": "Friuli Pinot Grigio",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Rich north-east Italian Pinot Grigio from Friuli-Venezia Giulia",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Friuli-Venezia Giulia",
+      "subregion": "Friuli / Collio / Colli Orientali",
+      "appellation": "Friuli Grave DOC / Collio DOC / Colli Orientali DOC",
+      "grape_varieties": [
+        "Pinot Grigio"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 030",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Friuli richness",
+        "Pinot Grigio style range",
+        "hill versus plain quality"
+      ],
+      "learning_objectives": [
+        "recognize richer Pinot Grigio",
+        "contrast Friuli with Alto Adige",
+        "connect Collio and Colli Orientali to premium whites"
+      ],
+      "typical_misconceptions": [
+        "Pinot Grigio is always light",
+        "tropical fruit means New World",
+        "Friuli is only simple Friuli Grave"
+      ],
+      "comparison_styles": [
+        "Alto Adige Pinot Grigio",
+        "Trentino Pinot Grigio / Chardonnay",
+        "Gavi"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Pinot Grigio must be neutral",
+        "confusing richness with oak"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_029",
+        "SAT_WINE_028"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_031"
+      ],
+      "distinguishing_features": [
+        "more body and tropical fruit than Alto Adige",
+        "less floral-high-acid than Gavi",
+        "less pear-almond Garganega than Soave"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether body and fruit ripeness exceed alpine Pinot Grigio"
+    ],
+    "exam_traps": [
+      "calling rich Pinot Grigio Chardonnay",
+      "missing Collio/Colli Orientali premium context"
+    ],
+    "memory_hooks": [
+      "Friuli is the richer Pinot Grigio lane in Italy"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_031": {
+    "canonical_id": "SAT_WINE_031",
+    "debrief_render_id": "DEBRIEF_031",
+    "safe_identity": {
+      "display_name": "Soave Classico",
+      "wine_name": "Soave Classico",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Foothill Garganega white from limestone, clay and volcanic soils",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Veneto",
+      "subregion": "Soave foothills",
+      "appellation": "Soave Classico DOC",
+      "grape_varieties": [
+        "Garganega"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 031",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Garganega identity",
+        "Classico foothill quality",
+        "no-new-oak Italian white"
+      ],
+      "learning_objectives": [
+        "identify Soave structural markers",
+        "distinguish Classico foothills from plain Soave",
+        "separate white pepper from oak"
+      ],
+      "typical_misconceptions": [
+        "white pepper always means Grüner Veltliner",
+        "Soave is always simple",
+        "Italian whites all lack ageing potential"
+      ],
+      "comparison_styles": [
+        "Friuli Pinot Grigio",
+        "Gavi",
+        "Verdicchio dei Castelli di Jesi"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Soave means low quality",
+        "adding new oak to the tasting note"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_030",
+        "SAT_WINE_035"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_030",
+        "SAT_WINE_032"
+      ],
+      "distinguishing_features": [
+        "more pear and almond than Pinot Grigio",
+        "less floral and lighter than Gavi",
+        "less fennel-lemon than Verdicchio"
+      ]
+    },
+    "mentor_focus": [
+      "ask for pear, apple, medium body and no new oak"
+    ],
+    "exam_traps": [
+      "calling it Pinot Grigio from neutrality",
+      "missing Classico foothill quality"
+    ],
+    "memory_hooks": [
+      "Soave Classico is Garganega: pear, apple, stone fruit, no new oak"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_032": {
+    "canonical_id": "SAT_WINE_032",
+    "debrief_render_id": "DEBRIEF_032",
+    "safe_identity": {
+      "display_name": "Gavi",
+      "wine_name": "Gavi",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Pale high-acid Cortese white from south-eastern Piemonte",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "South-eastern Piemonte",
+      "appellation": "Gavi DOCG / Cortese di Gavi DOCG",
+      "grape_varieties": [
+        "Cortese"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 032",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Cortese high acidity",
+        "Piemonte white identity",
+        "protective winemaking"
+      ],
+      "learning_objectives": [
+        "identify pale high-acid Gavi",
+        "separate Cortese from Pinot Grigio",
+        "link altitude and sea breezes to freshness"
+      ],
+      "typical_misconceptions": [
+        "Piemonte is only red wines",
+        "floral white must be aromatic Alsace",
+        "all Italian white DOCGs are full-bodied"
+      ],
+      "comparison_styles": [
+        "Alto Adige Pinot Grigio",
+        "Soave Classico",
+        "Verdicchio dei Castelli di Jesi"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting Piemonte whites",
+        "mistaking floral notes for Muscat"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_028",
+        "SAT_WINE_035"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_031",
+        "SAT_WINE_033"
+      ],
+      "distinguishing_features": [
+        "more floral and lighter than Soave",
+        "less fennel and almond than Verdicchio",
+        "less ripe than Friuli Pinot Grigio"
+      ]
+    },
+    "mentor_focus": [
+      "ask for pale colour, light body and high acidity together"
+    ],
+    "exam_traps": [
+      "calling Gavi Pinot Grigio",
+      "missing DOCG/Cortese link"
+    ],
+    "memory_hooks": [
+      "Gavi is Cortese: pale, light, floral, high-acid"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_033": {
+    "canonical_id": "SAT_WINE_033",
+    "debrief_render_id": "DEBRIEF_033",
+    "safe_identity": {
+      "display_name": "Orvieto",
+      "wine_name": "Orvieto",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Fresh Umbrian white blend of Grechetto and Trebbiano",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Umbria",
+      "subregion": "Orvieto",
+      "appellation": "Orvieto DOC",
+      "grape_varieties": [
+        "Grechetto",
+        "Trebbiano"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 033",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "central Italian white blends",
+        "protective winemaking",
+        "Grechetto quality role"
+      ],
+      "learning_objectives": [
+        "recognize Orvieto as a fresh blend",
+        "connect Grechetto proportion to quality",
+        "separate Orvieto from Frascati"
+      ],
+      "typical_misconceptions": [
+        "central Italy is only red wine",
+        "Trebbiano blends are always poor",
+        "all Italian whites are Pinot Grigio"
+      ],
+      "comparison_styles": [
+        "Frascati",
+        "Gavi",
+        "Soave Classico"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "using Trebbiano as a synonym for low quality",
+        "missing Umbria"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_034"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_034",
+        "SAT_WINE_032"
+      ],
+      "distinguishing_features": [
+        "riper grapefruit and peach than Frascati",
+        "less floral than Malvasia-led Frascati",
+        "less high-acid and floral than Gavi"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether fruit is grapefruit-peach rather than floral-orange"
+    ],
+    "exam_traps": [
+      "confusing Orvieto with Frascati",
+      "omitting Grechetto"
+    ],
+    "memory_hooks": [
+      "Orvieto is Umbria freshness: Grechetto, Trebbiano, grapefruit and peach"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_034": {
+    "canonical_id": "SAT_WINE_034",
+    "debrief_render_id": "DEBRIEF_034",
+    "safe_identity": {
+      "display_name": "Frascati",
+      "wine_name": "Frascati",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Fresh Lazio white blend of Malvasia and Trebbiano",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Lazio",
+      "subregion": "Hills south of Rome",
+      "appellation": "Frascati DOC",
+      "grape_varieties": [
+        "Malvasia",
+        "Trebbiano"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 034",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Lazio fresh whites",
+        "Malvasia floral contribution",
+        "altitude and lake cooling"
+      ],
+      "learning_objectives": [
+        "identify Frascati structure",
+        "separate Frascati from Orvieto",
+        "recognize Malvasia orange blossom"
+      ],
+      "typical_misconceptions": [
+        "Frascati is always neutral",
+        "Lazio is irrelevant for WSET whites",
+        "floral notes always mean Gewurztraminer"
+      ],
+      "comparison_styles": [
+        "Orvieto",
+        "Gavi",
+        "Soave Classico"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting Lazio in white wine study",
+        "overcalling aromatic intensity"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_033"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_033",
+        "SAT_WINE_032"
+      ],
+      "distinguishing_features": [
+        "more floral orange blossom than Orvieto",
+        "medium body rather than Gavi light body",
+        "less pear-almond than Soave"
+      ]
+    },
+    "mentor_focus": [
+      "ask for citrus plus orange blossom in an unoaked frame"
+    ],
+    "exam_traps": [
+      "calling it Orvieto from Trebbiano alone",
+      "missing lake and altitude cooling"
+    ],
+    "memory_hooks": [
+      "Frascati is Rome-hills freshness with Malvasia orange blossom"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_035": {
+    "canonical_id": "SAT_WINE_035",
+    "debrief_render_id": "DEBRIEF_035",
+    "safe_identity": {
+      "display_name": "Verdicchio dei Castelli di Jesi",
+      "wine_name": "Verdicchio dei Castelli di Jesi",
+      "wine_family": "Blancos Italia",
+      "wine_style": "High-acid Marche Verdicchio with lemon, fennel and almond",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Marche",
+      "subregion": "Castelli di Jesi",
+      "appellation": "Verdicchio dei Castelli di Jesi DOC",
+      "grape_varieties": [
+        "Verdicchio"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 035",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Verdicchio varietal identity",
+        "Italian white ageing beyond oak",
+        "Marche regional marker"
+      ],
+      "learning_objectives": [
+        "identify fennel-almond Verdicchio",
+        "separate almond age notes from oak",
+        "connect Marche to Verdicchio"
+      ],
+      "typical_misconceptions": [
+        "almond always means oak",
+        "Verdicchio is only simple",
+        "central Italy is red-only"
+      ],
+      "comparison_styles": [
+        "Soave Classico",
+        "Gavi",
+        "Orvieto"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "missing Verdicchio because it seems neutral",
+        "confusing almond with new oak"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_031",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_031",
+        "SAT_WINE_033"
+      ],
+      "distinguishing_features": [
+        "fennel and lemon more diagnostic than Soave pear",
+        "more almond-fennel than Gavi floral pear",
+        "higher acidity than Orvieto"
+      ]
+    },
+    "mentor_focus": [
+      "ask for lemon, fennel and almond together"
+    ],
+    "exam_traps": [
+      "calling it Soave from almond alone",
+      "missing high acidity"
+    ],
+    "memory_hooks": [
+      "Verdicchio is lemon, fennel, almond and high acidity"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_036": {
+    "canonical_id": "SAT_WINE_036",
+    "debrief_render_id": "DEBRIEF_036",
+    "safe_identity": {
+      "display_name": "Fiano di Avellino",
+      "wine_name": "Fiano di Avellino",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Medium- to full-bodied Campanian Fiano with stone fruit and ageworthy wax-honey complexity",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Campania",
+      "subregion": "Avellino",
+      "appellation": "Fiano di Avellino DOCG",
+      "grape_varieties": [
+        "Fiano"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 036",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Campanian premium whites",
+        "Fiano texture and fruit",
+        "ageworthy southern white"
+      ],
+      "learning_objectives": [
+        "identify Fiano body and fruit profile",
+        "distinguish Fiano from Greco",
+        "connect wax-honey development to ageing"
+      ],
+      "typical_misconceptions": [
+        "southern Italy only makes reds",
+        "medium acidity means low quality",
+        "oak-aged white must be Chardonnay"
+      ],
+      "comparison_styles": [
+        "Greco di Tufo",
+        "Friuli Pinot Grigio",
+        "Soave Classico"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting southern Italian whites",
+        "mistaking texture for Chardonnay"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_037"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_037",
+        "SAT_WINE_030"
+      ],
+      "distinguishing_features": [
+        "fuller and lower acid than Greco",
+        "more mango-melon than Friuli Pinot Grigio",
+        "more wax-honey than Soave"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether body and tropical-stone fruit point to Fiano"
+    ],
+    "exam_traps": [
+      "confusing Fiano with Greco",
+      "calling oak-matured Fiano Chardonnay"
+    ],
+    "memory_hooks": [
+      "Fiano is Campania's rounder wax-and-honey white"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_037": {
+    "canonical_id": "SAT_WINE_037",
+    "debrief_render_id": "DEBRIEF_037",
+    "safe_identity": {
+      "display_name": "Greco di Tufo",
+      "wine_name": "Greco di Tufo",
+      "wine_family": "Blancos Italia",
+      "wine_style": "Lean high-acid Campanian Greco with green apple, stone fruit and passion fruit",
+      "wine_type": "BLANCO",
+      "country": "Italy",
+      "region": "Campania",
+      "subregion": "Tufo",
+      "appellation": "Greco di Tufo DOCG",
+      "grape_varieties": [
+        "Greco"
+      ],
+      "display_label": "Vino Blanco - Italia - Practica 037",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Greco high-acid structure",
+        "Campanian white comparison",
+        "lees/old-oak texture"
+      ],
+      "learning_objectives": [
+        "distinguish Greco from Fiano",
+        "identify high-acid southern Italian white",
+        "connect stainless steel and old oak options to texture"
+      ],
+      "typical_misconceptions": [
+        "southern whites are always low acid",
+        "Greco and Fiano are interchangeable",
+        "mushroom age notes mean fault"
+      ],
+      "comparison_styles": [
+        "Fiano di Avellino",
+        "Gavi",
+        "Verdicchio dei Castelli di Jesi"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Greco and Fiano",
+        "misreading mushroom development as fault"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_036",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_036",
+        "SAT_WINE_009"
+      ],
+      "distinguishing_features": [
+        "higher acidity and leaner body than Fiano",
+        "more passion fruit than Gavi",
+        "less fennel-almond than Verdicchio"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether the wine is leaner and higher acid than Fiano"
+    ],
+    "exam_traps": [
+      "calling Greco Sauvignon Blanc from passion fruit",
+      "overstating new oak"
+    ],
+    "memory_hooks": [
+      "Greco is the leaner, higher-acid Campanian white"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_038": {
+    "canonical_id": "SAT_WINE_038",
+    "debrief_render_id": "DEBRIEF_038",
+    "safe_identity": {
+      "display_name": "Rueda Verdejo",
+      "wine_name": "Rueda Verdejo",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Fresh to textured Verdejo from continental Rueda",
+      "wine_type": "BLANCO",
+      "country": "Spain",
+      "region": "Rueda",
+      "subregion": "Castilla y Leon",
+      "appellation": "Rueda DO",
+      "grape_varieties": [
+        "Verdejo"
+      ],
+      "display_label": "Vino Blanco - Spain - Practica 038",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Verdejo oxidation sensitivity",
+        "Rueda white wine identity",
+        "protective versus richer winemaking"
+      ],
+      "learning_objectives": [
+        "identify Verdejo structure",
+        "connect Rueda to white wine production",
+        "separate Verdejo from Sauvignon Blanc"
+      ],
+      "typical_misconceptions": [
+        "Rueda is a red-wine region",
+        "Verdejo always tastes like Sauvignon Blanc",
+        "barrel fermentation means Chardonnay"
+      ],
+      "comparison_styles": [
+        "Rias Baixas Albarino",
+        "Gavi",
+        "Alto Adige Pinot Grigio"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "overcalling Sauvignon Blanc",
+        "missing Rueda as a white specialist"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_039",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_028"
+      ],
+      "distinguishing_features": [
+        "melon and peach rather than Albariño citrus-stone fruit",
+        "Rueda continental rather than Atlantic damp climate",
+        "possible richer barrel-fermented Verdejo style"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether melon-peach high-acid fruit points to Verdejo"
+    ],
+    "exam_traps": [
+      "calling all Rueda Sauvignon Blanc",
+      "forgetting Verdejo minimum in blends"
+    ],
+    "memory_hooks": [
+      "Rueda is Verdejo country: cool nights, melon, peach, high acidity"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_039": {
+    "canonical_id": "SAT_WINE_039",
+    "debrief_render_id": "DEBRIEF_039",
+    "safe_identity": {
+      "display_name": "Rias Baixas Albarino",
+      "wine_name": "Rias Baixas Albarino",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Refreshing Atlantic Albariño with high acidity and ripe stone fruit",
+      "wine_type": "BLANCO",
+      "country": "Spain",
+      "region": "Rias Baixas",
+      "subregion": "North-west Spain",
+      "appellation": "Rias Baixas DO",
+      "grape_varieties": [
+        "Albarino"
+      ],
+      "display_label": "Vino Blanco - Spain - Practica 039",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Atlantic Spain whites",
+        "Albariño thick skin and acidity",
+        "pergola disease management"
+      ],
+      "learning_objectives": [
+        "identify Rias Baixas Albariño",
+        "connect damp climate to pergola training",
+        "separate Albariño from Verdejo"
+      ],
+      "typical_misconceptions": [
+        "Spain is too hot for high-acid whites",
+        "all Albariño is oaked",
+        "pergola is only for Italy"
+      ],
+      "comparison_styles": [
+        "Rueda Verdejo",
+        "Vinho Verde",
+        "Gavi"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting north-west Spain",
+        "underestimating Albariño quality"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_038",
+        "SAT_WINE_041"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_009",
+        "SAT_WINE_032"
+      ],
+      "distinguishing_features": [
+        "more Atlantic and stone-fruited than Rueda",
+        "higher alcohol and ripeness than classic Vinho Verde",
+        "less floral than Gavi"
+      ]
+    },
+    "mentor_focus": [
+      "ask for Atlantic freshness plus ripe stone fruit"
+    ],
+    "exam_traps": [
+      "calling it Sauvignon Blanc from acidity alone",
+      "forgetting fungal pressure"
+    ],
+    "memory_hooks": [
+      "Rías Baixas is Atlantic Albariño: damp, pergola, citrus-stone fruit"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_040": {
+    "canonical_id": "SAT_WINE_040",
+    "debrief_render_id": "DEBRIEF_040",
+    "safe_identity": {
+      "display_name": "White Rioja Viura",
+      "wine_name": "White Rioja Viura",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Viura-based white Rioja from traditional oxidative oak to modern fruit-led styles",
+      "wine_type": "BLANCO",
+      "country": "Spain",
+      "region": "Rioja",
+      "subregion": "Rioja Alta / Rioja Alavesa / Rioja Oriental",
+      "appellation": "Rioja DOCa",
+      "grape_varieties": [
+        "Viura"
+      ],
+      "display_label": "Vino Blanco - Spain - Practica 040",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Rioja white style range",
+        "Viura identity",
+        "oxidative versus modern winemaking"
+      ],
+      "learning_objectives": [
+        "identify oak/oxygen choices in white Rioja",
+        "separate Viura Rioja from neutral Spanish whites",
+        "understand traditional versus modern style"
+      ],
+      "typical_misconceptions": [
+        "Rioja only makes red wine",
+        "all white Rioja is oxidised",
+        "all oak-aged white wine is Chardonnay"
+      ],
+      "comparison_styles": [
+        "Rueda Verdejo",
+        "Soave Classico",
+        "Fiano di Avellino"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting white Rioja",
+        "overcalling oxidation as fault"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_038",
+        "SAT_WINE_031"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_036"
+      ],
+      "distinguishing_features": [
+        "more oak/oxygen signature than Rueda",
+        "less Garganega pear-almond than Soave",
+        "Spanish Viura identity rather than Chardonnay"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether nutty oak-derived development points to Rioja"
+    ],
+    "exam_traps": [
+      "missing Viura",
+      "assuming deep gold means sweet"
+    ],
+    "memory_hooks": [
+      "White Rioja is Viura shaped by oak and oxygen decisions"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_041": {
+    "canonical_id": "SAT_WINE_041",
+    "debrief_render_id": "DEBRIEF_041",
+    "safe_identity": {
+      "display_name": "Vinho Verde",
+      "wine_name": "Vinho Verde",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Low-alcohol high-acid north-west Portuguese white with slight spritz",
+      "wine_type": "BLANCO",
+      "country": "Portugal",
+      "region": "Vinho Verde",
+      "subregion": "North-west Portugal",
+      "appellation": "Vinho Verde DOC",
+      "grape_varieties": [
+        "Loureiro",
+        "Arinto"
+      ],
+      "display_label": "Vino Blanco - Portugal - Practica 041",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Portuguese Atlantic freshness",
+        "low alcohol high acidity",
+        "spritz and off-dry balance"
+      ],
+      "learning_objectives": [
+        "identify classic Vinho Verde",
+        "connect high rainfall to canopy management",
+        "separate Vinho Verde from Albariño"
+      ],
+      "typical_misconceptions": [
+        "all Portuguese whites are fortified-related",
+        "spritz means sparkling wine category",
+        "off-dry means low acidity"
+      ],
+      "comparison_styles": [
+        "Rias Baixas Albarino",
+        "Muscadet",
+        "Rueda Verdejo"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting Portuguese still whites",
+        "overlooking low alcohol"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_039"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_039",
+        "SAT_WINE_008"
+      ],
+      "distinguishing_features": [
+        "lower alcohol and spritz versus Rias Baixas",
+        "more off-dry possibility than Muscadet",
+        "Atlantic Portugal rather than north-west Spain"
+      ]
+    },
+    "mentor_focus": [
+      "ask for low alcohol, high acidity and slight spritz"
+    ],
+    "exam_traps": [
+      "calling Vinho Verde Albariño because Alvarinho exists",
+      "missing off-dry possibility"
+    ],
+    "memory_hooks": [
+      "Vinho Verde is pale, low-alcohol, high-acid and lightly spritzy"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_042": {
+    "canonical_id": "SAT_WINE_042",
+    "debrief_render_id": "DEBRIEF_042",
+    "safe_identity": {
+      "display_name": "Dao Encruzado",
+      "wine_name": "Dao Encruzado",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Dão Encruzado from light fresh to richer barrel-fermented white",
+      "wine_type": "BLANCO",
+      "country": "Portugal",
+      "region": "Dao",
+      "subregion": "Central Portugal",
+      "appellation": "Dao DOC",
+      "grape_varieties": [
+        "Encruzado"
+      ],
+      "display_label": "Vino Blanco - Portugal - Practica 042",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Dão white identity",
+        "Encruzado style range",
+        "barrel fermentation as optional texture"
+      ],
+      "learning_objectives": [
+        "recognize Encruzado as Dão white grape",
+        "separate fresh and barrel-fermented expressions",
+        "connect altitude range to quality"
+      ],
+      "typical_misconceptions": [
+        "Dão only matters for reds",
+        "Portuguese white grapes are not WSET relevant",
+        "barrel-fermented means Chardonnay"
+      ],
+      "comparison_styles": [
+        "Vinho Verde",
+        "White Rioja Viura",
+        "Rueda Verdejo"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting Encruzado",
+        "collapsing all Portuguese whites into Vinho Verde"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_040"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "more medium-bodied than Vinho Verde",
+        "less Rioja oxidative oak identity",
+        "Portuguese Encruzado rather than Verdejo"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether the style range fits Encruzado rather than a single aromatic grape"
+    ],
+    "exam_traps": [
+      "ignoring Portugal beyond Vinho Verde",
+      "overstating oak"
+    ],
+    "memory_hooks": [
+      "Dão Encruzado can be fresh or barrel-textured from mountain slopes"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_043": {
+    "canonical_id": "SAT_WINE_043",
+    "debrief_render_id": "DEBRIEF_043",
+    "safe_identity": {
+      "display_name": "Santorini Assyrtiko",
+      "wine_name": "Santorini Assyrtiko",
+      "wine_family": "Blancos España / Portugal / Grecia",
+      "wine_style": "Dry volcanic Assyrtiko with ripe citrus, stone fruit and natural high acidity",
+      "wine_type": "BLANCO",
+      "country": "Greece",
+      "region": "Santorini",
+      "subregion": "Aegean Islands",
+      "appellation": "Santorini PDO",
+      "grape_varieties": [
+        "Assyrtiko"
+      ],
+      "display_label": "Vino Blanco - Greece - Practica 043",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Greek native varieties",
+        "Santorini volcanic island identity",
+        "high acidity in hot climate"
+      ],
+      "learning_objectives": [
+        "identify dry Assyrtiko structure",
+        "connect wind to basket training",
+        "separate Assyrtiko from Riesling or Sauvignon Blanc"
+      ],
+      "typical_misconceptions": [
+        "hot Greece cannot make high-acid whites",
+        "Santorini only makes sweet wine",
+        "mineral saline notes identify Chablis"
+      ],
+      "comparison_styles": [
+        "Chablis",
+        "Gavi",
+        "Rueda Verdejo"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing minerality with Chablis",
+        "missing Greece as WSET core region"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_001",
+        "SAT_WINE_032"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_009"
+      ],
+      "distinguishing_features": [
+        "riper and more concentrated than Chablis",
+        "volcanic basket-vine context",
+        "high acidity despite hot Mediterranean setting"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether high acidity comes with ripe citrus concentration and volcanic island context"
+    ],
+    "exam_traps": [
+      "calling it Chablis because of acidity and minerality",
+      "forgetting basket training"
+    ],
+    "memory_hooks": [
+      "Santorini Assyrtiko is hot-island concentration with high-acid backbone"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_044": {
+    "canonical_id": "SAT_WINE_044",
+    "debrief_render_id": "DEBRIEF_044",
+    "safe_identity": {
+      "display_name": "California Chardonnay",
+      "wine_name": "California Chardonnay",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Broad California Chardonnay style range",
+      "wine_type": "BLANCO",
+      "country": "USA",
+      "region": "California",
+      "subregion": "Statewide / coastal premium regions",
+      "appellation": "California AVA / regional AVAs",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - USA - Practica 044",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "California Chardonnay style range",
+        "oak and malolactic signatures",
+        "cooler premium restraint"
+      ],
+      "learning_objectives": [
+        "identify New World Chardonnay markers",
+        "separate oak from grape identity",
+        "contrast warm and cool California styles"
+      ],
+      "typical_misconceptions": [
+        "all California Chardonnay is heavily oaked",
+        "butter always means fault",
+        "Chardonnay has one fixed style"
+      ],
+      "comparison_styles": [
+        "Sonoma Coast Chardonnay",
+        "White Rioja Viura",
+        "Fiano di Avellino"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all oaked whites Chardonnay",
+        "missing restrained modern styles"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_045",
+        "SAT_WINE_040"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_003",
+        "SAT_WINE_036"
+      ],
+      "distinguishing_features": [
+        "more overt peach-banana and oak than Chablis",
+        "broader than Sonoma Coast examples",
+        "not Viura oxidative nutty Rioja"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether oak, body and fruit ripeness align"
+    ],
+    "exam_traps": [
+      "overcalling Burgundy",
+      "ignoring cooler restrained California examples"
+    ],
+    "memory_hooks": [
+      "California Chardonnay spans butter-oak tradition and cooler restraint"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_045": {
+    "canonical_id": "SAT_WINE_045",
+    "debrief_render_id": "DEBRIEF_045",
+    "safe_identity": {
+      "display_name": "Sonoma Coast Chardonnay",
+      "wine_name": "Sonoma Coast Chardonnay",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Cool Pacific-influenced premium Sonoma Chardonnay",
+      "wine_type": "BLANCO",
+      "country": "USA",
+      "region": "Sonoma Coast",
+      "subregion": "Sonoma County",
+      "appellation": "Sonoma Coast AVA",
+      "grape_varieties": [
+        "Chardonnay"
+      ],
+      "display_label": "Vino Blanco - USA - Practica 045",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "cool coastal California Chardonnay",
+        "Pacific fog and slope effect",
+        "premium restrained style"
+      ],
+      "learning_objectives": [
+        "separate Sonoma Coast from broader California Chardonnay",
+        "identify cool-climate Chardonnay features",
+        "link Pacific influence to acidity"
+      ],
+      "typical_misconceptions": [
+        "Sonoma is always warm",
+        "California Chardonnay must be full and buttery",
+        "cool climate means underripe"
+      ],
+      "comparison_styles": [
+        "California Chardonnay",
+        "Chablis",
+        "Margaret River Chardonnay"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all California is hot",
+        "missing Sonoma Coast restraint"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_044",
+        "SAT_WINE_001"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_001",
+        "SAT_WINE_003"
+      ],
+      "distinguishing_features": [
+        "cooler and more acid-led than generic California Chardonnay",
+        "more new-world fruit than Chablis",
+        "Pacific influence is central"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether acidity and restrained oak suggest coastal origin"
+    ],
+    "exam_traps": [
+      "overgeneralizing California Chardonnay",
+      "calling it Chablis from acidity alone"
+    ],
+    "memory_hooks": [
+      "Sonoma Coast is California Chardonnay in a cooler Pacific key"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_046": {
+    "canonical_id": "SAT_WINE_046",
+    "debrief_render_id": "DEBRIEF_046",
+    "safe_identity": {
+      "display_name": "Chile Coastal Sauvignon Blanc",
+      "wine_name": "Chile Coastal Sauvignon Blanc",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Cool coastal Chilean Sauvignon Blanc with ripe fruit and high acidity",
+      "wine_type": "BLANCO",
+      "country": "Chile",
+      "region": "Casablanca / San Antonio",
+      "subregion": "Coastal Chile",
+      "appellation": "Casablanca Valley / San Antonio Valley",
+      "grape_varieties": [
+        "Sauvignon Blanc"
+      ],
+      "display_label": "Vino Blanco - Chile - Practica 046",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "coastal Chile freshness",
+        "Sauvignon Blanc fruit spectrum",
+        "lees/oak texture option"
+      ],
+      "learning_objectives": [
+        "identify Chilean Sauvignon Blanc",
+        "separate Chile from New Zealand Sauvignon",
+        "connect cool coastal valleys to acidity"
+      ],
+      "typical_misconceptions": [
+        "all Chile is warm Central Valley",
+        "herbaceous always means Loire",
+        "lees texture means Chardonnay"
+      ],
+      "comparison_styles": [
+        "Marlborough Sauvignon Blanc",
+        "Sancerre",
+        "Rueda Verdejo"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "defaulting all Sauvignon to Marlborough",
+        "ignoring lees/oak texture"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_051",
+        "SAT_WINE_009"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_051",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "riper apple and tropical fruit than Sancerre",
+        "less benchmark elderflower/passionfruit than Marlborough",
+        "cool coastal Chile context"
+      ]
+    },
+    "mentor_focus": [
+      "ask for ripe apple/citrus/tropical plus high acidity"
+    ],
+    "exam_traps": [
+      "calling it Marlborough automatically",
+      "missing Casablanca/San Antonio"
+    ],
+    "memory_hooks": [
+      "Chile coastal Sauvignon is ripe-fruited and high-acid"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_047": {
+    "canonical_id": "SAT_WINE_047",
+    "debrief_render_id": "DEBRIEF_047",
+    "safe_identity": {
+      "display_name": "Salta Torrontes",
+      "wine_name": "Salta Torrontes",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "High-altitude aromatic Argentine Torrontes",
+      "wine_type": "BLANCO",
+      "country": "Argentina",
+      "region": "Salta",
+      "subregion": "Cafayate",
+      "appellation": "Salta / Cafayate GI",
+      "grape_varieties": [
+        "Torrontes"
+      ],
+      "display_label": "Vino Blanco - Argentina - Practica 047",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Argentina white signature",
+        "high-altitude aromatic freshness",
+        "inert winemaking"
+      ],
+      "learning_objectives": [
+        "identify Torrontes aromatics",
+        "connect Salta altitude to purity",
+        "avoid confusing perfume with Muscat"
+      ],
+      "typical_misconceptions": [
+        "Argentina is only Malbec",
+        "floral dry whites must be Muscat",
+        "Torrontes is sweet by default"
+      ],
+      "comparison_styles": [
+        "Muscat d'Alsace",
+        "Frascati",
+        "Santorini Assyrtiko"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming aromatic means sweet",
+        "forgetting Argentina whites"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_011",
+        "SAT_WINE_034"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_011",
+        "SAT_WINE_043"
+      ],
+      "distinguishing_features": [
+        "more stone fruit and melon than Muscat",
+        "medium acidity rather than Assyrtiko high acidity",
+        "Salta altitude context"
+      ]
+    },
+    "mentor_focus": [
+      "ask for floral perfume with medium acidity"
+    ],
+    "exam_traps": [
+      "calling it Gewurztraminer",
+      "assuming sweetness from perfume"
+    ],
+    "memory_hooks": [
+      "Torrontes is Argentina's floral high-altitude white"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_048": {
+    "canonical_id": "SAT_WINE_048",
+    "debrief_render_id": "DEBRIEF_048",
+    "safe_identity": {
+      "display_name": "South Africa Chenin Blanc",
+      "wine_name": "South Africa Chenin Blanc",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "South African Chenin Blanc from easy stone fruit to old-vine textured styles",
+      "wine_type": "BLANCO",
+      "country": "South Africa",
+      "region": "Western Cape / Swartland",
+      "subregion": "Cape wine regions",
+      "appellation": "Western Cape WO / Swartland WO",
+      "grape_varieties": [
+        "Chenin Blanc"
+      ],
+      "display_label": "Vino Blanco - South Africa - Practica 048",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "South African Chenin identity",
+        "old bush-vine concentration",
+        "barrel texture option"
+      ],
+      "learning_objectives": [
+        "identify South African Chenin",
+        "separate Chenin from Chardonnay",
+        "connect old vines to concentration"
+      ],
+      "typical_misconceptions": [
+        "South Africa is only Sauvignon or red blends",
+        "Chenin is always simple",
+        "oak texture means Chardonnay"
+      ],
+      "comparison_styles": [
+        "Vouvray Chenin Blanc",
+        "Fiano di Avellino",
+        "California Chardonnay"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "overlooking Chenin as South Africa core",
+        "confusing all barrel texture with Chardonnay"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_007",
+        "SAT_WINE_036"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044",
+        "SAT_WINE_007"
+      ],
+      "distinguishing_features": [
+        "more New World stone fruit than Loire Chenin",
+        "less varietal Chardonnay oak signature",
+        "old bush-vine South Africa context"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether stone fruit and texture could be Chenin"
+    ],
+    "exam_traps": [
+      "calling premium Chenin Chardonnay",
+      "ignoring old bush vine clue"
+    ],
+    "memory_hooks": [
+      "South African Chenin moves from easy stone fruit to old-vine texture"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_049": {
+    "canonical_id": "SAT_WINE_049",
+    "debrief_render_id": "DEBRIEF_049",
+    "safe_identity": {
+      "display_name": "Hunter Valley Semillon",
+      "wine_name": "Hunter Valley Semillon",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Early-harvest unoaked Hunter Valley Semillon built for bottle age",
+      "wine_type": "BLANCO",
+      "country": "Australia",
+      "region": "Hunter Valley",
+      "subregion": "New South Wales",
+      "appellation": "Hunter Valley GI",
+      "grape_varieties": [
+        "Semillon"
+      ],
+      "display_label": "Vino Blanco - Australia - Practica 049",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Australian unique Semillon",
+        "age transformation without oak",
+        "early harvest structure"
+      ],
+      "learning_objectives": [
+        "identify Hunter Semillon",
+        "separate age-derived toast from oak",
+        "connect low alcohol and high acidity"
+      ],
+      "typical_misconceptions": [
+        "toast always means oak",
+        "Hunter Valley is only Shiraz",
+        "neutral young wine means low quality"
+      ],
+      "comparison_styles": [
+        "Australian Riesling",
+        "Muscadet",
+        "White Bordeaux"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "mistaking bottle-aged Semillon for oaked Chardonnay",
+        "undervaluing neutral young examples"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_050",
+        "SAT_WINE_008"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_044",
+        "SAT_WINE_008"
+      ],
+      "distinguishing_features": [
+        "lower alcohol than most Chardonnay",
+        "toast develops without oak",
+        "unique Hunter early-harvest Semillon style"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether low alcohol and high acidity can explain longevity"
+    ],
+    "exam_traps": [
+      "calling it oaked Chardonnay with age",
+      "missing Semillon despite neutrality"
+    ],
+    "memory_hooks": [
+      "Hunter Semillon starts quiet and ages into honeyed toast"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_050": {
+    "canonical_id": "SAT_WINE_050",
+    "debrief_render_id": "DEBRIEF_050",
+    "safe_identity": {
+      "display_name": "Clare Valley Riesling",
+      "wine_name": "Clare Valley Riesling",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Dry high-acid lime-led Australian Riesling",
+      "wine_type": "BLANCO",
+      "country": "Australia",
+      "region": "Clare Valley",
+      "subregion": "South Australia",
+      "appellation": "Clare Valley GI",
+      "grape_varieties": [
+        "Riesling"
+      ],
+      "display_label": "Vino Blanco - Australia - Practica 050",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Australian dry Riesling",
+        "citrus intensity and age development",
+        "Clare regional identity"
+      ],
+      "learning_objectives": [
+        "identify lime-led Australian Riesling",
+        "separate dry Riesling from German sweetness",
+        "connect petrol/toast to bottle age"
+      ],
+      "typical_misconceptions": [
+        "all Riesling is sweet",
+        "petrol is a fault",
+        "Australia only makes full-bodied whites"
+      ],
+      "comparison_styles": [
+        "Eden Valley Riesling",
+        "Wachau Riesling",
+        "Riesling Kabinett"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "defaulting to Germany",
+        "missing dry Australian Riesling"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_023",
+        "SAT_WINE_016"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_016",
+        "SAT_WINE_023"
+      ],
+      "distinguishing_features": [
+        "drier and more lime-driven than Kabinett",
+        "less full than Wachau dry Riesling",
+        "Australian regional identity"
+      ]
+    },
+    "mentor_focus": [
+      "ask for lime, dry palate and high acidity"
+    ],
+    "exam_traps": [
+      "calling it German Kabinett",
+      "assuming petrol means old faulty wine"
+    ],
+    "memory_hooks": [
+      "Clare Riesling is dry lime lightning with ageworthy petrol-honey"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_051": {
+    "canonical_id": "SAT_WINE_051",
+    "debrief_render_id": "DEBRIEF_051",
+    "safe_identity": {
+      "display_name": "Marlborough Sauvignon Blanc",
+      "wine_name": "Marlborough Sauvignon Blanc",
+      "wine_family": "Blancos Nuevo Mundo",
+      "wine_style": "Pungent high-acid Marlborough Sauvignon Blanc",
+      "wine_type": "BLANCO",
+      "country": "New Zealand",
+      "region": "Marlborough",
+      "subregion": "South Island",
+      "appellation": "Marlborough GI",
+      "grape_varieties": [
+        "Sauvignon Blanc"
+      ],
+      "display_label": "Vino Blanco - New Zealand - Practica 051",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "New Zealand benchmark Sauvignon",
+        "Marlborough valley contrast",
+        "cool inert fermentation"
+      ],
+      "learning_objectives": [
+        "identify Marlborough Sauvignon Blanc",
+        "separate Wairau tropical and Awatere herbaceous styles",
+        "contrast with Chile Sauvignon"
+      ],
+      "typical_misconceptions": [
+        "all Sauvignon Blanc is Loire",
+        "Marlborough always only passion fruit",
+        "oak-matured Sauvignon is impossible"
+      ],
+      "comparison_styles": [
+        "Chile Coastal Sauvignon Blanc",
+        "Sancerre",
+        "Rueda Verdejo"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "overusing Marlborough as a default answer",
+        "ignoring Chile as a comparator"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_046",
+        "SAT_WINE_009"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_046",
+        "SAT_WINE_038"
+      ],
+      "distinguishing_features": [
+        "more pungent elderflower/passion fruit than Chile",
+        "more gooseberry and bell pepper than Rueda",
+        "global benchmark Sauvignon profile"
+      ]
+    },
+    "mentor_focus": [
+      "ask for pungent aromatics and high acidity"
+    ],
+    "exam_traps": [
+      "calling every aromatic high-acid white Marlborough",
+      "missing Awatere herbaceous profile"
+    ],
+    "memory_hooks": [
+      "Marlborough Sauvignon is elderflower, passionfruit, gooseberry and acid"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_052": {
+    "canonical_id": "SAT_WINE_052",
+    "debrief_render_id": "DEBRIEF_052",
+    "safe_identity": {
+      "display_name": "Left Bank Bordeaux",
+      "wine_name": "Left Bank Bordeaux",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Cabernet Sauvignon-dominant structured Bordeaux from Médoc and Graves",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Bordeaux",
+      "subregion": "Médoc / Graves",
+      "appellation": "Haut-Médoc / Pauillac / Margaux / Pessac-Léognan",
+      "grape_varieties": [
+        "Cabernet Sauvignon",
+        "Merlot",
+        "Cabernet Franc"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 052",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Cabernet-led Bordeaux structure",
+        "Left Bank gravel and tannin",
+        "oak-aged ageworthy claret"
+      ],
+      "learning_objectives": [
+        "identify Cabernet-led Bordeaux",
+        "connect gravel soils to Cabernet Sauvignon",
+        "separate Left Bank from Right Bank"
+      ],
+      "typical_misconceptions": [
+        "all Bordeaux is Merlot-dominant",
+        "oak spice means Rioja",
+        "high tannin always means Italy"
+      ],
+      "comparison_styles": [
+        "Right Bank Bordeaux",
+        "Rioja Reserva",
+        "Napa Cabernet"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "mixing up Left and Right Bank",
+        "overcalling new oak"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_053"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_053"
+      ],
+      "distinguishing_features": [
+        "more Cabernet structure than Right Bank",
+        "firmer tannin than Merlot-led styles",
+        "gravel Left Bank source"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether tannin, black fruit and cedar point to Cabernet-led Bordeaux"
+    ],
+    "exam_traps": [
+      "confusing Left and Right Bank",
+      "missing oak ageing role"
+    ],
+    "memory_hooks": [
+      "Left Bank is Cabernet on gravel: black fruit, cedar, tannin"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_053": {
+    "canonical_id": "SAT_WINE_053",
+    "debrief_render_id": "DEBRIEF_053",
+    "safe_identity": {
+      "display_name": "Right Bank Bordeaux",
+      "wine_name": "Right Bank Bordeaux",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Merlot-dominant Saint-Émilion and Pomerol red Bordeaux",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Bordeaux",
+      "subregion": "Saint-Émilion / Pomerol",
+      "appellation": "Saint-Émilion Grand Cru / Pomerol",
+      "grape_varieties": [
+        "Merlot",
+        "Cabernet Franc",
+        "Cabernet Sauvignon"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 053",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Merlot-led Bordeaux",
+        "Right Bank appellation logic",
+        "Cabernet Franc support"
+      ],
+      "learning_objectives": [
+        "identify Merlot-dominant Bordeaux",
+        "distinguish Right Bank from Left Bank",
+        "connect Pomerol richness to style"
+      ],
+      "typical_misconceptions": [
+        "all Bordeaux tastes like Cabernet",
+        "Pomerol is a classification not place",
+        "Merlot lacks ageing potential"
+      ],
+      "comparison_styles": [
+        "Left Bank Bordeaux",
+        "Pomerol",
+        "Saint-Émilion"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Bordeaux is Cabernet",
+        "forgetting Cabernet Franc"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_052"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_052"
+      ],
+      "distinguishing_features": [
+        "plummier and rounder than Left Bank",
+        "more Merlot and Cabernet Franc emphasis",
+        "Right Bank Saint-Émilion/Pomerol source"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether tannins are rounder and fruit is plummy"
+    ],
+    "exam_traps": [
+      "calling Right Bank Left Bank from Bordeaux label alone",
+      "missing Cabernet Franc"
+    ],
+    "memory_hooks": [
+      "Right Bank is Merlot generosity with Bordeaux structure"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_054": {
+    "canonical_id": "SAT_WINE_054",
+    "debrief_render_id": "DEBRIEF_054",
+    "safe_identity": {
+      "display_name": "Cote d'Or Red Burgundy",
+      "wine_name": "Cote d'Or Red Burgundy",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Côte d'Or Pinot Noir with red fruit, site expression and moderate structure",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Burgundy",
+      "subregion": "Côte d'Or",
+      "appellation": "Village / Premier Cru / Grand Cru Côte d'Or",
+      "grape_varieties": [
+        "Pinot Noir"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 054",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Pinot Noir site expression",
+        "Burgundy hierarchy",
+        "Côte d'Or red-fruit structure"
+      ],
+      "learning_objectives": [
+        "identify red Burgundy structure",
+        "connect appellation hierarchy to quality",
+        "separate Pinot Noir from Gamay"
+      ],
+      "typical_misconceptions": [
+        "all pale red wine is simple",
+        "Burgundy is only Chardonnay",
+        "low tannin means low quality"
+      ],
+      "comparison_styles": [
+        "Beaujolais Villages / Cru",
+        "Sonoma Pinot Noir",
+        "Loire Cabernet Franc"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "equating pale colour with low quality",
+        "forgetting village hierarchy"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_055"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_055"
+      ],
+      "distinguishing_features": [
+        "more tannic and complex than Beaujolais",
+        "Pinot Noir rather than Gamay",
+        "earth and site hierarchy are central"
+      ]
+    },
+    "mentor_focus": [
+      "ask for red fruit, fine tannin and site-derived complexity"
+    ],
+    "exam_traps": [
+      "calling Burgundy Beaujolais from pale colour",
+      "overstating tannin"
+    ],
+    "memory_hooks": [
+      "Côte d'Or Pinot is red fruit plus place precision"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_055": {
+    "canonical_id": "SAT_WINE_055",
+    "debrief_render_id": "DEBRIEF_055",
+    "safe_identity": {
+      "display_name": "Beaujolais Villages / Cru",
+      "wine_name": "Beaujolais Villages / Cru",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Gamay-based Beaujolais from fruity Villages to more concentrated crus",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Beaujolais",
+      "subregion": "Beaujolais Villages / Crus",
+      "appellation": "Beaujolais Villages / Beaujolais Cru",
+      "grape_varieties": [
+        "Gamay"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 055",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Gamay fruitiness",
+        "Beaujolais hierarchy",
+        "low-tannin red identification"
+      ],
+      "learning_objectives": [
+        "identify Gamay markers",
+        "separate Beaujolais from red Burgundy",
+        "understand Villages versus Cru"
+      ],
+      "typical_misconceptions": [
+        "Beaujolais is only Nouveau",
+        "banana is required in every Gamay",
+        "low tannin means poor quality"
+      ],
+      "comparison_styles": [
+        "Cote d'Or Red Burgundy",
+        "Loire Cabernet Franc",
+        "Valpolicella"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "treating all Beaujolais as Nouveau",
+        "confusing Gamay and Pinot Noir"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_054"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_054"
+      ],
+      "distinguishing_features": [
+        "fruitier and lower tannin than red Burgundy",
+        "Gamay rather than Pinot Noir",
+        "cru hierarchy gives concentration"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether juicy raspberry and low tannin point to Gamay"
+    ],
+    "exam_traps": [
+      "calling Beaujolais Pinot Noir",
+      "missing cru concentration"
+    ],
+    "memory_hooks": [
+      "Beaujolais is Gamay joy: raspberry, light body, low tannin"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_056": {
+    "canonical_id": "SAT_WINE_056",
+    "debrief_render_id": "DEBRIEF_056",
+    "safe_identity": {
+      "display_name": "Northern Rhone Syrah",
+      "wine_name": "Northern Rhone Syrah",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Syrah from steep northern Rhône slopes with black fruit, pepper and firm structure",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Northern Rhône",
+      "subregion": "Côte-Rôtie / Hermitage / Crozes-Hermitage",
+      "appellation": "Northern Rhône AOCs",
+      "grape_varieties": [
+        "Syrah"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 056",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Northern Rhône Syrah identity",
+        "slope exposure and ripeness",
+        "pepper and savoury structure"
+      ],
+      "learning_objectives": [
+        "identify Syrah versus Grenache blend",
+        "connect steep slopes to ripening",
+        "separate Northern and Southern Rhône"
+      ],
+      "typical_misconceptions": [
+        "all Rhône reds are Grenache",
+        "pepper means oak",
+        "Syrah cannot be elegant"
+      ],
+      "comparison_styles": [
+        "Chateauneuf-du-Pape Rouge",
+        "Australian Shiraz",
+        "Left Bank Bordeaux"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "mixing Northern and Southern Rhône",
+        "overlooking appellation hierarchy"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_057"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_057"
+      ],
+      "distinguishing_features": [
+        "more peppery and Syrah-driven than Southern Rhône",
+        "firmer and darker than Beaujolais",
+        "slope exposure is diagnostic"
+      ]
+    },
+    "mentor_focus": [
+      "ask for black fruit, pepper and firm tannin"
+    ],
+    "exam_traps": [
+      "calling it Shiraz without origin reasoning",
+      "confusing Crozes with Hermitage quality"
+    ],
+    "memory_hooks": [
+      "Northern Rhône is Syrah on steep slopes at its cool limit"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_057": {
+    "canonical_id": "SAT_WINE_057",
+    "debrief_render_id": "DEBRIEF_057",
+    "safe_identity": {
+      "display_name": "Chateauneuf-du-Pape Rouge",
+      "wine_name": "Chateauneuf-du-Pape Rouge",
+      "wine_family": "Tintos Francia",
+      "wine_style": "Full-bodied Grenache-dominant Southern Rhône blend",
+      "wine_type": "TINTO",
+      "country": "France",
+      "region": "Southern Rhône",
+      "subregion": "Châteauneuf-du-Pape",
+      "appellation": "Châteauneuf-du-Pape AOC",
+      "grape_varieties": [
+        "Grenache",
+        "Syrah",
+        "Mourvedre"
+      ],
+      "display_label": "Vino Tinto - Francia - Practica 057",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Southern Rhône Grenache blends",
+        "warm-climate full body",
+        "large-vessel Grenache handling"
+      ],
+      "learning_objectives": [
+        "identify Châteauneuf structure",
+        "separate Southern Rhône from Northern Rhône",
+        "connect Grenache to alcohol and red fruit"
+      ],
+      "typical_misconceptions": [
+        "all Rhône red is Syrah",
+        "high alcohol means New World",
+        "new oak is required for premium red"
+      ],
+      "comparison_styles": [
+        "Northern Rhone Syrah",
+        "Garnacha Spain",
+        "Barossa Shiraz"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Rhône north and south",
+        "overstating oak"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_056"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_056"
+      ],
+      "distinguishing_features": [
+        "warmer and red-fruited than Northern Rhône Syrah",
+        "Grenache-dominant rather than Syrah-only",
+        "large vessel rather than new oak focus"
+      ]
+    },
+    "mentor_focus": [
+      "ask for full body, warm alcohol and red-fruit spice"
+    ],
+    "exam_traps": [
+      "calling it Northern Rhône from Rhône label alone",
+      "missing Grenache dominance"
+    ],
+    "memory_hooks": [
+      "Châteauneuf is warm Grenache generosity with Syrah/Mourvèdre support"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_058": {
+    "canonical_id": "SAT_WINE_058",
+    "debrief_render_id": "DEBRIEF_058",
+    "safe_identity": {
+      "display_name": "Valpolicella",
+      "wine_name": "Valpolicella",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Fresh high-acid Corvina-based Veneto red",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Veneto",
+      "subregion": "Valpolicella",
+      "appellation": "Valpolicella DOC / Valpolicella Classico DOC",
+      "grape_varieties": [
+        "Corvina"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 058",
+      "difficulty_score": 4,
+      "difficulty_band": "foundation",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Corvina freshness",
+        "Valpolicella immediacy",
+        "Veneto red baseline"
+      ],
+      "learning_objectives": [
+        "identify Valpolicella structure",
+        "separate simple Valpolicella from Amarone",
+        "connect Corvina to high acidity"
+      ],
+      "typical_misconceptions": [
+        "Valpolicella is always full-bodied",
+        "all Veneto red is Amarone",
+        "pale colour means Pinot Noir"
+      ],
+      "comparison_styles": [
+        "Amarone della Valpolicella",
+        "Beaujolais Villages / Cru"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Valpolicella with Amarone",
+        "missing high acidity"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_059",
+        "SAT_WINE_055"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_055",
+        "SAT_WINE_059"
+      ],
+      "distinguishing_features": [
+        "lighter and fresher than Amarone",
+        "more cherry-acid Corvina than Gamay raspberry",
+        "rarely oaked"
+      ]
+    },
+    "mentor_focus": [
+      "ask for red cherry, high acidity and light tannin"
+    ],
+    "exam_traps": [
+      "calling simple Valpolicella Beaujolais",
+      "overstating oak"
+    ],
+    "memory_hooks": [
+      "Valpolicella is fresh Corvina red cherry"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_059": {
+    "canonical_id": "SAT_WINE_059",
+    "debrief_render_id": "DEBRIEF_059",
+    "safe_identity": {
+      "display_name": "Amarone della Valpolicella",
+      "wine_name": "Amarone della Valpolicella",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Full-bodied dry or off-dry passito red from Veneto",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Veneto",
+      "subregion": "Valpolicella",
+      "appellation": "Amarone della Valpolicella DOCG",
+      "grape_varieties": [
+        "Corvina"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 059",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "passito concentration",
+        "dry/off-dry high-alcohol red",
+        "Veneto Amarone identity"
+      ],
+      "learning_objectives": [
+        "identify Amarone structure",
+        "connect drying to concentration",
+        "separate Amarone from Recioto and Valpolicella"
+      ],
+      "typical_misconceptions": [
+        "Amarone is sweet like Recioto",
+        "all dried-grape wines are dessert wines",
+        "high alcohol means New World"
+      ],
+      "comparison_styles": [
+        "Valpolicella",
+        "Chateauneuf-du-Pape Rouge",
+        "Vintage Port"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Amarone is fortified",
+        "confusing Amarone and Recioto"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_058",
+        "SAT_WINE_057"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_058",
+        "SAT_WINE_057"
+      ],
+      "distinguishing_features": [
+        "much fuller than Valpolicella",
+        "dried fruit passito signature",
+        "not fortified like Port"
+      ]
+    },
+    "mentor_focus": [
+      "ask if dried fruit and alcohol are structural not just age"
+    ],
+    "exam_traps": [
+      "calling Amarone Port",
+      "missing acidity retained by early harvest"
+    ],
+    "memory_hooks": [
+      "Amarone is dried-grape power, not fortified sweetness"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_060": {
+    "canonical_id": "SAT_WINE_060",
+    "debrief_render_id": "DEBRIEF_060",
+    "safe_identity": {
+      "display_name": "Barolo",
+      "wine_name": "Barolo",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Structured ageworthy Nebbiolo from south-facing Piemonte slopes",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "Barolo",
+      "appellation": "Barolo DOCG",
+      "grape_varieties": [
+        "Nebbiolo"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 060",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Nebbiolo structure",
+        "Barolo ageing law",
+        "site and cru identity"
+      ],
+      "learning_objectives": [
+        "identify Barolo tannin-acid profile",
+        "connect ageing to tar/leather complexity",
+        "separate Barolo from Barbaresco"
+      ],
+      "typical_misconceptions": [
+        "pale colour means light body",
+        "Nebbiolo lacks tannin",
+        "all Piemonte red is Barolo"
+      ],
+      "comparison_styles": [
+        "Barbaresco",
+        "Brunello di Montalcino",
+        "Left Bank Bordeaux"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "underestimating tannin because colour is pale",
+        "confusing Barolo and Barbaresco"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_061",
+        "SAT_WINE_064"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_061",
+        "SAT_WINE_052"
+      ],
+      "distinguishing_features": [
+        "higher altitude and longer ageing than Barbaresco",
+        "more Nebbiolo perfume than Sangiovese",
+        "pale colour with high tannin"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether tannin and acidity are both high despite pale colour"
+    ],
+    "exam_traps": [
+      "calling Barolo Pinot Noir from colour",
+      "missing ageing requirement"
+    ],
+    "memory_hooks": [
+      "Barolo is pale but fierce: acid, tannin, tar and time"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_061": {
+    "canonical_id": "SAT_WINE_061",
+    "debrief_render_id": "DEBRIEF_061",
+    "safe_identity": {
+      "display_name": "Barbaresco",
+      "wine_name": "Barbaresco",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Nebbiolo from lower-altitude Piemonte slopes with earlier ripening fruit",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "Barbaresco",
+      "appellation": "Barbaresco DOCG",
+      "grape_varieties": [
+        "Nebbiolo"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 061",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Barbaresco versus Barolo",
+        "Nebbiolo fruit and structure",
+        "legal ageing contrast"
+      ],
+      "learning_objectives": [
+        "distinguish Barbaresco from Barolo",
+        "identify Nebbiolo despite fruitier profile",
+        "connect lower altitude to earlier ripening"
+      ],
+      "typical_misconceptions": [
+        "Barbaresco is simple Barolo",
+        "lower altitude means no ageing",
+        "Nebbiolo always smells the same"
+      ],
+      "comparison_styles": [
+        "Barolo",
+        "Red Burgundy",
+        "Brunello di Montalcino"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "collapsing all Nebbiolo into Barolo",
+        "missing Barbaresco ageing law"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_060"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_060",
+        "SAT_WINE_054"
+      ],
+      "distinguishing_features": [
+        "fruitier and less perfumed than Barolo",
+        "shorter ageing requirement",
+        "same Nebbiolo acid-tannin spine"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether Nebbiolo structure is present with a fruitier tone"
+    ],
+    "exam_traps": [
+      "overcalling Barolo",
+      "ignoring legal ageing contrast"
+    ],
+    "memory_hooks": [
+      "Barbaresco is Nebbiolo a little earlier and fruitier"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_062": {
+    "canonical_id": "SAT_WINE_062",
+    "debrief_render_id": "DEBRIEF_062",
+    "safe_identity": {
+      "display_name": "Barbera d'Asti",
+      "wine_name": "Barbera d'Asti",
+      "wine_family": "Tintos Italia",
+      "wine_style": "High-acid low-tannin Barbera from Piemonte",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Piemonte",
+      "subregion": "Asti",
+      "appellation": "Barbera d'Asti DOCG",
+      "grape_varieties": [
+        "Barbera"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 062",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Barbera acid-tannin contrast",
+        "Asti quality cue",
+        "oak style choice"
+      ],
+      "learning_objectives": [
+        "identify high-acid low-tannin Barbera",
+        "separate Barbera from Nebbiolo",
+        "understand youthful versus barrel-aged styles"
+      ],
+      "typical_misconceptions": [
+        "high acidity means high tannin",
+        "all Piemonte red is Nebbiolo",
+        "Barbera cannot age"
+      ],
+      "comparison_styles": [
+        "Barolo",
+        "Chianti Classico",
+        "Valpolicella"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming Piemonte equals Nebbiolo",
+        "overcalling tannin"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_060",
+        "SAT_WINE_063"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_060",
+        "SAT_WINE_063"
+      ],
+      "distinguishing_features": [
+        "lower tannin than Nebbiolo",
+        "more plum-cherry than Sangiovese herbs",
+        "higher acidity than Valpolicella with deeper colour"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether acidity is high but tannin is relatively soft"
+    ],
+    "exam_traps": [
+      "calling Barbera Nebbiolo",
+      "missing low tannin"
+    ],
+    "memory_hooks": [
+      "Barbera is Piemonte red with acid turned up and tannin turned down"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_063": {
+    "canonical_id": "SAT_WINE_063",
+    "debrief_render_id": "DEBRIEF_063",
+    "safe_identity": {
+      "display_name": "Chianti Classico",
+      "wine_name": "Chianti Classico",
+      "wine_family": "Tintos Italia",
+      "wine_style": "High-acid Sangiovese from elevated Chianti Classico vineyards",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Tuscany",
+      "subregion": "Chianti Classico",
+      "appellation": "Chianti Classico DOCG",
+      "grape_varieties": [
+        "Sangiovese"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 063",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Sangiovese acidity",
+        "Chianti Classico altitude",
+        "Tuscan classification"
+      ],
+      "learning_objectives": [
+        "identify Chianti Classico markers",
+        "connect altitude to acidity and herbs",
+        "separate Sangiovese from Barbera"
+      ],
+      "typical_misconceptions": [
+        "Chianti Classico is just a sub-zone of Chianti",
+        "all Sangiovese is full-bodied",
+        "herbal notes mean underripe"
+      ],
+      "comparison_styles": [
+        "Brunello di Montalcino",
+        "Barbera d'Asti",
+        "Vino Nobile di Montepulciano"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Chianti and Chianti Classico",
+        "overlooking Sangiovese acidity"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_064",
+        "SAT_WINE_062"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_062",
+        "SAT_WINE_064"
+      ],
+      "distinguishing_features": [
+        "more herbal and Sangiovese than Barbera",
+        "less full-bodied than Brunello",
+        "Classico higher-altitude source"
+      ]
+    },
+    "mentor_focus": [
+      "ask for sour cherry, herbs and high acidity"
+    ],
+    "exam_traps": [
+      "calling it Barbera from acidity alone",
+      "missing Classico status"
+    ],
+    "memory_hooks": [
+      "Chianti Classico is Sangiovese lifted by altitude"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_064": {
+    "canonical_id": "SAT_WINE_064",
+    "debrief_render_id": "DEBRIEF_064",
+    "safe_identity": {
+      "display_name": "Brunello di Montalcino",
+      "wine_name": "Brunello di Montalcino",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Fuller-bodied ageworthy Sangiovese from Montalcino",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Tuscany",
+      "subregion": "Montalcino",
+      "appellation": "Brunello di Montalcino DOCG",
+      "grape_varieties": [
+        "Sangiovese"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 064",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "powerful Sangiovese",
+        "Brunello ageing law",
+        "Montalcino versus Chianti"
+      ],
+      "learning_objectives": [
+        "distinguish Brunello from Chianti Classico",
+        "identify full-bodied Sangiovese",
+        "connect oak ageing to complexity"
+      ],
+      "typical_misconceptions": [
+        "Brunello is a separate grape",
+        "all Sangiovese is medium-bodied",
+        "oak means Bordeaux"
+      ],
+      "comparison_styles": [
+        "Chianti Classico",
+        "Barolo",
+        "Taurasi"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "thinking Brunello is a grape",
+        "missing Sangiovese identity"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_063",
+        "SAT_WINE_060"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_063",
+        "SAT_WINE_060"
+      ],
+      "distinguishing_features": [
+        "fuller than Chianti Classico",
+        "Sangiovese red cherry and herbs rather than Nebbiolo tar",
+        "mandatory long ageing"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether Sangiovese acidity is carried by more body and tannin"
+    ],
+    "exam_traps": [
+      "calling Brunello Chianti",
+      "forgetting ageing requirements"
+    ],
+    "memory_hooks": [
+      "Brunello is Sangiovese turned fuller and longer-aged"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_065": {
+    "canonical_id": "SAT_WINE_065",
+    "debrief_render_id": "DEBRIEF_065",
+    "safe_identity": {
+      "display_name": "Taurasi",
+      "wine_name": "Taurasi",
+      "wine_family": "Tintos Italia",
+      "wine_style": "Prestigious ageworthy Aglianico from Campania",
+      "wine_type": "TINTO",
+      "country": "Italy",
+      "region": "Campania",
+      "subregion": "Taurasi",
+      "appellation": "Taurasi DOCG",
+      "grape_varieties": [
+        "Aglianico"
+      ],
+      "display_label": "Vino Tinto - Italia - Practica 065",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "southern Italian premium red",
+        "Aglianico structure",
+        "Taurasi benchmark"
+      ],
+      "learning_objectives": [
+        "identify Aglianico power",
+        "separate Taurasi from Sangiovese and Nebbiolo",
+        "connect southern Italy to ageworthy reds"
+      ],
+      "typical_misconceptions": [
+        "southern Italy only makes soft fruity reds",
+        "Aglianico is low acid",
+        "all Italian ageworthy reds are Nebbiolo"
+      ],
+      "comparison_styles": [
+        "Barolo",
+        "Brunello di Montalcino",
+        "Left Bank Bordeaux"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "forgetting Taurasi",
+        "confusing all high-tannin Italian reds with Barolo"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_060",
+        "SAT_WINE_064"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_060",
+        "SAT_WINE_064"
+      ],
+      "distinguishing_features": [
+        "darker and more southern than Nebbiolo",
+        "more black-fruited than Sangiovese",
+        "Aglianico benchmark Taurasi"
+      ]
+    },
+    "mentor_focus": [
+      "ask for high tannin and acidity with dark fruit"
+    ],
+    "exam_traps": [
+      "calling Taurasi Barolo from tannin alone",
+      "forgetting Campania reds"
+    ],
+    "memory_hooks": [
+      "Taurasi is southern Italy's stern Aglianico benchmark"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_066": {
+    "canonical_id": "SAT_WINE_066",
+    "debrief_render_id": "DEBRIEF_066",
+    "safe_identity": {
+      "display_name": "Rioja Reserva",
+      "wine_name": "Rioja Reserva",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Rioja Reserva",
+      "wine_type": "TINTO",
+      "country": "Spain",
+      "region": "Rioja",
+      "subregion": "Rioja Alta / Rioja Alavesa / Rioja Oriental",
+      "appellation": "Rioja DOCa",
+      "grape_varieties": [
+        "Tempranillo",
+        "Garnacha",
+        "Mazuelo",
+        "Graciano"
+      ],
+      "display_label": "Vino Tinto - Spain - Practica 066",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Rioja oak identity",
+        "Tempranillo blend structure",
+        "Spanish age category logic"
+      ],
+      "learning_objectives": [
+        "identify oak-aged Rioja",
+        "separate Rioja from Ribera del Duero",
+        "connect American oak to vanilla"
+      ],
+      "typical_misconceptions": [
+        "all Spanish Tempranillo tastes identical",
+        "vanilla means New World",
+        "Garnacha is never in Rioja"
+      ],
+      "comparison_styles": [
+        "Ribera del Duero",
+        "Barbera d'Asti"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Rioja with Ribera",
+        "ignoring oak maturation"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_067"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_067"
+      ],
+      "distinguishing_features": [
+        "more vanilla-oak and red-fruited than Ribera",
+        "less black-fruited and tannic than Priorat",
+        "Rioja subregion blend context"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether red fruit and vanilla oak point to Rioja"
+    ],
+    "exam_traps": [
+      "calling Rioja Ribera from Tempranillo alone",
+      "overlooking blend roles"
+    ],
+    "memory_hooks": [
+      "Rioja is Tempranillo red fruit framed by oak"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_067": {
+    "canonical_id": "SAT_WINE_067",
+    "debrief_render_id": "DEBRIEF_067",
+    "safe_identity": {
+      "display_name": "Ribera del Duero",
+      "wine_name": "Ribera del Duero",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Ribera del Duero",
+      "wine_type": "TINTO",
+      "country": "Spain",
+      "region": "Ribera del Duero",
+      "subregion": "Duero Valley",
+      "appellation": "Ribera del Duero DO",
+      "grape_varieties": [
+        "Tempranillo"
+      ],
+      "display_label": "Vino Tinto - Spain - Practica 067",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "high-altitude Tempranillo",
+        "Ribera concentration",
+        "new-oak structure"
+      ],
+      "learning_objectives": [
+        "identify Ribera del Duero",
+        "separate Ribera from Rioja",
+        "link altitude to freshness"
+      ],
+      "typical_misconceptions": [
+        "Ribera is just Rioja without oak",
+        "high alcohol means low acidity",
+        "Tempranillo always has medium tannin"
+      ],
+      "comparison_styles": [
+        "Rioja Reserva",
+        "Priorat"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "defaulting to Rioja",
+        "forgetting Ribera's altitude"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_066",
+        "SAT_WINE_068"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_066",
+        "SAT_WINE_068"
+      ],
+      "distinguishing_features": [
+        "darker and more tannic than Rioja",
+        "Tempranillo-dominant rather than Garnacha/Cariñena Priorat",
+        "high Meseta altitude"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether darker fruit and tannin exceed Rioja"
+    ],
+    "exam_traps": [
+      "calling all Tempranillo Rioja",
+      "missing altitude"
+    ],
+    "memory_hooks": [
+      "Ribera is high-altitude Tempranillo with grip"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_068": {
+    "canonical_id": "SAT_WINE_068",
+    "debrief_render_id": "DEBRIEF_068",
+    "safe_identity": {
+      "display_name": "Priorat",
+      "wine_name": "Priorat",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Priorat",
+      "wine_type": "TINTO",
+      "country": "Spain",
+      "region": "Priorat",
+      "subregion": "Catalunya inland hills",
+      "appellation": "Priorat DOCa",
+      "grape_varieties": [
+        "Garnacha",
+        "Carinena"
+      ],
+      "display_label": "Vino Tinto - Spain - Practica 068",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Priorat intensity",
+        "llicorella soils",
+        "old-vine Garnacha/Cariñena"
+      ],
+      "learning_objectives": [
+        "identify Priorat structure",
+        "connect low yields to intensity",
+        "separate Priorat from Ribera"
+      ],
+      "typical_misconceptions": [
+        "Priorat is just Garnacha like simple Spain",
+        "new French oak means Bordeaux",
+        "all Catalunya reds are light"
+      ],
+      "comparison_styles": [
+        "Ribera del Duero",
+        "Chateauneuf-du-Pape Rouge"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "missing Cariñena",
+        "overlooking soil clue"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_067",
+        "SAT_WINE_057"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_067",
+        "SAT_WINE_057"
+      ],
+      "distinguishing_features": [
+        "Garnacha/Cariñena rather than Tempranillo",
+        "llicorella slate clue",
+        "more black-fruit and new French oak intensity"
+      ]
+    },
+    "mentor_focus": [
+      "ask for deep colour, high tannin, black fruit and heat"
+    ],
+    "exam_traps": [
+      "calling Priorat Ribera",
+      "missing Cariñena role"
+    ],
+    "memory_hooks": [
+      "Priorat is slate, old vines and concentrated black fruit"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_069": {
+    "canonical_id": "SAT_WINE_069",
+    "debrief_render_id": "DEBRIEF_069",
+    "safe_identity": {
+      "display_name": "Douro Red",
+      "wine_name": "Douro Red",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Douro Red",
+      "wine_type": "TINTO",
+      "country": "Portugal",
+      "region": "Douro",
+      "subregion": "Douro Valley",
+      "appellation": "Douro DOC",
+      "grape_varieties": [
+        "Touriga Nacional",
+        "Touriga Franca",
+        "Tinta Roriz"
+      ],
+      "display_label": "Vino Tinto - Portugal - Practica 069",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 5
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Portuguese dry red from Port varieties",
+        "Touriga Nacional quality",
+        "Douro black-fruit structure"
+      ],
+      "learning_objectives": [
+        "identify Douro red",
+        "separate dry Douro from Port",
+        "connect varieties to structure"
+      ],
+      "typical_misconceptions": [
+        "Douro only makes Port",
+        "Touriga Nacional is only for fortified wine",
+        "Portugal reds are light"
+      ],
+      "comparison_styles": [
+        "Dao Red",
+        "Priorat"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming all Douro is Port",
+        "missing dry red category"
+      ],
+      "revision_priority": "high"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_070",
+        "SAT_WINE_068"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_070",
+        "SAT_WINE_068"
+      ],
+      "distinguishing_features": [
+        "fuller and blacker than Dão",
+        "Portuguese varieties rather than Priorat Garnacha/Cariñena",
+        "not fortified"
+      ]
+    },
+    "mentor_focus": [
+      "ask whether full dry red uses Port grapes"
+    ],
+    "exam_traps": [
+      "calling Douro Port",
+      "forgetting unfortified Douro"
+    ],
+    "memory_hooks": [
+      "Douro red is dry table wine from Port's powerhouse grapes"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_070": {
+    "canonical_id": "SAT_WINE_070",
+    "debrief_render_id": "DEBRIEF_070",
+    "safe_identity": {
+      "display_name": "Dao Red",
+      "wine_name": "Dao Red",
+      "wine_family": "Tintos España / Portugal",
+      "wine_style": "Dao Red",
+      "wine_type": "TINTO",
+      "country": "Portugal",
+      "region": "Dao",
+      "subregion": "Central Portugal",
+      "appellation": "Dao DOC",
+      "grape_varieties": [
+        "Touriga Nacional",
+        "Tinta Roriz",
+        "Jaen",
+        "Alfrocheiro"
+      ],
+      "display_label": "Vino Tinto - Portugal - Practica 070",
+      "difficulty_score": 5,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 4
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "Dão delicacy",
+        "Portuguese mountain reds",
+        "soft tannin high acidity"
+      ],
+      "learning_objectives": [
+        "identify Dão red",
+        "separate Dão from Douro",
+        "connect diurnal range to acidity"
+      ],
+      "typical_misconceptions": [
+        "Portuguese reds are all full-bodied Douro",
+        "soft tannin means low quality",
+        "Dão is only white Encruzado"
+      ],
+      "comparison_styles": [
+        "Douro Red",
+        "Rioja Reserva"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Dão with Douro",
+        "ignoring high acidity"
+      ],
+      "revision_priority": "medium"
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_069"
+      ],
+      "frequently_confused_with": [
+        "SAT_WINE_069",
+        "SAT_WINE_066"
+      ],
+      "distinguishing_features": [
+        "lighter and softer than Douro",
+        "higher acidity and delicate red fruit",
+        "mountainous Dão source"
+      ]
+    },
+    "mentor_focus": [
+      "ask if high acidity and soft tannin suggest Dão"
+    ],
+    "exam_traps": [
+      "calling Dão Douro",
+      "overstating body and tannin"
+    ],
+    "memory_hooks": [
+      "Dão is Portugal's fresher mountain red counterpoint to Douro"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  }
+}

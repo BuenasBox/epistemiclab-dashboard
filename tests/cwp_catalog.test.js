@@ -216,6 +216,10 @@ for (const name of ['render_profiles.blind.json', 'render_profiles.debrief.json'
   assert(fs.existsSync(path.join(exportDir, name)), `${name} was not generated`);
 }
 
+for (const name of ['post_tasting_debrief.json', 'post_tasting_model_comparison.json', 'next_practice_recommendations.json', 'post_tasting_schema.md']) {
+  assert(fs.existsSync(path.join(exportDir, name)), `${name} was not generated`);
+}
+
 const jsonlRows = fs.readFileSync(path.join(exportDir, 'canonical_wines.jsonl'), 'utf8').trim().split(/\r?\n/);
 assert.strictEqual(jsonlRows.length, profiles.length);
 
@@ -226,10 +230,17 @@ const blindRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'ren
 const debriefRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.debrief.json'), 'utf8'));
 const trainingRenderProfiles = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profiles.training.json'), 'utf8'));
 const renderProfileMap = JSON.parse(fs.readFileSync(path.join(exportDir, 'render_profile_map.json'), 'utf8'));
+const postTastingDebrief = JSON.parse(fs.readFileSync(path.join(exportDir, 'post_tasting_debrief.json'), 'utf8'));
+const postTastingModelComparison = JSON.parse(fs.readFileSync(path.join(exportDir, 'post_tasting_model_comparison.json'), 'utf8'));
+const nextPracticeRecommendations = JSON.parse(fs.readFileSync(path.join(exportDir, 'next_practice_recommendations.json'), 'utf8'));
+const postTastingSchema = fs.readFileSync(path.join(exportDir, 'post_tasting_schema.md'), 'utf8');
 assert.strictEqual(blindRenderProfiles.length, profiles.length);
 assert.strictEqual(debriefRenderProfiles.length, profiles.length);
 assert.strictEqual(trainingRenderProfiles.length, profiles.length);
 assert.strictEqual(Object.keys(renderProfileMap).length, profiles.length);
+assert.deepStrictEqual(Object.keys(postTastingDebrief), profiles.map((p) => p.canonical_id));
+assert.deepStrictEqual(Object.keys(postTastingModelComparison), profiles.map((p) => p.canonical_id));
+assert.deepStrictEqual(Object.keys(nextPracticeRecommendations), profiles.map((p) => p.canonical_id));
 
 const blindForbiddenKeys = new Set([
   'canonical',
@@ -306,6 +317,117 @@ for (const collection of [debriefRenderProfiles, trainingRenderProfiles]) {
     assert(profile.comparison?.distinguishing_features, `${profile.canonical_id} missing safe comparison`);
   });
 }
+
+const postTastingForbiddenKeys = new Set([
+  'canonical',
+  'expected_sat_observations',
+  'source',
+  'canonical_source',
+  'field_metadata',
+  'descriptor_whitelist',
+  'reasoning_notes',
+  'sat_constraints',
+  'common_exam_points',
+  'common_student_errors',
+  'mentor_hints',
+  'reusable_knowledge_refs',
+  'chapter',
+  'section',
+  'page_reference',
+  'line_reference',
+  'official_answer',
+  'answer_key',
+  'scoring_key',
+  'pass',
+  'fail',
+  'correct',
+  'incorrect',
+]);
+const postTastingForbiddenStrings = [
+  'SERVER_ONLY',
+  'expected_sat_observations',
+  'WSET3_rebuilt.md',
+  '91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25',
+  'official scoring',
+  'pass/fail',
+  'correct/incorrect',
+];
+for (const [name, output] of Object.entries({
+  post_tasting_debrief: postTastingDebrief,
+  post_tasting_model_comparison: postTastingModelComparison,
+  next_practice_recommendations: nextPracticeRecommendations,
+})) {
+  assertNoForbiddenKeys(output, postTastingForbiddenKeys, name);
+  const text = JSON.stringify(output);
+  postTastingForbiddenStrings.forEach((value) => {
+    assert(!text.includes(value), `${name} leaked ${value}`);
+  });
+}
+
+profiles.forEach((profile, index) => {
+  const canonicalId = profile.canonical_id;
+  const serial = String(index + 1).padStart(3, '0');
+  const debrief = postTastingDebrief[canonicalId];
+  assert.strictEqual(debrief.canonical_id, canonicalId);
+  assert.strictEqual(debrief.debrief_render_id, `DEBRIEF_${serial}`);
+  assert(debrief.safe_identity?.display_name, `${canonicalId} missing safe identity`);
+  assert(debrief.pedagogical_dna?.core_concepts, `${canonicalId} missing pedagogical dna`);
+  assert(debrief.teaching_notes?.student_traps, `${canonicalId} missing teaching notes`);
+  assert(debrief.comparison_engine?.distinguishing_features, `${canonicalId} missing comparison engine`);
+  assert(Array.isArray(debrief.mentor_focus), `${canonicalId} mentor_focus must be an array`);
+  assert(Array.isArray(debrief.exam_traps), `${canonicalId} exam_traps must be an array`);
+  assert(Array.isArray(debrief.memory_hooks), `${canonicalId} memory_hooks must be an array`);
+  assert.strictEqual(debrief.allowed_reveal_stage, 'post_commitment');
+  assert.deepStrictEqual(debrief.governance, {
+    formative_only: true,
+    official_scoring: false,
+    safe_for_examiner: false,
+  });
+
+  const comparison = postTastingModelComparison[canonicalId];
+  assert.strictEqual(comparison.canonical_id, canonicalId);
+  assert.strictEqual(comparison.allowed_reveal_stage, 'post_commitment');
+  assert.strictEqual(comparison.governance.formative_only, true);
+  assert.strictEqual(comparison.governance.official_scoring, false);
+  assert.strictEqual(comparison.governance.examiner_key_available, false);
+  assert(comparison.model_reference?.appearance_model, `${canonicalId} missing appearance model`);
+  assert(comparison.model_reference?.nose_model, `${canonicalId} missing nose model`);
+  assert(comparison.model_reference?.palate_model, `${canonicalId} missing palate model`);
+  assert(comparison.model_reference?.quality_model, `${canonicalId} missing quality model`);
+  assert(comparison.model_reference?.ageing_consumption_model, `${canonicalId} missing ageing model`);
+  assert(comparison.descriptor_bands?.appearance, `${canonicalId} missing descriptor bands`);
+  assert(comparison.acceptable_variations?.style_tolerance, `${canonicalId} missing acceptable variations`);
+  assert(comparison.teaching_notes?.comparison_prompt, `${canonicalId} missing formative teaching notes`);
+
+  const recommendation = nextPracticeRecommendations[canonicalId];
+  assert.strictEqual(recommendation.canonical_id, canonicalId);
+  assert(Array.isArray(recommendation.if_student_struggles_with), `${canonicalId} missing struggle dimensions`);
+  assert(Array.isArray(recommendation.recommended_next), `${canonicalId} missing recommended next IDs`);
+  assert(recommendation.recommended_next.length > 0, `${canonicalId} must recommend at least one next practice`);
+  assert.strictEqual(typeof recommendation.reason, 'string');
+  assert(recommendation.basis?.difficulty_score, `${canonicalId} missing recommendation difficulty basis`);
+  assert(recommendation.basis?.wset_importance, `${canonicalId} missing recommendation WSET basis`);
+  assert(recommendation.basis?.practice_priority, `${canonicalId} missing recommendation priority basis`);
+  assert(recommendation.basis?.wine_type, `${canonicalId} missing recommendation wine type basis`);
+  recommendation.recommended_next.forEach((nextId) => {
+    assert(renderProfileMap[nextId], `${canonicalId} recommendation references missing profile ${nextId}`);
+    assert.notStrictEqual(nextId, canonicalId, `${canonicalId} must not recommend itself`);
+  });
+});
+
+assert.deepStrictEqual(nextPracticeRecommendations.SAT_WINE_016.if_student_struggles_with, ['sweetness', 'acidity', 'quality_judgement']);
+assert.deepStrictEqual(nextPracticeRecommendations.SAT_WINE_016.recommended_next, ['SAT_WINE_017', 'SAT_WINE_018']);
+assert.strictEqual(nextPracticeRecommendations.SAT_WINE_016.reason, 'Progress from Kabinett to Spatlese/Auslese sweetness-acidity balance.');
+
+assert(postTastingSchema.includes('post_tasting_debrief.json'));
+assert(postTastingSchema.includes('post_tasting_model_comparison.json'));
+assert(postTastingSchema.includes('next_practice_recommendations.json'));
+assert(postTastingSchema.includes('During cata'));
+assert(postTastingSchema.includes('Post-cata'));
+assert(postTastingSchema.includes('Never show'));
+postTastingForbiddenStrings.forEach((value) => {
+  assert(!postTastingSchema.includes(value), `schema leaked forbidden string ${value}`);
+});
 
 console.log('CWP catalog validation passed');
 
