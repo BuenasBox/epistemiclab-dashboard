@@ -121,16 +121,21 @@
     +     '</linearGradient>'
     +     '<filter id="swg-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.7"/></filter>'
     +   '</defs>'
+    // Vidrio (relleno tenue del cáliz interior, da volumen)
     +   '<path d="'+INTERIOR_PATH+'" fill="url(#swg-sheen)"/>'
+    // Capa LÍQUIDO (recortada a la forma del propio líquido)
     +   '<g clip-path="url(#swg-liquidclip)">'
     +     '<path class="swg-wine" id="swg-wine" d="" fill="#9c6b86" opacity="0.8"/>'
     +     '<path class="swg-density" id="swg-density" d="" fill="url(#swg-dens)" opacity="0"/>'
     +     '<ellipse class="swg-haze" id="swg-haze" cx="60" cy="80" rx="26" ry="14" fill="#efe9ee" filter="url(#swg-blur)"/>'
     +     '<g class="swg-bubbles" id="swg-bubbles">' + bubbles + '</g>'
     +   '</g>'
+    // Menisco (superficie del vino) — NO recortado, da el efecto de copa real
     +   '<ellipse class="swg-surface" id="swg-surface" cx="60" cy="80" rx="0" ry="3.2" fill="#ffffff" opacity="0.16"/>'
     +   '<path class="swg-surface-rim" id="swg-surface-rim" d="" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.22"/>'
+    // Lágrimas / piernas (en la pared interior, por encima del vino)
     +   '<g class="swg-tears" id="swg-tears" clip-path="url(#swg-interiorclip)"></g>'
+    // Cristal (contorno) por encima de todo
     +   '<g class="swg-crystal" fill="none" stroke="#d7c6d2" stroke-width="2">'
     +     '<path d="M28,20 Q22,73 60,108 Q98,73 92,20"/>'
     +     '<ellipse cx="60" cy="20" rx="32" ry="5.2"/>'
@@ -138,6 +143,7 @@
     +     '<ellipse cx="60" cy="174" rx="27" ry="5.4"/>'
     +   '</g>'
     +   '<path class="swg-shine" d="M40,26 Q34,60 54,96" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.22" stroke-linecap="round"/>'
+    // Ondas aromáticas
     +   '<g class="swg-aroma" id="swg-aroma">' + aroma + '</g>'
     + '</svg>';
   }
@@ -188,6 +194,7 @@
     if (dens){ dens.setAttribute('d', lp); dens.setAttribute('opacity', String(bodyFor(state) * 0.6)); }
     if (surf){ surf.setAttribute('cx','60'); surf.setAttribute('cy', y.toFixed(2)); surf.setAttribute('rx', Math.max(0,hw).toFixed(2)); }
     if (srim){
+      // arco frontal del menisco (medio elipse inferior) para dar perspectiva
       srim.setAttribute('d', fill>0 ? ('M'+(60-hw).toFixed(2)+','+y.toFixed(2)+' A'+hw.toFixed(2)+',3.2 0 0 0 '+(60+hw).toFixed(2)+','+y.toFixed(2)) : '');
     }
     if (haze){
