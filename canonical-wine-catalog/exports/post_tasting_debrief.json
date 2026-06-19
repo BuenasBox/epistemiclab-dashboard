@@ -8235,5 +8235,612 @@
       "official_scoring": false,
       "safe_for_examiner": false
     }
+  },
+  "SAT_WINE_101": {
+    "canonical_id": "SAT_WINE_101",
+    "debrief_render_id": "DEBRIEF_101",
+    "safe_identity": {
+      "display_name": "Fino / Manzanilla",
+      "wine_name": "Fino / Manzanilla",
+      "wine_family": "WSET Official Fortified Wines",
+      "wine_style": "Biologically aged dry Sherry",
+      "wine_type": "FORTIFICADO",
+      "country": "Spain",
+      "region": "Jerez",
+      "subregion": "Jerez / Sanlucar de Barrameda",
+      "appellation": "Jerez-Xeres-Sherry / Manzanilla-Sanlucar",
+      "grape_varieties": [
+        "Palomino"
+      ],
+      "display_label": "Practica WSET 101 - Vino fortificado",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "biological ageing",
+        "flor",
+        "fortification level",
+        "solera"
+      ],
+      "learning_objectives": [
+        "identify dry biologically aged Sherry",
+        "separate Fino/Manzanilla from oxidative Sherry",
+        "connect flor to aroma profile"
+      ],
+      "typical_misconceptions": [
+        "calling dry Sherry sweet",
+        "missing flor character",
+        "confusing Manzanilla with a separate grape variety"
+      ],
+      "comparison_styles": [
+        "Amontillado / Oloroso",
+        "Medium / Cream Sherry",
+        "Asti for sweetness contrast"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling dry Sherry sweet",
+        "missing flor character",
+        "confusing Manzanilla with a separate grape variety"
+      ],
+      "revision_priority": "High: official WSET essential fortified tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_102",
+        "SAT_WINE_105"
+      ],
+      "frequently_confused_with": [
+        "dry white wine with oxidative notes",
+        "Amontillado",
+        "Manzanilla style wine"
+      ],
+      "distinguishing_features": [
+        "pale colour",
+        "dry palate",
+        "flor almond and saline profile",
+        "lighter body than oxidative Sherry"
+      ]
+    },
+    "mentor_focus": [
+      "Dryness plus flor almond and saline notes is the core diagnostic route."
+    ],
+    "exam_traps": [
+      "assuming fortified means sweet"
+    ],
+    "memory_hooks": [
+      "Fino equals pale, dry, flor and almond"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_102": {
+    "canonical_id": "SAT_WINE_102",
+    "debrief_render_id": "DEBRIEF_102",
+    "safe_identity": {
+      "display_name": "Dry Amontillado / Oloroso",
+      "wine_name": "Dry Amontillado / Oloroso",
+      "wine_family": "WSET Official Fortified Wines",
+      "wine_style": "Oxidatively aged dry Sherry",
+      "wine_type": "FORTIFICADO",
+      "country": "Spain",
+      "region": "Jerez",
+      "subregion": "Jerez",
+      "appellation": "Jerez-Xeres-Sherry",
+      "grape_varieties": [
+        "Palomino"
+      ],
+      "display_label": "Practica WSET 102 - Vino fortificado",
+      "difficulty_score": 8,
+      "difficulty_band": "advanced",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "oxidative ageing",
+        "solera",
+        "Amontillado versus Oloroso pathway",
+        "dry fortified style"
+      ],
+      "learning_objectives": [
+        "identify oxidative dry Sherry",
+        "distinguish from Fino and Cream",
+        "explain why brown colour does not equal sweetness"
+      ],
+      "typical_misconceptions": [
+        "assuming brown Sherry is sweet",
+        "forgetting Amontillado and Oloroso are dry unless sweetened",
+        "missing oxidative ageing as the main driver"
+      ],
+      "comparison_styles": [
+        "Fino / Manzanilla",
+        "Medium / Cream Sherry",
+        "Tawny Port"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "assuming brown Sherry is sweet",
+        "forgetting Amontillado and Oloroso are dry unless sweetened",
+        "missing oxidative ageing as the main driver"
+      ],
+      "revision_priority": "High: official WSET essential fortified tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_101",
+        "SAT_WINE_105",
+        "SAT_WINE_104"
+      ],
+      "frequently_confused_with": [
+        "Medium or Cream Sherry",
+        "Tawny Port",
+        "old dry white wine"
+      ],
+      "distinguishing_features": [
+        "dry palate",
+        "Palomino savoury nut profile",
+        "no red-fruit Port structure"
+      ]
+    },
+    "mentor_focus": [
+      "Colour and nutty oxidative notes separate this from Fino; dryness separates it from Cream."
+    ],
+    "exam_traps": [
+      "equating caramel aroma with sweetness"
+    ],
+    "memory_hooks": [
+      "Oloroso/Amontillado equals brown, dry, nutty and high alcohol"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_103": {
+    "canonical_id": "SAT_WINE_103",
+    "debrief_render_id": "DEBRIEF_103",
+    "safe_identity": {
+      "display_name": "LBV / Vintage Port",
+      "wine_name": "LBV / Vintage Port",
+      "wine_family": "WSET Official Fortified Wines",
+      "wine_style": "Bottle-aged or late-bottled ruby Port",
+      "wine_type": "FORTIFICADO",
+      "country": "Portugal",
+      "region": "Douro",
+      "subregion": "Douro Valley",
+      "appellation": "Port",
+      "grape_varieties": [
+        "Touriga Franca",
+        "Tinta Roriz",
+        "Touriga Nacional"
+      ],
+      "display_label": "Practica WSET 103 - Vino fortificado",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "fortification during fermentation",
+        "ruby Port family",
+        "LBV versus Vintage ageing",
+        "sweet fortified red structure"
+      ],
+      "learning_objectives": [
+        "identify LBV/Vintage Port as required WSET style",
+        "separate ruby Port from Tawny Port",
+        "connect extraction and fortification to SAT structure"
+      ],
+      "typical_misconceptions": [
+        "calling Port dry because tannin is high",
+        "missing grape-spirit fortification as production logic",
+        "confusing Tawny oxidative notes with ruby Port fruit"
+      ],
+      "comparison_styles": [
+        "Tawny Port",
+        "Douro Red",
+        "Rutherglen Muscat"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling Port dry because tannin is high",
+        "missing grape-spirit fortification as production logic",
+        "confusing Tawny oxidative notes with ruby Port fruit"
+      ],
+      "revision_priority": "High: official WSET essential fortified tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_104",
+        "SAT_WINE_069"
+      ],
+      "frequently_confused_with": [
+        "Douro red table wine",
+        "Tawny Port",
+        "sweet red wine"
+      ],
+      "distinguishing_features": [
+        "sweetness with high alcohol",
+        "black fruit and tannin",
+        "fortified warmth"
+      ]
+    },
+    "mentor_focus": [
+      "Sweetness plus high alcohol plus black-fruit tannic structure points to ruby-family Port."
+    ],
+    "exam_traps": [
+      "confusing tannin with dryness"
+    ],
+    "memory_hooks": [
+      "Ruby Port equals sweet, black, strong and structured"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_104": {
+    "canonical_id": "SAT_WINE_104",
+    "debrief_render_id": "DEBRIEF_104",
+    "safe_identity": {
+      "display_name": "Aged Tawny Port",
+      "wine_name": "Aged Tawny Port",
+      "wine_family": "WSET Official Fortified Wines",
+      "wine_style": "Tawny Port with indication of age",
+      "wine_type": "FORTIFICADO",
+      "country": "Portugal",
+      "region": "Douro",
+      "subregion": "Douro Valley",
+      "appellation": "Port",
+      "grape_varieties": [
+        "Touriga Franca",
+        "Tinta Roriz",
+        "Touriga Nacional"
+      ],
+      "display_label": "Practica WSET 104 - Vino fortificado",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "CORE",
+      "practice_priority": 1
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "oxidative ageing in wood",
+        "age-indicated blending",
+        "Port fortification",
+        "ruby versus tawny contrast"
+      ],
+      "learning_objectives": [
+        "identify aged Tawny Port as required WSET style",
+        "distinguish from LBV/Vintage Port",
+        "distinguish from dry oxidative Sherry"
+      ],
+      "typical_misconceptions": [
+        "confusing Tawny Port with Oloroso because both are nutty",
+        "expecting high tannin like Vintage Port",
+        "assuming age indication means bottle ageing"
+      ],
+      "comparison_styles": [
+        "LBV / Vintage Port",
+        "Dry Amontillado / Oloroso",
+        "Rutherglen Muscat"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing Tawny Port with Oloroso because both are nutty",
+        "expecting high tannin like Vintage Port",
+        "assuming age indication means bottle ageing"
+      ],
+      "revision_priority": "High: official WSET essential fortified tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_103",
+        "SAT_WINE_102",
+        "SAT_WINE_107"
+      ],
+      "frequently_confused_with": [
+        "Oloroso Sherry",
+        "Rutherglen Muscat",
+        "old red wine"
+      ],
+      "distinguishing_features": [
+        "sweet Port structure",
+        "Douro spirit warmth",
+        "less flor/savoury than Sherry"
+      ]
+    },
+    "mentor_focus": [
+      "Sweetness and Port warmth separate it from dry oxidative Sherry; colour and nuts separate it from ruby Port."
+    ],
+    "exam_traps": [
+      "forgetting Tawny remains sweet"
+    ],
+    "memory_hooks": [
+      "Tawny Port equals sweet, brown, nutty and wood-aged"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_105": {
+    "canonical_id": "SAT_WINE_105",
+    "debrief_render_id": "DEBRIEF_105",
+    "safe_identity": {
+      "display_name": "Medium / Cream Sherry",
+      "wine_name": "Medium / Cream Sherry",
+      "wine_family": "WSET Official Fortified Wines",
+      "wine_style": "Sweetened blended Sherry",
+      "wine_type": "FORTIFICADO",
+      "country": "Spain",
+      "region": "Jerez",
+      "subregion": "Jerez",
+      "appellation": "Jerez-Xeres-Sherry",
+      "grape_varieties": [
+        "Palomino",
+        "Pedro Ximenez",
+        "Muscat"
+      ],
+      "display_label": "Practica WSET 105 - Vino fortificado",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 2
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "sweetened Sherry category",
+        "Medium versus Cream",
+        "blending dry and sweet components",
+        "solera context"
+      ],
+      "learning_objectives": [
+        "differentiate Medium/Cream from dry Sherry",
+        "identify sweetness in fortified tasting",
+        "explain PX or Muscat sweetening role"
+      ],
+      "typical_misconceptions": [
+        "calling all brown Sherry dry",
+        "missing added sweetness as the key contrast with Oloroso",
+        "assuming Cream means dairy flavour"
+      ],
+      "comparison_styles": [
+        "Dry Amontillado / Oloroso",
+        "Fino / Manzanilla",
+        "Tawny Port"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "calling all brown Sherry dry",
+        "missing added sweetness as the key contrast with Oloroso",
+        "assuming Cream means dairy flavour"
+      ],
+      "revision_priority": "Medium-high: official WSET optional fortified tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_102",
+        "SAT_WINE_101",
+        "SAT_WINE_104"
+      ],
+      "frequently_confused_with": [
+        "Oloroso Sherry",
+        "Tawny Port",
+        "PX-like sweet wine"
+      ],
+      "distinguishing_features": [
+        "sweetened Sherry character",
+        "Jerez nutty profile",
+        "no Port red-fruit structure"
+      ]
+    },
+    "mentor_focus": [
+      "Use sweetness as the first branch: dry oxidative Sherry versus sweetened Medium/Cream."
+    ],
+    "exam_traps": [
+      "treating colour as a sweetness proxy"
+    ],
+    "memory_hooks": [
+      "Cream Sherry equals Sherry framework plus sweetness"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_106": {
+    "canonical_id": "SAT_WINE_106",
+    "debrief_render_id": "DEBRIEF_106",
+    "safe_identity": {
+      "display_name": "Muscat de Beaumes-de-Venise",
+      "wine_name": "Muscat de Beaumes-de-Venise",
+      "wine_family": "WSET Official Fortified Wines",
+      "wine_style": "Youthful fortified Muscat",
+      "wine_type": "FORTIFICADO",
+      "country": "France",
+      "region": "Southern Rhone",
+      "subregion": "Beaumes-de-Venise",
+      "appellation": "Muscat de Beaumes-de-Venise",
+      "grape_varieties": [
+        "Muscat Blanc a Petits Grains"
+      ],
+      "display_label": "Practica WSET 106 - Vino fortificado",
+      "difficulty_score": 6,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 2
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "fortified Muscat",
+        "youthful unaged style",
+        "aromatic grape variety",
+        "fortification retaining sweetness"
+      ],
+      "learning_objectives": [
+        "identify youthful fortified Muscat",
+        "separate still fortified Muscat from Asti",
+        "contrast with aged Rutherglen Muscat"
+      ],
+      "typical_misconceptions": [
+        "confusing fortified Muscat with Asti because both are grapey",
+        "forgetting this is still fortified not sparkling",
+        "overlooking low to medium acidity"
+      ],
+      "comparison_styles": [
+        "Rutherglen Muscat",
+        "Asti",
+        "Alsace Gewurztraminer"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing fortified Muscat with Asti because both are grapey",
+        "forgetting this is still fortified not sparkling",
+        "overlooking low to medium acidity"
+      ],
+      "revision_priority": "Medium-high: official WSET optional fortified tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_107",
+        "SAT_WINE_098",
+        "SAT_WINE_006"
+      ],
+      "frequently_confused_with": [
+        "Asti",
+        "late-harvest aromatic white",
+        "Rutherglen Muscat"
+      ],
+      "distinguishing_features": [
+        "still fortified structure",
+        "youthful primary grape and floral notes",
+        "less oxidative than Rutherglen"
+      ]
+    },
+    "mentor_focus": [
+      "Grapey floral sweetness without bubbles points away from Asti and toward fortified Muscat."
+    ],
+    "exam_traps": [
+      "assuming all Muscat styles sparkle"
+    ],
+    "memory_hooks": [
+      "Beaumes-de-Venise equals still sweet grapey fortified Muscat"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
+  },
+  "SAT_WINE_107": {
+    "canonical_id": "SAT_WINE_107",
+    "debrief_render_id": "DEBRIEF_107",
+    "safe_identity": {
+      "display_name": "Rutherglen Muscat",
+      "wine_name": "Rutherglen Muscat",
+      "wine_family": "WSET Official Fortified Wines",
+      "wine_style": "Aged fortified Muscat",
+      "wine_type": "FORTIFICADO",
+      "country": "Australia",
+      "region": "Rutherglen",
+      "subregion": "Rutherglen",
+      "appellation": "Rutherglen",
+      "grape_varieties": [
+        "Muscat"
+      ],
+      "display_label": "Practica WSET 107 - Vino fortificado",
+      "difficulty_score": 7,
+      "difficulty_band": "intermediate",
+      "wset_importance": "HIGH",
+      "practice_priority": 2
+    },
+    "pedagogical_dna": {
+      "core_concepts": [
+        "aged fortified Muscat",
+        "oxidative ageing",
+        "luscious sweetness",
+        "Australian Rutherglen benchmark"
+      ],
+      "learning_objectives": [
+        "identify aged fortified Muscat",
+        "distinguish from Tawny Port",
+        "contrast with youthful Muscat de Beaumes-de-Venise"
+      ],
+      "typical_misconceptions": [
+        "confusing it with Tawny Port solely because both are brown and sweet",
+        "missing Muscat grapey/orange-peel lift beneath oxidative notes",
+        "underestimating sweetness and body"
+      ],
+      "comparison_styles": [
+        "Aged Tawny Port",
+        "Muscat de Beaumes-de-Venise",
+        "Medium / Cream Sherry"
+      ]
+    },
+    "teaching_notes": {
+      "student_traps": [
+        "confusing it with Tawny Port solely because both are brown and sweet",
+        "missing Muscat grapey/orange-peel lift beneath oxidative notes",
+        "underestimating sweetness and body"
+      ],
+      "revision_priority": "Medium-high: official WSET optional fortified tasting style."
+    },
+    "comparison_engine": {
+      "similar_profiles": [
+        "SAT_WINE_104",
+        "SAT_WINE_106",
+        "SAT_WINE_105"
+      ],
+      "frequently_confused_with": [
+        "Tawny Port",
+        "Cream Sherry",
+        "old sweet wine"
+      ],
+      "distinguishing_features": [
+        "Muscat aromatic lift",
+        "luscious texture",
+        "Australian aged fortified Muscat identity"
+      ]
+    },
+    "mentor_focus": [
+      "When the wine is brown, sweet and intense, check whether Muscat perfume remains under the oxidative layer."
+    ],
+    "exam_traps": [
+      "calling every sweet brown fortified wine Tawny Port"
+    ],
+    "memory_hooks": [
+      "Rutherglen Muscat equals brown, sweet, raisin, toffee and Muscat lift"
+    ],
+    "allowed_reveal_stage": "post_commitment",
+    "governance": {
+      "formative_only": true,
+      "official_scoring": false,
+      "safe_for_examiner": false
+    }
   }
 }

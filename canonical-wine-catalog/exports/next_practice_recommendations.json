@@ -3685,5 +3685,281 @@
       "readiness",
       "identity_logic"
     ]
+  },
+  "SAT_WINE_101": {
+    "canonical_id": "SAT_WINE_101",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_102",
+      "SAT_WINE_105"
+    ],
+    "reason": "Continue with Dry Amontillado / Oloroso or Medium / Cream Sherry to practise nearby style distinctions for Fino / Manzanilla.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "FORTIFICADO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_102",
+          "SAT_WINE_105"
+        ],
+        "frequently_confused_with": [
+          "dry white wine with oxidative notes",
+          "Amontillado",
+          "Manzanilla style wine"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_102": {
+    "canonical_id": "SAT_WINE_102",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_101",
+      "SAT_WINE_105",
+      "SAT_WINE_104"
+    ],
+    "reason": "Continue with Fino / Manzanilla or Medium / Cream Sherry or Aged Tawny Port to practise nearby style distinctions for Dry Amontillado / Oloroso.",
+    "basis": {
+      "difficulty_score": 8,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "FORTIFICADO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_101",
+          "SAT_WINE_105",
+          "SAT_WINE_104"
+        ],
+        "frequently_confused_with": [
+          "Medium or Cream Sherry",
+          "Tawny Port",
+          "old dry white wine"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_103": {
+    "canonical_id": "SAT_WINE_103",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "tannin"
+    ],
+    "recommended_next": [
+      "SAT_WINE_104",
+      "SAT_WINE_069"
+    ],
+    "reason": "Continue with Aged Tawny Port or Douro Red to practise nearby style distinctions for LBV / Vintage Port.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "FORTIFICADO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_104",
+          "SAT_WINE_069"
+        ],
+        "frequently_confused_with": [
+          "Douro red table wine",
+          "Tawny Port",
+          "sweet red wine"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_104": {
+    "canonical_id": "SAT_WINE_104",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "tannin"
+    ],
+    "recommended_next": [
+      "SAT_WINE_103",
+      "SAT_WINE_102",
+      "SAT_WINE_107"
+    ],
+    "reason": "Continue with LBV / Vintage Port or Dry Amontillado / Oloroso or Rutherglen Muscat to practise nearby style distinctions for Aged Tawny Port.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "CORE",
+      "practice_priority": 1,
+      "wine_type": "FORTIFICADO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_103",
+          "SAT_WINE_102",
+          "SAT_WINE_107"
+        ],
+        "frequently_confused_with": [
+          "Oloroso Sherry",
+          "Rutherglen Muscat",
+          "old red wine"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_105": {
+    "canonical_id": "SAT_WINE_105",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "aroma_descriptor_precision"
+    ],
+    "recommended_next": [
+      "SAT_WINE_102",
+      "SAT_WINE_101",
+      "SAT_WINE_104"
+    ],
+    "reason": "Continue with Dry Amontillado / Oloroso or Fino / Manzanilla or Aged Tawny Port to practise nearby style distinctions for Medium / Cream Sherry.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "HIGH",
+      "practice_priority": 2,
+      "wine_type": "FORTIFICADO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_102",
+          "SAT_WINE_101",
+          "SAT_WINE_104"
+        ],
+        "frequently_confused_with": [
+          "Oloroso Sherry",
+          "Tawny Port",
+          "PX-like sweet wine"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_106": {
+    "canonical_id": "SAT_WINE_106",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "acidity"
+    ],
+    "recommended_next": [
+      "SAT_WINE_107",
+      "SAT_WINE_098",
+      "SAT_WINE_006"
+    ],
+    "reason": "Continue with Rutherglen Muscat or Asti or Alsace Gewurztraminer to practise nearby style distinctions for Muscat de Beaumes-de-Venise.",
+    "basis": {
+      "difficulty_score": 6,
+      "wset_importance": "HIGH",
+      "practice_priority": 2,
+      "wine_type": "FORTIFICADO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_107",
+          "SAT_WINE_098",
+          "SAT_WINE_006"
+        ],
+        "frequently_confused_with": [
+          "Asti",
+          "late-harvest aromatic white",
+          "Rutherglen Muscat"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
+  },
+  "SAT_WINE_107": {
+    "canonical_id": "SAT_WINE_107",
+    "if_student_struggles_with": [
+      "identity_logic",
+      "sweetness",
+      "body"
+    ],
+    "recommended_next": [
+      "SAT_WINE_104",
+      "SAT_WINE_106",
+      "SAT_WINE_105"
+    ],
+    "reason": "Continue with Aged Tawny Port or Muscat de Beaumes-de-Venise or Medium / Cream Sherry to practise nearby style distinctions for Rutherglen Muscat.",
+    "basis": {
+      "difficulty_score": 7,
+      "wset_importance": "HIGH",
+      "practice_priority": 2,
+      "wine_type": "FORTIFICADO",
+      "comparison_engine": {
+        "similar_profiles": [
+          "SAT_WINE_104",
+          "SAT_WINE_106",
+          "SAT_WINE_105"
+        ],
+        "frequently_confused_with": [
+          "Tawny Port",
+          "Cream Sherry",
+          "old sweet wine"
+        ]
+      }
+    },
+    "future_student_gap_inputs": [
+      "appearance",
+      "nose",
+      "palate_structure",
+      "quality_judgement",
+      "readiness",
+      "identity_logic"
+    ]
   }
 }

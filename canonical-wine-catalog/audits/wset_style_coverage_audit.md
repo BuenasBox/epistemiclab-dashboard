@@ -1,53 +1,50 @@
-# CWP-BUILD-07 Batch 011 - Cobertura WSET de vinos espumosos oficiales
+# CWP-BUILD-07 Batch 012 - Cobertura WSET de vinos generosos oficiales
 
 Fecha: 2026-06-18
-Alcance: actualizacion documental de cobertura despues de crear Batch 011. Batch 011 incluye solo vinos espumosos oficiales de la especificacion WSET: imprescindibles y dos opcionales oficiales que encajan limpiamente en el mismo batch.
+Alcance: actualizacion documental de cobertura despues de crear Batch 012. Batch 012 incluye solo vinos generosos oficiales de la especificacion WSET: imprescindibles restantes y tres opcionales oficiales que encajan limpiamente en el mismo batch.
 
 ## Fuentes
 
 - Fuente primaria obligatoria: C:\Dev\WSET-AI-System-push\knowledge\official-wset\specification\wset_l3wines_specification_es_highres_aug2023_issue201.pdf.
 - Apoyo: C:\Dev\WSET-AI-System-push\knowledge\official-wset\specification\wset_l3wines_specification_es_highres_aug2023_issue201.md y D:\Descargas\Phone Link\WSET3_rebuilt.md.
-- Seccion fuente: Recomendaciones de Vinos para Catar, Resultado de Aprendizaje 3, lineas 1909-1923 del Markdown de especificacion.
+- Seccion fuente: Recomendaciones de Vinos para Catar, Resultado de Aprendizaje 4, lineas 1939-1951 del Markdown de especificacion.
 - Catalogo comparado: canonical-wine-catalog/profiles/.
 
 ## Evidencia
 
 - Total real extraido desde especificacion: 100
-- SHA-256 de wset_required_styles_from_spec.csv: 0d267fe1129509e1052455185fec4a37f44e9ed365a798cbe734e8cf2e177c34
-- SHA-256 de wset_style_coverage_audit.csv: b3cb439318bf5766a2220a41c80ac3f1007acd16e9a2dfd1841251f4fbee19e8
-- Batch 011 agrega SAT_WINE_094 a SAT_WINE_100 en modo append-only.
-- SAT_WINE_001 a SAT_WINE_093 se mantienen estables; no se renumeran IDs.
+- SHA-256 de wset_required_styles_from_spec.csv: 17e205b1e5ee8a32437ad149ebc0f05f541b719e9e3aaf915cd562c1e1432671
+- SHA-256 de wset_style_coverage_audit.csv: 069c32d8ac70b4cadc015c291a64e5a1b51b054be2eac97b5b5a1bdaaa0dda35
+- Batch 012 agrega SAT_WINE_101 a SAT_WINE_107 en modo append-only.
+- SAT_WINE_001 a SAT_WINE_100 se mantienen estables; no se renumeran IDs.
 
 ## Resumen antes/despues
 
-| Metrica | Antes Batch 011 | Despues Batch 011 |
+| Metrica | Antes Batch 012 | Despues Batch 012 |
 | --- | ---: | ---: |
 | Total estilos WSET auditados | 100 | 100 |
-| Total CUBIERTO | 50 | 57 |
+| Total CUBIERTO | 57 | 64 |
 | Total DUPLICADO / SOLAPADO | 5 | 5 |
 | Total PARCIALMENTE CUBIERTO | 7 | 7 |
-| Total FALTANTE | 37 | 30 |
+| Total FALTANTE | 30 | 23 |
 | Total FUERA DE ALCANCE | 1 | 1 |
-| Cobertura efectiva total | 55/100 | 62/100 |
-| Imprescindibles faltantes | 9/58 | 4/58 |
-| Cobertura efectiva de imprescindibles | 49/58 | 54/58 |
+| Cobertura efectiva total | 62/100 | 69/100 |
+| Imprescindibles faltantes | 4/58 | 0/58 |
+| Cobertura efectiva de imprescindibles | 54/58 | 58/58 |
 
-## Espumosos cubiertos por Batch 011
+## Generosos cubiertos por Batch 012
 
-- WSET_STYLE_087: Champagne non-vintage -> SAT_WINE_094 (France, espumoso; spec line 1909)
-- WSET_STYLE_088: Champagne vintage o prestige cuvée -> SAT_WINE_095 (France, espumoso; spec line 1911)
-- WSET_STYLE_089: Crémant -> SAT_WINE_096 (France, espumoso; spec line 1913)
-- WSET_STYLE_090: Asti -> SAT_WINE_098 (Italy, espumoso/dulce; spec line 1915)
-- WSET_STYLE_091: Prosecco -> SAT_WINE_099 (Italy, espumoso; spec line 1915)
-- WSET_STYLE_092: Cava -> SAT_WINE_097 (Spain, espumoso; spec line 1917)
-- WSET_STYLE_093: Espumoso método tradicional de Australia/NZ/Sudáfrica/EE. UU. -> SAT_WINE_100 (Australia / New Zealand / South Africa / USA, espumoso; spec line 1922-1923)
+- WSET_STYLE_094: Fino o Manzanilla -> SAT_WINE_101 (Spain, fortificado; spec line 1939)
+- WSET_STYLE_095: Amontillado seco u Oloroso seco -> SAT_WINE_102 (Spain, fortificado; spec line 1940)
+- WSET_STYLE_096: Jerez Medium o Cream -> SAT_WINE_105 (Spain, fortificado/dulce; spec line 1942)
+- WSET_STYLE_097: Oporto LBV u Oporto Vintage -> SAT_WINE_103 (Portugal, fortificado/dulce; spec line 1944)
+- WSET_STYLE_098: Porto Tawny con indicación de edad -> SAT_WINE_104 (Portugal, fortificado/dulce; spec line 1945)
+- WSET_STYLE_099: Muscat de Beaumes-de-Venise -> SAT_WINE_106 (France, fortificado/dulce; spec line 1950)
+- WSET_STYLE_100: Rutherglen Muscat -> SAT_WINE_107 (Australia, fortificado/dulce; spec line 1951)
 
 ## Faltantes imprescindibles restantes
 
-- WSET_STYLE_094: Fino o Manzanilla (Spain, fortificado; spec line 1939)
-- WSET_STYLE_095: Amontillado seco u Oloroso seco (Spain, fortificado; spec line 1940)
-- WSET_STYLE_097: Oporto LBV u Oporto Vintage (Portugal, fortificado/dulce; spec line 1944)
-- WSET_STYLE_098: Porto Tawny con indicación de edad (Portugal, fortificado/dulce; spec line 1945)
+- Ninguno. Todos los imprescindibles WSET extraidos desde especificacion quedan cubiertos o solapados de forma efectiva.
 
 ## Faltantes totales restantes
 
@@ -74,13 +71,6 @@ Alcance: actualizacion documental de cobertura despues de crear Batch 011. Batch
 - WSET_STYLE_080: Australia Pinot Noir premium (Australia, tinto; spec line 1856-1857)
 - WSET_STYLE_083: Hawke’s Bay tinto estilo Burdeos o Syrah (New Zealand, tinto; spec line 1876-1877)
 - WSET_STYLE_084: New Zealand Chardonnay premium (New Zealand, blanco; spec line 1879)
-- WSET_STYLE_094: Fino o Manzanilla (Spain, fortificado; spec line 1939)
-- WSET_STYLE_095: Amontillado seco u Oloroso seco (Spain, fortificado; spec line 1940)
-- WSET_STYLE_096: Jerez Medium o Cream (Spain, fortificado/dulce; spec line 1942)
-- WSET_STYLE_097: Oporto LBV u Oporto Vintage (Portugal, fortificado/dulce; spec line 1944)
-- WSET_STYLE_098: Porto Tawny con indicación de edad (Portugal, fortificado/dulce; spec line 1945)
-- WSET_STYLE_099: Muscat de Beaumes-de-Venise (France, fortificado/dulce; spec line 1950)
-- WSET_STYLE_100: Rutherglen Muscat (Australia, fortificado/dulce; spec line 1951)
 
 ## Cobertura parcial restante
 
@@ -106,17 +96,16 @@ Alcance: actualizacion documental de cobertura despues de crear Batch 011. Batch
 
 ## Recomendaciones de nuevos batches
 
-1. Batch 012 - Generosos imprescindibles: Fino/Manzanilla, Amontillado/Oloroso seco, LBV/Vintage Port y Tawny con indicacion de edad.
-2. Batch 013 - Generosos opcionales: Jerez Medium/Cream, Muscat de Beaumes-de-Venise y Rutherglen Muscat.
-3. Batch 014 - Tranquilos opcionales faltantes de Europa: Bordeaux blanco seco, Graves/Pessac-Leognan blanco, Cahors/Madiran, Muscadet, sur de Francia, Provence rose, Naoussa/Nemea, Pinot Grigio Veneto, Monastrell y Alentejo.
-4. Batch 015 - Tranquilos opcionales de Nuevo Mundo: Oregon/California Pinot Noir, White Zinfandel, Canada Icewine, Chile Cabernet, Argentina Cabernet/Malbec premium, South Africa Cabernet, marca economica de volumen, Australia Shiraz/Pinot Noir alternativo, Hawke's Bay red y New Zealand Chardonnay/Sauvignon Blanc con roble.
+1. Batch 013 - Tranquilos opcionales faltantes de Europa: Bordeaux blanco seco, Graves/Pessac-Leognan blanco, Cahors/Madiran, Muscadet, sur de Francia, Provence rose, Naoussa/Nemea, Pinot Grigio Veneto, Monastrell y Alentejo.
+2. Batch 014 - Tranquilos opcionales de Nuevo Mundo: Oregon/California Pinot Noir, White Zinfandel, Canada Icewine, Chile Cabernet, Argentina Cabernet/Malbec premium, South Africa Cabernet, marca economica de volumen, Australia Shiraz/Pinot Noir alternativo, Hawke's Bay red y New Zealand Chardonnay/Sauvignon Blanc con roble.
+3. Batch 015 - Reducir parciales restantes si se desea granularidad adicional: Saint-Emilion/Pomerol/Haut-Medoc de anada antigua, Beaujolais AC, Alsace VT/SGN, Syrah norte medio, Douro/Dao/Alentejo, Chile Chardonnay/Sauvignon Blanc y New Zealand Sauvignon Blanc con roble.
 
 ## Impacto sobre IDs actuales
 
-- IDs existentes SAT_WINE_001 a SAT_WINE_093: sin cambios y sin renumeracion.
-- Nuevos IDs: SAT_WINE_094 a SAT_WINE_100, consecutivos.
-- La matriz cambia estados de faltante a cubierto para los 7 espumosos oficiales de WSET incluidos en Batch 011.
-- Despues de Batch 011 el catalogo llega a 100 perfiles. Aun faltan los generosos imprescindibles para completar los estilos obligatorios de practicas y simulaciones WSET.
+- IDs existentes SAT_WINE_001 a SAT_WINE_100: sin cambios y sin renumeracion.
+- Nuevos IDs: SAT_WINE_101 a SAT_WINE_107, consecutivos.
+- La matriz cambia estados de faltante a cubierto para los 7 generosos oficiales de WSET incluidos en Batch 012.
+- Despues de Batch 012 el catalogo llega a 107 perfiles. Los imprescindibles WSET quedan cubiertos de forma efectiva; los faltantes restantes son opcionales.
 
 ## Tabla de comparacion fuente vs cobertura
 
@@ -215,10 +204,10 @@ Alcance: actualizacion documental de cobertura despues de crear Batch 011. Batch
 | WSET_STYLE_091 | Imprescindible | Prosecco | Italy | Veneto / Friuli | espumoso | CUBIERTO | SAT_WINE_099 | 1915 |
 | WSET_STYLE_092 | Imprescindible | Cava | Spain | Catalonia / Spain | espumoso | CUBIERTO | SAT_WINE_097 | 1917 |
 | WSET_STYLE_093 | Imprescindible | Espumoso método tradicional de Australia/NZ/Sudáfrica/EE. UU. | Australia / New Zealand / South Africa / USA | Tasmania / Marlborough / Cap Classique / California | espumoso | CUBIERTO | SAT_WINE_100 | 1922-1923 |
-| WSET_STYLE_094 | Imprescindible | Fino o Manzanilla | Spain | Jerez | fortificado | FALTANTE | - | 1939 |
-| WSET_STYLE_095 | Imprescindible | Amontillado seco u Oloroso seco | Spain | Jerez | fortificado | FALTANTE | - | 1940 |
-| WSET_STYLE_096 | Opcional | Jerez Medium o Cream | Spain | Jerez | fortificado/dulce | FALTANTE | - | 1942 |
-| WSET_STYLE_097 | Imprescindible | Oporto LBV u Oporto Vintage | Portugal | Douro | fortificado/dulce | FALTANTE | - | 1944 |
-| WSET_STYLE_098 | Imprescindible | Porto Tawny con indicación de edad | Portugal | Douro | fortificado/dulce | FALTANTE | - | 1945 |
-| WSET_STYLE_099 | Opcional | Muscat de Beaumes-de-Venise | France | Southern Rhône | fortificado/dulce | FALTANTE | - | 1950 |
-| WSET_STYLE_100 | Opcional | Rutherglen Muscat | Australia | Rutherglen | fortificado/dulce | FALTANTE | - | 1951 |
+| WSET_STYLE_094 | Imprescindible | Fino o Manzanilla | Spain | Jerez | fortificado | CUBIERTO | SAT_WINE_101 | 1939 |
+| WSET_STYLE_095 | Imprescindible | Amontillado seco u Oloroso seco | Spain | Jerez | fortificado | CUBIERTO | SAT_WINE_102 | 1940 |
+| WSET_STYLE_096 | Opcional | Jerez Medium o Cream | Spain | Jerez | fortificado/dulce | CUBIERTO | SAT_WINE_105 | 1942 |
+| WSET_STYLE_097 | Imprescindible | Oporto LBV u Oporto Vintage | Portugal | Douro | fortificado/dulce | CUBIERTO | SAT_WINE_103 | 1944 |
+| WSET_STYLE_098 | Imprescindible | Porto Tawny con indicación de edad | Portugal | Douro | fortificado/dulce | CUBIERTO | SAT_WINE_104 | 1945 |
+| WSET_STYLE_099 | Opcional | Muscat de Beaumes-de-Venise | France | Southern Rhône | fortificado/dulce | CUBIERTO | SAT_WINE_106 | 1950 |
+| WSET_STYLE_100 | Opcional | Rutherglen Muscat | Australia | Rutherglen | fortificado/dulce | CUBIERTO | SAT_WINE_107 | 1951 |

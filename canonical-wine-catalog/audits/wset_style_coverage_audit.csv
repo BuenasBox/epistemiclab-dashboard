@@ -92,10 +92,10 @@ WSET_STYLE_090,1915,Imprescindible,Asti,Italy,Piemonte,Asti DOCG,Muscat Blanc à
 WSET_STYLE_091,1915,Imprescindible,Prosecco,Italy,Veneto / Friuli,Prosecco / Conegliano-Valdobbiadene,Glera,espumoso,CUBIERTO,SAT_WINE_099,Batch 011 agrega Prosecco.
 WSET_STYLE_092,1917,Imprescindible,Cava,Spain,Catalonia / Spain,Cava DO,Macabeo / Xarel-lo / Parellada,espumoso,CUBIERTO,SAT_WINE_097,Batch 011 agrega Cava.
 WSET_STYLE_093,1922-1923,Imprescindible,Espumoso método tradicional de Australia/NZ/Sudáfrica/EE. UU.,Australia / New Zealand / South Africa / USA,Tasmania / Marlborough / Cap Classique / California,regional,Chardonnay / Pinot Noir,espumoso,CUBIERTO,SAT_WINE_100,Batch 011 agrega un ejemplo de método tradicional del Nuevo Mundo representado por Tasmania.
-WSET_STYLE_094,1939,Imprescindible,Fino o Manzanilla,Spain,Jerez,Jerez-Xérès-Sherry / Manzanilla-Sanlúcar,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
-WSET_STYLE_095,1940,Imprescindible,Amontillado seco u Oloroso seco,Spain,Jerez,Jerez-Xérès-Sherry,Palomino,fortificado,FALTANTE,,No hay perfiles generosos/Jerez.
-WSET_STYLE_096,1942,Opcional,Jerez Medium o Cream,Spain,Jerez,Jerez-Xérès-Sherry,Palomino + PX/Moscatel,fortificado/dulce,FALTANTE,,No hay perfiles generosos/Jerez dulce.
-WSET_STYLE_097,1944,Imprescindible,Oporto LBV u Oporto Vintage,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,FALTANTE,,No hay perfiles Oporto.
-WSET_STYLE_098,1945,Imprescindible,Porto Tawny con indicación de edad,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,FALTANTE,,No hay perfiles Oporto Tawny.
-WSET_STYLE_099,1950,Opcional,Muscat de Beaumes-de-Venise,France,Southern Rhône,Muscat de Beaumes-de-Venise,Muscat,fortificado/dulce,FALTANTE,,No hay perfiles moscateles encabezados.
-WSET_STYLE_100,1951,Opcional,Rutherglen Muscat,Australia,Rutherglen,Rutherglen,Muscat,fortificado/dulce,FALTANTE,,No hay perfiles moscateles encabezados.
+WSET_STYLE_094,1939,Imprescindible,Fino o Manzanilla,Spain,Jerez,Jerez-Xérès-Sherry / Manzanilla-Sanlúcar,Palomino,fortificado,CUBIERTO,SAT_WINE_101,Batch 012 agrega Fino / Manzanilla.
+WSET_STYLE_095,1940,Imprescindible,Amontillado seco u Oloroso seco,Spain,Jerez,Jerez-Xérès-Sherry,Palomino,fortificado,CUBIERTO,SAT_WINE_102,Batch 012 agrega Amontillado seco / Oloroso seco.
+WSET_STYLE_096,1942,Opcional,Jerez Medium o Cream,Spain,Jerez,Jerez-Xérès-Sherry,Palomino + PX/Moscatel,fortificado/dulce,CUBIERTO,SAT_WINE_105,Batch 012 agrega Jerez Medium / Cream como generoso oficial opcional.
+WSET_STYLE_097,1944,Imprescindible,Oporto LBV u Oporto Vintage,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,CUBIERTO,SAT_WINE_103,Batch 012 agrega Oporto LBV / Vintage.
+WSET_STYLE_098,1945,Imprescindible,Porto Tawny con indicación de edad,Portugal,Douro,Port,Touriga Franca / Tinta Roriz / Touriga Nacional,fortificado/dulce,CUBIERTO,SAT_WINE_104,Batch 012 agrega Porto Tawny con indicación de edad.
+WSET_STYLE_099,1950,Opcional,Muscat de Beaumes-de-Venise,France,Southern Rhône,Muscat de Beaumes-de-Venise,Muscat,fortificado/dulce,CUBIERTO,SAT_WINE_106,Batch 012 agrega Muscat de Beaumes-de-Venise.
+WSET_STYLE_100,1951,Opcional,Rutherglen Muscat,Australia,Rutherglen,Rutherglen,Muscat,fortificado/dulce,CUBIERTO,SAT_WINE_107,Batch 012 agrega Rutherglen Muscat.

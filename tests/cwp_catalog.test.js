@@ -18,6 +18,10 @@ const batch011Profiles = profiles.filter((p) => {
   const id = Number(p.canonical_id.slice(-3));
   return id >= 94 && id <= 100;
 });
+const batch012Profiles = profiles.filter((p) => {
+  const id = Number(p.canonical_id.slice(-3));
+  return id >= 101 && id <= 107;
+});
 const allowedOrigins = new Set(['WSET_PRIMARY', 'STANDARD_WINE_KNOWLEDGE', 'DERIVED_FROM_STYLE', 'INFERRED_HIGH_CONFIDENCE']);
 const allowedVisibility = new Set(['PUBLIC', 'TRAINING', 'SERVER_ONLY']);
 const requiredFingerprint = ['appearance', 'nose', 'palate', 'quality', 'ageing', 'diagnostic_features'];
@@ -92,6 +96,18 @@ const batch011Names = new Set(batch011Profiles.map((p) => p.wine_name));
   'New World Traditional Method Sparkling',
 ].forEach((name) => assert(batch011Names.has(name), `Batch 011 missing ${name}`));
 assert(batch011Profiles.every((p) => p.wine_type === 'ESPUMOSO'));
+
+const batch012Names = new Set(batch012Profiles.map((p) => p.wine_name));
+[
+  'Fino / Manzanilla',
+  'Dry Amontillado / Oloroso',
+  'LBV / Vintage Port',
+  'Aged Tawny Port',
+  'Medium / Cream Sherry',
+  'Muscat de Beaumes-de-Venise',
+  'Rutherglen Muscat',
+].forEach((name) => assert(batch012Names.has(name), `Batch 012 missing ${name}`));
+assert(batch012Profiles.every((p) => p.wine_type === 'FORTIFICADO'));
 
 const franceRedProfiles = legacyProfiles.filter((p) => p.country === 'France' && p.wine_type === 'TINTO');
 assert.deepStrictEqual(franceRedProfiles.map((p) => p.canonical_id), Array.from({ length: 6 }, (_, i) => `SAT_WINE_${String(i + 52).padStart(3, '0')}`));

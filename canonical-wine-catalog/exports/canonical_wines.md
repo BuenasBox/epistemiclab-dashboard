@@ -3,7 +3,7 @@
 Source: D:\Descargas\Phone Link\WSET3_rebuilt.md
 Source SHA256: 91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25
 
-Profiles: 100
+Profiles: 107
 
 ## SAT_WINE_001 - Chablis
 - **canonical_id:** SAT_WINE_001
@@ -5604,4 +5604,396 @@ Profiles: 100
 - **section:** Tasmania / Tasmania GI
 - **page_reference:** WSET specification lines 1922-1923; WSET3 rebuilt line 17575
 - **line_reference:** ["1922-1923"]
+
+## SAT_WINE_101 - Fino / Manzanilla
+- **canonical_id:** SAT_WINE_101
+- **wine_family:** WSET Official Fortified Wines
+- **wine_name:** Fino / Manzanilla
+- **wine_style:** Biologically aged dry Sherry
+- **display_name:** Fino / Manzanilla
+- **wine_type:** FORTIFICADO
+- **country:** Spain
+- **region:** Jerez
+- **subregion:** Jerez / Sanlucar de Barrameda
+- **appellation:** Jerez-Xeres-Sherry / Manzanilla-Sanlucar
+- **grape_varieties:** ["Palomino"]
+- **climate:** warm Mediterranean climate around Jerez, with coastal humidity important for Manzanilla flor in Sanlucar
+- **altitude:** low-lying coastal and inland vineyard zones; exact altitude is less diagnostic than flor ageing environment
+- **soil:** albariza chalky soils are central to high-quality Palomino vineyards
+- **viticulture:** ["Palomino grown for neutral base wine and freshness","site and climate support flor-ageing style after fortification"]
+- **winemaking:** ["base white wine fermented dry","fortified to a level that permits flor growth","biological ageing under flor in a solera system","bottled pale and dry"]
+- **oak:** old neutral American oak butts used for maturation, not new-oak flavour
+- **sweetness:** dry
+- **body:** light
+- **acidity:** medium
+- **alcohol:** medium to high
+- **tannin:** none
+- **color:** pale lemon to pale gold
+- **aroma_profile:** ["almond","green apple","lemon","yeast","saline"]
+- **flavour_profile:** ["almond","apple","lemon","bread dough","salty"]
+- **finish:** medium
+- **quality_level:** good to very good
+- **ageing_potential:** best consumed fresh after bottling; biological freshness fades once opened
+- **expected_sat_observations:** ["pale lemon","dry","medium acidity","medium to high alcohol","light body","flor-derived almond and yeast notes","saline finish"]
+- **common_exam_points:** ["Fino or Manzanilla is an essential WSET fortified tasting style","biological ageing under flor is the diagnostic production feature","Manzanilla is closely linked to Sanlucar de Barrameda"]
+- **common_student_errors:** ["calling dry Sherry sweet","missing flor character","confusing Manzanilla with a separate grape variety"]
+- **mentor_hints:** ["Dryness plus flor almond and saline notes is the core diagnostic route."]
+- **descriptor_whitelist:** ["pale lemon","dry","medium acidity","medium alcohol","almond","yeast","green apple","lemon","saline","bread dough"]
+- **sat_constraints:** ["Do not reveal Sherry, Jerez, Manzanilla, Spain, Palomino or appellation in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies Fino or Manzanilla as an imprescindible fortified tasting style.
+- **display_label:** Practica WSET 101 - Vino fortificado
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 7
+- **confidence_score:** 0.88
+- **knowledge_summary:** Pale dry biologically aged Sherry with flor-derived almond, yeast, apple and saline notes.
+- **sat_fingerprint:** {"appearance":["pale lemon to pale gold"],"nose":["almond","yeast","green apple","saline"],"palate":["dry","medium acidity","medium to high alcohol","light body","salty finish"],"quality":["good to very good","clear flor character"],"ageing":["fresh bottled style with biological ageing already complete"],"diagnostic_features":["fortified dry wine","flor ageing","Palomino","solera system"]}
+- **pedagogical_dna:** {"core_concepts":["biological ageing","flor","fortification level","solera"],"learning_objectives":["identify dry biologically aged Sherry","separate Fino/Manzanilla from oxidative Sherry","connect flor to aroma profile"],"typical_misconceptions":["calling dry Sherry sweet","missing flor character","confusing Manzanilla with a separate grape variety"],"mentor_focus":["Dryness plus flor almond and saline notes is the core diagnostic route."],"exam_traps":["assuming fortified means sweet"],"memory_hooks":["Fino equals pale, dry, flor and almond"],"comparison_styles":["Amontillado / Oloroso","Medium / Cream Sherry","Asti for sweetness contrast"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_102","SAT_WINE_105"],"frequently_confused_with":["dry white wine with oxidative notes","Amontillado","Manzanilla style wine"],"distinguishing_features":["pale colour","dry palate","flor almond and saline profile","lighter body than oxidative Sherry"]}
+- **teaching_notes:** {"common_exam_points":["Fino or Manzanilla is an essential WSET fortified tasting style","biological ageing under flor is the diagnostic production feature","Manzanilla is closely linked to Sanlucar de Barrameda"],"mentor_hints":["Dryness plus flor almond and saline notes is the core diagnostic route."],"student_traps":["calling dry Sherry sweet","missing flor character","confusing Manzanilla with a separate grape variety"],"revision_priority":"High: official WSET essential fortified tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 43 / Sherry styles","line_references":["18078-18095"],"evidence":"Specification recommends Fino or Manzanilla; book describes biological ageing and Manzanilla from Sanlucar."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Fortified wines
+- **section:** Jerez / Jerez-Xeres-Sherry / Manzanilla-Sanlucar
+- **page_reference:** WSET specification line 1939; WSET3 rebuilt lines 18078-18095
+- **line_reference:** ["1939-1939"]
+
+## SAT_WINE_102 - Dry Amontillado / Oloroso
+- **canonical_id:** SAT_WINE_102
+- **wine_family:** WSET Official Fortified Wines
+- **wine_name:** Dry Amontillado / Oloroso
+- **wine_style:** Oxidatively aged dry Sherry
+- **display_name:** Dry Amontillado / Oloroso
+- **wine_type:** FORTIFICADO
+- **country:** Spain
+- **region:** Jerez
+- **subregion:** Jerez
+- **appellation:** Jerez-Xeres-Sherry
+- **grape_varieties:** ["Palomino"]
+- **climate:** warm Mediterranean climate around Jerez, producing neutral Palomino base wines for ageing
+- **altitude:** vineyard zone and albariza exposure matter more than a single altitude value
+- **soil:** albariza chalk-rich soils associated with quality Palomino production
+- **viticulture:** ["Palomino grown for dry base wine","healthy grapes suitable for fortification and long maturation"]
+- **winemaking:** ["base wine fermented dry","fortification and solera ageing","Amontillado begins with biological ageing then ages oxidatively","Oloroso ages oxidatively without flor"]
+- **oak:** old neutral American oak butts with oxidative maturation
+- **sweetness:** dry
+- **body:** medium to full
+- **acidity:** medium
+- **alcohol:** high
+- **tannin:** none
+- **color:** amber to brown
+- **aroma_profile:** ["walnut","hazelnut","dried fruit","caramel","orange peel"]
+- **flavour_profile:** ["nut","toffee","dried fig","caramel","savory"]
+- **finish:** long
+- **quality_level:** good to outstanding
+- **ageing_potential:** long oxidative maturation before release; stable after opening compared with Fino
+- **expected_sat_observations:** ["amber or brown colour","dry","high alcohol","medium acidity","nutty oxidative aromas","long finish"]
+- **common_exam_points:** ["Amontillado seco or Oloroso seco is an essential WSET fortified tasting style","Amontillado combines biological then oxidative ageing; Oloroso is oxidative","dryness must be stated even with nutty caramel aromas"]
+- **common_student_errors:** ["assuming brown Sherry is sweet","forgetting Amontillado and Oloroso are dry unless sweetened","missing oxidative ageing as the main driver"]
+- **mentor_hints:** ["Colour and nutty oxidative notes separate this from Fino; dryness separates it from Cream."]
+- **descriptor_whitelist:** ["amber","brown","dry","high alcohol","medium acidity","walnut","hazelnut","dried fruit","caramel","orange peel","long finish"]
+- **sat_constraints:** ["Do not reveal Sherry, Jerez, Spain, Palomino, Amontillado, Oloroso or appellation in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies dry Amontillado or dry Oloroso as an imprescindible fortified tasting style.
+- **display_label:** Practica WSET 102 - Vino fortificado
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 8
+- **confidence_score:** 0.88
+- **knowledge_summary:** Dry oxidative Sherry family with amber/brown colour, high alcohol, nutty aromas and long savoury finish.
+- **sat_fingerprint:** {"appearance":["amber to brown"],"nose":["walnut","hazelnut","dried fruit","caramel"],"palate":["dry","high alcohol","medium acidity","medium to full body"],"quality":["good to outstanding","long oxidative complexity"],"ageing":["oxidative solera maturation before release"],"diagnostic_features":["fortified dry wine","oxidative ageing","nutty profile","solera system"]}
+- **pedagogical_dna:** {"core_concepts":["oxidative ageing","solera","Amontillado versus Oloroso pathway","dry fortified style"],"learning_objectives":["identify oxidative dry Sherry","distinguish from Fino and Cream","explain why brown colour does not equal sweetness"],"typical_misconceptions":["assuming brown Sherry is sweet","forgetting Amontillado and Oloroso are dry unless sweetened","missing oxidative ageing as the main driver"],"mentor_focus":["Colour and nutty oxidative notes separate this from Fino; dryness separates it from Cream."],"exam_traps":["equating caramel aroma with sweetness"],"memory_hooks":["Oloroso/Amontillado equals brown, dry, nutty and high alcohol"],"comparison_styles":["Fino / Manzanilla","Medium / Cream Sherry","Tawny Port"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_101","SAT_WINE_105","SAT_WINE_104"],"frequently_confused_with":["Medium or Cream Sherry","Tawny Port","old dry white wine"],"distinguishing_features":["dry palate","Palomino savoury nut profile","no red-fruit Port structure"]}
+- **teaching_notes:** {"common_exam_points":["Amontillado seco or Oloroso seco is an essential WSET fortified tasting style","Amontillado combines biological then oxidative ageing; Oloroso is oxidative","dryness must be stated even with nutty caramel aromas"],"mentor_hints":["Colour and nutty oxidative notes separate this from Fino; dryness separates it from Cream."],"student_traps":["assuming brown Sherry is sweet","forgetting Amontillado and Oloroso are dry unless sweetened","missing oxidative ageing as the main driver"],"revision_priority":"High: official WSET essential fortified tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 43 / Sherry styles","line_references":["18103-18134"],"evidence":"Specification recommends dry Amontillado or dry Oloroso; book explains oxidative ageing and style differences."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Fortified wines
+- **section:** Jerez / Jerez-Xeres-Sherry
+- **page_reference:** WSET specification line 1940; WSET3 rebuilt lines 18103-18134
+- **line_reference:** ["1940-1940"]
+
+## SAT_WINE_103 - LBV / Vintage Port
+- **canonical_id:** SAT_WINE_103
+- **wine_family:** WSET Official Fortified Wines
+- **wine_name:** LBV / Vintage Port
+- **wine_style:** Bottle-aged or late-bottled ruby Port
+- **display_name:** LBV / Vintage Port
+- **wine_type:** FORTIFICADO
+- **country:** Portugal
+- **region:** Douro
+- **subregion:** Douro Valley
+- **appellation:** Port
+- **grape_varieties:** ["Touriga Franca","Tinta Roriz","Touriga Nacional"]
+- **climate:** warm to hot continental Douro climate with steep vineyard sites and low rainfall pressure inland
+- **altitude:** steep Douro vineyards vary widely in altitude and aspect
+- **soil:** schistous soils associated with Douro Port vineyards
+- **viticulture:** ["black grapes grown in steep Douro vineyards","ripe fruit harvested for concentration and colour"]
+- **winemaking:** ["fermentation stopped by grape spirit fortification","short extraction-focused fermentation","aged as LBV or Vintage Port depending on style","Vintage Port bottled with capacity for long bottle ageing"]
+- **oak:** large old vessels or short ageing depending on LBV/Vintage pathway; no new-oak flavour focus
+- **sweetness:** sweet
+- **body:** full
+- **acidity:** medium
+- **alcohol:** high
+- **tannin:** medium to high
+- **color:** deep ruby to purple
+- **aroma_profile:** ["blackberry","black plum","black cherry","violet","chocolate"]
+- **flavour_profile:** ["black fruit","spice","chocolate","liquorice","grape spirit warmth"]
+- **finish:** long
+- **quality_level:** very good to outstanding
+- **ageing_potential:** LBV may be ready to drink; Vintage Port can age for decades in bottle
+- **expected_sat_observations:** ["deep ruby","sweet","high alcohol","full body","medium to high tannin","black fruit concentration","long finish"]
+- **common_exam_points:** ["LBV or Vintage Port is an essential WSET fortified tasting style","fermentation is stopped by fortification to retain sweetness","unfiltered LBV and Vintage Port can throw sediment"]
+- **common_student_errors:** ["calling Port dry because tannin is high","missing grape-spirit fortification as production logic","confusing Tawny oxidative notes with ruby Port fruit"]
+- **mentor_hints:** ["Sweetness plus high alcohol plus black-fruit tannic structure points to ruby-family Port."]
+- **descriptor_whitelist:** ["deep ruby","sweet","high alcohol","full body","medium tannin","high tannin","blackberry","black plum","chocolate","spice","long finish"]
+- **sat_constraints:** ["Do not reveal Port, Portugal, Douro, LBV, Vintage or grape varieties in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies LBV or Vintage Port as an imprescindible fortified tasting style.
+- **display_label:** Practica WSET 103 - Vino fortificado
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 7
+- **confidence_score:** 0.88
+- **knowledge_summary:** Sweet full-bodied ruby-family Port with deep colour, high alcohol, black fruit, tannin and long finish.
+- **sat_fingerprint:** {"appearance":["deep ruby to purple"],"nose":["blackberry","black plum","violet","chocolate"],"palate":["sweet","high alcohol","full body","medium to high tannin","long finish"],"quality":["very good to outstanding","high concentration"],"ageing":["LBV often drinkable; Vintage Port has long bottle-age potential"],"diagnostic_features":["fortification stops fermentation","Douro black grapes","ruby Port fruit concentration","sweet high-alcohol structure"]}
+- **pedagogical_dna:** {"core_concepts":["fortification during fermentation","ruby Port family","LBV versus Vintage ageing","sweet fortified red structure"],"learning_objectives":["identify LBV/Vintage Port as required WSET style","separate ruby Port from Tawny Port","connect extraction and fortification to SAT structure"],"typical_misconceptions":["calling Port dry because tannin is high","missing grape-spirit fortification as production logic","confusing Tawny oxidative notes with ruby Port fruit"],"mentor_focus":["Sweetness plus high alcohol plus black-fruit tannic structure points to ruby-family Port."],"exam_traps":["confusing tannin with dryness"],"memory_hooks":["Ruby Port equals sweet, black, strong and structured"],"comparison_styles":["Tawny Port","Douro Red","Rutherglen Muscat"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_104","SAT_WINE_069"],"frequently_confused_with":["Douro red table wine","Tawny Port","sweet red wine"],"distinguishing_features":["sweetness with high alcohol","black fruit and tannin","fortified warmth"]}
+- **teaching_notes:** {"common_exam_points":["LBV or Vintage Port is an essential WSET fortified tasting style","fermentation is stopped by fortification to retain sweetness","unfiltered LBV and Vintage Port can throw sediment"],"mentor_hints":["Sweetness plus high alcohol plus black-fruit tannic structure points to ruby-family Port."],"student_traps":["calling Port dry because tannin is high","missing grape-spirit fortification as production logic","confusing Tawny oxidative notes with ruby Port fruit"],"revision_priority":"High: official WSET essential fortified tasting style."}
+- **reusable_knowledge_refs:** ["douro_red_core","dao_red_core"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 44 / Port styles","line_references":["18461-18469","18524-18536"],"evidence":"Specification recommends LBV or Vintage Port; book describes LBV and Vintage Port ageing and filtration differences."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Fortified wines
+- **section:** Douro / Port
+- **page_reference:** WSET specification line 1944; WSET3 rebuilt lines 18461-18469 and 18524-18536
+- **line_reference:** ["1944-1944"]
+
+## SAT_WINE_104 - Aged Tawny Port
+- **canonical_id:** SAT_WINE_104
+- **wine_family:** WSET Official Fortified Wines
+- **wine_name:** Aged Tawny Port
+- **wine_style:** Tawny Port with indication of age
+- **display_name:** Aged Tawny Port
+- **wine_type:** FORTIFICADO
+- **country:** Portugal
+- **region:** Douro
+- **subregion:** Douro Valley
+- **appellation:** Port
+- **grape_varieties:** ["Touriga Franca","Tinta Roriz","Touriga Nacional"]
+- **climate:** warm to hot continental Douro climate producing ripe grapes for fortified wines
+- **altitude:** Douro vineyards range across steep slopes with varied altitude and aspect
+- **soil:** schistous Douro soils
+- **viticulture:** ["ripe black grapes grown for concentration","vineyard blending is common in traditional Port production"]
+- **winemaking:** ["fermentation stopped by grape spirit fortification","long oxidative ageing in wood","blending to age-indicated Tawny style","bottled ready to drink"]
+- **oak:** long maturation in old wooden vessels gives oxidative character rather than new-oak flavour
+- **sweetness:** sweet
+- **body:** medium to full
+- **acidity:** medium
+- **alcohol:** high
+- **tannin:** low to medium
+- **color:** tawny to brown
+- **aroma_profile:** ["caramel","walnut","toffee","dried fig","orange peel"]
+- **flavour_profile:** ["dried fruit","nut","caramel","coffee","spice"]
+- **finish:** long
+- **quality_level:** very good to outstanding
+- **ageing_potential:** aged oxidatively before release; bottled ready to drink
+- **expected_sat_observations:** ["tawny or brown colour","sweet","high alcohol","medium acidity","nutty oxidative aromas","dried fruit and caramel","long finish"]
+- **common_exam_points:** ["Tawny Port with indication of age is an essential WSET fortified tasting style","long oxidative wood ageing differentiates Tawny from LBV/Vintage Port","age indication reflects a blended style rather than a single exact age"]
+- **common_student_errors:** ["confusing Tawny Port with Oloroso because both are nutty","expecting high tannin like Vintage Port","assuming age indication means bottle ageing"]
+- **mentor_hints:** ["Sweetness and Port warmth separate it from dry oxidative Sherry; colour and nuts separate it from ruby Port."]
+- **descriptor_whitelist:** ["tawny","brown","sweet","high alcohol","caramel","walnut","toffee","dried fig","orange peel","long finish"]
+- **sat_constraints:** ["Do not reveal Port, Portugal, Douro, Tawny, age indication or grape varieties in blind labels."]
+- **reasoning_notes:** Chosen because WSET specifies Porto Tawny with indication of age as an imprescindible fortified tasting style.
+- **display_label:** Practica WSET 104 - Vino fortificado
+- **priority:** P0_WSET_ESSENTIAL
+- **wset_importance:** CORE
+- **practice_priority:** 1
+- **difficulty_score:** 7
+- **confidence_score:** 0.88
+- **knowledge_summary:** Sweet oxidative Port with tawny/brown colour, high alcohol, dried fruit, nuts, caramel and long finish.
+- **sat_fingerprint:** {"appearance":["tawny to brown"],"nose":["caramel","walnut","toffee","dried fig"],"palate":["sweet","high alcohol","medium acidity","medium to full body","long finish"],"quality":["very good to outstanding","complex oxidative wood-aged profile"],"ageing":["long wood ageing before bottling; ready to drink"],"diagnostic_features":["age-indicated Tawny Port","oxidative wood ageing","sweet fortified structure","nut and dried-fruit complexity"]}
+- **pedagogical_dna:** {"core_concepts":["oxidative ageing in wood","age-indicated blending","Port fortification","ruby versus tawny contrast"],"learning_objectives":["identify aged Tawny Port as required WSET style","distinguish from LBV/Vintage Port","distinguish from dry oxidative Sherry"],"typical_misconceptions":["confusing Tawny Port with Oloroso because both are nutty","expecting high tannin like Vintage Port","assuming age indication means bottle ageing"],"mentor_focus":["Sweetness and Port warmth separate it from dry oxidative Sherry; colour and nuts separate it from ruby Port."],"exam_traps":["forgetting Tawny remains sweet"],"memory_hooks":["Tawny Port equals sweet, brown, nutty and wood-aged"],"comparison_styles":["LBV / Vintage Port","Dry Amontillado / Oloroso","Rutherglen Muscat"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_103","SAT_WINE_102","SAT_WINE_107"],"frequently_confused_with":["Oloroso Sherry","Rutherglen Muscat","old red wine"],"distinguishing_features":["sweet Port structure","Douro spirit warmth","less flor/savoury than Sherry"]}
+- **teaching_notes:** {"common_exam_points":["Tawny Port with indication of age is an essential WSET fortified tasting style","long oxidative wood ageing differentiates Tawny from LBV/Vintage Port","age indication reflects a blended style rather than a single exact age"],"mentor_hints":["Sweetness and Port warmth separate it from dry oxidative Sherry; colour and nuts separate it from ruby Port."],"student_traps":["confusing Tawny Port with Oloroso because both are nutty","expecting high tannin like Vintage Port","assuming age indication means bottle ageing"],"revision_priority":"High: official WSET essential fortified tasting style."}
+- **reusable_knowledge_refs:** ["douro_red_core"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 44 / Tawny Port","line_references":["18479-18479","18539-18567"],"evidence":"Specification recommends Tawny Port with indication of age; book explains long oxidative wood ageing and age indication."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Fortified wines
+- **section:** Douro / Port
+- **page_reference:** WSET specification line 1945; WSET3 rebuilt lines 18479 and 18539-18567
+- **line_reference:** ["1945-1945"]
+
+## SAT_WINE_105 - Medium / Cream Sherry
+- **canonical_id:** SAT_WINE_105
+- **wine_family:** WSET Official Fortified Wines
+- **wine_name:** Medium / Cream Sherry
+- **wine_style:** Sweetened blended Sherry
+- **display_name:** Medium / Cream Sherry
+- **wine_type:** FORTIFICADO
+- **country:** Spain
+- **region:** Jerez
+- **subregion:** Jerez
+- **appellation:** Jerez-Xeres-Sherry
+- **grape_varieties:** ["Palomino","Pedro Ximenez","Muscat"]
+- **climate:** warm Mediterranean Jerez climate with Palomino base wines and sweetening components from PX or Muscat
+- **altitude:** regional vineyard zones; exact altitude is less diagnostic than blending and ageing choices
+- **soil:** albariza for Palomino plus sites suited to sweetening varieties
+- **viticulture:** ["Palomino for dry base wine","Pedro Ximenez or Muscat for sweetening components"]
+- **winemaking:** ["dry Sherry base aged biologically and/or oxidatively","sweetened with sweet wine or sweetening component","blended to Medium or Cream style","solera maturation may contribute complexity"]
+- **oak:** old neutral American oak butts used in maturation
+- **sweetness:** medium-sweet to sweet
+- **body:** medium to full
+- **acidity:** medium
+- **alcohol:** high
+- **tannin:** none
+- **color:** amber to brown
+- **aroma_profile:** ["raisin","caramel","walnut","fig","toffee"]
+- **flavour_profile:** ["dried fruit","caramel","nut","molasses","sweet spice"]
+- **finish:** medium to long
+- **quality_level:** good to very good
+- **ageing_potential:** stable style; generally bottled ready to drink
+- **expected_sat_observations:** ["amber or brown colour","medium-sweet to sweet","high alcohol","nutty oxidative notes","dried fruit sweetness"]
+- **common_exam_points:** ["Medium or Cream Sherry is an official optional WSET fortified tasting recommendation","sweetening distinguishes it from dry Amontillado/Oloroso","base wine may show biological and/or oxidative ageing"]
+- **common_student_errors:** ["calling all brown Sherry dry","missing added sweetness as the key contrast with Oloroso","assuming Cream means dairy flavour"]
+- **mentor_hints:** ["Use sweetness as the first branch: dry oxidative Sherry versus sweetened Medium/Cream."]
+- **descriptor_whitelist:** ["amber","brown","medium sweet","sweet","high alcohol","raisin","caramel","walnut","fig","toffee"]
+- **sat_constraints:** ["Do not reveal Sherry, Jerez, Spain, Cream, Medium or grape varieties in blind labels."]
+- **reasoning_notes:** Included because Medium or Cream Sherry is an official optional WSET fortified tasting recommendation and fits the generosos batch.
+- **display_label:** Practica WSET 105 - Vino fortificado
+- **priority:** P1_WSET_RECOMMENDED
+- **wset_importance:** HIGH
+- **practice_priority:** 2
+- **difficulty_score:** 7
+- **confidence_score:** 0.88
+- **knowledge_summary:** Sweetened Sherry style with amber/brown colour, high alcohol, dried fruit, caramel and nutty oxidative notes.
+- **sat_fingerprint:** {"appearance":["amber to brown"],"nose":["raisin","caramel","walnut","fig"],"palate":["medium-sweet to sweet","high alcohol","medium acidity","medium to full body"],"quality":["good to very good","sweet oxidative complexity"],"ageing":["bottled ready to drink after blending and maturation"],"diagnostic_features":["sweetened Sherry","Palomino base plus sweet component","oxidative and dried-fruit notes","high alcohol"]}
+- **pedagogical_dna:** {"core_concepts":["sweetened Sherry category","Medium versus Cream","blending dry and sweet components","solera context"],"learning_objectives":["differentiate Medium/Cream from dry Sherry","identify sweetness in fortified tasting","explain PX or Muscat sweetening role"],"typical_misconceptions":["calling all brown Sherry dry","missing added sweetness as the key contrast with Oloroso","assuming Cream means dairy flavour"],"mentor_focus":["Use sweetness as the first branch: dry oxidative Sherry versus sweetened Medium/Cream."],"exam_traps":["treating colour as a sweetness proxy"],"memory_hooks":["Cream Sherry equals Sherry framework plus sweetness"],"comparison_styles":["Dry Amontillado / Oloroso","Fino / Manzanilla","Tawny Port"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_102","SAT_WINE_101","SAT_WINE_104"],"frequently_confused_with":["Oloroso Sherry","Tawny Port","PX-like sweet wine"],"distinguishing_features":["sweetened Sherry character","Jerez nutty profile","no Port red-fruit structure"]}
+- **teaching_notes:** {"common_exam_points":["Medium or Cream Sherry is an official optional WSET fortified tasting recommendation","sweetening distinguishes it from dry Amontillado/Oloroso","base wine may show biological and/or oxidative ageing"],"mentor_hints":["Use sweetness as the first branch: dry oxidative Sherry versus sweetened Medium/Cream."],"student_traps":["calling all brown Sherry dry","missing added sweetness as the key contrast with Oloroso","assuming Cream means dairy flavour"],"revision_priority":"Medium-high: official WSET optional fortified tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 43 / Sweetened Sherry styles","line_references":["18153-18170"],"evidence":"Specification recommends Medium or Cream Sherry optionally; book explains Pale Cream, Medium and Cream as sweetened/blended styles."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Fortified wines
+- **section:** Jerez / Jerez-Xeres-Sherry
+- **page_reference:** WSET specification line 1942; WSET3 rebuilt lines 18153-18170
+- **line_reference:** ["1942-1942"]
+
+## SAT_WINE_106 - Muscat de Beaumes-de-Venise
+- **canonical_id:** SAT_WINE_106
+- **wine_family:** WSET Official Fortified Wines
+- **wine_name:** Muscat de Beaumes-de-Venise
+- **wine_style:** Youthful fortified Muscat
+- **display_name:** Muscat de Beaumes-de-Venise
+- **wine_type:** FORTIFICADO
+- **country:** France
+- **region:** Southern Rhone
+- **subregion:** Beaumes-de-Venise
+- **appellation:** Muscat de Beaumes-de-Venise
+- **grape_varieties:** ["Muscat Blanc a Petits Grains"]
+- **climate:** warm Mediterranean Southern Rhone climate supporting ripe aromatic Muscat grapes
+- **altitude:** hillside vineyards around Beaumes-de-Venise; exact altitude varies by site
+- **soil:** varied Southern Rhone limestone, clay and stony soils depending on site
+- **viticulture:** ["aromatic Muscat harvested ripe","fruit handled to preserve primary floral and grapey character"]
+- **winemaking:** ["fermentation stopped by fortification to retain sweetness","youthful unaged style","protective handling to preserve primary Muscat aromas"]
+- **oak:** none
+- **sweetness:** sweet
+- **body:** medium
+- **acidity:** low to medium
+- **alcohol:** medium to high
+- **tannin:** none
+- **color:** pale lemon to gold
+- **aroma_profile:** ["grape","orange blossom","rose","peach","apricot"]
+- **flavour_profile:** ["grapey fruit","orange blossom","stone fruit","honey","sweet citrus"]
+- **finish:** medium to long
+- **quality_level:** good to very good
+- **ageing_potential:** best young for primary Muscat perfume, though some examples can hold briefly
+- **expected_sat_observations:** ["pale lemon to gold","sweet","medium to high alcohol","grapey Muscat aroma","floral and stone-fruit notes"]
+- **common_exam_points:** ["Muscat de Beaumes-de-Venise is an official optional WSET fortified tasting recommendation","it represents youthful unaged fortified Muscat","fortification preserves sweetness and primary aroma"]
+- **common_student_errors:** ["confusing fortified Muscat with Asti because both are grapey","forgetting this is still fortified not sparkling","overlooking low to medium acidity"]
+- **mentor_hints:** ["Grapey floral sweetness without bubbles points away from Asti and toward fortified Muscat."]
+- **descriptor_whitelist:** ["pale lemon","gold","sweet","grape","orange blossom","rose","peach","apricot","honey","medium alcohol"]
+- **sat_constraints:** ["Do not reveal Muscat de Beaumes-de-Venise, France, Southern Rhone, Muscat or appellation in blind labels."]
+- **reasoning_notes:** Included because Muscat de Beaumes-de-Venise is an official optional WSET fortified tasting recommendation and fits the generosos batch.
+- **display_label:** Practica WSET 106 - Vino fortificado
+- **priority:** P1_WSET_RECOMMENDED
+- **wset_importance:** HIGH
+- **practice_priority:** 2
+- **difficulty_score:** 6
+- **confidence_score:** 0.88
+- **knowledge_summary:** Sweet youthful fortified Muscat from the Southern Rhone with grapey, floral and stone-fruit aromatics.
+- **sat_fingerprint:** {"appearance":["pale lemon to gold"],"nose":["grape","orange blossom","rose","peach"],"palate":["sweet","medium to high alcohol","low to medium acidity","medium body"],"quality":["good to very good","primary aromatic intensity"],"ageing":["best young for perfume"],"diagnostic_features":["fortified Muscat","youthful unaged style","grapey floral aroma","sweetness retained by fortification"]}
+- **pedagogical_dna:** {"core_concepts":["fortified Muscat","youthful unaged style","aromatic grape variety","fortification retaining sweetness"],"learning_objectives":["identify youthful fortified Muscat","separate still fortified Muscat from Asti","contrast with aged Rutherglen Muscat"],"typical_misconceptions":["confusing fortified Muscat with Asti because both are grapey","forgetting this is still fortified not sparkling","overlooking low to medium acidity"],"mentor_focus":["Grapey floral sweetness without bubbles points away from Asti and toward fortified Muscat."],"exam_traps":["assuming all Muscat styles sparkle"],"memory_hooks":["Beaumes-de-Venise equals still sweet grapey fortified Muscat"],"comparison_styles":["Rutherglen Muscat","Asti","Alsace Gewurztraminer"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_107","SAT_WINE_098","SAT_WINE_006"],"frequently_confused_with":["Asti","late-harvest aromatic white","Rutherglen Muscat"],"distinguishing_features":["still fortified structure","youthful primary grape and floral notes","less oxidative than Rutherglen"]}
+- **teaching_notes:** {"common_exam_points":["Muscat de Beaumes-de-Venise is an official optional WSET fortified tasting recommendation","it represents youthful unaged fortified Muscat","fortification preserves sweetness and primary aroma"],"mentor_hints":["Grapey floral sweetness without bubbles points away from Asti and toward fortified Muscat."],"student_traps":["confusing fortified Muscat with Asti because both are grapey","forgetting this is still fortified not sparkling","overlooking low to medium acidity"],"revision_priority":"Medium-high: official WSET optional fortified tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","aromatic_alsace_white"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 45 / Fortified Muscats","line_references":["18636-18643"],"evidence":"Specification recommends Muscat de Beaumes-de-Venise optionally; book presents it as a youthful unaged fortified Muscat example."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Fortified wines
+- **section:** Southern Rhone / Muscat de Beaumes-de-Venise
+- **page_reference:** WSET specification line 1950; WSET3 rebuilt lines 18636-18643
+- **line_reference:** ["1950-1950"]
+
+## SAT_WINE_107 - Rutherglen Muscat
+- **canonical_id:** SAT_WINE_107
+- **wine_family:** WSET Official Fortified Wines
+- **wine_name:** Rutherglen Muscat
+- **wine_style:** Aged fortified Muscat
+- **display_name:** Rutherglen Muscat
+- **wine_type:** FORTIFICADO
+- **country:** Australia
+- **region:** Rutherglen
+- **subregion:** Rutherglen
+- **appellation:** Rutherglen
+- **grape_varieties:** ["Muscat"]
+- **climate:** warm inland Australian climate around Rutherglen, supporting very ripe Muscat grapes
+- **altitude:** regional vineyard altitude varies; warm inland ripeness is more diagnostic
+- **soil:** varied Rutherglen soils depending on vineyard
+- **viticulture:** ["Muscat grapes harvested very ripe","fruit concentration supports luscious fortified style"]
+- **winemaking:** ["fermentation stopped by fortification","long oxidative ageing in old wood","fractional blending systems may build complexity","bottled with developed character"]
+- **oak:** long ageing in old wooden vessels gives oxidative concentration, not new-oak flavour
+- **sweetness:** lusciously sweet
+- **body:** full
+- **acidity:** medium
+- **alcohol:** high
+- **tannin:** none
+- **color:** deep amber to brown
+- **aroma_profile:** ["raisin","fig","toffee","coffee","orange peel"]
+- **flavour_profile:** ["molasses","caramel","dried fruit","coffee","sweet spice"]
+- **finish:** long
+- **quality_level:** very good to outstanding
+- **ageing_potential:** aged oxidatively before bottling; very stable and complex on release
+- **expected_sat_observations:** ["deep amber or brown","lusciously sweet","high alcohol","full body","dried fruit and toffee","long oxidative finish"]
+- **common_exam_points:** ["Rutherglen Muscat is an official optional WSET fortified tasting recommendation","it represents fully developed aged fortified Muscat","oxidative ageing and concentration distinguish it from youthful Muscat"]
+- **common_student_errors:** ["confusing it with Tawny Port solely because both are brown and sweet","missing Muscat grapey/orange-peel lift beneath oxidative notes","underestimating sweetness and body"]
+- **mentor_hints:** ["When the wine is brown, sweet and intense, check whether Muscat perfume remains under the oxidative layer."]
+- **descriptor_whitelist:** ["deep amber","brown","lusciously sweet","high alcohol","full body","raisin","fig","toffee","coffee","orange peel","long finish"]
+- **sat_constraints:** ["Do not reveal Rutherglen, Australia, Muscat or region in blind labels."]
+- **reasoning_notes:** Included because Rutherglen Muscat is an official optional WSET fortified tasting recommendation and fits the generosos batch.
+- **display_label:** Practica WSET 107 - Vino fortificado
+- **priority:** P1_WSET_RECOMMENDED
+- **wset_importance:** HIGH
+- **practice_priority:** 2
+- **difficulty_score:** 7
+- **confidence_score:** 0.88
+- **knowledge_summary:** Lusciously sweet aged fortified Muscat with deep amber colour, dried fruit, toffee, coffee and long oxidative complexity.
+- **sat_fingerprint:** {"appearance":["deep amber to brown"],"nose":["raisin","fig","toffee","coffee","orange peel"],"palate":["lusciously sweet","high alcohol","full body","medium acidity","long finish"],"quality":["very good to outstanding","high concentration and oxidative complexity"],"ageing":["long oxidative ageing before release"],"diagnostic_features":["aged fortified Muscat","Rutherglen style","luscious sweetness","oxidative dried-fruit and toffee profile"]}
+- **pedagogical_dna:** {"core_concepts":["aged fortified Muscat","oxidative ageing","luscious sweetness","Australian Rutherglen benchmark"],"learning_objectives":["identify aged fortified Muscat","distinguish from Tawny Port","contrast with youthful Muscat de Beaumes-de-Venise"],"typical_misconceptions":["confusing it with Tawny Port solely because both are brown and sweet","missing Muscat grapey/orange-peel lift beneath oxidative notes","underestimating sweetness and body"],"mentor_focus":["When the wine is brown, sweet and intense, check whether Muscat perfume remains under the oxidative layer."],"exam_traps":["calling every sweet brown fortified wine Tawny Port"],"memory_hooks":["Rutherglen Muscat equals brown, sweet, raisin, toffee and Muscat lift"],"comparison_styles":["Aged Tawny Port","Muscat de Beaumes-de-Venise","Medium / Cream Sherry"]}
+- **comparison_engine:** {"similar_profiles":["SAT_WINE_104","SAT_WINE_106","SAT_WINE_105"],"frequently_confused_with":["Tawny Port","Cream Sherry","old sweet wine"],"distinguishing_features":["Muscat aromatic lift","luscious texture","Australian aged fortified Muscat identity"]}
+- **teaching_notes:** {"common_exam_points":["Rutherglen Muscat is an official optional WSET fortified tasting recommendation","it represents fully developed aged fortified Muscat","oxidative ageing and concentration distinguish it from youthful Muscat"],"mentor_hints":["When the wine is brown, sweet and intense, check whether Muscat perfume remains under the oxidative layer."],"student_traps":["confusing it with Tawny Port solely because both are brown and sweet","missing Muscat grapey/orange-peel lift beneath oxidative notes","underestimating sweetness and body"],"revision_priority":"Medium-high: official WSET optional fortified tasting style."}
+- **reusable_knowledge_refs:** ["white_wine_sat_core","aromatic_alsace_white"]
+- **field_metadata:** {"canonical_id":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"wine_family":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_style":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"display_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"wine_name":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wine_type":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"country":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"region":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"subregion":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"appellation":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"grape_varieties":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"TRAINING"},"climate":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"altitude":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"soil":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"viticulture":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"winemaking":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"oak":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sweetness":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"body":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"acidity":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"alcohol":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"tannin":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"color":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"aroma_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"flavour_profile":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"finish":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"quality_level":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"ageing_potential":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"expected_sat_observations":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_exam_points":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"common_student_errors":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"mentor_hints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"descriptor_whitelist":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"sat_constraints":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"reasoning_notes":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"display_label":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"wset_importance":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"practice_priority":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"difficulty_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"confidence_score":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"knowledge_summary":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"sat_fingerprint":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"pedagogical_dna":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"comparison_engine":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"teaching_notes":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"reusable_knowledge_refs":{"knowledge_origin":"STANDARD_WINE_KNOWLEDGE","visibility_level":"TRAINING"},"source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"canonical_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"chapter":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"section":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"page_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"line_reference":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"},"style_category":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"PUBLIC"},"specification_source":{"knowledge_origin":"WSET_PRIMARY","visibility_level":"SERVER_ONLY"}}
+- **source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","section":"Chapter 45 / Fortified Muscats","line_references":["18666-18698"],"evidence":"Specification recommends Rutherglen Muscat optionally; book presents Rutherglen as the classic aged Muscat example."}
+- **canonical_source:** {"file":"D:\\Descargas\\Phone Link\\WSET3_rebuilt.md","sha256":"91B5D64859140AF5C98EDE988D2F55D52579B3C8DCD5004EE225A9B62569CC25","source_type":"rebuilt_markdown_from_official_wset_book"}
+- **chapter:** WSET specification tasting recommendations / Fortified wines
+- **section:** Rutherglen / Rutherglen
+- **page_reference:** WSET specification line 1951; WSET3 rebuilt lines 18666-18698
+- **line_reference:** ["1951-1951"]
 
