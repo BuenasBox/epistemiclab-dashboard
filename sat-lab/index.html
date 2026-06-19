@@ -255,6 +255,72 @@
   .mode-opt .mode-tt small{ font-size:12.5px; font-weight:500; opacity:.9; }
   .btn.ghost.mode-opt .mode-tt small{ color:var(--muted); }
 
+
+  /* ===== SAT-EXPERIENCE-01: Premium Learning Experience (solo visual) ===== */
+  /* Hero protagonista + copa con halo (centro de la experiencia) */
+  .sat-hero{ position:relative; overflow:hidden; }
+  .sat-hero::after{ content:""; position:absolute; right:-50px; top:-50px; width:240px; height:240px;
+    background:radial-gradient(circle, rgba(201,162,39,.15), transparent 70%); pointer-events:none; z-index:0; }
+  .sat-hero-main, .sat-hero-glass{ position:relative; z-index:1; }
+  .sat-hero-glass{ width:142px; }
+  .sat-hero-glass::before{ content:""; position:absolute; inset:-8% -6% 14% -6%;
+    background:radial-gradient(60% 55% at 50% 42%, rgba(201,162,39,.20), transparent 70%); z-index:-1; filter:blur(1px); }
+  .sat-hero-eyebrow{ display:inline-flex; align-items:center; gap:7px; }
+  .sat-hero-eyebrow::before{ content:""; width:16px; height:1.5px; background:var(--gold); display:inline-block; border-radius:2px; }
+  .sat-hero-title{ font-size:25px; letter-spacing:-.012em; }
+
+  /* Timeline elegante ✓ ▶ ○ con conector */
+  .prog-steps{ position:relative; }
+  .prog-steps::before{ content:""; position:absolute; left:11px; right:11px; top:11px; height:2px; background:var(--line); z-index:0; }
+  .prog-steps .step{ position:relative; z-index:1; }
+  .prog-steps .step .dot{ background:var(--panel); }
+  .prog-steps .step.active .dot{ animation:se-pulse 2.4s ease-in-out infinite; }
+  @keyframes se-pulse{ 0%,100%{ box-shadow:0 0 0 4px rgba(201,162,39,.16) } 50%{ box-shadow:0 0 0 8px rgba(201,162,39,.04) } }
+
+  /* Mentor como conversación (avatar + jerarquía) */
+  .fb{ border-radius:14px; padding-left:50px; }
+  .fb .mentor-ic{ left:11px; top:12px; width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+    background:rgba(255,255,255,.05); border:1px solid var(--line); }
+  .fb.info .mentor-ic{ border-color:rgba(63,168,107,.45); }
+  .fb.warn .mentor-ic{ border-color:rgba(217,154,43,.5); }
+  .fb.block .mentor-ic{ border-color:rgba(193,72,63,.5); }
+  .fb .sev{ font-size:11px; letter-spacing:.04em; }
+  .fb.info .sev{ color:var(--ok); } .fb.warn .sev{ color:var(--warn); } .fb.block .sev{ color:var(--block); }
+
+  /* Resumen espectacular: celebración discreta + jerarquía */
+  .celebrate{ display:flex; justify-content:center; margin:2px 0 12px; }
+  .celebrate-ring{ width:56px; height:56px; border-radius:50%; border:2px solid var(--ok);
+    display:flex; align-items:center; justify-content:center; position:relative;
+    box-shadow:0 0 0 6px rgba(63,168,107,.08); animation:se-ring .6s cubic-bezier(.2,.8,.2,1) both; }
+  .celebrate-check{ color:var(--ok); font-size:25px; font-weight:800; line-height:1; animation:se-check .45s .22s both; }
+  @keyframes se-ring{ from{ transform:scale(.55); opacity:0 } to{ transform:scale(1); opacity:1 } }
+  @keyframes se-check{ from{ transform:scale(.3); opacity:0 } to{ transform:scale(1); opacity:1 } }
+  #screen-summary > h1, #screen-summary > .sub{ text-align:center; }
+  #screen-summary .report-hero{ position:relative; overflow:hidden; }
+  #screen-summary .report-hero::after{ content:""; position:absolute; left:0; right:0; top:0; height:3px;
+    background:linear-gradient(90deg,var(--wine2),var(--gold)); }
+
+  /* Terreno visual para modos futuros (sin lógica nueva) */
+  .mode-soon{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
+  .mode-soon-lbl{ font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .soon-chip{ font-size:12px; color:var(--muted); border:1px dashed var(--line); border-radius:999px; padding:5px 11px; opacity:.85;
+    display:inline-flex; gap:5px; align-items:center; }
+
+  /* Responsive premium */
+  @media (max-width:560px){
+    .wrap{ padding:14px 13px 52px; }
+    .sat-hero-title{ font-size:21px; }
+    .sat-hero-glass{ width:122px; }
+    .sat-hero::after{ display:none; }
+    .celebrate-ring{ width:50px; height:50px; }
+    .fb{ padding-left:46px; }
+    .mode-soon{ gap:6px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .prog-steps .step.active .dot, .celebrate-ring, .celebrate-check{ animation:none !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -272,6 +338,12 @@
       <div class="mode-pick">
         <button class="btn full mode-opt" id="mode-blind"><span class="mode-ic" aria-hidden="true">🍷</span><span class="mode-tt"><b>Cata a ciegas</b><small>Entrena como en examen. La identidad se revela al final.</small></span></button>
         <button class="btn full ghost mode-opt" id="mode-guided"><span class="mode-ic" aria-hidden="true">📖</span><span class="mode-tt"><b>Práctica guiada</b><small>Estudia un estilo concreto desde el inicio.</small></span></button>
+      </div>
+      <div class="mode-soon">
+        <span class="mode-soon-lbl">Pronto</span>
+        <span class="soon-chip">🍾 Bottle Guided</span>
+        <span class="soon-chip">🏷 Label Guided</span>
+        <span class="soon-chip">📚 Full Simulation</span>
       </div>
     </div>
     <p class="muted" style="font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin:18px 2px 8px">Vista previa · Panel de inteligencia</p>
@@ -318,6 +390,7 @@
 
   <section id="screen-summary" style="display:none">
     <div class="print-only" id="print-head"><h2 style="margin:0 0 2px">Informe de práctica SAT · EpistemicLab</h2><div id="print-date" class="muted" style="font-size:12px"></div></div>
+    <div class="celebrate" aria-hidden="true"><span class="celebrate-ring"><span class="celebrate-check">✓</span></span></div>
     <h1>Informe de práctica</h1>
     <p class="sub" id="summary-msg"></p>
 
@@ -590,7 +663,7 @@
     var pct=(PHASES.length>1?(S.phaseIdx/(PHASES.length-1))*100:0);
     var dots = PHASES.map(function(p,i){
       var cls = i<S.phaseIdx?'step done':(i===S.phaseIdx?'step active':'step');
-      var mark = i<S.phaseIdx?'✓':(i+1);
+      var mark = i<S.phaseIdx?'✓':(i===S.phaseIdx?'▶':'○');
       return '<div class="'+cls+'"><span class="dot">'+mark+'</span><span class="lbl">'+(SHORT[i]||('F'+(i+1)))+'</span></div>';
     }).join('');
     var nextName = (S.phaseIdx<PHASES.length-1)? SHORT[S.phaseIdx+1] : null;
