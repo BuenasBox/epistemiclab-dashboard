@@ -6,8 +6,8 @@ When ownership, implementation, or product direction conflicts, use these rules:
 
 1. If aesthetics conflict with stability, stability wins.
 2. If speed conflicts with governance, governance wins.
-3. If a change crosses Claude and Codex domains, split the work by domain or request explicit approval before proceeding.
-4. No agent may audit, revert, or rewrite the other agent's work unless there is functional impact, security risk, contract breakage, data integrity risk, or explicit approval.
+3. If a change crosses Product Architect and Principal Engineer domains, split the work by role domain or request explicit approval before proceeding.
+4. No role owner may audit, revert, or rewrite another role owner's work unless there is functional impact, security risk, contract breakage, data integrity risk, or explicit approval.
 
 ## Domain Crossing
 
