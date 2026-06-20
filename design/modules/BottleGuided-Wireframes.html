@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottle Guided — Wireframes</title>
+<style>
+/* Tokens y componentes idénticos al Design System de plataforma (continuidad). */
+:root{
+  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
+  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --r-ctl:8px;--r-card:12px;--r-pill:999px;
+  --s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;
+  --serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+h1{font-size:25px;margin:0 0 .3em}h2{font-size:20px;margin:0 0 .4em}h3{font-size:17px;margin:0 0 .4em}
+.serif{font-family:var(--serif)}.muted{color:var(--muted)}.small{font-size:13px}.xs{font-size:11.5px}.gold{color:var(--gold)}
+p{margin:0 0 .8em}
+.wrap{max-width:980px;margin:0 auto;padding:var(--s6) var(--s5)}
+.topline{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:var(--s4);margin-bottom:var(--s5)}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:16px}
+.brand .dot{width:20px;height:20px;border-radius:var(--r-pill);background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 70%);box-shadow:0 0 0 1px var(--gold) inset}
+.crumbs{font-size:13px;color:var(--muted)}.crumbs b{color:var(--ink)}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.eyebrow::before{content:"";width:14px;height:1px;background:var(--gold)}
+.btn{font-family:inherit;font-size:14px;border-radius:var(--r-ctl);padding:10px 16px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--gold)}.btn.primary{background:linear-gradient(180deg,var(--wine2),var(--wine));border-color:transparent;font-weight:600}.btn.ghost{background:none}.btn.sm{padding:6px 12px;font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-pill);font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.02);white-space:nowrap}
+.chip.gold{border-color:rgba(201,162,39,.5);color:var(--gold)}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--r-card);padding:var(--s5)}
+.card.tight{padding:var(--s4)}
+.card-label{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.hairline{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5;margin:var(--s5) 0}
+.grid{display:grid;gap:var(--s4)}.g2{grid-template-columns:1.1fr .9fr}
+.note{font-size:12px;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r-ctl);padding:var(--s3) var(--s4);background:rgba(255,255,255,.015)}
+.avatar{width:34px;height:34px;border-radius:50%;flex:0 0 34px;display:grid;place-items:center;font-size:15px;background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 75%);border:1px solid var(--gold)}
+.ring{--p:60;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--panel2) 0)}
+.ring>i{width:46px;height:46px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-style:normal}
+.meter{height:8px;border-radius:var(--r-pill);background:var(--panel2);overflow:hidden;border:1px solid var(--line)}
+.meter>span{display:block;height:100%;background:linear-gradient(90deg,var(--wine2),var(--gold))}
+/* bottle hero */
+.bottle{width:66px;height:150px;position:relative;margin:0 auto}
+.bottle .neck{position:absolute;left:50%;top:0;width:20px;height:46px;background:linear-gradient(90deg,#2f3a2a,#3f5236,#2f3a2a);transform:translateX(-50%);border-radius:5px 5px 0 0}
+.bottle .cap{position:absolute;left:50%;top:0;width:22px;height:14px;background:var(--wine);transform:translateX(-50%);border-radius:4px 4px 0 0}
+.bottle .body{position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(90deg,#243018,#3f5236 45%,#243018);border-radius:8px 8px 6px 6px}
+.bottle .lbl{position:absolute;left:9px;right:9px;bottom:24px;height:40px;background:#efe6d6;border-radius:2px;opacity:.92}
+.bottle.shoulder-high .body{border-radius:4px 4px 6px 6px}
+.bottle.shoulder-low .body{border-radius:26px 26px 6px 6px}
+/* timeline */
+.steps{display:flex;gap:6px;align-items:center;position:relative;margin:var(--s5) 0}
+.steps::before{content:"";position:absolute;left:11px;right:11px;top:11px;height:1px;background:var(--line)}
+.step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative;z-index:1}
+.step .dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
+.step.done .dot{background:var(--ok);color:#0d2b1c;border-color:transparent}
+.step.active .dot{border-color:var(--gold);color:var(--gold)}
+.step .lbl{font-size:10.5px;color:var(--muted)}.step.active .lbl{color:var(--gold)}
+/* options */
+.opt{display:block;width:100%;text-align:left;padding:12px var(--s4);border:1px solid var(--line);border-radius:var(--r-ctl);background:var(--panel2);color:var(--ink);margin-bottom:8px;cursor:pointer;font-family:inherit;font-size:14px}
+.opt:hover{border-color:var(--gold)}.opt.sel{background:var(--wine);border-color:transparent;font-weight:600}
+.opt small{display:block;color:var(--muted);font-weight:400;margin-top:2px}
+.opt.sel small{color:rgba(255,255,255,.8)}
+/* mentor */
+.mentor{display:flex;gap:var(--s3);padding:var(--s4);border-radius:var(--r-card);background:var(--panel2);border:1px solid var(--line);border-left-width:3px}
+.mentor.info{border-left-color:var(--gold)}.mentor.ok{border-left-color:var(--ok)}.mentor.warn{border-left-color:var(--warn)}.mentor.crit{border-left-color:var(--block)}
+.mentor .sev{font-size:11.5px;font-weight:600}
+.mentor.info .sev{color:var(--gold)}.mentor.ok .sev{color:var(--ok)}.mentor.warn .sev{color:var(--warn)}.mentor.crit .sev{color:var(--block)}
+/* state + feedback */
+.state{display:inline-flex;align-items:center;gap:7px;font-size:13px;padding:6px 12px;border-radius:var(--r-pill);border:1px solid var(--line)}
+.state .d{width:8px;height:8px;border-radius:50%}
+.state.eval .d{background:var(--gold)}.state.done .d{background:var(--ok)}.state.load .d{background:var(--muted)}
+.fb-row{display:grid;grid-template-columns:1fr auto 1fr;gap:var(--s3);align-items:center;padding:var(--s3) 0;border-bottom:1px solid var(--line)}
+.fb-row:last-child{border-bottom:none}
+.tone{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:var(--r-pill);white-space:nowrap}
+.tone.ok{color:var(--ok);border:1px solid var(--ok)}.tone.near{color:var(--gold);border:1px solid var(--gold)}.tone.rev{color:var(--warn);border:1px solid var(--warn)}.tone.con{color:var(--block);border:1px solid var(--block)}
+.celebrate{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--ok);color:var(--ok);font-size:22px;margin:0 auto var(--s3)}
+.screen{display:none}.screen.active{display:block}
+.flowbar{display:flex;gap:10px;margin-top:var(--s5)}
+@media (max-width:720px){ .g2{grid-template-columns:1fr} .wrap{padding:var(--s4)} .fb-row{grid-template-columns:1fr;text-align:left;gap:4px} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <div class="brand"><span class="dot"></span> EpistemicLab</div>
+    <div class="crumbs">Practicar › <b>Bottle Guided</b></div>
+    <div style="flex:1"></div>
+    <span class="chip gold">Análisis visual 78</span>
+  </div>
+
+  <!-- ===== 1. ENCUADRE ===== -->
+  <section class="screen active" id="s-frame">
+    <div class="eyebrow">Módulo · inferencia contextual</div>
+    <h1 class="serif">Bottle Guided</h1>
+    <p class="muted" style="max-width:620px">Aprende a deducir el estilo de un vino observando la <b>botella</b>: forma, color del vidrio, formato, cierre y nivel. Entrenas tu ojo y tu razonamiento antes de oler nada.</p>
+    <div class="note" style="max-width:620px;margin-bottom:20px">En el examen real la cata es <b>ciega</b> — no verás la botella. Esto no simula el examen: entrena la <b>teoría de envasado</b> (Unit&nbsp;1) y el <b>hábito de formular hipótesis</b> que después aplicas en la cata ciega.</div>
+    <div class="card" style="max-width:620px">
+      <div class="card-label">Esta sesión</div>
+      <h3>1 botella · ~5 min · guiado</h3>
+      <p class="small muted">5 pasos de observación → tu hipótesis → revelación y feedback del Mentor.</p>
+      <div class="flowbar"><button class="btn primary" data-go="s-observe">Empezar →</button><button class="btn ghost" data-go="s-frame">Ver objetivos</button></div>
+    </div>
+  </section>
+
+  <!-- ===== 2. OBSERVACIÓN ===== -->
+  <section class="screen" id="s-observe">
+    <div class="eyebrow">Sesión · patrón Práctica compartido</div>
+    <h2 class="serif">Observa la botella</h2>
+    <div class="steps">
+      <div class="step done"><span class="dot">✓</span><span class="lbl">Forma</span></div>
+      <div class="step active"><span class="dot">▶</span><span class="lbl">Color</span></div>
+      <div class="step"><span class="dot">○</span><span class="lbl">Formato</span></div>
+      <div class="step"><span class="dot">○</span><span class="lbl">Cierre</span></div>
+      <div class="step"><span class="dot">○</span><span class="lbl">Nivel</span></div>
+    </div>
+    <div class="grid g2">
+      <div>
+        <div class="card" style="text-align:center">
+          <div class="card-label" style="text-align:left">Botella en observación · identidad oculta</div>
+          <div class="bottle shoulder-low"><span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div>
+          <div style="margin-top:10px"><span class="chip">Hombro caído</span> <span class="chip">Vidrio oscuro</span></div>
+        </div>
+        <div class="card tight" style="margin-top:14px">
+          <div class="card-label">Color del vidrio — ¿qué sugiere?</div>
+          <button class="opt sel">Verde oscuro → protección a la luz, vino de guarda <small>Tradicional en tintos y blancos longevos</small></button>
+          <button class="opt">Transparente / flint → frescura, rosado, imagen <small>Suele buscar mostrar el color</small></button>
+          <button class="opt">Marrón → estilo germánico (Rin) <small>Mosela tiende a verde; Rin a marrón</small></button>
+        </div>
+        <div class="flowbar"><button class="btn ghost" data-go="s-frame">Atrás</button><button class="btn primary" style="flex:1" data-go="s-hypothesis">Confirmar y seguir →</button></div>
+      </div>
+      <div>
+        <div class="card-label">Mentor</div>
+        <div class="mentor info"><div class="avatar">✦</div><div><div class="sev">PISTA</div><p class="small" style="margin:.2em 0 0">Antes de elegir: ¿el vidrio te deja ver el líquido o lo oculta? Un vidrio que protege de la luz suele indicar intención de guarda.</p></div></div>
+        <div class="mentor ok" style="margin-top:10px"><div class="avatar">✦</div><div><div class="sev">OBSERVACIÓN · Forma</div><p class="small" style="margin:.2em 0 0">Leíste bien el hombro caído (perfil borgoñón). Buen punto de partida para pensar en Pinot Noir o Chardonnay.</p></div></div>
+        <div class="state eval" style="margin-top:14px"><span class="d"></span> El Mentor analizará tu deducción al confirmar</div>
+        <div class="note" style="margin-top:14px">Mismo Mentor, misma Card y mismas severidades que en el SAT. No revela la identidad (gobernanza).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. HIPÓTESIS ===== -->
+  <section class="screen" id="s-hypothesis">
+    <div class="eyebrow">Integra las pistas</div>
+    <h2 class="serif">Tu hipótesis</h2>
+    <p class="muted small" style="max-width:600px">Has observado: hombro caído · vidrio verde oscuro · 750ml estándar · corcho natural · nivel alto. ¿Qué deduces?</p>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">Familia de estilo / región probable</div>
+        <button class="opt sel">Tinto de guarda, perfil borgoñón (Pinot Noir)</button>
+        <button class="opt">Blanco aromático germánico</button>
+        <button class="opt">Espumoso método tradicional</button>
+        <div class="card-label" style="margin-top:14px">Posicionamiento</div>
+        <button class="opt sel">Premium / orientado a guarda</button>
+        <button class="opt">Consumo joven / frescura</button>
+      </div>
+      <div>
+        <div class="mentor warn"><div class="avatar">✦</div><div><div class="sev">ATENCIÓN</div><p class="small" style="margin:.2em 0 0">Cuidado: la forma es <i>tradición</i>, no ley. Justifica tu hipótesis con la combinación de pistas, no con una sola.</p></div></div>
+        <div class="flowbar"><button class="btn ghost" data-go="s-observe">Atrás</button><button class="btn primary" style="flex:1" data-go="s-eval">Enviar hipótesis →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. EVALUANDO ===== -->
+  <section class="screen" id="s-eval">
+    <div style="text-align:center;padding:60px 0">
+      <div class="avatar" style="margin:0 auto 14px;width:46px;height:46px">✦</div>
+      <div class="state eval"><span class="d"></span> Analizando tu deducción…</div>
+      <p class="muted small" style="margin-top:14px">El Mentor está razonando. <a href="#" data-go="s-reveal">(ver resultado)</a></p>
+    </div>
+  </section>
+
+  <!-- ===== 5. REVELACIÓN + FEEDBACK ===== -->
+  <section class="screen" id="s-reveal">
+    <div class="eyebrow">Revelación</div>
+    <h2 class="serif">Era… Bourgogne Rouge — Pinot Noir</h2>
+    <div class="grid g2">
+      <div>
+        <div class="card" style="text-align:center">
+          <div class="bottle shoulder-low"><span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div>
+          <div style="margin-top:10px"><span class="chip gold">Pinot Noir</span> <span class="chip">Borgoña</span> <span class="chip">Corcho natural</span></div>
+        </div>
+        <div class="card tight" style="margin-top:14px">
+          <div class="card-label">Tus lecturas</div>
+          <div class="fb-row"><span class="small">Forma: hombro caído</span><span class="tone ok">Coincide</span><span class="small muted">Borgoñón ✓</span></div>
+          <div class="fb-row"><span class="small">Color: verde oscuro → guarda</span><span class="tone ok">Coincide</span><span class="small muted">Correcto</span></div>
+          <div class="fb-row"><span class="small">Hipótesis: Pinot Noir</span><span class="tone near">Cerca</span><span class="small muted">Bien razonado</span></div>
+          <div class="fb-row"><span class="small">Posicionamiento: premium</span><span class="tone rev">Revisar</span><span class="small muted">Gama media</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="mentor ok"><div class="avatar">✦</div><div><div class="sev">SÍNTESIS</div><p class="small" style="margin:.2em 0 0">Hombro caído + vidrio oscuro + corcho apuntaban a un tinto de guarda borgoñón. Tu deducción de Pinot Noir fue sólida y bien justificada.</p></div></div>
+        <div class="mentor crit" style="margin-top:10px"><div class="avatar">✦</div><div><div class="sev">CONCEPTO CLAVE</div><p class="small" style="margin:.2em 0 0">El corcho natural <i>no</i> garantiza gama alta: es tradicional en Borgoña a todos los niveles. No infieras precio solo del cierre.</p></div></div>
+        <div class="flowbar"><button class="btn primary" style="flex:1" data-go="s-done">Ver resumen →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. CIERRE ===== -->
+  <section class="screen" id="s-done">
+    <div style="text-align:center;max-width:520px;margin:0 auto">
+      <div class="celebrate">✓</div>
+      <h2 class="serif">Práctica completada</h2>
+      <p class="muted small">Buena lectura de las pistas físicas. Has reforzado tu ojo para perfiles de guarda.</p>
+      <div class="card tight" style="text-align:left;margin-top:18px">
+        <div class="card-label">Impacto en tus competencias</div>
+        <div style="display:flex;gap:16px;align-items:center;margin-bottom:10px">
+          <div class="ring" style="--p:81"><i>81</i></div>
+          <div><b class="small">Análisis visual</b> <span class="xs gold">+3</span><div class="meter" style="width:160px;margin-top:6px"><span style="width:81%"></span></div></div>
+        </div>
+        <p class="xs muted">Mito corregido: cierre ≠ precio. Se reforzará en tu próxima práctica.</p>
+      </div>
+      <div class="state done" style="margin-top:16px"><span class="d"></span> Readiness y dominio actualizados en el Dashboard</div>
+      <div class="flowbar" style="justify-content:center"><button class="btn" data-go="s-frame">Otra botella</button><button class="btn ghost" data-go="s-frame">Volver al Dashboard</button></div>
+    </div>
+  </section>
+
+</div>
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-go]'); if(!t)return; e.preventDefault();
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+    var el=document.getElementById(t.getAttribute('data-go')); if(el)el.classList.add('active');
+    window.scrollTo(0,0);
+  });
+})();
+</script>
+</body>
+</html>
