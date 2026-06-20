@@ -1,0 +1,240 @@
+{
+  "schema_version": "EP-01",
+  "purpose": "Epistemic Profile is an evidence database. Events generate evidence, evidence generates metrics, metrics inform decisions.",
+  "governance": {
+    "events_are_source_of_truth": true,
+    "derived_metrics_are_persisted": false,
+    "official_scoring_allowed": false,
+    "safe_for_examiner": false
+  },
+  "persistent_data": [
+    {
+      "name": "epistemic_profiles",
+      "derived": false,
+      "description": "One durable profile envelope per learner. Stores versioning and non-derived state only.",
+      "fields": [
+        "user_id",
+        "profile_version",
+        "status",
+        "evidence_cursor",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "epistemic_events",
+      "derived": false,
+      "description": "Append-only evidence events. This is the canonical source for profile state.",
+      "fields": [
+        "id",
+        "user_id",
+        "event_id",
+        "event_type",
+        "source_experience",
+        "source_mode",
+        "occurred_at",
+        "payload",
+        "evidence",
+        "metadata",
+        "schema_version",
+        "created_at"
+      ]
+    },
+    {
+      "name": "epistemic_event_links",
+      "derived": false,
+      "description": "Optional links from epistemic events to existing attempts, sessions, or external evidence records.",
+      "fields": [
+        "id",
+        "epistemic_event_id",
+        "related_table",
+        "related_id",
+        "relationship",
+        "created_at"
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "key": "decision_quality_signal",
+      "source_event_types": [
+        "decision_made"
+      ],
+      "description": "Evidence that a learner made a domain decision with an observable outcome."
+    },
+    {
+      "key": "calibration_signal",
+      "source_event_types": [
+        "confidence_selected",
+        "decision_made"
+      ],
+      "description": "Evidence comparing confidence to observed correctness."
+    },
+    {
+      "key": "transfer_signal",
+      "source_event_types": [
+        "novel_item_presented",
+        "practice_completed"
+      ],
+      "description": "Evidence that knowledge was applied to a novel item or context."
+    },
+    {
+      "key": "readiness_signal",
+      "source_event_types": [
+        "simulation_completed",
+        "session_completed"
+      ],
+      "description": "Evidence from completed integrated tasks."
+    },
+    {
+      "key": "adherence_signal",
+      "source_event_types": [
+        "practice_completed",
+        "session_completed",
+        "time_expired"
+      ],
+      "description": "Evidence that the learner completed or abandoned intended practice."
+    }
+  ],
+  "events": [
+    {
+      "type": "decision_made",
+      "required_payload": [
+        "decision_axis",
+        "selected_value"
+      ],
+      "evidence_notes": "May include outcome, domain_tags, item_id, or rubric_dimension."
+    },
+    {
+      "type": "confidence_selected",
+      "required_payload": [
+        "confidence"
+      ],
+      "evidence_notes": "Confidence is 0-100; evidence may include outcome."
+    },
+    {
+      "type": "simulation_completed",
+      "required_payload": [
+        "simulation_type"
+      ],
+      "evidence_notes": "Evidence may include completed, outcome, duration_seconds, and component coverage."
+    },
+    {
+      "type": "misconception_detected",
+      "required_payload": [
+        "misconception_id"
+      ],
+      "evidence_notes": "Detection evidence must reference the observed behavior, not a stored score."
+    },
+    {
+      "type": "misconception_resolved",
+      "required_payload": [
+        "misconception_id"
+      ],
+      "evidence_notes": "Resolution evidence must reference later behavior that contradicts the misconception."
+    },
+    {
+      "type": "novel_item_presented",
+      "required_payload": [
+        "item_family"
+      ],
+      "evidence_notes": "Marks novelty for transfer analysis."
+    },
+    {
+      "type": "practice_completed",
+      "required_payload": [
+        "practice_type"
+      ],
+      "evidence_notes": "Evidence may include completed, transfer_applied, and outcome."
+    },
+    {
+      "type": "session_completed",
+      "required_payload": [
+        "session_type"
+      ],
+      "evidence_notes": "Evidence may include completed, duration_seconds, and outcome."
+    },
+    {
+      "type": "time_expired",
+      "required_payload": [
+        "session_type"
+      ],
+      "evidence_notes": "Records incomplete work caused by time limit."
+    }
+  ],
+  "derived_metrics": [
+    {
+      "key": "domain",
+      "persisted": false,
+      "source_event_types": [
+        "decision_made"
+      ],
+      "description": "Derived from observed decision outcomes."
+    },
+    {
+      "key": "calibration",
+      "persisted": false,
+      "source_event_types": [
+        "confidence_selected"
+      ],
+      "description": "Derived from confidence compared to later evidence."
+    },
+    {
+      "key": "transfer",
+      "persisted": false,
+      "source_event_types": [
+        "novel_item_presented",
+        "practice_completed"
+      ],
+      "description": "Derived from successful evidence in novel contexts."
+    },
+    {
+      "key": "readiness",
+      "persisted": false,
+      "source_event_types": [
+        "simulation_completed",
+        "session_completed"
+      ],
+      "description": "Derived from integrated completion evidence."
+    },
+    {
+      "key": "adherence",
+      "persisted": false,
+      "source_event_types": [
+        "practice_completed",
+        "session_completed",
+        "time_expired"
+      ],
+      "description": "Derived from completion versus expiry evidence."
+    }
+  ],
+  "api": {
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/functions/v1/record-epistemic-event",
+        "internal": true,
+        "purpose": "Validate and append a single epistemic event.",
+        "writes": [
+          "epistemic_profiles",
+          "epistemic_events"
+        ],
+        "returns": [
+          "inserted",
+          "epistemic_event_id"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/functions/v1/get-epistemic-profile",
+        "internal": true,
+        "purpose": "Return persistent profile envelope plus derived metrics computed from events.",
+        "reads": [
+          "epistemic_profiles",
+          "epistemic_events",
+          "epistemic_event_links"
+        ]
+      }
+    ]
+  }
+}
