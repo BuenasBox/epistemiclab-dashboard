@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottle Guided — EpistemicLab</title>
+<meta name="robots" content="noindex">
+<style>
+/* Tokens y componentes del Design System (continuos con SAT). Sin tokens nuevos. */
+:root{
+  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
+  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --r-ctl:8px;--r-card:12px;--r-pill:999px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;
+  --serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+h1{font-size:25px;margin:0 0 .3em}h2{font-size:20px;margin:0 0 .4em}h3{font-size:17px;margin:0 0 .4em}
+.serif{font-family:var(--serif)}.muted{color:var(--muted)}.small{font-size:13px}.xs{font-size:11.5px}.gold{color:var(--gold)}
+p{margin:0 0 .8em}
+.wrap{max-width:980px;margin:0 auto;padding:var(--s6) var(--s5)}
+.topline{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:var(--s4);margin-bottom:var(--s5)}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:16px}
+.brand .dot{width:20px;height:20px;border-radius:var(--r-pill);background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 70%);box-shadow:0 0 0 1px var(--gold) inset}
+.crumbs{font-size:13px;color:var(--muted)}.crumbs b{color:var(--ink)}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.eyebrow::before{content:"";width:14px;height:1px;background:var(--gold)}
+.btn{font-family:inherit;font-size:14px;border-radius:var(--r-ctl);padding:10px 16px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--gold)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.primary{background:linear-gradient(180deg,var(--wine2),var(--wine));border-color:transparent;font-weight:600}.btn.ghost{background:none}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-pill);font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.02);white-space:nowrap}
+.chip.gold{border-color:rgba(201,162,39,.5);color:var(--gold)}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--r-card);padding:var(--s5)}
+.card.tight{padding:var(--s4)}
+.card-label{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.hairline{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5;margin:var(--s5) 0}
+.grid{display:grid;gap:var(--s4)}.g2{grid-template-columns:1.1fr .9fr}
+.note{font-size:12px;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r-ctl);padding:var(--s3) var(--s4);background:rgba(255,255,255,.015)}
+.avatar{width:34px;height:34px;border-radius:50%;flex:0 0 34px;display:grid;place-items:center;font-size:15px;background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 75%);border:1px solid var(--gold)}
+.ring{--p:60;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--panel2) 0)}
+.ring>i{width:46px;height:46px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-style:normal}
+.meter{height:8px;border-radius:var(--r-pill);background:var(--panel2);overflow:hidden;border:1px solid var(--line)}
+.meter>span{display:block;height:100%;background:linear-gradient(90deg,var(--wine2),var(--gold))}
+/* bottle hero */
+.bottle{width:64px;height:150px;position:relative;margin:0 auto}
+.bottle .cap{position:absolute;left:50%;top:0;width:22px;height:13px;background:var(--wine);transform:translateX(-50%);border-radius:4px 4px 0 0}
+.bottle .neck{position:absolute;left:50%;top:0;width:20px;height:46px;transform:translateX(-50%);border-radius:5px 5px 0 0}
+.bottle .body{position:absolute;left:0;right:0;bottom:0;height:108px;border-radius:8px 8px 6px 6px}
+.bottle .lbl{position:absolute;left:9px;right:9px;bottom:22px;height:38px;background:#efe6d6;border-radius:2px;opacity:.92}
+.bottle.shape-bordeaux .body{border-radius:4px 4px 6px 6px}
+.bottle.shape-burgundy .body{border-radius:24px 24px 6px 6px}
+.bottle.shape-flute{width:46px}.bottle.shape-flute .body{height:118px;border-radius:14px 14px 6px 6px}
+.bottle.shape-sparkling .body{border-radius:20px 20px 6px 6px}
+.gc-dark-green .neck,.gc-dark-green .body{background:linear-gradient(90deg,#243018,#3f5236 45%,#243018)}
+.gc-brown .neck,.gc-brown .body{background:linear-gradient(90deg,#2e1c10,#5a3a22 45%,#2e1c10)}
+.gc-clear .neck,.gc-clear .body{background:linear-gradient(90deg,#3a3340,#6f6678 45%,#3a3340)}
+.gc-amber .neck,.gc-amber .body{background:linear-gradient(90deg,#3a2a10,#7a5a22 45%,#3a2a10)}
+/* timeline */
+.steps{display:flex;gap:6px;align-items:center;position:relative;margin:var(--s5) 0}
+.steps::before{content:"";position:absolute;left:11px;right:11px;top:11px;height:1px;background:var(--line)}
+.step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative;z-index:1}
+.step .dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
+.step.done .dot{background:var(--ok);color:#0d2b1c;border-color:transparent}
+.step.active .dot{border-color:var(--gold);color:var(--gold)}
+.step .lbl{font-size:10px;color:var(--muted)}.step.active .lbl{color:var(--gold)}
+/* options */
+.opt{display:block;width:100%;text-align:left;padding:11px var(--s4);border:1px solid var(--line);border-radius:var(--r-ctl);background:var(--panel2);color:var(--ink);margin-bottom:8px;cursor:pointer;font-family:inherit;font-size:14px}
+.opt:hover{border-color:var(--gold)}.opt.sel{background:var(--wine);border-color:transparent;font-weight:600}
+.opt small{display:block;color:var(--muted);font-weight:400;margin-top:2px}.opt.sel small{color:rgba(255,255,255,.8)}
+/* mentor / states / feedback */
+.mentor{display:flex;gap:var(--s3);padding:var(--s4);border-radius:var(--r-card);background:var(--panel2);border:1px solid var(--line);border-left-width:3px;margin-bottom:10px}
+.mentor.info{border-left-color:var(--gold)}.mentor.ok{border-left-color:var(--ok)}.mentor.warn{border-left-color:var(--warn)}.mentor.crit{border-left-color:var(--block)}
+.mentor .sev{font-size:11.5px;font-weight:600}
+.mentor.info .sev{color:var(--gold)}.mentor.ok .sev{color:var(--ok)}.mentor.warn .sev{color:var(--warn)}.mentor.crit .sev{color:var(--block)}
+.state{display:inline-flex;align-items:center;gap:7px;font-size:13px;padding:6px 12px;border-radius:var(--r-pill);border:1px solid var(--line)}
+.state .d{width:8px;height:8px;border-radius:50%}.state.eval .d{background:var(--gold)}.state.done .d{background:var(--ok)}
+.fb-row{display:grid;grid-template-columns:1fr auto 1fr;gap:var(--s3);align-items:center;padding:var(--s3) 0;border-bottom:1px solid var(--line)}
+.fb-row:last-child{border-bottom:none}
+.tone{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:var(--r-pill);white-space:nowrap}
+.tone.ok{color:var(--ok);border:1px solid var(--ok)}.tone.near{color:var(--gold);border:1px solid var(--gold)}.tone.rev{color:var(--warn);border:1px solid var(--warn)}.tone.con{color:var(--block);border:1px solid var(--block)}
+.celebrate{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--ok);color:var(--ok);font-size:22px;margin:0 auto var(--s3)}
+.delta{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:var(--r-ctl);background:rgba(255,255,255,.02);margin-bottom:10px}
+.delta .ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;flex:0 0 34px;background:var(--panel2);font-size:15px}
+.delta .plus{color:var(--ok);font-weight:600;font-size:12px}
+.flowbar{display:flex;gap:10px;margin-top:var(--s5)}
+.center{text-align:center}
+@media (max-width:720px){.g2{grid-template-columns:1fr}.wrap{padding:var(--s4)}.fb-row{grid-template-columns:1fr;text-align:left;gap:4px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <div class="brand"><span class="dot"></span> EpistemicLab</div>
+    <div class="crumbs">Practicar › <b>Bottle Guided</b></div>
+    <div style="flex:1"></div>
+    <span class="chip gold" id="compChip">Aspecto · Teoría</span>
+  </div>
+  <div id="app" aria-live="polite"></div>
+  <div class="note" id="fixtureNote" style="margin-top:24px">Contenido provisional (fixture). El dataset real lo entrega el backend con el contrato <code>bottle-guided.items.v1</code>.</div>
+</div>
+
+<script src="./data/bottle-items.sample.js"></script>
+<script src="./epistemic-profile-client.js"></script>
+<script>
+(function(){
+  "use strict";
+  var DATA = window.BOTTLE_GUIDED_ITEMS || { items: [] };
+  var EP = window.EpistemicProfile;
+  var app = document.getElementById('app');
+
+  var TONE = { coincide:'ok', cerca:'near', revisar:'rev', contradiccion:'con' };
+  var TONE_LABEL = { coincide:'Coincide', cerca:'Cerca', revisar:'Revisar', contradiccion:'Posible contradicción' };
+
+  var S = null;
+  function reset(itemIndex){
+    var idx = itemIndex % (DATA.items.length || 1);
+    S = { screen:'frame', itemIndex:idx, item:DATA.items[idx], phaseIdx:0,
+          answers:{}, hyp:{}, finished:false };
+  }
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function el(html){ var d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild; }
+
+  /* ---------- screen renderers ---------- */
+  function render(){
+    if(!S.item){ app.innerHTML = '<div class="card">No hay botellas en el set.</div>'; return; }
+    document.getElementById('compChip').textContent = (S.item.competencies||[]).join(' · ');
+    if(S.screen==='frame') return renderFrame();
+    if(S.screen==='observe') return renderObserve();
+    if(S.screen==='hypothesis') return renderHypothesis();
+    if(S.screen==='evaluating') return renderEvaluating();
+    if(S.screen==='reveal') return renderReveal();
+    if(S.screen==='done') return renderDone();
+  }
+
+  function renderFrame(){
+    app.innerHTML =
+      '<div class="eyebrow">Módulo · inferencia contextual</div>'+
+      '<h1 class="serif">Bottle Guided</h1>'+
+      '<p class="muted" style="max-width:620px">Deduce el estilo de un vino observando la <b>botella</b>: forma, color del vidrio, formato, cierre y nivel. Entrenas tu ojo y tu razonamiento antes de oler nada.</p>'+
+      '<div class="note" style="max-width:620px;margin-bottom:18px">En el examen la cata es <b>ciega</b> — no verás la botella. Esto entrena la <b>teoría de envasado</b> (Unit&nbsp;1) y el hábito de formular hipótesis. <b>No memorizamos botellas: aprendemos a leerlas.</b></div>'+
+      '<div class="card" style="max-width:620px">'+
+        '<div class="card-label">Esta sesión</div>'+
+        '<h3>1 botella · 5 pasos de observación · ~5 min</h3>'+
+        '<p class="small muted">Observas zona a zona, formulas tu hipótesis y el Mentor te devuelve qué cambió en ti.</p>'+
+        '<div class="flowbar"><button class="btn primary" id="start">Empezar →</button></div>'+
+      '</div>';
+    document.getElementById('start').onclick = function(){
+      EP && EP.startSession({ module:'bottle-guided', competencies:S.item.competencies });
+      S.screen='observe'; S.phaseIdx=0; render();
+    };
+  }
+
+  function bottleHtml(r){
+    r = r||{};
+    return '<div class="bottle shape-'+esc(r.shape||'burgundy')+' gc-'+esc(r.glassColor||'dark-green')+'">'+
+      '<span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div>';
+  }
+
+  function timelineHtml(){
+    var ph = S.item.phases;
+    var out = '<div class="steps">';
+    for(var i=0;i<ph.length;i++){
+      var cls = i<S.phaseIdx?'done':(i===S.phaseIdx?'active':'');
+      var mk = i<S.phaseIdx?'✓':(i===S.phaseIdx?'▶':'○');
+      out += '<div class="step '+cls+'"><span class="dot">'+mk+'</span><span class="lbl">'+esc(ph[i].label)+'</span></div>';
+    }
+    return out+'</div>';
+  }
+
+  function renderObserve(){
+    var ph = S.item.phases[S.phaseIdx];
+    var sel = S.answers[ph.id];
+    var optsHtml = ph.options.map(function(o){
+      return '<button class="opt'+(sel===o.id?' sel':'')+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+
+        (o.sub?'<small>'+esc(o.sub)+'</small>':'')+'</button>';
+    }).join('');
+    var m = ph.mentor||{sev:'info',text:''};
+    app.innerHTML =
+      '<div class="eyebrow">Observa la botella · paso '+(S.phaseIdx+1)+' de '+S.item.phases.length+'</div>'+
+      '<h2 class="serif">'+esc(ph.prompt)+'</h2>'+
+      timelineHtml()+
+      '<div class="grid g2"><div>'+
+        '<div class="card center"><div class="card-label" style="text-align:left">Botella en observación · identidad oculta</div>'+bottleHtml(S.item.render)+'</div>'+
+        '<div class="card tight" style="margin-top:14px"><div class="card-label">'+esc(ph.label)+'</div>'+optsHtml+'</div>'+
+        '<div class="flowbar">'+
+          (S.phaseIdx>0?'<button class="btn ghost" id="back">Atrás</button>':'')+
+          '<button class="btn primary" id="next" style="flex:1" '+(sel?'':'disabled')+'>Confirmar y seguir →</button>'+
+        '</div>'+
+      '</div><div>'+
+        '<div class="card-label">Mentor</div>'+
+        '<div class="mentor '+esc(m.sev)+'"><div class="avatar">✦</div><div><div class="sev">PISTA</div><p class="small" style="margin:.2em 0 0">'+esc(m.text)+'</p></div></div>'+
+        '<div class="state eval"><span class="d"></span> El Mentor analizará tu deducción al confirmar</div>'+
+        '<div class="note" style="margin-top:14px">El razonamiento se valora más que el acierto. La identidad no se revela hasta el final (gobernanza).</div>'+
+      '</div></div>';
+    app.querySelectorAll('[data-opt]').forEach(function(b){
+      b.onclick = function(){ S.answers[ph.id]=b.getAttribute('data-opt'); render(); };
+    });
+    var back=document.getElementById('back'); if(back) back.onclick=function(){ S.phaseIdx--; render(); };
+    document.getElementById('next').onclick = function(){
+      var opt = ph.options.filter(function(o){return o.id===sel;})[0]||{};
+      EP && EP.decisionMade({ competency:(S.item.competencies||[])[0], itemId:S.item.id, phaseId:ph.id,
+        response:sel, correctnessBand:opt.band, novel:S.item.novel });
+      if(S.phaseIdx < S.item.phases.length-1){ S.phaseIdx++; render(); }
+      else { S.screen='hypothesis'; render(); }
+    };
+  }
+
+  function hypGroup(key, group){
+    var sel = S.hyp[key];
+    return '<div class="card-label"'+(key==='positioning'?' style="margin-top:14px"':'')+'>'+esc(group.prompt)+'</div>'+
+      group.options.map(function(o){
+        return '<button class="opt'+(sel===o.id?' sel':'')+'" data-hyp="'+key+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+'</button>';
+      }).join('');
+  }
+
+  function renderHypothesis(){
+    var h = S.item.hypothesis;
+    var ready = S.hyp.style && S.hyp.positioning;
+    app.innerHTML =
+      '<div class="eyebrow">Integra las pistas</div><h2 class="serif">Tu hipótesis</h2>'+
+      '<p class="muted small" style="max-width:620px">Has observado las cinco zonas. ¿Qué deduces del conjunto? Justifica con la combinación, no con una sola pista.</p>'+
+      '<div class="grid g2"><div class="card">'+ hypGroup('style',h.style) + hypGroup('positioning',h.positioning) +'</div>'+
+      '<div><div class="mentor warn"><div class="avatar">✦</div><div><div class="sev">ATENCIÓN</div><p class="small" style="margin:.2em 0 0">La forma es <i>tradición</i>, no ley. Una botella puede sorprender: lo que vale es tu razonamiento.</p></div></div>'+
+      '<div class="flowbar"><button class="btn ghost" id="back">Atrás</button><button class="btn primary" id="submit" style="flex:1" '+(ready?'':'disabled')+'>Enviar hipótesis →</button></div>'+
+      '</div></div>';
+    app.querySelectorAll('[data-hyp]').forEach(function(b){
+      b.onclick=function(){ S.hyp[b.getAttribute('data-hyp')]=b.getAttribute('data-opt'); render(); };
+    });
+    document.getElementById('back').onclick=function(){ S.screen='observe'; S.phaseIdx=S.item.phases.length-1; render(); };
+    document.getElementById('submit').onclick=function(){
+      var hs=S.item.hypothesis;
+      var so=hs.style.options.filter(function(o){return o.id===S.hyp.style;})[0]||{};
+      var po=hs.positioning.options.filter(function(o){return o.id===S.hyp.positioning;})[0]||{};
+      EP && EP.hypothesisSubmitted({ competency:'Conclusiones', itemId:S.item.id,
+        style:{response:S.hyp.style,band:so.band}, positioning:{response:S.hyp.positioning,band:po.band} });
+      S.finished=true;            // finish-gate: sólo ahora se puede revelar
+      S.screen='evaluating'; render();
+    };
+  }
+
+  function renderEvaluating(){
+    app.innerHTML =
+      '<div class="center" style="padding:60px 0">'+
+      '<div class="avatar" style="margin:0 auto 14px;width:46px;height:46px">✦</div>'+
+      '<div class="state eval"><span class="d"></span> Analizando tu deducción…</div>'+
+      '<p class="muted small" style="margin-top:14px"><a href="#" id="see" class="gold">ver resultado</a></p></div>';
+    var go=function(e){ if(e)e.preventDefault(); S.screen='reveal'; render(); };
+    document.getElementById('see').onclick=go;
+    var t=setTimeout(go,900);     // timeout, no es animación; ok bajo reduce-motion
+    app._t=t;
+  }
+
+  function renderReveal(){
+    if(!S.finished){ S.screen='observe'; return render(); } // gobernanza
+    var it=S.item, rv=it.reveal;
+    // feedback por fase
+    var rows = it.phases.map(function(ph){
+      var sel=S.answers[ph.id]; var opt=ph.options.filter(function(o){return o.id===sel;})[0]||{};
+      var tone=TONE[opt.band]||'rev';
+      return '<div class="fb-row"><span class="small">'+esc(ph.label)+': '+esc((opt.text||'').split('(')[0])+'</span>'+
+        '<span class="tone '+tone+'">'+esc(TONE_LABEL[opt.band]||'Revisar')+'</span>'+
+        '<span class="small muted">'+esc(opt.explain||'')+'</span></div>';
+    }).join('');
+    var hs=it.hypothesis;
+    var so=hs.style.options.filter(function(o){return o.id===S.hyp.style;})[0]||{};
+    var hypTone=TONE[so.band]||'rev';
+    var badges=(rv.badges||[]).map(function(b){return '<span class="chip gold">'+esc(b)+'</span>';}).join(' ');
+    EP && rv.misconception && EP.misconception({ id:rv.misconception.id, status:'resolved', title:rv.misconception.title });
+    app.innerHTML =
+      '<div class="eyebrow">Revelación</div><h2 class="serif">Era… '+esc(rv.identity)+'</h2>'+
+      '<div class="grid g2"><div>'+
+        '<div class="card center">'+bottleHtml(it.render)+'<div style="margin-top:10px">'+badges+'</div></div>'+
+        '<div class="card tight" style="margin-top:14px"><div class="card-label">Tus lecturas</div>'+rows+
+          '<div class="fb-row"><span class="small">Hipótesis de estilo</span><span class="tone '+hypTone+'">'+esc(TONE_LABEL[so.band]||'Revisar')+'</span><span class="small muted">'+esc((so.text||''))+'</span></div>'+
+        '</div>'+
+      '</div><div>'+
+        '<div class="mentor ok"><div class="avatar">✦</div><div><div class="sev">SÍNTESIS</div><p class="small" style="margin:.2em 0 0">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
+        (rv.misconception?'<div class="mentor crit"><div class="avatar">✦</div><div><div class="sev">CONCEPTO CLAVE</div><p class="small" style="margin:.2em 0 0"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
+        '<div class="flowbar"><button class="btn primary" id="toDone" style="flex:1">Ver qué cambió en ti →</button></div>'+
+      '</div></div>';
+    document.getElementById('toDone').onclick=function(){
+      EP && EP.sessionCompleted({ module:'bottle-guided', itemId:it.id });
+      S.screen='done'; render();
+    };
+  }
+
+  function renderDone(){
+    var d = (EP && EP.getSessionDelta()) || { accuracy:'—', misconceptions:[], transferTouched:false, competencies:S.item.competencies };
+    var misc = (d.misconceptions||[]).map(function(m){
+      return '<div class="delta"><div class="ic">💡</div><div><b class="small">Idea consolidada</b><div class="xs muted" style="margin-top:2px">'+esc(m.title||'Concepto reforzado')+'</div></div></div>';
+    }).join('');
+    var transfer = d.transferTouched ?
+      '<div class="delta"><div class="ic">🔄</div><div><b class="small">Transferencia probada</b><div class="xs muted" style="margin-top:2px">Aplicado a una botella reservada como nueva → señal de aprendizaje real, no memoria.</div></div></div>' : '';
+    app.innerHTML =
+      '<div class="center" style="max-width:560px;margin:0 auto"><div class="celebrate">✓</div>'+
+      '<h2 class="serif">Qué cambió en ti</h2><p class="muted small">No "bien hecho": esto es lo que ahora razonas distinto.</p></div>'+
+      '<div style="max-width:560px;margin:18px auto 0">'+
+        '<div class="delta"><div class="ic">📚</div><div><b class="small">Análisis visual + Teoría de envasado</b><div class="meter" style="margin-top:6px"><span style="width:74%"></span></div><div class="xs muted" style="margin-top:4px">Lectura de pistas físicas reforzada · aciertos en esta sesión: '+esc(d.accuracy)+'</div></div></div>'+
+        misc + transfer +
+        '<div class="delta" style="border-color:rgba(201,162,39,.45)"><div class="ic">📈</div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted" style="margin-top:2px">El Epistemic Profile recibió las señales de esta sesión. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
+        '<div class="state done" style="margin-top:8px"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
+        '<div class="flowbar" style="justify-content:center"><button class="btn" id="another">Otra botella</button><a class="btn ghost" href="../">Volver al Dashboard</a></div>'+
+      '</div>';
+    document.getElementById('another').onclick=function(){ reset(S.itemIndex+1); render(); };
+  }
+
+  /* ---------- boot ---------- */
+  reset(0);
+  render();
+})();
+</script>
+</body>
+</html>
