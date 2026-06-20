@@ -553,7 +553,7 @@
   }
 
   // Capa de perfil escalable: la pantalla es una PLANTILLA. Un futuro perfil de
-  // vino (biblioteca de ~70 perfiles o modo "Mi botella") puede llegar en
+  // vino (biblioteca de ~107 perfiles o modo "Mi botella") puede llegar en
   // S.wine.render_profile y sobreescribir dinámicamente: decisiones por fase,
   // escala de color, escalas/ opciones permitidas y etiquetas. Si no llega, se
   // usan los valores SAT-006 por defecto (comportamiento actual intacto).
@@ -594,7 +594,7 @@
       var wine = previewWine;
       if(!wine){
         var hr = await authHeaders(false);
-        var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation&limit=70', {headers:hr});
+        var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation&limit=107', {headers:hr});
         if(!wr.ok) throw new Error('No se pudo cargar el inventario de cata.');
         var wd = await wr.json();
         var list = wd.wines||[];
@@ -994,7 +994,7 @@
   function startRecommended(id){
     var b=$('btn-start-rec'); if(b){ b.disabled=true; b.textContent='Cargando…'; }
     requireAuth().then(function(token){
-      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=70', {headers:{'Authorization':'Bearer '+token}});
+      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=107', {headers:{'Authorization':'Bearer '+token}});
     }).then(function(r){ return r.json(); }).then(function(wd){
       var list=(wd&&wd.wines)||[], w=null;
       for(var i=0;i<list.length;i++){ if(list[i].id===id){ w=list[i]; break; } }
@@ -1128,7 +1128,7 @@
   function previewPracticeWine(){
     if(!$('wic-demo')) return;
     requireAuth().then(function(token){
-      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=70', {headers:{'Authorization':'Bearer '+token}});
+      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=107', {headers:{'Authorization':'Bearer '+token}});
     }).then(function(r){ return r.json(); }).then(function(wd){
       var list=(wd&&wd.wines)||[];
       if(!list.length){ previewWine=null; $('wic-demo').innerHTML=''; return; }

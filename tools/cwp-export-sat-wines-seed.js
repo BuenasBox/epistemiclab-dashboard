@@ -8,6 +8,8 @@ const WINE_TYPE_LABELS = {
   BLANCO: 'blanco',
   ROSADO: 'rosado',
   TINTO: 'tinto',
+  ESPUMOSO: 'espumoso',
+  FORTIFICADO: 'fortificado',
 };
 
 function blindDisplayLabel(profile, index) {
@@ -22,13 +24,23 @@ function sqlString(value) {
   return `'${String(value).replace(/'/g, "''")}'`;
 }
 
+function satPriority(profile, index) {
+  const priority = Number(profile.priority);
+  if (Number.isFinite(priority)) return priority;
+
+  const practicePriority = Number(profile.practice_priority);
+  if (Number.isFinite(practicePriority)) return practicePriority;
+
+  return index + 1;
+}
+
 function toSatWinesSeedSql(profiles) {
   const validation = validateProfiles(profiles);
   if (!validation.ok) {
     throw new Error(validation.errors.join('\n'));
   }
-  if (profiles.length !== 70) {
-    throw new Error(`Expected 70 canonical profiles for sat_wines seed, found ${profiles.length}`);
+  if (profiles.length !== 107) {
+    throw new Error(`Expected 107 canonical profiles for sat_wines seed, found ${profiles.length}`);
   }
 
   const rows = profiles.map((profile, index) => {
@@ -36,7 +48,7 @@ function toSatWinesSeedSql(profiles) {
     const values = [
       sqlString(profile.canonical_id),
       sqlString(profile.wine_type),
-      Number(profile.priority || profile.practice_priority || index + 1),
+      satPriority(profile, index),
       sqlString(blindDisplayLabel(profile, index)),
       sqlString('canonical_wine'),
       `${sqlString(canonical)}::jsonb`,
@@ -84,8 +96,8 @@ function toSatWinesSeedSql(profiles) {
     '  from public.sat_wines',
     '  where source = \'canonical_wine\';',
     '',
-    '  if actual_count <> 70 then',
-    '    raise exception \'sat_wines canonical seed expected 70 rows, found %\', actual_count;',
+    '  if actual_count <> 107 then',
+    '    raise exception \'sat_wines canonical seed expected 107 rows, found %\', actual_count;',
     '  end if;',
     '',
     '  if exists (',
@@ -101,7 +113,7 @@ function toSatWinesSeedSql(profiles) {
     '    select 1',
     '    from public.sat_wines',
     '    where source = \'canonical_wine\'',
-    '      and display_label !~ \'^Vino (blanco|tinto|rosado) — práctica [0-9]+$\'',
+    '      and display_label !~ \'^Vino (blanco|tinto|rosado|espumoso|fortificado) — práctica [0-9]+$\'',
     '  ) then',
     '    raise exception \'sat_wines display_label must remain blind-safe\';',
     '  end if;',

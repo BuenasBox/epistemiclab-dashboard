@@ -20,7 +20,7 @@ const corsHeaders = {
 
 const ALLOWED_MODES = ['blind_simulation', 'bottle_guided', 'label_simulation'];
 const ALLOWED_SOURCES = ['canonical_wine', 'user_bottle', 'simulated_label'];
-const ALLOWED_WINE_TYPES = ['BLANCO', 'ROSADO', 'TINTO'];
+const ALLOWED_WINE_TYPES = ['BLANCO', 'ROSADO', 'TINTO', 'ESPUMOSO', 'FORTIFICADO'];
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
@@ -75,7 +75,7 @@ Deno.serve(async (req: Request) => {
       });
     }
 
-    const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '12'), 1), 70);
+    const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '12'), 1), 107);
 
     // 3) Lectura server-side. Seleccionamos SOLO columnas render-safe.
     //    `canonical` NUNCA entra en el select => no puede filtrarse por accidente.
@@ -112,7 +112,11 @@ Deno.serve(async (req: Request) => {
         ? 'Cata a ciegas — vino blanco'
         : w.wine_type === 'TINTO'
           ? 'Cata a ciegas — vino tinto'
-          : 'Cata a ciegas — vino rosado',
+          : w.wine_type === 'ESPUMOSO'
+            ? 'Cata a ciegas — vino espumoso'
+            : w.wine_type === 'FORTIFICADO'
+              ? 'Cata a ciegas — vino fortificado'
+              : 'Cata a ciegas — vino rosado',
     }));
 
     return new Response(
