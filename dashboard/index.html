@@ -5,21 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard — EpistemicLab</title>
 <meta name="robots" content="noindex">
+<link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="./dashboard.css">
 </head>
 <body>
 <div class="wrap">
-  <div class="topline">
-    <div class="brand"><span class="dot"></span> EpistemicLab</div>
-    <div class="crumbs">· <b>Dashboard</b></div>
-    <div style="flex:1"></div>
-    <span class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></span>
-  </div>
   <h1 class="greeting" id="greeting">Tu entrenamiento</h1>
   <p class="sub">Tu entrenador personal para aprobar WSET Level&nbsp;3.</p>
-  <div id="root"></div>
-  <footer>Práctica formativa · No es evaluación oficial WSET · El Dashboard no calcula: refleja tu Epistemic Profile (EP-03) + Learning Loop + Mentor.</footer>
+  <span class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></span>
+  <div id="root" style="margin-top:14px"></div>
 </div>
+<script src="/platform-nav.js" defer></script>
 <script src="../learning-loop/learning-loop-engine.js"></script>
 <script src="../mentor/mentor-cognitivo.js"></script>
 <script src="../mentor/mentor-cognitivo-ui.js"></script>
