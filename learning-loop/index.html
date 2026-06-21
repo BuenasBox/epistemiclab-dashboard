@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning Loop — EpistemicLab</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
+  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --r-card:12px;--r-pill:999px;--serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+.wrap{max-width:780px;margin:0 auto;padding:32px 22px 28px}
+.topline{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:16px}
+.brand .dot{width:20px;height:20px;border-radius:var(--r-pill);background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 70%);box-shadow:0 0 0 1px var(--gold) inset}
+.crumbs{font-size:13px;color:var(--muted)}.crumbs b{color:var(--ink)}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.eyebrow::before{content:"";width:14px;height:1px;background:var(--gold)}
+h1{font-family:var(--serif);font-size:25px;margin:0 0 .3em}
+.lead{color:var(--muted);max-width:620px;margin:0 0 16px}
+.src{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;padding:5px 11px;border-radius:var(--r-pill);border:1px solid var(--line);color:var(--muted);margin-bottom:18px}
+.src .d{width:8px;height:8px;border-radius:50%;background:var(--muted)}.src.live .d{background:var(--ok)}.src.sample .d{background:var(--warn)}
+.decision{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--r-card);padding:20px;margin-bottom:16px}
+.decision.halt{border-color:rgba(193,72,63,.55)}
+.state-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.pill{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:var(--r-pill);border:1px solid var(--line)}
+.pill.state{color:var(--gold);border-color:rgba(201,162,39,.5)}
+.pill.halt{color:var(--block);border-color:var(--block)}
+.pill.go{color:var(--ok);border-color:var(--ok)}
+.next-label{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.next-practice{font-family:var(--serif);font-size:22px;margin:2px 0 8px}
+.next-reason{font-size:14px;color:#e6d6e0;margin:0}
+.gate{margin-top:14px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.qa{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--r-card);padding:6px 18px;margin-bottom:16px}
+.qa-row{padding:11px 0;border-bottom:1px solid var(--line)}.qa-row:last-child{border-bottom:none}
+.qa-q{font-size:12px;color:var(--gold);font-weight:600;margin-bottom:3px}
+.qa-a{font-size:13.5px;color:#e6d6e0}
+.rat{font-size:11.5px;color:var(--muted)}
+.rat b{color:var(--ink)}.rat ul{margin:6px 0 0;padding-left:18px}.rat li{margin-bottom:3px}
+footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <div class="brand"><span class="dot"></span> EpistemicLab</div>
+    <div class="crumbs">· <b>Learning Loop</b></div>
+  </div>
+  <div class="eyebrow">El cerebro orquestador · consume EP-03</div>
+  <h1>Tu recorrido, ahora</h1>
+  <p class="lead">Decisión determinista sobre qué practicar y por qué, basada solo en tu evidencia EP-03: readiness, calibración, transferencia, misconceptions, sesiones y recomendaciones.</p>
+  <div class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></div>
+  <div id="decision"></div>
+  <div class="qa" id="qa"></div>
+  <div class="rat" id="rat"></div>
+  <footer>Práctica formativa · No es evaluación oficial WSET · Decisión determinista (sin LLM)</footer>
+</div>
+
+<script src="./learning-loop-engine.js"></script>
+<script>
+(function () {
+  "use strict";
+  var BASE = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/";
+  var EP = {
+    summary: "get-epistemic-profile-summary",
+    recent_sessions: "get-epistemic-profile-sessions",
+    open_misconceptions: "get-epistemic-profile-misconceptions",
+    recommendations: "get-epistemic-profile-recommendations",
+    readiness: "get-epistemic-profile-readiness"
+  };
+
+  // Read model de ejemplo (forma EP-03). Muestra un HALT por misconception abierta.
+  var SAMPLE = {
+    summary: { ok: true, view: 'summary', data: {
+      profile_version: 'EP-01', status: 'active', event_count: 64, last_activity_at: null,
+      weakest_metric: 'calibration',
+      metrics: {
+        domain: m(0.68, 20), calibration: m(0.74, 12), transfer: m(0.71, 6), readiness: m(0.66, 4), adherence: m(0.85, 5)
+      } } },
+    recent_sessions: { ok: true, view: 'recent_sessions', data: [
+      s('label-guided', '2026-06-18'), s('label-guided', '2026-06-17'), s('bottle-guided', '2026-06-16'), s('bottle-guided', '2026-06-15')
+    ] },
+    open_misconceptions: { ok: true, view: 'open_misconceptions', data: [
+      { misconception_id: 'praedikat-equals-sweetness', label: 'Prädikat no es dulzor', detected_at: '2026-06-15T00:00:00.000Z', last_seen_at: '2026-06-17T00:00:00.000Z', evidence_count: 2, domain_tags: ['Teoria'] }
+    ] },
+    recommendations: { ok: true, view: 'recommendations', data: [
+      { recommendation_id: 'close_open_misconceptions', priority: 2, reason: 'Open misconceptions still have no later resolving evidence.', action: '…' }
+    ] }
+  };
+  function m(v, n) { return { value: v, evidence_count: n, status: 'derived', source_event_types: [] }; }
+  function s(type, day) { return { session_id: type + day, session_type: type, status: 'completed', started_at: day + 'T00:00:00.000Z', completed_at: day + 'T00:30:00.000Z' }; }
+
+  function esc(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function setSrc(kind, text){ var el=document.getElementById('src'); el.className='src '+kind; document.getElementById('srcLabel').textContent=text; }
+
+  function renderDecision(r){
+    var halt = r.halt;
+    var gate = r.simulation_gate || {};
+    document.getElementById('decision').innerHTML =
+      '<div class="decision'+(halt?' halt':'')+'">'+
+        '<div class="state-row">'+
+          '<span class="pill state">'+esc(r.state)+'</span>'+
+          (halt?'<span class="pill halt">Detener y reforzar</span>':'<span class="pill go">Avanzar</span>')+
+        '</div>'+
+        '<div class="next-label">Siguiente práctica</div>'+
+        '<div class="next-practice">'+esc(r.next.label)+'</div>'+
+        '<p class="next-reason">'+esc(r.next.reason)+'</p>'+
+        '<div class="gate">Puerta del simulacro: '+(gate.open?'abierta':'cerrada')+
+          ' · readiness '+(gate.current==null?'sin evidencia':gate.current+'%')+' / '+gate.threshold+'%'+
+          (r.blocker?(' · frena: '+esc(r.blocker.label)+' ('+esc(r.blocker.kind)+')'):'')+'</div>'+
+      '</div>';
+  }
+  function renderQA(a){
+    var Q = [
+      ['¿Qué práctica sigue?', a.whatNext], ['¿Por qué?', a.why],
+      ['¿Qué misconception corregir primero?', a.whichMisconceptionFirst],
+      ['¿Qué competencia frena el progreso?', a.whichCompetencyBlocking],
+      ['¿Cuándo repetir Bottle?', a.repeatBottleWhen], ['¿Cuándo pasar a Label?', a.moveToLabelWhen],
+      ['¿Cuándo recomendar Full Simulation?', a.recommendFullSimWhen], ['¿Cuándo detener y reforzar?', a.haltWhen]
+    ];
+    document.getElementById('qa').innerHTML = Q.map(function(x){
+      return '<div class="qa-row"><div class="qa-q">'+esc(x[0])+'</div><div class="qa-a">'+esc(x[1])+'</div></div>';
+    }).join('');
+  }
+  function renderRat(r){
+    document.getElementById('rat').innerHTML = '<b>Base de la decisión:</b><ul>'+
+      r.rationale.map(function(l){return '<li>'+esc(l)+'</li>';}).join('')+'</ul>';
+  }
+
+  async function fetchView(path, token){
+    var r = await fetch(BASE+path, { headers:{ Authorization:'Bearer '+token } });
+    return await r.json();
+  }
+  async function load(){
+    var token = window.__EP_TOKEN__ || null;
+    var bundle = null, live = false;
+    if (token) {
+      try {
+        var keys = Object.keys(EP);
+        var results = await Promise.all(keys.map(function(k){ return fetchView(EP[k], token); }));
+        bundle = {}; keys.forEach(function(k,i){ bundle[k]=results[i]; });
+        live = results.every(function(x){ return x && x.ok; });
+      } catch(e) { live = false; }
+    }
+    if (!live) bundle = SAMPLE;
+    setSrc(live?'live':'sample', live?'Leyendo tu Epistemic Profile (EP-03, en vivo)':'Datos de ejemplo · sin sesión autenticada');
+    var r = window.LearningLoop.fromEndpoints(bundle);
+    renderDecision(r); renderQA(r.answers); renderRat(r);
+  }
+  load();
+})();
+</script>
+</body>
+</html>
