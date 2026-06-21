@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentor Cognitivo — EpistemicLab</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
+  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --r-card:12px;--r-pill:999px;--serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:32px 22px 28px}
+.topline{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:16px}
+.brand .dot{width:20px;height:20px;border-radius:var(--r-pill);background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 70%);box-shadow:0 0 0 1px var(--gold) inset}
+.crumbs{font-size:13px;color:var(--muted)}.crumbs b{color:var(--ink)}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.eyebrow::before{content:"";width:14px;height:1px;background:var(--gold)}
+h1{font-family:var(--serif);font-size:25px;margin:0 0 .3em}
+.lead{color:var(--muted);max-width:600px;margin:0 0 18px}
+.src{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;padding:5px 11px;border-radius:var(--r-pill);border:1px solid var(--line);color:var(--muted);margin-bottom:18px}
+.src .d{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.src.live .d{background:var(--ok)}.src.sample .d{background:var(--warn)}
+/* Mentor Card */
+.mentor-card{display:flex;gap:13px;padding:15px 16px;border-radius:var(--r-card);background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-left-width:3px;margin-bottom:12px}
+.mc-avatar{width:34px;height:34px;border-radius:50%;flex:0 0 34px;display:grid;place-items:center;font-size:15px;background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 75%);border:1px solid var(--gold)}
+.mc-sev{font-size:11px;font-weight:700;letter-spacing:.05em}
+.mc-title{font-weight:600;font-size:15px;margin:2px 0 4px}
+.mc-text{margin:0;font-size:13.5px;color:#e6d6e0}
+.mc-basis{margin-top:8px;font-size:11px;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px}
+.m-info{border-left-color:var(--gold)} .m-info .mc-sev{color:var(--gold)}
+.m-ok{border-left-color:var(--ok)} .m-ok .mc-sev{color:var(--ok)}
+.m-warn{border-left-color:var(--warn)} .m-warn .mc-sev{color:var(--warn)}
+.m-crit{border-left-color:var(--block)} .m-crit .mc-sev{color:var(--block)}
+.m-syn{border-left-color:var(--gold);background:linear-gradient(180deg,#2c1d2a,#241823)} .m-syn .mc-sev{color:var(--gold)}
+.m-act{border-left-color:var(--wine2)} .m-act .mc-sev{color:#e0a7bd}
+.mentor-empty{color:var(--muted);padding:20px;border:1px dashed var(--line);border-radius:var(--r-card);text-align:center}
+footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <div class="brand"><span class="dot"></span> EpistemicLab</div>
+    <div class="crumbs">· <b>Mentor Cognitivo</b></div>
+  </div>
+
+  <div class="eyebrow">Intérprete del Epistemic Profile</div>
+  <h1>Tu Mentor</h1>
+  <p class="lead">Lectura de tu evidencia, no de tu ánimo. Cada observación se basa solo en lo que tu perfil ya registró — dominio, calibración, transferencia, preparación e ideas a corregir.</p>
+
+  <div class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></div>
+  <div id="cards"></div>
+
+  <footer>Práctica formativa · No es evaluación oficial WSET</footer>
+</div>
+
+<script src="../epistemic-profile/epistemic-profile-client.js"></script>
+<script src="./mentor-cognitivo.js"></script>
+<script src="./mentor-cognitivo-ui.js"></script>
+<script>
+(function () {
+  "use strict";
+  var EP_ENDPOINT = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-epistemic-profile";
+
+  // Datos de ejemplo (sin sesión autenticada). Forma EP-01 real; sirven solo para
+  // demostrar la interpretación. En la app autenticada se sustituyen por get-epistemic-profile.
+  var SAMPLE = {
+    metrics: {
+      domain:      { value: 0.66, evidence_count: 18, status: 'derived', source_event_types: ['decision_made'] },
+      calibration: { value: 0.47, evidence_count: 12, status: 'derived', source_event_types: ['confidence_selected'] },
+      transfer:    { value: 0.42, evidence_count: 6,  status: 'derived', source_event_types: ['novel_item_presented','practice_completed'] },
+      readiness:   { value: 0.62, evidence_count: 4,  status: 'derived', source_event_types: ['simulation_completed','session_completed'] },
+      adherence:   { value: 0.8,  evidence_count: 5,  status: 'derived', source_event_types: ['practice_completed','session_completed','time_expired'] }
+    },
+    events: [
+      // Nariz como eje débil (2/5)
+      d('Nariz','incorrect'), d('Nariz','incorrect'), d('Nariz','correct'), d('Nariz','incorrect'), d('Nariz','correct'),
+      d('Paladar','correct'), d('Paladar','correct'), d('Paladar','correct'), d('Teoria','correct'), d('Teoria','correct'),
+      // sobreconfianza: alta confianza + fallo
+      c(80,'incorrect'), c(75,'incorrect'), c(40,'correct'),
+      // misconception activa + una resuelta
+      mis('praedikat-equals-sweetness','detected','Prädikat no es dulzor'),
+      mis('weight-equals-quality','detected','El peso de la botella no es calidad'),
+      mis('weight-equals-quality','resolved','El peso de la botella no es calidad')
+    ]
+  };
+  function base(type, payload, evidence) {
+    return { event_id: 'sample-' + Math.random().toString(36).slice(2), event_type: type,
+      occurred_at: new Date().toISOString(), payload: payload || {}, evidence: evidence || {}, schema_version: 'EP-01' };
+  }
+  function d(comp, outcome) { return base('decision_made', { decision_axis: comp, selected_value: 'x' }, { outcome: outcome, domain_tags: [comp] }); }
+  function c(conf, outcome) { return base('confidence_selected', { confidence: conf }, { outcome: outcome }); }
+  function mis(id, status, title) { return base('misconception_' + status, { misconception_id: id }, { title: title }); }
+
+  function setSource(kind, text) {
+    var el = document.getElementById('src');
+    el.className = 'src ' + kind;
+    document.getElementById('srcLabel').textContent = text;
+  }
+
+  async function load() {
+    var events = (window.EpistemicProfile && window.EpistemicProfile.dump) ? window.EpistemicProfile.dump() : [];
+    var token = window.__EP_TOKEN__ || null;     // la app autenticada puede inyectarlo
+    var metrics = null, live = false;
+    if (token) {
+      try {
+        var r = await fetch(EP_ENDPOINT, { headers: { Authorization: 'Bearer ' + token } });
+        var j = await r.json();
+        if (j && j.ok && j.derived_metrics && j.derived_metrics.metrics) { metrics = j.derived_metrics.metrics; live = true; }
+      } catch (e) { /* degradación elegante → ejemplo */ }
+    }
+    if (!metrics) { metrics = SAMPLE.metrics; if (!events.length) events = SAMPLE.events; }
+    setSource(live ? 'live' : 'sample',
+      live ? 'Leyendo tu Epistemic Profile (en vivo)' : 'Datos de ejemplo · sin sesión autenticada');
+    var result = window.MentorCognitivo.interpret({ metrics: metrics, events: events });
+    window.MentorCognitivoUI.render(document.getElementById('cards'), result);
+  }
+  load();
+})();
+</script>
+</body>
+</html>
