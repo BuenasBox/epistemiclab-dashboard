@@ -370,6 +370,13 @@ ul { margin: 0; padding-left: 19px; }
     items = Array.isArray(data.items) ? data.items : [];
   } catch(e) { console.error('Failed to load OR bank:', e); }
 
+  // Aleatorizar el orden del banco en cada entrada (Fisher-Yates), para que las
+  // sesiones (slices de items) no salgan siempre en el mismo orden.
+  for (let k = items.length - 1; k > 0; k--) {
+    const j = Math.floor(Math.random() * (k + 1));
+    const tmp = items[k]; items[k] = items[j]; items[j] = tmp;
+  }
+
   const payload = {
     storage_key: 'or_lab_state_v1',
     sessions: {
