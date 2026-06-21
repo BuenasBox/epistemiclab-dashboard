@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — EpistemicLab</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="./dashboard.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <div class="brand"><span class="dot"></span> EpistemicLab</div>
+    <div class="crumbs">· <b>Dashboard</b></div>
+    <div style="flex:1"></div>
+    <span class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></span>
+  </div>
+  <h1 class="greeting" id="greeting">Tu entrenamiento</h1>
+  <p class="sub">Tu entrenador personal para aprobar WSET Level&nbsp;3.</p>
+  <div id="root"></div>
+  <footer>Práctica formativa · No es evaluación oficial WSET · El Dashboard no calcula: refleja tu Epistemic Profile (EP-03) + Learning Loop + Mentor.</footer>
+</div>
+<script src="../learning-loop/learning-loop-engine.js"></script>
+<script src="../mentor/mentor-cognitivo.js"></script>
+<script src="../mentor/mentor-cognitivo-ui.js"></script>
+<script src="./dashboard.js"></script>
+<script>
+(function () {
+  "use strict";
+  var BASE = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/";
+  var EP = {
+    summary: "get-epistemic-profile-summary",
+    recent_sessions: "get-epistemic-profile-sessions",
+    open_misconceptions: "get-epistemic-profile-misconceptions",
+    recommendations: "get-epistemic-profile-recommendations",
+    readiness: "get-epistemic-profile-readiness"
+  };
+  function m(v, n){ return { value:v, evidence_count:n, status:'derived', source_event_types:[] }; }
+  function s(type, day){ return { session_id:type+day, session_type:type, status:'completed', started_at:day+'T00:00:00.000Z', completed_at:day+'T00:30:00.000Z' }; }
+  var SAMPLE = {
+    summary: { ok:true, view:'summary', data:{ profile_version:'EP-01', status:'active', event_count:64, last_activity_at:'2026-06-18T00:30:00.000Z',
+      weakest_metric:'readiness',
+      metrics:{ domain:m(0.69,22), calibration:m(0.74,12), transfer:m(0.71,6), readiness:m(0.66,4), adherence:m(0.86,5) } } },
+    recent_sessions: { ok:true, view:'recent_sessions', data:[ s('label-guided','2026-06-18'), s('label-guided','2026-06-17'), s('bottle-guided','2026-06-16'), s('bottle-guided','2026-06-15') ] },
+    open_misconceptions: { ok:true, view:'open_misconceptions', data:[ { misconception_id:'praedikat-equals-sweetness', label:'Prädikat no es dulzor', detected_at:'2026-06-15T00:00:00.000Z', last_seen_at:'2026-06-17T00:00:00.000Z', evidence_count:2, domain_tags:['Teoria'] } ] },
+    recommendations: { ok:true, view:'recommendations', data:[ { recommendation_id:'close_open_misconceptions', priority:2, reason:'Open misconceptions still have no later resolving evidence.', action:'…' } ] },
+    readiness: { ok:true, view:'readiness_breakdown', data:{ generated_from:'epistemic_events', components:[ { component:'overall', value:0.66, evidence_count:4, status:'derived', source_event_types:[] } ] } }
+  };
+  function setSrc(kind, text){ var el=document.getElementById('src'); el.className='src '+kind; document.getElementById('srcLabel').textContent=text; }
+  async function fetchView(path, token){ var r=await fetch(BASE+path,{headers:{Authorization:'Bearer '+token}}); return await r.json(); }
+  async function load(){
+    var token = window.__EP_TOKEN__ || null;
+    var bundle = null, live = false;
+    if (token) {
+      try {
+        var keys=Object.keys(EP);
+        var res=await Promise.all(keys.map(function(k){ return fetchView(EP[k], token); }));
+        bundle={}; keys.forEach(function(k,i){ bundle[k]=res[i]; });
+        live = res.every(function(x){ return x && x.ok; });
+      } catch(e){ live=false; }
+    }
+    if (!live) bundle = SAMPLE;
+    setSrc(live?'live':'sample', live?'Leyendo tu Epistemic Profile (EP-03, en vivo)':'Datos de ejemplo · sin sesión autenticada');
+    var vm = window.Dashboard.buildViewModel(bundle);
+    window.Dashboard.render(document.getElementById('root'), vm);
+  }
+  load();
+})();
+</script>
+</body>
+</html>

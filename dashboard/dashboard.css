@@ -1,0 +1,67 @@
+/* EP-04 Dashboard — Design System (continuo con Bottle/Label/Mentor). Sin tokens nuevos. */
+:root{
+  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
+  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --r-card:12px;--r-pill:999px;--serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:30px 20px 36px}
+.muted{color:var(--muted)}.small{font-size:12.5px}
+.topline{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:16px}
+.brand .dot{width:20px;height:20px;border-radius:var(--r-pill);background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 70%);box-shadow:0 0 0 1px var(--gold) inset}
+.crumbs{font-size:13px;color:var(--muted)}.crumbs b{color:var(--ink)}
+.greeting{font-family:var(--serif);font-size:23px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.src{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;padding:5px 11px;border-radius:var(--r-pill);border:1px solid var(--line);color:var(--muted);margin-bottom:18px}
+.src .d{width:8px;height:8px;border-radius:50%;background:var(--muted)}.src.live .d{background:var(--ok)}.src.sample .d{background:var(--warn)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--r-card);padding:18px;margin-bottom:14px}
+.eyebrow{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.card-sub{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+.hero-card{display:flex;align-items:center;gap:18px}
+.ring{--p:0;width:84px;height:84px;flex:0 0 84px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--panel2) 0)}
+.ring>i{width:66px;height:66px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-style:normal;font-weight:600;font-size:17px}
+.hero-state{font-family:var(--serif);font-size:20px;margin:2px 0 4px}
+.next-card.halt{border-color:rgba(193,72,63,.5)}
+.next-practice{font-family:var(--serif);font-size:21px;margin:2px 0 8px}
+.next-reason{font-size:13.5px;color:#e6d6e0;margin:0}
+.pill{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:var(--r-pill);border:1px solid var(--line);margin-left:auto}
+.pill-halt{color:var(--block);border-color:var(--block)}.pill-go{color:var(--ok);border-color:var(--ok)}
+.weakness{font-size:16px;font-weight:600;margin-bottom:4px}
+.chip{display:inline-flex;align-items:center;padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-pill);font-size:11.5px;color:var(--muted);margin:0 6px 6px 0}
+.chip-crit{color:var(--block);border-color:rgba(193,72,63,.5)}
+.ind{margin-bottom:12px}
+.ind-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.ind-top b{color:var(--gold)}
+.ind-bar{height:7px;border-radius:var(--r-pill);background:var(--panel2);border:1px solid var(--line);overflow:hidden}
+.ind-bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--wine2),var(--gold))}
+.timeline{display:flex;gap:6px;align-items:flex-start;position:relative}
+.timeline::before{content:"";position:absolute;left:11px;right:11px;top:11px;height:1px;background:var(--line)}
+.tl-step{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;position:relative;z-index:1}
+.tl-dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
+.tl-step.done .tl-dot{background:var(--ok);color:#0d2b1c;border-color:transparent}
+.tl-step.active .tl-dot{border-color:var(--gold);color:var(--gold)}
+.tl-lbl{font-size:10.5px;color:var(--muted);text-align:center}.tl-step.active .tl-lbl{color:var(--gold)}
+.last{font-size:15px;margin-bottom:2px}
+.sess{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.sess:last-child{border-bottom:none}
+.sess-ic{width:24px;text-align:center}.sess-name{font-size:13.5px}.sess-status{margin-left:auto;font-size:11.5px;color:var(--muted)}
+.mentor-card{display:flex;gap:13px;padding:15px 16px;border-radius:var(--r-card);background:var(--panel2);border:1px solid var(--line);border-left-width:3px}
+.mc-avatar{width:34px;height:34px;border-radius:50%;flex:0 0 34px;display:grid;place-items:center;font-size:15px;background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 75%);border:1px solid var(--gold)}
+.mc-sev{font-size:11px;font-weight:700;letter-spacing:.05em}
+.mc-title{font-weight:600;font-size:15px;margin:2px 0 4px}
+.mc-text{margin:0;font-size:13.5px;color:#e6d6e0}
+.mc-basis{margin-top:8px;font-size:11px;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px}
+.m-info{border-left-color:var(--gold)}.m-info .mc-sev{color:var(--gold)}
+.m-ok{border-left-color:var(--ok)}.m-ok .mc-sev{color:var(--ok)}
+.m-warn{border-left-color:var(--warn)}.m-warn .mc-sev{color:var(--warn)}
+.m-crit{border-left-color:var(--block)}.m-crit .mc-sev{color:var(--block)}
+.m-syn{border-left-color:var(--gold)}.m-syn .mc-sev{color:var(--gold)}
+.m-act{border-left-color:var(--wine2)}.m-act .mc-sev{color:#e0a7bd}
+.mentor-empty{color:var(--muted);font-size:13px}
+footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;color:var(--muted);text-align:center}
+@media (max-width:680px){ .grid-2{grid-template-columns:1fr} .wrap{padding:20px 16px} .tl-lbl{font-size:9.5px} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
