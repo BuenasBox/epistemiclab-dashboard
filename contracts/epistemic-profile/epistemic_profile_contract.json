@@ -234,6 +234,56 @@
           "epistemic_events",
           "epistemic_event_links"
         ]
+      },
+      {
+        "method": "GET",
+        "path": "/functions/v1/get-epistemic-profile-summary",
+        "internal": true,
+        "purpose": "Return a deterministic profile summary derived from EP-01 events.",
+        "reads": [
+          "epistemic_profiles",
+          "epistemic_events"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/functions/v1/get-epistemic-profile-sessions",
+        "internal": true,
+        "purpose": "Return recent learner sessions derived from EP-01 events.",
+        "reads": [
+          "epistemic_profiles",
+          "epistemic_events"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/functions/v1/get-epistemic-profile-misconceptions",
+        "internal": true,
+        "purpose": "Return open misconceptions derived from detected and resolved EP-01 events.",
+        "reads": [
+          "epistemic_profiles",
+          "epistemic_events"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/functions/v1/get-epistemic-profile-recommendations",
+        "internal": true,
+        "purpose": "Return deterministic recommendations derived from EP-01 event evidence.",
+        "reads": [
+          "epistemic_profiles",
+          "epistemic_events"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/functions/v1/get-epistemic-profile-readiness",
+        "internal": true,
+        "purpose": "Return readiness breakdown derived from EP-01 session and simulation events.",
+        "reads": [
+          "epistemic_profiles",
+          "epistemic_events"
+        ]
       }
     ]
   }
