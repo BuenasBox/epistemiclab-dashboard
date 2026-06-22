@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "note": "Proyeccion BLIND-SAFE derivada por el consumidor (SAT Lab) desde el Canonical Wine Catalog (Batch 001), SOLO LECTURA. El catalogo no se modifico. Incluye unicamente campos PUBLIC no-identidad. Pendiente: render_profile blind-safe nativo en el catalogo.",
+    "source_batch": "batch-001",
+    "generated_fields": [
+      "canonical_id",
+      "wine_type",
+      "priority",
+      "wset_importance",
+      "practice_priority",
+      "difficulty_score",
+      "confidence_score"
+    ]
+  },
+  "profiles": {
+    "SAT_WINE_001": {
+      "canonical_id": "SAT_WINE_001",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 4,
+      "confidence_score": 0.96
+    },
+    "SAT_WINE_002": {
+      "canonical_id": "SAT_WINE_002",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 5,
+      "confidence_score": 0.95
+    },
+    "SAT_WINE_003": {
+      "canonical_id": "SAT_WINE_003",
+      "wine_type": "BLANCO",
+      "priority": 2,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "difficulty_score": 3,
+      "confidence_score": 0.94
+    },
+    "SAT_WINE_004": {
+      "canonical_id": "SAT_WINE_004",
+      "wine_type": "BLANCO",
+      "priority": 2,
+      "wset_importance": "HIGH",
+      "practice_priority": 4,
+      "difficulty_score": 5,
+      "confidence_score": 0.95
+    },
+    "SAT_WINE_005": {
+      "canonical_id": "SAT_WINE_005",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 6,
+      "confidence_score": 0.96
+    },
+    "SAT_WINE_006": {
+      "canonical_id": "SAT_WINE_006",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 4,
+      "confidence_score": 0.96
+    },
+    "SAT_WINE_007": {
+      "canonical_id": "SAT_WINE_007",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 6,
+      "confidence_score": 0.95
+    },
+    "SAT_WINE_008": {
+      "canonical_id": "SAT_WINE_008",
+      "wine_type": "BLANCO",
+      "priority": 2,
+      "wset_importance": "HIGH",
+      "practice_priority": 3,
+      "difficulty_score": 5,
+      "confidence_score": 0.94
+    },
+    "SAT_WINE_009": {
+      "canonical_id": "SAT_WINE_009",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 4,
+      "confidence_score": 0.96
+    },
+    "SAT_WINE_010": {
+      "canonical_id": "SAT_WINE_010",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 8,
+      "confidence_score": 0.97
+    },
+    "SAT_WINE_011": {
+      "canonical_id": "SAT_WINE_011",
+      "wine_type": "BLANCO",
+      "priority": 1,
+      "wset_importance": "CORE",
+      "practice_priority": 5,
+      "difficulty_score": 5,
+      "confidence_score": 0.96
+    }
+  }
+}
