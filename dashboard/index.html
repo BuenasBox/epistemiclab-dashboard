@@ -16,6 +16,8 @@
   <div id="root" style="margin-top:14px"></div>
 </div>
 <script src="/platform-nav.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../shared/auth-token.js"></script>
 <script src="../learning-loop/learning-loop-engine.js"></script>
 <script src="../mentor/mentor-cognitivo.js"></script>
 <script src="../mentor/mentor-cognitivo-ui.js"></script>
@@ -31,22 +33,13 @@
     recommendations: "get-epistemic-profile-recommendations",
     readiness: "get-epistemic-profile-readiness"
   };
-  function m(v, n){ return { value:v, evidence_count:n, status:'derived', source_event_types:[] }; }
-  function s(type, day){ return { session_id:type+day, session_type:type, status:'completed', started_at:day+'T00:00:00.000Z', completed_at:day+'T00:30:00.000Z' }; }
-  var SAMPLE = {
-    summary: { ok:true, view:'summary', data:{ profile_version:'EP-01', status:'active', event_count:64, last_activity_at:'2026-06-18T00:30:00.000Z',
-      weakest_metric:'readiness',
-      metrics:{ domain:m(0.69,22), calibration:m(0.74,12), transfer:m(0.71,6), readiness:m(0.66,4), adherence:m(0.86,5) } } },
-    recent_sessions: { ok:true, view:'recent_sessions', data:[ s('label-guided','2026-06-18'), s('label-guided','2026-06-17'), s('bottle-guided','2026-06-16'), s('bottle-guided','2026-06-15') ] },
-    open_misconceptions: { ok:true, view:'open_misconceptions', data:[ { misconception_id:'praedikat-equals-sweetness', label:'Prädikat no es dulzor', detected_at:'2026-06-15T00:00:00.000Z', last_seen_at:'2026-06-17T00:00:00.000Z', evidence_count:2, domain_tags:['Teoria'] } ] },
-    recommendations: { ok:true, view:'recommendations', data:[ { recommendation_id:'close_open_misconceptions', priority:2, reason:'Open misconceptions still have no later resolving evidence.', action:'…' } ] },
-    readiness: { ok:true, view:'readiness_breakdown', data:{ generated_from:'epistemic_events', components:[ { component:'overall', value:0.66, evidence_count:4, status:'derived', source_event_types:[] } ] } }
-  };
+  // Estado real vacío (cold-start honesto) cuando aún no hay evidencia / sin auth. Sin datos fabricados.
+  var EMPTY = { summary: { data: { metrics: {} } }, recent_sessions: { data: [] }, open_misconceptions: { data: [] }, recommendations: { data: [] }, readiness: { data: { components: [] } } };
   function setSrc(kind, text){ var el=document.getElementById('src'); el.className='src '+kind; document.getElementById('srcLabel').textContent=text; }
   async function fetchView(path, token){ var r=await fetch(BASE+path,{headers:{Authorization:'Bearer '+token}}); return await r.json(); }
   async function load(){
-    var token = window.__EP_TOKEN__ || null;
-    var bundle = null, live = false;
+    var bundle=null, live=false, token=null;
+    try { if (typeof getAuthToken === 'function') token = await getAuthToken(); } catch(e){}
     if (token) {
       try {
         var keys=Object.keys(EP);
@@ -55,8 +48,8 @@
         live = res.every(function(x){ return x && x.ok; });
       } catch(e){ live=false; }
     }
-    if (!live) bundle = SAMPLE;
-    setSrc(live?'live':'sample', live?'Leyendo tu Epistemic Profile (EP-03, en vivo)':'Datos de ejemplo · sin sesión autenticada');
+    if (!live) bundle = EMPTY;
+    setSrc(live?'live':'sample', live?'Tu Epistemic Profile (en vivo)':'Empieza una práctica para construir tu perfil');
     var vm = window.Dashboard.buildViewModel(bundle);
     window.Dashboard.render(document.getElementById('root'), vm);
   }
