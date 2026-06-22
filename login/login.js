@@ -138,7 +138,10 @@
     var params = new URLSearchParams(
       locationRef && locationRef.search ? locationRef.search : ''
     );
-    return params.get('next') === '/admin/' ? '/admin/' : '/profile/';
+    var next = params.get('next');
+    if (next === '/admin/') return '/admin/';
+    if (next === '/dashboard/') return '/dashboard/';
+    return '/profile/';
   }
 
   function showProfileTransition(options) {
@@ -149,8 +152,8 @@
     var locationRef = options.location || root.location;
     var setTimeoutFn = options.setTimeout || root.setTimeout;
     var delay = Number.isFinite(options.delay) ? options.delay : 800;
-    var destination = options.destination === '/admin/'
-      ? '/admin/'
+    var destination = (options.destination === '/admin/' || options.destination === '/dashboard/')
+      ? options.destination
       : '/profile/';
 
     if (feedback) {
@@ -162,7 +165,9 @@
       profileCta.href = destination;
       profileCta.textContent = destination === '/admin/'
         ? 'Ir a administración'
-        : 'Ir a mi perfil';
+        : destination === '/dashboard/'
+          ? 'Ir a mi Dashboard'
+          : 'Ir a mi perfil';
       profileCta.hidden = false;
     }
 
@@ -349,7 +354,7 @@
               location: options.location || root.location,
               setTimeout: options.setTimeout || root.setTimeout,
               message: 'Cuenta creada correctamente. Tu prueba Demo de 30 días está activa.',
-              destination: nextDestination,
+              destination: nextDestination === '/admin/' ? '/admin/' : '/dashboard/',
             });
           } else {
             setFeedback(
