@@ -99,8 +99,8 @@
         '<p class="ar-reason">' + esc(plan.returnToSimWhen) + '</p>' +
         (gate.open ? '<a class="ar-cta" href="../full-simulation-v2/">Ir al simulacro →</a>' : '<span class="ar-locked">Aún no — primero cierra lo de arriba.</span>') +
       '</section>' +
-      '<div class="ar-actions"><a class="ar-ghost" href="../dashboard/">Volver al Dashboard</a></div>' +
-      '<div class="ar-gov">Práctica formativa · No es evaluación oficial WSET · Plan determinista (sin LLM)</div>';
+      '<div class="ar-actions"><a class="ar-ghost" href="../dashboard/">Volver a Mi progreso</a></div>' +
+      '<div class="ar-gov">Práctica formativa · Desarrollo de razonamiento profesional en vino · Plan determinista (sin LLM)</div>';
     if (MentorCognitivoUI && plan.mentor) {
       var mount = document.getElementById('arMentor');
       mount.innerHTML = '<div class="eyebrow">Por qué importa · tu Mentor</div>';

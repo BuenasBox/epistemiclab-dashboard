@@ -63,7 +63,7 @@
   }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function sessionIcon(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return '🍾'; if(t.indexOf('label')>=0)return '📖'; if(t.indexOf('sim')>=0)return '⏱'; return '🍷'; }
-  function sessionName(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return 'Bottle Guided'; if(t.indexOf('label')>=0)return 'Label Guided'; if(t.indexOf('sim')>=0)return 'Simulacro'; if(t.indexOf('blind')>=0||t.indexOf('sat')>=0)return 'SAT Ciego'; return esc(type||'Sesión'); }
+  function sessionName(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return 'Botellas'; if(t.indexOf('label')>=0)return 'Etiquetas'; if(t.indexOf('sim')>=0)return 'Simulacro completo'; if(t.indexOf('blind')>=0||t.indexOf('sat')>=0)return 'Laboratorio SAT'; return esc(type||'Sesión'); }
   function meter(label,p){ var shown=(p==null)?'sin evidencia':p+'%'; var w=(p==null)?0:p; return '<div class="ind"><div class="ind-top"><span>'+esc(label)+'</span><b>'+esc(shown)+'</b></div><div class="ind-bar"><span style="width:'+w+'%"></span></div></div>'; }
   function render(rootEl, vm) {
     if (!rootEl) return;

@@ -9,36 +9,41 @@
 
   var LINKS = [
     { href: '/', label: 'Inicio', match: ['/', '/index.html'] },
-    { href: '/dashboard/', label: 'Dashboard', match: ['/dashboard'] },
-    { href: '/bottle-lab/', label: 'Practicar', match: ['/bottle-lab', '/label-lab', '/sat-lab', '/adaptive-review'] },
-    { href: '/full-simulation-v2/', label: 'Evaluar', match: ['/full-simulation-v2', '/diagnostic-sba', '/open-response-lab', '/adaptive-session'] },
-    { href: '/mentor/', label: 'Progreso', match: ['/mentor', '/learning-loop', '/profile'] },
-    { href: '/login/', label: 'Cuenta', match: ['/login', '/upgrade'] }
+    { href: '/dashboard/', label: 'Mi progreso', match: ['/dashboard'] },
+    { href: '/bottle-lab/', label: 'Aprender', match: ['/bottle-lab', '/label-lab', '/sat-lab', '/adaptive-review'] },
+    { href: '/full-simulation-v2/', label: 'Evaluarte', match: ['/full-simulation-v2', '/diagnostic-sba', '/open-response-lab', '/adaptive-session'] },
+    { href: '/mentor/', label: 'Mi aprendizaje', match: ['/mentor', '/learning-loop', '/profile'] },
+    { href: '/login/', label: 'Mi cuenta', match: ['/login', '/upgrade'] }
   ];
 
   var MENU = [
-    { label: 'Inicio', href: '/' },
-    { label: 'Practicar', submenu: [
-      { label: 'Bottle Guided', href: '/bottle-lab/' },
-      { label: 'Label Guided', href: '/label-lab/' },
-      { label: 'SAT Lab', href: '/sat-lab/' },
-      { label: 'Adaptive Review', href: '/adaptive-review/' }
+    { label: 'Inicio', submenu: [
+      { label: 'Inicio', href: '/' },
+      { label: '¿Qué es EpistemicLab?', href: '/#about' }
     ]},
-    { label: 'Evaluar', submenu: [
-      { label: 'Full Simulation', href: '/full-simulation-v2/' },
-      { label: 'Diagnostic SBA', href: '/diagnostic-sba/' },
-      { label: 'Open Response', href: '/open-response-lab/' },
-      { label: 'Adaptive Session', href: '/adaptive-session/' }
+    { label: 'Aprender', submenu: [
+      { label: 'Botellas', href: '/bottle-lab/' },
+      { label: 'Etiquetas', href: '/label-lab/' },
+      { label: 'Laboratorio SAT', href: '/sat-lab/' },
+      { label: 'Plan de refuerzo', href: '/adaptive-review/' }
     ]},
-    { label: 'Progreso', submenu: [
-      { label: 'Dashboard', href: '/dashboard/' },
+    { label: 'Evaluarte', submenu: [
+      { label: 'Diagnóstico teórico', href: '/diagnostic-sba/' },
+      { label: 'Respuesta escrita', href: '/open-response-lab/' },
+      { label: 'Sesión adaptativa', href: '/adaptive-session/' },
+      { label: 'Simulacro completo', href: '/full-simulation-v2/' }
+    ]},
+    { label: 'Mi aprendizaje', submenu: [
+      { label: 'Mi progreso', href: '/dashboard/' },
       { label: 'Mentor', href: '/mentor/' },
-      { label: 'Learning Loop', href: '/learning-loop/' },
+      { label: 'Plan de aprendizaje', href: '/learning-loop/' },
       { label: 'Mi perfil', href: '/profile/' }
     ]},
-    { label: 'Cuenta', submenu: [
+    { label: 'Mi cuenta', submenu: [
+      { label: 'Iniciar sesión', href: '/login/' },
       { label: 'Crear cuenta', href: '/login/' },
-      { label: 'Mejorar plan', href: '/upgrade/' }
+      { label: 'Mi perfil', href: '/profile/' },
+      { label: 'Planes', href: '/upgrade/' }
     ]},
     { label: 'Admin', href: '/admin/', admin: true }
   ];
@@ -107,7 +112,7 @@
     if (!document.getElementById('pfoot')) {
       var f = document.createElement('footer');
       f.id = 'pfoot';
-      f.innerHTML = '<div class="pfoot-content"><span class="pfoot-gov">Práctica formativa · No es evaluación oficial WSET</span><div class="pfoot-links"><a href="/dashboard/">Dashboard</a><a href="/login/">Cuenta</a><a href="/profile/">Perfil</a><a href="/upgrade/">Mejorar plan</a></div></div>';
+      f.innerHTML = '<div class="pfoot-content"><span class="pfoot-gov">Práctica formativa · Desarrollo de razonamiento profesional en vino</span><div class="pfoot-links"><a href="/dashboard/">Mi progreso</a><a href="/login/">Mi cuenta</a><a href="/profile/">Mi perfil</a><a href="/upgrade/">Planes</a></div></div>';
       document.body.appendChild(f);
     }
   }
