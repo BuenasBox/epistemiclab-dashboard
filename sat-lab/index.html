@@ -9,15 +9,15 @@
 <link rel="stylesheet" href="../shared/wine-intelligence-card.css">
 <style>
   :root{
-    --bg:#1a1119; --panel:#241823; --panel2:#2e1f2c; --ink:#f5ecf2; --muted:#b79fb0;
-    --wine:#7b2740; --wine2:#9c3354; --gold:#c9a227; --line:#3d2c39;
+    --bg:#07090d; --panel:#10141b; --panel2:#151b24; --ink:#e6ebf4; --muted:#929daf;
+    --cyan:#64d9f5; --gold:#e5c97a; --line:#293443;
     --ok:#3fa86b; --warn:#d99a2b; --block:#c1483f; --radius:16px;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    background:radial-gradient(1200px 600px at 50% -10%,#2a1a26,#1a1119);color:var(--ink);min-height:100vh}
+    background:radial-gradient(circle at 10% 0%,rgba(100,217,245,.07),transparent 34rem),radial-gradient(circle at 100% 100%,rgba(229,201,122,.05),transparent 36rem),var(--bg);color:var(--ink);min-height:100vh}
   .wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
-  header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  header.top{display:none;align-items:center;justify-content:space-between;margin-bottom:18px}
   .brand{font-weight:700;letter-spacing:.3px} .brand b{color:var(--gold)}
   a.back{color:var(--muted);text-decoration:none;font-size:14px} a.back:hover{color:var(--ink)}
   h1{font-size:26px;margin:6px 0 2px}
@@ -29,7 +29,7 @@
   .chip{display:inline-block;font-size:12.5px;color:var(--gold);border:1px solid var(--line);
     border-radius:999px;padding:3px 12px;background:rgba(201,162,39,.08)}
   .btn{appearance:none;border:0;cursor:pointer;border-radius:12px;font-size:15px;font-weight:600;
-    padding:13px 18px;color:#fff;background:linear-gradient(180deg,var(--wine2),var(--wine));
+    padding:13px 18px;color:#fff;background:var(--cyan);
     transition:transform .06s ease,filter .2s}
   .btn:hover{filter:brightness(1.08)} .btn:active{transform:translateY(1px)}
   .btn.full{width:100%}
@@ -109,7 +109,7 @@
   .fb .step::before{ content:"➡"; position:absolute; left:0; top:0; }
 
   /* Informe final (resumen pedagógico) */
-  .report-hero{ background:linear-gradient(160deg,#2a1b28,#1d131b); border:1px solid var(--line);
+  .report-hero{ background:var(--panel); border:1px solid var(--line);
     border-radius:18px; padding:18px; margin-bottom:16px; display:flex; gap:18px; align-items:center; }
   .report-hero .rh-main{ flex:1; min-width:0; }
   .report-hero .rh-eyebrow{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
@@ -216,7 +216,7 @@
   .fb.show{ animation:ux7-fb .34s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes ux7-fb{ from{ opacity:0; transform:translateY(-6px) } to{ opacity:1; transform:none } }
   .btn{ transition:transform .06s ease, filter .2s, box-shadow .2s; }
-  .btn:not(.ghost):hover{ box-shadow:0 8px 22px rgba(123,39,64,.45); }
+  .btn:not(.ghost):hover{ box-shadow:0 8px 22px rgba(100,217,245,.35); }
 
   /* P5: cierre del resumen — entrada con jerarquía e impacto */
   #screen-summary > h1{ animation:ux7-fade .5s ease both; }
@@ -323,7 +323,7 @@
 
 </style>
 </head>
-<body>
+<body data-nav="bare">
 <div class="wrap">
   <header class="top">
     <div class="brand">Epistemic<b>Lab</b></div>
@@ -1151,5 +1151,6 @@
   });
 })();
 </script>
+<script src="/platform-nav.js" defer></script>
 </body>
 </html>

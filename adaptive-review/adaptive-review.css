@@ -1,7 +1,7 @@
-/* EP-06 Adaptive Review — Design System (continuo con Dashboard/Mentor). Sin tokens nuevos. */
+/* EP-06 Adaptive Review — Design System (continuo con Dashboard/Mentor). Premium visual system. */
 :root{
-  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
-  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --bg:#07090d;--panel:#10141b;--panel2:#151b24;--ink:#e6ebf4;--muted:#929daf;
+  --cyan:#64d9f5;--gold:#e5c97a;--line:#293443;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
   --r-card:12px;--r-pill:999px;--serif:Georgia,'Times New Roman',serif;
   --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
 }
@@ -24,8 +24,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .ar-headline.halt{border-left-color:var(--block)}
 .ar-practice{font-family:var(--serif);font-size:23px;margin:2px 0 8px}
 .ar-reason{font-size:13.5px;color:#e6d6e0;margin:0 0 12px}
-.ar-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(180deg,var(--wine2),var(--wine));border-radius:10px;padding:11px 20px;text-decoration:none}
-.ar-cta:hover{filter:brightness(1.08)}
+.ar-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:var(--cyan);border-radius:10px;padding:11px 20px;text-decoration:none}
+.ar-cta:hover{background:#5ac8e8}
 .ar-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .ar-list{margin:0;padding-left:18px;font-size:13.5px}.ar-list li{margin-bottom:6px}
 .ar-mis{font-size:15px;font-weight:600}
