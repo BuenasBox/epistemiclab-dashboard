@@ -62,6 +62,8 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-si
 </div>
 
 <script src="/platform-nav.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../shared/auth-token.js"></script>
 <script src="../epistemic-profile/epistemic-profile-client.js"></script>
 <script src="./mentor-cognitivo.js"></script>
 <script src="./mentor-cognitivo-ui.js"></script>
@@ -108,18 +110,22 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-si
 
   async function load() {
     var events = (window.EpistemicProfile && window.EpistemicProfile.dump) ? window.EpistemicProfile.dump() : [];
-    var token = window.__EP_TOKEN__ || null;     // la app autenticada puede inyectarlo
+    var token = await getAuthToken();
     var metrics = null, live = false;
     if (token) {
       try {
         var r = await fetch(EP_ENDPOINT, { headers: { Authorization: 'Bearer ' + token } });
         var j = await r.json();
         if (j && j.ok && j.derived_metrics && j.derived_metrics.metrics) { metrics = j.derived_metrics.metrics; live = true; }
-      } catch (e) { /* degradación elegante → ejemplo */ }
+      } catch (e) { /* degradación elegante → estado vacío */ }
     }
-    if (!metrics) { metrics = SAMPLE.metrics; if (!events.length) events = SAMPLE.events; }
+    if (!metrics) {
+      metrics = SAMPLE.metrics;
+      if (!token) events = [];
+      else if (!events.length) events = SAMPLE.events;
+    }
     setSource(live ? 'live' : 'sample',
-      live ? 'Leyendo tu Epistemic Profile (en vivo)' : 'Datos de ejemplo · sin sesión autenticada');
+      live ? 'Leyendo tu Epistemic Profile (en vivo)' : (token ? 'Cargando…' : 'Sin sesión autenticada · inicia sesión para ver tu perfil'));
     var result = window.MentorCognitivo.interpret({ metrics: metrics, events: events });
     window.MentorCognitivoUI.render(document.getElementById('cards'), result);
   }
