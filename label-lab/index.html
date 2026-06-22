@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Label Guided — EpistemicLab</title>
 <meta name="robots" content="noindex">
+<link rel="stylesheet" href="/platform-nav.css">
 <style>
 /* Tokens y componentes del Design System (continuos con SAT/Bottle). Sin tokens nuevos. */
 :root{
@@ -290,7 +291,7 @@ p{margin:0 0 .8em}
         misc + transfer +
         '<div class="delta" style="border-color:rgba(201,162,39,.45)"><div class="ic">📈</div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted" style="margin-top:2px">El Epistemic Profile recibió tus señales y tu confianza. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
         '<div class="state done" style="margin-top:8px"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
-        '<div class="flowbar" style="justify-content:center"><button class="btn" id="another">Otra etiqueta</button><a class="btn ghost" href="../">Volver al Dashboard</a></div>'+
+        '<div class="flowbar" style="justify-content:center"><button class="btn" id="another">Otra etiqueta</button><a class="btn ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn ghost" href="../">Volver al Dashboard</a></div>'+
       '</div>';
     document.getElementById('another').onclick=function(){ reset(S.itemIndex+1); render(); };
   }
@@ -298,5 +299,6 @@ p{margin:0 0 .8em}
   reset(0); render();
 })();
 </script>
+<script src="/platform-nav.js" defer></script>
 </body>
 </html>
