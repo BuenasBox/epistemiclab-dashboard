@@ -7,29 +7,41 @@
 <meta name="description" content="Entrena la cata a ciegas del WSET Level 3 con razonamiento, no memorización. Pruébalo ahora.">
 <link rel="stylesheet" href="/platform-nav.css">
 <style>
-:root{--bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;--wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+:root{
+  --bg:#07090d;--panel:#10141b;--panel2:#151b24;--ink:#e6ebf4;--muted:#929daf;
+  --cyan:#64d9f5;--gold:#e5c97a;--line:#293443;--serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif
+}
 *{box-sizing:border-box}html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
-.wrap{max-width:920px;margin:0 auto;padding:56px 22px 10px}
-.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-h1{font-family:var(--serif);font-size:40px;font-weight:500;line-height:1.12;margin:0 0 16px;letter-spacing:.01em}
-.lead{color:var(--muted);font-size:18px;max-width:620px;margin:0 0 30px}
-.ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-.cta{display:inline-flex;align-items:center;gap:9px;font-size:16px;font-weight:600;color:#fff;background:linear-gradient(180deg,var(--wine2),var(--wine));border:none;border-radius:11px;padding:15px 28px;text-decoration:none}
-.cta:hover{filter:brightness(1.08)}
-.cta2{font-size:15px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:11px;padding:14px 22px}
-.cta2:hover{border-color:var(--gold)}
-.note{font-size:13px;color:var(--muted);margin:0 0 48px}
-.sec-h{font-family:var(--serif);font-size:22px;margin:0 0 6px}
-.sec-s{color:var(--muted);font-size:14px;margin:0 0 18px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{display:block;background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:var(--ink)}
-.card:hover{border-color:var(--gold)}
-.card .ic{font-size:24px}
-.card h3{font-family:var(--serif);font-size:18px;margin:10px 0 6px;font-weight:500}
-.card p{color:var(--muted);font-size:13.5px;margin:0}
-.card .go{color:var(--gold);font-size:13px;margin-top:12px;display:inline-block}
-@media (max-width:680px){h1{font-size:31px}.wrap{padding:36px 16px 6px}.cards{grid-template-columns:1fr}}
+body{
+  background:radial-gradient(circle at 10% 0%,rgba(100,217,245,.07),transparent 34rem),
+    radial-gradient(circle at 100% 100%,rgba(229,201,122,.05),transparent 36rem),
+    var(--bg);
+  color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55
+}
+.wrap{max-width:920px;margin:0 auto;padding:56px 22px 40px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-weight:600}
+h1{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.1;margin:0 0 18px;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:17px;max-width:620px;margin:0 0 32px;font-weight:400}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.cta{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#fff;background:var(--cyan);border:none;border-radius:8px;padding:13px 24px;text-decoration:none;cursor:pointer;transition:background 200ms}
+.cta:hover{background:#5ac8e8}
+.cta2{font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:12px 20px;background:transparent;cursor:pointer;transition:border-color 200ms}
+.cta2:hover{border-color:var(--cyan)}
+.note{font-size:12px;color:var(--muted);margin:0 0 48px}
+.sec-h{font-family:var(--serif);font-size:26px;margin:60px 0 8px;font-weight:500;letter-spacing:-.01em}
+.sec-s{color:var(--muted);font-size:14px;margin:0 0 24px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;text-decoration:none;color:var(--ink);transition:border-color 200ms}
+.card:hover{border-color:var(--cyan)}
+.card .ic{font-size:26px;margin-bottom:8px}
+.card h3{font-family:var(--serif);font-size:17px;margin:0 0 6px;font-weight:500;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:13px;margin:0;line-height:1.5}
+.card .go{color:var(--cyan);font-size:12px;margin-top:14px;display:inline-block;font-weight:600}
+.sec-note{color:var(--muted);font-size:12px;margin:36px 0 0;padding-top:28px;border-top:1px solid var(--line);font-style:italic}
+.sec-label{font-size:18px;margin:40px 0 16px;font-weight:600;color:var(--cyan)}
+.admin-card{opacity:.5}
+@media (max-width:680px){h1{font-size:32px}.wrap{padding:36px 16px 28px}.cards{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -43,13 +55,50 @@ h1{font-family:var(--serif);font-size:40px;font-weight:500;line-height:1.12;marg
     <a class="cta2" href="/dashboard/">Ir a mi Dashboard</a>
   </div>
   <p class="note">Sin registro para probar. Empieza en 10 segundos.</p>
+
   <div class="sec-h">Elige por dónde empezar</div>
-  <div class="sec-s">Cada experiencia mide tu evidencia y alimenta tu plan de estudio.</div>
+  <div class="sec-s">Tres experiencias principales para entrenar razonamiento.</div>
   <div class="cards">
-    <a class="card" href="/bottle-lab/"><span class="ic">🍾</span><h3>Bottle Guided</h3><p>Deduce el estilo del vino observando la botella.</p><span class="go">Probar →</span></a>
-    <a class="card" href="/label-lab/"><span class="ic">📖</span><h3>Label Guided</h3><p>Lee cualquier etiqueta y deduce estilo, calidad y guarda.</p><span class="go">Probar →</span></a>
-    <a class="card" href="/full-simulation-v2/"><span class="ic">⏱</span><h3>Simulacro</h3><p>El examen real: 2 vinos a ciegas, 30 minutos.</p><span class="go">Probar →</span></a>
+    <a class="card" href="/bottle-lab/"><span class="ic">🍾</span><h3>Bottle Guided</h3><p>Deduce estilo observando botella, cierre, formato y nivel.</p><span class="go">Probar →</span></a>
+    <a class="card" href="/label-lab/"><span class="ic">📖</span><h3>Label Guided</h3><p>Lee etiquetas y deduce estilo, calidad, madurez y contexto.</p><span class="go">Probar →</span></a>
+    <a class="card" href="/full-simulation-v2/"><span class="ic">⏱</span><h3>Simulacro</h3><p>Examen completo: 2 vinos a ciegas, tiempo y debrief.</p><span class="go">Probar →</span></a>
   </div>
+
+  <div class="sec-h">Todas las experiencias</div>
+  <div class="sec-s">Explora los laboratorios según lo que necesitas entrenar hoy.</div>
+
+  <div class="sec-h sec-label">Entrenamiento guiado</div>
+  <div class="cards">
+    <a class="card" href="/bottle-lab/"><span class="ic">🍾</span><h3>Bottle Guided</h3><p>Deduce estilo observando botella, cierre, formato y nivel.</p><span class="go">Probar →</span></a>
+    <a class="card" href="/label-lab/"><span class="ic">📖</span><h3>Label Guided</h3><p>Lee etiquetas y deduce estilo, calidad, madurez y contexto.</p><span class="go">Probar →</span></a>
+    <a class="card" href="/sat-lab/"><span class="ic">🎯</span><h3>SAT Lab</h3><p>Practica cata guiada, cata a ciegas y calibración sensorial.</p><span class="go">Probar →</span></a>
+    <a class="card" href="/adaptive-review/"><span class="ic">✓</span><h3>Adaptive Review</h3><p>Corrige errores después de practicar y refuerza lo que frena tu avance.</p><span class="go">Ver →</span></a>
+  </div>
+
+  <div class="sec-h sec-label">Evaluación y simulación</div>
+  <div class="cards">
+    <a class="card" href="/full-simulation-v2/"><span class="ic">⏱</span><h3>Full Simulation v2</h3><p>Simulación completa de examen con dos vinos, tiempo y debrief.</p><span class="go">Practicar →</span></a>
+    <a class="card" href="/diagnostic-sba/"><span class="ic">📋</span><h3>Diagnostic SBA</h3><p>Practica preguntas de selección y diagnóstico de teoría.</p><span class="go">Practicar →</span></a>
+    <a class="card" href="/open-response-lab/"><span class="ic">✏️</span><h3>Open Response Lab</h3><p>Entrena respuestas cortas, estructura y razonamiento escrito.</p><span class="go">Practicar →</span></a>
+    <a class="card" href="/adaptive-session/"><span class="ic">🔄</span><h3>Adaptive Session</h3><p>Sesiones adaptativas según tu rendimiento y necesidades.</p><span class="go">Practicar →</span></a>
+  </div>
+
+  <div class="sec-h sec-label">Inteligencia de aprendizaje</div>
+  <div class="cards">
+    <a class="card" href="/dashboard/"><span class="ic">📊</span><h3>Dashboard</h3><p>Consulta tu preparación, readiness y siguiente paso.</p><span class="go">Ver →</span></a>
+    <a class="card" href="/mentor/"><span class="ic">🧠</span><h3>Mentor Cognitivo</h3><p>Interpreta tu progreso y entiende qué debes corregir.</p><span class="go">Ver →</span></a>
+    <a class="card" href="/learning-loop/"><span class="ic">🎓</span><h3>Learning Loop</h3><p>Ve cómo la plataforma decide qué debes practicar ahora.</p><span class="go">Ver →</span></a>
+    <a class="card" href="/profile/"><span class="ic">👤</span><h3>Mi perfil</h3><p>Consulta tu cuenta, acceso y estado de aprendizaje.</p><span class="go">Ver →</span></a>
+  </div>
+
+  <div class="sec-h sec-label">Cuenta y acceso</div>
+  <div class="cards">
+    <a class="card" href="/login/"><span class="ic">🔐</span><h3>Crear cuenta</h3><p>Guarda tu progreso y continúa tu entrenamiento.</p><span class="go">Iniciar →</span></a>
+    <a class="card" href="/upgrade/"><span class="ic">⭐</span><h3>Mejorar plan</h3><p>Activa funciones avanzadas cuando las necesites.</p><span class="go">Ver →</span></a>
+    <a class="card admin-card" href="/admin/"><span class="ic">⚙️</span><h3>Admin</h3><p>Consola administrativa.</p><span class="go">Ver →</span></a>
+  </div>
+
+  <p class="sec-note">Práctica formativa · No es evaluación oficial WSET. El Epistemic Profile registra tu evidencia de aprendizaje.</p>
 </div>
 <script src="/platform-nav.js" defer></script>
 </body>
