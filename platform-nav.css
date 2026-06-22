@@ -14,4 +14,6 @@
 #pfoot{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:40px;padding:18px 22px;border-top:1px solid var(--pn-line);font-size:11.5px;color:var(--pn-muted);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
 .pfoot-up{font-size:11.5px;color:var(--pn-muted);text-decoration:none;opacity:.7;border-bottom:1px dotted var(--pn-line)}
 .pfoot-up:hover{color:var(--pn-gold)}
+/* Modo concentración (examen): ocultar nav y footer; visibles en entrada/debrief. */
+body.fs-focus #pnav, body.fs-focus #pfoot{display:none}
 @media (max-width:560px){#pnav{gap:10px;padding:10px 14px}.pnav-links{gap:3px}.pnav-link{padding:6px 9px;font-size:12.5px}}
