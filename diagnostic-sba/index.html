@@ -42,45 +42,9 @@ html, body {
   min-height: 100vh;
 }
 
-/* ---- GOVERNANCE BANNER ---- */
-.gov-banner {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: #120d00;
-  border-bottom: 1px solid #2a1a00;
-  padding: 5px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  font-size: 10px;
-  color: var(--gold-dim);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-.gov-banner .gov-hi { color: var(--gold); }
-.gov-banner .gov-sep { color: #3a2800; }
-
-/* ---- PROGRESS BAR ---- */
-.progress-bar-wrap {
-  position: fixed;
-  top: 31px; left: 0; right: 0;
-  z-index: 999;
-  height: 2px;
-  background: var(--panel);
-}
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
-  transition: width 0.6s ease;
-  width: 0%;
-}
 
 /* ---- LAYOUT ---- */
 .app {
-  padding-top: 53px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -1010,21 +974,6 @@ footer {
 .mode-btn-detail { display:block; font-size:11px; color:#525e6e; margin-top:2px; }
 .mode-disclaimer { font-size:10px; color:#525e6e; }
 
-/* ---- Global Navigation ---- */
-.global-nav {
-  display: flex; align-items: center; justify-content: center;
-  gap: 6px; padding: 8px 16px;
-  background: var(--raised); border-bottom: 1px solid var(--border); flex-wrap: wrap;
-  position: relative; z-index: 600; /* above .mode-overlay (500) so nav stays clickable */
-}
-body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banner + progress bar */ }
-.global-nav a {
-  color: var(--text-2); text-decoration: none; font-size: 12px;
-  padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
-  transition: color .15s, border-color .15s;
-}
-.global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
-.global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
 <script src="../shared/session-store.js"></script>
 <script src="../shared/supabase-public-config.js"></script>
@@ -1050,22 +999,6 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 </head>
 <body>
 
-<!-- GOVERNANCE BANNER -->
-<div class="gov-banner">
-  <span class="gov-hi">✓</span>
-  PRÁCTICA FORMATIVA
-  <span class="gov-sep">·</span>
-  DESARROLLO DE RAZONAMIENTO
-  <span class="gov-sep">·</span>
-  <span class="gov-hi">NO EVALUACIÓN OFICIAL</span>
-  <span class="gov-sep">·</span>
-  Para entrenamiento solamente
-  <span class="gov-sep">·</span>
-  Tu progreso se registra automáticamente
-</div>
-
-<div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
-<nav class="global-nav"><a href="/diagnostic-sba/" class="nav-active">Evaluación Teórica</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Entrenamiento Adaptativo</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro Completo</a></nav>
 <!-- MODE OVERLAY -->
 <div id="mode-overlay" class="mode-overlay active">
   <div class="mode-card">
@@ -2349,5 +2282,6 @@ document.addEventListener('DOMContentLoaded',function(){
   // Mode overlay visible; quiz starts on mode selection.
 });
 </script>
+<script src="/platform-nav.js" defer></script>
 </body>
 </html>
