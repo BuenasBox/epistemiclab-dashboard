@@ -31,7 +31,6 @@
   --gold-light:  #e5c97a;
   --purple:      #8b7cf6;
 
-  --gov-h:       30px;
 }
 
 html, body {
@@ -44,34 +43,11 @@ html, body {
   overflow: hidden;
 }
 
-/* ---- GOVERNANCE BANNER ---- */
-.gov-banner {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 2000;
-  height: var(--gov-h);
-  background: #120d00;
-  border-bottom: 1px solid #2a1a00;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 9px;
-  color: var(--gold-dim);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 700;
-  flex-wrap: wrap;
-  padding: 0 16px;
-}
-.gov-hi  { color: var(--gold); }
-.gov-sep { color: #3a2800; }
-
 /* ---- SCREENS ---- */
 .screen {
   position: fixed;
   inset: 0;
-  top: var(--gov-h);
+  top: 0;
   /* Clear the global-nav bar so question content is not hidden behind it.
      --nav-h is measured by JS (handles wrapping on narrow viewports). */
   padding-top: var(--nav-h, 48px);
@@ -694,21 +670,6 @@ html, body {
 .adp-bsub{display:block;font-size:11px;color:#a7b0be;margin-top:2px;}
 .adp-disc{font-size:10px;color:#525e6e;text-align:center;margin-top:14px;}
 
-/* ---- Global Navigation ---- */
-.global-nav {
-  display: flex; align-items: center; justify-content: center;
-  gap: 6px; padding: 8px 16px;
-  background: var(--raised); border-bottom: 1px solid var(--border); flex-wrap: wrap;
-  position: relative; z-index: 600; /* above .adp-ol overlay (500) so nav stays clickable */
-}
-.gov-banner + .global-nav { margin-top: calc(var(--gov-h) + 4px); /* clear fixed gov-banner */ }
-.global-nav a {
-  color: var(--text-2); text-decoration: none; font-size: 12px;
-  padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
-  transition: color .15s, border-color .15s;
-}
-.global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
-.global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
 </style>
 <script src="../shared/session-store.js"></script>
 <script src="../shared/supabase-public-config.js"></script>
@@ -736,33 +697,6 @@ html, body {
 </head>
 <body>
 
-<!-- Fixed governance banner -->
-<div class="gov-banner">
-  <span class="gov-hi">✓</span>
-  <span>PRÁCTICA FORMATIVA</span>
-  <span class="gov-sep">·</span>
-  <span>DESARROLLO DE RAZONAMIENTO</span>
-  <span class="gov-sep">·</span>
-  <span>NO EVALUACIÓN OFICIAL</span>
-  <span class="gov-sep">·</span>
-  <span>Para entrenamiento solamente</span>
-</div>
-
-<nav class="global-nav"><a href="/diagnostic-sba/">Evaluación Teórica</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/" class="nav-active">Entrenamiento Adaptativo</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro Completo</a></nav>
-<script>
-/* Keep --nav-h in sync with the real global-nav height so .screen content
-   (the question) is never hidden behind the fixed top bar, even when the nav
-   wraps on narrow viewports. */
-(function () {
-  function setNavH() {
-    var n = document.querySelector('.global-nav');
-    if (n) document.documentElement.style.setProperty('--nav-h', (n.offsetHeight + 10) + 'px');
-  }
-  window.addEventListener('load', setNavH);
-  window.addEventListener('resize', setNavH);
-  setNavH();
-})();
-</script>
 <!-- ADAPTIVE MODE OVERLAY -->
 <div id="adp-ol" class="adp-ol active">
   <div class="adp-card">
@@ -1598,5 +1532,6 @@ async function init() {
 
 document.addEventListener('DOMContentLoaded',function(){/* mode overlay visible */});
 </script>
+<script src="/platform-nav.js" defer></script>
 </body>
 </html>
