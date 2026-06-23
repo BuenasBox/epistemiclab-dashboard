@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <link rel="stylesheet" href="../shared/sat-wine-glass.css">
 <link rel="stylesheet" href="../shared/wine-intelligence-card.css">
+<link rel="stylesheet" href="../platform-nav.css">
 <style>
   :root{
     --bg:#07090d; --panel:#10141b; --panel2:#151b24; --ink:#e6ebf4; --muted:#929daf;
@@ -633,13 +634,13 @@
     if($('wine-label')) $('wine-label').textContent = (S.mode==='guided'? (id.display_label||S.wine.display_label) : (S.wine.display_label || id.display_label)) || 'Vino';
     var b='';
     if(id.wine_type) b+='<span class="sat-hb type">'+id.wine_type+'</span>';
-    if(id.practice_number) b+='<span class="sat-hb">Práctica '+id.practice_number+'</span>';
+    // if(id.practice_number) b+='<span class="sat-hb">Práctica '+id.practice_number+'</span>';
     if(id.difficulty){ var sc=parseInt(id.difficulty_score,10)||0, dots=''; var lit=Math.max(1,Math.min(5,Math.round(sc/2)));
       for(var i=1;i<=5;i++) dots+='<i class="'+(i<=lit?'on':'')+'"></i>';
       b+='<span class="sat-hb">'+id.difficulty+' <span class="mtr">'+dots+'</span></span>'; }
     if(id.importance) b+='<span class="sat-hb imp">'+id.importance+'</span>';
     if(id.priority) b+='<span class="sat-hb">Prioridad '+id.priority+'</span>';
-    if(id.wset_level) b+='<span class="sat-hb wset">'+id.wset_level+'</span>';
+    // if(id.wset_level) b+='<span class="sat-hb wset">'+id.wset_level+'</span>';
     if(reveal){
       if(reveal.country) b+='<span class="sat-hb">'+countryEs(reveal.country)+'</span>';
       if(reveal.region) b+='<span class="sat-hb">'+reveal.region+'</span>';
@@ -762,7 +763,7 @@
     if($('report-badges')){
       var wt2=S.wine.wine_type, rb='';
       if(wt2) rb+='<span class="sat-hb type">'+wt2+'</span>';
-      rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
+      // rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
       $('report-badges').innerHTML=rb;
     }
     var strengths=[], areas=[];
@@ -976,7 +977,7 @@
       if(si.region) rb+='<span class="sat-hb">'+escP(si.region)+'</span>';
       if(si.appellation && si.appellation!==si.region) rb+='<span class="sat-hb">'+escP(si.appellation)+'</span>';
       (si.grape_varieties||[]).forEach(function(g){ rb+='<span class="sat-hb type">'+escP(g)+'</span>'; });
-      rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
+      // rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
       $('report-badges').innerHTML=rb;
     }
   }
@@ -1026,7 +1027,7 @@
     m=String(wine.display_label||'').match(/(\d+)\s*$/); return m?m[1]:null;
   }
   function blindObjective(){
-    return 'Deduce el perfil del vino con el método SAT: observa, infiere y comprométete con un juicio, sin pistas de identidad.';
+    return 'Observa, infiere y comprométete con un juicio sin pistas de identidad. Desarrolla tu razonamiento profesional.';
   }
   function blindMotivational(band){
     var m={ foundation:'Un buen punto de partida para afianzar el método paso a paso.',
@@ -1084,7 +1085,7 @@
         priority: (id.practice_priority!=null? (id.practice_priority+'/5'):null),
         wset_level: WSET_LEVEL,
         practice_number: practiceNumberOf(wine),
-        objective: 'Estudia este estilo con identidad revelada: aplica el SAT para fijar sus marcadores y su lógica.',
+        objective: 'Estudia este estilo con identidad revelada: desarrolla tus marcadores sensoriales y tu lógica de razonamiento.',
         motivational: blindMotivational(id.difficulty_band)
       },
       glass: id.wine_type?{ wineType:id.wine_type }:null,
