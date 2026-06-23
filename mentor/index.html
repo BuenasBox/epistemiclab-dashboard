@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mentor Cognitivo — EpistemicLab</title>
+<title>Mentor — EpistemicLab</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="/platform-nav.css">
 <style>
@@ -49,12 +49,12 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-si
 <div class="wrap">
   <div class="topline">
     <div class="brand"><span class="dot"></span> EpistemicLab</div>
-    <div class="crumbs">· <b>Mentor Cognitivo</b></div>
+    <div class="crumbs">· <b>Mentor</b></div>
   </div>
 
-  <div class="eyebrow">Intérprete del Epistemic Profile</div>
+  <div class="eyebrow">Interpretación de tu progreso</div>
   <h1>Tu Mentor</h1>
-  <p class="lead">Lectura de tu evidencia, no de tu ánimo. Cada observación se basa solo en lo que tu perfil ya registró — dominio, calibración, transferencia, preparación e ideas a corregir.</p>
+  <p class="lead">Análisis basado en tu evidencia real. Cada observación se basa solo en lo que ya demostraste: tus fortalezas, áreas de mejora, calibración y readiness.</p>
 
   <div class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></div>
   <div id="cards"></div>
@@ -125,7 +125,7 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-si
       else if (!events.length) events = SAMPLE.events;
     }
     setSource(live ? 'live' : 'sample',
-      live ? 'Leyendo tu Epistemic Profile (en vivo)' : (token ? 'Cargando…' : 'Sin sesión autenticada · inicia sesión para ver tu perfil'));
+      live ? 'Analizando tu progreso (en vivo)' : (token ? 'Cargando…' : 'Sin sesión autenticada · inicia sesión para ver tu perfil'));
     var result = window.MentorCognitivo.interpret({ metrics: metrics, events: events });
     window.MentorCognitivoUI.render(document.getElementById('cards'), result);
   }

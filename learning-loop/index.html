@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Learning Loop — EpistemicLab</title>
+<title>Plan de Aprendizaje — EpistemicLab</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="/platform-nav.css">
 <style>
@@ -51,11 +51,11 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
 <div class="wrap">
   <div class="topline">
     <div class="brand"><span class="dot"></span> EpistemicLab</div>
-    <div class="crumbs">· <b>Learning Loop</b></div>
+    <div class="crumbs">· <b>Plan de Aprendizaje</b></div>
   </div>
-  <div class="eyebrow">El cerebro orquestador · consume EP-03</div>
+  <div class="eyebrow">Tu próximo paso personalizado</div>
   <h1>Tu recorrido, ahora</h1>
-  <p class="lead">Decisión determinista sobre qué practicar y por qué, basada solo en tu evidencia EP-03: readiness, calibración, transferencia, misconceptions, sesiones y recomendaciones.</p>
+  <p class="lead">La plataforma analiza tu progreso y recomienda exactamente qué practicar a continuación, basándose en tu desempeño, áreas de mejora y estado de preparación.</p>
   <div class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></div>
   <div id="decision"></div>
   <div class="qa" id="qa"></div>
@@ -123,7 +123,7 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
       ['¿Qué misconception corregir primero?', a.whichMisconceptionFirst],
       ['¿Qué competencia frena el progreso?', a.whichCompetencyBlocking],
       ['¿Cuándo repetir Bottle?', a.repeatBottleWhen], ['¿Cuándo pasar a Label?', a.moveToLabelWhen],
-      ['¿Cuándo recomendar Full Simulation?', a.recommendFullSimWhen], ['¿Cuándo detener y reforzar?', a.haltWhen]
+      ['¿Cuándo recomendar Simulacro Completo?', a.recommendFullSimWhen], ['¿Cuándo detener y reforzar?', a.haltWhen]
     ];
     document.getElementById('qa').innerHTML = Q.map(function(x){
       return '<div class="qa-row"><div class="qa-q">'+esc(x[0])+'</div><div class="qa-a">'+esc(x[1])+'</div></div>';
@@ -150,7 +150,7 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
       } catch(e) { live = false; }
     }
     if (!live) bundle = SAMPLE;
-    setSrc(live?'live':'sample', live?'Leyendo tu Epistemic Profile (EP-03, en vivo)':'Datos de ejemplo · sin sesión autenticada');
+    setSrc(live?'live':'sample', live?'Analizando tu progreso en vivo':'Datos de ejemplo · sin sesión autenticada');
     var r = window.LearningLoop.fromEndpoints(bundle);
     renderDecision(r); renderQA(r.answers); renderRat(r);
   }
