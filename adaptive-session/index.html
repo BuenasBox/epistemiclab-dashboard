@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WSET L3 · Sesión Adaptativa · PROTOTIPO</title>
+<title>Entrenamiento Adaptativo — EpistemicLab</title>
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <style>
 /* =====================================================================
@@ -738,16 +738,17 @@ html, body {
 
 <!-- Fixed governance banner -->
 <div class="gov-banner">
-  <span class="gov-hi">PROTOTIPO</span>
+  <span class="gov-hi">✓</span>
+  <span>PRÁCTICA FORMATIVA</span>
   <span class="gov-sep">·</span>
-  <span>ENTRENAMIENTO</span>
+  <span>DESARROLLO DE RAZONAMIENTO</span>
   <span class="gov-sep">·</span>
-  <span>NO EVALUACIÓN OFICIAL WSET</span>
+  <span>NO EVALUACIÓN OFICIAL</span>
   <span class="gov-sep">·</span>
-  <span>safe_for_examiner: false</span>
+  <span>Para entrenamiento solamente</span>
 </div>
 
-<nav class="global-nav"><a href="/diagnostic-sba/">Cabina SBA</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/" class="nav-active">Sesión Adaptativa</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro</a></nav>
+<nav class="global-nav"><a href="/diagnostic-sba/">Evaluación Teórica</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/" class="nav-active">Entrenamiento Adaptativo</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro Completo</a></nav>
 <script>
 /* Keep --nav-h in sync with the real global-nav height so .screen content
    (the question) is never hidden behind the fixed top bar, even when the nav
@@ -785,7 +786,7 @@ html, body {
       <button class="adp-btn" onclick="toggleProgress()"><span class="adp-blabel">Mi Progreso</span><span class="adp-bsub">RA · temas débiles · tendencias SAT</span></button>
     </div>
     <div id="li-progress" style="display:none"></div>
-    <div class="adp-disc">PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET</div>
+    <div class="adp-disc">Práctica formativa · Desarrollo de razonamiento profesional</div>
   </div>
 </div>
 
@@ -1333,7 +1334,7 @@ function renderDebriefing() {
 
   // Footer
   const footer = el('div', { class: 'db-footer' });
-  footer.textContent = 'PROTOTIPO ESTÁTICO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET';
+  footer.textContent = 'Práctica formativa · Desarrollo de razonamiento profesional';
   container.appendChild(footer);
 }
 

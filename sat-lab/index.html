@@ -629,7 +629,7 @@
         objective:blindObjective(), motivational:blindMotivational(null),
         importance:null, priority:null, difficulty:null, difficulty_score:null };
     }
-    if($('hero-eyebrow')) $('hero-eyebrow').textContent = (S.mode==='guided'?'Práctica guiada · WSET Nivel 3':'Cata a ciegas · WSET Nivel 3');
+    if($('hero-eyebrow')) $('hero-eyebrow').textContent = (S.mode==='guided'?'Práctica guiada':'Cata a ciegas');
     if($('wine-label')) $('wine-label').textContent = (S.mode==='guided'? (id.display_label||S.wine.display_label) : (S.wine.display_label || id.display_label)) || 'Vino';
     var b='';
     if(id.wine_type) b+='<span class="sat-hb type">'+id.wine_type+'</span>';
