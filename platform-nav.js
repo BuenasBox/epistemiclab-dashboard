@@ -19,7 +19,7 @@
   var MENU = [
     { label: 'Inicio', submenu: [
       { label: 'Inicio', href: '/' },
-      { label: '¿Qué es EpistemicLab?', href: '/#about' }
+      { label: '¿Qué es EpistemicLab?', href: '/about/' }
     ]},
     { label: 'Aprender', submenu: [
       { label: 'Botellas', href: '/bottle-lab/' },
