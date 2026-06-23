@@ -116,7 +116,7 @@
     app.innerHTML =
       '<div class="fs-shell"><div class="fs-pre">' +
       '<div class="fs-eyebrow">Simulacro de examen</div>' +
-      '<h1 class="fs-h1">Cata a ciegas · WSET Level 3</h1>' +
+      '<h1 class="fs-h1">Evaluar Vino a Ciegas</h1>' +
       '<p class="fs-lead">Dos vinos. Treinta minutos. Sin pistas, sin Mentor, sin red. Como el examen real — para que el día del examen no sea la primera vez que lo vives.</p>' +
       '<div class="fs-rules">' +
       '<div class="fs-rule"><span>2</span> vinos tranquilos a ciegas</div>' +
@@ -129,7 +129,7 @@
       '</div></div>' +
       '<p class="fs-note">Al comenzar entrarás en <b>modo concentración</b>: pantalla limpia, sin distracciones. Puedes pausar, pero el examen real no permite pausas — úsalo con criterio. La entrega es <b>definitiva</b>.</p>' +
       '<button class="fs-cta" id="fs-start">Comenzar examen →</button>' +
-      '<div class="fs-gov">Práctica formativa · No es evaluación oficial WSET</div>' +
+      '<div class="fs-gov">Práctica formativa · No es evaluación oficial</div>' +
       '</div></div>';
     document.querySelectorAll('[data-dur]').forEach(function (b) { b.onclick = function () { S.durationMin = +b.getAttribute('data-dur'); S.remaining = S.durationMin * 60; render(); }; });
     document.getElementById('fs-start').onclick = function () {
@@ -271,7 +271,7 @@
       winesHtml +
       '<div class="fs-ep-note">Tu Epistemic Profile se actualizó con esta sesión. El Dashboard, el Mentor y el Learning Loop reflejarán este examen.</div>' +
       '<div class="fs-debrief-actions"><a class="fs-cta" href="../dashboard/">Ver mi Dashboard →</a><button class="fs-ghost" id="fs-again">Otro simulacro</button></div>' +
-      '<div class="fs-gov">Práctica formativa · No es evaluación oficial WSET</div></div>';
+      '<div class="fs-gov">Práctica formativa · No es evaluación oficial</div></div>';
     var again = document.getElementById('fs-again'); if (again) again.onclick = function () { reset(); render(); };
   }
   function init(rootEl) { app = rootEl || document.getElementById('fs-root'); reset(); render(); }
