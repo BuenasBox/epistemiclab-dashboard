@@ -1052,26 +1052,26 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 
 <!-- GOVERNANCE BANNER -->
 <div class="gov-banner">
-  <span class="gov-hi">⚠</span>
-  PROTOTIPO ESTÁTICO
+  <span class="gov-hi">✓</span>
+  PRÁCTICA FORMATIVA
   <span class="gov-sep">·</span>
-  ENTRENAMIENTO
+  DESARROLLO DE RAZONAMIENTO
   <span class="gov-sep">·</span>
-  <span class="gov-hi">NO EVALUACIÓN OFICIAL WSET</span>
+  <span class="gov-hi">NO EVALUACIÓN OFICIAL</span>
   <span class="gov-sep">·</span>
-  Sin puntuación oficial
+  Para entrenamiento solamente
   <span class="gov-sep">·</span>
-  Sin autoridad examinadora
+  Tu progreso se registra automáticamente
 </div>
 
 <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
-<nav class="global-nav"><a href="/diagnostic-sba/" class="nav-active">Cabina SBA</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Sesión Adaptativa</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro</a></nav>
+<nav class="global-nav"><a href="/diagnostic-sba/" class="nav-active">Evaluación Teórica</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Entrenamiento Adaptativo</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro Completo</a></nav>
 <!-- MODE OVERLAY -->
 <div id="mode-overlay" class="mode-overlay active">
   <div class="mode-card">
-    <div class="mode-card-eyebrow">Cabina Diagnóstica SBA</div>
+    <div class="mode-card-eyebrow">Evaluación Teórica</div>
     <div class="mode-card-title">Selecciona modo</div>
-    <div class="mode-card-sub">578 preguntas aprobadas · safe_for_examiner: false</div>
+    <div class="mode-card-sub">578 preguntas de entrenamiento disponibles</div>
     <div class="mode-buttons">
       <button class="mode-btn" onclick="startMode('quick_drill')">
         <span class="mode-btn-label">Práctica Rápida</span>
@@ -1087,11 +1087,11 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
       </button>
       <button class="mode-btn" onclick="startMode('mock_theory_1')">
         <span class="mode-btn-label">Simulacro Teoría · Parte 1</span>
-        <span class="mode-btn-count">50 preguntas · distribución oficial WSET</span>
-        <span class="mode-btn-detail">RA1=8 · RA2=28 · RA3=5 · RA4=5 · RA5=4</span>
+        <span class="mode-btn-count">50 preguntas de simulacro completo</span>
+        <span class="mode-btn-detail">Distribución balanceada según temas</span>
       </button>
     </div>
-    <div class="mode-disclaimer">PROTOTIPO · ENTRENAMIENTO · NO EVALUACIÓN OFICIAL WSET</div>
+    <div class="mode-disclaimer">Práctica formativa · Desarrollo de razonamiento profesional</div>
   </div>
 </div>
 
@@ -1100,8 +1100,8 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
 
   <header class="header">
     <div class="header-brand">
-      <div class="brand-name">WSET L3 · Cabina Diagnóstica SBA <span style="color:var(--text-muted)">v2.2</span></div>
-      <div class="brand-sub">Sistema de Entrenamiento · Prototipo Estático</div>
+      <div class="brand-name">EpistemicLab · Evaluación Teórica <span style="color:var(--text-muted)">v2.2</span></div>
+      <div class="brand-sub">Entrenamiento de razonamiento en vino</div>
     </div>
     <div class="header-controls">
       <span class="toggle-label">Presión</span>
@@ -1263,10 +1263,10 @@ body > nav.global-nav:first-of-type { margin-top: 34px; /* clear fixed gov-banne
   </div>
 
   <footer>
-    <div class="footer-note">PROTOTIPO ESTÁTICO · ENTRENAMIENTO SOLAMENTE</div>
-    <div class="footer-note"><span>Sin puntuación oficial WSET</span></div>
-    <div class="footer-note"><span>Sin autoridad examinadora · Sin scoring real</span></div>
-    <div class="footer-note">Todas las preguntas marcadas como Pregunta de Entrenamiento</div>
+    <div class="footer-note">Práctica formativa · Desarrollo de razonamiento profesional</div>
+    <div class="footer-note"><span>Tu progreso se registra automáticamente</span></div>
+    <div class="footer-note"><span>Enfoque en aprendizaje · No evaluación oficial</span></div>
+    <div class="footer-note">Todas las preguntas son para entrenamiento y mejora</div>
   </footer>
 
 </div>
@@ -1462,7 +1462,7 @@ function fallbackFeedback(q) {
   const letter = String.fromCharCode(65 + idx);
   const correctTxt = (q.options && q.options[idx]) || '';
   return `La respuesta correcta es ${letter}: «${correctTxt}». ` +
-    `Tema: ${q.topic} · ${q.ra}. Repasa este concepto en tu material WSET L3 antes de la siguiente sesión.`;
+    `Tema: ${q.topic} · ${q.ra}. Repasa este concepto antes de la siguiente sesión.`;
 }
 
 // ---- Stage pips ----
@@ -2237,7 +2237,7 @@ function renderMap() {
       <div class="feedback-block">
         <div class="feedback-block-title mentor">Resumen de sesión · ${mentorLabel()}</div>
         <p>
-          Completaste ${s.answered} pregunta(s) de entrenamiento WSET L3.
+          Completaste ${s.answered} pregunta(s) de entrenamiento.
           ${s.correct === s.answered
             ? 'Todas correctas — demuestras dominio de los conceptos evaluados.'
             : `${s.correct} correcta(s). Las preguntas fallidas son oportunidades de diagnóstico, no penalizaciones.`}
@@ -2273,9 +2273,8 @@ function renderMap() {
           Recordatorio de gobernanza
         </div>
         <div style="font-size:11px;color:var(--text-muted);line-height:1.65;">
-          Este mapa es un instrumento de entrenamiento, no una evaluación oficial WSET.
-          No representa puntuación examinadora real.
-          <strong style="color:#3a2810;">training_item_only=true · safe_for_examiner=false · examiner_scoring_allowed=false</strong>
+          Este es un instrumento de entrenamiento para desarrollar tu razonamiento.
+          Tu progreso se registra automáticamente.
         </div>
       </div>
     </div>
