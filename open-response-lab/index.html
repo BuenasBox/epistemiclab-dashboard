@@ -30,23 +30,10 @@ html, body {
   line-height: 1.55;
 }
 body { display: flex; flex-direction: column; }
-.gov {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  padding: 8px 16px;
-  border-bottom: 1px solid #342916;
-  background: #15110a;
-  color: #c9a766;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
 .shell {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 310px;
-  min-height: calc(100vh - 33px);
+  grid-template-columns: 1fr;
+  min-height: 100vh;
 }
 main { padding: 28px; min-width: 0; }
 aside {
@@ -229,15 +216,13 @@ ul { margin: 0; padding-left: 19px; }
 }
 .global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
 .global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
+.assist-drawer { display: none !important; }
+.assist-overlay { display: none !important; }
 </style>
 </head>
 <body>
 <nav class="global-nav"><a href="/diagnostic-sba/">Evaluación Teórica</a><span style="color:#525e6e;font-size:10px">·</span><a href="/adaptive-session/">Entrenamiento Adaptativo</a><span style="color:#525e6e;font-size:10px">·</span><a href="/open-response-lab/" class="nav-active">Respuesta Abierta</a><span style="color:#525e6e;font-size:10px">·</span><a href="/full-simulation/">Simulacro Completo</a></nav>
 
-<div class="gov" data-testid="governance-banner">
-  <span>Práctica formativa</span>
-  <span>Entrenamiento enfocado en construcción de argumentos</span>
-</div>
 <div class="shell">
   <main>
     <div class="topline">
