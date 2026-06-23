@@ -9,6 +9,7 @@
 
   var LINKS = [
     { href: '/', label: 'Inicio', match: ['/', '/index.html'] },
+    { href: '/about/', label: '¿Qué es EpistemicLab?', match: ['/about'] },
     { href: '/dashboard/', label: 'Mi progreso', match: ['/dashboard'] },
     { href: '/bottle-lab/', label: 'Aprender', match: ['/bottle-lab', '/label-lab', '/sat-lab', '/adaptive-review'] },
     { href: '/full-simulation-v2/', label: 'Evaluarte', match: ['/full-simulation-v2', '/diagnostic-sba', '/open-response-lab', '/adaptive-session'] },
