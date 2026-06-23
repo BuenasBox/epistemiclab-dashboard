@@ -45,8 +45,7 @@
       { label: 'Crear cuenta', href: '/login/' },
       { label: 'Mi perfil', href: '/profile/' },
       { label: 'Planes', href: '/upgrade/' }
-    ]},
-    { label: 'Admin', href: '/admin/', admin: true }
+    ]}
   ];
 
   function isActive(link) {

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Adaptive Review — EpistemicLab</title>
+<title>Plan de recuperación — EpistemicLab</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="./adaptive-review.css">
@@ -48,7 +48,7 @@
       } catch(e){ live=false; }
     }
     if (!live) bundle = EMPTY;
-    setSrc(live?'live':'sample', live?'Tu Epistemic Profile (en vivo)':'Completa una sesión para generar tu plan');
+    setSrc(live?'live':'sample', live?'En vivo':'Completa una sesión para generar tu plan');
     var plan = window.AdaptiveReview.buildRecoveryPlan(bundle);
     window.AdaptiveReview.render(document.getElementById('root'), plan);
   }

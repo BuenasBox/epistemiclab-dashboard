@@ -49,7 +49,7 @@
       } catch(e){ live=false; }
     }
     if (!live) bundle = EMPTY;
-    setSrc(live?'live':'sample', live?'Tu Epistemic Profile (en vivo)':'Empieza una práctica para construir tu perfil');
+    setSrc(live?'live':'sample', live?'En vivo':'Empieza una práctica para construir tu perfil');
     var vm = window.Dashboard.buildViewModel(bundle);
     window.Dashboard.render(document.getElementById('root'), vm);
   }
