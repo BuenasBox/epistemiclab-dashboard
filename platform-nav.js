@@ -112,7 +112,17 @@
     if (!document.getElementById('pfoot')) {
       var f = document.createElement('footer');
       f.id = 'pfoot';
-      f.innerHTML = '<div class="pfoot-content"><span class="pfoot-gov">Práctica formativa · Desarrollo de razonamiento profesional en vino</span><div class="pfoot-links"><a href="/dashboard/">Mi progreso</a><a href="/login/">Mi cuenta</a><a href="/profile/">Mi perfil</a><a href="/upgrade/">Planes</a></div></div>';
+      f.innerHTML = '<div class="pfoot-content">' +
+        '<div class="pfoot-brand"><strong>EpistemicLab</strong></div>' +
+        '<p class="pfoot-desc">Una plataforma diseñada para desarrollar criterio, razonamiento y capacidad de análisis en el estudio profesional del vino. Cada experiencia forma parte de un proceso de aprendizaje progresivo que te ayuda a comprender, interpretar y evaluar el vino con mayor confianza y profundidad.</p>' +
+        '<div class="pfoot-nav">' +
+          '<div class="pfoot-col"><div class="pfoot-col-title">Plataforma</div><div class="pfoot-links"><a href="/">Inicio</a><a href="/about/">¿Qué es EpistemicLab?</a><a href="/dashboard/">Mi progreso</a><a href="/mentor/">Mi aprendizaje</a><a href="/profile/">Mi perfil</a></div></div>' +
+          '<div class="pfoot-col"><div class="pfoot-col-title">Experiencias</div><div class="pfoot-links"><a href="/diagnostic-sba/">Evaluación Teórica</a><a href="/sat-lab/">Laboratorio de Cata</a><a href="/bottle-lab/">Botella Guiada</a><a href="/label-lab/">Etiqueta Guiada</a><a href="/adaptive-session/">Entrenamiento Adaptativo</a><a href="/open-response-lab/">Casos de Análisis</a><a href="/full-simulation-v2/">Evaluación Integral</a></div></div>' +
+          '<div class="pfoot-col"><div class="pfoot-col-title">Cuenta</div><div class="pfoot-links"><a href="/login/">Crear cuenta</a><a href="/upgrade/">Planes</a></div></div>' +
+        '</div>' +
+        '<p class="pfoot-inst">EpistemicLab es una plataforma de entrenamiento y práctica formativa. Su propósito es desarrollar habilidades de análisis, razonamiento y criterio profesional mediante experiencias de aprendizaje progresivas.</p>' +
+        '<p class="pfoot-copy">© 2026 EpistemicLab<br>Todos los derechos reservados.</p>' +
+        '</div>';
       document.body.appendChild(f);
     }
   }
