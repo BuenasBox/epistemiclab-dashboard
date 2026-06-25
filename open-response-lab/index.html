@@ -147,6 +147,9 @@ textarea:focus { outline: none; border-color: var(--accent-2); }
   border-top: 1px solid var(--line);
   padding-top: 18px;
 }
+.feedback-section {
+  transition: opacity 0.2s ease;
+}
 .feedback[hidden], .completion[hidden] { display: none; }
 .feedback-grid {
   display: grid;
@@ -567,11 +570,31 @@ ul { margin: 0; padding-left: 19px; }
   }
 
   function renderFeedback(feedback) {
-    if (!feedback) { clearList(els.detected); clearList(els.absent); clearList(els.causal); clearList(els.suggestions); return; }
-    renderList(els.detected, feedback.concepts_detected, "Sin conceptos detectados todavía.");
-    renderList(els.absent, feedback.concepts_absent, "Sin ausencias visibles.");
-    renderList(els.causal, feedback.missing_causal_reasoning, "Sin razonamiento causal faltante visible.");
-    renderList(els.suggestions, feedback.improvement_suggestions, "Mantén la estructura.");
+    const feedbackDiv = document.querySelector('[data-testid="coach-feedback"]');
+    if (!feedbackDiv) return;
+
+    if (!feedback) {
+      feedbackDiv.innerHTML = '';
+      clearList(els.detected); clearList(els.absent); clearList(els.causal); clearList(els.suggestions);
+      return;
+    }
+
+    // Use or-intelligence-engine to enrich feedback for pedagocical presentation
+    if (window.orIntelligence) {
+      const enriched = window.orIntelligence.enrichFeedback(feedback);
+      const html = window.orIntelligence.renderFeedback(enriched);
+      feedbackDiv.innerHTML = html;
+      // Hide original 2x2 grid (backward compatibility fallback visible if JS fails)
+      document.querySelector('.feedback-grid').style.display = 'none';
+    } else {
+      // Fallback: if or-intelligence-engine fails to load, use original rendering
+      clearList(els.detected); clearList(els.absent); clearList(els.causal); clearList(els.suggestions);
+      renderList(els.detected, feedback.concepts_detected, "Sin conceptos detectados todavía.");
+      renderList(els.absent, feedback.concepts_absent, "Sin ausencias visibles.");
+      renderList(els.causal, feedback.missing_causal_reasoning, "Sin razonamiento causal faltante visible.");
+      renderList(els.suggestions, feedback.improvement_suggestions, "Mantén la estructura.");
+      feedbackDiv.innerHTML = '';
+    }
   }
   function renderProgress(session) {
     els.progress.innerHTML = "";
@@ -598,6 +621,7 @@ ul { margin: 0; padding-left: 19px; }
   render();
 })();
 </script>
+<script src="./or-intelligence-engine.js" defer></script>
 <script src="/platform-nav.js" defer></script>
 </body>
 </html>
