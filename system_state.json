@@ -38,14 +38,14 @@
     ],
     "javascript_files": 108,
     "html_files": 19,
-    "supabase_migrations": 19,
+    "supabase_migrations": 20,
     "supabase_functions": 22
   },
   "validation": {
     "command": "npm test",
     "status": "verified",
-    "evidence_fingerprint": "54be31191fb7f4e94f807a4fc38c5dc00981f187de382921f903ee1b255e1960",
-    "last_successful_fingerprint": "54be31191fb7f4e94f807a4fc38c5dc00981f187de382921f903ee1b255e1960",
+    "evidence_fingerprint": "e0d0ef7c6b7dfeb2052b2ac9ccc610a85a5dc0e03da8aa8e60a6e3b2510d5ed4",
+    "last_successful_fingerprint": "e0d0ef7c6b7dfeb2052b2ac9ccc610a85a5dc0e03da8aa8e60a6e3b2510d5ed4",
     "test_files": 33,
     "node_test_files": 17,
     "deterministic_test_files": 16,
