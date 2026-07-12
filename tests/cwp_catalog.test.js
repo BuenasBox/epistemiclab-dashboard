@@ -1,11 +1,13 @@
 const assert = require('assert');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const { collectProfiles, validateProfiles, exportProfiles } = require('../tools/cwp-export');
 
 const repoRoot = path.resolve(__dirname, '..');
 const profileDir = path.join(repoRoot, 'canonical-wine-catalog', 'profiles');
-const exportDir = path.join(repoRoot, 'canonical-wine-catalog', 'exports');
+const exportDir = fs.mkdtempSync(path.join(os.tmpdir(), 'epistemiclab-cwp-'));
+process.on('exit', () => fs.rmSync(exportDir, { recursive: true, force: true }));
 
 const profiles = collectProfiles(profileDir);
 const result = validateProfiles(profiles);

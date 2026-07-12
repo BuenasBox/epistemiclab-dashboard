@@ -294,7 +294,7 @@ test('production controller does not resolve mock fallback', async () => {
   assert.equal(mockResolves, 0);
 });
 
-test('profile route is Spanish, responsive and isolated from access gates and pedagogy', () => {
+test('profile route is Spanish, responsive and integrates learner intelligence safely', () => {
   const html = fs.readFileSync(
     path.join(__dirname, '..', 'profile', 'index.html'),
     'utf8',
@@ -317,7 +317,9 @@ test('profile route is Spanish, responsive and isolated from access gates and pe
     '../shared/auth-provider.js',
     './profile.js',
   ].forEach((source) => assert.match(html, new RegExp(source.replace(/\./g, '\\.'))));
-  assert.doesNotMatch(html, /access-gate|learner_intelligence|coach_data/i);
+  assert.doesNotMatch(html, /access-gate|coach_data/i);
+  assert.match(html, /learner_intelligence\.js/);
+  assert.match(html, /learning-analytics\.js/);
   assert.doesNotMatch(html, /Freemium|\bfree\b/i);
   assert.match(css, /@media\s*\(max-width:/);
   assert.match(css, /:focus-visible/);
@@ -337,7 +339,10 @@ test('home landing links account access to login, plans and student profile', ()
     'utf8',
   );
 
-  assert.match(html, /href="\/login\/"[^>]*>Iniciar Sesión</);
-  assert.match(html, /href="\/upgrade\/"[^>]*>Ver Planes</);
-  assert.match(html, /href="\/profile\/"[^>]*>Mi perfil</);
+  assert.match(html, /href="\/login\/"/);
+  assert.match(html, /<h3>Crear cuenta<\/h3>/);
+  assert.match(html, /href="\/upgrade\/"/);
+  assert.match(html, /<h3>Planes<\/h3>/);
+  assert.match(html, /href="\/profile\/"/);
+  assert.match(html, /<h3>Mi Perfil<\/h3>/);
 });

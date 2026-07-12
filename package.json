@@ -1,4 +1,12 @@
 {
+  "name": "epistemiclab-dashboard",
+  "private": true,
+  "scripts": {
+    "state:update": "node tools/update-system-state.js",
+    "state:check": "node tools/update-system-state.js --check",
+    "test": "npm run state:update && node tools/run-tests.js",
+    "audit:dependencies": "npm audit --omit=dev"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
     "pg": "^8.21.0",

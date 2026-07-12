@@ -17,3 +17,13 @@
 /.next
 /dist
 /build
+
+# Exportaciones completas reproducibles; producción usa sólo contratos render_*
+# y post_tasting_*.json seleccionados.
+/canonical-wine-catalog/exports/canonical_wines.csv
+/canonical-wine-catalog/exports/canonical_wines.jsonl
+/canonical-wine-catalog/exports/canonical_wines.md
+/canonical-wine-catalog/exports/canonical_wines.sql
+/canonical-wine-catalog/exports/canonical_wines.xlsx
+/canonical-wine-catalog/exports/render_profiles.debrief.json
+/canonical-wine-catalog/exports/post_tasting_schema.md

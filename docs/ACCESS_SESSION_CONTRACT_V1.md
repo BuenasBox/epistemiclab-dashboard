@@ -3,7 +3,7 @@
 **Estado:** Contrato arquitectónico de frontend
 **Versión:** 1.0
 **Fecha:** 2026-06-11
-**Dependencias:** `ACCESS_MATRIX_V1` revisión V1.1 y `ROUTE_INVENTORY_V1`
+**Dependencias:** `ACCESS_MATRIX_V1` revisión V1.1 y el inventario generado en `system_state.json`
 
 ## 1. Objetivo
 

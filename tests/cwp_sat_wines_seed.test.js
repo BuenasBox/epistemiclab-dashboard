@@ -15,17 +15,25 @@ const migrationPath = path.join(repoRoot, 'supabase', 'migrations', MIGRATION_NA
 const migrationSql = fs.readFileSync(migrationPath, 'utf8');
 const normalizeLineEndings = (value) => value.replace(/\r\n/g, '\n');
 
-assert.strictEqual(profiles.length, 70);
+assert.strictEqual(profiles.length, 107);
 assert.deepStrictEqual(
   profiles.map((profile) => profile.canonical_id),
-  Array.from({ length: 70 }, (_, index) => `SAT_WINE_${String(index + 1).padStart(3, '0')}`)
+  Array.from({ length: 107 }, (_, index) => `SAT_WINE_${String(index + 1).padStart(3, '0')}`)
 );
-assert.strictEqual(new Set(profiles.map((profile) => profile.canonical_id)).size, 70);
+assert.strictEqual(new Set(profiles.map((profile) => profile.canonical_id)).size, 107);
 assert.strictEqual(normalizeLineEndings(migrationSql), normalizeLineEndings(generatedSql));
 
 for (const [index, profile] of profiles.entries()) {
   const label = blindDisplayLabel(profile, index);
-  assert(label.startsWith(profile.wine_type === 'TINTO' ? 'Vino tinto' : 'Vino blanco'));
+  const expectedTypeLabel = {
+    BLANCO: 'Vino blanco',
+    ROSADO: 'Vino rosado',
+    TINTO: 'Vino tinto',
+    ESPUMOSO: 'Vino espumoso',
+    FORTIFICADO: 'Vino fortificado',
+  }[profile.wine_type];
+  assert(expectedTypeLabel, `unsupported wine type ${profile.wine_type}`);
+  assert(label.startsWith(expectedTypeLabel));
   assert(!label.includes(profile.country));
   assert(!label.includes(profile.region));
   assert(!label.includes(profile.wine_name));
@@ -42,7 +50,7 @@ for (let index = 5; index <= 12; index += 1) {
   assert(migrationSql.includes(`'${id}', 'BLANCO'`), `${id} must seed as BLANCO`);
 }
 
-assert(migrationSql.includes('actual_count <> 70'));
+assert(migrationSql.includes('actual_count <> 107'));
 assert(migrationSql.includes('SAT_WINE_005..012 must be BLANCO'));
 assert(migrationSql.includes('display_label must remain blind-safe'));
 
@@ -54,9 +62,9 @@ const blindProfiles = JSON.parse(fs.readFileSync(
   path.join(repoRoot, 'canonical-wine-catalog', 'exports', 'render_profiles.blind.json'),
   'utf8'
 ));
-assert.strictEqual(Object.keys(renderMap).length, 70);
-assert.strictEqual(blindProfiles.length, 70);
-assert.strictEqual(new Set(blindProfiles.map((profile) => profile.canonical_id)).size, 70);
+assert.strictEqual(Object.keys(renderMap).length, 107);
+assert.strictEqual(blindProfiles.length, 107);
+assert.strictEqual(new Set(blindProfiles.map((profile) => profile.canonical_id)).size, 107);
 for (const profile of profiles) {
   assert(renderMap[profile.canonical_id], `${profile.canonical_id} missing from render_profile_map`);
   assert(blindProfiles.some((blind) => blind.canonical_id === profile.canonical_id), `${profile.canonical_id} missing from blind render profiles`);
@@ -79,6 +87,6 @@ assert.deepStrictEqual(selectMatch[1].split(','), ['id', 'wine_type', 'priority'
 assert(!selectMatch[1].includes('canonical'));
 assert(edgeSource.includes("JSON.stringify({"));
 assert(!edgeSource.includes('canonical:'));
-assert(edgeSource.includes(", 70);"), 'get-sat-wines must allow limit=70');
+assert(edgeSource.includes(", 107);"), 'get-sat-wines must allow limit=107');
 
-console.log('CWP sat_wines seed test passed: 70 canonical rows, blind-safe labels, safe get-sat-wines projection');
+console.log('CWP sat_wines seed test passed: 107 canonical rows, blind-safe labels, safe get-sat-wines projection');
