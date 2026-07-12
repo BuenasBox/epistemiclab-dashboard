@@ -88,7 +88,13 @@ const state = {
   },
   production: {
     domain: fs.readFileSync(path.join(root, 'CNAME'), 'utf8').trim(),
-    hosting: 'github_pages',
+    // NOTE: hosting platform lives in external config (Vercel project settings,
+    // connected via GitHub integration) and is NOT derivable from committed
+    // repository files (.vercel/ is gitignored, no vercel.json is checked in).
+    // Confirmed against the Vercel API on 2026-07-12: production deploys are
+    // served by Vercel, auto-triggered on push/merge to main. If the hosting
+    // provider changes, this value must be updated manually.
+    hosting: 'vercel',
     entrypoint: 'index.html',
     robots_indexing_allowed: false,
   },

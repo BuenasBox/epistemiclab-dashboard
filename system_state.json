@@ -9,7 +9,7 @@
   },
   "production": {
     "domain": "epistemiclab.dpdns.org",
-    "hosting": "github_pages",
+    "hosting": "vercel",
     "entrypoint": "index.html",
     "robots_indexing_allowed": false
   },
@@ -44,8 +44,8 @@
   "validation": {
     "command": "npm test",
     "status": "verified",
-    "evidence_fingerprint": "d21f2781277c1bcfed43a1466326d4a147c4b1caf74c378754595a068cf6cdd4",
-    "last_successful_fingerprint": "d21f2781277c1bcfed43a1466326d4a147c4b1caf74c378754595a068cf6cdd4",
+    "evidence_fingerprint": "64b7ebb0df261a1238d45629564de45ad4679ebfa63ff956996349dd63e51141",
+    "last_successful_fingerprint": "64b7ebb0df261a1238d45629564de45ad4679ebfa63ff956996349dd63e51141",
     "test_files": 33,
     "node_test_files": 17,
     "deterministic_test_files": 16,

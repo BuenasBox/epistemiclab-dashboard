@@ -75,9 +75,6 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const body = await req.json();
-    const { user_id } = body;
-
     // Get auth user
     const authHeader = req.headers.get('authorization');
     const token = authHeader?.replace('Bearer ', '');
@@ -100,7 +97,10 @@ Deno.serve(async (req) => {
       );
     }
 
-    const actualUserId = user_id || user.id;
+    // Security: always use the ID from the verified auth token. Never trust
+    // a client-supplied user_id here — doing so would let any authenticated
+    // user query another user's trial/plan status (IDOR).
+    const actualUserId = user.id;
 
     // Query user profile for plan and trial expiration
     const { data: profile, error: profileError } = await supabase

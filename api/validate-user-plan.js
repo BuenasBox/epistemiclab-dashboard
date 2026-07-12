@@ -138,7 +138,6 @@ Deno.serve(async (req) => {
 
   try {
     const body = await req.json();
-    const userId = body.user_id || null;
     const requiredPlan = body.required_plan || null;
     const mode = body.mode || null;
 
@@ -171,8 +170,10 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Use authenticated user's ID if not specified
-    const actualUserId = userId || authUser.id;
+    // Security: always use the ID from the verified auth token. Never trust
+    // a client-supplied user_id here — doing so would let any authenticated
+    // user query another user's plan/access status (IDOR).
+    const actualUserId = authUser.id;
 
     let result;
     if (mode) {
