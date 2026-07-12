@@ -182,7 +182,7 @@ test('production routes load static Supabase config and learning sync safely', (
   assert.match(config, /sb_publishable_/);
   assert.doesNotMatch(config, /service_role|sb_secret_/);
 
-  ['index.html', 'login/index.html', 'profile/index.html', 'admin/index.html']
+  ['login/index.html', 'profile/index.html', 'admin/index.html']
     .forEach((file) => {
       const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
       assert.match(html, /supabase-public-config\.js/);
@@ -192,7 +192,6 @@ test('production routes load static Supabase config and learning sync safely', (
     'diagnostic-sba/index.html',
     'adaptive-session/index.html',
     'open-response-lab/index.html',
-    'full-simulation/index.html',
   ].forEach((file) => {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     assert.match(html, /supabase-public-config\.js/);

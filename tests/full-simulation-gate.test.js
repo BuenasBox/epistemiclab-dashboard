@@ -115,23 +115,18 @@ test('full simulation gate denies expired and inactive accounts', () => {
   );
 });
 
-test('full simulation and paid mode entry points declare active access gates', () => {
-  const fullSimulation = fs.readFileSync(
+test('legacy full simulation redirects to the current experience', () => {
+  const legacySimulation = fs.readFileSync(
     path.join(__dirname, '..', 'full-simulation', 'index.html'),
     'utf8',
   );
 
-  assert.match(fullSimulation, /\.\/access-gate\.js/);
-  assert.match(fullSimulation, /data-full-simulation-denied/);
-  assert.match(fullSimulation, /data-full-simulation-gate/);
-  assert.match(fullSimulation, /upgrade-gate\.js/);
-  assert.match(fullSimulation, /upgrade-gate\.css/);
-  assert.doesNotMatch(fullSimulation, /data-denial-reason/);
-  assert.doesNotMatch(fullSimulation, /full_access_required/);
-  assert.match(
-    fullSimulation,
-    /auth-providers\/supabase-auth-provider\.js/,
-  );
+  assert.match(legacySimulation, /url=\/full-simulation-v2\//);
+  assert.match(legacySimulation, /href="\/full-simulation-v2\/"/);
+  assert.match(legacySimulation, /window\.location\.href\s*=\s*['"]\/full-simulation-v2\//);
+});
+
+test('paid mode entry points declare active access gates', () => {
 
   [
     'adaptive-session/index.html',
@@ -150,19 +145,17 @@ test('full simulation and paid mode entry points declare active access gates', (
   assert.match(diagnostic, /enforcement:\s*['"]active/);
 });
 
-test('full simulation start guard runs before loading simulation data', () => {
+test('current simulation loads its runtime in dependency order', () => {
   const html = fs.readFileSync(
-    path.join(__dirname, '..', 'full-simulation', 'index.html'),
+    path.join(__dirname, '..', 'full-simulation-v2', 'index.html'),
     'utf8',
   );
-  const start = html.indexOf('function startSim()');
-  const body = html.slice(start, start + 700);
-  const guard = body.indexOf('canStart()');
-  const load = body.indexOf('loadSBAItems()');
+  const data = html.indexOf('./data/sample-exam.js');
+  const engine = html.indexOf('./exam.js');
 
-  assert.notEqual(start, -1);
-  assert.notEqual(guard, -1);
-  assert.notEqual(load, -1);
-  assert.ok(guard < load);
-  assert.doesNotMatch(body, /observeAttempt\(/);
+  assert.notEqual(data, -1);
+  assert.notEqual(engine, -1);
+  assert.ok(data < engine);
+  assert.match(html, /epistemic-profile-client\.js/);
+  assert.match(html, /learning-loop-engine\.js/);
 });

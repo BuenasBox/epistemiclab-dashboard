@@ -134,22 +134,14 @@ test('badge falls back to email when display name is unavailable', () => {
   );
 });
 
-test('home only mounts and loads the portable session badge', () => {
+test('home delegates global navigation and account access to platform navigation', () => {
   const html = fs.readFileSync(
     path.join(__dirname, '..', 'index.html'),
     'utf8',
   );
-  const expectedAssets = [
-    './shared/session-badge.css',
-    './shared/session-store.js',
-    './shared/auth-providers/mock-auth-provider.js',
-    './shared/auth-provider.js',
-    './shared/session-badge.js',
-  ];
-
-  expectedAssets.forEach((asset) => assert.match(html, new RegExp(asset)));
-  assert.match(html, /data-session-badge/);
-  assert.match(html, /href="\/profile\/"[^>]*>Mi perfil</);
+  assert.match(html, /href="\/platform-nav\.css"/);
+  assert.match(html, /src="\/platform-nav\.js"[^>]*defer/);
+  assert.match(html, /href="\/profile\/"/);
   assert.doesNotMatch(html, /data-access-gate|canAccessRoute|canStartMode/);
 });
 
@@ -163,7 +155,7 @@ test('portable badge styles do not depend on current home layout selectors', () 
   assert.doesNotMatch(css, /#hero|\.top-right|\.maturity-block|#replay-btn/);
 });
 
-test('home replaces the static integration placeholder with four training steps', () => {
+test('home presents the current experiences without legacy placeholders', () => {
   const html = fs.readFileSync(
     path.join(__dirname, '..', 'index.html'),
     'utf8',
@@ -173,17 +165,13 @@ test('home replaces the static integration placeholder with four training steps'
     html,
     /Integración: SBA → Respuesta Abierta → SAT → Simulacro Completo/,
   );
-  assert.match(html, /Ruta de entrenamiento/);
   [
-    'Diagnóstico SBA',
+    'Evaluación Teórica',
     'Respuesta Abierta',
-    'SAT / Cata',
+    'Laboratorio de Cata',
+    'Entrenamiento Adaptativo',
     'Simulacro Completo',
-  ].forEach((step) => assert.match(html, new RegExp(step)));
-  assert.equal(
-    (html.match(/<article[^>]*data-training-step/g) || []).length,
-    4,
-  );
-  assert.match(html, /data-training-status/);
-  assert.match(html, /data-training-cta/);
+  ].forEach((experience) => assert.match(html, new RegExp(experience)));
+  assert.match(html, /href="\/full-simulation-v2\/"/);
+  assert.doesNotMatch(html, /data-training-step|data-training-status/);
 });

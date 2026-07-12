@@ -239,10 +239,6 @@ test('experiences load access dependencies and enforce only matrix-paid modes', 
       functionName: 'startSession',
       route: '/open-response-lab/',
     },
-    {
-      file: 'full-simulation/index.html',
-      route: '/full-simulation/',
-    },
   ];
 
   integrations.forEach(({ file, functionName, route }) => {
@@ -275,4 +271,11 @@ test('experiences load access dependencies and enforce only matrix-paid modes', 
       assert.match(functionBody, /enforcement:\s*['"]active['"]/, file);
     }
   });
+
+  const legacySimulation = fs.readFileSync(
+    path.join(__dirname, '..', 'full-simulation', 'index.html'),
+    'utf8',
+  );
+  assert.match(legacySimulation, /url=\/full-simulation-v2\//);
+  assert.match(legacySimulation, /window\.location\.href\s*=\s*['"]\/full-simulation-v2\//);
 });
