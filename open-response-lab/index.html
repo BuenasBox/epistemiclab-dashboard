@@ -220,8 +220,6 @@ ul { margin: 0; padding-left: 19px; }
 }
 .global-nav a:hover { color: #e5c97a; border-color: #7a6230; }
 .global-nav a.nav-active { color: #e5c97a; border-color: #7a6230; background: rgba(201,168,76,.08); }
-.assist-drawer { display: none !important; }
-.assist-overlay { display: none !important; }
 </style>
 </head>
 <body>
@@ -334,6 +332,9 @@ ul { margin: 0; padding-left: 19px; }
 <script src="../shared/learning-sync.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../shared/auth-token.js"></script>
+<script src="../shared/mentor-config.js"></script>
+<script src="../shared/mentor-engine.js"></script>
+<script src="../shared/mentor-ui.js"></script>
 <script>
 (async function () {
   "use strict";
@@ -532,6 +533,15 @@ ul { margin: 0; padding-left: 19px; }
   if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
   if (overlay) overlay.addEventListener('click', closeDrawer);
 
+  // The "✓ Listo, a responder" button inside the compact Mentor popover
+  // (rendered by MentorUI.renderMentorCompact) calls this global hook when
+  // clicked. Here it closes the drawer and returns focus to the answer box,
+  // so reading a hint flows straight back into writing the response.
+  window.mentorFinishReview = function () {
+    closeDrawer();
+    if (els.answer) els.answer.focus();
+  };
+
   function render() {
     const session = currentSession();
     const item = currentItem();
@@ -556,7 +566,17 @@ ul { margin: 0; padding-left: 19px; }
     if (checklistDiv) {
       checklistDiv.innerHTML = checklist.map(c => `<label style="display:flex;gap:8px;margin-bottom:8px;"><input type="checkbox"> <span>${escapeHtml(c)}</span></label>`).join('');
     }
-    if (els.verbCoach) els.verbCoach.innerHTML = verb ? `<p style="font-size:13px;color:var(--muted)">Verbo de mando detectado: <strong style="color:var(--accent)">${escapeHtml(verb)}</strong>. Responde acorde a lo que pide el verbo.</p>` : '';
+    if (els.verbCoach) {
+      if (window.MentorEngine && window.MentorUI && window.MENTOR_CONFIG) {
+        // knownVerb = item.command_verb, read straight from or_bank — the
+        // authoritative field, bypassing stem-based verb detection.
+        const guidance = window.MentorEngine.buildMentorGuidance(questionText, item.topic, null, null, item.command_verb || verb);
+        els.verbCoach.innerHTML = window.MentorUI.renderMentorCompact(guidance);
+      } else {
+        // Fallback if the mentor modules fail to load for any reason.
+        els.verbCoach.innerHTML = verb ? `<p style="font-size:13px;color:var(--muted)">Verbo de mando detectado: <strong style="color:var(--accent)">${escapeHtml(verb)}</strong>. Responde acorde a lo que pide el verbo.</p>` : '';
+      }
+    }
 
     closeDrawer();
     els.next.disabled = state.index >= session.item_ids.length - 1;

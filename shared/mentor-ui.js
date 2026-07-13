@@ -242,6 +242,102 @@
         font-size: 14px;
       }
     }
+
+    /* ---- Compact ("pista") mentor UI: one card at a time, chip navigation ---- */
+    .mentor-compact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mentor-compact-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .mentor-tab {
+      border: 1px solid var(--border, #3a4456);
+      background: var(--panel, #1a2332);
+      color: var(--muted, #aab4bd);
+      border-radius: 999px;
+      width: 34px;
+      height: 34px;
+      font-size: 15px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .mentor-tab:hover {
+      border-color: var(--accent-2, #65b7c7);
+    }
+
+    .mentor-tab.active {
+      border-color: var(--accent, #d5a84f);
+      background: rgba(213, 168, 79, 0.14);
+      color: var(--gold-light, #e5c97a);
+    }
+
+    .mentor-compact-body {
+      background: var(--panel, #1a2332);
+      border: 1px solid var(--border, #3a4456);
+      border-radius: 8px;
+      padding: 16px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .mentor-pane-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-light, #e5c97a);
+      margin-bottom: 8px;
+    }
+
+    .mentor-more {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .mentor-more summary {
+      cursor: pointer;
+      color: var(--accent-2, #65b7c7);
+    }
+
+    .mentor-review-group summary {
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-2, #65b7c7);
+      padding: 6px 0;
+    }
+
+    .mentor-review-group {
+      border-bottom: 1px solid var(--border, #3a4456);
+    }
+
+    .mentor-review-group:last-child {
+      border-bottom: none;
+    }
+
+    .mentor-done-btn {
+      align-self: flex-start;
+      border: 1px solid #507b83;
+      background: #17343b;
+      color: #d6f7fb;
+      border-radius: 6px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .mentor-done-btn:hover {
+      border-color: #6fa6b0;
+    }
   `;
 
   /**
@@ -320,9 +416,7 @@
           <div class="mentor-example">
             <strong>Ejemplo:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>
             <strong>Camino de pensamiento:</strong><br>
-            ${verbMentor.example_thinking_path.map(step =>
-              `→ ${escapeHtml(step)}`
-            ).join('<br>')}
+            ${escapeHtml(verbMentor.example_thinking_path)}
           </div>
         </div>
       </div>
@@ -371,7 +465,7 @@
           <div class="mentor-causal-path">
             <strong>${escapeHtml(path.label)}</strong>
             <div style="margin-top:8px;">
-              ${path.path.map(step =>
+              ${path.steps.map(step =>
                 `<div class="mentor-causal-step">${escapeHtml(step)}</div>`
               ).join('')}
             </div>
@@ -590,10 +684,179 @@
   }
 
   /**
+   * ---- Compact ("pista") rendering ----
+   * One pane visible at a time behind small chip navigation, plus a single
+   * "Listo, a responder" action that closes the whole thing. This is the
+   * recommended entry point for open-response-lab: it avoids showing all 6
+   * coaching layers stacked and expanded at once (which reads as a long,
+   * repetitive wall of text before the student has even tried to answer).
+   *
+   * @param {object} guidance - Mentor guidance from MentorEngine
+   * @returns {string} - HTML string
+   */
+  function renderMentorCompact(guidance) {
+    if (!guidance || guidance.error) {
+      return '<p style="font-size:13px;opacity:.75;">El mentor no está disponible para esta pregunta todavía.</p>';
+    }
+
+    const layers = guidance.layers || {};
+    const paneDefs = [
+      { key: 'verb_mentor', icon: '🎯', title: 'Guía del verbo', body: renderVerbMentorPane(layers.verb_mentor) },
+      { key: 'thinking_prompts', icon: '💭', title: 'Preguntas para pensar', body: renderThinkingPromptsPane(layers.thinking_prompts) },
+      { key: 'causal_paths', icon: '🔗', title: 'Cadena causal', body: renderCausalPathsPane(layers.causal_paths) },
+      { key: 'concept_checklist', icon: '✅', title: 'Conceptos', body: renderConceptChecklistPane(layers.concept_checklist) },
+      { key: 'distinction_structure', icon: '🏆', title: 'Estructura sólida', body: renderDistinctionStructurePane(layers.distinction_structure) },
+      { key: 'self_review', icon: '🔍', title: 'Autorrevisión', body: renderSelfReviewPane(layers.self_review) }
+    ].filter(function (p) { return p.body; });
+
+    if (!paneDefs.length) {
+      return '<p style="font-size:13px;opacity:.75;">Aún no hay guía específica para esta pregunta. Identifica qué pide el verbo, conecta causa y efecto, y revisa tu respuesta antes de enviarla.</p>';
+    }
+
+    const tabs = paneDefs.map(function (p, i) {
+      return `<button type="button" class="mentor-tab${i === 0 ? ' active' : ''}" data-mentor-tab="${p.key}" onclick="mentorShowPane(this,'${p.key}')" title="${escapeHtml(p.title)}">${p.icon}</button>`;
+    }).join('');
+
+    const panes = paneDefs.map(function (p, i) {
+      return `<div class="mentor-pane" data-mentor-pane="${p.key}"${i === 0 ? '' : ' hidden'}>${p.body}</div>`;
+    }).join('');
+
+    const html = `
+      <style>${MENTOR_STYLES}</style>
+      <div class="mentor-compact" data-mentor-compact>
+        <div class="mentor-compact-tabs">${tabs}</div>
+        <div class="mentor-compact-body">${panes}</div>
+        <button type="button" class="mentor-done-btn" onclick="mentorFinishReview()">✓ Listo, a responder</button>
+      </div>
+    `;
+
+    return html;
+  }
+
+  function renderVerbMentorPane(verbMentor) {
+    if (!verbMentor) return '';
+    return `
+      <div class="mentor-pane-title">Qué significa «${escapeHtml(verbMentor.verb)}» — ${escapeHtml(verbMentor.mentor_role)}</div>
+      <p class="mentor-guidance-text" style="margin-bottom:8px;">${escapeHtml(verbMentor.core_guidance)}</p>
+      <ol class="mentor-list">
+        ${verbMentor.thinking_structure.map(step => `<li class="mentor-list-item">${escapeHtml(step)}</li>`).join('')}
+      </ol>
+      <details class="mentor-more">
+        <summary>Ver frases clave, qué evitar y un ejemplo</summary>
+        <div style="margin-top:8px;">
+          ${verbMentor.key_phrases.map(phrase => `<span class="mentor-phrase-tag">${escapeHtml(phrase)}</span>`).join('')}
+        </div>
+        <ul class="mentor-list" style="margin-top:8px;">
+          ${verbMentor.avoid.map(a => `<li class="mentor-list-item">${escapeHtml(a)}</li>`).join('')}
+        </ul>
+        <div class="mentor-example">
+          <strong>Ejemplo:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>
+          <strong>Camino de pensamiento:</strong> ${escapeHtml(verbMentor.example_thinking_path)}
+        </div>
+      </details>
+    `;
+  }
+
+  function renderThinkingPromptsPane(prompts) {
+    if (!prompts) return '';
+    return `
+      <div class="mentor-pane-title">Preguntas para pensar</div>
+      <p class="mentor-guidance-text" style="margin-bottom:8px;">${escapeHtml(prompts.instruction)}</p>
+      <ol class="mentor-list">
+        ${prompts.prompts.map(prompt => `<li class="mentor-list-item">${escapeHtml(prompt)}</li>`).join('')}
+      </ol>
+    `;
+  }
+
+  function renderCausalPathsPane(causalPaths) {
+    if (!causalPaths) return '';
+    const pathsHtml = causalPaths.paths.length > 0
+      ? causalPaths.paths.map(path => `
+          <div class="mentor-causal-path">
+            <strong>${escapeHtml(path.label)}</strong>
+            <div style="margin-top:8px;">
+              ${path.steps.map(step => `<div class="mentor-causal-step">${escapeHtml(step)}</div>`).join('')}
+            </div>
+          </div>
+        `).join('')
+      : `<p class="mentor-guidance-text">${escapeHtml(causalPaths.guidance)}</p>`;
+    return `
+      <div class="mentor-pane-title">Mentor de cadenas causales</div>
+      ${pathsHtml}
+    `;
+  }
+
+  function renderConceptChecklistPane(concepts) {
+    if (!concepts) return '';
+    const hasFoundational = concepts.foundational_level && concepts.foundational_level.length > 0;
+    const hasDistinction = concepts.distinction_level && concepts.distinction_level.length > 0;
+    if (!hasFoundational && !hasDistinction) return '';
+    return `
+      <div class="mentor-pane-title">Conceptos — ${escapeHtml(concepts.category)}</div>
+      ${hasFoundational ? `<ul class="mentor-concept-list">${concepts.foundational_level.map(c => `<li class="mentor-concept-item">${escapeHtml(c)}</li>`).join('')}</ul>` : ''}
+      ${hasDistinction ? `
+        <details class="mentor-more">
+          <summary>Ver conceptos de nivel de distinción</summary>
+          <ul class="mentor-concept-list" style="margin-top:8px;">
+            ${concepts.distinction_level.map(c => `<li class="mentor-concept-item">${escapeHtml(c)}</li>`).join('')}
+          </ul>
+        </details>
+      ` : ''}
+    `;
+  }
+
+  function renderDistinctionStructurePane(distinction) {
+    if (!distinction) return '';
+    return `
+      <div class="mentor-pane-title">${escapeHtml(distinction.title)}</div>
+      ${distinction.elements.map(el => `<div class="mentor-structure-element">✓ ${escapeHtml(el)}</div>`).join('')}
+      ${distinction.common_weakness ? `<div class="mentor-warning" style="margin-top:8px;">⚠️ ${escapeHtml(distinction.common_weakness)}</div>` : ''}
+    `;
+  }
+
+  function renderSelfReviewPane(reviewQuestions) {
+    if (!reviewQuestions || !reviewQuestions.length) return '';
+    return `
+      <div class="mentor-pane-title">Antes de enviar, verifica esto</div>
+      ${reviewQuestions.map(group => `
+        <details class="mentor-review-group">
+          <summary>${escapeHtml(group.category)}</summary>
+          <ul class="mentor-list" style="margin:6px 0 10px;">
+            ${group.questions.map(q => `<li class="mentor-list-item">${escapeHtml(q)}</li>`).join('')}
+          </ul>
+        </details>
+      `).join('')}
+    `;
+  }
+
+  /**
+   * Switch the visible pane in the compact mentor UI (called from onclick).
+   */
+  function mentorShowPane(tabEl, key) {
+    const shell = tabEl.closest('.mentor-compact');
+    if (!shell) return;
+    shell.querySelectorAll('.mentor-tab').forEach(t => t.classList.toggle('active', t === tabEl));
+    shell.querySelectorAll('.mentor-pane').forEach(p => { p.hidden = p.getAttribute('data-mentor-pane') !== key; });
+  }
+
+  /**
+   * Called when the student clicks "Listo, a responder". Default is a no-op;
+   * the host page (open-response-lab/index.html) overrides window.mentorFinishReview
+   * to close the drawer/popover and return focus to the answer textarea.
+   */
+  function mentorFinishReviewDefault() {}
+  if (typeof window.mentorFinishReview !== 'function') {
+    window.mentorFinishReview = mentorFinishReviewDefault;
+  }
+
+  window.mentorShowPane = mentorShowPane;
+
+  /**
    * Export public API
    */
   window.MentorUI = {
     renderMentorUI,
+    renderMentorCompact,
     renderMentorSummary,
     mentorToggleCard // Exposed for onclick handlers
   };

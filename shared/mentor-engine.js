@@ -16,16 +16,22 @@
    * @param {string} topic - Question topic (e.g., "viticulture", "oak_ageing")
    * @param {string} studentAnswer - Optional student response (for feedback mode)
    * @param {object} learnerState - Optional learner info (weak topics, etc)
+   * @param {string} knownVerb - Optional. If the caller already knows the
+   *   command_verb (e.g. read directly from the or_bank row), pass it here
+   *   to skip stem-based detection entirely. This is the recommended path:
+   *   or_bank.command_verb is authoritative and avoids any risk of the
+   *   stem-matching heuristics below failing to recognize a verb (for
+   *   example on Spanish-language stems not covered by the regex patterns).
    * @returns {object} - Coaching packet with all 6 layers
    */
-  function buildMentorGuidance(stem, topic, studentAnswer, learnerState) {
+  function buildMentorGuidance(stem, topic, studentAnswer, learnerState, knownVerb) {
     if (!window.MENTOR_CONFIG) {
       console.error('MENTOR_CONFIG not loaded');
       return { error: 'Config not loaded' };
     }
 
     const config = window.MENTOR_CONFIG;
-    const verb = detectVerbFromStem(stem);
+    const verb = (knownVerb && config.verb_mentors[knownVerb]) ? knownVerb : detectVerbFromStem(stem);
     const verbMentor = verb ? config.verb_mentors[verb] : null;
 
     const guidance = {
@@ -66,7 +72,15 @@
 
   /**
    * Detect command verb from question stem
-   * Uses pattern matching and keyword detection
+   * Uses pattern matching and keyword detection.
+   *
+   * NOTE: this is a fallback path. Whenever a caller already has the
+   * or_bank.command_verb value for the item, it should pass it as
+   * buildMentorGuidance(..., knownVerb) instead of relying on this
+   * function — that DB column is authoritative and language-independent.
+   * The patterns below cover both English and Spanish stems (the live
+   * or_bank content is in Spanish), but stem-matching can never be as
+   * reliable as a stored, verified field.
    */
   function detectVerbFromStem(stem) {
     if (!stem) return null;
@@ -74,22 +88,22 @@
     const stemLower = String(stem).toLowerCase();
     const verbs = window.MENTOR_CONFIG.verb_mentors;
 
-    // Check for explicit verb patterns
+    // Check for explicit verb patterns (English + Spanish)
     const patterns = {
-      explain: /\bexplain (how|why)|account for/i,
-      describe: /\bdescribe|characterize/i,
-      justify: /\bjustify|defend/i,
-      assess: /\bassess|evaluate the quality|rate/i,
-      evaluate: /\bevaluate|appraise/i,
-      compare: /\bcompare|contrast/i,
-      why: /^why |^why\?/i,
-      how: /^how |^how\?/i,
-      discuss: /\bdiscuss|examine/i,
-      recommend: /\brecommend|suggest/i,
-      outline: /\boutline/i,
-      state: /\bstate|list the/i,
-      list: /\blist|enumerate/i,
-      identify_and_explain: /identify and explain/i
+      identify_and_explain: /identify and explain|identifica y explica/i,
+      explain: /\bexplain (how|why)|account for|\bexplica(r|n)?\b/i,
+      describe: /\bdescribe|characterize|\bdescribe\b|describa|caracteriza/i,
+      justify: /\bjustify|defend|\bjustifica(r)?\b|justifique/i,
+      assess: /\bassess|evaluate the quality|rate|eval[uú]a la calidad|valora la calidad/i,
+      evaluate: /\bevaluate|appraise|\beval[uú]a\b|pondera/i,
+      compare: /\bcompare|contrast|\bcompara(r)?\b|contrasta/i,
+      why: /^why |^why\?|^por qué|^¿por qué/i,
+      how: /^how |^how\?|^cómo|^¿cómo/i,
+      discuss: /\bdiscuss|examine|\bdiscute\b|analiza|examina/i,
+      recommend: /\brecommend|suggest|\brecomienda(r)?\b|sugiere/i,
+      outline: /\boutline|esquematiza|delinea/i,
+      state: /\bstate|list the|\bindica\b|establece|menciona/i,
+      list: /\blist|enumerate|\benumera\b|\bnombra\b|\blista\b/i
     };
 
     for (const [verb, pattern] of Object.entries(patterns)) {
@@ -98,11 +112,11 @@
       }
     }
 
-    // Fallback: check for key verbs in order
-    if (stemLower.includes('compare')) return 'compare';
-    if (stemLower.includes('explain')) return 'explain';
+    // Fallback: check for key verbs anywhere in the stem (English + Spanish)
+    if (stemLower.includes('compare') || stemLower.includes('compara')) return 'compare';
+    if (stemLower.includes('explain') || stemLower.includes('explica')) return 'explain';
     if (stemLower.includes('describe')) return 'describe';
-    if (stemLower.includes('justify')) return 'justify';
+    if (stemLower.includes('justify') || stemLower.includes('justifica')) return 'justify';
     if (stemLower.includes('assess')) return 'assess';
 
     return null;

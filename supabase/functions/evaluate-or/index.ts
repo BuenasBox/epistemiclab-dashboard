@@ -7,6 +7,13 @@
  * about conceptual coverage and causal reasoning completeness. This is NOT official
  * grading or WSET-equivalent evaluation. It's a pedagogical coaching tool.
  *
+ * As of this version, it also returns `distinction_feedback`: a per-question,
+ * WSET3-grounded explanation (authored in or_bank.feedback_profile) of *why*
+ * the response landed at its depth band, not just which concepts were found.
+ * `depth` can no longer reach "strong" purely from concept coverage — explicit
+ * causal reasoning is required too, matching how distinction-level answers
+ * are actually judged.
+ *
  * GOVERNANCE:
  * - safe_for_examiner: false
  * - formative_only: true
@@ -32,6 +39,17 @@ const CONNECTORS = new Set([
   'conduce','influye','afecta','impacta','therefore','because','leads','results'
 ]);
 
+// Maps the internal depth bucket to the feedback_profile key authored in
+// or_bank. feedback_profile holds a per-question, WSET3-grounded explanation
+// of what separates a foundational / developing / distinction-level (strong)
+// response — this is the actual "why" the student needs, not just a list of
+// which concepts were found or missing.
+const DEPTH_TO_FEEDBACK_KEY = {
+  strong: 'STRONG_RESPONSE',
+  developing: 'DEVELOPING_RESPONSE',
+  emerging: 'FOUNDATIONAL_RESPONSE',
+};
+
 /**
  * Normalize text for comparison:
  * - lowercase
@@ -48,7 +66,7 @@ function normalizeText(text) {
  * Extract meaningful tokens (words >1 char, excluding stopwords)
  */
 function meaningfulTokens(text) {
-  return (normalizeText(text).match(/\b[^\\W\\d_](?:[^\\W_]|['-])*\\b/gu) || [])
+  return (normalizeText(text).match(/\b[^\W\d_](?:[^\W_]|['-])*\b/gu) || [])
     .filter((t) => t.length > 1 && !STOPWORDS.has(t));
 }
 
@@ -166,7 +184,7 @@ Deno.serve(async (req) => {
     // 3. FETCH QUESTION DEFINITION
     const { data: item, error: itemError } = await supabase
       .from('or_bank')
-      .select('expected_concepts, response_depth_target')
+      .select('expected_concepts, response_depth_target, feedback_profile')
       .eq('item_id', item_id)
       .single();
 
@@ -180,6 +198,9 @@ Deno.serve(async (req) => {
     // 4. CONCEPT ANALYSIS
     const expected = Array.isArray(item.expected_concepts) ? item.expected_concepts : [];
     const depthTarget = (item.response_depth_target || '').toString();
+    const feedbackProfile = (item.feedback_profile && typeof item.feedback_profile === 'object')
+      ? item.feedback_profile
+      : {};
 
     const present = [];   // concepts_detected
     const partial = [];   // also counts as detected for feedback purposes
@@ -204,7 +225,29 @@ Deno.serve(async (req) => {
     const covered = present.length + partial.length;
     const total = expected.length || 1;
     const ratio = covered / total;
-    const depth = ratio >= 0.75 ? 'strong' : ratio >= 0.4 ? 'developing' : 'emerging';
+    let depth = ratio >= 0.75 ? 'strong' : ratio >= 0.4 ? 'developing' : 'emerging';
+
+    // A response cannot be "strong" (distinction-adjacent) on concept
+    // coverage alone if it never makes the causal reasoning explicit — WSET
+    // Level 3 distinction-level answers are judged on explaining *why*, not
+    // just naming the right concepts. Cap the band one step down when
+    // explicit causal language is absent, so "strong" actually means both
+    // complete AND well-reasoned.
+    if (depth === 'strong' && missing_causal_reasoning.length > 0) {
+      depth = 'developing';
+    }
+
+    // 6b. DISTINCTION-LEVEL EXPLANATION
+    // The actual "why is my response at this level" text, authored per
+    // question in or_bank.feedback_profile (STRONG_RESPONSE /
+    // DEVELOPING_RESPONSE / FOUNDATIONAL_RESPONSE). Falls back to null
+    // (never a fabricated generic message) when this specific item hasn't
+    // been authored yet, so the frontend can degrade gracefully instead of
+    // showing something misleading or invented.
+    const feedbackKey = DEPTH_TO_FEEDBACK_KEY[depth];
+    const distinction_feedback = (feedbackKey && feedbackProfile[feedbackKey])
+      ? feedbackProfile[feedbackKey]
+      : null;
 
     // 7. RESPONSE
     return new Response(
@@ -217,6 +260,10 @@ Deno.serve(async (req) => {
 
         // Informational (depth classification, not official score)
         depth,                                            // 'emerging', 'developing', 'strong'
+
+        // WHY the response landed at this depth, in WSET3-grounded language,
+        // specific to this question. null when not yet authored for this item.
+        distinction_feedback,
 
         // Governance watermark (user_id:24h = not persistent beyond 24h, not official)
         watermark: `${user.id}:24h`,
@@ -236,6 +283,7 @@ Deno.serve(async (req) => {
         concepts_absent: [],
         missing_causal_reasoning: [],
         improvement_suggestions: ['Sin retroalimentación disponible para este elemento.'],
+        distinction_feedback: null,
       }),
       {
         status: 500,

@@ -37,6 +37,7 @@
     const causalMissing = evaluateOrResponse.missing_causal_reasoning || [];
     const suggestions = evaluateOrResponse.improvement_suggestions || [];
     const depth = evaluateOrResponse.depth || 'emerging';
+    const distinctionFeedback = evaluateOrResponse.distinction_feedback || null;
 
     // Strengths: conceptos detectados (present + partial)
     const strengths = detected.length > 0
@@ -78,6 +79,7 @@
       next_step,
       depth_label: depthInfo.label,
       depth_color: depthInfo.color,
+      distinction_feedback: distinctionFeedback,
       raw: evaluateOrResponse // Keep original for debugging
     };
   }
@@ -124,6 +126,17 @@
       </div>
     `;
 
+    // The "why": a per-question explanation of what separates this response's
+    // depth band from the next one, grounded in what a WSET3 distinction-level
+    // answer requires. Only rendered when authored for this specific question
+    // (or_bank.feedback_profile) — no generic filler when it's missing.
+    const distinctionSection = e.distinction_feedback ? `
+      <div class="feedback-section" style="border-left: 3px solid ${e.depth_color}; padding: 12px 14px; background: ${e.depth_color}14; border-radius: 4px; margin-bottom: 12px;">
+        <div class="feedback-title" style="font-size: 11px; text-transform: uppercase; color: ${e.depth_color}; font-weight: 600; margin-bottom: 8px;">🎯 Por qué tu respuesta está en este nivel</div>
+        <p style="margin: 0; font-size: 13px; line-height: 1.55;">${e.distinction_feedback}</p>
+      </div>
+    ` : '';
+
     const strengthsSection = `
       <div class="feedback-section" style="border-left: 3px solid #7bc47f; padding: 12px 14px; background: rgba(123, 196, 127, 0.08); border-radius: 4px; margin-bottom: 12px;">
         <div class="feedback-title" style="font-size: 11px; text-transform: uppercase; color: #7bc47f; font-weight: 600; margin-bottom: 8px;">✓ Fortalezas</div>
@@ -156,7 +169,7 @@
       </div>
     `;
 
-    return depthBadge + strengthsSection + gapsSection + causalSection + nextSection;
+    return depthBadge + distinctionSection + strengthsSection + gapsSection + causalSection + nextSection;
   }
 
   /**
