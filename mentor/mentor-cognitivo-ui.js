@@ -43,8 +43,37 @@
       '</div>';
   }
 
+  /**
+   * validateGovernance: mismo espíritu que el validador de
+   * or-intelligence-engine.js — asegurar que el texto renderizado no suena a
+   * calificación oficial ni a equivalencia WSET.
+   *
+   * Lista ajustada al contexto de este módulo: mentor-cognitivo sí necesita
+   * poder citar el corte real de aprobación del examen (55%) y porcentajes
+   * de preparación (readiness, calibración, etc.) — eso es contexto factual
+   * de "dónde estás respecto al examen", no una calificación inventada sobre
+   * una respuesta puntual. Por eso "aprobado" y "%" NO están en esta lista,
+   * a diferencia de la de or-intelligence-engine.js. Sí se bloquean los
+   * términos que implicarían una nota o equivalencia oficial.
+   */
+  var FORBIDDEN = [
+    'score', 'puntuación', 'calificación', 'reprobado',
+    'passed', 'failed', 'wset', 'oficial', 'grade', 'percentage'
+  ];
+
+  function validateGovernance(result) {
+    var text = JSON.stringify(result || {}).toLowerCase();
+    var found = FORBIDDEN.filter(function (word) { return text.indexOf(word) !== -1; });
+    if (found.length > 0) {
+      console.warn('⚠️ Governance check (mentor-cognitivo): forbidden words detected:', found);
+      return false;
+    }
+    return true;
+  }
+
   function render(container, result) {
     if (!container) return;
+    validateGovernance(result);
     var msgs = (result && result.messages) || [];
     if (!msgs.length) {
       container.innerHTML = '<div class="mentor-empty">El Mentor no tiene observaciones con la evidencia actual.</div>';
@@ -53,5 +82,5 @@
     container.innerHTML = msgs.map(cardHtml).join('');
   }
 
-  return { render: render, cardHtml: cardHtml, SEV_LABEL: SEV_LABEL };
+  return { render: render, cardHtml: cardHtml, validateGovernance: validateGovernance, SEV_LABEL: SEV_LABEL };
 });
