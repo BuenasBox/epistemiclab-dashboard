@@ -41,9 +41,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Generar sitio minificado
+        run: npm run build
 
       - name: Servir el sitio estático
-        run: npx --yes http-server . -p 4173 -s &
+        run: npx --yes http-server dist -p 4173 -s &
 
       - name: Esperar a que el servidor responda
         run: npx --yes wait-on http://127.0.0.1:4173
