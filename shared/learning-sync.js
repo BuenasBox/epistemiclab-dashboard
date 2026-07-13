@@ -291,6 +291,19 @@
     });
   }
 
+  // PWA offline→online: si el usuario terminó una práctica sin conexión y
+  // luego la recupera sin recargar la página (caso típico en móvil), esto
+  // reintenta el envío de lo pendiente sin que tenga que volver a entrar.
+  // initializeLearningSync() es seguro de llamar varias veces: no duplica
+  // el envoltorio de learnerIntelligence (wrapLearnerIntelligence ya se
+  // protege con __supabaseSyncWrapped) y cada syncPending() lee el estado
+  // pendiente real desde localStorage en el momento de la llamada.
+  if (root.addEventListener) {
+    root.addEventListener('online', function () {
+      initializeLearningSync();
+    });
+  }
+
   return {
     HISTORY_KEY: HISTORY_KEY,
     SYNC_KEY_PREFIX: SYNC_KEY_PREFIX,
