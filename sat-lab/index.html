@@ -119,7 +119,8 @@
   .report-hero .sat-hero-glass{ width:108px; }
   .report-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   @media(max-width:620px){ .report-grid{ grid-template-columns:1fr; } .report-hero{ flex-direction:column; text-align:center; } }
-  .rep-li{ position:relative; padding:7px 0 7px 22px; font-size:13.7px; line-height:1.45; border-bottom:1px solid var(--line); }
+  .rep-li{ position:relative; padding:7px 0 7px 22px; font-size:13.7px; line-height:1.45; border-bottom:1px solid var(--line); opacity:0; transform:translateY(4px); }
+  .rep-li.rli-in{ opacity:1; transform:translateY(0); transition:opacity .35s ease, transform .35s ease; }
   .rep-li:last-child{ border-bottom:0; }
   .rep-li.ok::before{ content:"✔"; position:absolute; left:0; top:7px; color:var(--ok); }
   .rep-li.warn::before{ content:"●"; position:absolute; left:0; top:7px; color:var(--warn); }
@@ -244,6 +245,7 @@
     #screen-summary .card, #screen-summary .ph-done, #screen-summary .tally .pill{ animation:none !important; }
     .prog-track > i{ transition:none !important; }
     #screen-tasting .sat-hero{ position:static !important; }
+    .rep-li{ transition:none !important; }
   }
 
 
@@ -796,6 +798,28 @@
     $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
     loadRecommend();
     loadRevealHeader();
+    animateSummaryReveal();
+  }
+  // SAT-UX-07 reconciliación: el resumen ya tenía entrada cascada por tarjeta
+  // (ux7-rise) y celebración (se-ring/se-check) — mismo vocabulario que el
+  // resto del sistema. Lo único que faltaba: 1) que las tarjetas entren en
+  // cascada real (antes entraban todas a la vez) y 2) que "Fortalezas" y
+  // "Aspectos por reforzar" — el verdadero mapa de burbujas de esta página —
+  // aparezcan una a una en vez de en bloque. No se toca el celebrate-ring
+  // existente. Respeta prefers-reduced-motion.
+  function animateSummaryReveal(){
+    var root = $('screen-summary');
+    if(!root) return;
+    var reduce = typeof window!=='undefined' && window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cascade = root.querySelectorAll('.report-hero, .card');
+    var items = root.querySelectorAll('.rep-li');
+    if(reduce){
+      items.forEach(function(el){ el.classList.add('rli-in'); });
+      return;
+    }
+    cascade.forEach(function(el,i){ el.style.animationDelay = (i*0.07)+'s'; });
+    items.forEach(function(el,i){ setTimeout(function(){ el.classList.add('rli-in'); }, 260 + i*70); });
   }
 
   // ============================================================================

@@ -265,7 +265,7 @@
       '<div class="fs-shell fs-debrief">' +
       '<div class="fs-eyebrow">Examen completado' + (S.examReason === 'time_expired' ? ' · se agotó el tiempo' : '') + '</div>' +
       '<h1 class="fs-h1">Tu resultado</h1>' +
-      '<div class="fs-result"><div class="fs-ring" style="--p:' + accuracyPct + '"><i>' + accuracyPct + '%</i></div><div><div class="fs-result-k">' + r.correct + ' de ' + r.total + ' ejes en rango</div><div class="fs-lead">' + (accuracyPct >= 55 ? 'Por encima del umbral de aprobado (55%).' : 'Por debajo del umbral de aprobado (55%). Sigue practicando.') + '</div></div></div>' +
+      '<div class="fs-result"><div class="fs-ring" style="--p:0"><i>' + accuracyPct + '%</i></div><div><div class="fs-result-k">' + r.correct + ' de ' + r.total + ' ejes en rango</div><div class="fs-lead">' + (accuracyPct >= 55 ? 'Por encima del umbral de aprobado (55%).' : 'Por debajo del umbral de aprobado (55%). Sigue practicando.') + '</div></div></div>' +
       (mentorMsg ? '<section class="fs-card fs-mentor"><div class="fs-eyebrow">Qué dice tu Mentor</div><div class="fs-m-title">' + esc(mentorMsg.title) + '</div><p class="fs-m-text">' + esc(mentorMsg.body) + '</p></section>' : '') +
       (loop ? '<section class="fs-card fs-next"><div class="fs-eyebrow">Tu siguiente paso (Learning Loop)</div><div class="fs-next-p">' + esc(loop.next.label) + '</div><p class="fs-m-text">' + esc(loop.next.reason) + '</p></section>' : '') +
       winesHtml +
@@ -273,6 +273,43 @@
       '<div class="fs-debrief-actions"><a class="fs-cta" href="../dashboard/">Ver mi Dashboard →</a><button class="fs-ghost" id="fs-again">Otro simulacro</button></div>' +
       '<div class="fs-gov">Práctica formativa · No es evaluación oficial</div></div>';
     var again = document.getElementById('fs-again'); if (again) again.onclick = function () { reset(); render(); };
+    animateDebrief(app, accuracyPct);
+  }
+  // animateDebrief: revela el resultado del simulacro con el mismo lenguaje
+  // visual que Open Response Lab y Mentor — anillo que se llena progresivamente
+  // más mapa de "burbujas" (cada fs-fb entra en cascada según su tono) — sin
+  // tocar el texto ya existente (umbral 55% es contexto agregado legítimo,
+  // igual que en Mentor). Respeta prefers-reduced-motion.
+  function animateDebrief(root, accuracyPct) {
+    if (!root) return;
+    var reduceMotion = typeof window !== 'undefined' && window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ring = root.querySelector('.fs-ring');
+    var cards = root.querySelectorAll('.fs-card');
+    var fbs = root.querySelectorAll('.fs-fb');
+
+    if (reduceMotion) {
+      if (ring) { ring.style.setProperty('--p', accuracyPct); ring.classList.add('fs-in'); }
+      cards.forEach(function (c) { c.classList.add('fs-in'); });
+      fbs.forEach(function (f) { f.classList.add('fs-in'); });
+      return;
+    }
+
+    if (ring) {
+      ring.classList.add('fs-in');
+      var start = null, duration = 1000;
+      function step(ts) {
+        if (!start) start = ts;
+        var t = Math.min(1, (ts - start) / duration);
+        var eased = 1 - Math.pow(1 - t, 3);
+        ring.style.setProperty('--p', (accuracyPct * eased).toFixed(1));
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('fs-in'); }, 250 + i * 120); });
+    fbs.forEach(function (f, i) { setTimeout(function () { f.classList.add('fs-in'); }, 500 + i * 55); });
   }
   function init(rootEl) { app = rootEl || document.getElementById('fs-root'); reset(); render(); }
   var api = { gradeWith: grade, ordinalTone: ordinalTone, aromaTone: aromaTone, exactTone: exactTone, toneToOutcome: toneToOutcome, buildExamMetrics: buildExamMetrics, SCALES: SCALES, init: init };

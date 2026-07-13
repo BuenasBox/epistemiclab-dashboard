@@ -108,6 +108,30 @@
       MentorCognitivoUI.render(holder, { messages: [plan.mentor] });
       mount.appendChild(holder);
     }
+    animateArReveal(rootEl);
+  }
+  // animateArReveal: revela el plan de recuperación en cascada — las
+  // secciones aparecen una a una y, dentro de "Qué evidencia debes mejorar",
+  // cada métrica (now% → target%) entra por separado, dando tiempo a leer
+  // dónde reforzar en vez de volcar todo de golpe. Mismo espíritu que el
+  // resto del sistema. Respeta prefers-reduced-motion.
+  function animateArReveal(root) {
+    if (!root) return;
+    var reduce = typeof window !== 'undefined' && window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cards = root.querySelectorAll('.ar-card');
+    var evs = root.querySelectorAll('.ar-ev');
+    var items = root.querySelectorAll('.ar-list li');
+    if (reduce) {
+      cards.forEach(function (c) { c.classList.add('ar-in'); });
+      evs.forEach(function (e) { e.classList.add('ar-in'); });
+      items.forEach(function (li) { li.classList.add('ar-in'); });
+      return;
+    }
+    cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('ar-in'); }, 60 + i * 90); });
+    items.forEach(function (li, i) { setTimeout(function () { li.classList.add('ar-in'); }, 60 + i * 70); });
+    var evStart = 60 + cards.length * 90 + 120;
+    evs.forEach(function (e, i) { setTimeout(function () { e.classList.add('ar-in'); }, evStart + i * 80); });
   }
   return { buildRecoveryPlan: buildRecoveryPlan, render: render };
 });

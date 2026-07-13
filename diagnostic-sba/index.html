@@ -958,6 +958,24 @@ footer {
 }
 .section-sep { height: 1px; background: var(--border-soft); margin: 18px 0; }
 
+/* ---- RESULTADO / MAPA COGNITIVO — reveal animado (Fase de animación
+   unificada). Reutiliza el vocabulario ya existente en esta página (pulsos
+   suaves, entradas en cascada) para la fase de RESULTADO, sin tocar el
+   sistema del orbe/vacilación/lock-bounce que ya cubre la fase de PREGUNTA.
+   Respeta prefers-reduced-motion (regla global más abajo). ---- */
+.correctness-badge { opacity: 0; transform: scale(.92); }
+.correctness-badge.rv-in { opacity: 1; transform: scale(1); transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1); }
+.metric-chip { opacity: 0; transform: translateY(6px); }
+.metric-chip.rv-in { opacity: 1; transform: translateY(0); transition: opacity .4s ease, transform .4s ease; }
+.causal-node { opacity: 0; transform: translateY(6px); }
+.causal-node.rv-in { opacity: 1; transform: translateY(0); transition: opacity .4s ease, transform .4s ease; }
+.stat-cell { opacity: 0; transform: translateY(6px); }
+.stat-cell.rv-in { opacity: 1; transform: translateY(0); transition: opacity .4s ease, transform .4s ease; }
+.stat-ring-wrap { display: flex; align-items: center; justify-content: center; margin: 2px 0 16px; }
+.stat-ring { --p: 0; width: 100px; height: 100px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--gold) calc(var(--p)*1%), var(--border) 0); opacity: 0; transform: scale(.9); }
+.stat-ring.rv-in { opacity: 1; transform: scale(1); transition: opacity .5s ease, transform .5s cubic-bezier(.34,1.56,.64,1); }
+.stat-ring > i { width: 80px; height: 80px; border-radius: 50%; background: var(--panel); display: grid; place-items: center; font-style: normal; font-weight: 700; font-size: 21px; color: var(--text); }
+
 /* ---- Mode Overlay ---- */
 .mode-overlay { display:none; position:fixed; inset:0; background:rgba(15,17,21,.96); z-index:500; align-items:center; justify-content:center; padding-top:96px; overflow-y:auto; }
 .mode-overlay.active { display:flex; }
@@ -1895,6 +1913,66 @@ async function goToReveal() {
 // -----------------------------------------------------------------------
 // STAGE 5: REVEAL
 // -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
+// REVEAL ANIMATIONS — Fase de animación unificada del sistema. La cabina
+// ya tiene su propio vocabulario visual para la fase de PREGUNTA (orbe,
+// vacilación, lock-bounce); esto anima solo la fase de RESULTADO (reveal
+// por pregunta y mapa cognitivo de sesión), con el mismo espíritu que
+// Open Response Lab / Mentor / Dashboard / Simulacro: nada de "BIEN/MAL"
+// como golpe seco, sino una revelación en cascada que además señala dónde
+// reforzar. Respeta prefers-reduced-motion.
+// -----------------------------------------------------------------------
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+function staggerIn(nodes, startDelay, gap) {
+  nodes.forEach(function (el, i) { setTimeout(function () { el.classList.add('rv-in'); }, startDelay + i * gap); });
+}
+function animateRingTo(el, targetPct, duration) {
+  if (!el) return;
+  var start = null;
+  function step(ts) {
+    if (!start) start = ts;
+    var t = Math.min(1, (ts - start) / duration);
+    var eased = 1 - Math.pow(1 - t, 3);
+    el.style.setProperty('--p', (targetPct * eased).toFixed(1));
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function animateResultReveal() {
+  var root = document.getElementById('mainContent');
+  if (!root) return;
+  var badge = root.querySelector('.correctness-badge');
+  var chips = root.querySelectorAll('.reveal-metrics .metric-chip');
+  var nodes = root.querySelectorAll('.causal-node');
+  if (prefersReducedMotion()) {
+    if (badge) badge.classList.add('rv-in');
+    chips.forEach(function (c) { c.classList.add('rv-in'); });
+    nodes.forEach(function (n) { n.classList.add('rv-in'); });
+    return;
+  }
+  if (badge) setTimeout(function () { badge.classList.add('rv-in'); }, 60);
+  staggerIn(chips, 220, 90);
+  staggerIn(nodes, 220 + chips.length * 90 + 150, 140);
+}
+function animateMapReveal(accuracy) {
+  var root = document.getElementById('mainContent');
+  if (!root) return;
+  var ring = document.getElementById('mapRing');
+  var cells = root.querySelectorAll('.stat-cell');
+  var chips = root.querySelectorAll('.metric-chip');
+  if (prefersReducedMotion()) {
+    if (ring) { ring.style.setProperty('--p', accuracy); ring.classList.add('rv-in'); }
+    cells.forEach(function (c) { c.classList.add('rv-in'); });
+    chips.forEach(function (c) { c.classList.add('rv-in'); });
+    return;
+  }
+  if (ring) { ring.classList.add('rv-in'); animateRingTo(ring, accuracy, 900); }
+  staggerIn(cells, 180, 90);
+  staggerIn(chips, 180 + cells.length * 90 + 150, 70);
+}
 function renderReveal() {
   const q = currentQ();
   const isCorrect = (typeof q.correct_index === 'number') && (STATE.selectedOption === q.correct_index);
@@ -2007,6 +2085,7 @@ function renderReveal() {
       }</button>
     </div>
   `;
+  animateResultReveal();
 }
 
 // -----------------------------------------------------------------------
@@ -2142,6 +2221,8 @@ function renderMap() {
     <div class="fade-in">
       <div class="section-label" style="margin-bottom:18px;">Mapa Cognitivo · Sesión completada</div>
 
+      <div class="stat-ring-wrap"><div class="stat-ring" id="mapRing" style="--p:0"><i>${accuracy}%</i></div></div>
+
       <div class="session-stats-grid">
         <div class="stat-cell">
           <div class="stat-cell-label">Precisión global</div>
@@ -2212,6 +2293,7 @@ function renderMap() {
       </div>
     </div>
   `;
+  animateMapReveal(accuracy);
 }
 
 // -----------------------------------------------------------------------

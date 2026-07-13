@@ -64,16 +64,61 @@
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function sessionIcon(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return '🍾'; if(t.indexOf('label')>=0)return '📖'; if(t.indexOf('sim')>=0)return '⏱'; return '🍷'; }
   function sessionName(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return 'Botellas'; if(t.indexOf('label')>=0)return 'Etiquetas'; if(t.indexOf('sim')>=0)return 'Simulacro completo'; if(t.indexOf('blind')>=0||t.indexOf('sat')>=0)return 'Laboratorio SAT'; return esc(type||'Sesión'); }
-  function meter(label,p){ var shown=(p==null)?'sin evidencia':p+'%'; var w=(p==null)?0:p; return '<div class="ind"><div class="ind-top"><span>'+esc(label)+'</span><b>'+esc(shown)+'</b></div><div class="ind-bar"><span style="width:'+w+'%"></span></div></div>'; }
+  function meter(label,p){ var shown=(p==null)?'sin evidencia':p+'%'; var w=(p==null)?0:p; return '<div class="ind"><div class="ind-top"><span>'+esc(label)+'</span><b>'+esc(shown)+'</b></div><div class="ind-bar"><span data-w="'+w+'" style="width:0%"></span></div></div>'; }
+  // animateReveal: pinta el "momento de lectura" del dashboard — el anillo de
+  // preparación se llena progresivamente, las barras de confianza/transferencia
+  // crecen a su valor real, y el recorrido/las ideas abiertas aparecen en
+  // cascada. Mismo espíritu que el ring+bubble-map de Open Response Lab y
+  // Mentor, adaptado a los widgets ya existentes de esta página (sin tocar
+  // su estructura de datos ni su paleta). Respeta prefers-reduced-motion.
+  function animateReveal(rootEl, vm) {
+    var reduceMotion = typeof window !== 'undefined' && window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ringEl = rootEl.querySelector('.ring');
+    var targetP = vm.readiness.pct == null ? 0 : vm.readiness.pct;
+    var bars = rootEl.querySelectorAll('.ind-bar > span');
+    var steps = rootEl.querySelectorAll('.tl-step');
+    var chips = rootEl.querySelectorAll('.chip');
+
+    if (reduceMotion) {
+      if (ringEl) { ringEl.style.setProperty('--p', targetP); ringEl.classList.add('dash-in'); }
+      bars.forEach(function (b) { b.style.width = (b.getAttribute('data-w') || '0') + '%'; });
+      steps.forEach(function (s) { s.classList.add('dash-in'); });
+      chips.forEach(function (c) { c.classList.add('dash-in'); });
+      return;
+    }
+
+    if (ringEl) {
+      ringEl.classList.add('dash-in');
+      var start = null; var duration = 900;
+      function step(ts) {
+        if (!start) start = ts;
+        var t = Math.min(1, (ts - start) / duration);
+        var eased = 1 - Math.pow(1 - t, 3);
+        ringEl.style.setProperty('--p', (targetP * eased).toFixed(1));
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        bars.forEach(function (b) { b.style.width = (b.getAttribute('data-w') || '0') + '%'; });
+      });
+    });
+
+    steps.forEach(function (s, i) { setTimeout(function () { s.classList.add('dash-in'); }, 120 + i * 90); });
+    chips.forEach(function (c, i) { setTimeout(function () { c.classList.add('dash-in'); }, 200 + i * 70); });
+  }
   function render(rootEl, vm) {
     if (!rootEl) return;
-    var r = vm.readiness; var ringPct = r.pct==null?0:r.pct;
+    var r = vm.readiness;
     var timeline = vm.where.phases.map(function(ph,i){ var cls=i<vm.where.phaseIndex?'done':(i===vm.where.phaseIndex?'active':''); var mk=i<vm.where.phaseIndex?'✓':(i===vm.where.phaseIndex?'▶':'○'); return '<div class="tl-step '+cls+'"><span class="tl-dot">'+mk+'</span><span class="tl-lbl">'+esc(ph)+'</span></div>'; }).join('');
     var misHtml = vm.misconceptions.length ? vm.misconceptions.map(function(m){return '<span class="chip chip-crit">'+esc(m.label||m.misconception_id)+'</span>';}).join(' ') : '<span class="muted small">Ninguna idea abierta. Buen trabajo.</span>';
     var sessHtml = vm.sessions.length ? vm.sessions.map(function(s){ return '<div class="sess"><span class="sess-ic">'+sessionIcon(s.session_type)+'</span><span class="sess-name">'+sessionName(s.session_type)+'</span><span class="sess-status">'+esc(s.status||'')+'</span></div>'; }).join('') : '<div class="muted small">Sin sesiones todavía.</div>';
     var haltBadge = vm.next.halt ? '<span class="pill pill-halt">Reforzar antes de avanzar</span>' : '<button class="pill pill-go" onclick="window.location.href=\'/bottle-lab/\'">Avanzar</button>';
     rootEl.innerHTML =
-      '<div class="grid-2"><section class="card hero-card"><div class="ring" style="--p:'+ringPct+'"><i>'+(r.pct==null?'—':r.pct+'%')+'</i></div><div><div class="eyebrow">Tu preparación</div><div class="hero-state">'+esc(vm.where.stateLabel)+'</div><div class="muted small">'+(r.gateOpen?'Listo para el simulacro completo.':('Puerta del simulacro en '+(r.threshold||70)+'%.'))+'</div></div></section>'+
+      '<div class="grid-2"><section class="card hero-card"><div class="ring" style="--p:0"><i>'+(r.pct==null?'—':r.pct+'%')+'</i></div><div><div class="eyebrow">Tu preparación</div><div class="hero-state">'+esc(vm.where.stateLabel)+'</div><div class="muted small">'+(r.gateOpen?'Listo para el simulacro completo.':('Puerta del simulacro en '+(r.threshold||70)+'%.'))+'</div></div></section>'+
       '<section class="card next-card'+(vm.next.halt?' halt':'')+'"><div class="eyebrow">Tu siguiente paso '+haltBadge+'</div><div class="next-practice">'+(vm.next.label === 'Bottle Guided' ? 'Botella Guiada' : esc(vm.next.label))+'</div><p class="next-reason">'+esc(vm.next.reason)+'</p></section></div>'+
       '<section class="card mentor-mount" id="mentorMount"></section>'+
       '<div class="grid-2"><section class="card"><div class="eyebrow">Tu mayor foco ahora</div><div class="weakness">'+esc(vm.weakness||'Sin un foco único con la evidencia actual')+'</div><div class="card-sub">Ideas a corregir</div>'+misHtml+'</section>'+
@@ -87,6 +132,7 @@
       MentorCognitivoUI.render(holder, { messages:[vm.mentor] });
       mount.appendChild(holder);
     }
+    animateReveal(rootEl, vm);
   }
   return { buildViewModel: buildViewModel, render: render };
 });

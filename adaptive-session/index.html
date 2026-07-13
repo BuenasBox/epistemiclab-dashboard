@@ -80,6 +80,13 @@ html, body {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 180px;
+  opacity: 0;
+  transform: translateY(4px);
+}
+.chip.as-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .35s ease, transform .35s ease;
 }
 .chip-green  { background: #0e2d1c; color: var(--green);  border: 1px solid #1a4a2b; }
 .chip-amber  { background: #2a1d00; color: var(--amber);  border: 1px solid #4a3200; }
@@ -449,6 +456,13 @@ html, body {
   display: flex;
   align-items: center;
   gap: 12px;
+  opacity: 0;
+  transform: scale(.94);
+}
+.fb-status.as-in {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
 }
 .fb-dot {
   width: 10px;
@@ -479,6 +493,13 @@ html, body {
   padding: 16px;
   margin: 0 16px 14px;
   border: 1px solid var(--border-soft);
+  opacity: 0;
+  transform: translateY(5px);
+}
+.fb-explanation.as-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .4s ease, transform .4s ease;
 }
 
 .fb-mc-note {
@@ -493,6 +514,13 @@ html, body {
   color: var(--amber);
   line-height: 1.55;
   display: none;
+  opacity: 0;
+  transform: translateY(5px);
+}
+.fb-mc-note.as-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .4s ease, transform .4s ease;
 }
 .fb-mc-icon { margin-right: 5px; }
 
@@ -556,6 +584,13 @@ html, body {
   border-radius: 10px;
   padding: 12px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(6px);
+}
+.db-metric.as-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .4s ease, transform .4s ease;
 }
 .db-metric-val {
   font-size: 26px;
@@ -604,6 +639,13 @@ html, body {
   border-radius: 10px;
   padding: 14px;
   margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(6px);
+}
+.db-next.as-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .45s ease, transform .45s ease;
 }
 .db-next-label {
   font-size: 9px;
@@ -669,6 +711,10 @@ html, body {
 .adp-blabel{display:block;font-size:14px;font-weight:600;}
 .adp-bsub{display:block;font-size:11px;color:#a7b0be;margin-top:2px;}
 .adp-disc{font-size:10px;color:#525e6e;text-align:center;margin-top:14px;}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
 
 </style>
 <script src="../shared/session-store.js"></script>
@@ -1129,6 +1175,36 @@ function renderFeedback(q, correct) {
   // Next button label
   const isLast = STATE.qIdx >= STATE.payload.questions.length - 1;
   $('btn-next').textContent = isLast ? 'VER DEBRIEFING' : 'SIGUIENTE RETO';
+
+  animateFeedbackReveal(fb.misconception_note);
+}
+
+// animateFeedbackReveal / animateDebriefingReveal — Fase de animación
+// unificada del sistema: el resultado por reto aparece en un pop suave
+// (no un veredicto seco) y, en el debriefing, las métricas y las burbujas
+// de fortalezas/brechas/misconceptions entran en cascada. Respeta
+// prefers-reduced-motion.
+function asReduceMotion() {
+  return typeof window !== 'undefined' && window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+function asStagger(nodes, startDelay, gap) {
+  nodes.forEach((el, i) => { setTimeout(() => { el.classList.add('as-in'); }, startDelay + i * gap); });
+}
+function animateFeedbackReveal(hasMcNote) {
+  const status = $('fb-status');
+  const expl = $('fb-explanation');
+  const mcNote = $('fb-mc-note');
+  [status, expl, mcNote].forEach(el => el && el.classList.remove('as-in'));
+  if (asReduceMotion()) {
+    if (status) status.classList.add('as-in');
+    if (expl) expl.classList.add('as-in');
+    if (hasMcNote && mcNote) mcNote.classList.add('as-in');
+    return;
+  }
+  if (status) setTimeout(() => status.classList.add('as-in'), 40);
+  if (expl) setTimeout(() => expl.classList.add('as-in'), 160);
+  if (hasMcNote && mcNote) setTimeout(() => mcNote.classList.add('as-in'), 300);
 }
 
 function escTxt(s) {
@@ -1270,6 +1346,23 @@ function renderDebriefing() {
   const footer = el('div', { class: 'db-footer' });
   footer.textContent = 'Práctica formativa · Desarrollo de razonamiento profesional';
   container.appendChild(footer);
+
+  animateDebriefingReveal(container);
+}
+function animateDebriefingReveal(container) {
+  const metricCards = container.querySelectorAll('.db-metric');
+  const chips = container.querySelectorAll('.chip');
+  const nextBox = container.querySelector('.db-next');
+  if (asReduceMotion()) {
+    metricCards.forEach(el => el.classList.add('as-in'));
+    chips.forEach(el => el.classList.add('as-in'));
+    if (nextBox) nextBox.classList.add('as-in');
+    return;
+  }
+  asStagger(metricCards, 60, 90);
+  const chipsStart = 60 + metricCards.length * 90 + 140;
+  asStagger(chips, chipsStart, 70);
+  if (nextBox) setTimeout(() => nextBox.classList.add('as-in'), chipsStart + chips.length * 70 + 120);
 }
 
 /* ---- Restart ---- */
