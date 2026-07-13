@@ -123,6 +123,28 @@
     return weakest;
   }
 
+  // Snapshot de todos los ejes con evidencia observable (sin el umbral mínimo
+  // que sí aplica weakestCompetency para disparar un mensaje de ATENCION).
+  // Pensado para que la UI pinte un mapa completo de competencias, no solo
+  // "cuál es la más débil" — la interpretación (qué es débil, qué basta de
+  // evidencia) sigue viviendo aquí, no en el renderer.
+  function competencySnapshot(byComp) {
+    var out = {};
+    Object.keys(byComp).forEach(function (k) {
+      var d = byComp[k];
+      out[k] = {
+        correct: d.correct,
+        total: d.total,
+        acc: d.total > 0 ? d.correct / d.total : null,
+        // mismo umbral que usa weakestCompetency para considerar una lectura
+        // fiable; por debajo de esto la UI debería mostrarlo como "en formación"
+        // en vez de afirmar un nivel.
+        reliable: d.total >= 3
+      };
+    });
+    return out;
+  }
+
   // ---- motor principal ----
   function interpret(input) {
     input = input || {};
@@ -151,7 +173,7 @@
       push(SEV.RECOMENDACION, 'Empieza por una práctica guiada',
         'Una sesión de Bottle Guided o Label Guided genera la primera evidencia para tu perfil.',
         'Base: sin métricas derivadas (insufficient_evidence).');
-      return finalize(messages, { readiness: null });
+      return finalize(messages, { readiness: null, band: null, competencies: competencySnapshot(ev.decisionsByComp) });
     }
 
     // 1) Misconceptions activas (máxima prioridad: concepto sin cerrar)
@@ -225,7 +247,11 @@
     var rec = recommend(ev, { domain: domain, calibration: calibration, transfer: transfer, readiness: readiness });
     if (rec) push(SEV.RECOMENDACION, rec.title, rec.body, rec.basis);
 
-    return finalize(messages, { readiness: has(readiness) ? readiness.value : null });
+    return finalize(messages, {
+      readiness: has(readiness) ? readiness.value : null,
+      band: has(readiness) ? readinessBand(readiness.value) : null,
+      competencies: competencySnapshot(ev.decisionsByComp)
+    });
   }
 
   function recommend(ev, m) {
@@ -261,9 +287,14 @@
     return { schema: 'mentor-cognitivo.v1', messages: messages, summary: summary };
   }
 
+  // Orden canónico de ejes para que la UI pinte el mapa de competencias de
+  // forma estable aunque algunos ejes todavía no tengan evidencia.
+  var COMP_ORDER = ['Aspecto', 'Nariz', 'Paladar', 'Calidad (BLIC)', 'Conclusiones', 'Teoría'];
+
   return {
     SEVERITIES: SEV,
     THRESHOLDS: TH,
+    COMPETENCY_ORDER: COMP_ORDER,
     interpret: interpret,
     // conveniencia: extrae métricas de la respuesta de get-epistemic-profile
     fromProfileResponse: function (resp, events, examDate) {

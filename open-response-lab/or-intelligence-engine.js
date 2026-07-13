@@ -25,6 +25,9 @@
       return {
         strengths: [],
         gaps: [],
+        concepts_lit: [],
+        concepts_dim: [],
+        coverage_ratio: 0,
         causal_flag: false,
         next_step: 'Revisa e intenta nuevamente.',
         depth_label: 'Fundacional',
@@ -39,7 +42,8 @@
     const depth = evaluateOrResponse.depth || 'emerging';
     const distinctionFeedback = evaluateOrResponse.distinction_feedback || null;
 
-    // Strengths: conceptos detectados (present + partial)
+    // Strengths: conceptos detectados (present + partial) — se conserva como
+    // lista textual (usada por el fallback y por lectores de pantalla).
     const strengths = detected.length > 0
       ? detected.slice(0, 4).map(c => `Identificaste: ${c}`)
       : ['Considera los conceptos clave del tema.'];
@@ -71,9 +75,20 @@
 
     const depthInfo = depthMap[depth] || depthMap['emerging'];
 
+    // Cobertura conceptual (0-1). Es una señal VISUAL para el anillo, no una
+    // nota: por eso el reveal nunca imprime este número como texto — solo
+    // determina cuánto se llena el anillo. Mostrar "78%" sobre una respuesta
+    // puntual leería como una calificación numérica, que es justo lo que la
+    // gobernanza de este módulo prohíbe.
+    const totalConcepts = detected.length + absent.length;
+    const coverage_ratio = totalConcepts > 0 ? detected.length / totalConcepts : 0;
+
     return {
       strengths,
       gaps,
+      concepts_lit: detected,
+      concepts_dim: absent,
+      coverage_ratio,
       causal_flag,
       causal_message: causal_flag ? '⚠️ Razonamiento causal pendiente' : null,
       next_step,
@@ -173,12 +188,152 @@
   }
 
   /**
+   * renderReveal: Presentación animada del feedback (anillo + mapa de
+   * conceptos) en lugar del bloque de texto plano de renderFeedback().
+   *
+   * A diferencia de renderFeedback (que devuelve un string HTML), esta
+   * función recibe el contenedor directamente y dispara la animación de
+   * entrada — necesario porque <script> insertado vía innerHTML no se
+   * ejecuta, y porque la animación necesita referencias reales a los nodos
+   * del DOM (para el requestAnimationFrame del anillo y el stagger de las
+   * burbujas).
+   *
+   * Gobernanza: el anillo se llena según coverage_ratio pero NUNCA imprime
+   * un número (ni "%" ni "de 5 conceptos") — solo la etiqueta cualitativa de
+   * profundidad (Fundacional / En Desarrollo / Sólida). Eso es intencional:
+   * un porcentaje sobre una respuesta puntual leería como nota numérica.
+   * validateGovernance() sigue aplicando sobre el objeto enriquecido antes
+   * de renderizar, como red de seguridad.
+   */
+  function renderReveal(container, enrichedFeedback) {
+    if (!container) return;
+
+    if (!enrichedFeedback) {
+      container.innerHTML = '';
+      return;
+    }
+
+    const e = enrichedFeedback;
+    if (!validateGovernance(e)) {
+      console.error('Governance validation failed. Feedback may contain official language.');
+    }
+
+    const reduceMotion = typeof window !== 'undefined' && window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const lit = e.concepts_lit || [];
+    const dim = e.concepts_dim || [];
+    const hasCausal = e.causal_flag && e.causal_message;
+
+    // Titular corto y determinista (sin inventar contenido: se arma a partir
+    // de los mismos datos que antes alimentaban strengths/gaps).
+    let headline;
+    if (dim.length === 0 && lit.length > 0) {
+      headline = 'Cubriste todos los conceptos clave de esta pregunta.';
+    } else if (lit.length === 0) {
+      headline = 'Aún no aparece ningún concepto clave — es un buen punto de partida.';
+    } else {
+      headline = `Dominas ${lit.length} de ${lit.length + dim.length} conceptos clave. Sigue explorando los que faltan por encender.`;
+    }
+
+    const escapeHtml = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
+    ));
+
+    const bubblesHtml = lit.map((c) => (
+      `<span class="orb-bubble orb-lit" data-lit="1"><span class="orb-dot"></span>${escapeHtml(c)}</span>`
+    )).join('') + dim.map((c) => (
+      `<span class="orb-bubble orb-dim" data-lit="0"><span class="orb-dot"></span>${escapeHtml(c)}</span>`
+    )).join('');
+
+    const distinctionHtml = e.distinction_feedback ? `
+      <div class="orb-panel orb-distinction" style="border-left: 3px solid ${e.depth_color}; background: ${e.depth_color}14;">
+        <div class="orb-panel-title" style="color: ${e.depth_color};">🎯 Por qué tu respuesta está en este nivel</div>
+        <p>${escapeHtml(e.distinction_feedback)}</p>
+      </div>
+    ` : '';
+
+    const causalHtml = hasCausal ? `
+      <div class="orb-panel" style="border-left: 3px solid #65b7c7; background: rgba(101, 183, 199, 0.08);">
+        <div class="orb-panel-title" style="color: #65b7c7;">${e.causal_message}</div>
+        <p style="color: var(--muted);">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
+      </div>
+    ` : '';
+
+    const nextHtml = `
+      <div class="orb-panel" style="border-left: 3px solid #d5a84f; background: rgba(213, 168, 79, 0.08);">
+        <div class="orb-panel-title" style="color: #d5a84f;">💡 Próxima mejora</div>
+        <p>${escapeHtml(e.next_step)}</p>
+      </div>
+    `;
+
+    // Lista accesible equivalente (oculta visualmente) para lectores de
+    // pantalla: la animación es un realce visual, no la única vía al mismo
+    // contenido.
+    const srList = `
+      <ul class="orb-sr-only">
+        <li>Nivel: ${escapeHtml(e.depth_label)}.</li>
+        ${lit.map((c) => `<li>Dominas: ${escapeHtml(c)}.</li>`).join('')}
+        ${dim.map((c) => `<li>Por reforzar: ${escapeHtml(c)}.</li>`).join('')}
+      </ul>
+    `;
+
+    container.innerHTML = `
+      <div class="orb-reveal${reduceMotion ? ' orb-no-motion' : ''}">
+        ${srList}
+        <div class="orb-ring-wrap" aria-hidden="true">
+          <svg viewBox="0 0 168 168" class="orb-ring-svg">
+            <circle cx="84" cy="84" r="72" fill="none" stroke="var(--panel-2)" stroke-width="10"/>
+            <circle class="orb-ring" cx="84" cy="84" r="72" fill="none" stroke="${e.depth_color}"
+              stroke-width="10" stroke-linecap="round" stroke-dasharray="452.4" stroke-dashoffset="452.4"/>
+          </svg>
+          <div class="orb-ring-label">
+            <div class="orb-band" style="color: ${e.depth_color};">${escapeHtml(e.depth_label)}</div>
+          </div>
+        </div>
+        <div class="orb-headline" aria-hidden="true">${escapeHtml(headline)}</div>
+        <div class="orb-bubbles" aria-hidden="true">${bubblesHtml}</div>
+        ${distinctionHtml}
+        ${causalHtml}
+        ${nextHtml}
+      </div>
+    `;
+
+    const root = container.querySelector('.orb-reveal');
+    if (!root) return;
+
+    if (reduceMotion) {
+      // Estado final directo, sin animación de entrada.
+      const ring = root.querySelector('.orb-ring');
+      if (ring) ring.setAttribute('stroke-dashoffset', String(452.4 - 452.4 * e.coverage_ratio));
+      root.querySelectorAll('.orb-bubble').forEach((el) => { el.classList.add('orb-in'); });
+      root.classList.add('orb-revealed');
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const ring = root.querySelector('.orb-ring');
+        if (ring) {
+          const offset = 452.4 - (452.4 * e.coverage_ratio);
+          ring.setAttribute('stroke-dashoffset', String(offset));
+        }
+        root.classList.add('orb-revealed');
+        root.querySelectorAll('.orb-bubble').forEach((el, i) => {
+          setTimeout(() => { el.classList.add('orb-in'); }, 650 + i * 90);
+        });
+      });
+    });
+  }
+
+  /**
    * Public API
    */
   const orIntelligence = {
     enrichFeedback: enrichFeedback,
     validateGovernance: validateGovernance,
     renderFeedback: renderFeedback,
+    renderReveal: renderReveal,
 
     // Utility: map depth to readable label
     depthLabel: function (depth) {
