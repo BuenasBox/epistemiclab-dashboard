@@ -8,12 +8,7 @@
  * Governance: safe_for_examiner = false
  */
 
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? '';
-const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
-
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
+const { createClient } = require('@supabase/supabase-js');
 
 /**
  * Check if trial is valid (not expired)
@@ -66,35 +61,41 @@ function isTrialValid(userPlan, trialExpiresAt) {
 }
 
 /**
- * Main RPC handler: validate trial expiration
+ * Main Vercel Function handler: validate trial expiration
  * Called by frontend before granting access to demo-restricted content
  */
-Deno.serve(async (req) => {
-  if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 });
+async function handler(request, response) {
+  if (request.method !== 'POST') {
+    response.setHeader('Allow', 'POST');
+    response.status(405).json({ error: 'method_not_allowed' });
+    return;
   }
 
   try {
     // Get auth user
-    const authHeader = req.headers.get('authorization');
+    const authHeader = request.headers.authorization;
     const token = authHeader?.replace('Bearer ', '');
 
     if (!token) {
-      return new Response(
-        JSON.stringify({ valid: false, reason: 'no_auth_token' }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
-      );
+      response.status(401).json({ valid: false, reason: 'no_auth_token' });
+      return;
     }
+
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseServiceKey) {
+      response.status(503).json({ valid: false, reason: 'validation_unavailable' });
+      return;
+    }
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const { data: { user }, error: authError } = await supabase.auth.getUser(
       token
     );
 
     if (authError || !user) {
-      return new Response(
-        JSON.stringify({ valid: false, reason: 'invalid_token' }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
-      );
+      response.status(401).json({ valid: false, reason: 'invalid_token' });
+      return;
     }
 
     // Security: always use the ID from the verified auth token. Never trust
@@ -110,10 +111,8 @@ Deno.serve(async (req) => {
       .single();
 
     if (profileError || !profile) {
-      return new Response(
-        JSON.stringify({ valid: false, reason: 'user_not_found' }),
-        { status: 404, headers: { 'Content-Type': 'application/json' } }
-      );
+      response.status(404).json({ valid: false, reason: 'user_not_found' });
+      return;
     }
 
     // Check trial status
@@ -121,31 +120,30 @@ Deno.serve(async (req) => {
 
     // Special case: admin/test users always allowed
     if (profile.plan === 'admin' || profile.plan === 'test') {
-      return new Response(
-        JSON.stringify({
-          valid: true,
-          reason: 'admin_user',
-          user_plan: profile.plan,
-        }),
-        { status: 200, headers: { 'Content-Type': 'application/json' } }
-      );
+      response.status(200).json({
+        valid: true,
+        reason: 'admin_user',
+        user_plan: profile.plan,
+      });
+      return;
     }
 
-    return new Response(
-      JSON.stringify({
-        valid: trialStatus.valid,
-        reason: trialStatus.reason,
-        user_plan: profile.plan,
-        days_remaining: trialStatus.days_remaining || null,
-        expires_at: trialStatus.expires_at || null,
-      }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
-    );
+    response.status(200).json({
+      valid: trialStatus.valid,
+      reason: trialStatus.reason,
+      user_plan: profile.plan,
+      days_remaining: trialStatus.days_remaining || null,
+      expires_at: trialStatus.expires_at || null,
+    });
   } catch (error) {
     console.error('Trial validation error:', error);
-    return new Response(
-      JSON.stringify({ valid: false, reason: 'validation_error', error: error.message }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    response.status(500).json({
+      valid: false,
+      reason: 'validation_error',
+      error: error.message,
+    });
   }
-});
+}
+
+module.exports = handler;
+module.exports.isTrialValid = isTrialValid;

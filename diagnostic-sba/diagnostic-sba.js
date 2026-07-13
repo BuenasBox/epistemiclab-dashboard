@@ -1,0 +1,1151 @@
+// -----------------------------------------------------------------------
+// GOVERNANCE FLAGS
+// training_item_only = true
+// official_wset_question = false
+// safe_for_examiner = false
+// examiner_scoring_allowed = false
+// -----------------------------------------------------------------------
+
+// -----------------------------------------------------------------------
+// MOCK DATA — 4 PREGUNTAS DE ENTRENAMIENTO
+// micro_drill: type "micro_sba" only (v2.2 SBA purity)
+// -----------------------------------------------------------------------
+
+// QUESTIONS: dynamic from window.PREGUNTAS_BANK
+let QUESTIONS = [];
+let ACTIVE_MODE = null;
+const SBA_RK = 'wset_sba_recent_v2';
+function sbaRecent(){try{return JSON.parse(localStorage.getItem(SBA_RK)||'[]');}catch(e){return[];}}
+function sbaSave(ids){try{localStorage.setItem(SBA_RK,JSON.stringify(ids.slice(-60)));}catch(e){}}
+function sbaShuf(arr,seed){
+  const a=arr.slice();let s=Math.abs(((seed||Date.now()))&0x7fffffff);
+  for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+// Phase P3: enrichment is signalled by a server-derived boolean flag.
+// The pedagogical content itself is NOT shipped to the browser.
+function isEnriched(item){
+  return !!item.enriched;
+}
+const MOCK_RA={RA1:8,RA2:28,RA3:5,RA4:5,RA5:4};
+function bankToQ(item){
+  return {
+    id:item.id, source_question_id:item.source_question_id,
+    topic:item.topic||'—', ra:item.ra||'—', difficulty:item.difficulty||'—',
+    cognitive_skill:item.ra?('RA: '+item.ra):'—', est_time:'45–90 s',
+    text:item.text||'', options:item.options||[],
+    enriched:!!item.enriched,
+    // Answer key and pedagogical result are resolved server-side AFTER the
+    // student submits (validate-sba-answer). They are intentionally null here so
+    // the browser never receives the correct answer or the feedback in advance.
+    correct_index:null, correct_letter:null,
+    feedback_by_mode:null, causal_chain:null,
+    distractor_traps:null, misconception:null,
+    cross_exam_challenge:null, sat_relevance:null,
+    micro_drill:null,
+  };
+}
+function showModeAuthMessage(show){
+  const el=document.getElementById('modeAuthMsg');
+  if(el) el.classList.toggle('show', !!show);
+}
+async function loadMode(mode){
+  try{
+    console.log('[loadMode] Starting for mode:', mode);
+    showModeAuthMessage(false);
+    const token=await requireAuth();
+    console.log('[loadMode] Got token, calling get-sba-bank');
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?limit=670',
+      {headers:{'Authorization':'Bearer '+token}});
+    console.log('[loadMode] Response status:', resp.status);
+    if(resp.status===401){
+      showModeAuthMessage(true);
+      console.error('Authentication required');
+      return false;
+    }
+    const {items}=await resp.json();
+    const all=items||[];
+    if(!Array.isArray(all)){console.error('API returned non-array');return false;}
+    ACTIVE_MODE=mode;
+    const recent=sbaRecent(); let selected=[];
+    if(mode==='mock_theory_1'){
+      const byRa={};
+      all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
+      Object.entries(MOCK_RA).forEach(([ra,need])=>{
+        let pool=byRa[ra]||[];
+        const enrichedPool=sbaShuf(pool.filter(i=>isEnriched(i)),Date.now()+ra.charCodeAt(2));
+        const fallbackPool=sbaShuf(pool.filter(i=>!isEnriched(i)),Date.now()+ra.charCodeAt(2)+100);
+        pool=[...enrichedPool,...fallbackPool];
+        pool=window.LI?LI.prioritize(pool,recent)
+          :[...pool.filter(i=>!recent.includes(i.source_question_id)),...pool.filter(i=>recent.includes(i.source_question_id))];
+        selected.push(...pool.slice(0,need));
+      });
+      selected=sbaShuf(selected,Date.now());
+    } else {
+      const size={quick_drill:5,express:10,standard:25}[mode]||10;
+      const all_unseen=all.filter(i=>!recent.includes(i.source_question_id));
+      const all_seen=all.filter(i=>recent.includes(i.source_question_id));
+      const enrichedUnseen=sbaShuf(all_unseen.filter(i=>isEnriched(i)),Date.now());
+      const fallbackUnseen=sbaShuf(all_unseen.filter(i=>!isEnriched(i)),Date.now()+100);
+      const fresh=[...enrichedUnseen,...fallbackUnseen];
+      const enrichedSeen=sbaShuf(all_seen.filter(i=>isEnriched(i)),Date.now()+1);
+      const fallbackSeen=sbaShuf(all_seen.filter(i=>!isEnriched(i)),Date.now()+101);
+      const stale=[...enrichedSeen,...fallbackSeen];
+      selected=(window.LI?LI.prioritize([...fresh,...stale],recent):[...fresh,...stale]).slice(0,size);
+    }
+    QUESTIONS=selected.map(bankToQ);
+    sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
+    return true;
+  }catch(e){
+    console.error('loadMode error:',e);
+    if(String(e && e.message)==='NO_AUTH_SESSION') showModeAuthMessage(true);
+    return false;
+  }
+}
+function startMode(mode){
+  console.log('[startMode] Initiating mode:', mode);
+  const accessMode = {
+    quick_drill: 'sba_quick_drill',
+    express: 'sba_express',
+    standard: 'sba_standard',
+    mock_theory_1: 'sba_mock_theory',
+  }[mode] || mode;
+
+  // If access gate exists, use it; otherwise proceed directly
+  if(window.WSETModeAccessGate){
+    window.WSETModeAccessGate.request({
+        route: '/diagnostic-sba/',
+        experience: 'diagnostic_sba',
+        mode: accessMode,
+        enforcement: 'active',
+    }).then(decision=>{
+      if(decision.would_allow) {
+        console.log('[startMode] Access allowed, starting session');
+        startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
+      } else {
+        console.log('[startMode] Access denied:', decision.denial_reason);
+      }
+    });
+  } else {
+    console.log('[startMode] No WSETModeAccessGate found, proceeding directly');
+    startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
+  }
+}
+
+async function startAllowedMode(mode){
+  const ok = await loadMode(mode);
+  if(!ok || !Array.isArray(QUESTIONS) || !QUESTIONS.length){
+    console.warn('[startAllowedMode] no se pudieron cargar preguntas; se mantiene el selector de modo');
+    return;
+  }
+  document.getElementById('mode-overlay').classList.remove('active');
+  STATE.stage='prepare'; STATE.questionIndex=0;
+  STATE.selectedOption=null; STATE.selectedConfidence=null; STATE.selectedTag=null;
+  render();
+}
+
+
+// -----------------------------------------------------------------------
+// STATE
+// -----------------------------------------------------------------------
+const STATE = {
+  stage: 'prepare',
+  questionIndex: 0,
+  selectedOption: null,
+  selectedConfidence: null,
+  selectedTag: null,
+  crossChanged: false,
+  pressureMode: false,
+  mentorMode: 'mentor',
+  timerInterval: null,
+  timerSeconds: 0,
+  timeElapsed: 0,
+  readTimeElapsed: 0,
+  drillSelectedOption: null,
+  drillSubmitted: false,
+  attempts: [],
+  historyRecorded: false,
+  session: {
+    answered: 0,
+    correct: 0,
+    overconfident: 0,
+    hesitated: 0,
+    causalWeakness: 0,
+    trapSusceptibility: 0
+  }
+};
+
+// -----------------------------------------------------------------------
+// HELPERS
+// -----------------------------------------------------------------------
+function currentQ() { return QUESTIONS[STATE.questionIndex]; }
+
+function setProgress(pct) {
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function mentorLabel() {
+  return { mentor: 'Mentor Guía', trainer: 'Entrenador Técnico', reviewer: 'Revisor Estricto' }[STATE.mentorMode] || 'Mentor Guía';
+}
+
+// Fallback determinista por pregunta (auditoría Z.2): se usa cuando el banco
+// no incluye feedback_by_mode. Construido solo con campos existentes del ítem.
+function fallbackFeedback(q) {
+  const idx = (typeof q.correct_index === 'number') ? q.correct_index : 0;
+  const letter = String.fromCharCode(65 + idx);
+  const correctTxt = (q.options && q.options[idx]) || '';
+  return `La respuesta correcta es ${letter}: «${correctTxt}». ` +
+    `Tema: ${q.topic} · ${q.ra}. Repasa este concepto antes de la siguiente sesión.`;
+}
+
+// ---- Stage pips ----
+function updateStagePips() {
+  const stages = ['prepare','read','commit','cross','reveal','train','map'];
+  const idx = stages.indexOf(STATE.stage);
+  document.querySelectorAll('.stage-pip').forEach((p, i) => {
+    p.classList.remove('active','done');
+    if (i === idx) p.classList.add('active');
+    else if (i < idx) p.classList.add('done');
+  });
+  const labels = {
+    prepare:'PREPARAR', read:'LEER', commit:'CONFIRMAR',
+    cross:'CONTRASTE', reveal:'REVELAR', train:'ENTRENAR', map:'MAPA COGNITIVO'
+  };
+  document.getElementById('stageLabelText').innerHTML =
+    `Etapa<span>${labels[STATE.stage] || ''}</span>`;
+}
+
+// ---- Orb ----
+const ORB_CONFIGS = {
+  prepare: { speed:'orb-calm',   color:'#3fa9f5', label:'En espera',     reading:'Preparando sesión...' },
+  read:    { speed:'orb-calm',   color:'#2ec27e', label:'Activo',         reading:'Observando lectura...' },
+  commit:  { speed:'orb-active', color:'#c9a84c', label:'Atento',         reading:'Registrando razonamiento...' },
+  cross:   { speed:'orb-intense',color:'#f6b73c', label:'Intenso',        reading:'Analizando decisión...' },
+  reveal:  { speed:'orb-active', color:'#8b7cf6', label:'Procesando',     reading:'Evaluando respuesta...' },
+  train:   { speed:'orb-calm',   color:'#3fa9f5', label:'Entrenando',     reading:'Reforzando concepto...' },
+  map:     { speed:'orb-calm',   color:'#c9a84c', label:'Mapa listo',     reading:'Generando huella cognitiva...' }
+};
+
+function setOrbStage(stage) {
+  const cfg = ORB_CONFIGS[stage] || ORB_CONFIGS.prepare;
+  const orb = document.getElementById('signalOrb');
+  orb.className = 'orb-svg ' + cfg.speed;
+  orb.querySelectorAll('.ring').forEach(r => r.setAttribute('stroke', cfg.color));
+  orb.querySelector('.core-pulse').setAttribute('fill', cfg.color);
+  document.getElementById('orbStatusLine').textContent = cfg.label;
+  document.getElementById('orbReadingLine').textContent = cfg.reading;
+}
+
+// ---- Timer arc around orb ----
+// r=36 → circumference ≈ 226.2
+const ARC_CIRCUM = 226.2;
+function setTimerArc(remaining, total, color) {
+  const arc = document.getElementById('timerArc');
+  if (!arc) return;
+  const pct = remaining / total;
+  const offset = ARC_CIRCUM * (1 - pct);
+  arc.setAttribute('stroke-dashoffset', offset);
+  arc.setAttribute('stroke', color);
+  arc.setAttribute('opacity', '0.7');
+}
+function hideTimerArc() {
+  const arc = document.getElementById('timerArc');
+  if (arc) arc.setAttribute('opacity', '0');
+}
+
+// ---- Confidence circular gauge ----
+// r=22 → circumference ≈ 138.2
+const CONF_CIRCUM = 138.2;
+function setConfGauge(conf) {
+  const arc = document.getElementById('confGaugeArc');
+  const txt = document.getElementById('confGaugeText');
+  if (!arc || !txt) return;
+  const map = {
+    seguro:     { pct:1.0, color:'#2ec27e', label:'100%' },
+    bastante:   { pct:0.7, color:'#f6b73c', label:'70%' },
+    dudas:      { pct:0.4, color:'#c9a84c', label:'40%' },
+    adivinando: { pct:0.15,color:'#e45c5c', label:'15%' }
+  };
+  const d = map[conf];
+  if (!d) return;
+  arc.setAttribute('stroke-dashoffset', CONF_CIRCUM * (1 - d.pct));
+  arc.setAttribute('stroke', d.color);
+  txt.setAttribute('fill', d.color);
+  txt.textContent = d.label;
+}
+function resetConfGauge() {
+  const arc = document.getElementById('confGaugeArc');
+  const txt = document.getElementById('confGaugeText');
+  if (arc) { arc.setAttribute('stroke-dashoffset', CONF_CIRCUM); arc.setAttribute('stroke','#525e6e'); }
+  if (txt) { txt.setAttribute('fill','#525e6e'); txt.textContent = '—'; }
+}
+
+// ---- Causal bars ----
+function setCausalBars(level) {
+  // level 0-5
+  for (let i = 1; i <= 5; i++) {
+    const bar = document.getElementById('cbar' + i);
+    if (bar) bar.classList.toggle('lit', i <= level);
+  }
+}
+
+// ---- Hesitation dots ----
+function triggerHesDot(idx) {
+  const dot = document.getElementById('hd' + idx);
+  if (dot) dot.classList.add('triggered');
+  const lbl = document.getElementById('hesLabel');
+  if (lbl) lbl.textContent = '⚡ ' + STATE.session.hesitated;
+}
+
+// ---- Misconception glyph ----
+function activateMisconGlyph(on) {
+  document.getElementById('misconGlyph')?.classList.toggle('active', on);
+}
+
+// ---- Session stats sidebar ----
+function updateSessionStats() {
+  const s = STATE.session;
+  document.getElementById('statQTotal').textContent = s.answered + ' / ' + QUESTIONS.length;
+  document.getElementById('statCorrect').textContent =
+    s.answered > 0 ? Math.round(s.correct / s.answered * 100) + '%' : '—';
+  document.getElementById('statConf').textContent =
+    s.overconfident > 0 ? '⚠ ' + s.overconfident : '—';
+  document.getElementById('statHes').textContent =
+    s.hesitated > 0 ? s.hesitated : '—';
+}
+
+// ---- Timer ----
+function stopTimer() {
+  if (STATE.timerInterval) { clearInterval(STATE.timerInterval); STATE.timerInterval = null; }
+  hideTimerArc();
+}
+
+function startTimer(seconds, onTick, onEnd) {
+  stopTimer();
+  STATE.timerSeconds = seconds;
+  let elapsed = 0;
+  onTick(seconds, elapsed, seconds);
+  STATE.timerInterval = setInterval(() => {
+    elapsed++;
+    STATE.timerSeconds--;
+    onTick(STATE.timerSeconds, elapsed, seconds);
+    if (STATE.timerSeconds <= 0) { stopTimer(); if (onEnd) onEnd(); }
+  }, 1000);
+}
+
+function timerColor(pct) {
+  if (pct > 0.55) return '#2ec27e';
+  if (pct > 0.25) return '#f6b73c';
+  return '#e45c5c';
+}
+
+// ---- Pressure / Mentor ----
+function togglePressure() {
+  STATE.pressureMode = document.getElementById('pressureToggle').checked;
+  const b = document.getElementById('pressureBadge');
+  b.className = 'pressure-badge ' + (STATE.pressureMode ? 'on' : 'off');
+  b.textContent = STATE.pressureMode ? '⬤ Activado' : '⬤ Desactivado';
+}
+function updateMentorMode() {
+  STATE.mentorMode = document.getElementById('mentorMode').value;
+}
+
+// -----------------------------------------------------------------------
+// RENDER DISPATCH
+// -----------------------------------------------------------------------
+function render() {
+  updateStagePips();
+  setOrbStage(STATE.stage);
+  updateSessionStats();
+  // Phase P.1: el selector de mentor solo es visible cuando el ítem actual
+  // tiene feedback_by_mode real (lote enriquecido). Sin datos = sin control placebo.
+  (function(){
+    const sel = document.getElementById('mentorMode');
+    if (!sel) return;
+    const q = (typeof QUESTIONS !== 'undefined' && QUESTIONS && QUESTIONS.length) ? currentQ() : null;
+    sel.style.display = (q && q.feedback_by_mode) ? 'inline-block' : 'none';
+  })();
+  const stages = ['prepare','read','commit','cross','reveal','train','map'];
+  setProgress(Math.round((stages.indexOf(STATE.stage) / 6) * 100));
+  ({ prepare:renderPrepare, read:renderRead, commit:renderCommit,
+     cross:renderCross, reveal:renderReveal, train:renderTrain, map:renderMap
+  })[STATE.stage]?.();
+}
+
+// -----------------------------------------------------------------------
+// STAGE 1: PREPARE
+// -----------------------------------------------------------------------
+function renderPrepare() {
+  stopTimer();
+  resetConfGauge();
+  setCausalBars(0);
+  activateMisconGlyph(false);
+  const q = currentQ();
+  document.getElementById('mainContent').innerHTML = `
+    <div class="fade-in">
+      <div class="q-counter">
+        Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong>
+        &nbsp;·&nbsp; Pregunta de Entrenamiento
+      </div>
+
+      <div class="section-label" style="margin-bottom:14px;">Preparar</div>
+
+      <div class="q-meta">
+        <span class="q-tag train">🔒 Entrenamiento</span>
+        <span class="q-tag topic">${escapeHtml(q.topic)}</span>
+        <span class="q-tag diff">Nivel 3 · ${escapeHtml(q.difficulty)}</span>
+        <span class="q-tag skill">${escapeHtml(q.cognitive_skill)}</span>
+      </div>
+
+      <div class="prepare-meta">
+        <div class="prepare-meta-item">
+          <div class="prepare-meta-item-label">Habilidad cognitiva</div>
+          <div class="prepare-meta-item-value">${escapeHtml(q.cognitive_skill)}</div>
+        </div>
+        <div class="prepare-meta-item">
+          <div class="prepare-meta-item-label">Tiempo estimado</div>
+          <div class="prepare-meta-item-value">${escapeHtml(q.est_time)}</div>
+        </div>
+        <div class="prepare-meta-item">
+          <div class="prepare-meta-item-label">Modo presión</div>
+          <div class="prepare-meta-item-value">${STATE.pressureMode ? '⚡ Activado' : 'Normal'}</div>
+        </div>
+
+      </div>
+
+      <div class="mentor-frame">
+        <div class="mentor-frame-label">Señal del mentor</div>
+        <div class="mentor-frame-text">
+          Esta pregunta evalúa <em>${escapeHtml(q.cognitive_skill)}</em>.
+          Antes de entrar en modo examen, asegúrate de que puedes razonar la cadena causal completa — no solo recordar la respuesta.
+        </div>
+      </div>
+
+      <button class="commit-btn" onclick="goToRead()">
+        Entrar en modo examen →
+      </button>
+    </div>
+  `;
+}
+
+// -----------------------------------------------------------------------
+// STAGE 2: READ — Question as HERO
+// -----------------------------------------------------------------------
+function renderRead() {
+  const q = currentQ();
+  const totalTime = STATE.pressureMode ? 45 : 90;
+  STATE.readTimeElapsed = 0;
+  document.getElementById('mainContent').innerHTML = `
+    <div class="fade-in">
+      <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
+
+      <div class="q-meta">
+        <span class="q-tag train">Entrenamiento</span>
+        <span class="q-tag topic">${escapeHtml(q.topic)}</span>
+        <span class="q-tag diff">${escapeHtml(q.difficulty)}</span>
+      </div>
+
+      <div class="question-hero">${escapeHtml(q.text)}</div>
+
+      <div class="read-hint">Lee la pregunta con atención. Las opciones aparecerán cuando estés listo.</div>
+
+      <button class="commit-btn" id="readyBtn" onclick="goToCommit()">
+        Estoy listo para responder →
+      </button>
+    </div>
+  `;
+
+  startTimer(totalTime, (remaining, elapsed, total) => {
+    STATE.readTimeElapsed = elapsed;
+    const pct = remaining / total;
+    const color = timerColor(pct);
+    setTimerArc(remaining, total, color);
+  }, () => { goToCommit(); });
+}
+
+// -----------------------------------------------------------------------
+// STAGE 3: COMMIT
+// -----------------------------------------------------------------------
+function renderCommit() {
+  stopTimer();
+  const q = currentQ();
+  STATE.selectedOption = null;
+  STATE.selectedConfidence = null;
+  STATE.selectedTag = null;
+  STATE.timeElapsed = 0;
+  STATE.drillSubmitted = false;
+  resetConfGauge();
+
+  const totalTime = STATE.pressureMode ? 45 : 120;
+
+  document.getElementById('mainContent').innerHTML = `
+    <div class="fade-in">
+      <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
+      <div class="section-label" style="margin-bottom:16px;">Confirmar respuesta</div>
+
+      <div class="question-text">${escapeHtml(q.text)}</div>
+
+      <div class="options-list" id="optionsList">
+        ${q.options.map((o, i) => `
+          <button class="option-btn" id="opt${i}" onclick="selectOption(${i})">
+            <span class="opt-letter">${String.fromCharCode(65+i)}</span>
+            <span>${escapeHtml(o)}</span>
+          </button>
+        `).join('')}
+      </div>
+
+      <div class="section-sep"></div>
+
+      <div class="confidence-section">
+        <div class="conf-label">Calibración de confianza — selecciona antes de confirmar</div>
+        <div class="conf-options">
+          <button class="conf-btn" id="conf-seguro" onclick="selectConf('seguro')">Seguro/a</button>
+          <button class="conf-btn" id="conf-bastante" onclick="selectConf('bastante')">Bastante seguro/a</button>
+          <button class="conf-btn" id="conf-dudas" onclick="selectConf('dudas')">Tengo dudas</button>
+          <button class="conf-btn" id="conf-adivinando" onclick="selectConf('adivinando')">Estoy adivinando</button>
+        </div>
+      </div>
+
+      <div class="microtag-section">
+        <div class="microtag-label">Razonamiento (opcional)</div>
+        <div class="microtag-options">
+          <button class="microtag-btn" id="tag-eliminacion" onclick="selectTag('eliminacion')">Por eliminación</button>
+          <button class="microtag-btn" id="tag-libro" onclick="selectTag('libro')">Lo recuerdo del libro</button>
+          <button class="microtag-btn" id="tag-causal" onclick="selectTag('causal')">Razonamiento causal</button>
+          <button class="microtag-btn" id="tag-instinto" onclick="selectTag('instinto')">Instinto</button>
+        </div>
+      </div>
+
+      <button class="commit-btn" id="commitBtn" onclick="commitAnswer()" disabled>
+        <span class="lock-animation" id="lockIcon">🔓</span>
+        Confirmar respuesta
+      </button>
+    </div>
+  `;
+
+  startTimer(totalTime, (remaining, elapsed, total) => {
+    STATE.timeElapsed = elapsed;
+    const pct = remaining / total;
+    setTimerArc(remaining, total, timerColor(pct));
+  }, () => { commitAnswer(); });
+}
+
+function selectOption(i) {
+  STATE.selectedOption = i;
+  document.querySelectorAll('.option-btn').forEach((b, idx) => b.classList.toggle('selected', idx === i));
+  checkCommitReady();
+}
+
+function selectConf(c) {
+  STATE.selectedConfidence = c;
+  document.querySelectorAll('.conf-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('conf-' + c)?.classList.add('selected');
+  setConfGauge(c);
+  checkCommitReady();
+}
+
+function selectTag(t) {
+  STATE.selectedTag = STATE.selectedTag === t ? null : t;
+  document.querySelectorAll('.microtag-btn').forEach(b => b.classList.remove('selected'));
+  if (STATE.selectedTag) document.getElementById('tag-' + STATE.selectedTag)?.classList.add('selected');
+  // Update causal bars
+  if (STATE.selectedTag === 'causal') setCausalBars(4);
+  else if (STATE.selectedTag === 'eliminacion') setCausalBars(2);
+  else if (STATE.selectedTag === 'libro') setCausalBars(3);
+  else setCausalBars(1);
+}
+
+function checkCommitReady() {
+  const btn = document.getElementById('commitBtn');
+  if (btn) btn.disabled = !(STATE.selectedOption !== null && STATE.selectedConfidence !== null);
+}
+
+function commitAnswer() {
+  if (STATE.selectedOption === null || STATE.selectedConfidence === null) return;
+  stopTimer();
+  const btn = document.getElementById('commitBtn');
+  if (btn) {
+    btn.classList.add('locked','locking');
+    const icon = document.getElementById('lockIcon');
+    if (icon) setTimeout(() => { icon.textContent = '🔒'; }, 200);
+    btn.disabled = true;
+  }
+  setTimeout(() => { STATE.stage = 'cross'; render(); }, 500);
+}
+
+// -----------------------------------------------------------------------
+// STAGE 4: CROSS-EXAMINE
+// -----------------------------------------------------------------------
+function renderCross() {
+  const q = currentQ();
+  STATE.crossChanged = false;
+  document.getElementById('mainContent').innerHTML = `
+    <div class="fade-in">
+      <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
+      <div class="section-label" style="margin-bottom:16px;">Contraste · Pre-revelación</div>
+
+      <div class="question-text">${escapeHtml(q.text)}</div>
+
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">
+        Tu respuesta:
+        <strong style="color:var(--gold)">${String.fromCharCode(65 + STATE.selectedOption)}. ${escapeHtml(q.options[STATE.selectedOption])}</strong>
+      </div>
+
+      ${q.cross_exam_challenge ? `
+      <div class="cross-challenge">
+        <div class="cross-challenge-label">⚡ Desafío del mentor</div>
+        <div class="cross-challenge-text">${escapeHtml(q.cross_exam_challenge)}</div>
+      </div>` : ''}
+
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">
+        ¿Confirmas tu respuesta o deseas cambiarla?
+      </div>
+
+      <div class="hesitation-track">
+        <div class="hesitation-dot" id="hesitationDot"></div>
+        <span id="hesitationLabel" style="font-size:11px;color:var(--text-muted);">Sin vacilación registrada</span>
+      </div>
+
+      <div class="btn-row" style="margin-top:18px;">
+        <button class="commit-btn" onclick="confirmCross()">✓ Confirmo mi respuesta</button>
+        <button class="btn-secondary" onclick="changeCross()">↩ Cambiar respuesta</button>
+      </div>
+
+      <div id="changeOptionsArea" class="hidden" style="margin-top:18px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:12px;">
+          Selecciona nueva respuesta (bloqueo definitivo):
+        </div>
+        <div class="options-list" id="changeOptionsList">
+          ${q.options.map((o, i) => `
+            <button class="option-btn ${i === STATE.selectedOption ? 'selected' : ''}" id="chopt${i}" onclick="reSelectOption(${i})">
+              <span class="opt-letter">${String.fromCharCode(65+i)}</span>
+              <span>${escapeHtml(o)}</span>
+            </button>
+          `).join('')}
+        </div>
+        <button class="commit-btn" onclick="hardLock()" style="margin-top:12px;">
+          🔒 Confirmar nueva respuesta (definitivo)
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function changeCross() {
+  STATE.crossChanged = true;
+  document.getElementById('hesitationDot')?.classList.add('triggered');
+  const lbl = document.getElementById('hesitationLabel');
+  if (lbl) lbl.textContent = '⚡ Vacilación detectada';
+  document.getElementById('changeOptionsArea')?.classList.remove('hidden');
+}
+
+function reSelectOption(i) {
+  STATE.selectedOption = i;
+  document.querySelectorAll('[id^="chopt"]').forEach((b, idx) => b.classList.toggle('selected', idx === i));
+}
+
+function confirmCross() { goToReveal(); }
+function hardLock()     { goToReveal(); }
+
+async function goToReveal() {
+  stopTimer();
+  const q = currentQ();
+  // Server-side grading + post-answer pedagogical result. The browser submits
+  // the chosen option; the backend decides correctness and returns ONLY the
+  // final result the student is allowed to see.
+  let isCorrect = false;
+  try {
+    const token = await requireAuth();
+    const selLetter = (typeof STATE.selectedOption === 'number')
+      ? String.fromCharCode(65 + STATE.selectedOption) : '';
+    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
+      method:'POST',
+      headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
+      body: JSON.stringify({ item_id:q.id, selected_letter:selLetter, mode:STATE.mentorMode })
+    });
+    if (resp.ok) {
+      const r = await resp.json();
+      isCorrect = !!r.correct;
+      if (typeof r.correct_index === 'number') q.correct_index = r.correct_index;
+      q.correct_letter = r.correct_letter || q.correct_letter;
+      q.causal_chain = r.causal_chain || null;
+      q.micro_drill = r.micro_drill || null;
+      q.feedback_by_mode = r.feedback ? { mentor:r.feedback, trainer:r.feedback, reviewer:r.feedback } : null;
+    } else {
+      console.error('validate-sba-answer status:', resp.status);
+      isCorrect = (typeof q.correct_index==='number') && (STATE.selectedOption === q.correct_index);
+    }
+  } catch(e){
+    console.error('validate-sba-answer error:', e);
+    isCorrect = (typeof q.correct_index==='number') && (STATE.selectedOption === q.correct_index);
+  }
+  STATE.session.answered++;
+  if (isCorrect) STATE.session.correct++;
+  if (!isCorrect && STATE.selectedConfidence === 'seguro') STATE.session.overconfident++;
+  if (STATE.crossChanged) STATE.session.hesitated++;
+  // Phase Y.2 — longitudinal history (Performance Analytics + Weakness Engine)
+  STATE.attempts.push({ question_id: q.source_question_id, ra_id: q.ra, topic: q.topic, correct: isCorrect });
+  // Update instruments
+  if (!isCorrect && STATE.selectedConfidence === 'seguro') activateMisconGlyph(true);
+  if (STATE.crossChanged) triggerHesDot(Math.min(STATE.session.hesitated - 1, 3));
+  STATE.stage = 'reveal';
+  render();
+}
+
+// -----------------------------------------------------------------------
+// STAGE 5: REVEAL
+// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
+// REVEAL ANIMATIONS — Fase de animación unificada del sistema. La cabina
+// ya tiene su propio vocabulario visual para la fase de PREGUNTA (orbe,
+// vacilación, lock-bounce); esto anima solo la fase de RESULTADO (reveal
+// por pregunta y mapa cognitivo de sesión), con el mismo espíritu que
+// Open Response Lab / Mentor / Dashboard / Simulacro: nada de "BIEN/MAL"
+// como golpe seco, sino una revelación en cascada que además señala dónde
+// reforzar. Respeta prefers-reduced-motion.
+// -----------------------------------------------------------------------
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+function staggerIn(nodes, startDelay, gap) {
+  nodes.forEach(function (el, i) { setTimeout(function () { el.classList.add('rv-in'); }, startDelay + i * gap); });
+}
+function animateRingTo(el, targetPct, duration) {
+  if (!el) return;
+  var start = null;
+  function step(ts) {
+    if (!start) start = ts;
+    var t = Math.min(1, (ts - start) / duration);
+    var eased = 1 - Math.pow(1 - t, 3);
+    el.style.setProperty('--p', (targetPct * eased).toFixed(1));
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function animateResultReveal() {
+  var root = document.getElementById('mainContent');
+  if (!root) return;
+  var badge = root.querySelector('.correctness-badge');
+  var chips = root.querySelectorAll('.reveal-metrics .metric-chip');
+  var nodes = root.querySelectorAll('.causal-node');
+  if (prefersReducedMotion()) {
+    if (badge) badge.classList.add('rv-in');
+    chips.forEach(function (c) { c.classList.add('rv-in'); });
+    nodes.forEach(function (n) { n.classList.add('rv-in'); });
+    return;
+  }
+  if (badge) setTimeout(function () { badge.classList.add('rv-in'); }, 60);
+  staggerIn(chips, 220, 90);
+  staggerIn(nodes, 220 + chips.length * 90 + 150, 140);
+}
+function animateMapReveal(accuracy) {
+  var root = document.getElementById('mainContent');
+  if (!root) return;
+  var ring = document.getElementById('mapRing');
+  var cells = root.querySelectorAll('.stat-cell');
+  var chips = root.querySelectorAll('.metric-chip');
+  if (prefersReducedMotion()) {
+    if (ring) { ring.style.setProperty('--p', accuracy); ring.classList.add('rv-in'); }
+    cells.forEach(function (c) { c.classList.add('rv-in'); });
+    chips.forEach(function (c) { c.classList.add('rv-in'); });
+    return;
+  }
+  if (ring) { ring.classList.add('rv-in'); animateRingTo(ring, accuracy, 900); }
+  staggerIn(cells, 180, 90);
+  staggerIn(chips, 180 + cells.length * 90 + 150, 70);
+}
+function renderReveal() {
+  const q = currentQ();
+  const isCorrect = (typeof q.correct_index === 'number') && (STATE.selectedOption === q.correct_index);
+  const timing = getTimingBand(STATE.timeElapsed);
+  const isOverconf = !isCorrect && STATE.selectedConfidence === 'seguro';
+  const _fbm=q.feedback_by_mode||{}; const feedback=_fbm[STATE.mentorMode]||_fbm.mentor||fallbackFeedback(q);
+  const correctIdx = (typeof q.correct_index === 'number') ? q.correct_index : -1;
+
+  document.getElementById('mainContent').innerHTML = `
+    <div class="fade-in">
+      <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
+      <div class="section-label" style="margin-bottom:16px;">Resultado y retroalimentación</div>
+
+      <div class="correctness-badge ${isCorrect ? 'correct' : 'wrong'}">
+        <div class="correctness-icon">${isCorrect ? '✓' : '✗'}</div>
+        <div>
+          <div class="correctness-text">${isCorrect ? 'Respuesta correcta' : 'Respuesta incorrecta'}</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
+            ${isCorrect
+              ? 'Bien razonado.'
+              : (correctIdx>=0 ? `La correcta era: <strong style="color:var(--green)">${String.fromCharCode(65 + correctIdx)}</strong>` : '')}
+          </div>
+        </div>
+      </div>
+
+      ${isOverconf ? `<div class="overconf-banner">⚠ Sobreconfianza detectada — respondiste "Seguro/a" pero la respuesta fue incorrecta</div>` : ''}
+
+      <div class="reveal-metrics">
+        <div class="metric-chip">
+          <div class="metric-chip-label">Tiempo de respuesta</div>
+          <div class="metric-chip-value ${timing.cls}">${STATE.timeElapsed} s</div>
+        </div>
+        <div class="metric-chip">
+          <div class="metric-chip-label">Banda temporal</div>
+          <div class="metric-chip-value ${timing.cls}" style="font-size:11px;">${timing.label}</div>
+        </div>
+        <div class="metric-chip">
+          <div class="metric-chip-label">Confianza declarada</div>
+          <div class="metric-chip-value ${isOverconf ? 'danger' : ''}">${getConfLabel(STATE.selectedConfidence)}</div>
+        </div>
+        <div class="metric-chip">
+          <div class="metric-chip-label">Vacilación</div>
+          <div class="metric-chip-value ${STATE.crossChanged ? 'warn' : ''}">${STATE.crossChanged ? 'Sí — cambiada' : 'No'}</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px;">Opciones</div>
+        <div class="options-list">
+          ${q.options.map((o, i) => `
+            <button class="option-btn ${
+              i === correctIdx ? 'correct-reveal' :
+              (i === STATE.selectedOption && !isCorrect) ? 'wrong-reveal' : 'neutral-reveal'
+            }" disabled>
+              <span class="opt-letter">${String.fromCharCode(65+i)}</span>
+              <span>${escapeHtml(o)}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      ${q.causal_chain ? `
+      <div class="causal-chain">
+        <div class="causal-chain-title">▶ Cadena Causal</div>
+        <div class="causal-flow">
+          <div class="causal-node causa">
+            <div class="causal-node-label">Causa</div>
+            <div class="causal-node-text">${escapeHtml(q.causal_chain.causa||'')}</div>
+          </div>
+          <div class="causal-arrow">→</div>
+          <div class="causal-node mecanismo">
+            <div class="causal-node-label">Mecanismo</div>
+            <div class="causal-node-text">${escapeHtml(q.causal_chain.mecanismo||'')}</div>
+          </div>
+          <div class="causal-arrow">→</div>
+          <div class="causal-node efecto">
+            <div class="causal-node-label">Efecto</div>
+            <div class="causal-node-text">${escapeHtml(q.causal_chain.efecto||'')}</div>
+          </div>
+        </div>
+      </div>` : ''}
+
+      ${q.distractor_traps ? `
+      <div class="feedback-block">
+        <div class="feedback-block-title distractor">Trampas de distractor</div>
+        <p>${escapeHtml(q.distractor_traps)}</p>
+      </div>` : ''}
+
+      ${q.misconception ? `
+      <div class="feedback-block">
+        <div class="feedback-block-title misconception">Misconception frecuente</div>
+        <p><em>${escapeHtml(q.misconception)}</em></p>
+      </div>` : ''}
+
+      ${q.sat_relevance ? `
+      <div class="feedback-block">
+        <div class="feedback-block-title sat">Relevancia SAT</div>
+        <p>${escapeHtml(q.sat_relevance)}</p>
+      </div>` : ''}
+
+      <div class="feedback-block">
+        <div class="feedback-block-title mentor">${q.feedback_by_mode ? mentorLabel() : 'Guía de repaso'}</div>
+        <p>${escapeHtml(feedback)}</p>
+      </div>
+
+      <button class="nav-btn primary-nav" onclick="goToTrain()">${
+        q.micro_drill
+          ? 'Continuar → Micro-entrenamiento SBA'
+          : (STATE.questionIndex + 1 < QUESTIONS.length ? 'Siguiente pregunta →' : 'Ver Mapa Cognitivo →')
+      }</button>
+    </div>
+  `;
+  animateResultReveal();
+}
+
+// -----------------------------------------------------------------------
+// STAGE 6: TRAIN — micro_sba ONLY
+// -----------------------------------------------------------------------
+function renderTrain() {
+  const q = currentQ();
+  const drill=q.micro_drill||null;
+  if(!drill){nextQuestion();return;}
+  STATE.drillSelectedOption = null;
+  STATE.drillSubmitted = false;
+
+  document.getElementById('mainContent').innerHTML = `
+    <div class="fade-in">
+      <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
+      <div class="section-label" style="margin-bottom:16px;">Micro-entrenamiento</div>
+
+      <div class="drill-section">
+        <div class="drill-title">▶ Ejercicio de Consolidación · SBA</div>
+        <div class="drill-prompt">${escapeHtml(drill.prompt)}</div>
+
+        <div class="drill-options" id="drillOptions">
+          ${drill.options.map((o, i) => `
+            <button class="drill-opt-btn" id="dopt${i}" onclick="selectDrillOption(${i})">
+              <span class="drill-opt-letter">${String.fromCharCode(65+i)}</span>
+              <span>${escapeHtml(o)}</span>
+            </button>
+          `).join('')}
+        </div>
+
+        <button class="commit-btn" id="drillSubmitBtn" onclick="submitDrill()" disabled
+          style="background:var(--blue);box-shadow:0 2px 8px rgba(63,169,245,0.2);">
+          Verificar respuesta
+        </button>
+
+        <div id="drillExplanation" class="drill-explanation"></div>
+      </div>
+
+      <button class="nav-btn" id="nextQBtn" style="display:none;" onclick="nextQuestion()">
+        ${STATE.questionIndex + 1 < QUESTIONS.length ? 'Siguiente pregunta →' : 'Ver Mapa Cognitivo →'}
+      </button>
+    </div>
+  `;
+}
+
+function selectDrillOption(i) {
+  if (STATE.drillSubmitted) return;
+  STATE.drillSelectedOption = i;
+  document.querySelectorAll('.drill-opt-btn').forEach((b, idx) => b.classList.toggle('drill-selected', idx === i));
+  const btn = document.getElementById('drillSubmitBtn');
+  if (btn) btn.disabled = false;
+}
+
+function submitDrill() {
+  if (STATE.drillSubmitted || STATE.drillSelectedOption === null) return;
+  STATE.drillSubmitted = true;
+  const q = currentQ();
+  const drill=q.micro_drill||null;
+  if(!drill){nextQuestion();return;}
+  const isCorrect = STATE.drillSelectedOption === drill.correct_index;
+
+  document.querySelectorAll('.drill-opt-btn').forEach((b, i) => {
+    b.disabled = true;
+    b.classList.remove('drill-selected');
+    if (i === drill.correct_index) b.classList.add('drill-correct-reveal');
+    else if (i === STATE.drillSelectedOption && !isCorrect) b.classList.add('drill-wrong-reveal');
+    else b.classList.add('drill-neutral-reveal');
+  });
+
+  const expEl = document.getElementById('drillExplanation');
+  if (expEl) {
+    expEl.className = 'drill-explanation ' + (isCorrect ? 'correct' : 'wrong');
+    expEl.textContent = isCorrect ? '✓ ' + drill.explanation : '✗ ' + drill.remediation_signal + ' · Respuesta correcta: ' + String.fromCharCode(65 + drill.correct_index) + '.';
+  }
+
+  const btn = document.getElementById('drillSubmitBtn');
+  if (btn) { btn.disabled = true; btn.style.opacity = '0.3'; }
+
+  document.getElementById('nextQBtn').style.display = 'block';
+}
+
+function nextQuestion() {
+  if (STATE.questionIndex + 1 < QUESTIONS.length) {
+    STATE.questionIndex++;
+    STATE.stage = 'prepare';
+  } else {
+    STATE.stage = 'map';
+  }
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// -----------------------------------------------------------------------
+// STAGE 7: SESSION MAP
+// -----------------------------------------------------------------------
+function renderMap() {
+  stopTimer();
+  // Phase Y.2 — record session once into shared learner history
+  if (window.LI && !STATE.historyRecorded && STATE.attempts.length) {
+    LI.recordSBASession('dsba_' + Date.now(), ACTIVE_MODE || 'standard', STATE.attempts);
+    STATE.historyRecorded = true;
+  }
+  const s = STATE.session;
+  const total = s.answered || 1;
+  const accuracy = Math.round((s.correct / total) * 100);
+  const overconfRate = Math.round((s.overconfident / total) * 100);
+  const hesRate = Math.round((s.hesitated / total) * 100);
+  const causalWeakness = 100 - accuracy;
+  const trapSusc = Math.round(((total - s.correct) / total) * 60);
+
+  const radarData = [
+    accuracy,
+    Math.max(0, 100 - overconfRate * 2),
+    Math.max(0, 100 - hesRate * 2),
+    Math.max(0, 100 - causalWeakness),
+    Math.max(0, 100 - trapSusc)
+  ];
+  const radarLabels = ['Precisión','Calibración','Decisión','Causal','Anti-trampa'];
+
+  function patternNote() {
+    if (s.overconfident > 0 && s.hesitated > 0)
+      return 'Patrón mixto: sobreconfianza en algunos ítems, vacilación en otros. Revisa tu calibración antes del examen.';
+    if (s.overconfident > 0)
+      return 'Tendencia a sobreestimar la certeza. Practica identificar cuándo estás razonando vs. recordando.';
+    if (s.hesitated > 0)
+      return 'Tendencia a vacilar bajo presión de contraste. Confía más en tu primer razonamiento causal.';
+    if (accuracy === 100)
+      return 'Excelente sesión. Todas las respuestas correctas. Aumenta el modo de presión para el siguiente ciclo.';
+    return 'Tiendes a confundir causa con correlación en cadenas complejas. Practica la estructura CAUSA → MECANISMO → EFECTO.';
+  }
+
+  document.getElementById('mainContent').innerHTML = `
+    <div class="fade-in">
+      <div class="section-label" style="margin-bottom:18px;">Mapa Cognitivo · Sesión completada</div>
+
+      <div class="stat-ring-wrap"><div class="stat-ring" id="mapRing" style="--p:0"><i>${accuracy}%</i></div></div>
+
+      <div class="session-stats-grid">
+        <div class="stat-cell">
+          <div class="stat-cell-label">Precisión global</div>
+          <div class="stat-cell-value ${accuracy >= 75 ? 'good' : accuracy >= 50 ? 'warn' : 'danger'}">${accuracy}%</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-label">Correctas / Total</div>
+          <div class="stat-cell-value">${s.correct} / ${s.answered}</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-label">Sobreconfianza</div>
+          <div class="stat-cell-value ${s.overconfident > 0 ? 'warn' : ''}">${s.overconfident > 0 ? s.overconfident + ' evento(s)' : '—'}</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-label">Vacilaciones</div>
+          <div class="stat-cell-value ${s.hesitated > 0 ? 'warn' : ''}">${s.hesitated > 0 ? s.hesitated : '—'}</div>
+        </div>
+      </div>
+
+      <div class="radar-wrap">${buildRadarSVG(radarData, radarLabels)}</div>
+
+      <div class="pattern-note">
+        <strong>Patrón detectado:</strong> ${patternNote()}
+      </div>
+
+      <div class="feedback-block">
+        <div class="feedback-block-title mentor">Resumen de sesión · ${mentorLabel()}</div>
+        <p>
+          Completaste ${s.answered} pregunta(s) de entrenamiento.
+          ${s.correct === s.answered
+            ? 'Todas correctas — demuestras dominio de los conceptos evaluados.'
+            : `${s.correct} correcta(s). Las preguntas fallidas son oportunidades de diagnóstico, no penalizaciones.`}
+          ${s.overconfident > 0 ? ' La sobreconfianza detectada sugiere revisar la técnica de calibración antes del examen oficial.' : ''}
+          ${s.hesitated > 0 ? ' Las vacilaciones indican áreas donde el razonamiento causal necesita consolidación adicional.' : ''}
+        </p>
+      </div>
+
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px;margin-top:4px;">
+        Indicadores de huella cognitiva
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:22px;">
+        ${radarLabels.map((l, i) => `
+          <div class="metric-chip" style="text-align:center;">
+            <div class="metric-chip-label">${l}</div>
+            <div class="metric-chip-value ${radarData[i] >= 70 ? 'good' : radarData[i] >= 40 ? 'warn' : 'danger'}">${radarData[i]}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <button class="nav-btn primary-nav" onclick="restartSession()">↺ Nueva sesión de entrenamiento</button>
+      <button class="nav-btn" onclick="restartSession()">↩ Repasar desde pregunta 1</button>
+
+      <div style="margin-top:18px;padding:14px 18px;background:#10141c;border:1px solid #1e2430;border-radius:8px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-dim);margin-bottom:7px;font-weight:700;">
+          Tu progreso acumulado
+        </div>
+        ${window.LI ? LI.renderProgress() : ''}
+      </div>
+
+      <div style="margin-top:18px;padding:14px 18px;background:#0d0800;border:1px solid #2a1a00;border-radius:8px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-dim);margin-bottom:7px;font-weight:700;">
+          Recordatorio de gobernanza
+        </div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.65;">
+          Este es un instrumento de entrenamiento para desarrollar tu razonamiento.
+          Tu progreso se registra automáticamente.
+        </div>
+      </div>
+    </div>
+  `;
+  animateMapReveal(accuracy);
+}
+
+// -----------------------------------------------------------------------
+// RADAR SVG
+// -----------------------------------------------------------------------
+function buildRadarSVG(data, labels) {
+  const cx = 150, cy = 150, r = 108;
+  const n = data.length;
+  function toCart(angle, radius) {
+    const rad = (angle - 90) * Math.PI / 180;
+    return { x: cx + radius * Math.cos(rad), y: cy + radius * Math.sin(rad) };
+  }
+  let gridLines = '';
+  [20,40,60,80,100].forEach(pct => {
+    const rr = (pct/100)*r;
+    const pts = Array.from({length:n},(_,i)=>{const {x,y}=toCart((360/n)*i,rr);return x+','+y;}).join(' ');
+    gridLines += `<polygon points="${pts}" fill="none" stroke="#1e2430" stroke-width="0.8"/>`;
+  });
+  let axes = '';
+  for (let i=0;i<n;i++) {
+    const {x,y}=toCart((360/n)*i,r);
+    axes += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#1e2430" stroke-width="0.8"/>`;
+  }
+  const dataPts = data.map((d,i)=>{const {x,y}=toCart((360/n)*i,(d/100)*r);return x+','+y;}).join(' ');
+  let lbls='', dots='';
+  labels.forEach((l,i) => {
+    const {x,y}=toCart((360/n)*i,r+22);
+    lbls+=`<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" fill="#a7b0be" font-size="11" font-family="system-ui">${l}</text>`;
+  });
+  data.forEach((d,i) => {
+    const {x,y}=toCart((360/n)*i,(d/100)*r);
+    dots+=`<circle cx="${x}" cy="${y}" r="3.5" fill="#c9a84c"/>`;
+  });
+  return `<svg viewBox="0 0 300 300" width="280" height="280" xmlns="http://www.w3.org/2000/svg">${gridLines}${axes}<polygon points="${dataPts}" fill="#c9a84c" fill-opacity="0.12" stroke="#c9a84c" stroke-width="1.5"/>${dots}${lbls}<circle cx="${cx}" cy="${cy}" r="3" fill="#3a3a4a"/></svg>`;
+}
+
+// -----------------------------------------------------------------------
+// UTILS
+// -----------------------------------------------------------------------
+function getTimingBand(secs) {
+  if (secs < 30) return { label: 'Respuesta rápida (<30 s)', cls: 'good' };
+  if (secs <= 60) return { label: 'Ritmo normal (30–60 s)', cls: '' };
+  return { label: 'Indecisión (>60 s)', cls: 'warn' };
+}
+function getConfLabel(conf) {
+  return { seguro:'Seguro/a', bastante:'Bastante seguro/a', dudas:'Tengo dudas', adivinando:'Estoy adivinando' }[conf] || '—';
+}
+
+function goToRead()    { STATE.stage = 'read';   render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function goToCommit()  { stopTimer(); STATE.stage = 'commit'; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function goToTrain()   { STATE.stage = 'train';  render(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function restartSession() {
+  STATE.crossChanged=false; STATE.drillSelectedOption=null; STATE.drillSubmitted=false;
+  STATE.session={answered:0,correct:0,overconfident:0,hesitated:0,causalWeakness:0,trapSusceptibility:0};
+  STATE.attempts=[]; STATE.historyRecorded=false;
+  resetConfGauge(); setCausalBars(0); activateMisconGlyph(false);
+  document.querySelectorAll('.hes-dot').forEach(d=>d.classList.remove('triggered'));
+  document.getElementById('hesLabel').textContent='—';
+  document.getElementById('mode-overlay').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// -----------------------------------------------------------------------
+// INIT
+// -----------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded',function(){
+  // Mode overlay visible; quiz starts on mode selection.
+});

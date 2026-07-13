@@ -14,7 +14,10 @@ const getSatWines = fs.readFileSync(
   path.join(repoRoot, 'supabase', 'functions', 'get-sat-wines', 'index.ts'),
   'utf8'
 );
-const satLab = fs.readFileSync(path.join(repoRoot, 'sat-lab', 'index.html'), 'utf8');
+const satLab = [
+  fs.readFileSync(path.join(repoRoot, 'sat-lab', 'index.html'), 'utf8'),
+  fs.readFileSync(path.join(repoRoot, 'sat-lab', 'sat-lab.js'), 'utf8'),
+].join('\n');
 
 const canonicalIds = profiles.map((profile) => profile.canonical_id);
 const seedIds = Array.from(new Set(migrationSql.match(/SAT_WINE_\d{3}/g) || [])).sort();

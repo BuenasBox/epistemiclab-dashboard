@@ -13,12 +13,7 @@
  *   if (response.data?.allowed) { grant access }
  */
 
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? '';
-const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
-
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
+const { createClient } = require('@supabase/supabase-js');
 
 // Plan ranking for access control
 const PLAN_RANK = {
@@ -51,7 +46,7 @@ const MODE_PLAN_REQUIREMENT = {
  * Validate user's plan access
  * Returns: { allowed: true/false, reason: string, user_plan: string }
  */
-async function validatePlanAccess(userId, requiredPlan, mode) {
+async function validatePlanAccess(supabase, userId, requiredPlan, mode) {
   try {
     // Validate inputs
     if (!userId || typeof userId !== 'string') {
@@ -122,38 +117,51 @@ async function validatePlanAccess(userId, requiredPlan, mode) {
  * Validate mode access
  * Returns: { allowed: true/false, required_plan: string, user_plan: string }
  */
-async function validateModeAccess(userId, mode) {
+async function validateModeAccess(supabase, userId, mode) {
   const requiredPlan = MODE_PLAN_REQUIREMENT[mode] || 'full_access';
-  return validatePlanAccess(userId, requiredPlan, mode);
+  return validatePlanAccess(supabase, userId, requiredPlan, mode);
 }
 
 /**
- * Main Deno handler
+ * Main Vercel Function handler
  */
-Deno.serve(async (req) => {
+async function handler(request, response) {
   // Only POST allowed
-  if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 });
+  if (request.method !== 'POST') {
+    response.setHeader('Allow', 'POST');
+    response.status(405).json({ error: 'method_not_allowed' });
+    return;
   }
 
   try {
-    const body = await req.json();
+    const body = typeof request.body === 'string'
+      ? JSON.parse(request.body || '{}')
+      : (request.body || {});
     const requiredPlan = body.required_plan || null;
     const mode = body.mode || null;
 
     // Get user from auth header
-    const authHeader = req.headers.get('authorization');
+    const authHeader = request.headers.authorization;
     const token = authHeader?.replace('Bearer ', '');
 
     if (!token) {
-      return new Response(
-        JSON.stringify({
-          allowed: false,
-          reason: 'no_auth_token',
-        }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
-      );
+      response.status(401).json({
+        allowed: false,
+        reason: 'no_auth_token',
+      });
+      return;
     }
+
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseServiceKey) {
+      response.status(503).json({
+        allowed: false,
+        reason: 'validation_unavailable',
+      });
+      return;
+    }
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Verify token and get user
     const { data: { user: authUser }, error: authError } = await supabase.auth.getUser(
@@ -161,13 +169,11 @@ Deno.serve(async (req) => {
     );
 
     if (authError || !authUser) {
-      return new Response(
-        JSON.stringify({
-          allowed: false,
-          reason: 'invalid_token',
-        }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
-      );
+      response.status(401).json({
+        allowed: false,
+        reason: 'invalid_token',
+      });
+      return;
     }
 
     // Security: always use the ID from the verified auth token. Never trust
@@ -177,32 +183,28 @@ Deno.serve(async (req) => {
 
     let result;
     if (mode) {
-      result = await validateModeAccess(actualUserId, mode);
+      result = await validateModeAccess(supabase, actualUserId, mode);
     } else if (requiredPlan) {
-      result = await validatePlanAccess(actualUserId, requiredPlan, null);
+      result = await validatePlanAccess(supabase, actualUserId, requiredPlan, null);
     } else {
-      return new Response(
-        JSON.stringify({
-          allowed: false,
-          reason: 'missing_plan_or_mode',
-        }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      response.status(400).json({
+        allowed: false,
+        reason: 'missing_plan_or_mode',
+      });
+      return;
     }
 
-    return new Response(JSON.stringify(result), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    response.status(200).json(result);
   } catch (error) {
     console.error('Request error:', error);
-    return new Response(
-      JSON.stringify({
-        allowed: false,
-        reason: 'internal_error',
-        error: error.message,
-      }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    response.status(500).json({
+      allowed: false,
+      reason: 'internal_error',
+      error: error.message,
+    });
   }
-});
+}
+
+module.exports = handler;
+module.exports.validatePlanAccess = validatePlanAccess;
+module.exports.validateModeAccess = validateModeAccess;

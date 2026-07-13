@@ -129,20 +129,27 @@ test('legacy full simulation redirects to the current experience', () => {
 test('paid mode entry points declare active access gates', () => {
 
   [
-    'adaptive-session/index.html',
-    'open-response-lab/index.html',
-  ].forEach((file) => {
+    ['adaptive-session/index.html', 'adaptive-session/adaptive-session.js'],
+    ['open-response-lab/index.html', null],
+  ].forEach(([file, runtime]) => {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
+    const source = runtime
+      ? `${html}\n${fs.readFileSync(path.join(__dirname, '..', runtime), 'utf8')}`
+      : html;
     assert.match(html, /mode-access-gate\.js/);
-    assert.match(html, /enforcement:\s*['"]active/);
+    assert.match(source, /enforcement:\s*['"]active/);
   });
 
   const diagnostic = fs.readFileSync(
     path.join(__dirname, '..', 'diagnostic-sba', 'index.html'),
     'utf8',
   );
+  const diagnosticRuntime = fs.readFileSync(
+    path.join(__dirname, '..', 'diagnostic-sba', 'diagnostic-sba.js'),
+    'utf8',
+  );
   assert.match(diagnostic, /mode-access-gate\.js/);
-  assert.match(diagnostic, /enforcement:\s*['"]active/);
+  assert.match(diagnosticRuntime, /enforcement:\s*['"]active/);
 });
 
 test('current simulation loads its runtime in dependency order', () => {

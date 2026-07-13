@@ -226,11 +226,13 @@ test('experiences load access dependencies and enforce only matrix-paid modes', 
   const integrations = [
     {
       file: 'diagnostic-sba/index.html',
+      runtime: 'diagnostic-sba/diagnostic-sba.js',
       functionName: 'startMode',
       route: '/diagnostic-sba/',
     },
     {
       file: 'adaptive-session/index.html',
+      runtime: 'adaptive-session/adaptive-session.js',
       functionName: 'startAdp',
       route: '/adaptive-session/',
     },
@@ -241,8 +243,11 @@ test('experiences load access dependencies and enforce only matrix-paid modes', 
     },
   ];
 
-  integrations.forEach(({ file, functionName, route }) => {
+  integrations.forEach(({ file, runtime, functionName, route }) => {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
+    const source = runtime
+      ? `${html}\n${fs.readFileSync(path.join(__dirname, '..', runtime), 'utf8')}`
+      : html;
     const expectedScripts = [
       '../shared/session-store.js',
       '../shared/auth-providers/mock-auth-provider.js',
@@ -259,8 +264,8 @@ test('experiences load access dependencies and enforce only matrix-paid modes', 
       file,
     );
     if (functionName) {
-      const functionStart = html.indexOf(`function ${functionName}`);
-      const functionBody = html.slice(functionStart, functionStart + 900);
+      const functionStart = source.indexOf(`function ${functionName}`);
+      const functionBody = source.slice(functionStart, functionStart + 900);
 
       assert.match(
         functionBody,

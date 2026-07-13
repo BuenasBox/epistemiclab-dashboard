@@ -2,6 +2,7 @@
   "name": "epistemiclab-dashboard",
   "private": true,
   "scripts": {
+    "build": "node tools/build-static.js",
     "state:update": "node tools/update-system-state.js",
     "state:check": "node tools/update-system-state.js --check",
     "test": "npm run state:update && node tools/run-tests.js",
@@ -10,5 +11,9 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
     "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.6",
+    "html-minifier-terser": "^7.2.0"
   }
 }

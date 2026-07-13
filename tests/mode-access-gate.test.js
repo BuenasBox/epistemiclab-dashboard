@@ -6,6 +6,19 @@ const path = require('node:path');
 const {
   evaluateModeGate,
 } = require('../shared/mode-access-gate.js');
+const validateUserPlan = require('../api/validate-user-plan.js');
+const validateTrialExpiration = require('../api/validate-trial-expiration.js');
+
+function createResponse() {
+  return {
+    statusCode: null,
+    body: null,
+    headers: {},
+    setHeader(name, value) { this.headers[name] = value; },
+    status(code) { this.statusCode = code; return this; },
+    json(body) { this.body = body; return this; },
+  };
+}
 
 function snapshot(options = {}) {
   const authenticated = options.authenticated !== false;
@@ -109,6 +122,20 @@ test('mode gate allows only active and current admins to bypass learner plans', 
   );
 });
 
+test('Vercel validation functions load in Node and reject unauthenticated requests safely', async () => {
+  for (const handler of [validateUserPlan, validateTrialExpiration]) {
+    const methodResponse = createResponse();
+    await handler({ method: 'GET', headers: {}, body: {} }, methodResponse);
+    assert.equal(methodResponse.statusCode, 405);
+    assert.equal(methodResponse.headers.Allow, 'POST');
+
+    const authResponse = createResponse();
+    await handler({ method: 'POST', headers: {}, body: {} }, authResponse);
+    assert.equal(authResponse.statusCode, 401);
+    assert.equal(authResponse.body.reason, 'no_auth_token');
+  }
+});
+
 test('adaptive and open response paid modes deny anonymous and insufficient plans', () => {
   [
     'adaptive_express',
@@ -156,8 +183,16 @@ test('diagnostic, adaptive and open response modes resolve access before startin
     path.join(__dirname, '..', 'diagnostic-sba', 'index.html'),
     'utf8',
   );
+  const diagnosticRuntime = fs.readFileSync(
+    path.join(__dirname, '..', 'diagnostic-sba', 'diagnostic-sba.js'),
+    'utf8',
+  );
   const adaptive = fs.readFileSync(
     path.join(__dirname, '..', 'adaptive-session', 'index.html'),
+    'utf8',
+  );
+  const adaptiveRuntime = fs.readFileSync(
+    path.join(__dirname, '..', 'adaptive-session', 'adaptive-session.js'),
     'utf8',
   );
   const openResponse = fs.readFileSync(
@@ -165,11 +200,15 @@ test('diagnostic, adaptive and open response modes resolve access before startin
     'utf8',
   );
 
-  [diagnostic, adaptive, openResponse].forEach((html) => {
+  [
+    [diagnostic, diagnosticRuntime],
+    [adaptive, adaptiveRuntime],
+    [openResponse, openResponse],
+  ].forEach(([html, source]) => {
     assert.match(html, /shared\/mode-access-gate\.js/);
-    assert.match(html, /WSETModeAccessGate\.request\(/);
-    assert.match(html, /enforcement:\s*['"]active['"]/);
-    assert.match(html, /\.then\([^)]*decision[^]*decision\.would_allow/);
+    assert.match(source, /WSETModeAccessGate\.request\(/);
+    assert.match(source, /enforcement:\s*['"]active['"]/);
+    assert.match(source, /\.then\([^)]*decision[^]*decision\.would_allow/);
   });
 });
 

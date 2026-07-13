@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 const outputPath = path.join(root, 'system_state.json');
 const checkOnly = process.argv.includes('--check');
 const markValid = process.argv.includes('--mark-valid');
+const generatedDirectories = new Set(['.git', '.next', 'build', 'dist', 'node_modules']);
 
 function relativeFiles(directory, predicate = () => true) {
   const start = path.join(root, directory);
@@ -15,7 +16,7 @@ function relativeFiles(directory, predicate = () => true) {
     for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
       const absolute = path.join(current, entry.name);
       if (entry.isDirectory()) {
-        if (entry.name !== 'node_modules' && entry.name !== '.git') visit(absolute);
+        if (!generatedDirectories.has(entry.name)) visit(absolute);
       } else {
         const relative = path.relative(root, absolute).replaceAll('\\', '/');
         if (predicate(relative)) result.push(relative);
