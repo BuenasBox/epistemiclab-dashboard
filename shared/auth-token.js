@@ -28,22 +28,11 @@ async function getAuthToken() {
       return session.access_token;
     }
 
-    // No session: try anonymous sign-in
-    console.log('No session, attempting anonymous sign-in...');
-    const { data: { user }, error: anonError } = await supabaseClient.auth.signInAnonymously();
-    if (anonError) {
-      console.error('Anonymous sign-in failed:', anonError);
-      return null;
-    }
-
-    if (user) {
-      const { data: { session: newSession } } = await supabaseClient.auth.getSession();
-      if (newSession) {
-        console.log('Anonymous session created');
-        return newSession.access_token;
-      }
-    }
-
+    // Sin sesión: EpistemicLab requiere cuenta real (el sign-in anónimo está
+    // deshabilitado en el proyecto de Supabase y, aunque se reactivara, el
+    // trigger handle_new_auth_user exige email y rechazaría al usuario
+    // anónimo). No lo intentamos: devolvemos null y quien llamó a esta
+    // función decide cómo degradar (vista de muestra, aviso de login, etc.).
     return null;
   } catch (e) {
     console.error('getAuthToken error:', e);

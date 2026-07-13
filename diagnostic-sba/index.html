@@ -991,6 +991,9 @@ footer {
 .mode-btn-count { display:block; font-size:12px; color:var(--text-2); margin-top:2px; }
 .mode-btn-detail { display:block; font-size:11px; color:#525e6e; margin-top:2px; }
 .mode-disclaimer { font-size:10px; color:#525e6e; }
+.mode-auth-msg { display:none; margin-top:16px; padding:10px 14px; border-radius:8px; background:rgba(229,201,122,.1); border:1px solid rgba(229,201,122,.35); color:#e5c97a; font-size:12.5px; }
+.mode-auth-msg.show { display:block; }
+.mode-auth-msg a { color:#e5c97a; font-weight:600; }
 
 </style>
 <script src="../shared/session-store.js"></script>
@@ -998,7 +1001,7 @@ footer {
 <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
 <script src="../shared/auth-providers/mock-auth-provider.js"></script>
 <script src="../shared/auth-provider.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
 <script src="../shared/auth-token.js"></script>
 <script src="../shared/access-control.js"></script>
 <script src="../shared/access-audit.js"></script>
@@ -1049,6 +1052,7 @@ footer {
       </button>
     </div>
     <div class="mode-disclaimer">Práctica formativa · Desarrollo de razonamiento profesional</div>
+    <div class="mode-auth-msg" id="modeAuthMsg">Inicia sesión para practicar este modo. <a href="/login/?next=/diagnostic-sba/">Ir a iniciar sesión →</a></div>
   </div>
 </div>
 
@@ -1279,22 +1283,27 @@ function bankToQ(item){
     micro_drill:null,
   };
 }
+function showModeAuthMessage(show){
+  const el=document.getElementById('modeAuthMsg');
+  if(el) el.classList.toggle('show', !!show);
+}
 async function loadMode(mode){
   try{
     console.log('[loadMode] Starting for mode:', mode);
+    showModeAuthMessage(false);
     const token=await requireAuth();
     console.log('[loadMode] Got token, calling get-sba-bank');
     const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?limit=670',
       {headers:{'Authorization':'Bearer '+token}});
     console.log('[loadMode] Response status:', resp.status);
     if(resp.status===401){
-      els.sessionState.textContent='Inicia sesión para cargar preguntas';
+      showModeAuthMessage(true);
       console.error('Authentication required');
-      return;
+      return false;
     }
     const {items}=await resp.json();
     const all=items||[];
-    if(!Array.isArray(all)){console.error('API returned non-array');return;}
+    if(!Array.isArray(all)){console.error('API returned non-array');return false;}
     ACTIVE_MODE=mode;
     const recent=sbaRecent(); let selected=[];
     if(mode==='mock_theory_1'){
@@ -1324,7 +1333,12 @@ async function loadMode(mode){
     }
     QUESTIONS=selected.map(bankToQ);
     sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
-  }catch(e){console.error('loadMode error:',e);}
+    return true;
+  }catch(e){
+    console.error('loadMode error:',e);
+    if(String(e && e.message)==='NO_AUTH_SESSION') showModeAuthMessage(true);
+    return false;
+  }
 }
 function startMode(mode){
   console.log('[startMode] Initiating mode:', mode);
@@ -1357,7 +1371,11 @@ function startMode(mode){
 }
 
 async function startAllowedMode(mode){
-  await loadMode(mode);
+  const ok = await loadMode(mode);
+  if(!ok || !Array.isArray(QUESTIONS) || !QUESTIONS.length){
+    console.warn('[startAllowedMode] no se pudieron cargar preguntas; se mantiene el selector de modo');
+    return;
+  }
   document.getElementById('mode-overlay').classList.remove('active');
   STATE.stage='prepare'; STATE.questionIndex=0;
   STATE.selectedOption=null; STATE.selectedConfidence=null; STATE.selectedTag=null;
