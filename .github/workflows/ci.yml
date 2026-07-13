@@ -48,7 +48,7 @@ jobs:
       - name: Esperar a que el servidor responda
         run: npx --yes wait-on http://127.0.0.1:4173
 
-      - name: Lighthouse CI (informativo, no bloquea el merge)
+      - name: Lighthouse CI (presupuesto de rendimiento, Fase 2 — informativo por ahora)
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
@@ -56,5 +56,8 @@ jobs:
             http://127.0.0.1:4173/dashboard/
             http://127.0.0.1:4173/bottle-lab/
             http://127.0.0.1:4173/diagnostic-sba/
+            http://127.0.0.1:4173/sat-lab/
+            http://127.0.0.1:4173/adaptive-session/
+          configPath: './lighthouserc.json'
           uploadArtifacts: true
           temporaryPublicStorage: true
