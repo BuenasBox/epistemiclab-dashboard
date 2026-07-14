@@ -372,7 +372,7 @@
     const id = 'mentor-verb-' + Date.now();
     return `
       <div class="mentor-card" data-mentor-layer="verb">
-        <div class="mentor-card-header" onclick="mentorToggleCard(this)">
+        <div class="mentor-card-header" role="button" tabindex="0" aria-expanded="false" onclick="mentorToggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();mentorToggleCard(this)}">
           <div class="mentor-toggle collapsed"></div>
           <div>
             <div class="mentor-title">Qué significa «${verbMentor.verb}»</div>
@@ -431,7 +431,7 @@
 
     return `
       <div class="mentor-card" data-mentor-layer="thinking">
-        <div class="mentor-card-header" onclick="mentorToggleCard(this)">
+        <div class="mentor-card-header" role="button" tabindex="0" aria-expanded="false" onclick="mentorToggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();mentorToggleCard(this)}">
           <div class="mentor-toggle collapsed"></div>
           <div>
             <div class="mentor-title">Preguntas de reflexión</div>
@@ -485,7 +485,7 @@
 
     return `
       <div class="mentor-card" data-mentor-layer="causal">
-        <div class="mentor-card-header" onclick="mentorToggleCard(this)">
+        <div class="mentor-card-header" role="button" tabindex="0" aria-expanded="false" onclick="mentorToggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();mentorToggleCard(this)}">
           <div class="mentor-toggle collapsed"></div>
           <div>
             <div class="mentor-title">Mentor de cadenas causales</div>
@@ -512,7 +512,7 @@
 
     return `
       <div class="mentor-card" data-mentor-layer="concepts">
-        <div class="mentor-card-header" onclick="mentorToggleCard(this)">
+        <div class="mentor-card-header" role="button" tabindex="0" aria-expanded="false" onclick="mentorToggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();mentorToggleCard(this)}">
           <div class="mentor-toggle collapsed"></div>
           <div>
             <div class="mentor-title">Lista de conceptos</div>
@@ -566,7 +566,7 @@
 
     return `
       <div class="mentor-card" data-mentor-layer="distinction">
-        <div class="mentor-card-header" onclick="mentorToggleCard(this)">
+        <div class="mentor-card-header" role="button" tabindex="0" aria-expanded="false" onclick="mentorToggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();mentorToggleCard(this)}">
           <div class="mentor-toggle collapsed"></div>
           <div>
             <div class="mentor-title">${escapeHtml(distinction.title)}</div>
@@ -601,7 +601,7 @@
 
     return `
       <div class="mentor-card" data-mentor-layer="self-review">
-        <div class="mentor-card-header" onclick="mentorToggleCard(this)">
+        <div class="mentor-card-header" role="button" tabindex="0" aria-expanded="false" onclick="mentorToggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();mentorToggleCard(this)}">
           <div class="mentor-toggle collapsed"></div>
           <div>
             <div class="mentor-title">Lista de autorevisión</div>
@@ -651,10 +651,12 @@
       body.classList.remove('expanded');
       toggle.classList.remove('expanded');
       toggle.classList.add('collapsed');
+      headerEl.setAttribute('aria-expanded', 'false');
     } else {
       body.classList.add('expanded');
       toggle.classList.remove('collapsed');
       toggle.classList.add('expanded');
+      headerEl.setAttribute('aria-expanded', 'true');
     }
   }
 

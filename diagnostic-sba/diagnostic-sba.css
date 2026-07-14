@@ -14,7 +14,7 @@
   --border-soft:   #1c2230;
   --text:          #f5f7fa;
   --text-2:        #a7b0be;
-  --text-muted:    #525e6e;
+  --text-muted:    #8a97a8;
   --blue:          #3fa9f5;
   --amber:         #f6b73c;
   --green:         #2ec27e;
@@ -448,8 +448,8 @@ html, body {
   margin-top: 2px;
 }
 .option-btn.selected .opt-letter { background: var(--gold-dim); color: var(--gold-light); }
-.option-btn.correct-reveal .opt-letter { background: var(--green); color: #fff; }
-.option-btn.wrong-reveal .opt-letter   { background: var(--red); color: #fff; }
+.option-btn.correct-reveal .opt-letter { background: var(--green); color: var(--bg); }
+.option-btn.wrong-reveal .opt-letter   { background: var(--red); color: var(--bg); }
 
 /* ---- CONFIDENCE SECTION ---- */
 .confidence-section { margin-bottom: 22px; }
@@ -759,8 +759,8 @@ html, body {
   margin-top: 1px;
 }
 .drill-opt-btn.drill-selected .drill-opt-letter { background: #1a3048; color: var(--blue); }
-.drill-opt-btn.drill-correct-reveal .drill-opt-letter { background: var(--green); color: #fff; }
-.drill-opt-btn.drill-wrong-reveal .drill-opt-letter   { background: var(--red); color: #fff; }
+.drill-opt-btn.drill-correct-reveal .drill-opt-letter { background: var(--green); color: var(--bg); }
+.drill-opt-btn.drill-wrong-reveal .drill-opt-letter   { background: var(--red); color: var(--bg); }
 
 .drill-explanation {
   display: none;
