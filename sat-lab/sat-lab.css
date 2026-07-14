@@ -1,6 +1,5 @@
+  /* Tema (colores base) en /shared/theme-platform.css, enlazado desde index.html. */
   :root{
-    --bg:#07090d; --panel:#10141b; --panel2:#151b24; --ink:#e6ebf4; --muted:#929daf;
-    --cyan:#64d9f5; --gold:#e5c97a; --line:#293443;
     --ok:#3fa86b; --warn:#d99a2b; --block:#c1483f; --radius:16px;
   }
   *{box-sizing:border-box}

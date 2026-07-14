@@ -1,9 +1,7 @@
-/* EP-04 Dashboard — Design System (continuo con Bottle/Label/Mentor). Sin tokens nuevos. */
+/* EP-04 Dashboard — Design System (continuo con Bottle/Label/Mentor). Sin tokens nuevos.
+   Tema (colores) en /shared/theme-wine.css, enlazado desde index.html. */
 :root{
-  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
-  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
-  --r-card:12px;--r-pill:999px;--serif:Georgia,'Times New Roman',serif;
-  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --r-card:12px;--r-pill:999px;
 }
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}

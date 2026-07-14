@@ -1,0 +1,12 @@
+/* Fase 3 — Sistema de diseño: tema "cava" (borgoña/vino).
+   Tokens compartidos, extraídos sin cambios de bottle-lab/, dashboard/,
+   label-lab/, learning-loop/ y mentor/ — antes cada uno los declaraba por
+   separado con los mismos valores exactos. Cero cambio visual: son los
+   mismos colores, declarados una sola vez. No añade tokens nuevos. */
+:root{
+  --bg:#1a1119;--panel:#241823;--panel2:#2e1f2c;--ink:#f5ecf2;--muted:#b79fb0;
+  --wine:#7b2740;--wine2:#9c3354;--gold:#c9a227;--line:#3d2c39;
+  --ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}

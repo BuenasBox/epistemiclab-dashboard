@@ -1,9 +1,8 @@
-/* EP-06 Adaptive Review — Design System (continuo con Dashboard/Mentor). Premium visual system. */
+/* EP-06 Adaptive Review — Design System (continuo con Dashboard/Mentor). Premium visual system.
+   Tema (colores base) en /shared/theme-platform.css, enlazado desde index.html. */
 :root{
-  --bg:#07090d;--panel:#10141b;--panel2:#151b24;--ink:#e6ebf4;--muted:#929daf;
-  --cyan:#64d9f5;--gold:#e5c97a;--line:#293443;--ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
-  --r-card:12px;--r-pill:999px;--serif:Georgia,'Times New Roman',serif;
-  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --ok:#3fa86b;--warn:#d99a2b;--block:#c1483f;
+  --r-card:12px;--r-pill:999px;
 }
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}

@@ -1,0 +1,11 @@
+/* Fase 3 — Sistema de diseño: tema "plataforma" (cian/dorado).
+   Tokens compartidos, extraídos sin cambios de about/, index.html, offline.html,
+   sat-lab/ y adaptive-review/ — antes cada uno los declaraba por separado con
+   los mismos valores exactos. Cero cambio visual: son los mismos colores,
+   declarados una sola vez. No añade tokens nuevos. */
+:root{
+  --bg:#07090d;--panel:#10141b;--panel2:#151b24;--ink:#e6ebf4;--muted:#929daf;
+  --cyan:#64d9f5;--gold:#e5c97a;--line:#293443;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
