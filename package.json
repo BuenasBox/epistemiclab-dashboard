@@ -6,6 +6,7 @@
     "state:update": "node tools/update-system-state.js",
     "state:check": "node tools/update-system-state.js --check",
     "test": "npm run state:update && node tools/run-tests.js",
+    "test:e2e": "playwright test",
     "audit:dependencies": "npm audit --omit=dev"
   },
   "dependencies": {
@@ -13,6 +14,7 @@
     "pg": "^8.21.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "esbuild": "^0.25.6",
     "html-minifier-terser": "^7.2.0"
   }
