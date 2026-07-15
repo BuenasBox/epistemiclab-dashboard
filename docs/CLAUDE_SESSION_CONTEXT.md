@@ -43,8 +43,8 @@
 - **Fase 2 — Rendimiento:** ✅ completa (delegada a Codex: extracción CSS/JS de diagnostic-sba/sat-lab/adaptive-session, pipeline de build con esbuild + html-minifier-terser, `vercel.json` con `buildCommand`/`outputDirectory`). Bonus encontrado: `api/validate-user-plan.js` y `api/validate-trial-expiration.js` estaban en sintaxis Deno rota en runtime Node de Vercel — corregido.
 - **Fase 3 — Design tokens:** ✅ completa en su alcance decidido (solo los 2 grupos de paletas realmente duplicadas byte-a-byte, en `shared/theme-platform.css` y `shared/theme-wine.css`). Deliberadamente NO tocado: `offline.html` (fallback del Service Worker, debe ser autocontenido), ni las 9 paletas genuinamente distintas (admin, diagnostic-sba, full-simulation-v2, login, open-response-lab, platform-nav, profile, upgrade, sat-lab-específico).
   - ⏳ Pendiente de menor prioridad, diferido: auditoría de los ~160 usos de `style="..."` inline, catálogo mini de componentes.
-- **Fase 4 — Accesibilidad WCAG 2.1 AA:** ✅ completa en su alcance (auditoría matemática de contraste, no visual — encontró y corrigió CTAs con 1.64:1 de contraste; toggles de Mentor sin soporte de teclado, corregidos con `role="button" tabindex aria-expanded` + `onkeydown`; `aria-live="polite"` en contenedores dinámicos).
-  - ⏳ Pendiente de menor prioridad, diferido: auditoría de contraste de las otras ~9 páginas de paleta propia, tamaño de touch-targets en sat-lab/adaptive-session, `aria-live` en bottle-lab/label-lab, integración de axe-core en CI.
+- **Fase 4 — Accesibilidad WCAG 2.1 AA:** ✅ completa, incluido el barrido adicional (contraste en admin/profile/login/upgrade/full-simulation-v2/open-response-lab: sin fallos, todo ≥6.7:1; `aria-live` en bottle-lab/label-lab ya existía; touch-targets en sat-lab/adaptive-session sin problema real).
+  - ⏳ Pendiente de menor prioridad, diferido a propósito (no por descuido): auditoría de los ~160 usos de `style="..."` inline (Fase 3), integración de axe-core en CI (requiere Playwright/puppeteer, es pieza de trabajo aparte).
 - **Fase 6 (remanente) — PWA theme-color por página:** ✅ completa y verificada en producción (commit `8a2be7f`, deployment `READY`). Se corrigieron 6 páginas cuyo `<meta name="theme-color">` no coincidía con su fondo real: diagnostic-sba (#0f1115), full-simulation-v2 (#140e16), profile (#080d12), upgrade (#0b0f14), open-response-lab (#101418), adaptive-session (#0f1115).
 - **Fase 5 — SEO:** diferida a propósito hasta el lanzamiento público.
 - **Fase 7 — Observabilidad (Sentry/analytics):** no iniciada.
@@ -67,10 +67,10 @@
 
 ## 6. Temas abiertos / sin resolver al cierre de la última sesión
 
-1. **Reconciliación visual pendiente (mensaje de Erick, aún sin detalles):** *"cuando termines con fase 6, vamos a tener que hacer una pausa de reconciliacion porque todo el fronten visual es un completo desastre. hay que revisar y arreglar practicamente todas las paginas."* — No se ha preguntado ni recibido aún: qué páginas específicamente, qué tipo de problema (layout, espaciado, colores, componentes rotos), ni si hay capturas de pantalla. **Antes de emprender una remediación visual amplia, pedir estos detalles** — es un pedido de alto alcance y vago tal como está.
-2. **Archivo `cava-mark-light.webm`** subido por Erick sin instrucción — probablemente un asset de marca/logo animado. Aún no se sabe qué hacer con él (¿guardarlo en el repo?, ¿usarlo como favicon/splash?, ¿convertir formato?).
-3. **Prioridad en conflicto aparente:** Erick pidió "hacer una pausa de reconciliación" después de Fase 6, pero en el mismo aliento después también pidió "continuar con las siguientes fases" — hay que confirmar con él el orden real: ¿seguir con el roadmap de fases, o hacer primero la reconciliación visual?
-4. **Fase 1, tarea pendiente manual:** activar protección de contraseñas filtradas en Supabase Dashboard — Erick debe hacerlo él mismo, no automatizable.
+1. **Reconciliación visual — hecha.** Erick pidió auditar todo ("que Claude audite todo"). Resultado completo en `docs/VISUAL_RECONCILIATION_AUDIT.md`: 2 bugs reales de CSS encontrados y corregidos (nav sin estilo en diagnostic-sba/adaptive-session por falta de `platform-nav.css`; drawer de Mentoría en open-response-lab visible por conflicto `hidden` + `style="display:flex"` inline), más eliminación de nav duplicado en 7 páginas (decisión explícita de Erick), más barrido adicional de contraste Fase 4 (sin fallos). Todo desplegado y verificado en producción.
+2. **Archivo `cava-mark-light.webm`** subido por Erick sin instrucción — Erick indicó explícitamente "ignóralo por ahora". No hacer nada con él salvo que lo pida de nuevo.
+3. **Fase 1, tarea pendiente manual:** activar protección de contraseñas filtradas en Supabase Dashboard — Erick debe hacerlo él mismo, no automatizable.
+4. **Diferido a propósito (Fase 3/4 leftovers):** auditoría de ~160 usos de `style="..."` inline + catálogo de componentes, integración de axe-core en CI. Baja prioridad, no bloquean nada.
 
 ## 7. Skill asociada
 

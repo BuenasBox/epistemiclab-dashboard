@@ -27,11 +27,11 @@ Verificado: sin referencias de JS a las clases/IDs eliminados en ningún `.js` d
 
 ## 3. Confirmado, pendiente de decisión
 
-**B. Panel "Mentoría" se muestra vacío y abierto por defecto en `open-response-lab/`.**
+**B. Panel "Mentoría" se muestra vacío y abierto por defecto en `open-response-lab/` — RESUELTO.**
 
-Al cargar la página en producción, aparece de inmediato un panel lateral "Mentoría" (`.assist-drawer`) cubriendo toda la pantalla, vacío (sin contenido, el coach de verbos y conceptos esperados están vacíos porque aún no hay pregunta activa). En el código, ese drawer tiene el atributo `hidden` por defecto (línea 432 de `open-response-lab/index.html`) — es decir, **no debería aparecer hasta que el usuario lo abra explícitamente**. Que aparezca abierto en la carga inicial sugiere un bug en la inicialización (algo le quita `hidden` antes de tiempo) o un estado persistido de una sesión de prueba anterior (localStorage/sessionStorage) que no debería sobrevivir a una carga fresca.
+Causa raíz encontrada: `.assist-drawer` tenía el atributo `hidden` **y** un `style="...display:flex..."` inline al mismo tiempo. El estilo inline tiene más especificidad que la regla implícita `display:none` de `hidden`, así que el navegador lo mostraba de todas formas, vacío, cubriendo toda la pantalla. No era un bug de inicialización en JS ni un estado persistido — era puramente CSS. El propio archivo ya conocía este patrón (línea 153 ya traía `.feedback[hidden], .completion[hidden] { display: none; }` para otros dos elementos) pero nunca se aplicó al drawer ni al overlay.
 
-**No lo diagnostiqué a fondo todavía** — requiere trazar el JS de inicialización (700+ líneas) para encontrar qué le quita `hidden` al drawer. Es candidato a una sesión de debugging dedicada.
+**Fix aplicado:** se agregó `.assist-drawer[hidden], .assist-overlay[hidden] { display: none !important; }`. `npm test`: 33/33.
 
 **C. `admin/` no tiene la barra global (intencional, documentado).**
 
@@ -43,8 +43,14 @@ Home (`/`), `about/`, `dashboard/`, `sat-lab/` (nav ausente ahí es intencional:
 
 **Nota de alcance:** esta pasada se hizo en un viewport angosto (~390px). No se probó explícitamente en desktop/tablet ni se hizo scroll completo de cada página — si Erick tiene capturas de algo específico que no aparece aquí, agregarlo a esta lista antes de la siguiente pasada.
 
+## 5. Barrido adicional de Fase 4 (contraste + touch targets), cerrado en esta sesión
+
+Se extendió la auditoría matemática de contraste (misma metodología de Fase 4) a las páginas que quedaron pendientes: `admin/`, `profile/`, `login/`, `upgrade/`, `full-simulation-v2/`, `open-response-lab/`. Resultado: **sin fallos**. Los pares texto/fondo revisados (CTAs sobre `--gold`/`--cyan`/`--fs-wine`, texto muted sobre panel) están todos por encima de 6.7:1, muy por encima del mínimo AA de 4.5:1. `aria-live` en `bottle-lab/`/`label-lab/` ya estaba presente desde una fase anterior (no hacía falta agregarlo). Tamaño de touch-targets en sat-lab/adaptive-session: los botones de modo son tarjetas grandes con texto en dos líneas, no hay indicios de objetivos pequeños — no se encontró problema real.
+
+**Sigue diferido, explícitamente, no por descuido:** auditoría de los ~160 usos de `style="..."` inline y catálogo de componentes (Fase 3), e integración de axe-core en CI (requeriría Playwright/puppeteer corriendo contra páginas reales, es una pieza de trabajo aparte, no un ajuste rápido).
+
 ## Próximos pasos sugeridos (pendientes de aprobación de Erick)
 
-1. Push de los fixes ya hechos (diagnostic-sba, adaptive-session, + eliminación de nav duplicado en las 7 páginas).
-2. Sesión de debugging del panel Mentoría que se abre solo (hallazgo B).
-3. Opcional: repetir la pasada visual en viewport de escritorio para no dejar puntos ciegos.
+1. Push de los fixes ya hechos (diagnostic-sba, adaptive-session, nav duplicado en 7 páginas, drawer de Mentoría en open-response-lab).
+2. Opcional: repetir la pasada visual en viewport de escritorio para no dejar puntos ciegos.
+3. Cuando haya ancho de tiempo: axe-core en CI y auditoría de estilos inline (Fase 3), ambas explícitamente de baja prioridad.
