@@ -10,15 +10,22 @@ Auditoría solicitada por Erick tras la Fase 6: "todo el frontend visual es un c
 
 **Fix aplicado:** se añadió `<link rel="stylesheet" href="/platform-nav.css">` a ambos archivos, en la misma posición que en el resto de páginas. `npm test`: 33/33. Pendiente de push (ver comandos abajo).
 
-## 2. Confirmado, pendiente de decisión (no se tocó código todavía)
+## 2. Resuelto en esta sesión
 
-**A. Doble barra/nav en 7 páginas.**
+**A. Doble barra/nav en 7 páginas — RESUELTO.**
 
-`login/`, `upgrade/`, `profile/`, `bottle-lab/`, `label-lab/`, `learning-loop/`, `mentor/` muestran la barra global (`#pnav`: logo + botón hamburguesa) **y además** una segunda barra propia de la página inmediatamente debajo, con su propio logo "EpistemicLab" y enlaces (p. ej. "Volver al inicio", "Iniciar sesión", o breadcrumbs tipo "Aprender › Botellas"). Esto no ocurre en `dashboard/`, `full-simulation-v2/`, `diagnostic-sba/`, `adaptive-session/`, `sat-lab/`, `adaptive-review/`.
+`login/`, `upgrade/`, `profile/`, `bottle-lab/`, `label-lab/`, `learning-loop/`, `mentor/` mostraban la barra global (`#pnav`: logo + botón hamburguesa) **y además** una segunda barra propia de la página inmediatamente debajo, con su propio logo "EpistemicLab" y enlaces (p. ej. "Volver al inicio", "Iniciar sesión", o breadcrumbs tipo "Aprender › Botellas"). Deuda heredada de antes de que existiera `platform-nav.js`.
 
-Esto es probablemente deuda heredada: esas 7 páginas tenían su propio nav antes de que existiera `platform-nav.js` (el sistema de navegación único), y nunca se retiró el nav local al adoptar el compartido. El de bottle-lab/label-lab sí aporta un breadcrumb con valor real ("Aprender › Botellas"); los de login/upgrade/profile solo duplican enlaces que el nav global ya cubre (inicio, iniciar sesión).
+Decisión de Erick: eliminar el nav local duplicado, dejar solo la barra global. Aplicado:
+- `login/index.html`: se quitó el `<header class="topbar">` completo (marca + "Volver al inicio").
+- `upgrade/index.html`: se quitó el `<nav class="upgrade-nav">` completo.
+- `profile/index.html`: se quitó el `<nav class="profile-nav">` completo.
+- `learning-loop/index.html`, `mentor/index.html`: se quitó el `<div class="topline">` completo (marca + breadcrumb, sin contenido funcional).
+- `bottle-lab/index.html`, `label-lab/index.html`: se quitó la marca y el breadcrumb del `.topline`, pero se **conservó** el `<span id="compChip">` porque es funcional (JS le actualiza el texto con la competencia activa) — no es navegación duplicada.
 
-**No lo toqué porque es una decisión de producto, no un bug objetivo:** ¿se elimina el nav local duplicado en las 7 páginas (dejando solo el global), se conserva como breadcrumb contextual pero se rediseña para no repetir el logo/marca, o se deja como está? Necesito tu decisión antes de tocar 7 archivos de golpe.
+Verificado: sin referencias de JS a las clases/IDs eliminados en ningún `.js` de esas páginas antes de borrar. `npm test`: 33/33.
+
+## 3. Confirmado, pendiente de decisión
 
 **B. Panel "Mentoría" se muestra vacío y abierto por defecto en `open-response-lab/`.**
 
@@ -30,7 +37,7 @@ Al cargar la página en producción, aparece de inmediato un panel lateral "Ment
 
 Confirmado en fases anteriores: `admin/` está deliberadamente excluido del sistema de nav/PWA compartido. No es un bug nuevo, pero contribuye a la sensación de inconsistencia visual si alguien navega ahí sin saber que es intencional.
 
-## 3. Páginas revisadas sin hallazgos
+## 4. Páginas revisadas sin hallazgos
 
 Home (`/`), `about/`, `dashboard/`, `sat-lab/` (nav ausente ahí es intencional: `data-nav="bare"`, "modo concentración" documentado en `docs/product/UX_IDENTITY_V1.md`), `adaptive-review/`, `full-simulation-v2/` — se ven consistentes con su paleta de tema (plataforma o vino) y sin problemas de layout visibles en la resolución probada (~390px de ancho, viewport móvil).
 
@@ -38,7 +45,6 @@ Home (`/`), `about/`, `dashboard/`, `sat-lab/` (nav ausente ahí es intencional:
 
 ## Próximos pasos sugeridos (pendientes de aprobación de Erick)
 
-1. Push del fix ya hecho (diagnostic-sba + adaptive-session).
-2. Decisión sobre el nav duplicado (hallazgo A) — qué hacer en las 7 páginas.
-3. Sesión de debugging del panel Mentoría que se abre solo (hallazgo B).
-4. Opcional: repetir la pasada visual en viewport de escritorio para no dejar puntos ciegos.
+1. Push de los fixes ya hechos (diagnostic-sba, adaptive-session, + eliminación de nav duplicado en las 7 páginas).
+2. Sesión de debugging del panel Mentoría que se abre solo (hallazgo B).
+3. Opcional: repetir la pasada visual en viewport de escritorio para no dejar puntos ciegos.
