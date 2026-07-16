@@ -1,15 +1,21 @@
 const { test, expect } = require('@playwright/test');
 
 /**
- * login.js only shows the mock profile picker on localhost/127.0.0.1 (see
- * shared/mock-auth-provider.js and login/login.js `isLocalHost`), which is
- * exactly how the Playwright web server is served. This lets us exercise a
- * real sign-in -> profile round trip deterministically, without a live
- * Supabase session.
+ * login.js only exposes the mock profile picker when BOTH conditions hold
+ * (see login/login.js `shouldExposeInternalTools`): the page is served from
+ * localhost/127.0.0.1 (true for this Playwright web server) AND the URL has
+ * `?access_debug=1`. Without the query param the `<details data-internal-
+ * access-tools hidden>` wrapper stays hidden entirely.
+ *
+ * Even once unhidden, the picker lives inside a native <details> element
+ * with no `open` attribute set anywhere, so it renders collapsed (summary
+ * only) until the <summary> is clicked. Both steps are required before
+ * `[data-profile-grid]` becomes visible/interactive.
  */
 test.describe('Login (mock provider, local only)', () => {
   test('signing in as demo updates the profile CTA and the profile page reflects the plan', async ({ page }) => {
-    await page.goto('/login/');
+    await page.goto('/login/?access_debug=1');
+    await page.locator('[data-internal-access-tools] summary').click();
 
     const grid = page.locator('[data-profile-grid]');
     await expect(grid).toBeVisible();
@@ -26,7 +32,9 @@ test.describe('Login (mock provider, local only)', () => {
   });
 
   test('signing out returns to the visitor state', async ({ page }) => {
-    await page.goto('/login/');
+    await page.goto('/login/?access_debug=1');
+    await page.locator('[data-internal-access-tools] summary').click();
+
     await page.locator('[data-profile="premium"]').click();
     await expect(page.locator('[data-profile-cta]')).toBeVisible();
 

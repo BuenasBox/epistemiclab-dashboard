@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { isExpectedConsoleError } = require('./_expected-errors');
 
 /**
  * Broad regression net: load every public page and fail if the browser
@@ -7,6 +8,10 @@ const { test, expect } = require('@playwright/test');
  * stays cheap and catches the class of bug this session kept finding by
  * hand: a missing stylesheet, a stray reference to a removed element, a
  * script tag pointing at the wrong path, etc.
+ *
+ * See ./_expected-errors.js for the allowlist of 404s that are expected in
+ * this test environment specifically (Vercel Analytics route + gitignored
+ * curriculum-content files) and are NOT signs the pages are broken.
  */
 const PAGES = [
   '/',
@@ -28,11 +33,14 @@ const PAGES = [
 ];
 
 for (const path of PAGES) {
-  test(`no console/page errors on ${path}`, async ({ page }) => {
+  test(`no unexpected console/page errors on ${path}`, async ({ page }) => {
     const errors = [];
     page.on('pageerror', (err) => errors.push(`pageerror: ${err.message}`));
     page.on('console', (msg) => {
-      if (msg.type() === 'error') errors.push(`console.error: ${msg.text()}`);
+      if (msg.type() !== 'error') return;
+      const text = msg.text();
+      if (isExpectedConsoleError(text)) return;
+      errors.push(`console.error: ${text}`);
     });
 
     const response = await page.goto(path);

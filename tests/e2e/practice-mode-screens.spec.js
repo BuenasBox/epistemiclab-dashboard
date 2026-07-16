@@ -40,7 +40,10 @@ test.describe('Practice mode selection screens', () => {
 
     await page.goto('/sat-lab/');
     await expect(page.getByRole('heading', { name: 'Laboratorio SAT' })).toBeVisible();
-    await expect(page.getByText('Cata a ciegas')).toBeVisible();
+    // "Cata a ciegas" appears in 4 places on this page (eyebrow, mode button,
+    // hero, debrief summary) — target the mode button specifically by its
+    // stable id instead of getByText, which is ambiguous here.
+    await expect(page.locator('#mode-blind')).toBeVisible();
 
     // sat-lab uses <body data-nav="bare"> on purpose (exam concentration
     // mode) — the shared header must stay absent here, unlike the other two.

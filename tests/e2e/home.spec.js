@@ -1,10 +1,18 @@
 const { test, expect } = require('@playwright/test');
+const { isExpectedConsoleError } = require('./_expected-errors');
 
 test.describe('Home', () => {
   test('loads with hero copy, primary CTA and shared platform navigation', async ({ page }) => {
     const errors = [];
     page.on('pageerror', (err) => errors.push(err.message));
-    page.on('console', (msg) => { if (msg.type() === 'error') errors.push(msg.text()); });
+    page.on('console', (msg) => {
+      if (msg.type() !== 'error') return;
+      const text = msg.text();
+      // See ./_expected-errors.js: the Vercel Analytics script 404s under
+      // this test's plain static server, which is expected here, not a bug.
+      if (isExpectedConsoleError(text)) return;
+      errors.push(text);
+    });
 
     await page.goto('/');
 
