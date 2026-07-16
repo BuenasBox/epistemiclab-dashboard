@@ -72,7 +72,7 @@
 .pfoot-links a{color:var(--pn-muted);text-decoration:none;transition:color 150ms;font-size:13px}
 .pfoot-links a:hover{color:var(--pn-ink)}
 .pfoot-copy{
-  margin:0;font-size:11px;color:#6b747f;text-align:center;padding-top:20px;
+  margin:0;font-size:11px;color:var(--pn-muted);text-align:center;padding-top:20px;
   border-top:1px solid var(--pn-line)
 }
 /* Modo concentración (examen): ocultar nav y footer; visibles en entrada/debrief. */
