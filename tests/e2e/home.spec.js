@@ -1,16 +1,22 @@
 const { test, expect } = require('@playwright/test');
-const { isExpectedConsoleError } = require('./_expected-errors');
+const { isExpectedFailedUrl } = require('./_expected-errors');
 
 test.describe('Home', () => {
   test('loads with hero copy, primary CTA and shared platform navigation', async ({ page }) => {
     const errors = [];
     page.on('pageerror', (err) => errors.push(err.message));
+    page.on('response', (response) => {
+      if (response.ok()) return;
+      if (isExpectedFailedUrl(response.url())) return;
+      errors.push(`network ${response.status()}: ${response.url()}`);
+    });
     page.on('console', (msg) => {
       if (msg.type() !== 'error') return;
       const text = msg.text();
-      // See ./_expected-errors.js: the Vercel Analytics script 404s under
-      // this test's plain static server, which is expected here, not a bug.
-      if (isExpectedConsoleError(text)) return;
+      // 404s are checked precisely above via the 'response' listener, which
+      // has the real URL. This console text never includes it (Chrome's
+      // "Failed to load resource" message is URL-less), so skip it here.
+      if (/Failed to load resource/.test(text)) return;
       errors.push(text);
     });
 
