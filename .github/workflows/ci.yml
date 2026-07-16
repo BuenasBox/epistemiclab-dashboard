@@ -31,7 +31,7 @@ jobs:
         run: npm run audit:dependencies
 
   e2e:
-    name: Pruebas e2e (Playwright)
+    name: Pruebas e2e + accesibilidad (Playwright/axe)
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -48,7 +48,7 @@ jobs:
       - name: Instalar navegadores de Playwright
         run: npx playwright install --with-deps chromium
 
-      - name: Ejecutar pruebas e2e
+      - name: Ejecutar pruebas e2e y WCAG 2.1 AA con axe-core
         run: npm run test:e2e
 
       - name: Subir reporte HTML si falla algo
