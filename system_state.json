@@ -36,7 +36,7 @@
       "/upgrade/",
       "/verify-email/"
     ],
-    "javascript_files": 115,
+    "javascript_files": 123,
     "html_files": 20,
     "supabase_migrations": 23,
     "supabase_functions": 22
@@ -44,8 +44,8 @@
   "validation": {
     "command": "npm test",
     "status": "verified",
-    "evidence_fingerprint": "1f883a82b56dc3763f00cf588ca4457015163b9ce72b2146f1e175b2502fe2e1",
-    "last_successful_fingerprint": "1f883a82b56dc3763f00cf588ca4457015163b9ce72b2146f1e175b2502fe2e1",
+    "evidence_fingerprint": "adce57a5c263bbb40416674b4968b22d2afcd5d3f530af13db330b4c3f01d96a",
+    "last_successful_fingerprint": "adce57a5c263bbb40416674b4968b22d2afcd5d3f530af13db330b4c3f01d96a",
     "test_files": 33,
     "node_test_files": 17,
     "deterministic_test_files": 16,
