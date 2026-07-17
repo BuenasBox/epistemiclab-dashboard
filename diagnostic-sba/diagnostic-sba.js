@@ -14,20 +14,6 @@
 // QUESTIONS: dynamic from window.PREGUNTAS_BANK
 let QUESTIONS = [];
 let ACTIVE_MODE = null;
-const SBA_RK = 'wset_sba_recent_v2';
-function sbaRecent(){try{return JSON.parse(localStorage.getItem(SBA_RK)||'[]');}catch(e){return[];}}
-function sbaSave(ids){try{localStorage.setItem(SBA_RK,JSON.stringify(ids.slice(-60)));}catch(e){}}
-function sbaShuf(arr,seed){
-  const a=arr.slice();let s=Math.abs(((seed||Date.now()))&0x7fffffff);
-  for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
-  return a;
-}
-// Phase P3: enrichment is signalled by a server-derived boolean flag.
-// The pedagogical content itself is NOT shipped to the browser.
-function isEnriched(item){
-  return !!item.enriched;
-}
-const MOCK_RA={RA1:8,RA2:28,RA3:5,RA4:5,RA5:4};
 function bankToQ(item){
   return {
     id:item.id, source_question_id:item.source_question_id,
@@ -64,7 +50,9 @@ async function loadMode(mode){
     showModeAuthMessage(false);
     const token=await requireAuth();
     console.log('[loadMode] Got token, calling get-sba-bank');
-    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?limit=670',
+    const size={quick_drill:5,express:10,standard:25,mock_theory_1:50}[mode]||10;
+    const params=new URLSearchParams({limit:String(size),mode,cycle:'1'});
+    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?'+params,
       {headers:{'Authorization':'Bearer '+token}});
     console.log('[loadMode] Response status:', resp.status);
     if(resp.status===401){
@@ -76,34 +64,9 @@ async function loadMode(mode){
     const all=items||[];
     if(!Array.isArray(all)){console.error('API returned non-array');return false;}
     ACTIVE_MODE=mode;
-    const recent=sbaRecent(); let selected=[];
-    if(mode==='mock_theory_1'){
-      const byRa={};
-      all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
-      Object.entries(MOCK_RA).forEach(([ra,need])=>{
-        let pool=byRa[ra]||[];
-        const enrichedPool=sbaShuf(pool.filter(i=>isEnriched(i)),Date.now()+ra.charCodeAt(2));
-        const fallbackPool=sbaShuf(pool.filter(i=>!isEnriched(i)),Date.now()+ra.charCodeAt(2)+100);
-        pool=[...enrichedPool,...fallbackPool];
-        pool=window.LI?LI.prioritize(pool,recent)
-          :[...pool.filter(i=>!recent.includes(i.source_question_id)),...pool.filter(i=>recent.includes(i.source_question_id))];
-        selected.push(...pool.slice(0,need));
-      });
-      selected=sbaShuf(selected,Date.now());
-    } else {
-      const size={quick_drill:5,express:10,standard:25}[mode]||10;
-      const all_unseen=all.filter(i=>!recent.includes(i.source_question_id));
-      const all_seen=all.filter(i=>recent.includes(i.source_question_id));
-      const enrichedUnseen=sbaShuf(all_unseen.filter(i=>isEnriched(i)),Date.now());
-      const fallbackUnseen=sbaShuf(all_unseen.filter(i=>!isEnriched(i)),Date.now()+100);
-      const fresh=[...enrichedUnseen,...fallbackUnseen];
-      const enrichedSeen=sbaShuf(all_seen.filter(i=>isEnriched(i)),Date.now()+1);
-      const fallbackSeen=sbaShuf(all_seen.filter(i=>!isEnriched(i)),Date.now()+101);
-      const stale=[...enrichedSeen,...fallbackSeen];
-      selected=(window.LI?LI.prioritize([...fresh,...stale],recent):[...fresh,...stale]).slice(0,size);
-    }
-    QUESTIONS=selected.map(bankToQ);
-    sbaSave([...recent,...QUESTIONS.map(q=>q.source_question_id)]);
+    // The backend returns exactly the requested random, not-yet-completed set.
+    // Local recency is no longer authoritative across devices or sign-ins.
+    QUESTIONS=all.map(bankToQ);
     return true;
   }catch(e){
     console.error('loadMode error:',e);

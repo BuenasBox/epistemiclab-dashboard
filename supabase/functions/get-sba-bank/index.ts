@@ -1,4 +1,4 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.108.2';
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
 const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
@@ -39,9 +39,44 @@ Deno.serve(async (req: Request) => {
 
     // Query params with bounds
     const url = new URL(req.url);
-    const limit = Math.min(parseInt(url.searchParams.get('limit') || '25'), 100);
+    const requestedLimit = parseInt(url.searchParams.get('limit') || '25');
+    const cycleSelection = url.searchParams.get('cycle') === '1';
+    const limit = Math.min(Math.max(Number.isFinite(requestedLimit) ? requestedLimit : 25, 1), cycleSelection ? 50 : 100);
     const offset = Math.max(parseInt(url.searchParams.get('offset') || '0'), 0);
     const topic = url.searchParams.get('topic');
+    const mode = url.searchParams.get('mode') || 'standard';
+
+    if (cycleSelection) {
+      const { data, error } = await supabase.rpc('select_sba_questions_for_user', {
+        p_user_id: user.id,
+        p_limit: limit,
+        p_mode: mode,
+      });
+
+      if (error) {
+        return new Response(JSON.stringify({ error: error.message }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        });
+      }
+
+      const items = data || [];
+      const first = items[0] || {};
+      return new Response(JSON.stringify({
+        items,
+        count: items.length,
+        cycle: first.cycle_no || 1,
+        remaining_in_cycle: first.remaining_in_cycle || 0,
+        selection: 'random_without_replacement',
+      }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'private, no-store',
+        },
+      });
+    }
 
     // Fetch from database with service role key (backend-only access)
     let query = supabase.from('sba_bank').select('id,stem,text,options,topic,ra,difficulty,keywords,gold,causal_chain,feedback_by_mode,micro_drill');
@@ -90,6 +125,7 @@ Deno.serve(async (req: Request) => {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'private, no-store',
         },
       }
     );

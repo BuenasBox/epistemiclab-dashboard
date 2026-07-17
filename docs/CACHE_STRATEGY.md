@@ -66,9 +66,11 @@ Presupuesto propuesto por ruta antes de interacción:
 - CSS inicial comprimido: menos de 30 KB.
 - Máximo una llamada de autenticación y una instancia Supabase.
 
-## Fase 3 — optimizar `get-sba-bank`
+## Fase 3 — aplicada en Supabase
 
-La función debe seleccionar en servidor solo la cantidad solicitada por el modo: 5, 10, 25 o 50 elementos. El cliente no debería solicitar un banco grande para después descartarlo.
+La función selecciona en servidor solo la cantidad solicitada por el modo: 5, 10, 25 o 50 elementos. La selección es aleatoria y excluye, por usuario, las preguntas ya validadas durante el ciclo actual. Una pregunta no se consume por abrirla: se registra al validar la respuesta. El ciclo aumenta únicamente cuando el usuario completó todo el banco disponible.
+
+El simulacro conserva la distribución RA1/RA2/RA3/RA4/RA5 y rellena desde otras áreas si un bloque está temporalmente agotado al final del ciclo. Si quedan menos preguntas inéditas que el tamaño solicitado, entrega solamente las restantes para no saltarse ninguna.
 
 Antes de permitir caché de sesión, el payload debe excluir de forma verificable:
 
