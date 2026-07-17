@@ -583,7 +583,8 @@
     order.forEach(function(dn){
       var a=S.answers[dn]; if(!a) return;
       var band=bands[CMP_BAND_ATTR[dn]];
-      var bandTxt = (band==null)?'—':(band==='not_applicable'?'No aplica':presentEs(String(band)));
+      var translatedBand = band==null ? '' : cleanPresented(String(band));
+      var bandTxt = (band==null)?'—':(band==='not_applicable'?'No aplica':(translatedBand||'Rango de referencia'));
       var tone = (band==='not_applicable')? {t:'No aplica',cls:'na'} : cmpTone(dn, a.value, String(band));
       var toneHtml = tone? '<span class="tone '+tone.cls+'">'+tone.t+'</span>' : '<span class="tone na">Referencia</span>';
       rows+='<div class="cmp-row"><span><b>'+escP(DEC_TITLE[dn])+'</b><br><span class="lab">Tú: '+escP(a.label)+'</span></span>'

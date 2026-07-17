@@ -30,6 +30,7 @@ assert(client.includes('SAFE_DESCRIPTOR_SET'), 'SAT debrief must allow only cont
 assert(client.includes("'australian cabernet sauvignon blend':'Ensamblaje australiano de Cabernet Sauvignon'"), 'SAT revealed identity must be localized');
 assert(client.includes("'loire chenin blanc':'Chenin Blanc del Loira'"), 'SAT English descriptive wine names must be localized');
 assert(client.includes("'Loire Valley':'Valle del Loira'"), 'SAT generic region labels must be localized');
+assert(client.includes("translatedBand||'Rango de referencia'"), 'SAT model bands must never expose partially translated English');
 
 assert(getWine.includes('wines: [wine]'), 'SAT endpoint must return one wine only');
 assert(getWine.includes("if (mode === 'bottle_guided') wine.guided_identity"), 'identity must only be included in guided mode');
