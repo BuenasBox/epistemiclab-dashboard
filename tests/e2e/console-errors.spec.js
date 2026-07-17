@@ -33,6 +33,9 @@ const PAGES = [
   '/mentor/',
   '/full-simulation-v2/',
   '/open-response-lab/',
+  '/admin/',
+  '/full-simulation/',
+  '/verify-email/',
 ];
 
 for (const path of PAGES) {

@@ -217,7 +217,6 @@
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script defer src="/_vercel/insights/script.js"></script>
 <script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous"></script>
 <script>Sentry.init({ dsn: "https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720" });</script>
 <script src="/shared/sw-register.js" defer></script>
@@ -274,10 +273,13 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.0"></script>
+  <script src="../shared/supabase-public-config.js"></script>
   <script>
     // Initialize Supabase
-    const supabaseUrl = localStorage.getItem('supabase_url') || '';
-    const supabaseKey = localStorage.getItem('supabase_key') || '';
+    const publicConfig = window.WSET_SUPABASE_CONFIG || {};
+    const supabaseUrl = publicConfig.url || localStorage.getItem('supabase_url') || '';
+    const supabaseKey = publicConfig.publishableKey || localStorage.getItem('supabase_key') || '';
+    let supabase = null;
 
     if (!supabaseUrl || !supabaseKey) {
       document.getElementById('status').textContent = 'Configuración de Supabase no encontrada';
@@ -285,10 +287,15 @@
       document.getElementById('status').style.display = 'block';
     }
 
-    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    if (supabaseUrl && supabaseKey) {
+      supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    } else {
+      document.getElementById('btn-resend').disabled = true;
+    }
 
     // Get current user email
     async function initializePage() {
+      if (!supabase) return;
       const { data: { user } } = await supabase.auth.getUser();
 
       if (!user) {
@@ -305,6 +312,10 @@
 
     // Resend verification email
     document.getElementById('btn-resend').addEventListener('click', async function() {
+      if (!supabase) {
+        showStatus('Configuración de Supabase no encontrada', 'error');
+        return;
+      }
       const btn = this;
       btn.disabled = true;
       btn.textContent = 'Enviando...';
@@ -368,6 +379,7 @@
     // Check email verification status periodically
     // If verified, redirect to home page
     async function checkVerification() {
+      if (!supabase) return;
       const { data: { user } } = await supabase.auth.getUser();
 
       if (user && user.email_confirmed_at) {

@@ -6,25 +6,16 @@
  * Chrome's "Failed to load resource" console message never includes the
  * URL, so matching against console text can't work here).
  *
- * 1. `/_vercel/insights/script.js` (Vercel Web Analytics) only exists on
- *    Vercel's own infrastructure once Analytics is enabled — not under the
- *    plain static file server Playwright spins up locally/in CI.
- * 2. The gitignored curriculum-content payload files (S5: Pedagogical
+ * The gitignored curriculum-content payload files (S5: Pedagogical
  *    Knowledge Protection — see .gitignore) exist on disk in local/prod
  *    deploys but are never committed to git, so a fresh `actions/checkout`
- *    in CI can't have them. Confirmed by direct <script src> references:
- *    diagnostic-sba/ and adaptive-session/ load sat-coaching-intelligence.js,
- *    profile/ loads misconception-engine.js + sat-coaching-intelligence.js,
- *    open-response-lab/ loads mentor-config.js.
+ *    in CI can't have them when a protected development-only reference is
+ *    intentionally exercised by a test fixture.
  */
 const EXPECTED_FAILED_URL_PATTERNS = [
-  /_vercel\/insights\/script\.js/,
   /preguntas_data\.js/,
   /lab_payload\.js/,
   /session_bank\.js/,
-  /misconception-engine\.js/,
-  /sat-coaching-intelligence\.js/,
-  /mentor-config\.js/,
   /or-coaching-engine\.js/,
 ];
 

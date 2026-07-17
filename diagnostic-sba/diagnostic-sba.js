@@ -181,7 +181,8 @@ const STATE = {
 function currentQ() { return QUESTIONS[STATE.questionIndex]; }
 
 function setProgress(pct) {
-  document.getElementById('progressBar').style.width = pct + '%';
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) progressBar.style.width = pct + '%';
 }
 
 function escapeHtml(s) {

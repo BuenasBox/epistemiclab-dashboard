@@ -55,6 +55,7 @@ body.fs-focus{overflow-x:hidden}
 .fs-input:focus{outline:none;border-color:var(--fs-gold)}
 .fs-spacer{height:40px}
 .fs-pause-ov{position:fixed;inset:0;z-index:50;background:rgba(15,10,17,.98);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+.fs-pause-ov[hidden]{display:none}
 .fs-confirm-actions,.fs-debrief-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
 .fs-processing{text-align:center;max-width:420px}
 .fs-spin{width:34px;height:34px;border-radius:50%;border:3px solid var(--fs-line);border-top-color:var(--fs-gold);margin:0 auto 18px;animation:fs-rot 0.9s linear infinite}
