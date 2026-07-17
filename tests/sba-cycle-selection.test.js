@@ -20,6 +20,10 @@ const diagnostic = fs.readFileSync(
   path.join(root, 'diagnostic-sba', 'diagnostic-sba.js'),
   'utf8',
 );
+const diagnosticHtml = fs.readFileSync(
+  path.join(root, 'diagnostic-sba', 'index.html'),
+  'utf8',
+);
 
 test('SBA coverage history is private, indexed and scoped by learner cycle', () => {
   assert.match(migration, /create table if not exists public\.sba_question_cycles/);
@@ -47,6 +51,7 @@ test('mock theory keeps its RA blueprint and can fill a depleted bucket', () => 
 });
 
 test('diagnostic requests only the selected amount from the cycle endpoint', () => {
+  assert.match(diagnosticHtml, /670 preguntas de entrenamiento disponibles/);
   assert.match(diagnostic, /quick_drill:5,express:10,standard:25,mock_theory_1:50/);
   assert.match(diagnostic, /new URLSearchParams\(\{limit:String\(size\),mode,cycle:'1'\}\)/);
   assert.doesNotMatch(diagnostic, /get-sba-bank\?limit=670/);
