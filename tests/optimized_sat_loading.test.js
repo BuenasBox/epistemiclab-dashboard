@@ -26,6 +26,8 @@ assert(client.includes('ENGLISH_RESIDUE'), 'SAT debrief must detect untranslated
 assert(client.includes('ppListClean'), 'SAT debrief must replace mixed-language copy with Spanish editorial guidance');
 assert(client.includes('Vinos espumosos WSET'), 'SAT wine family labels must be presented in Spanish');
 assert(client.includes("HIGH:'Alta relevancia'"), 'SAT importance labels must not expose English enum values');
+assert(client.includes('SAFE_DESCRIPTOR_SET'), 'SAT debrief must allow only controlled translated descriptors');
+assert(client.includes("'australian cabernet sauvignon blend':'Ensamblaje australiano de Cabernet Sauvignon'"), 'SAT revealed identity must be localized');
 
 assert(getWine.includes('wines: [wine]'), 'SAT endpoint must return one wine only');
 assert(getWine.includes("if (mode === 'bottle_guided') wine.guided_identity"), 'identity must only be included in guided mode');

@@ -411,6 +411,8 @@
     'persistent bubbles':'Burbujas persistentes',
     'fine persistent mousse':'Burbuja fina y persistente',
     'autolytic complexity':'Complejidad autolítica',
+    'australian cabernet sauvignon blend':'Ensamblaje australiano de Cabernet Sauvignon',
+    'champagne non-vintage':'Champagne sin añada',
     'good to very good; styles range from simple fruity to richer barrel-fermented versions':'Bueno a muy bueno; los estilos van desde afrutados sencillos hasta versiones más estructuradas fermentadas en barrica',
     'drink young to short ageing for fresh styles':'Beber joven o con una guarda corta en los estilos frescos',
     'use this as a formative mirror: identify alignment and useful next observations without exam judgement language.':'Usa esta comparación como una guía formativa: identifica coincidencias y nuevas observaciones útiles, sin lenguaje de calificación de examen.',
@@ -455,10 +457,19 @@
   // Si una frase canónica aún conserva vocabulario inglés después de traducirla,
   // no mostramos una mezcla. La sección usa una orientación editorial española.
   var ENGLISH_RESIDUE=/\b(the|is|are|was|were|as|from|with|without|all|every|when|before|after|rather|than|only|plus|wine|wines|style|styles|method|traditional|reserve|blending|lees|autolysis|autolytic|dosage|benchmark|sparkling|vintage|official|essential|tasting|explain|consistency|solely|enough|higher|lower|chalky|cool|tension|fine|persistent|mousse|house|origin|character|judging|dryness|world|fruited|versions|points|toward|depends|because|usually|ready|early|drinking|develop|complex|flavours|aromas|fruit|acid|bodied|barrel|aged|oak|quality|good|outstanding|ageing|drink|young)\b/i;
+  var SAFE_DESCRIPTOR_EN='medium to pronounced pale lemon minus plus bone dry off residual sugar stone fruit green red black dried tree stewed steely very high quality ageing potential bottle evolution capable drink now not applicable in the best examples low light full deep sweet acidity tannins tannin body intensity finish flavours flavour flavors flavor palate citrus lime grapefruit apple pear peach apricot cherry plum honey blossom spice spicy pepper oak toast vanilla tobacco leather herbaceous savoury earthy stony ripe fresh young firm concentrated concentration balance length complexity character outstanding good acceptable poor evolve ruby garnet purple amber golden gold white styles style'.split(' ');
+  var SAFE_DESCRIPTOR_SET=SAFE_DESCRIPTOR_EN.reduce(function(out,word){ out[word]=1; return out; },{});
   function cleanPresented(t){
-    var s=presentEs(t);
-    return s && !ENGLISH_RESIDUE.test(s) ? s : '';
+    if(t==null) return '';
+    var raw=String(t).trim(), exact=PRESENT_ES_EXACT[raw.toLowerCase()];
+    if(exact) return exact;
+    var spanishSentence=/[áéíóúñ¿¡]/i.test(raw) && /\b(el|la|los|las|de|del|en|con|sin|para|como|una|un|esta|este|sus|tu|y)\b/i.test(raw);
+    if(spanishSentence && !ENGLISH_RESIDUE.test(raw)) return raw;
+    var words=(raw.toLowerCase().match(/[a-z]+/g)||[]);
+    if(words.length && words.every(function(word){ return SAFE_DESCRIPTOR_SET[word]; })) return presentEs(raw);
+    return '';
   }
+  function displayNameEs(name){ return cleanPresented(name)||presentEs(name); }
 
   function escP(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function ppList(arr){ if(!arr||!arr.length) return ''; return arr.map(function(x){ return '<div class="pp-li">'+escP(presentEs(x))+'</div>'; }).join(''); }
@@ -494,7 +505,7 @@
     var why=(si.wset_importance==='CORE'?'Estilo núcleo del examen WSET. ':'')+(tn.revision_priority?('Prioridad de repaso: '+escP(prioEs(tn.revision_priority))+'. '):'')+(styleEs?escP(styleEs):'Practica la identificación de este estilo y su diferenciación frente a perfiles similares.');
     var traps=uniqP([].concat(dna.typical_misconceptions||[], d.exam_traps||[], tn.student_traps||[]));
     var sim=uniqP([].concat(dna.comparison_styles||[]));
-    var h='<h3 style="margin:0 0 4px;font-size:17px">Debrief — '+escP(si.display_name||'Vino')+'</h3>';
+    var h='<h3 style="margin:0 0 4px;font-size:17px">Debrief — '+escP(displayNameEs(si.display_name||'Vino'))+'</h3>';
     if(rev) h+='<div class="pp-reveal">'+rev+'</div>';
     if(why) h+='<div class="pp-sec"><h4>Por qué importa este estilo</h4><div class="pp-li" style="padding-left:0">'+why+'</div></div>';
     if(dna.core_concepts&&dna.core_concepts.length) h+='<div class="pp-sec"><h4>Conceptos clave</h4>'+ppListClean(dna.core_concepts,['Estructura sensorial característica del estilo.','Relación entre origen, variedades y método de elaboración.','Marcadores que permiten diferenciarlo de estilos cercanos.'])+'</div>';
@@ -608,8 +619,8 @@
   // Revela la identidad real en el resumen. Guiada: desde training (ya revelado). Ciegas: desde debrief tras finalizar.
   function revealHeaderFrom(si){
     if(!si) return;
-    if($('report-title')) $('report-title').textContent = si.display_name || 'Tu cata';
-    if($('summary-msg')) $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(si.display_name||'tu vino')+'.';
+    if($('report-title')) $('report-title').textContent = displayNameEs(si.display_name) || 'Tu cata';
+    if($('summary-msg')) $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT con '+(displayNameEs(si.display_name)||'tu vino')+'.';
     if($('report-badges')){
       var rb='';
       if(si.wine_type) rb+='<span class="sat-hb type">'+escP(si.wine_type)+'</span>';
