@@ -81,12 +81,9 @@ const edgeSource = fs.readFileSync(
   path.join(repoRoot, 'supabase', 'functions', 'get-sat-wines', 'index.ts'),
   'utf8'
 );
-const selectMatch = edgeSource.match(/\.select\('([^']+)'\)/);
-assert(selectMatch, 'get-sat-wines must use an explicit select whitelist');
-assert.deepStrictEqual(selectMatch[1].split(','), ['id', 'wine_type', 'priority', 'display_label', 'source']);
-assert(!selectMatch[1].includes('canonical'));
-assert(edgeSource.includes("JSON.stringify({"));
+assert(edgeSource.includes("supabase.rpc('select_sat_wine_for_user'"), 'get-sat-wines must use the private one-wine selector');
+assert(edgeSource.includes('wines: [wine]'), 'get-sat-wines must return only one safe wine');
 assert(!edgeSource.includes('canonical:'));
-assert(edgeSource.includes(", 107);"), 'get-sat-wines must allow limit=107');
+assert(!edgeSource.includes('limit=107'), 'get-sat-wines must never return the full catalog');
 
 console.log('CWP sat_wines seed test passed: 107 canonical rows, blind-safe labels, safe get-sat-wines projection');

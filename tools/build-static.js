@@ -19,6 +19,7 @@ const EXCLUDED_FILES = new Set([
 const COPY_ONLY_ROOTS = new Set(['admin', 'full-simulation']);
 const EXCLUDED_PATH_PREFIXES = [
   'canonical-wine-catalog/audits/',
+  'canonical-wine-catalog/exports/',
   'canonical-wine-catalog/profiles/',
   'canonical-wine-catalog/shared/'
 ];

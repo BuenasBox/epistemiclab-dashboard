@@ -46,15 +46,13 @@ assert(generatedSeed.includes('Vino espumoso'), 'seed generator must label spark
 assert(generatedSeed.includes('Vino fortificado'), 'seed generator must label fortified wines');
 
 assert(
-  getSatWines.includes("const ALLOWED_WINE_TYPES = ['BLANCO', 'ROSADO', 'TINTO', 'ESPUMOSO', 'FORTIFICADO'];"),
-  'get-sat-wines must allow every canonical wine type'
+  getSatWines.includes("supabase.rpc('select_sat_wine_for_user'"),
+  'get-sat-wines must select one non-repeating wine server-side'
 );
-assert(!getSatWines.includes(', 70)'), 'get-sat-wines must not cap requests at 70');
-assert(getSatWines.includes(', 107)'), 'get-sat-wines must cap requests at 107');
-assert(getSatWines.includes("'Cata a ciegas — vino espumoso'"), 'get-sat-wines must provide a sparkling session hint');
-assert(getSatWines.includes("'Cata a ciegas — vino fortificado'"), 'get-sat-wines must provide a fortified session hint');
-
-assert(!satLab.includes('limit=70'), 'sat-lab must not request only 70 SAT wines');
-assert(satLab.includes('limit=107'), 'sat-lab must request the full canonical SAT catalog');
+assert(getSatWines.includes('wines: [wine]'), 'get-sat-wines must return exactly one wine');
+assert(!getSatWines.includes(".select('id,wine_type,priority,display_label,source')"), 'get-sat-wines must not load the full catalog');
+assert(!satLab.includes('limit=70'), 'sat-lab must not request a partial catalog');
+assert(!satLab.includes('limit=107'), 'sat-lab must not request the full canonical SAT catalog');
+assert(!satLab.includes('canonical-wine-catalog/exports/'), 'sat-lab must not download public SAT exports');
 
 console.log('SAT catalog integration validation passed');

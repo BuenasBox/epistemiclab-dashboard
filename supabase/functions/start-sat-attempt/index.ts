@@ -1,4 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { privateJsonHeaders, verifySatAccess } from '../_shared/sat-access.ts';
 
 // ============================================================================
 // SAT-4 — start-sat-attempt
@@ -26,7 +27,7 @@ const PHASES = ['ASPECTO', 'NARIZ', 'PALADAR', 'EVALUACION_CALIDAD', 'POTENCIAL_
 function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    headers: privateJsonHeaders(corsHeaders),
   });
 }
 
@@ -45,6 +46,11 @@ Deno.serve(async (req: Request) => {
     const { data: { user }, error: authError } = await supabase.auth.getUser(token);
     if (authError || !user) {
       return jsonResponse({ ok: false, error: 'Unauthorized: invalid token' }, 401);
+    }
+
+    const access = await verifySatAccess(supabase, user.id);
+    if (!access.allowed) {
+      return jsonResponse({ ok: false, error: 'SAT access denied', reason: access.reason }, 403);
     }
 
     let payload: any = {};
@@ -72,8 +78,9 @@ Deno.serve(async (req: Request) => {
         .from('sat_wines')
         .select('id')
         .eq('id', wine_id)
+        .eq('source', 'canonical_wine')
         .maybeSingle();
-      if (wineErr) return jsonResponse({ ok: false, error: wineErr.message }, 500);
+      if (wineErr) return jsonResponse({ ok: false, error: 'Unable to validate SAT wine' }, 500);
       if (!wine) return jsonResponse({ ok: false, error: `wine_id not found: ${wine_id}` }, 404);
     }
 
@@ -94,7 +101,7 @@ Deno.serve(async (req: Request) => {
       .single();
 
     if (insErr) {
-      return jsonResponse({ ok: false, error: insErr.message }, 500);
+      return jsonResponse({ ok: false, error: 'Unable to start SAT practice' }, 500);
     }
 
     return jsonResponse({
@@ -118,7 +125,7 @@ Deno.serve(async (req: Request) => {
         expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
       },
     }, 200);
-  } catch (err) {
-    return jsonResponse({ ok: false, error: String(err) }, 500);
+  } catch (_err) {
+    return jsonResponse({ ok: false, error: 'Unable to start SAT practice' }, 500);
   }
 });

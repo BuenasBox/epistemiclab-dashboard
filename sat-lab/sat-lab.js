@@ -75,6 +75,18 @@
     return h;
   }
 
+  async function fetchPracticeWine(mode, requestedId){
+    var headers = await authHeaders(false);
+    var url = FN+'get-sat-wines?mode='+encodeURIComponent(mode||'blind_simulation');
+    if(requestedId) url += '&wine_id='+encodeURIComponent(requestedId);
+    var response = await fetch(url, {headers:headers, cache:'no-store'});
+    var payload = await response.json().catch(function(){ return {}; });
+    if(!response.ok) throw new Error(payload.error||'No se pudo preparar la práctica SAT.');
+    var wine = payload.wines && payload.wines[0];
+    if(!wine) throw new Error('No hay vinos disponibles ahora mismo.');
+    return wine;
+  }
+
   // Capa de perfil escalable: la pantalla es una PLANTILLA. Un futuro perfil de
   // vino (biblioteca de ~107 perfiles o modo "Mi botella") puede llegar en
   // S.wine.render_profile y sobreescribir dinámicamente: decisiones por fase,
@@ -114,23 +126,17 @@
   async function startPractice(){
     show('screen-loading');
     try{
+      var apiMode = S.mode==='guided'?'bottle_guided':'blind_simulation';
       var wine = previewWine;
-      if(!wine){
-        var hr = await authHeaders(false);
-        var wr = await fetch(FN+'get-sat-wines?mode=blind_simulation&limit=107', {headers:hr});
-        if(!wr.ok) throw new Error('No se pudo cargar el inventario de cata.');
-        var wd = await wr.json();
-        var list = wd.wines||[];
-        if(!list.length) throw new Error('No hay vinos disponibles ahora mismo.');
-        wine = list[Math.floor(Math.random()*list.length)];
-      }
+      if(!wine || (S.mode==='guided' && !wine.guided_identity)) wine = await fetchPracticeWine(apiMode);
       S.wine = wine;
       var hp = await authHeaders(true);
       var sr = await fetch(FN+'start-sat-attempt', {method:'POST',headers:hp,
-        body:JSON.stringify({wine_id:S.wine.id,mode:'blind_simulation',source:'canonical_wine'})});
+        body:JSON.stringify({wine_id:S.wine.id,mode:apiMode,source:'canonical_wine'})});
       var sd = await sr.json();
       if(!sr.ok || !sd.attempt_id) throw new Error('No se pudo iniciar la práctica.');
       S.attemptId = sd.attempt_id; S.phaseIdx=0; S.answers={}; S.decisionsCount=0; glass=null; S.finished=false;
+      POST = { debrief:null, comparison:null, recommend:null };
       renderTasting();
     }catch(e){
       show('screen-intro'); $('intro-err').textContent = e.message || String(e);
@@ -177,6 +183,7 @@
 
   function renderTasting(){
     show('screen-tasting');
+    if($('tasting-err')) $('tasting-err').textContent='';
     var wt = S.wine.wine_type;
     $('wine-label').textContent = S.wine.display_label || 'Vino';
     $('wine-chip').textContent = wt==='TINTO'?'Cata a ciegas · tinto':(wt==='ROSADO'?'Cata a ciegas · rosado':'Cata a ciegas · blanco');
@@ -257,8 +264,16 @@
     $('btn-next').disabled=true; $('btn-next').textContent='Cerrando práctica…';
     try{
       var hp = await authHeaders(true);
-      await fetch(FN+'complete-sat-attempt', {method:'POST',headers:hp,body:JSON.stringify({attempt_id:S.attemptId})});
-    }catch(e){}
+      var response = await fetch(FN+'complete-sat-attempt', {method:'POST',headers:hp,body:JSON.stringify({attempt_id:S.attemptId})});
+      var result = await response.json().catch(function(){ return {}; });
+      if(!response.ok || !result.ok) throw new Error(result.error||'No se pudo cerrar la práctica.');
+      var post = result.post_session||{};
+      POST = { debrief:post.debrief||null, comparison:post.comparison||null, recommend:post.recommendation||null };
+    }catch(e){
+      $('btn-next').disabled=false; $('btn-next').textContent='Finalizar práctica →';
+      var box=$('tasting-err'); if(box) box.textContent=e.message||String(e);
+      return;
+    }
     renderSummary(); window.scrollTo(0,0);
   }
   function prevPhase(){ if(S.phaseIdx>0){ S.phaseIdx--; renderTasting(); window.scrollTo(0,0); } }
@@ -384,7 +399,7 @@
   function fetchPost(file, key){
     if(!S.finished) return Promise.reject(new Error('Contrato post-cata bloqueado antes de finalizar.'));
     if(POST[key]) return Promise.resolve(POST[key]);
-    return fetch('../canonical-wine-catalog/exports/'+file).then(function(r){ return r.json(); }).then(function(j){ POST[key]=j; return j; });
+    return Promise.reject(new Error('Contenido post-cata no disponible para esta práctica.'));
   }
 
   // ---- Ver Debrief ----
@@ -393,7 +408,7 @@
     if(p.style.display!=='none' && p.innerHTML){ p.style.display='none'; return; }
     p.style.display='block'; p.innerHTML='<span class="spin"></span>';
     fetchPost('post_tasting_debrief.json','debrief').then(function(j){
-      var d=j[S.wine.id];
+      var d=j;
       p.innerHTML = d ? renderDebrief(d) : '<p class="muted">Debrief no disponible para esta práctica.</p>';
     }).catch(function(e){ p.innerHTML='<p class="err">'+escP(e.message||e)+'</p>'; });
   }
@@ -466,7 +481,7 @@
     if(p.style.display!=='none' && p.innerHTML){ p.style.display='none'; return; }
     p.style.display='block'; p.innerHTML='<span class="spin"></span>';
     fetchPost('post_tasting_model_comparison.json','comparison').then(function(j){
-      var c=j[S.wine.id];
+      var c=j;
       p.innerHTML = c ? renderCompare(c) : '<p class="muted">Comparación no disponible para esta práctica.</p>';
     }).catch(function(e){ p.innerHTML='<p class="err">'+escP(e.message||e)+'</p>'; });
   }
@@ -500,7 +515,7 @@
   function loadRecommend(){
     var box=$('recommend-box'); if(!box) return; box.innerHTML='';
     fetchPost('next_practice_recommendations.json','recommend').then(function(j){
-      var r=j[S.wine.id]; if(!r||!r.recommended_next||!r.recommended_next.length){ box.innerHTML=''; return; }
+      var r=j; if(!r||!r.recommended_next||!r.recommended_next.length){ box.innerHTML=''; return; }
       var nextId=r.recommended_next[0];
       var h='<div class="pp-sec" style="margin:6px 0 0"><h4>Siguiente práctica recomendada</h4>';
       if(r.reason) h+='<div class="pp-li" style="padding-left:0">'+escP(presentEs(r.reason))+'</div>';
@@ -532,18 +547,13 @@
       return;
     }
     fetchPost('post_tasting_debrief.json','debrief').then(function(j){
-      var d=j[S.wine.id]; revealHeaderFrom(d&&d.safe_identity);
+      var d=j; revealHeaderFrom(d&&d.safe_identity);
     }).catch(function(){});
   }
 
   function startRecommended(id){
     var b=$('btn-start-rec'); if(b){ b.disabled=true; b.textContent='Cargando…'; }
-    requireAuth().then(function(token){
-      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=107', {headers:{'Authorization':'Bearer '+token}});
-    }).then(function(r){ return r.json(); }).then(function(wd){
-      var list=(wd&&wd.wines)||[], w=null;
-      for(var i=0;i<list.length;i++){ if(list[i].id===id){ w=list[i]; break; } }
-      if(!w){ if(b){ b.disabled=false; b.textContent='Iniciar práctica recomendada'; } return; }
+    fetchPracticeWine('blind_simulation', id).then(function(w){
       previewWine=w;
       try{ renderCardForWine(w); }catch(e){}
       requestEntry();
@@ -551,12 +561,8 @@
   }
 
 
-  // SAT-UX-05: la card refleja el VINO REAL de la practica.
-  // Resolucion: wine_id (get-sat-wines) -> render_profile_map.json (.blind) ->
-  // render_profiles.blind.json. Solo se consume el contrato blind-safe; el
-  // canonical completo NUNCA llega al navegador, y debrief/training NO se cargan en cata.
-  var WINE_MAP = null;        // { SAT_WINE_xxx: {blind, debrief, training} }
-  var BLIND_BY_RENDER = null; // { BLIND_xxx: profile }
+  // La tarjeta usa el único perfil seguro entregado por el backend. El catálogo
+  // completo y el contenido post-cata no se publican como archivos estáticos.
   var previewWine = null;     // vino preseleccionado (reusado por la practica)
 
   function blindDiffLabel(band, sc){
@@ -600,20 +606,12 @@
       glass: (item&&item.glass&&item.glass.wine_type)?{ wineType:item.glass.wine_type }:null
     };
   }
-  // SAT-MODE-01: índice training (perfil revelado). Fuente: render_profiles.training.json (+ map). Sin canonical/expected.
-  var TRAIN_BY_RENDER = null;
   function loadTrainingIndex(){
-    if(TRAIN_BY_RENDER) return Promise.resolve(TRAIN_BY_RENDER);
-    return fetch('../canonical-wine-catalog/exports/render_profiles.training.json').then(function(r){return r.json();}).then(function(arr){
-      TRAIN_BY_RENDER={};
-      (Array.isArray(arr)?arr:[]).forEach(function(p){ if(p&&p.render_id) TRAIN_BY_RENDER[p.render_id]=p; });
-      return TRAIN_BY_RENDER;
-    }).catch(function(){ TRAIN_BY_RENDER=TRAIN_BY_RENDER||{}; return TRAIN_BY_RENDER; });
+    return Promise.resolve(true);
   }
   function resolveTrainingProfile(wineId){
-    if(!WINE_MAP || !TRAIN_BY_RENDER || !wineId) return null;
-    var e=WINE_MAP[wineId]; var rid=e&&e.training;
-    return rid ? (TRAIN_BY_RENDER[rid]||null) : null;
+    var wine=(S.wine&&S.wine.id===wineId)?S.wine:(previewWine&&previewWine.id===wineId?previewWine:null);
+    return wine&&wine.guided_identity ? {identity:wine.guided_identity} : null;
   }
   function mapTrainingToCard(item, wine){
     var id=(item&&item.identity)||{};
@@ -637,22 +635,15 @@
     };
   }
 
-  function loadCatalogIndexes(){
-    return Promise.all([
-      fetch('../canonical-wine-catalog/exports/render_profile_map.json').then(function(r){return r.json();}).catch(function(){return null;}),
-      fetch('../canonical-wine-catalog/exports/render_profiles.blind.json').then(function(r){return r.json();}).catch(function(){return null;})
-    ]).then(function(res){
-      WINE_MAP = res[0] || {};
-      var blind = Array.isArray(res[1]) ? res[1] : [];
-      BLIND_BY_RENDER = {};
-      blind.forEach(function(pr){ if(pr && pr.render_id) BLIND_BY_RENDER[pr.render_id]=pr; });
-    });
-  }
   function resolveBlindProfile(wineId){
-    if(!WINE_MAP || !BLIND_BY_RENDER || !wineId) return null;
-    var entry = WINE_MAP[wineId];
-    var rid = entry && entry.blind;
-    return rid ? (BLIND_BY_RENDER[rid] || null) : null;
+    var wine=(S.wine&&S.wine.id===wineId)?S.wine:(previewWine&&previewWine.id===wineId?previewWine:null);
+    if(!wine) return null;
+    return {identity:{
+      display_label:wine.display_label, wine_type:wine.wine_type,
+      difficulty_score:wine.difficulty_score, difficulty_band:wine.difficulty_band,
+      wset_importance:wine.wset_importance, practice_priority:wine.practice_priority,
+      confidence_score:wine.confidence_score
+    },glass:{wine_type:wine.wine_type}};
   }
   function renderCardForWine(wine){
     if(!(window.WineIntelligenceCard && $('wic-demo'))) return;
@@ -672,18 +663,14 @@
   }
   function previewPracticeWine(){
     if(!$('wic-demo')) return;
-    requireAuth().then(function(token){
-      return fetch(FN+'get-sat-wines?mode=blind_simulation&limit=107', {headers:{'Authorization':'Bearer '+token}});
-    }).then(function(r){ return r.json(); }).then(function(wd){
-      var list=(wd&&wd.wines)||[];
-      if(!list.length){ previewWine=null; $('wic-demo').innerHTML=''; return; }
-      previewWine = list[Math.floor(Math.random()*list.length)];
+    fetchPracticeWine('blind_simulation').then(function(wine){
+      previewWine = wine;
       renderCardForWine(previewWine);
     }).catch(function(){ previewWine=null; $('wic-demo').innerHTML=''; });
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    loadCatalogIndexes().then(previewPracticeWine);
+    previewPracticeWine();
     $('mode-blind').addEventListener('click', function(){ S.mode='blind'; requestEntry(); });
     var _mg=$('mode-guided'); if(_mg) _mg.addEventListener('click', function(){ S.mode='guided'; loadTrainingIndex().then(function(){ try{ renderCardForWine(previewWine); }catch(e){} requestEntry(); }); });
     $('btn-next').addEventListener('click', nextPhase);

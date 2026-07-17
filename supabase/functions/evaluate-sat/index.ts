@@ -1,4 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { privateJsonHeaders, verifySatAccess } from '../_shared/sat-access.ts';
 
 // ============================================================================
 // evaluate-sat  (COACHING FORMATIVO, NO scoring oficial)
@@ -109,7 +110,7 @@ const VALUE_NUANCE: Record<string, string> = {
 
 function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), {
-    status, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    status, headers: privateJsonHeaders(corsHeaders),
   });
 }
 
@@ -126,6 +127,11 @@ Deno.serve(async (req: Request) => {
     const { data: { user }, error: authError } = await supabase.auth.getUser(token);
     if (authError || !user) {
       return jsonResponse({ ok: false, error: 'Unauthorized: invalid token' }, 401);
+    }
+
+    const access = await verifySatAccess(supabase, user.id);
+    if (!access.allowed) {
+      return jsonResponse({ ok: false, error: 'SAT access denied', reason: access.reason }, 403);
     }
 
     let payload: any = {};
@@ -146,7 +152,7 @@ Deno.serve(async (req: Request) => {
     // service_role (bypassa RLS). NO seleccionamos canonical.
     const { data: wine, error: wineErr } = await supabase
       .from('sat_wines').select('id,wine_type').eq('id', wine_id).maybeSingle();
-    if (wineErr) return jsonResponse({ ok: false, error: wineErr.message }, 500);
+    if (wineErr) return jsonResponse({ ok: false, error: 'Unable to validate SAT wine' }, 500);
     if (!wine) return jsonResponse({ ok: false, error: `wine_id not found: ${wine_id}` }, 404);
     const wineType = wine.wine_type;
     const scale = SCALES[decision_name];
@@ -198,10 +204,13 @@ Deno.serve(async (req: Request) => {
     let attempt_state: Record<string, unknown> | null = null;
     if (attempt_id) {
       const { data: att, error: attErr } = await supabase
-        .from('sat_attempts').select('id,user_id,decisions,completed_phases,current_phase,status')
+        .from('sat_attempts').select('id,user_id,wine_id,decisions,completed_phases,current_phase,status')
         .eq('id', attempt_id).maybeSingle();
-      if (attErr) return jsonResponse({ ok: false, error: attErr.message }, 500);
+      if (attErr) return jsonResponse({ ok: false, error: 'Unable to validate SAT attempt' }, 500);
       if (!att || att.user_id !== user.id) return jsonResponse({ ok: false, error: 'attempt not found' }, 404);
+      if (att.wine_id !== wine_id || att.status !== 'in_progress') {
+        return jsonResponse({ ok: false, error: 'attempt does not match this SAT wine' }, 409);
+      }
       const snapshot = { phase, decision_name, selected_value, rule_ids_applied: applied_rules, timestamp: new Date().toISOString(), is_final: false };
       const prev = Array.isArray(att.decisions) ? att.decisions : [];
       const decisions = prev.filter((d: any) => !(d && d.phase === phase && d.decision_name === decision_name));
@@ -211,7 +220,7 @@ Deno.serve(async (req: Request) => {
         .update({ decisions, current_phase: phase, updated_at: new Date().toISOString() })
         .eq('id', attempt_id).eq('user_id', user.id)
         .select('id,current_phase,completed_phases,status').single();
-      if (updErr) return jsonResponse({ ok: false, error: updErr.message }, 500);
+      if (updErr) return jsonResponse({ ok: false, error: 'Unable to save SAT decision' }, 500);
       persisted = true;
       attempt_state = { attempt_id: upd.id, current_phase: upd.current_phase, completed_phases: upd.completed_phases, decisions_count: decisions.length, status: upd.status };
     }
@@ -225,7 +234,7 @@ Deno.serve(async (req: Request) => {
       governance: { safe_for_examiner: false, examiner_scoring_allowed: false, official_scoring: false, formative_only: true },
       watermark: { user_id: user.id, issued_at: new Date().toISOString(), expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString() },
     }, 200);
-  } catch (err) {
-    return jsonResponse({ ok: false, error: String(err) }, 500);
+  } catch (_err) {
+    return jsonResponse({ ok: false, error: 'Unable to evaluate SAT decision' }, 500);
   }
 });
