@@ -652,6 +652,10 @@
     sc=parseInt(sc,10)||0; return sc<=2?'Iniciación':(sc<=4?'Intermedio':(sc<=6?'Avanzado':'Experto'));
   }
   var WSET_LEVEL='WSET Nivel 3';
+  function importanceEs(value){
+    var labels={CORE:'Núcleo del examen',HIGH:'Alta relevancia',MEDIUM:'Relevancia media',LOW:'Relevancia complementaria',ESSENTIAL:'Esencial'};
+    return labels[String(value||'').toUpperCase()]||value||null;
+  }
   function practiceNumberOf(wine){
     if(!wine) return null;
     var m=String(wine.id||'').match(/(\d+)\s*$/); if(m) return String(parseInt(m[1],10));
@@ -676,7 +680,7 @@
         practice_mode: 'Cata a ciegas',
         difficulty: blindDiffLabel(id.difficulty_band, id.difficulty_score),
         difficulty_score: id.difficulty_score || null,
-        importance: (id.wset_importance==='CORE'?'Núcleo del examen':(id.wset_importance||null)),
+        importance: importanceEs(id.wset_importance),
         confidence: (typeof id.confidence_score==='number'? Math.round(id.confidence_score*100)+'%':null),
         priority: (id.practice_priority!=null? (id.practice_priority+'/5'):null),
         wset_level: WSET_LEVEL,
@@ -703,7 +707,7 @@
         practice_mode: 'Práctica guiada',
         difficulty: blindDiffLabel(id.difficulty_band, id.difficulty_score),
         difficulty_score: id.difficulty_score || null,
-        importance: (id.wset_importance==='CORE'?'Núcleo del examen':(id.wset_importance||null)),
+        importance: importanceEs(id.wset_importance),
         confidence: (typeof id.confidence_score==='number'? Math.round(id.confidence_score*100)+'%':null),
         priority: (id.practice_priority!=null? (id.practice_priority+'/5'):null),
         wset_level: WSET_LEVEL,
