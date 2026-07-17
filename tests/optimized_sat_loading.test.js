@@ -22,6 +22,9 @@ assert(client.includes('result.post_session'), 'SAT client must use the protecte
 assert(!styles.includes('#screen-tasting .sat-hero{ position:sticky'), 'SAT hero must never cover phase controls while scrolling');
 assert(client.includes('PRESENT_ES_EXACT'), 'SAT debrief must provide controlled Spanish editorial translations');
 assert(client.includes("'verdejo oxidation sensitivity':'Sensibilidad del Verdejo a la oxidación'"), 'SAT Verdejo debrief must render in Spanish');
+assert(client.includes('ENGLISH_RESIDUE'), 'SAT debrief must detect untranslated English residue');
+assert(client.includes('ppListClean'), 'SAT debrief must replace mixed-language copy with Spanish editorial guidance');
+assert(client.includes('Vinos espumosos WSET'), 'SAT wine family labels must be presented in Spanish');
 
 assert(getWine.includes('wines: [wine]'), 'SAT endpoint must return one wine only');
 assert(getWine.includes("if (mode === 'bottle_guided') wine.guided_identity"), 'identity must only be included in guided mode');

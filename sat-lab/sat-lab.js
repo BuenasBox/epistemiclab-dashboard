@@ -367,7 +367,22 @@
   var COUNTRY_ES={France:'Francia',Germany:'Alemania',Italy:'Italia',Spain:'España',Portugal:'Portugal',Greece:'Grecia',Austria:'Austria',USA:'Estados Unidos','United States':'Estados Unidos','New Zealand':'Nueva Zelanda','South Africa':'Sudáfrica',Argentina:'Argentina',Chile:'Chile',Australia:'Australia'};
   function countryEs(c){ return (c&&COUNTRY_ES[c])||c||''; }
   var PRIORITY_ES={high:'alta',medium:'media',low:'baja'};
-  function prioEs(p){ return (p&&PRIORITY_ES[String(p).toLowerCase()])||p; }
+  function prioEs(p){
+    if(!p) return p;
+    var key=String(p).toLowerCase().split(/[:.]/)[0].trim();
+    return PRIORITY_ES[key]||p;
+  }
+  var WINE_FAMILY_ES={
+    'WSET Official Sparkling Wines':'Vinos espumosos WSET',
+    'WSET Official Fortified Wines':'Vinos fortificados WSET',
+    'WSET Essential Still Wines':'Vinos tranquilos esenciales WSET'
+  };
+  function wineFamilyEs(family,wineType){
+    if(WINE_FAMILY_ES[family]) return WINE_FAMILY_ES[family];
+    if(!family && wineType==='ESPUMOSO') return 'Vinos espumosos';
+    if(!family && wineType==='FORTIFICADO') return 'Vinos fortificados';
+    return family||'';
+  }
   // Traducciones editoriales completas para frases pedagógicas. Conservamos el
   // catálogo canónico intacto y normalizamos únicamente la capa visible.
   var PRESENT_ES_EXACT={
@@ -391,6 +406,11 @@
     'overcalling sauvignon blanc':'Identificar en exceso como Sauvignon Blanc',
     'missing rueda as a white specialist':'No reconocer a Rueda como región especializada en vinos blancos',
     'herbal notes':'Notas herbáceas',
+    'green apple':'Manzana verde',
+    'light to medium body':'Cuerpo ligero a medio',
+    'persistent bubbles':'Burbujas persistentes',
+    'fine persistent mousse':'Burbuja fina y persistente',
+    'autolytic complexity':'Complejidad autolítica',
     'good to very good; styles range from simple fruity to richer barrel-fermented versions':'Bueno a muy bueno; los estilos van desde afrutados sencillos hasta versiones más estructuradas fermentadas en barrica',
     'drink young to short ageing for fresh styles':'Beber joven o con una guarda corta en los estilos frescos',
     'use this as a formative mirror: identify alignment and useful next observations without exam judgement language.':'Usa esta comparación como una guía formativa: identifica coincidencias y nuevas observaciones útiles, sin lenguaje de calificación de examen.',
@@ -432,8 +452,21 @@
     return s;
   }
 
+  // Si una frase canónica aún conserva vocabulario inglés después de traducirla,
+  // no mostramos una mezcla. La sección usa una orientación editorial española.
+  var ENGLISH_RESIDUE=/\b(the|is|are|was|were|as|from|with|without|all|every|when|before|after|rather|than|only|plus|wine|wines|style|styles|method|traditional|reserve|blending|lees|autolysis|autolytic|dosage|benchmark|sparkling|vintage|official|essential|tasting|explain|consistency|solely|enough|higher|lower|chalky|cool|tension|fine|persistent|mousse|house|origin|character|judging|dryness|world|fruited|versions|points|toward|depends|because|usually|ready|early|drinking|develop|complex|flavours|aromas|fruit|acid|bodied|barrel|aged|oak|quality|good|outstanding|ageing|drink|young)\b/i;
+  function cleanPresented(t){
+    var s=presentEs(t);
+    return s && !ENGLISH_RESIDUE.test(s) ? s : '';
+  }
+
   function escP(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function ppList(arr){ if(!arr||!arr.length) return ''; return arr.map(function(x){ return '<div class="pp-li">'+escP(presentEs(x))+'</div>'; }).join(''); }
+  function ppListClean(arr,fallback){
+    var clean=(arr||[]).map(cleanPresented).filter(Boolean);
+    if(!clean.length && fallback) clean=Array.isArray(fallback)?fallback:[fallback];
+    return clean.map(function(x){ return '<div class="pp-li">'+escP(x)+'</div>'; }).join('');
+  }
   function uniqP(a){ var seen={},o=[]; (a||[]).forEach(function(x){ if(x&&!seen[x]){ seen[x]=1; o.push(x); } }); return o; }
   function fetchPost(file, key){
     if(!S.finished) return Promise.reject(new Error('Contrato post-cata bloqueado antes de finalizar.'));
@@ -454,24 +487,26 @@
   function renderDebrief(d){
     var si=d.safe_identity||{}, dna=d.pedagogical_dna||{}, tn=d.teaching_notes||{}, ce=d.comparison_engine||{};
     function chip(v,cls){ return v?('<span class="sat-hb '+(cls||'')+'">'+escP(v)+'</span>'):''; }
-    var rev=chip(si.wine_family)+chip(countryEs(si.country))+chip(si.region);
+    var rev=chip(wineFamilyEs(si.wine_family,si.wine_type))+chip(countryEs(si.country))+chip(si.region);
     if(si.appellation) rev+=chip(si.appellation);
     (si.grape_varieties||[]).forEach(function(g){ rev+=chip(g,'type'); });
-    var why=(si.wset_importance==='CORE'?'Estilo núcleo del examen WSET. ':'')+(tn.revision_priority?('Prioridad de repaso: '+escP(prioEs(tn.revision_priority))+'. '):'')+(si.wine_style?escP(presentEs(si.wine_style)):'');
+    var styleEs=cleanPresented(si.wine_style);
+    var why=(si.wset_importance==='CORE'?'Estilo núcleo del examen WSET. ':'')+(tn.revision_priority?('Prioridad de repaso: '+escP(prioEs(tn.revision_priority))+'. '):'')+(styleEs?escP(styleEs):'Practica la identificación de este estilo y su diferenciación frente a perfiles similares.');
     var traps=uniqP([].concat(dna.typical_misconceptions||[], d.exam_traps||[], tn.student_traps||[]));
     var sim=uniqP([].concat(dna.comparison_styles||[]));
     var h='<h3 style="margin:0 0 4px;font-size:17px">Debrief — '+escP(si.display_name||'Vino')+'</h3>';
     if(rev) h+='<div class="pp-reveal">'+rev+'</div>';
     if(why) h+='<div class="pp-sec"><h4>Por qué importa este estilo</h4><div class="pp-li" style="padding-left:0">'+why+'</div></div>';
-    if(dna.core_concepts&&dna.core_concepts.length) h+='<div class="pp-sec"><h4>Conceptos clave</h4>'+ppList(dna.core_concepts)+'</div>';
-    if(dna.learning_objectives&&dna.learning_objectives.length) h+='<div class="pp-sec"><h4>Objetivos de aprendizaje</h4>'+ppList(dna.learning_objectives)+'</div>';
-    if(traps.length) h+='<div class="pp-sec"><h4>Trampas frecuentes</h4>'+ppList(traps)+'</div>';
-    if(d.memory_hooks&&d.memory_hooks.length) h+='<div class="pp-sec"><h4>Anclas de memoria</h4>'+ppList(d.memory_hooks)+'</div>';
-    if(d.mentor_focus&&d.mentor_focus.length) h+='<div class="pp-sec"><h4>Enfoque del mentor</h4>'+ppList(d.mentor_focus)+'</div>';
-    var simBlock=ppList(sim)+ppList(ce.distinguishing_features);
+    if(dna.core_concepts&&dna.core_concepts.length) h+='<div class="pp-sec"><h4>Conceptos clave</h4>'+ppListClean(dna.core_concepts,['Estructura sensorial característica del estilo.','Relación entre origen, variedades y método de elaboración.','Marcadores que permiten diferenciarlo de estilos cercanos.'])+'</div>';
+    if(dna.learning_objectives&&dna.learning_objectives.length) h+='<div class="pp-sec"><h4>Objetivos de aprendizaje</h4>'+ppListClean(dna.learning_objectives,['Reconocer la estructura característica del estilo.','Relacionar las observaciones con el origen y la elaboración.','Distinguirlo de perfiles que pueden resultar similares.'])+'</div>';
+    if(traps.length) h+='<div class="pp-sec"><h4>Trampas frecuentes</h4>'+ppListClean(traps,['No concluir la identidad a partir de un solo descriptor.','Confirmar la estructura completa antes de identificar el estilo.'])+'</div>';
+    if(d.memory_hooks&&d.memory_hooks.length) h+='<div class="pp-sec"><h4>Anclas de memoria</h4>'+ppListClean(d.memory_hooks,'Recuerda el conjunto: estructura, intensidad, aromas y método de elaboración.')+'</div>';
+    if(d.mentor_focus&&d.mentor_focus.length) h+='<div class="pp-sec"><h4>Enfoque del mentor</h4>'+ppListClean(d.mentor_focus,'Sustenta cada conclusión con evidencia sensorial observada.')+'</div>';
+    var simBlock=ppListClean(sim)+ppListClean(ce.distinguishing_features);
+    if(!simBlock) simBlock=ppListClean([],'Compara este vino con estilos de estructura y elaboración semejantes.');
     if(simBlock) h+='<div class="pp-sec"><h4>Estilos similares o confundibles</h4>'+simBlock+'</div>';
     var review=uniqP([].concat(tn.student_traps||[], d.exam_traps||[]));
-    if(review.length) h+='<div class="pp-sec"><h4>Qué deberías revisar</h4>'+ppList(review)+'</div>';
+    if(review.length) h+='<div class="pp-sec"><h4>Qué deberías revisar</h4>'+ppListClean(review,'Revisa la coherencia entre tus observaciones y la identidad propuesta.')+'</div>';
     return h;
   }
 
@@ -544,9 +579,16 @@
     var mr=c.model_reference||{};
     var refMap=[['appearance_model','Aspecto'],['nose_model','Nariz'],['palate_model','Paladar'],['quality_model','Calidad'],['ageing_consumption_model','Estado / Guarda']];
     var ref='';
-    refMap.forEach(function(pair){ var arr=mr[pair[0]]; if(arr&&arr.length){ ref+='<div class="pp-sec"><h4>'+pair[1]+' — referencia del modelo</h4>'+ppList(arr)+'</div>'; } });
+    var refFallback={
+      appearance_model:'Revisa el color, la intensidad y la claridad característicos del estilo.',
+      nose_model:'Revisa la intensidad aromática y las familias de aromas dominantes.',
+      palate_model:'Contrasta dulzor, acidez, alcohol, cuerpo e intensidad.',
+      quality_model:'Evalúa equilibrio, intensidad, complejidad y longitud.',
+      ageing_consumption_model:'Relaciona estructura y evolución con el momento de consumo y el potencial de guarda.'
+    };
+    refMap.forEach(function(pair){ var arr=mr[pair[0]]; if(arr&&arr.length){ ref+='<div class="pp-sec"><h4>'+pair[1]+' — referencia del modelo</h4>'+ppListClean(arr,refFallback[pair[0]])+'</div>'; } });
     if(ref) h+=ref;
-    if(av.style_tolerance&&av.style_tolerance.length) h+='<div class="pp-sec"><h4>Cómo leer esta comparación</h4>'+ppList(av.style_tolerance)+'</div>';
+    if(av.style_tolerance&&av.style_tolerance.length) h+='<div class="pp-sec"><h4>Cómo leer esta comparación</h4>'+ppListClean(av.style_tolerance,'Interpreta el modelo como un rango formativo, no como una única frase obligatoria.')+'</div>';
     return h;
   }
 
