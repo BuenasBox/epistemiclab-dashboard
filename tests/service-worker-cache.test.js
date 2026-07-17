@@ -17,7 +17,11 @@ test('unversioned JavaScript and CSS use network-first revalidation', () => {
 });
 
 test('versioned assets are cache-first and deployment bumps the cache namespace', () => {
-  assert.match(source, /CACHE_VERSION = 'epistemiclab-v3'/);
+  assert.match(source, /CACHE_VERSION = 'epistemiclab-v4'/);
   assert.match(source, /searchParams\.has\('v'\)/);
   assert.match(source, /cacheFirst\(request\)/);
+});
+
+test('protected SAT catalog paths bypass every browser cache', () => {
+  assert.match(source, /\/\\\/canonical-wine-catalog\\\/\//);
 });

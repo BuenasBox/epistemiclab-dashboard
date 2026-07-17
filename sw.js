@@ -9,7 +9,7 @@
  */
 'use strict';
 
-var CACHE_VERSION = 'epistemiclab-v3';
+var CACHE_VERSION = 'epistemiclab-v4';
 var SHELL_CACHE = CACHE_VERSION + '-shell';
 var RUNTIME_CACHE = CACHE_VERSION + '-runtime';
 var OFFLINE_URL = '/offline.html';
@@ -28,6 +28,7 @@ var PRECACHE_URLS = [
 var NEVER_CACHE_PATTERNS = [
   /\/api\//,
   /\/supabase\//,
+  /\/canonical-wine-catalog\//,
   /supabase\.co/,
   /jsdelivr\.net/,
   /cdnjs\.cloudflare\.com/
