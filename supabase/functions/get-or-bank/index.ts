@@ -39,18 +39,15 @@ Deno.serve(async (req: Request) => {
 
     // Query params with bounds
     const url = new URL(req.url);
-    const limit = Math.min(parseInt(url.searchParams.get('limit') || '25'), 100);
-    const offset = Math.max(parseInt(url.searchParams.get('offset') || '0'), 0);
-    const topic = url.searchParams.get('topic');
+    const requestedLimit = parseInt(url.searchParams.get('limit') || '1');
+    const limit = Math.min(Math.max(Number.isFinite(requestedLimit) ? requestedLimit : 1, 1), 4);
+    const mode = url.searchParams.get('mode') || 'short_practice';
 
-    // Fetch from database with service role key (backend-only access)
-    let query = supabase.from('or_bank').select('id,item_id,question_text,command_verb,ra_id,topic,expected_concepts,expected_structure,response_depth_target,causal_chain_target,feedback_profile');
-
-    if (topic) {
-      query = query.eq('topic', topic);
-    }
-
-    const { data: items, error } = await query.range(offset, offset + limit - 1);
+    const { data: items, error } = await supabase.rpc('select_or_questions_for_user', {
+      p_user_id: user.id,
+      p_limit: limit,
+      p_mode: mode,
+    });
 
     if (error) {
       return new Response(JSON.stringify({ error: error.message }), {
@@ -63,17 +60,16 @@ Deno.serve(async (req: Request) => {
       JSON.stringify({
         items: items || [],
         count: (items || []).length,
-        watermark: {
-          user_id: user.id,
-          issued_at: new Date().toISOString(),
-          expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-        },
+        cycle: items?.[0]?.cycle_no || 1,
+        remaining_in_cycle: items?.[0]?.remaining_in_cycle || 0,
+        selection: 'random_without_replacement',
       }),
       {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'private, no-store',
         },
       }
     );

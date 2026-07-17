@@ -237,6 +237,7 @@ function renderQuestion() {
   const cont = $('btn-continue');
   cont.style.display = 'none';
   cont.disabled = false;
+  cont.textContent = 'CONFIRMAR RESPUESTA';
 
   STATE.selected = null;
   STATE.confirmed = false;
@@ -257,13 +258,39 @@ function selectOption(letter) {
 }
 
 /* ---- Confirm and go to feedback ---- */
-function confirmAnswer() {
+async function confirmAnswer() {
   if (!STATE.selected || STATE.confirmed) return;
   STATE.confirmed = true;
   $('btn-continue').disabled = true;
 
   const q = STATE.payload.questions[STATE.qIdx];
-  const correct = STATE.selected === q.correct_answer;
+  let correct = false;
+  try {
+    const token = await requireAuth();
+    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item_id: q.question_id, selected_letter: STATE.selected, mode: 'mentor' })
+    });
+    if (!resp.ok) throw new Error('validate-sba-answer status: ' + resp.status);
+    const result = await resp.json();
+    correct = !!result.correct;
+    q.correct_answer = result.correct_letter || null;
+    q.feedback = {
+      explanation: typeof result.feedback === 'string'
+        ? result.feedback
+        : (result.feedback && result.feedback.explanation) ||
+          `La respuesta correcta es ${result.correct_letter || '—'}.`
+    };
+    q.causal_chain = result.causal_chain || null;
+    q.micro_drill = result.micro_drill || null;
+  } catch (error) {
+    console.error('Unable to validate adaptive answer:', error);
+    STATE.confirmed = false;
+    $('btn-continue').disabled = false;
+    $('btn-continue').textContent = 'REINTENTAR VALIDACIÓN';
+    return;
+  }
 
   STATE.attempts.push({
     question_id:    q.question_id,
@@ -539,87 +566,50 @@ function restartSession() {
 // ═══════════════════════════════════════════════════════════
 // SESSION BANK CLIENT (window.SESSION_BANK from session_bank.js)
 // ═══════════════════════════════════════════════════════════
-const ADP_RK='wset_adp_recent_v2';
-const ADP_MRA={RA1:8,RA2:28,RA3:5,RA4:5,RA5:4};
-function adpRec(){try{return JSON.parse(localStorage.getItem(ADP_RK)||'[]');}catch(e){return[];}}
-function adpSav(ids){try{localStorage.setItem(ADP_RK,JSON.stringify(ids.slice(-80)));}catch(e){}}
 function adpShuf(arr,salt){
   const a=arr.slice();let s=Math.abs(((salt||Date.now()))&0x7fffffff);
   for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
-// Phase P3: Detect enrichment by presence of pedagogical fields
-function isEnrichedAdp(item){
-  return !!(item.feedback_by_mode || item.causal_chain || item.micro_drill);
-}
 async function buildSBA(mode){
   try{
     const token=await requireAuth();
-    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?limit=670',
-      {headers:{'Authorization':'Bearer '+token}});
-    if(resp.status===401){console.error('Authentication required');return null;}
-    const {items}=await resp.json();
-    const all=items||[];
-    if(!Array.isArray(all)){console.error('API returned non-array');return null;}
-    const rec=adpRec(); let sel=[];
-  // Phase Y.1 — Adaptive Weakness Engine: learner weaknesses bias selection
-  const ws=window.LI?LI.weakSet():{weakRAs:[],weakTopics:[],strongTopics:[],mcTrends:[]};
-  const isWeak=i=>ws.weakTopics.indexOf(i.topic)!==-1||ws.weakRAs.indexOf(i.ra)!==-1;
-  if(mode==='mock_theory_50'){
-    // Phase P3: RA blueprint preserved; within each RA, enriched-first then weak-topic unseen items
-    const byRa={};
-    all.forEach(i=>{const r=i.ra||'RA1';(byRa[r]=byRa[r]||[]).push(i);});
-    Object.entries(ADP_MRA).forEach(([ra,n])=>{
-      let pool=byRa[ra]||[];
-      // Phase P3: enriched-first within RA bucket
-      const enrichedRa=adpShuf(pool.filter(i=>isEnrichedAdp(i)),ra.charCodeAt(2));
-      const fallbackRa=adpShuf(pool.filter(i=>!isEnrichedAdp(i)),ra.charCodeAt(2)+100);
-      pool=[...enrichedRa,...fallbackRa];
-      pool=window.LI?LI.prioritize(pool,rec)
-        :[...pool.filter(i=>!rec.includes(i.source_question_id)),...pool.filter(i=>rec.includes(i.source_question_id))];
-      sel.push(...pool.slice(0,n));
-    });
-    sel=adpShuf(sel,42);
-  } else {
-    const sz={express_10:10,standard_25:25}[mode]||10;
-    // Phase P3: enriched-first unseen and seen items
-    const allUnseen=all.filter(i=>!rec.includes(i.source_question_id));
-    const allSeen=all.filter(i=>rec.includes(i.source_question_id));
-    const enrichedUnseen=adpShuf(allUnseen.filter(i=>isEnrichedAdp(i)),1);
-    const fallbackUnseen=adpShuf(allUnseen.filter(i=>!isEnrichedAdp(i)),101);
-    const enrichedSeen=adpShuf(allSeen.filter(i=>isEnrichedAdp(i)),2);
-    const fallbackSeen=adpShuf(allSeen.filter(i=>!isEnrichedAdp(i)),102);
-    const base=[...enrichedUnseen,...fallbackUnseen,...enrichedSeen,...fallbackSeen];
-    // Reserve ~40% of slots for weak-area items (if any), rest unchanged
-    const weakPool=base.filter(isWeak).slice(0,Math.ceil(sz*0.4));
-    const taken=weakPool.map(i=>i.source_question_id);
-    sel=adpShuf([...weakPool,...base.filter(i=>taken.indexOf(i.source_question_id)===-1)].slice(0,sz),3);
-  }
-  adpSav([...rec,...sel.map(i=>i.source_question_id)]);
-  const ml={express_10:'EXPRESS_10',standard_25:'STANDARD_25',mock_theory_50:'MOCK_THEORY_50'}[mode]||mode;
-  return {
-    generated_at:new Date().toISOString(), session_mode:ml,
-    pool_size:all.length, pool_source:'session_bank_v1', target_size:sel.length,
-    governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true},
-    mission_briefing:{strong_areas:ws.strongTopics.slice(0,4),weak_areas:ws.weakTopics.slice(0,4),
-      active_misconceptions:ws.mcTrends.slice(0,3),causal_gaps:[],
-      training_type:ws.weakTopics.length?'refuerzo':'diagnostico',
-      session_objective:ws.weakTopics.length
-        ?'Sesión adaptativa: refuerzo priorizado en '+ws.weakTopics.slice(0,2).join(' y ')
-        :'Sesión de entrenamiento formativo WSET L3'},
-    questions:sel.map(i=>{
-      const letters=['A','B','C','D'];
-      const ci=typeof i.correct_index==='number'?i.correct_index:0;
+    {
+      const size={express_10:10,standard_25:25,mock_theory_50:50}[mode]||10;
+      const weakness=window.LI?LI.weakSet():{weakRAs:[],weakTopics:[],strongTopics:[],mcTrends:[]};
+      const params=new URLSearchParams({limit:String(size),cycle:'1',strategy:'adaptive',mode});
+      if(weakness.weakTopics.length)params.set('weak_topics',weakness.weakTopics.slice(0,20).join(','));
+      if(weakness.weakRAs.length)params.set('weak_ras',weakness.weakRAs.slice(0,10).join(','));
+      const response=await fetch(
+        'https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?'+params.toString(),
+        {headers:{'Authorization':'Bearer '+token}}
+      );
+      if(!response.ok){console.error('get-sba-bank status:',response.status);return null;}
+      const bank=await response.json();
+      const selected=Array.isArray(bank.items)?bank.items:[];
+      if(!selected.length){console.error('API returned no adaptive questions');return null;}
+      const modeLabel={express_10:'EXPRESS_10',standard_25:'STANDARD_25',mock_theory_50:'MOCK_THEORY_50'}[mode]||mode;
       return {
-        question_id:i.id, priority_score:1, stem:i.text,
-        options:(i.options||[]).reduce((o,t,x)=>{o[letters[x]||String(x)]=t;return o;},{}),
-        correct_answer:i.correct_letter||'A', topic:i.topic||'—', ra_id:i.ra||'—',
-        difficulty:i.difficulty||'—', challenge_type:'theory_foundation',
-        // Fallback determinista por pregunta (auditoría Z.2): solo campos existentes del ítem.
-        feedback:{explanation:'La respuesta correcta es '+(i.correct_letter||letters[ci])+': «'+((i.options||[])[ci]||'')+'». Tema: '+(i.topic||'—')+' · '+(i.ra||'—')+'. Repasa este concepto en tu material WSET L3.'},
+        generated_at:new Date().toISOString(), session_mode:modeLabel,
+        pool_size:bank.remaining_in_cycle||selected.length, pool_source:'supabase_cycle', target_size:selected.length,
+        governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true},
+        mission_briefing:{strong_areas:weakness.strongTopics.slice(0,4),weak_areas:weakness.weakTopics.slice(0,4),
+          active_misconceptions:weakness.mcTrends.slice(0,3),causal_gaps:[],
+          training_type:weakness.weakTopics.length?'refuerzo':'diagnostico',
+          session_objective:weakness.weakTopics.length
+            ?'Sesión adaptativa: refuerzo priorizado en '+weakness.weakTopics.slice(0,2).join(' y ')
+            :'Sesión de entrenamiento formativo WSET L3'},
+        questions:selected.map(item=>{
+          const letters=['A','B','C','D'];
+          return {
+            question_id:item.id, priority_score:1, stem:item.text,
+            options:(item.options||[]).reduce((result,value,index)=>{result[letters[index]||String(index)]=value;return result;},{}),
+            correct_answer:null, topic:item.topic||'—', ra_id:item.ra||'—',
+            difficulty:item.difficulty||'—', challenge_type:'theory_foundation', feedback:{}
+          };
+        })
       };
-    })
-  };
+    }
   }catch(e){console.error('buildSBA error:',e);return null;}
 }
 function buildSAT(mode){
@@ -677,7 +667,12 @@ async function startAllowedAdp(mode){
       },1000);
     }
   } else {
-    STATE.payload=await buildSBA(mode); STATE.screen=0; STATE.qIdx=0; STATE.selected=null; STATE.confirmed=false;
+    STATE.payload=await buildSBA(mode);
+    if(!STATE.payload){
+      document.getElementById('adp-ol').classList.add('active');
+      return;
+    }
+    STATE.screen=0; STATE.qIdx=0; STATE.selected=null; STATE.confirmed=false;
     showScreen(0); renderScreen0();
   }
 }

@@ -180,6 +180,12 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
+    if (!answer.trim() || answer.length > 20000) {
+      return new Response(JSON.stringify({ error: 'Invalid response_text' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     // 3. FETCH QUESTION DEFINITION
     const { data: item, error: itemError } = await supabase
@@ -249,6 +255,14 @@ Deno.serve(async (req) => {
       ? feedbackProfile[feedbackKey]
       : null;
 
+    // A valid evaluated response completes this item in the learner's current
+    // no-repeat cycle. The operation is idempotent for retries.
+    const { data: progress, error: progressError } = await supabase.rpc('complete_or_question', {
+      p_user_id: user.id,
+      p_item_id: item_id,
+    });
+    if (progressError) throw progressError;
+
     // 7. RESPONSE
     return new Response(
       JSON.stringify({
@@ -264,6 +278,7 @@ Deno.serve(async (req) => {
         // WHY the response landed at this depth, in WSET3-grounded language,
         // specific to this question. null when not yet authored for this item.
         distinction_feedback,
+        progress: progress?.[0] || null,
 
         // Governance watermark (user_id:24h = not persistent beyond 24h, not official)
         watermark: `${user.id}:24h`,

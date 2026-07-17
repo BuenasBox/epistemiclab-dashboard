@@ -45,13 +45,32 @@ Deno.serve(async (req: Request) => {
     const offset = Math.max(parseInt(url.searchParams.get('offset') || '0'), 0);
     const topic = url.searchParams.get('topic');
     const mode = url.searchParams.get('mode') || 'standard';
+    const adaptiveSelection = cycleSelection && url.searchParams.get('strategy') === 'adaptive';
+
+    const parseList = (name: string) => {
+      const raw = url.searchParams.get(name) || '';
+      return raw.split(',')
+        .map((value) => value.trim())
+        .filter((value) => value.length > 0 && value.length <= 120)
+        .slice(0, 20);
+    };
 
     if (cycleSelection) {
-      const { data, error } = await supabase.rpc('select_sba_questions_for_user', {
+      const rpcName = adaptiveSelection
+        ? 'select_adaptive_sba_questions_for_user'
+        : 'select_sba_questions_for_user';
+      const rpcArgs = adaptiveSelection ? {
         p_user_id: user.id,
         p_limit: limit,
         p_mode: mode,
-      });
+        p_weak_topics: parseList('weak_topics'),
+        p_weak_ras: parseList('weak_ras'),
+      } : {
+        p_user_id: user.id,
+        p_limit: limit,
+        p_mode: mode,
+      };
+      const { data, error } = await supabase.rpc(rpcName, rpcArgs);
 
       if (error) {
         return new Response(JSON.stringify({ error: error.message }), {
@@ -68,6 +87,7 @@ Deno.serve(async (req: Request) => {
         cycle: first.cycle_no || 1,
         remaining_in_cycle: first.remaining_in_cycle || 0,
         selection: 'random_without_replacement',
+        strategy: adaptiveSelection ? 'adaptive' : 'random',
       }), {
         status: 200,
         headers: {

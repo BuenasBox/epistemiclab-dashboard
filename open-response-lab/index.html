@@ -487,30 +487,30 @@ ul { margin: 0; padding-left: 19px; }
 
   let items = [];
   let token = null;
+  const sessionSizes = { short_practice: 1, standard_practice: 2, extended_practice: 4, mock_theory_2: 4 };
+  let initialSession = 'short_practice';
+  try {
+    const stored = JSON.parse(localStorage.getItem('or_lab_state_v1') || '{}');
+    if (sessionSizes[stored.sessionName]) initialSession = stored.sessionName;
+  } catch (_error) { /* use the short session */ }
   const position0 = document.querySelector("[data-testid='question-position']");
   try {
     token = await getAuthToken();
     if (!token) { if (position0) position0.textContent = 'Inicia sesión para acceder al laboratorio'; return; }
-    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-or-bank?limit=106', {headers:{'Authorization':'Bearer '+token}});
+    const params = new URLSearchParams({ limit: String(sessionSizes[initialSession]), mode: initialSession });
+    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-or-bank?' + params.toString(), {headers:{'Authorization':'Bearer '+token}});
     if (resp.status === 401) { if (position0) position0.textContent = 'Sesión expirada. Recarga la página.'; return; }
     const data = await resp.json();
     items = Array.isArray(data.items) ? data.items : [];
   } catch(e) { console.error('Failed to load OR bank:', e); }
 
-  // Aleatorizar el orden del banco en cada entrada (Fisher-Yates), para que las
-  // sesiones (slices de items) no salgan siempre en el mismo orden.
-  for (let k = items.length - 1; k > 0; k--) {
-    const j = Math.floor(Math.random() * (k + 1));
-    const tmp = items[k]; items[k] = items[j]; items[j] = tmp;
-  }
-
   const payload = {
     storage_key: 'or_lab_state_v1',
     sessions: {
-      short_practice: { item_ids: items.slice(0, 5).map(i => i.item_id) },
-      standard_practice: { item_ids: items.slice(0, 10).map(i => i.item_id) },
-      extended_practice: { item_ids: items.slice(0, 20).map(i => i.item_id) },
-      mock_theory_2: { item_ids: items.slice(0, 4).map(i => i.item_id) }
+      short_practice: { item_ids: initialSession === 'short_practice' ? items.map(i => i.item_id) : [] },
+      standard_practice: { item_ids: initialSession === 'standard_practice' ? items.map(i => i.item_id) : [] },
+      extended_practice: { item_ids: initialSession === 'extended_practice' ? items.map(i => i.item_id) : [] },
+      mock_theory_2: { item_ids: initialSession === 'mock_theory_2' ? items.map(i => i.item_id) : [] }
     },
     items: items.reduce((o, i) => { o[i.item_id] = i; return o; }, {})
   };
@@ -562,7 +562,7 @@ ul { margin: 0; padding-left: 19px; }
       const stored = JSON.parse(localStorage.getItem('or_lab_state_v1') || "{}");
       return {
         sessionName: validSessionName(stored.sessionName || "short_practice"),
-        index: Number.isInteger(stored.index) ? stored.index : 0,
+        index: 0,
         answers: stored.answers || {},
         feedback: stored.feedback || {},
         completed: stored.completed === true,
@@ -581,6 +581,20 @@ ul { margin: 0; padding-left: 19px; }
     if (!itemId) return null;
     return payload.items && payload.items[itemId];
   }
+  async function loadSessionItems(name) {
+    const count = sessionSizes[name] || 1;
+    const params = new URLSearchParams({ limit: String(count), mode: name });
+    const authToken = token || await getAuthToken();
+    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-or-bank?' + params.toString(), {
+      headers: { 'Authorization': 'Bearer ' + authToken }
+    });
+    if (!resp.ok) throw new Error('get-or-bank status: ' + resp.status);
+    const data = await resp.json();
+    const selected = Array.isArray(data.items) ? data.items : [];
+    if (!selected.length) throw new Error('No open-response questions available');
+    selected.forEach(item => { payload.items[item.item_id] = item; });
+    payload.sessions[name] = { item_ids: selected.map(item => item.item_id) };
+  }
   function startSession(name) {
     const accessMode = {
       short_practice: "open_response_short",
@@ -592,7 +606,18 @@ ul { margin: 0; padding-left: 19px; }
     window.WSETModeAccessGate.request({ route: "/open-response-lab/", experience: "open_response_lab", mode: accessMode, enforcement: "active" })
       .then((decision) => { if (decision.would_allow) startAllowedSession(name); });
   }
-  function startAllowedSession(name) {
+  async function startAllowedSession(name) {
+    const buttons = document.querySelectorAll('[data-session]');
+    buttons.forEach(button => { button.disabled = true; });
+    try {
+      await loadSessionItems(name);
+    } catch (error) {
+      console.error('Unable to start open-response session:', error);
+      if (els.sessionState) els.sessionState.textContent = 'No se pudo cargar la sesión. Intenta de nuevo.';
+      return;
+    } finally {
+      buttons.forEach(button => { button.disabled = false; });
+    }
     state.sessionName = validSessionName(name);
     state.index = 0; state.answers = {}; state.feedback = {}; state.completed = false; state.showingFeedback = false;
     saveState(); render();
