@@ -366,6 +366,8 @@
   // ===== SAT-FINISH-01A: capa de presentación en español (NO altera contratos) =====
   var COUNTRY_ES={France:'Francia',Germany:'Alemania',Italy:'Italia',Spain:'España',Portugal:'Portugal',Greece:'Grecia',Austria:'Austria',USA:'Estados Unidos','United States':'Estados Unidos','New Zealand':'Nueva Zelanda','South Africa':'Sudáfrica',Argentina:'Argentina',Chile:'Chile',Australia:'Australia'};
   function countryEs(c){ return (c&&COUNTRY_ES[c])||c||''; }
+  var REGION_ES={'Loire Valley':'Valle del Loira',Burgundy:'Borgoña','South Australia':'Australia Meridional','New South Wales':'Nueva Gales del Sur'};
+  function regionEs(region){ return (region&&REGION_ES[region])||region||''; }
   var PRIORITY_ES={high:'alta',medium:'media',low:'baja'};
   function prioEs(p){
     if(!p) return p;
@@ -413,6 +415,7 @@
     'autolytic complexity':'Complejidad autolítica',
     'australian cabernet sauvignon blend':'Ensamblaje australiano de Cabernet Sauvignon',
     'champagne non-vintage':'Champagne sin añada',
+    'loire chenin blanc':'Chenin Blanc del Loira',
     'good to very good; styles range from simple fruity to richer barrel-fermented versions':'Bueno a muy bueno; los estilos van desde afrutados sencillos hasta versiones más estructuradas fermentadas en barrica',
     'drink young to short ageing for fresh styles':'Beber joven o con una guarda corta en los estilos frescos',
     'use this as a formative mirror: identify alignment and useful next observations without exam judgement language.':'Usa esta comparación como una guía formativa: identifica coincidencias y nuevas observaciones útiles, sin lenguaje de calificación de examen.',
@@ -498,7 +501,7 @@
   function renderDebrief(d){
     var si=d.safe_identity||{}, dna=d.pedagogical_dna||{}, tn=d.teaching_notes||{}, ce=d.comparison_engine||{};
     function chip(v,cls){ return v?('<span class="sat-hb '+(cls||'')+'">'+escP(v)+'</span>'):''; }
-    var rev=chip(wineFamilyEs(si.wine_family,si.wine_type))+chip(countryEs(si.country))+chip(si.region);
+    var rev=chip(wineFamilyEs(si.wine_family,si.wine_type))+chip(countryEs(si.country))+chip(regionEs(si.region));
     if(si.appellation) rev+=chip(si.appellation);
     (si.grape_varieties||[]).forEach(function(g){ rev+=chip(g,'type'); });
     var styleEs=cleanPresented(si.wine_style);
@@ -625,7 +628,7 @@
       var rb='';
       if(si.wine_type) rb+='<span class="sat-hb type">'+escP(si.wine_type)+'</span>';
       if(si.country) rb+='<span class="sat-hb">'+escP(countryEs(si.country))+'</span>';
-      if(si.region) rb+='<span class="sat-hb">'+escP(si.region)+'</span>';
+      if(si.region) rb+='<span class="sat-hb">'+escP(regionEs(si.region))+'</span>';
       if(si.appellation && si.appellation!==si.region) rb+='<span class="sat-hb">'+escP(si.appellation)+'</span>';
       (si.grape_varieties||[]).forEach(function(g){ rb+='<span class="sat-hb type">'+escP(g)+'</span>'; });
       // rb+='<span class="sat-hb wset">'+WSET_LEVEL+'</span>';
