@@ -162,10 +162,8 @@
 
 
   /* ===== SAT-UX-07 Premium UX Pass (solo visual; sin lógica/datos) ===== */
-  /* P1: la copa protagonista — hero pegajoso en escritorio + copa "viva" */
-  @media (min-width:561px){
-    #screen-tasting .sat-hero{ position:sticky; top:10px; z-index:6; }
-  }
+  /* P1: la copa protagonista sin cubrir los controles de la fase. */
+  #screen-tasting .sat-hero{ position:relative; z-index:1; }
   #screen-tasting .sat-hero .swg-svg{ animation:ux7-float 6s ease-in-out infinite; }
   @keyframes ux7-float{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-4px) } }
 

@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
 
 const client = read('sat-lab', 'sat-lab.js');
+const styles = read('sat-lab', 'sat-lab.css');
 const getWine = read('supabase', 'functions', 'get-sat-wines', 'index.ts');
 const start = read('supabase', 'functions', 'start-sat-attempt', 'index.ts');
 const evaluate = read('supabase', 'functions', 'evaluate-sat', 'index.ts');
@@ -18,6 +19,7 @@ assert(client.includes("fetchPracticeWine('blind_simulation')"), 'SAT preview mu
 assert(!client.includes('limit=107'), 'SAT client must never download all 107 wines');
 assert(!client.includes("fetch('../canonical-wine-catalog/exports/"), 'SAT client must not fetch public catalog exports');
 assert(client.includes('result.post_session'), 'SAT client must use the protected post-completion payload');
+assert(!styles.includes('#screen-tasting .sat-hero{ position:sticky'), 'SAT hero must never cover phase controls while scrolling');
 
 assert(getWine.includes('wines: [wine]'), 'SAT endpoint must return one wine only');
 assert(getWine.includes("if (mode === 'bottle_guided') wine.guided_identity"), 'identity must only be included in guided mode');

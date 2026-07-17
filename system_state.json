@@ -44,8 +44,8 @@
   "validation": {
     "command": "npm test",
     "status": "verified",
-    "evidence_fingerprint": "5bde69e8100a310210e9d23a227bd45d04486575cc3156e4e91c3b827ab69aeb",
-    "last_successful_fingerprint": "5bde69e8100a310210e9d23a227bd45d04486575cc3156e4e91c3b827ab69aeb",
+    "evidence_fingerprint": "2e4f425fd5faeec55b316651c2a90840a4a3fa5c98f2c00957d1c7bbb0f3894c",
+    "last_successful_fingerprint": "2e4f425fd5faeec55b316651c2a90840a4a3fa5c98f2c00957d1c7bbb0f3894c",
     "test_files": 37,
     "node_test_files": 20,
     "deterministic_test_files": 17,
