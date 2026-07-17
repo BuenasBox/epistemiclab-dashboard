@@ -20,6 +20,8 @@ assert(!client.includes('limit=107'), 'SAT client must never download all 107 wi
 assert(!client.includes("fetch('../canonical-wine-catalog/exports/"), 'SAT client must not fetch public catalog exports');
 assert(client.includes('result.post_session'), 'SAT client must use the protected post-completion payload');
 assert(!styles.includes('#screen-tasting .sat-hero{ position:sticky'), 'SAT hero must never cover phase controls while scrolling');
+assert(client.includes('PRESENT_ES_EXACT'), 'SAT debrief must provide controlled Spanish editorial translations');
+assert(client.includes("'verdejo oxidation sensitivity':'Sensibilidad del Verdejo a la oxidación'"), 'SAT Verdejo debrief must render in Spanish');
 
 assert(getWine.includes('wines: [wine]'), 'SAT endpoint must return one wine only');
 assert(getWine.includes("if (mode === 'bottle_guided') wine.guided_identity"), 'identity must only be included in guided mode');
@@ -34,6 +36,8 @@ assert(evaluate.includes('att.wine_id !== wine_id'), 'SAT decisions must match t
 assert(complete.includes('SAT practice is incomplete'), 'SAT completion must reject incomplete attempts');
 assert(complete.includes('post_session: postSession'), 'post-cata data must be released only by completion');
 assert(!complete.includes('canonical.source'), 'completion must not expose canonical source evidence');
+assert(complete.includes('Compara tu nota con el rango del estilo'), 'SAT model guidance must be emitted in Spanish');
+assert(!complete.includes('Compare your note against the style band'), 'SAT completion must not emit English model guidance');
 
 assert(build.includes("'canonical-wine-catalog/exports/'"), 'static build must exclude every SAT catalog export');
 assert(migration.includes('sat_wine_completions'), 'SAT cycles must persist completed wines');

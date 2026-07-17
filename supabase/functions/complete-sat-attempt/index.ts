@@ -99,12 +99,12 @@ function postSession(canonical: Record<string, any>) {
       },
       acceptable_variations: {
         style_tolerance: [
-          'Compare your note against the style band rather than a single required phrase.',
-          'Nearby structural descriptors are discussion points when the overall style logic is coherent.',
+          'Compara tu nota con el rango del estilo, no con una única frase obligatoria.',
+          'Los descriptores estructurales cercanos son puntos de análisis cuando la lógica general del estilo es coherente.',
         ],
       },
       teaching_notes: {
-        comparison_prompt: 'Use this as a formative mirror: identify alignment and useful next observations without exam judgement language.',
+        comparison_prompt: 'Usa esta comparación como una guía formativa: identifica coincidencias y nuevas observaciones útiles, sin lenguaje de calificación de examen.',
       },
     },
     recommendation: {

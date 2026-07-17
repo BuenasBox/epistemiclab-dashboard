@@ -368,6 +368,36 @@
   function countryEs(c){ return (c&&COUNTRY_ES[c])||c||''; }
   var PRIORITY_ES={high:'alta',medium:'media',low:'baja'};
   function prioEs(p){ return (p&&PRIORITY_ES[String(p).toLowerCase()])||p; }
+  // Traducciones editoriales completas para frases pedagógicas. Conservamos el
+  // catálogo canónico intacto y normalizamos únicamente la capa visible.
+  var PRESENT_ES_EXACT={
+    'fresh to textured verdejo from continental rueda':'Verdejo fresco o con textura procedente de la Rueda continental',
+    'verdejo oxidation sensitivity':'Sensibilidad del Verdejo a la oxidación',
+    'rueda white wine identity':'Identidad de los vinos blancos de Rueda',
+    'protective versus richer winemaking':'Vinificación protectora frente a estilos de elaboración más estructurados',
+    'identify verdejo structure':'Identificar la estructura del Verdejo',
+    'connect rueda to white wine production':'Relacionar Rueda con la producción de vinos blancos',
+    'separate verdejo from sauvignon blanc':'Diferenciar Verdejo de Sauvignon Blanc',
+    'rueda is a red-wine region':'Rueda es una región de vinos tintos',
+    'verdejo always tastes like sauvignon blanc':'El Verdejo siempre sabe como un Sauvignon Blanc',
+    'barrel fermentation means chardonnay':'La fermentación en barrica implica que es Chardonnay',
+    'ask whether melon-peach high-acid fruit points to verdejo':'Preguntar si el melón, el melocotón y la alta acidez apuntan a Verdejo',
+    'calling all rueda sauvignon blanc':'Identificar todo Rueda como Sauvignon Blanc',
+    'forgetting verdejo minimum in blends':'Olvidar el porcentaje mínimo de Verdejo en los ensamblajes',
+    'rueda is verdejo country: cool nights, melon, peach, high acidity':'Rueda es tierra de Verdejo: noches frescas, melón, melocotón y alta acidez',
+    'melon and peach rather than albariño citrus-stone fruit':'Melón y melocotón, en lugar del perfil cítrico y de fruta de hueso del Albariño',
+    'rueda continental rather than atlantic damp climate':'Rueda continental, en lugar de un clima atlántico húmedo',
+    'possible richer barrel-fermented verdejo style':'Posible estilo de Verdejo más estructurado y fermentado en barrica',
+    'overcalling sauvignon blanc':'Identificar en exceso como Sauvignon Blanc',
+    'missing rueda as a white specialist':'No reconocer a Rueda como región especializada en vinos blancos',
+    'herbal notes':'Notas herbáceas',
+    'good to very good; styles range from simple fruity to richer barrel-fermented versions':'Bueno a muy bueno; los estilos van desde afrutados sencillos hasta versiones más estructuradas fermentadas en barrica',
+    'drink young to short ageing for fresh styles':'Beber joven o con una guarda corta en los estilos frescos',
+    'use this as a formative mirror: identify alignment and useful next observations without exam judgement language.':'Usa esta comparación como una guía formativa: identifica coincidencias y nuevas observaciones útiles, sin lenguaje de calificación de examen.',
+    'use this as a formative mirror: identify alignment, partial alignment, and useful next observations without exam judgement language.':'Usa esta comparación como una guía formativa: identifica coincidencias, coincidencias parciales y nuevas observaciones útiles, sin lenguaje de calificación de examen.',
+    'compare your note against the style band rather than a single required phrase.':'Compara tu nota con el rango del estilo, no con una única frase obligatoria.',
+    'nearby structural descriptors are discussion points when the overall style logic is coherent.':'Los descriptores estructurales cercanos son puntos de análisis cuando la lógica general del estilo es coherente.'
+  };
   // Traductor pragmático de patrones frecuentes WSET (solo presentación de lo renderizado).
   var ES_PAIRS=[
     ['medium to pronounced','media a pronunciada'],['pale to medium lemon','limón pálido a medio'],['medium to full','media a alta'],
@@ -379,6 +409,9 @@
     ['medium','media'],['high','alta'],['low','baja'],['pronounced','pronunciada'],['light','ligera'],['full','pronunciada'],['pale','pálido'],['deep','profundo'],['dry','seco'],['sweet','dulce'],
     ['acidity','acidez'],['tannins','taninos'],['tannin','tanino'],['body','cuerpo'],['intensity','intensidad'],['finish','final'],['flavours','sabores'],['flavour','sabor'],['flavors','sabores'],['flavor','sabor'],['palate','paladar'],
     ['citrus','cítricos'],['lemon','limón'],['lime','lima'],['grapefruit','pomelo'],['apple','manzana'],['pear','pera'],['peach','melocotón'],['apricot','albaricoque'],['cherry','cereza'],['plum','ciruela'],['honey','miel'],['blossom','flor'],['spice','especias'],['spicy','especiado'],['pepper','pimienta'],['oak','roble'],['toast','tostado'],['vanilla','vainilla'],['tobacco','tabaco'],['leather','cuero'],['herbaceous','herbáceo'],['savoury','sabroso'],['earthy','terroso'],['stony','mineral'],['steely','acerado'],
+    ['barrel-fermented','fermentado en barrica'],['red-wine','vino tinto'],['white wine','vino blanco'],['high-acid','de alta acidez'],
+    ['identify','identificar'],['connect','relacionar'],['separate','diferenciar'],['distinguish','distinguir'],['recognize','reconocer'],['calling','identificar'],['forgetting','olvidar'],['missing','no reconocer'],['confusing','confundir'],['assuming','suponer'],['ask','preguntar'],['whether','si'],['means','implica'],['always','siempre'],
+    ['winemaking','vinificación'],['fermentation','fermentación'],['structure','estructura'],['markers','marcadores'],['identity','identidad'],['region','región'],['climate','clima'],['grape','uva'],['variety','variedad'],['blends','ensamblajes'],['blend','ensamblaje'],['notes','notas'],['method','método'],['profile','perfil'],['range','rango'],['versions','versiones'],['simple','sencillo'],['richer','más estructurado'],['protective','protectora'],['specialist','especializada'],['minimum','porcentaje mínimo'],['production','producción'],['sensitivity','sensibilidad'],['oxidation','oxidación'],['damp','húmedo'],['atlantic','atlántico'],['herbal','herbáceo'],
     ['ripe','maduro'],['fresh','fresco'],['young','joven'],['firm','firme'],['concentrated','concentrado'],['concentration','concentración'],['balance','equilibrio'],['length','longitud'],['complexity','complejidad'],['quality','calidad'],['character','carácter'],
     ['outstanding','excelente'],['good','bueno'],['acceptable','aceptable'],['poor','pobre'],
     ['ageing','guarda'],['evolve','evolucionar'],['evolution','evolución'],
@@ -391,7 +424,13 @@
     var rx=(/^\s|\s$/.test(en))? new RegExp(esc,'gi') : new RegExp('\\b'+esc+'\\b','gi');
     return [rx,p[1]];
   });
-  function presentEs(t){ if(t==null) return t; var s=String(t); for(var i=0;i<ES_DICT.length;i++) s=s.replace(ES_DICT[i][0],ES_DICT[i][1]); return s; }
+  function presentEs(t){
+    if(t==null) return t;
+    var s=String(t), exact=PRESENT_ES_EXACT[s.trim().toLowerCase()];
+    if(exact) return exact;
+    for(var i=0;i<ES_DICT.length;i++) s=s.replace(ES_DICT[i][0],ES_DICT[i][1]);
+    return s;
+  }
 
   function escP(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function ppList(arr){ if(!arr||!arr.length) return ''; return arr.map(function(x){ return '<div class="pp-li">'+escP(presentEs(x))+'</div>'; }).join(''); }
