@@ -9,7 +9,7 @@
  */
 'use strict';
 
-var CACHE_VERSION = 'epistemiclab-v1';
+var CACHE_VERSION = 'epistemiclab-v3';
 var SHELL_CACHE = CACHE_VERSION + '-shell';
 var RUNTIME_CACHE = CACHE_VERSION + '-runtime';
 var OFFLINE_URL = '/offline.html';
@@ -66,7 +66,7 @@ self.addEventListener('activate', function (event) {
 });
 
 function networkFirstNavigation(request) {
-  return fetch(request)
+  return fetch(new Request(request, { cache: 'no-store' }))
     .then(function (response) {
       var copy = response.clone();
       caches.open(RUNTIME_CACHE).then(function (cache) { cache.put(request, copy); });
@@ -79,10 +79,33 @@ function networkFirstNavigation(request) {
     });
 }
 
+function networkFirstStatic(request) {
+  return caches.open(RUNTIME_CACHE).then(function (cache) {
+    return fetch(new Request(request, { cache: 'no-cache' }))
+      .then(function (response) {
+        if (response && response.ok) cache.put(request, response.clone());
+        return response;
+      })
+      .catch(function () { return cache.match(request); });
+  });
+}
+
+function cacheFirst(request) {
+  return caches.open(RUNTIME_CACHE).then(function (cache) {
+    return cache.match(request).then(function (cached) {
+      if (cached) return cached;
+      return fetch(request).then(function (response) {
+        if (response && response.ok) cache.put(request, response.clone());
+        return response;
+      });
+    });
+  });
+}
+
 function staleWhileRevalidate(request) {
   return caches.open(RUNTIME_CACHE).then(function (cache) {
     return cache.match(request).then(function (cached) {
-      var fetchPromise = fetch(request).then(function (response) {
+      var fetchPromise = fetch(new Request(request, { cache: 'no-cache' })).then(function (response) {
         if (response && response.ok) cache.put(request, response.clone());
         return response;
       }).catch(function () { return cached; });
@@ -107,6 +130,15 @@ self.addEventListener('fetch', function (event) {
   // Recursos estáticos del propio origen (CSS, JS, JSON, íconos)
   var sameOrigin = url.indexOf(self.location.origin) === 0;
   if (sameOrigin) {
+    var parsed = new URL(url);
+    if (parsed.searchParams.has('v')) {
+      event.respondWith(cacheFirst(request));
+      return;
+    }
+    if (/\.(?:css|js)$/.test(parsed.pathname)) {
+      event.respondWith(networkFirstStatic(request));
+      return;
+    }
     event.respondWith(staleWhileRevalidate(request));
   }
 });

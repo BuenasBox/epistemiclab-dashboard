@@ -13,6 +13,7 @@
   var DEFAULT_CONFIG_URL = '/api/supabase-config';
   var DEFAULT_SDK_URL =
     'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+  var sharedClientPromise = null;
 
   function requireValue(value, name) {
     if (typeof value !== 'string' || value.trim() === '') {
@@ -164,7 +165,6 @@
 
   function createSupabaseAuthProvider(options) {
     options = options || {};
-    var clientPromise = null;
     var suppliedClient = options.client || null;
     var documentRef = options.document || root.document;
     var fetchFn = options.fetch || root.fetch;
@@ -173,24 +173,29 @@
 
     function getClient() {
       if (suppliedClient) return Promise.resolve(suppliedClient);
-      if (clientPromise) return clientPromise;
+      if (sharedClientPromise) return sharedClientPromise;
 
-      clientPromise = Promise.all([
+      sharedClientPromise = Promise.all([
         loadPublicConfig(fetchFn, configUrl),
         loadBrowserSdk(documentRef, sdkUrl),
-      ]).then(function (values) {
-        var config = values[0];
-        var sdk = values[1];
-        return sdk.createClient(config.url, config.publishableKey, {
-          auth: {
-            persistSession: true,
-            autoRefreshToken: true,
-            detectSessionInUrl: true,
-          },
+      ])
+        .then(function (values) {
+          var config = values[0];
+          var sdk = values[1];
+          return sdk.createClient(config.url, config.publishableKey, {
+            auth: {
+              persistSession: true,
+              autoRefreshToken: true,
+              detectSessionInUrl: true,
+            },
+          });
+        })
+        .catch(function (error) {
+          sharedClientPromise = null;
+          throw error;
         });
-      });
 
-      return clientPromise;
+      return sharedClientPromise;
     }
 
     function sourceFromResult(client, result) {
@@ -285,10 +290,15 @@
     };
   }
 
+  function getSharedClient() {
+    return createSupabaseAuthProvider().getClient();
+  }
+
   return {
     DEFAULT_CONFIG_URL: DEFAULT_CONFIG_URL,
     DEFAULT_SDK_URL: DEFAULT_SDK_URL,
     createSessionSource: createSessionSource,
     createSupabaseAuthProvider: createSupabaseAuthProvider,
+    getSharedClient: getSharedClient,
   };
 });

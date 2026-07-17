@@ -986,3 +986,9 @@ footer {
 .mode-auth-msg { display:none; margin-top:16px; padding:10px 14px; border-radius:8px; background:rgba(229,201,122,.1); border:1px solid rgba(229,201,122,.35); color:#e5c97a; font-size:12.5px; }
 .mode-auth-msg.show { display:block; }
 .mode-auth-msg a { color:#e5c97a; font-weight:600; }
+.mode-status-msg { display:none; margin-top:16px; color:var(--text-2); font-size:12.5px; text-align:center; }
+.mode-status-msg.show { display:block; }
+.mode-status-msg.loading::before { content:''; display:inline-block; width:10px; height:10px; margin-right:8px; border:2px solid var(--border); border-top-color:var(--gold); border-radius:50%; animation:mode-spin .75s linear infinite; vertical-align:-1px; }
+.mode-status-msg.error { color:#f2a3a3; }
+.mode-btn:disabled { opacity:.55; cursor:wait; }
+@keyframes mode-spin { to { transform:rotate(360deg); } }

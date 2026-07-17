@@ -6,14 +6,14 @@
 <title>Evaluación Teórica (Selección Única) — EpistemicLab</title>
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
-<link rel="stylesheet" href="./diagnostic-sba.css">
+<link rel="stylesheet" href="./diagnostic-sba.css?v=20260717-2">
 <script src="../shared/session-store.js"></script>
 <script src="../shared/supabase-public-config.js"></script>
-<script src="../shared/auth-providers/supabase-auth-provider.js"></script>
+<script src="../shared/auth-providers/supabase-auth-provider.js?v=20260717-2"></script>
 <script src="../shared/auth-providers/mock-auth-provider.js"></script>
 <script src="../shared/auth-provider.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
-<script src="../shared/auth-token.js"></script>
+<script src="../shared/auth-token.js?v=20260717-2"></script>
 <script src="../shared/access-control.js"></script>
 <script src="../shared/access-audit.js"></script>
 <script src="../shared/upgrade-gate.js"></script>
@@ -65,6 +65,7 @@
       </button>
     </div>
     <div class="mode-disclaimer">Práctica formativa · Desarrollo de razonamiento profesional</div>
+    <div class="mode-status-msg" id="modeStatusMsg" role="status" aria-live="polite"></div>
     <div class="mode-auth-msg" id="modeAuthMsg">Inicia sesión para practicar este modo. <a href="/login/?next=/diagnostic-sba/">Ir a iniciar sesión →</a></div>
   </div>
 </div>
@@ -248,7 +249,7 @@
 <!-- ===================================================================
      JAVASCRIPT
      =================================================================== -->
-<script src="./diagnostic-sba.js"></script>
+<script src="./diagnostic-sba.js?v=20260717-2"></script>
 <script src="/platform-nav.js" defer></script>
 </body>
 </html>

@@ -1,17 +1,29 @@
-// Get Supabase client instance
-const supabaseClient = (() => {
+let fallbackSupabaseClient = null;
+
+async function resolveSupabaseClient() {
+  const provider = window.WSETAccess
+    && window.WSETAccess.SupabaseAuthProvider;
+  if (provider && typeof provider.getSharedClient === 'function') {
+    return provider.getSharedClient();
+  }
+
   if (!window.supabase || !window.supabase.createClient) {
     console.error('Supabase JS not loaded');
     return null;
   }
-  return window.supabase.createClient(
-    'https://hylknjjhmxsuuwbsslkr.supabase.co',
-    'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'
-  );
-})();
+  if (!fallbackSupabaseClient) {
+    const config = window.WSET_SUPABASE_CONFIG || {};
+    fallbackSupabaseClient = window.supabase.createClient(
+      config.url || 'https://hylknjjhmxsuuwbsslkr.supabase.co',
+      config.publishableKey || 'sb_publishable_lXduWVjIjAVAcNFCn4GZhw_Vylh8tZw'
+    );
+  }
+  return fallbackSupabaseClient;
+}
 
 // Get Supabase session JWT token from Auth session
 async function getAuthToken() {
+  const supabaseClient = await resolveSupabaseClient();
   if (!supabaseClient) {
     console.warn('Supabase client not initialized');
     return null;

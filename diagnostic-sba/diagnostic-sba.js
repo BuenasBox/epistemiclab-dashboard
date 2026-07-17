@@ -49,6 +49,15 @@ function showModeAuthMessage(show){
   const el=document.getElementById('modeAuthMsg');
   if(el) el.classList.toggle('show', !!show);
 }
+function setModeStatus(message,state){
+  const el=document.getElementById('modeStatusMsg');
+  const loading=state==='loading';
+  document.querySelectorAll('.mode-btn').forEach(btn=>{btn.disabled=loading;});
+  document.getElementById('mode-overlay')?.setAttribute('aria-busy',String(loading));
+  if(!el)return;
+  el.textContent=message||'';
+  el.className='mode-status-msg'+(message?' show':'')+(state?' '+state:'');
+}
 async function loadMode(mode){
   try{
     console.log('[loadMode] Starting for mode:', mode);
@@ -104,6 +113,7 @@ async function loadMode(mode){
 }
 function startMode(mode){
   console.log('[startMode] Initiating mode:', mode);
+  setModeStatus('Validando tu acceso…','loading');
   const accessMode = {
     quick_drill: 'sba_quick_drill',
     express: 'sba_express',
@@ -124,7 +134,11 @@ function startMode(mode){
         startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
       } else {
         console.log('[startMode] Access denied:', decision.denial_reason);
+        setModeStatus('','');
       }
+    }).catch(error=>{
+      console.error('[startMode] Access check failed:',error);
+      setModeStatus('No pudimos validar tu acceso. Intenta de nuevo.','error');
     });
   } else {
     console.log('[startMode] No WSETModeAccessGate found, proceeding directly');
@@ -133,15 +147,18 @@ function startMode(mode){
 }
 
 async function startAllowedMode(mode){
+  setModeStatus('Cargando preguntas…','loading');
   const ok = await loadMode(mode);
   if(!ok || !Array.isArray(QUESTIONS) || !QUESTIONS.length){
     console.warn('[startAllowedMode] no se pudieron cargar preguntas; se mantiene el selector de modo');
+    setModeStatus('No pudimos cargar las preguntas. Revisa tu sesión e intenta de nuevo.','error');
     return;
   }
   document.getElementById('mode-overlay').classList.remove('active');
   STATE.stage='prepare'; STATE.questionIndex=0;
   STATE.selectedOption=null; STATE.selectedConfidence=null; STATE.selectedTag=null;
   render();
+  setModeStatus('','');
 }
 
 

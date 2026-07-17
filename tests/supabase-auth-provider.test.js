@@ -228,3 +228,23 @@ test('public Supabase config endpoint exposes no secret key', () => {
   assert.match(endpoint, /SUPABASE_PUBLISHABLE_KEY/);
   assert.doesNotMatch(endpoint, /SUPABASE_SECRET_KEY/);
 });
+
+test('browser providers reuse one Supabase client instance', async () => {
+  let createCalls = 0;
+  global.WSET_SUPABASE_CONFIG = {
+    url: 'https://example.supabase.co',
+    publishableKey: 'sb_publishable_test',
+  };
+  global.supabase = {
+    createClient() {
+      createCalls += 1;
+      return createFakeClient();
+    },
+  };
+
+  const first = createSupabaseAuthProvider();
+  const second = createSupabaseAuthProvider();
+
+  assert.equal(await first.getClient(), await second.getClient());
+  assert.equal(createCalls, 1);
+});

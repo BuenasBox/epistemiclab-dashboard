@@ -210,6 +210,11 @@ test('diagnostic, adaptive and open response modes resolve access before startin
     assert.match(source, /enforcement:\s*['"]active['"]/);
     assert.match(source, /\.then\([^)]*decision[^]*decision\.would_allow/);
   });
+
+  assert.match(diagnostic, /id="modeStatusMsg"[^>]*role="status"/);
+  assert.match(diagnostic, /diagnostic-sba\.js\?v=/);
+  assert.match(diagnosticRuntime, /setModeStatus\('Cargando preguntas…','loading'\)/);
+  assert.match(diagnosticRuntime, /No pudimos cargar las preguntas/);
 });
 
 test('mode denial copy distinguishes login from plan upgrade', () => {
