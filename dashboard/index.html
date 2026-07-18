@@ -14,8 +14,8 @@
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous"></script>
-<script>Sentry.init({ dsn: "https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720" });</script>
+<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous" defer></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.Sentry)Sentry.init({dsn:"https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720"});});</script>
 <script src="/shared/sw-register.js" defer></script>
 </head>
 <body>
@@ -26,45 +26,12 @@
   <div id="root" style="margin-top:14px"></div>
 </div>
 <script src="/platform-nav.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
-<script src="../shared/auth-token.js"></script>
-<script src="../learning-loop/learning-loop-engine.js"></script>
-<script src="../mentor/mentor-cognitivo.js"></script>
-<script src="../mentor/mentor-cognitivo-ui.js"></script>
-<script src="./dashboard.js"></script>
-<script>
-(function () {
-  "use strict";
-  var BASE = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/";
-  var EP = {
-    summary: "get-epistemic-profile-summary",
-    recent_sessions: "get-epistemic-profile-sessions",
-    open_misconceptions: "get-epistemic-profile-misconceptions",
-    recommendations: "get-epistemic-profile-recommendations",
-    readiness: "get-epistemic-profile-readiness"
-  };
-  // Estado real vacío (cold-start honesto) cuando aún no hay evidencia / sin auth. Sin datos fabricados.
-  var EMPTY = { summary: { data: { metrics: {} } }, recent_sessions: { data: [] }, open_misconceptions: { data: [] }, recommendations: { data: [] }, readiness: { data: { components: [] } } };
-  function setSrc(kind, text){ var el=document.getElementById('src'); el.className='src '+kind; document.getElementById('srcLabel').textContent=text; }
-  async function fetchView(path, token){ var r=await fetch(BASE+path,{headers:{Authorization:'Bearer '+token}}); return await r.json(); }
-  async function load(){
-    var bundle=null, live=false, token=null;
-    try { if (typeof getAuthToken === 'function') token = await getAuthToken(); } catch(e){}
-    if (token) {
-      try {
-        var keys=Object.keys(EP);
-        var res=await Promise.all(keys.map(function(k){ return fetchView(EP[k], token); }));
-        bundle={}; keys.forEach(function(k,i){ bundle[k]=res[i]; });
-        live = res.every(function(x){ return x && x.ok; });
-      } catch(e){ live=false; }
-    }
-    if (!live) bundle = EMPTY;
-    setSrc(live?'live':'sample', live?'En vivo':'Empieza una práctica para construir tu perfil');
-    var vm = window.Dashboard.buildViewModel(bundle);
-    window.Dashboard.render(document.getElementById('root'), vm);
-  }
-  load();
-})();
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2" defer></script>
+<script src="../shared/auth-token.js" defer></script>
+<script src="../learning-loop/learning-loop-engine.js" defer></script>
+<script src="../mentor/mentor-cognitivo.js" defer></script>
+<script src="../mentor/mentor-cognitivo-ui.js" defer></script>
+<script src="./dashboard.js?v=20260718-1" defer></script>
+<script src="./dashboard-loader.js?v=20260718-1" defer></script>
 </body>
 </html>

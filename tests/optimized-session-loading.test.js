@@ -13,6 +13,10 @@ const adaptiveHtml = read('adaptive-session', 'index.html');
 const openResponse = read('open-response-lab', 'index.html');
 const getOrBank = read('supabase', 'functions', 'get-or-bank', 'index.ts');
 const evaluateOr = read('supabase', 'functions', 'evaluate-or', 'index.ts');
+const dashboardHtml = read('dashboard', 'index.html');
+const dashboardLoader = read('dashboard', 'dashboard-loader.js');
+const dashboardEndpoint = read('supabase', 'functions', 'get-epistemic-profile-dashboard', 'index.ts');
+const profileHtml = read('profile', 'index.html');
 
 test('adaptive sessions request only the selected size and grade on the server', () => {
   assert.match(adaptive, /express_10:10,standard_25:25,mock_theory_50:50/);
@@ -79,4 +83,24 @@ test('open response client fails closed and does not fabricate evaluation feedba
   assert.match(openResponse, /if \(!resp\.ok\) throw new Error\('evaluate-or status:/);
   assert.match(openResponse, /No pudimos evaluar tu respuesta\. Intenta de nuevo\./);
   assert.doesNotMatch(openResponse, /let fb = \{ concepts_detected:/);
+});
+
+test('dashboard reads the epistemic profile once and never caches personal data', () => {
+  assert.match(dashboardHtml, /dashboard-loader\.js\?v=20260718-1" defer/);
+  assert.doesNotMatch(dashboardHtml, /get-epistemic-profile-summary|get-epistemic-profile-sessions/);
+  assert.match(dashboardLoader, /get-epistemic-profile-dashboard/);
+  assert.match(dashboardLoader, /cache: 'no-store'/);
+  assert.match(dashboardLoader, /setTimeout\(function \(\) \{ controller\.abort\(\); \}, 15000\)/);
+  assert.match(dashboardEndpoint, /Promise\.all/);
+  assert.match(dashboardEndpoint, /deriveEpistemicProfileReadModel/);
+  assert.match(dashboardEndpoint, /privateJsonHeaders/);
+  assert.match(dashboardEndpoint, /\.eq\('user_id', user\.id\)/);
+  assert.doesNotMatch(dashboardEndpoint, /profileError\.message|eventsError\.message/);
+});
+
+test('profile defers optional intelligence modules and omits unused scripts', () => {
+  assert.match(profileHtml, /profile\.js\?v=20260718-1" defer/);
+  assert.match(profileHtml, /session-store\.js" defer/);
+  assert.doesNotMatch(profileHtml, /weakness-sync\.js|simulation-coaching\.js|Student Profile V1/);
+  assert.match(profileHtml, /Perfil del estudiante/);
 });
