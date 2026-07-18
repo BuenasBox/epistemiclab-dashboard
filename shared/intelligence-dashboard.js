@@ -208,7 +208,7 @@
       }
       if (readiness.or_structure_readiness !== undefined) {
         html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
-          '<span>OR Structure Readiness:</span>' +
+          '<span>Preparación en estructura de respuesta abierta:</span>' +
           '<span style="color:' + (readiness.or_structure_readiness > 0.5 ? '#2ec27e' : '#f6b73c') + '">' +
           (readiness.or_structure_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';

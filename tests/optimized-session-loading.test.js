@@ -99,7 +99,7 @@ test('dashboard reads the epistemic profile once and never caches personal data'
 });
 
 test('profile defers optional intelligence modules and omits unused scripts', () => {
-  assert.match(profileHtml, /profile\.js\?v=20260718-1" defer/);
+  assert.match(profileHtml, /profile\.js\?v=20260718-2" defer/);
   assert.match(profileHtml, /session-store\.js" defer/);
   assert.doesNotMatch(profileHtml, /weakness-sync\.js|simulation-coaching\.js|Student Profile V1/);
   assert.match(profileHtml, /Perfil del estudiante/);

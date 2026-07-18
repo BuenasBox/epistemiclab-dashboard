@@ -61,17 +61,17 @@
     var problems = [];
 
     if (orCoaching && orCoaching.structural_gaps) {
-      problems.push('Structural gaps in ' + orCoaching.verb + ': ' + orCoaching.structural_gaps[0]);
+      problems.push('Vacíos estructurales en ' + orCoaching.verb + ': ' + orCoaching.structural_gaps[0]);
     }
 
     if (satCoaching && satCoaching.consistency_issues) {
-      problems.push('Consistency issues in SAT judgment: ' + satCoaching.consistency_issues[0]);
+      problems.push('Inconsistencias en el criterio SAT: ' + satCoaching.consistency_issues[0]);
     }
 
     if (analytics && analytics.persistence_index) {
       var persistent = Object.keys(analytics.persistence_index)[0];
       if (persistent) {
-        problems.push('Recurring weakness: ' + persistent);
+        problems.push('Debilidad recurrente: ' + persistent);
       }
     }
 
@@ -85,11 +85,11 @@
     var significance = 'moderate';
 
     // High significance if in weakness profile
-    if (weaknessProfile && weaknessProfile.weakVerbs && problem.includes('Structural gaps')) {
+    if (weaknessProfile && weaknessProfile.weakVerbs && problem.includes('Vacíos estructurales')) {
       significance = 'high';
     }
 
-    if (weaknessProfile && weaknessProfile.weakTopics && problem.includes('Recurring weakness')) {
+    if (weaknessProfile && weaknessProfile.weakTopics && problem.includes('Debilidad recurrente')) {
       significance = 'high';
     }
 
@@ -100,16 +100,16 @@
    * Recommend practice
    */
   function recommendPractice(problem, analytics) {
-    if (problem.includes('Structural gaps')) {
-      return 'Practice the specific command verb with focus on missing structure';
+    if (problem.includes('Vacíos estructurales')) {
+      return 'Practica el verbo de instrucción específico y completa la estructura faltante';
     }
 
-    if (problem.includes('Consistency')) {
-      return 'Practice calibrating quality judgments against observable evidence';
+    if (problem.includes('Inconsistencias')) {
+      return 'Practica la calibración de tus juicios de calidad con evidencia observable';
     }
 
-    if (problem.includes('Recurring')) {
-      return 'Targeted drill on the persistent weakness topic';
+    if (problem.includes('Debilidad recurrente')) {
+      return 'Realiza una práctica dirigida sobre el tema que sigue débil';
     }
 
     return 'Práctica sistemática para reforzar áreas débiles';
@@ -119,16 +119,16 @@
    * Recommend location (where to practice)
    */
   function recommendLocation(problem) {
-    if (problem.includes('Structural gaps')) {
-      return 'Open Response Lab (command verb practice)';
+    if (problem.includes('Vacíos estructurales')) {
+      return 'Laboratorio de Respuesta Abierta (práctica de verbos de instrucción)';
     }
 
-    if (problem.includes('Consistency')) {
-      return 'SAT Sprint or Diagnostic SBA (quality calibration)';
+    if (problem.includes('Inconsistencias')) {
+      return 'Práctica SAT o diagnóstico SBA (calibración de calidad)';
     }
 
-    if (problem.includes('Recurring')) {
-      return 'Adaptive Session (targeted topic drill)';
+    if (problem.includes('Debilidad recurrente')) {
+      return 'Sesión adaptativa (práctica dirigida por tema)';
     }
 
     return 'Cualquier experiencia de práctica adecuada a la debilidad detectada';
@@ -138,16 +138,16 @@
    * Define success signal
    */
   function defineSuccessSignal(problem) {
-    if (problem.includes('Structural gaps')) {
-      return 'You can correctly identify and include all expected structure elements';
+    if (problem.includes('Vacíos estructurales')) {
+      return 'Identificas e incluyes correctamente todos los elementos esperados de la estructura';
     }
 
-    if (problem.includes('Consistency')) {
-      return 'Your quality judgments align with observable evidence and WSET criteria';
+    if (problem.includes('Inconsistencias')) {
+      return 'Tus juicios de calidad coinciden con la evidencia observable y los criterios WSET';
     }
 
-    if (problem.includes('Recurring')) {
-      return 'The topic appears in weak list for 0 of next 3 sessions';
+    if (problem.includes('Debilidad recurrente')) {
+      return 'El tema deja de aparecer como débil en las próximas 3 sesiones';
     }
 
     return 'Mejora en la tasa de acierto durante los próximos 5 intentos';
@@ -158,9 +158,9 @@
    */
   function gatherEvidenceSources(orCoaching, satCoaching, analytics) {
     var sources = [];
-    if (orCoaching) sources.push('Open Response responses');
-    if (satCoaching) sources.push('SAT assessments');
-    if (analytics) sources.push('Learning history across sessions');
+    if (orCoaching) sources.push('respuestas abiertas');
+    if (satCoaching) sources.push('evaluaciones SAT');
+    if (analytics) sources.push('historial de aprendizaje entre sesiones');
     return sources;
   }
 
@@ -181,8 +181,8 @@
 
     // Significance
     html += '<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944;margin-bottom:12px">' +
-      '<span style="font-size:11px;color:#a7b0be">Significancia:</span>' +
-      '<span style="font-size:11px;color:' + (coaching.significance === 'high' ? '#e45c5c' : '#f6b73c') + '">' + coaching.significance.toUpperCase() + '</span>' +
+      '<span style="font-size:11px;color:#a7b0be">Importancia:</span>' +
+      '<span style="font-size:11px;color:' + (coaching.significance === 'high' ? '#e45c5c' : '#f6b73c') + '">' + ({ high: 'ALTA', moderate: 'MODERADA', low: 'BAJA' }[coaching.significance] || 'MODERADA') + '</span>' +
       '</div>';
 
     // Recommendation

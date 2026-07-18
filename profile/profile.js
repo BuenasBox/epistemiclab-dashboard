@@ -516,7 +516,7 @@
       '[data-access-days]',
       viewModel.access.daysRemaining === null
         ? 'No disponible'
-        : viewModel.access.daysRemaining + ' días'
+        : viewModel.access.daysRemaining + (viewModel.access.daysRemaining === 1 ? ' día' : ' días')
     );
     setText(documentRef, '[data-local-sessions]', viewModel.learning.localSessions);
     setText(
@@ -543,7 +543,7 @@
       '[data-study-streak]',
       viewModel.learning.studyStreak === null
         ? 'No disponible'
-        : viewModel.learning.studyStreak + ' días'
+        : viewModel.learning.studyStreak + (viewModel.learning.studyStreak === 1 ? ' día' : ' días')
     );
     setText(
       documentRef,
