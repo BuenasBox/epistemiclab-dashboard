@@ -9,10 +9,11 @@
  */
 'use strict';
 
-var CACHE_VERSION = 'epistemiclab-v4';
+var CACHE_VERSION = 'epistemiclab-v5';
 var SHELL_CACHE = CACHE_VERSION + '-shell';
 var RUNTIME_CACHE = CACHE_VERSION + '-runtime';
 var OFFLINE_URL = '/offline.html';
+var MAX_RUNTIME_ENTRIES = 100;
 
 var PRECACHE_URLS = [
   '/',
@@ -36,6 +37,22 @@ var NEVER_CACHE_PATTERNS = [
 
 function isNeverCache(url) {
   return NEVER_CACHE_PATTERNS.some(function (re) { return re.test(url); });
+}
+
+function trimCache(cache, maxEntries) {
+  return cache.keys().then(function (keys) {
+    if (keys.length <= maxEntries) return undefined;
+    return Promise.all(keys.slice(0, keys.length - maxEntries).map(function (key) {
+      return cache.delete(key);
+    }));
+  });
+}
+
+function navigationCacheKey(request) {
+  var url = new URL(request.url);
+  url.search = '';
+  url.hash = '';
+  return new Request(url.toString(), { method: 'GET' });
 }
 
 self.addEventListener('install', function (event) {
@@ -67,14 +84,21 @@ self.addEventListener('activate', function (event) {
 });
 
 function networkFirstNavigation(request) {
+  var cacheKey = navigationCacheKey(request);
   return fetch(new Request(request, { cache: 'no-store' }))
     .then(function (response) {
-      var copy = response.clone();
-      caches.open(RUNTIME_CACHE).then(function (cache) { cache.put(request, copy); });
+      if (response && response.ok && response.type === 'basic') {
+        var copy = response.clone();
+        caches.open(RUNTIME_CACHE).then(function (cache) {
+          return cache.put(cacheKey, copy).then(function () {
+            return trimCache(cache, MAX_RUNTIME_ENTRIES);
+          });
+        });
+      }
       return response;
     })
     .catch(function () {
-      return caches.match(request).then(function (cached) {
+      return caches.match(cacheKey).then(function (cached) {
         return cached || caches.match(OFFLINE_URL);
       });
     });
@@ -84,19 +108,23 @@ function networkFirstStatic(request) {
   return caches.open(RUNTIME_CACHE).then(function (cache) {
     return fetch(new Request(request, { cache: 'no-cache' }))
       .then(function (response) {
-        if (response && response.ok) cache.put(request, response.clone());
+        if (response && response.ok && response.type === 'basic') {
+          cache.put(request, response.clone()).then(function () { return trimCache(cache, MAX_RUNTIME_ENTRIES); });
+        }
         return response;
       })
-      .catch(function () { return cache.match(request); });
+      .catch(function () { return caches.match(request); });
   });
 }
 
 function cacheFirst(request) {
   return caches.open(RUNTIME_CACHE).then(function (cache) {
-    return cache.match(request).then(function (cached) {
+    return caches.match(request).then(function (cached) {
       if (cached) return cached;
       return fetch(request).then(function (response) {
-        if (response && response.ok) cache.put(request, response.clone());
+        if (response && response.ok && response.type === 'basic') {
+          cache.put(request, response.clone()).then(function () { return trimCache(cache, MAX_RUNTIME_ENTRIES); });
+        }
         return response;
       });
     });
@@ -105,9 +133,11 @@ function cacheFirst(request) {
 
 function staleWhileRevalidate(request) {
   return caches.open(RUNTIME_CACHE).then(function (cache) {
-    return cache.match(request).then(function (cached) {
+    return caches.match(request).then(function (cached) {
       var fetchPromise = fetch(new Request(request, { cache: 'no-cache' })).then(function (response) {
-        if (response && response.ok) cache.put(request, response.clone());
+        if (response && response.ok && response.type === 'basic') {
+          cache.put(request, response.clone()).then(function () { return trimCache(cache, MAX_RUNTIME_ENTRIES); });
+        }
         return response;
       }).catch(function () { return cached; });
       return cached || fetchPromise;

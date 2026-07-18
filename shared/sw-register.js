@@ -8,7 +8,9 @@
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js').catch(function () {
+      navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' }).then(function (registration) {
+        return registration.update();
+      }).catch(function () {
         // Si falla el registro (ej. entorno de pruebas), la app sigue
         // funcionando normalmente, solo sin caché offline.
       });
