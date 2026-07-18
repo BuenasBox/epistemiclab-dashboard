@@ -11,6 +11,7 @@ test('la evaluación teórica carga la primera pregunta', async ({ page }) => {
     };
     window.requireAuth = async () => 'test-token';
     window.fetch = async () => ({
+      ok: true,
       status: 200,
       json: async () => ({
         items: Array.from({ length: 5 }, (_, index) => ({

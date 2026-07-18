@@ -16,7 +16,7 @@
 **"Avanza sin dejar deudas."** Esto significa, en cada fase del roadmap:
 
 1. Ejecutar la fase directamente (o delegar a Codex si el trabajo es mecánico/alto-volumen-de-archivos, dejando un prompt autocontenido).
-2. Verificar con `npm test` (esperar 163/163 en `node:test` + 33 archivos deterministas aprobados) antes de proponer el push.
+2. Verificar con `npm test` (esperar 189/189 en `node:test` + 36 archivos deterministas aprobados) antes de proponer el push.
 3. Verificar en producción real (Vercel deployment `READY` en el commit correcto + revisión en navegador) antes de pasar a la siguiente fase.
 4. Corregir cualquier brecha adicional encontrada en el camino sin detenerse a preguntar, salvo que la decisión sea genuinamente ambigua o de alto impacto/alcance.
 5. Preferencia de estilo de Erick: respuestas concisas y directas, sin relleno.
@@ -24,7 +24,7 @@
 ## 3. Ritmo de trabajo establecido (repetir en cada fase)
 
 1. Editar archivos.
-2. `npm test` local (163/163 + 33 archivos aprobados esperado; regenera `system_state.json`).
+2. `npm test` local (189/189 + 36 archivos aprobados esperado; regenera `system_state.json`).
 3. Preparar comandos PowerShell **en texto plano dentro del chat** (Erick no puede abrir archivos `.ps1` entregados como archivo) — siempre incluir al inicio:
    ```powershell
    Remove-Item ".git\index.lock" -Force -ErrorAction SilentlyContinue
@@ -70,6 +70,19 @@
 - **`offline.html` nunca debe depender de CSS externo** — es el fallback del Service Worker y debe funcionar con cero red.
 - **Claude-in-Chrome:** a veces requiere selección explícita de navegador si hay varias instancias Chrome conectadas, y el `javascript_tool`/`read_page` pueden fallar con timeouts o permisos en ciertas pestañas — si eso pasa, no es necesariamente un problema del sitio; confirmar vía el diff del código fuente + estado `READY` del deployment antes de invertir más tiempo peleando con la pestaña.
 - **Artefacto de "vista truncada" del bash-mount (importante):** después de editar un archivo con la herramienta Edit/Write, la vista que tiene el sandbox bash de ese archivo (`cat`, `grep`, y por tanto `npm test`/`git diff`) puede quedar genuinamente truncada a mitad de línea/palabra — no solo desactualizada, sino con menos líneas de las reales (ej. `index.html` mostrando 105 de 111 líneas, cortado en mitad de una palabra). Esperar (incluso 20+ segundos) no siempre lo resuelve dentro del mismo turno. La herramienta `Read` de Claude SIEMPRE muestra el contenido real y completo (fuente de verdad). **Solución que sí funciona:** volver a escribir el archivo afectado directamente desde bash con un heredoc (`cat > archivo << 'EOF' ... EOF`) usando el contenido confirmado por `Read` — esto sincroniza la vista de bash porque bash escribe y lee por el mismo canal. Alternativa igualmente válida (usada con éxito en Fase 7): pedirle a Erick que corra `npm test` en su propia máquina Windows, que no sufre este desajuste.
+
+## 5b. Auditoría integral 2026-07-17 (sesión de limpieza posterior)
+
+Auditoría completa en 6 dimensiones (código, seguridad, UX/UI, infra, dependencias, docs). Ejecutado en la misma sesión con luz verde de Erick:
+
+- **Capa fantasma eliminada:** `api/validate-user-plan.js` y `api/validate-trial-expiration.js` consultaban la tabla inexistente `user_profiles` y sus clientes (`shared/plan-validator-client.js`, `shared/trial-validator-client.js`) no se cargaban en ninguna página. Borrados junto con 5 módulos muertos más de `shared/`: `cwp-adapter`, `email-verification-client`, `or-enrichment`, `simulation-coaching`, `weakness-sync` (9 archivos en total). El test de los handlers en `tests/mode-access-gate.test.js` se recortó (de ahí 190→189 tests).
+- **C1 resuelto por eliminación:** la tarjeta de debilidades persistidas de `profile/profile.js` dependía de `window.auth` (nunca definido) y `window.WeaknessSync` (nunca cargado) — nunca pudo renderizarse. Se eliminó la ruta; el perfil epistémico/mentor es la fuente viva de debilidades. La tabla `weakness_profiles` (0 filas) queda huérfana en BD; candidata a drop en una limpieza futura de esquema.
+- **Índices FK:** migración `20260718020000_add_assignment_fk_covering_indexes` (índices en `or_question_assignments.item_id` y `sba_question_assignments.question_id`) aplicada al proyecto remoto vía MCP y verificada: el advisor `unindexed_foreign_keys` quedó limpio.
+- **Decisión S3 — NO revocar EXECUTE de las funciones `admin_*`:** `shared/supabase-admin-store.js` las llama vía `client.rpc()` desde el navegador como usuario autenticado; revocar rompería el panel de admin. El WARN del advisor es intencional: las funciones validan `is_admin()` internamente. No re-litigar.
+- **Pendientes priorizados por Erick para después:** U1→S5 (refactor por lotes de estilos inline según `docs/INLINE_STYLE_AUDIT.md`, luego quitar `'unsafe-inline'` de `style-src` en CSP) — sesión dedicada; S1 (HaveIBeenPwned) sigue manual en Dashboard.
+- Verificación local completa: 189/189 + 36 aprobados + `npm run build` exit 0. Los ~40 índices "unused" de los advisors son esperables con BD casi vacía; no tocar hasta tener tráfico real.
+- **Post-push (misma sesión):** el primer push (`a83b68a`) salió incompleto — solo incluyó los 9 borrados staged; los archivos editados y la migración quedaron fuera y el CI falló con `Cannot find module '../api/validate-user-plan.js'`. Se preparó commit complementario. Además se detectó que **el job e2e llevaba roto casi toda la sesión anterior** (desde `fix: normalizar debrief SAT al español`), por dos causas preexistentes corregidas aquí: (1) `/verify-email/` llamaba `supabase.auth.getUser()` sin sesión → 401 de red en cada visita anónima (y cada 3 s por el polling); ahora `getSessionUser()` consulta `getSession()` local primero. (2) El stub de `window.fetch` en `tests/e2e/critical-flows.spec.js` no definía `ok: true` y `diagnostic-sba.js:85` valida `!resp.ok` desde "fix: proteger y acelerar el diagnóstico SBA"; stub actualizado.
+- **Playwright ahora SÍ es ejecutable en la máquina local:** se instaló Chromium (`npx playwright install chromium`). Suite completo verificado local: 38/38 e2e en verde. El gotcha de la sección 5 sobre "sandbox sin Playwright" aplica solo al sandbox bash remoto, no a esta máquina Windows.
 
 ## 6. Temas abiertos / sin resolver al cierre de la última sesión
 

@@ -6,19 +6,6 @@ const path = require('node:path');
 const {
   evaluateModeGate,
 } = require('../shared/mode-access-gate.js');
-const validateUserPlan = require('../api/validate-user-plan.js');
-const validateTrialExpiration = require('../api/validate-trial-expiration.js');
-
-function createResponse() {
-  return {
-    statusCode: null,
-    body: null,
-    headers: {},
-    setHeader(name, value) { this.headers[name] = value; },
-    status(code) { this.statusCode = code; return this; },
-    json(body) { this.body = body; return this; },
-  };
-}
 
 function snapshot(options = {}) {
   const authenticated = options.authenticated !== false;
@@ -120,20 +107,6 @@ test('mode gate allows only active and current admins to bypass learner plans', 
     }), 'full_simulation').would_deny,
     true,
   );
-});
-
-test('Vercel validation functions load in Node and reject unauthenticated requests safely', async () => {
-  for (const handler of [validateUserPlan, validateTrialExpiration]) {
-    const methodResponse = createResponse();
-    await handler({ method: 'GET', headers: {}, body: {} }, methodResponse);
-    assert.equal(methodResponse.statusCode, 405);
-    assert.equal(methodResponse.headers.Allow, 'POST');
-
-    const authResponse = createResponse();
-    await handler({ method: 'POST', headers: {}, body: {} }, authResponse);
-    assert.equal(authResponse.statusCode, 401);
-    assert.equal(authResponse.body.reason, 'no_auth_token');
-  }
 });
 
 test('adaptive and open response paid modes deny anonymous and insufficient plans', () => {

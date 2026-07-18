@@ -95,22 +95,6 @@
     }
   }
 
-  // Y.2.1: Fetch persisted weakness profiles (async)
-  async function loadPersistedWeaknessProfiles(userId) {
-    if (!userId || typeof window.WeaknessSync !== 'object' || !window.supabase) {
-      return '';
-    }
-    try {
-      var result = await window.WeaknessSync.fetchWeaknessProfiles(userId, window.supabase);
-      if (result.success && result.profiles && result.profiles.length > 0) {
-        return window.WeaknessSync.renderWeaknessProfileCard(result.profiles) || '';
-      }
-    } catch (e) {
-      console.warn('[Y.2.1] Persisted weakness fetch error (non-blocking):', e);
-    }
-    return '';
-  }
-
   // Y.2.2-Y.2.4: Build and render intelligence dashboard
   function buildAndRenderDashboard() {
     if (typeof window.LI !== 'object' || typeof window.IntelligenceDashboard !== 'object') {
@@ -698,23 +682,10 @@
     if (!root.document) return;
     initializeProfilePage();
     // Y.1.1/Y.1.3/Y.1.6: Render recommendations, progress, and learning loop after profile loads
-    // Y.2.1: Also load persisted weakness profiles (async, non-blocking)
     var renderProfilePanels = async function() {
       var remPanel = root.document.querySelector('[data-remediation-panel]');
       if (remPanel) {
         remPanel.innerHTML = renderRemediationCard() + renderLearningLoopCard();
-
-        // Y.2.1: Load persisted weakness profiles asynchronously
-        var userId = null;
-        if (typeof window.auth !== 'undefined' && window.auth.currentUser) {
-          userId = window.auth.currentUser.id;
-        }
-        if (userId) {
-          var persistedCard = await loadPersistedWeaknessProfiles(userId);
-          if (persistedCard) {
-            remPanel.innerHTML += persistedCard;
-          }
-        }
       }
 
       // Y.2.2-Y.2.4: Render intelligence dashboard

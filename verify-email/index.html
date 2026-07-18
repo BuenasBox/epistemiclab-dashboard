@@ -293,10 +293,20 @@
       document.getElementById('btn-resend').disabled = true;
     }
 
+    // getUser() sin sesión siempre dispara una petición de red que termina
+    // en 401; consultar primero la sesión local mantiene silenciosas las
+    // visitas anónimas.
+    async function getSessionUser() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return null;
+      const { data: { user } } = await supabase.auth.getUser();
+      return user;
+    }
+
     // Get current user email
     async function initializePage() {
       if (!supabase) return;
-      const { data: { user } } = await supabase.auth.getUser();
+      const user = await getSessionUser();
 
       if (!user) {
         window.location.href = '/login/';
@@ -320,7 +330,7 @@
       btn.disabled = true;
       btn.textContent = 'Enviando...';
 
-      const { data: { user } } = await supabase.auth.getUser();
+      const user = await getSessionUser();
 
       if (!user || !user.email) {
         showStatus('Usuario no encontrado', 'error');
@@ -380,7 +390,7 @@
     // If verified, redirect to home page
     async function checkVerification() {
       if (!supabase) return;
-      const { data: { user } } = await supabase.auth.getUser();
+      const user = await getSessionUser();
 
       if (user && user.email_confirmed_at) {
         // Email is verified, redirect to home
