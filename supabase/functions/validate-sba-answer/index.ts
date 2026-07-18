@@ -70,7 +70,12 @@ Deno.serve(async (req: Request) => {
     // exactly one validation for an assigned question, including under races.
     const { data: assignment, error: assignmentError } = await supabase.rpc(
       'claim_sba_question_assignment',
-      { p_user_id: user.id, p_question_id: itemId, p_mode: sessionMode },
+      {
+        p_user_id: user.id,
+        p_question_id: itemId,
+        p_mode: sessionMode,
+        p_selected_letter: selectedLetter,
+      },
     );
     if (assignmentError) {
       console.error('SBA assignment claim failed', { code: assignmentError.code });

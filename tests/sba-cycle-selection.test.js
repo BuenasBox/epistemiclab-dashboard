@@ -32,6 +32,14 @@ const assignmentMigration = fs.readFileSync(
   path.join(root, 'supabase', 'migrations', '20260717230000_sba_answer_assignment_guard.sql'),
   'utf8',
 );
+const assignmentReplayMigration = fs.readFileSync(
+  path.join(root, 'supabase', 'migrations', '20260718001500_sba_assignment_idempotent_replay.sql'),
+  'utf8',
+);
+const assignmentClaimFix = fs.readFileSync(
+  path.join(root, 'supabase', 'migrations', '20260718002500_fix_sba_assignment_claim_conflict.sql'),
+  'utf8',
+);
 
 test('SBA coverage history is private, indexed and scoped by learner cycle', () => {
   assert.match(migration, /create table if not exists public\.sba_question_cycles/);
@@ -89,6 +97,11 @@ test('answer assignment guard is private, expiring and single-use', () => {
   assert.match(assignmentMigration, /insert into public\.sba_question_completions/);
   assert.match(bankFunction, /sba_question_assignments/);
   assert.match(bankFunction, /ignoreDuplicates: true/);
+  assert.match(assignmentReplayMigration, /selected_letter text/);
+  assert.match(assignmentReplayMigration, /a\.selected_letter = p_selected_letter/);
+  assert.match(assignmentReplayMigration, /p_selected_letter !~ '\^\[A-D\]\$'/);
+  assert.match(validationFunction, /p_selected_letter: selectedLetter/);
+  assert.match(assignmentClaimFix, /on conflict on constraint sba_question_completions_pkey/);
 });
 
 test('cycle payload never includes answers or post-answer pedagogy', () => {
