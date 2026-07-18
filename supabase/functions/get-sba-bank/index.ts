@@ -1,158 +1,125 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.108.2';
+import { privateJsonHeaders } from '../_shared/sat-access.ts';
+import { isLearningMode, verifyLearningAccess } from '../_shared/learning-access.ts';
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
 const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'authorization, content-type',
+};
+const modeSizes: Record<string, number> = {
+  quick_drill: 5,
+  express: 10,
+  standard: 25,
+  mock_theory_1: 50,
+  express_10: 10,
+  standard_25: 25,
+  mock_theory_50: 50,
+};
+
+function json(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: privateJsonHeaders(corsHeaders),
+  });
+}
+
+function parseList(url: URL, name: string) {
+  return (url.searchParams.get(name) || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter((value) => value.length > 0 && value.length <= 120)
+    .slice(0, 20);
+}
 
 Deno.serve(async (req: Request) => {
-  // CORS
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'authorization, content-type',
-      },
-    });
-  }
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
+  if (req.method !== 'GET') return json({ error: 'Method not allowed' }, 405);
 
   try {
-    // Auth: require JWT token
     const authHeader = req.headers.get('authorization');
-    if (!authHeader?.startsWith('Bearer ')) {
-      return new Response(JSON.stringify({ error: 'Unauthorized: missing token' }), {
-        status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+    if (!authHeader?.startsWith('Bearer ')) return json({ error: 'Unauthorized' }, 401);
 
     const token = authHeader.substring(7);
     const supabase = createClient(supabaseUrl, supabaseKey);
-
-    // Verify token
     const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-    if (authError || !user) {
-      return new Response(JSON.stringify({ error: 'Unauthorized: invalid token' }), {
-        status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+    if (authError || !user) return json({ error: 'Unauthorized' }, 401);
 
-    // Query params with bounds
     const url = new URL(req.url);
-    const requestedLimit = parseInt(url.searchParams.get('limit') || '25');
-    const cycleSelection = url.searchParams.get('cycle') === '1';
-    const limit = Math.min(Math.max(Number.isFinite(requestedLimit) ? requestedLimit : 25, 1), cycleSelection ? 50 : 100);
-    const offset = Math.max(parseInt(url.searchParams.get('offset') || '0'), 0);
-    const topic = url.searchParams.get('topic');
-    const mode = url.searchParams.get('mode') || 'standard';
-    const adaptiveSelection = cycleSelection && url.searchParams.get('strategy') === 'adaptive';
+    const mode = url.searchParams.get('mode') || '';
+    if (url.searchParams.get('cycle') !== '1' || !isLearningMode(mode)) {
+      return json({ error: 'Invalid selection request' }, 400);
+    }
 
-    const parseList = (name: string) => {
-      const raw = url.searchParams.get(name) || '';
-      return raw.split(',')
-        .map((value) => value.trim())
-        .filter((value) => value.length > 0 && value.length <= 120)
-        .slice(0, 20);
+    const access = await verifyLearningAccess(supabase, user.id, mode);
+    if (!access.allowed) return json({ error: 'Access denied', reason: access.reason }, 403);
+
+    const adaptiveSelection = url.searchParams.get('strategy') === 'adaptive';
+    const adaptiveMode = mode === 'express_10' || mode === 'standard_25' || mode === 'mock_theory_50';
+    if (adaptiveSelection !== adaptiveMode) return json({ error: 'Invalid selection strategy' }, 400);
+
+    const rpcName = adaptiveSelection
+      ? 'select_adaptive_sba_questions_for_user'
+      : 'select_sba_questions_for_user';
+    const rpcArgs = adaptiveSelection ? {
+      p_user_id: user.id,
+      p_limit: modeSizes[mode],
+      p_mode: mode,
+      p_weak_topics: parseList(url, 'weak_topics'),
+      p_weak_ras: parseList(url, 'weak_ras'),
+    } : {
+      p_user_id: user.id,
+      p_limit: modeSizes[mode],
+      p_mode: mode,
     };
-
-    if (cycleSelection) {
-      const rpcName = adaptiveSelection
-        ? 'select_adaptive_sba_questions_for_user'
-        : 'select_sba_questions_for_user';
-      const rpcArgs = adaptiveSelection ? {
-        p_user_id: user.id,
-        p_limit: limit,
-        p_mode: mode,
-        p_weak_topics: parseList('weak_topics'),
-        p_weak_ras: parseList('weak_ras'),
-      } : {
-        p_user_id: user.id,
-        p_limit: limit,
-        p_mode: mode,
-      };
-      const { data, error } = await supabase.rpc(rpcName, rpcArgs);
-
-      if (error) {
-        return new Response(JSON.stringify({ error: error.message }), {
-          status: 500,
-          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-        });
-      }
-
-      const items = data || [];
-      const first = items[0] || {};
-      return new Response(JSON.stringify({
-        items,
-        count: items.length,
-        cycle: first.cycle_no || 1,
-        remaining_in_cycle: first.remaining_in_cycle || 0,
-        selection: 'random_without_replacement',
-        strategy: adaptiveSelection ? 'adaptive' : 'random',
-      }), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'private, no-store',
-        },
-      });
-    }
-
-    // Fetch from database with service role key (backend-only access)
-    let query = supabase.from('sba_bank').select('id,stem,text,options,topic,ra,difficulty,keywords,gold,causal_chain,feedback_by_mode,micro_drill');
-
-    if (topic) {
-      query = query.eq('topic', topic);
-    }
-
-    const { data: items, error } = await query.range(offset, offset + limit - 1);
-
+    const { data, error } = await supabase.rpc(rpcName, rpcArgs);
     if (error) {
-      return new Response(JSON.stringify({ error: error.message }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      console.error('SBA selection failed', { code: error.code });
+      return json({ error: 'Unable to load questions' }, 500);
     }
 
-    // Governance: Remove sensitive fields
-    const safeItems = (items || []).map((item: any) => ({
-      id: item.id,
-      stem: item.stem,
-      text: item.text,
-      options: item.options,
-      topic: item.topic,
-      ra: item.ra,
-      difficulty: item.difficulty,
-      keywords: item.keywords,
-      gold: item.gold,
-      causal_chain: item.causal_chain,
-      feedback_by_mode: item.feedback_by_mode,
-      micro_drill: item.micro_drill,
-    }));
-
-    return new Response(
-      JSON.stringify({
-        items: safeItems,
-        count: safeItems.length,
-        watermark: {
-          user_id: user.id,
-          issued_at: new Date().toISOString(),
-          expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-        },
-      }),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'private, no-store',
-        },
+    const items = Array.isArray(data) ? data : [];
+    const first = items[0] || {};
+    if (items.length > 0) {
+      const expiresAt = new Date(Date.now() + 4 * 60 * 60 * 1000).toISOString();
+      const assignments = items.map((item: { id: string; cycle_no?: number }) => ({
+        user_id: user.id,
+        cycle_no: item.cycle_no || first.cycle_no || 1,
+        question_id: item.id,
+        mode,
+        assigned_at: new Date().toISOString(),
+        expires_at: expiresAt,
+        answered_at: null,
+      }));
+      await supabase
+        .from('sba_question_assignments')
+        .delete()
+        .eq('user_id', user.id)
+        .is('answered_at', null)
+        .lte('expires_at', new Date().toISOString());
+      const { error: assignmentError } = await supabase
+        .from('sba_question_assignments')
+        .upsert(assignments, {
+          onConflict: 'user_id,cycle_no,question_id',
+          ignoreDuplicates: true,
+        });
+      if (assignmentError) {
+        console.error('SBA assignment creation failed', { code: assignmentError.code });
+        return json({ error: 'Unable to load questions' }, 500);
       }
-    );
-  } catch (err) {
-    return new Response(JSON.stringify({ error: String(err) }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
+    }
+    return json({
+      items,
+      count: items.length,
+      cycle: first.cycle_no || 1,
+      remaining_in_cycle: first.remaining_in_cycle || 0,
+      selection: 'random_without_replacement',
+      strategy: adaptiveSelection ? 'adaptive' : 'random',
     });
+  } catch (error) {
+    console.error('Unexpected SBA bank failure', error);
+    return json({ error: 'Unable to load questions' }, 500);
   }
 });

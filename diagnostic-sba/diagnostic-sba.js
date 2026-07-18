@@ -14,10 +14,27 @@
 // QUESTIONS: dynamic from window.PREGUNTAS_BANK
 let QUESTIONS = [];
 let ACTIVE_MODE = null;
+const REQUEST_TIMEOUT_MS = 15000;
+
+function localizedDifficulty(value){
+  const key=String(value||'').trim().toLowerCase();
+  return {
+    foundation:'Fundamento',beginner:'Inicial',intermediate:'Intermedio',
+    advanced:'Avanzado',expert:'Experto'
+  }[key]||value||'—';
+}
+
+async function fetchWithTimeout(url,options){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),REQUEST_TIMEOUT_MS);
+  try{return await fetch(url,{...(options||{}),signal:controller.signal});}
+  finally{clearTimeout(timer);}
+}
+
 function bankToQ(item){
   return {
     id:item.id, source_question_id:item.source_question_id,
-    topic:item.topic||'—', ra:item.ra||'—', difficulty:item.difficulty||'—',
+    topic:item.topic||'—', ra:item.ra||'—', difficulty:localizedDifficulty(item.difficulty),
     cognitive_skill:item.ra?('RA: '+item.ra):'—', est_time:'45–90 s',
     text:item.text||'', options:item.options||[],
     enriched:!!item.enriched,
@@ -46,23 +63,21 @@ function setModeStatus(message,state){
 }
 async function loadMode(mode){
   try{
-    console.log('[loadMode] Starting for mode:', mode);
     showModeAuthMessage(false);
     const token=await requireAuth();
-    console.log('[loadMode] Got token, calling get-sba-bank');
     const size={quick_drill:5,express:10,standard:25,mock_theory_1:50}[mode]||10;
     const params=new URLSearchParams({limit:String(size),mode,cycle:'1'});
-    const resp=await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?'+params,
-      {headers:{'Authorization':'Bearer '+token}});
-    console.log('[loadMode] Response status:', resp.status);
+    const resp=await fetchWithTimeout('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?'+params,
+      {headers:{'Authorization':'Bearer '+token},cache:'no-store'});
     if(resp.status===401){
       showModeAuthMessage(true);
       console.error('Authentication required');
       return false;
     }
+    if(!resp.ok) throw new Error('get-sba-bank status: '+resp.status);
     const {items}=await resp.json();
     const all=items||[];
-    if(!Array.isArray(all)){console.error('API returned non-array');return false;}
+    if(!Array.isArray(all)||all.length!==size) throw new Error('Incomplete question set');
     ACTIVE_MODE=mode;
     // The backend returns exactly the requested random, not-yet-completed set.
     // Local recency is no longer authoritative across devices or sign-ins.
@@ -75,7 +90,6 @@ async function loadMode(mode){
   }
 }
 function startMode(mode){
-  console.log('[startMode] Initiating mode:', mode);
   setModeStatus('Validando tu acceso…','loading');
   const accessMode = {
     quick_drill: 'sba_quick_drill',
@@ -93,20 +107,15 @@ function startMode(mode){
         enforcement: 'active',
     }).then(decision=>{
       if(decision.would_allow) {
-        console.log('[startMode] Access allowed, starting session');
         startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
       } else {
-        console.log('[startMode] Access denied:', decision.denial_reason);
         setModeStatus('','');
       }
     }).catch(error=>{
       console.error('[startMode] Access check failed:',error);
       setModeStatus('No pudimos validar tu acceso. Intenta de nuevo.','error');
     });
-  } else {
-    console.log('[startMode] No WSETModeAccessGate found, proceeding directly');
-    startAllowedMode(mode).catch(e=>console.error('startAllowedMode error:',e));
-  }
+  } else setModeStatus('No pudimos validar tu acceso. Recarga la página e intenta de nuevo.','error');
 }
 
 async function startAllowedMode(mode){
@@ -176,7 +185,10 @@ function mentorLabel() {
 // Fallback determinista por pregunta (auditoría Z.2): se usa cuando el banco
 // no incluye feedback_by_mode. Construido solo con campos existentes del ítem.
 function fallbackFeedback(q) {
-  const idx = (typeof q.correct_index === 'number') ? q.correct_index : 0;
+  if(typeof q.correct_index!=='number'){
+    return 'No pudimos recuperar la retroalimentación de esta pregunta. Intenta nuevamente.';
+  }
+  const idx = q.correct_index;
   const letter = String.fromCharCode(65 + idx);
   const correctTxt = (q.options && q.options[idx]) || '';
   return `La respuesta correcta es ${letter}: «${correctTxt}». ` +
@@ -632,6 +644,18 @@ function reSelectOption(i) {
 function confirmCross() { goToReveal(); }
 function hardLock()     { goToReveal(); }
 
+function showAnswerError(message){
+  let alert=document.getElementById('answerValidationError');
+  if(!alert){
+    alert=document.createElement('div');
+    alert.id='answerValidationError';
+    alert.setAttribute('role','alert');
+    alert.style.cssText='margin:0 0 16px;padding:12px 14px;border:1px solid #8f4b4b;border-radius:7px;background:#251313;color:#ffd4d4;font-size:13px;';
+    document.getElementById('mainContent')?.prepend(alert);
+  }
+  alert.textContent=message;
+}
+
 async function goToReveal() {
   stopTimer();
   const q = currentQ();
@@ -643,13 +667,20 @@ async function goToReveal() {
     const token = await requireAuth();
     const selLetter = (typeof STATE.selectedOption === 'number')
       ? String.fromCharCode(65 + STATE.selectedOption) : '';
-    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
+    const resp = await fetchWithTimeout('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
       method:'POST',
       headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
-      body: JSON.stringify({ item_id:q.id, selected_letter:selLetter, mode:STATE.mentorMode })
+      cache:'no-store',
+      body: JSON.stringify({
+        item_id:q.id,
+        selected_letter:selLetter,
+        mode:STATE.mentorMode,
+        session_mode:ACTIVE_MODE
+      })
     });
     if (resp.ok) {
       const r = await resp.json();
+      if(typeof r.correct_index!=='number') throw new Error('Invalid validation response');
       isCorrect = !!r.correct;
       if (typeof r.correct_index === 'number') q.correct_index = r.correct_index;
       q.correct_letter = r.correct_letter || q.correct_letter;
@@ -658,11 +689,13 @@ async function goToReveal() {
       q.feedback_by_mode = r.feedback ? { mentor:r.feedback, trainer:r.feedback, reviewer:r.feedback } : null;
     } else {
       console.error('validate-sba-answer status:', resp.status);
-      isCorrect = (typeof q.correct_index==='number') && (STATE.selectedOption === q.correct_index);
+      showAnswerError('No pudimos validar tu respuesta. Intenta de nuevo; tu avance no se perdió.');
+      return;
     }
   } catch(e){
     console.error('validate-sba-answer error:', e);
-    isCorrect = (typeof q.correct_index==='number') && (STATE.selectedOption === q.correct_index);
+    showAnswerError('No pudimos validar tu respuesta. Revisa tu conexión e intenta de nuevo.');
+    return;
   }
   STATE.session.answered++;
   if (isCorrect) STATE.session.correct++;

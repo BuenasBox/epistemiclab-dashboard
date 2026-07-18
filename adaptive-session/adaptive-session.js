@@ -270,7 +270,12 @@ async function confirmAnswer() {
     const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item_id: q.question_id, selected_letter: STATE.selected, mode: 'mentor' })
+      body: JSON.stringify({
+        item_id: q.question_id,
+        selected_letter: STATE.selected,
+        mode: 'mentor',
+        session_mode: STATE.payload.api_mode
+      })
     });
     if (!resp.ok) throw new Error('validate-sba-answer status: ' + resp.status);
     const result = await resp.json();
@@ -590,7 +595,7 @@ async function buildSBA(mode){
       if(!selected.length){console.error('API returned no adaptive questions');return null;}
       const modeLabel={express_10:'EXPRESS_10',standard_25:'STANDARD_25',mock_theory_50:'MOCK_THEORY_50'}[mode]||mode;
       return {
-        generated_at:new Date().toISOString(), session_mode:modeLabel,
+        generated_at:new Date().toISOString(), session_mode:modeLabel, api_mode:mode,
         pool_size:bank.remaining_in_cycle||selected.length, pool_source:'supabase_cycle', target_size:selected.length,
         governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true},
         mission_briefing:{strong_areas:weakness.strongTopics.slice(0,4),weak_areas:weakness.weakTopics.slice(0,4),
