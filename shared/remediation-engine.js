@@ -146,7 +146,7 @@
       return {
         experience: 'open_response',
         reason: 'Ya practicaste suficiente SBA. Mejora tu articulación en respuestas abiertas.',
-        label: 'Ir a Open Response Lab'
+        label: 'Ir al Laboratorio de Respuesta Abierta'
       };
     }
     // If they've done OR, suggest SAT

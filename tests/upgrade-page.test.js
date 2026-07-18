@@ -73,6 +73,10 @@ test('upgrade page exposes only the approved commercial plans', () => {
     assert.ok(plan.cta.label);
     assert.ok(plan.cta.href);
   });
+  assert.doesNotMatch(
+    JSON.stringify(getPlanCatalog()),
+    /Diagnostic SBA|Open Response Lab|Adaptive Express|SAT Sprint|Full Simulation/,
+  );
 });
 
 test('upgrade page renders Spanish plan content and placeholder CTAs', () => {
@@ -99,7 +103,7 @@ test('upgrade page cache-busts the modal JavaScript and stylesheet', () => {
   );
 
   assert.match(html, /\.\/upgrade\.css\?v=20260615-codes4/);
-  assert.match(html, /\.\/upgrade\.js\?v=20260615-codes4/);
+  assert.match(html, /\.\/upgrade\.js\?v=20260718-1/);
   assert.match(
     html,
     /\.\.\/shared\/upgrade-request-store\.js\?v=20260615-pending3/,

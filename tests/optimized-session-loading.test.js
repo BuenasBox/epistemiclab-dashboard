@@ -17,6 +17,8 @@ const dashboardHtml = read('dashboard', 'index.html');
 const dashboardLoader = read('dashboard', 'dashboard-loader.js');
 const dashboardEndpoint = read('supabase', 'functions', 'get-epistemic-profile-dashboard', 'index.ts');
 const profileHtml = read('profile', 'index.html');
+const learningLoopHtml = read('learning-loop', 'index.html');
+const mentorHtml = read('mentor', 'index.html');
 
 test('adaptive sessions request only the selected size and grade on the server', () => {
   assert.match(adaptive, /express_10:10,standard_25:25,mock_theory_50:50/);
@@ -103,4 +105,16 @@ test('profile defers optional intelligence modules and omits unused scripts', ()
   assert.match(profileHtml, /session-store\.js" defer/);
   assert.doesNotMatch(profileHtml, /weakness-sync\.js|simulation-coaching\.js|Student Profile V1/);
   assert.match(profileHtml, /Perfil del estudiante/);
+});
+
+test('mentor and learning plan use one private live profile without sample fallbacks', () => {
+  [learningLoopHtml, mentorHtml].forEach((source) => {
+    assert.match(source, /get-epistemic-profile-dashboard/);
+    assert.match(source, /cache:\s*'no-store'/);
+    assert.match(source, /controller\.abort\(\)/);
+  });
+  assert.match(learningLoopHtml, /typeof getAuthToken === 'function'/);
+  assert.doesNotMatch(learningLoopHtml, /get-epistemic-profile-summary|get-epistemic-profile-sessions|Promise\.all\(keys/);
+  assert.doesNotMatch(learningLoopHtml, /var SAMPLE/);
+  assert.doesNotMatch(mentorHtml, /var SAMPLE/);
 });

@@ -70,39 +70,19 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
 </div>
 
 <script src="/platform-nav.js" defer></script>
-<script src="./learning-loop-engine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
+<script src="../shared/auth-token.js"></script>
+<script src="./learning-loop-engine.js?v=20260718-1"></script>
 <script>
 (function () {
   "use strict";
-  var BASE = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/";
-  var EP = {
-    summary: "get-epistemic-profile-summary",
-    recent_sessions: "get-epistemic-profile-sessions",
-    open_misconceptions: "get-epistemic-profile-misconceptions",
-    recommendations: "get-epistemic-profile-recommendations",
-    readiness: "get-epistemic-profile-readiness"
-  };
+  var PROFILE_ENDPOINT = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-epistemic-profile-dashboard";
 
-  // Read model de ejemplo (forma EP-03). Muestra un HALT por misconception abierta.
-  var SAMPLE = {
-    summary: { ok: true, view: 'summary', data: {
-      profile_version: 'EP-01', status: 'active', event_count: 64, last_activity_at: null,
-      weakest_metric: 'calibration',
-      metrics: {
-        domain: m(0.68, 20), calibration: m(0.74, 12), transfer: m(0.71, 6), readiness: m(0.66, 4), adherence: m(0.85, 5)
-      } } },
-    recent_sessions: { ok: true, view: 'recent_sessions', data: [
-      s('label-guided', '2026-06-18'), s('label-guided', '2026-06-17'), s('bottle-guided', '2026-06-16'), s('bottle-guided', '2026-06-15')
-    ] },
-    open_misconceptions: { ok: true, view: 'open_misconceptions', data: [
-      { misconception_id: 'praedikat-equals-sweetness', label: 'Prädikat no es dulzor', detected_at: '2026-06-15T00:00:00.000Z', last_seen_at: '2026-06-17T00:00:00.000Z', evidence_count: 2, domain_tags: ['Teoria'] }
-    ] },
-    recommendations: { ok: true, view: 'recommendations', data: [
-      { recommendation_id: 'close_open_misconceptions', priority: 2, reason: 'Open misconceptions still have no later resolving evidence.', action: '…' }
-    ] }
+  var EMPTY = {
+    summary: { data: { metrics: {} } }, recent_sessions: { data: [] },
+    open_misconceptions: { data: [] }, recommendations: { data: [] },
+    readiness: { data: { components: [] } }
   };
-  function m(v, n) { return { value: v, evidence_count: n, status: 'derived', source_event_types: [] }; }
-  function s(type, day) { return { session_id: type + day, session_type: type, status: 'completed', started_at: day + 'T00:00:00.000Z', completed_at: day + 'T00:30:00.000Z' }; }
 
   function esc(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function setSrc(kind, text){ var el=document.getElementById('src'); el.className='src '+kind; document.getElementById('srcLabel').textContent=text; }
@@ -113,23 +93,23 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
     document.getElementById('decision').innerHTML =
       '<div class="decision'+(halt?' halt':'')+'">'+
         '<div class="state-row">'+
-          '<span class="pill state">'+esc(r.state)+'</span>'+
+          '<span class="pill state">'+esc({cold_start:'Inicio',reinforce:'Refuerzo',progress:'Progreso',simulation_ready:'Simulacro disponible',exam_ready:'Preparación completa'}[r.state]||r.state)+'</span>'+
           (halt?'<span class="pill halt">Detener y reforzar</span>':'<span class="pill go">Avanzar</span>')+
         '</div>'+
         '<div class="next-label">Siguiente práctica</div>'+
         '<div class="next-practice">'+esc(r.next.label)+'</div>'+
         '<p class="next-reason">'+esc(r.next.reason)+'</p>'+
         '<div class="gate">Puerta del simulacro: '+(gate.open?'abierta':'cerrada')+
-          ' · readiness '+(gate.current==null?'sin evidencia':gate.current+'%')+' / '+gate.threshold+'%'+
-          (r.blocker?(' · frena: '+esc(r.blocker.label)+' ('+esc(r.blocker.kind)+')'):'')+'</div>'+
+          ' · preparación '+(gate.current==null?'sin evidencia':gate.current+'%')+' / '+gate.threshold+'%'+
+          (r.blocker?(' · frena: '+esc(r.blocker.label)+' ('+esc({metric:'métrica',competency:'competencia',component:'componente'}[r.blocker.kind]||r.blocker.kind)+')'):'')+'</div>'+
       '</div>';
   }
   function renderQA(a){
     var Q = [
       ['¿Qué práctica sigue?', a.whatNext], ['¿Por qué?', a.why],
-      ['¿Qué misconception corregir primero?', a.whichMisconceptionFirst],
+      ['¿Qué idea errónea corregir primero?', a.whichMisconceptionFirst],
       ['¿Qué competencia frena el progreso?', a.whichCompetencyBlocking],
-      ['¿Cuándo repetir Bottle?', a.repeatBottleWhen], ['¿Cuándo pasar a Label?', a.moveToLabelWhen],
+      ['¿Cuándo repetir Botellas?', a.repeatBottleWhen], ['¿Cuándo pasar a Etiquetas?', a.moveToLabelWhen],
       ['¿Cuándo recomendar Simulacro Completo?', a.recommendFullSimWhen], ['¿Cuándo detener y reforzar?', a.haltWhen]
     ];
     document.getElementById('qa').innerHTML = Q.map(function(x){
@@ -164,23 +144,31 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
     setTimeout(function(){ rat.classList.add('ll-in'); }, 220 + qaRows.length*70 + 150);
   }
 
-  async function fetchView(path, token){
-    var r = await fetch(BASE+path, { headers:{ Authorization:'Bearer '+token } });
-    return await r.json();
+  async function fetchProfile(token){
+    var controller = new AbortController();
+    var timeout = setTimeout(function(){ controller.abort(); }, 15000);
+    try {
+      var response = await fetch(PROFILE_ENDPOINT, {
+        headers:{ Authorization:'Bearer '+token }, cache:'no-store', signal:controller.signal
+      });
+      if (!response.ok) throw new Error('Profile status: '+response.status);
+      var payload = await response.json();
+      if (!payload || payload.ok !== true || !payload.bundle) throw new Error('Invalid profile payload');
+      return payload.bundle;
+    } finally { clearTimeout(timeout); }
   }
   async function load(){
-    var token = window.__EP_TOKEN__ || null;
+    var token = null;
     var bundle = null, live = false;
+    try { token = typeof getAuthToken === 'function' ? await getAuthToken() : null; } catch(e) {}
     if (token) {
       try {
-        var keys = Object.keys(EP);
-        var results = await Promise.all(keys.map(function(k){ return fetchView(EP[k], token); }));
-        bundle = {}; keys.forEach(function(k,i){ bundle[k]=results[i]; });
-        live = results.every(function(x){ return x && x.ok; });
+        bundle = await fetchProfile(token);
+        live = true;
       } catch(e) { live = false; }
     }
-    if (!live) bundle = SAMPLE;
-    setSrc(live?'live':'sample', live?'Analizando tu progreso en vivo':'Datos de ejemplo · sin sesión autenticada');
+    if (!live) bundle = EMPTY;
+    setSrc(live?'live':'sample', live?'Analizando tu progreso en vivo':(token?'No pudimos cargar tu progreso':'Inicia sesión para construir tu plan'));
     var r = window.LearningLoop.fromEndpoints(bundle);
     renderDecision(r); renderQA(r.answers); renderRat(r);
     animateReveal();

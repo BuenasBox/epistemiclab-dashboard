@@ -171,7 +171,7 @@
         'No hay evidencia suficiente para evaluar tu nivel todavía. Cuando completes algunas prácticas, podré leer tu dominio, tu calibración y tu preparación.',
         'Evidencia: ' + totalEvidence + ' eventos con resultado.');
       push(SEV.RECOMENDACION, 'Empieza por una práctica guiada',
-        'Una sesión de Bottle Guided o Label Guided genera la primera evidencia para tu perfil.',
+        'Una sesión guiada de Botellas o Etiquetas genera la primera evidencia para tu perfil.',
         'Base: sin métricas derivadas (insufficient_evidence).');
       return finalize(messages, { readiness: null, band: null, competencies: competencySnapshot(ev.decisionsByComp) });
     }
@@ -207,7 +207,7 @@
     var weak = weakestCompetency(ev.decisionsByComp, 3);
     if (weak && weak.acc < 0.7) {
       push(SEV.ATENCION, 'Tu eje más débil es ' + weak.name,
-        'Concentra tu próxima práctica deliberada aquí: es donde más sube tu readiness ahora mismo.',
+        'Concentra tu próxima práctica deliberada aquí: es donde más sube tu preparación ahora mismo.',
         'Base: ' + weak.correct + '/' + weak.total + ' correctas en ' + weak.name + ' (' + pct(weak.acc) + '%).');
     } else if (!weak && has(domain) && domain.value < 0.6) {
       push(SEV.ATENCION, 'Dominio general aún en formación',
@@ -223,7 +223,7 @@
         : ' Ya puedes afrontar el simulacro completo.';
       push(SEV.SINTESIS, 'Preparación: ' + band + ' (' + v + '%)',
         'Estás ' + (readiness.value >= TH.pass ? 'por encima' : 'por debajo') + ' del aprobado (' + pct(TH.pass) + '%); el objetivo recomendado antes de presentarte es ' + pct(TH.target) + '%.' + gate,
-        'Base: readiness ' + v + '% sobre ' + readiness.evidence_count + ' sesiones integradas.');
+        'Base: preparación ' + v + '% sobre ' + readiness.evidence_count + ' sesiones integradas.');
     }
 
     // 6) Refuerzos basados en evidencia (no motivacionales: citan datos)
@@ -264,13 +264,13 @@
     }
     var weak = weakestCompetency(ev.decisionsByComp, 3);
     if (weak && weak.acc < 0.7) {
-      return { title: 'Siguiente paso: práctica deliberada de ' + weak.name, body: 'Una sesión enfocada en tu eje más débil es lo que más mueve tu readiness ahora.', basis: 'Prioridad: ' + weak.name + ' ' + pct(weak.acc) + '%.' };
+      return { title: 'Siguiente paso: práctica deliberada de ' + weak.name, body: 'Una sesión enfocada en tu eje más débil es lo que más mueve tu preparación ahora.', basis: 'Prioridad: ' + weak.name + ' ' + pct(weak.acc) + '%.' };
     }
     if (has(m.calibration) && m.calibration.value < TH.calLow) {
       return { title: 'Siguiente paso: ejercicio de calibración', body: 'Practica declarando tu confianza en cada decisión y compárala con el resultado.', basis: 'Prioridad: calibración ' + pct(m.calibration.value) + '%.' };
     }
     if (has(m.readiness) && m.readiness.value >= TH.sim) {
-      return { title: 'Siguiente paso: simulacro completo', body: 'Tu preparación ya permite una sesión en condiciones de examen.', basis: 'Base: readiness ' + pct(m.readiness.value) + '% ≥ ' + pct(TH.sim) + '%.' };
+      return { title: 'Siguiente paso: simulacro completo', body: 'Tu preparación ya permite una sesión en condiciones de examen.', basis: 'Base: preparación ' + pct(m.readiness.value) + '% ≥ ' + pct(TH.sim) + '%.' };
     }
     return { title: 'Siguiente paso: práctica ciega', body: 'Retira el apoyo de identidad para consolidar tu juicio independiente.', basis: 'Base: progresión natural del andamiaje.' };
   }

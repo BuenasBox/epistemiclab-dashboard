@@ -81,7 +81,7 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-si
 <div class="wrap">
   <div class="eyebrow">Interpretación de tu progreso</div>
   <h1>Tu Mentor</h1>
-  <p class="lead">Análisis basado en tu evidencia real. Cada observación se basa solo en lo que ya demostraste: tus fortalezas, áreas de mejora, calibración y readiness.</p>
+  <p class="lead">Análisis basado en tu evidencia real. Cada observación se basa solo en lo que ya demostraste: tus fortalezas, áreas de mejora, calibración y preparación.</p>
 
   <div class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></div>
   <div id="cards"></div>
@@ -92,42 +92,12 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-si
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
 <script src="../shared/auth-token.js"></script>
 <script src="../epistemic-profile/epistemic-profile-client.js"></script>
-<script src="./mentor-cognitivo.js"></script>
+<script src="./mentor-cognitivo.js?v=20260718-1"></script>
 <script src="./mentor-cognitivo-ui.js"></script>
 <script>
 (function () {
   "use strict";
-  var EP_ENDPOINT = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-epistemic-profile";
-
-  // Datos de ejemplo (sin sesión autenticada). Forma EP-01 real; sirven solo para
-  // demostrar la interpretación. En la app autenticada se sustituyen por get-epistemic-profile.
-  var SAMPLE = {
-    metrics: {
-      domain:      { value: 0.66, evidence_count: 18, status: 'derived', source_event_types: ['decision_made'] },
-      calibration: { value: 0.47, evidence_count: 12, status: 'derived', source_event_types: ['confidence_selected'] },
-      transfer:    { value: 0.42, evidence_count: 6,  status: 'derived', source_event_types: ['novel_item_presented','practice_completed'] },
-      readiness:   { value: 0.62, evidence_count: 4,  status: 'derived', source_event_types: ['simulation_completed','session_completed'] },
-      adherence:   { value: 0.8,  evidence_count: 5,  status: 'derived', source_event_types: ['practice_completed','session_completed','time_expired'] }
-    },
-    events: [
-      // Nariz como eje débil (2/5)
-      d('Nariz','incorrect'), d('Nariz','incorrect'), d('Nariz','correct'), d('Nariz','incorrect'), d('Nariz','correct'),
-      d('Paladar','correct'), d('Paladar','correct'), d('Paladar','correct'), d('Teoria','correct'), d('Teoria','correct'),
-      // sobreconfianza: alta confianza + fallo
-      c(80,'incorrect'), c(75,'incorrect'), c(40,'correct'),
-      // misconception activa + una resuelta
-      mis('praedikat-equals-sweetness','detected','Prädikat no es dulzor'),
-      mis('weight-equals-quality','detected','El peso de la botella no es calidad'),
-      mis('weight-equals-quality','resolved','El peso de la botella no es calidad')
-    ]
-  };
-  function base(type, payload, evidence) {
-    return { event_id: 'sample-' + Math.random().toString(36).slice(2), event_type: type,
-      occurred_at: new Date().toISOString(), payload: payload || {}, evidence: evidence || {}, schema_version: 'EP-01' };
-  }
-  function d(comp, outcome) { return base('decision_made', { decision_axis: comp, selected_value: 'x' }, { outcome: outcome, domain_tags: [comp] }); }
-  function c(conf, outcome) { return base('confidence_selected', { confidence: conf }, { outcome: outcome }); }
-  function mis(id, status, title) { return base('misconception_' + status, { misconception_id: id }, { title: title }); }
+  var EP_ENDPOINT = "https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-epistemic-profile-dashboard";
 
   function setSource(kind, text) {
     var el = document.getElementById('src');
@@ -141,18 +111,23 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-si
     var metrics = null, live = false;
     if (token) {
       try {
-        var r = await fetch(EP_ENDPOINT, { headers: { Authorization: 'Bearer ' + token } });
+        var controller = new AbortController();
+        var timeout = setTimeout(function(){ controller.abort(); }, 15000);
+        var r;
+        try {
+          r = await fetch(EP_ENDPOINT, { headers: { Authorization: 'Bearer ' + token }, cache: 'no-store', signal: controller.signal });
+        } finally { clearTimeout(timeout); }
+        if (!r.ok) throw new Error('Profile status: ' + r.status);
         var j = await r.json();
-        if (j && j.ok && j.derived_metrics && j.derived_metrics.metrics) { metrics = j.derived_metrics.metrics; live = true; }
+        if (j && j.ok && j.bundle && j.bundle.summary && j.bundle.summary.data) { metrics = j.bundle.summary.data.metrics || {}; live = true; }
       } catch (e) { /* degradación elegante → estado vacío */ }
     }
     if (!metrics) {
-      metrics = SAMPLE.metrics;
+      metrics = {};
       if (!token) events = [];
-      else if (!events.length) events = SAMPLE.events;
     }
     setSource(live ? 'live' : 'sample',
-      live ? 'Analizando tu progreso (en vivo)' : (token ? 'Cargando…' : 'Sin sesión autenticada · inicia sesión para ver tu perfil'));
+      live ? 'Analizando tu progreso (en vivo)' : (token ? 'No pudimos cargar tu progreso' : 'Sin sesión autenticada · inicia sesión para ver tu perfil'));
     var result = window.MentorCognitivo.interpret({ metrics: metrics, events: events });
     // renderReveal pinta el anillo de preparación + mapa de competencias
     // animado, y debajo las mismas Mentor Cards de siempre con el detalle

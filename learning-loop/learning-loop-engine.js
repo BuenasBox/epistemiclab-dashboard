@@ -36,10 +36,10 @@
     REMEDIATION: 'targeted-remediation', SIMULATION: 'full-simulation'
   };
   var PRACTICE_LABEL = {
-    'diagnostic': 'Diagnóstico inicial', 'bottle-guided': 'Bottle Guided', 'label-guided': 'Label Guided',
+    'diagnostic': 'Diagnóstico inicial', 'bottle-guided': 'Botellas guiadas', 'label-guided': 'Etiquetas guiadas',
     'sat-blind': 'SAT Ciego', 'calibration-drill': 'Ejercicio de calibración',
     'novel-practice': 'Práctica con material nuevo', 'targeted-remediation': 'Mini-ejercicio dirigido',
-    'full-simulation': 'Full Simulation'
+    'full-simulation': 'Simulacro completo'
   };
 
   function isNum(v) { return typeof v === 'number' && isFinite(v); }
@@ -138,7 +138,7 @@
       return { state: 'reinforce', halt: true,
         next: { practice: PRACTICE.CAL, focus: null,
           reason: 'Tu confianza todavía no predice tu acierto (calibración ' + pct(calibration.value) + '%). Saber cuándo aciertas es prerequisito para el simulacro.' },
-        blocker: { kind: 'metric', label: 'calibration' }, counts: counts, topMis: null,
+        blocker: { kind: 'metric', label: 'calibración' }, counts: counts, topMis: null,
         gate: { open: false, current: pct(val(readiness)), threshold: TH.sim } };
     }
 
@@ -147,33 +147,33 @@
       return { state: 'reinforce', halt: true,
         next: { practice: PRACTICE.TRANSFER, focus: null,
           reason: 'Rindes mejor en material visto que en nuevo (transferencia ' + pct(transfer.value) + '%). Hay que convertir memoria en razonamiento antes de avanzar.' },
-        blocker: { kind: 'metric', label: 'transfer' }, counts: counts, topMis: null,
+        blocker: { kind: 'metric', label: 'transferencia' }, counts: counts, topMis: null,
         gate: { open: false, current: pct(val(readiness)), threshold: TH.sim } };
     }
 
     // 4) PROGRESIÓN por andamiaje (sin bloqueadores)
     if (counts.bottle < TH.minBottle) {
       return progress('progress', PRACTICE.BOTTLE,
-        'Construye la inferencia visual: aún tienes ' + counts.bottle + ' de ' + TH.minBottle + ' sesiones de Bottle recomendadas.', n, counts, readiness);
+        'Construye la inferencia visual: aún tienes ' + counts.bottle + ' de ' + TH.minBottle + ' sesiones de Botellas recomendadas.', n, counts, readiness);
     }
     if (counts.label < TH.minLabel) {
       return progress('progress', PRACTICE.LABEL,
-        'Bottle consolidado (' + counts.bottle + ' sesiones). Pasa a la inferencia documental: ' + counts.label + ' de ' + TH.minLabel + ' sesiones de Label.', n, counts, readiness);
+        'La práctica con botellas está consolidada (' + counts.bottle + ' sesiones). Pasa a la inferencia documental: ' + counts.label + ' de ' + TH.minLabel + ' sesiones de Etiquetas.', n, counts, readiness);
     }
     if (!has(readiness) || readiness.value < TH.sim) {
       return progress('progress', PRACTICE.BLIND,
-        'Inferencia contextual cubierta. Retira el apoyo con práctica ciega para subir tu readiness (' + (pct(val(readiness)) == null ? 'sin evidencia aún' : pct(val(readiness)) + '%') + ' < ' + pct(TH.sim) + '%).', n, counts, readiness);
+        'Inferencia contextual cubierta. Retira el apoyo con práctica ciega para subir tu preparación (' + (pct(val(readiness)) == null ? 'sin evidencia aún' : pct(val(readiness)) + '%') + ' < ' + pct(TH.sim) + '%).', n, counts, readiness);
     }
 
     // 5) Puerta del simulacro abierta
     if (readiness.value < TH.target) {
       return progress('simulation_ready', PRACTICE.SIMULATION,
-        'Readiness ' + pct(readiness.value) + '% supera la puerta del simulacro (' + pct(TH.sim) + '%). Es el momento de integrar bajo condiciones de examen.', n, counts, readiness);
+        'La preparación de ' + pct(readiness.value) + '% supera la puerta del simulacro (' + pct(TH.sim) + '%). Es el momento de integrar bajo condiciones de examen.', n, counts, readiness);
     }
 
     // 6) Listo para examen
     return progress('exam_ready', PRACTICE.SIMULATION,
-      'Readiness ' + pct(readiness.value) + '% ≥ objetivo (' + pct(TH.target) + '%), sin ideas abiertas y con calibración y transferencia en rango. Mantén con simulacros de repaso.', n, counts, readiness);
+      'La preparación de ' + pct(readiness.value) + '% alcanza el objetivo (' + pct(TH.target) + '%), sin ideas abiertas y con calibración y transferencia en rango. Mantén con simulacros de repaso.', n, counts, readiness);
   }
 
   function progress(state, practice, reason, n, counts, readiness) {
@@ -192,9 +192,9 @@
       why: d.next.reason,
       whichMisconceptionFirst: d.topMis ? ((d.topMis.label || d.topMis.misconception_id)) : 'Ninguna idea abierta.',
       whichCompetencyBlocking: d.blocker ? (d.blocker.label + ' (' + d.blocker.kind + ')') : 'Sin bloqueador claro con la evidencia actual.',
-      repeatBottleWhen: 'Mientras la inferencia visual no esté consolidada (< ' + TH.minBottle + ' sesiones de Bottle). Ahora: ' + d.counts.bottle + ' sesión(es).',
-      moveToLabelWhen: 'Cuando Bottle esté consolidado (≥ ' + TH.minBottle + ' sesiones) y sin bloqueadores. Ahora: ' + (d.counts.bottle >= TH.minBottle ? 'cumplido' : 'aún no') + '.',
-      recommendFullSimWhen: 'Cuando readiness ≥ ' + pct(TH.sim) + '% y no haya misconceptions/calibración/transferencia frenando. Ahora: readiness ' + rb(pct(val(readiness))) + ' → ' + (d.gate.open && !d.halt ? 'disponible' : 'aún no'),
+      repeatBottleWhen: 'Mientras la inferencia visual no esté consolidada (< ' + TH.minBottle + ' sesiones de Botellas). Ahora: ' + d.counts.bottle + ' sesión(es).',
+      moveToLabelWhen: 'Cuando Botellas esté consolidado (≥ ' + TH.minBottle + ' sesiones) y sin bloqueadores. Ahora: ' + (d.counts.bottle >= TH.minBottle ? 'cumplido' : 'aún no') + '.',
+      recommendFullSimWhen: 'Cuando la preparación alcance ' + pct(TH.sim) + '% y no haya ideas erróneas, calibración o transferencia frenando. Ahora: preparación ' + rb(pct(val(readiness))) + ' → ' + (d.gate.open && !d.halt ? 'disponible' : 'aún no'),
       haltWhen: 'Detener y reforzar si hay idea abierta, calibración < ' + pct(TH.calMin) + '% o transferencia < ' + pct(TH.transferMin) + '%. Ahora: ' + (d.halt ? ('activo (' + d.state + ')') : 'sin bloqueadores')
     };
   }
@@ -203,12 +203,12 @@
     var lines = [];
     var m = n.metrics;
     var readiness = metricOf(m, 'readiness'), calibration = metricOf(m, 'calibration'), transfer = metricOf(m, 'transfer');
-    if (has(readiness)) lines.push('readiness ' + pct(readiness.value) + '% (' + readiness.evidence_count + ' sesiones)');
+    if (has(readiness)) lines.push('preparación ' + pct(readiness.value) + '% (' + readiness.evidence_count + ' sesiones)');
     if (has(calibration)) lines.push('calibración ' + pct(calibration.value) + '% (' + calibration.evidence_count + ')');
     if (has(transfer)) lines.push('transferencia ' + pct(transfer.value) + '% (' + transfer.evidence_count + ')');
-    lines.push('sesiones: ' + d.counts.bottle + ' Bottle · ' + d.counts.label + ' Label · ' + d.counts.blind + ' ciego · ' + d.counts.sim + ' simulacro');
-    lines.push('misconceptions abiertas: ' + n.misconceptions.length);
-    if (n.recommendations.length) lines.push('EP-03 recommendations: ' + n.recommendations.map(function (r) { return r.recommendation_id; }).join(', '));
+    lines.push('sesiones: ' + d.counts.bottle + ' Botellas · ' + d.counts.label + ' Etiquetas · ' + d.counts.blind + ' ciego · ' + d.counts.sim + ' simulacro');
+    lines.push('ideas erróneas abiertas: ' + n.misconceptions.length);
+    if (n.recommendations.length) lines.push('recomendaciones EP-03: ' + n.recommendations.map(function (r) { return r.recommendation_id; }).join(', '));
     return lines;
   }
 
