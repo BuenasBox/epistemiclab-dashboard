@@ -647,7 +647,7 @@ async function buildSAT(mode){
       if(!row||wines.some(w=>w.prompt_id===row.id))continue;
       const identity=(row.guided_identity&&typeof row.guided_identity==='object')?row.guided_identity:{};
       const name=identity.display_name||identity.wine_name||row.display_label||('Vino de práctica '+(wines.length+1));
-      const place=[identity.region,identity.country].filter(Boolean).join(' · ');
+      const place=identity.region||'';
       wines.push({
         prompt_id:row.id,
         wine_type:row.wine_type||identity.wine_type||'',

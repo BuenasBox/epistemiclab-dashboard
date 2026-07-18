@@ -7,6 +7,7 @@ const root = path.join(__dirname, '..');
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
 
 const migration = read('supabase', 'migrations', '20260717214719_optimize_adaptive_and_open_response_sessions.sql');
+const assignmentMigration = read('supabase', 'migrations', '20260718010000_open_response_assignment_guard.sql');
 const adaptive = read('adaptive-session', 'adaptive-session.js');
 const adaptiveHtml = read('adaptive-session', 'index.html');
 const openResponse = read('open-response-lab', 'index.html');
@@ -28,7 +29,7 @@ test('adaptive sessions request only the selected size and grade on the server',
 
 test('adaptive route defers its local dependency graph', () => {
   assert.match(adaptiveHtml, /shared\/session-store\.js" defer/);
-  assert.match(adaptiveHtml, /adaptive-session\.js\?v=20260718-1" defer/);
+  assert.match(adaptiveHtml, /adaptive-session\.js\?v=20260718-2" defer/);
   assert.doesNotMatch(adaptiveHtml, /remediation-engine|sat-sprint|learning-analytics|pedagogical-coaching-engine|readiness-indicators|simulation-coaching|learning-loop|weakness-sync/);
   assert.doesNotMatch(adaptiveHtml, /sat-wine-data/);
   assert.doesNotMatch(adaptive, /WINE_INVENTORY|SESSION_BANK\.sat_prompts/);
@@ -47,13 +48,35 @@ test('open response loads exactly the visible session size without private rubri
   assert.match(openResponse, /short_practice: 1, standard_practice: 2, extended_practice: 4, mock_theory_2: 4/);
   assert.doesNotMatch(openResponse, /get-or-bank\?limit=106/);
   assert.match(getOrBank, /select_or_questions_for_user/);
+  assert.match(getOrBank, /verifyLearningAccess/);
+  assert.match(getOrBank, /modeSizes\[mode\]/);
+  assert.match(getOrBank, /or_question_assignments/);
+  assert.match(getOrBank, /privateJsonHeaders/);
   assert.doesNotMatch(getOrBank, /expected_concepts|expected_structure|causal_chain_target|feedback_profile/);
   assert.match(migration, /create table if not exists public\.or_question_completions/);
   assert.match(migration, /not exists[\s\S]+c\.item_id = b\.item_id/);
 });
 
 test('open response records completion only after server-side evaluation', () => {
-  assert.match(evaluateOr, /complete_or_question/);
+  assert.match(evaluateOr, /claim_or_question_assignment/);
+  assert.match(evaluateOr, /verifyLearningAccess/);
+  assert.match(evaluateOr, /session_mode/);
+  assert.match(evaluateOr, /p_response_hash: await sha256\(answer\)/);
   assert.match(evaluateOr, /if \(!answer\.trim\(\) \|\| answer\.length > 20000\)/);
-  assert.match(evaluateOr, /progress: progress\?\.\[0\] \|\| null/);
+  assert.match(evaluateOr, /progress: progress\[0\]/);
+  assert.match(assignmentMigration, /create table if not exists public\.or_question_assignments/);
+  assert.match(assignmentMigration, /revoke all on table public\.or_question_assignments from public, anon, authenticated/);
+  assert.match(assignmentMigration, /response_hash = p_response_hash/);
+  assert.match(assignmentMigration, /grant execute[\s\S]+to service_role/);
+});
+
+test('open response client fails closed and does not fabricate evaluation feedback', () => {
+  assert.match(openResponse, /OR_REQUEST_TIMEOUT_MS = 15000/);
+  assert.match(openResponse, /cache: 'no-store'/);
+  assert.match(openResponse, /const initialSession = 'short_practice'/);
+  assert.match(openResponse, /if \(!window\.WSETModeAccessGate\)/);
+  assert.match(openResponse, /session_mode: state\.sessionName/);
+  assert.match(openResponse, /if \(!resp\.ok\) throw new Error\('evaluate-or status:/);
+  assert.match(openResponse, /No pudimos evaluar tu respuesta\. Intenta de nuevo\./);
+  assert.doesNotMatch(openResponse, /let fb = \{ concepts_detected:/);
 });

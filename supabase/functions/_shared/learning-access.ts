@@ -9,7 +9,11 @@ export type LearningMode =
   | 'mock_theory_1'
   | 'express_10'
   | 'standard_25'
-  | 'mock_theory_50';
+  | 'mock_theory_50'
+  | 'short_practice'
+  | 'standard_practice'
+  | 'extended_practice'
+  | 'mock_theory_2';
 
 type Requirement = 'public' | 'demo' | 'premium' | 'full_access';
 
@@ -21,6 +25,10 @@ const MODE_REQUIREMENT: Record<LearningMode, Requirement> = {
   express_10: 'premium',
   standard_25: 'full_access',
   mock_theory_50: 'full_access',
+  short_practice: 'public',
+  standard_practice: 'premium',
+  extended_practice: 'premium',
+  mock_theory_2: 'full_access',
 };
 
 const PLAN_RANK: Record<string, number> = {

@@ -21,13 +21,27 @@
  * - examiner_scoring_allowed: false
  */
 
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.108.2';
+import { privateJsonHeaders } from '../_shared/sat-access.ts';
+import { verifyLearningAccess } from '../_shared/learning-access.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+function json(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: privateJsonHeaders(corsHeaders),
+  });
+}
+
+async function sha256(value: string) {
+  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(bytes)).map((byte) => byte.toString(16).padStart(2, '0')).join('');
+}
 
 // Linguistic preprocessing
 const STOPWORDS = new Set([
@@ -146,10 +160,7 @@ Deno.serve(async (req) => {
     // 1. AUTHENTICATION
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-        status: 401,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      return json({ error: 'Unauthorized' }, 401);
     }
 
     // Initialize Supabase with service role (secure server-side context)
@@ -163,29 +174,22 @@ Deno.serve(async (req) => {
     const { data: { user }, error } = await supabase.auth.getUser(token);
 
     if (error || !user) {
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-        status: 401,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      return json({ error: 'Unauthorized' }, 401);
     }
 
     // 2. INPUT VALIDATION
     const body = await req.json();
     const item_id = body.item_id;
     const answer = (body.response_text || '').toString();
+    const sessionMode = typeof body.session_mode === 'string' ? body.session_mode.trim() : '';
 
-    if (!item_id) {
-      return new Response(JSON.stringify({ error: 'Missing item_id' }), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+    if (!item_id || typeof item_id !== 'string' || item_id.length > 160 || !sessionMode) {
+      return json({ error: 'Invalid request' }, 400);
     }
-    if (!answer.trim() || answer.length > 20000) {
-      return new Response(JSON.stringify({ error: 'Invalid response_text' }), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
+    if (!answer.trim() || answer.length > 20000) return json({ error: 'Invalid response_text' }, 400);
+
+    const access = await verifyLearningAccess(supabase, user.id, sessionMode);
+    if (!access.allowed) return json({ error: 'Access denied', reason: access.reason }, 403);
 
     // 3. FETCH QUESTION DEFINITION
     const { data: item, error: itemError } = await supabase
@@ -195,10 +199,7 @@ Deno.serve(async (req) => {
       .single();
 
     if (itemError || !item) {
-      return new Response(JSON.stringify({ error: 'Item not found' }), {
-        status: 404,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      return json({ error: 'Item not found' }, 404);
     }
 
     // 4. CONCEPT ANALYSIS
@@ -255,17 +256,21 @@ Deno.serve(async (req) => {
       ? feedbackProfile[feedbackKey]
       : null;
 
-    // A valid evaluated response completes this item in the learner's current
-    // no-repeat cycle. The operation is idempotent for retries.
-    const { data: progress, error: progressError } = await supabase.rpc('complete_or_question', {
+    // Claim the assigned item atomically before protected feedback is returned.
+    // An identical network retry is allowed; changing the answer is not.
+    const { data: progress, error: progressError } = await supabase.rpc('claim_or_question_assignment', {
       p_user_id: user.id,
       p_item_id: item_id,
+      p_mode: sessionMode,
+      p_response_hash: await sha256(answer),
     });
     if (progressError) throw progressError;
+    if (!Array.isArray(progress) || progress.length !== 1) {
+      return json({ error: 'Question is not available for evaluation' }, 409);
+    }
 
     // 7. RESPONSE
-    return new Response(
-      JSON.stringify({
+    return json({
         // Primary feedback outputs
         concepts_detected: present.concat(partial),      // what student got right/partially right
         concepts_absent: missing,                         // what's missing
@@ -278,20 +283,14 @@ Deno.serve(async (req) => {
         // WHY the response landed at this depth, in WSET3-grounded language,
         // specific to this question. null when not yet authored for this item.
         distinction_feedback,
-        progress: progress?.[0] || null,
+        progress: progress[0],
 
         // Governance watermark (user_id:24h = not persistent beyond 24h, not official)
         watermark: `${user.id}:24h`,
-      }),
-      {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      }
-    );
-  } catch (e) {
-    console.error('evaluate-or error:', e.message);
-    return new Response(
-      JSON.stringify({
+      });
+  } catch (error) {
+    console.error('evaluate-or error:', error instanceof Error ? error.message : 'unexpected failure');
+    return json({
         error: 'Internal server error',
         // Fallback response maintains governance compliance
         concepts_detected: [],
@@ -299,11 +298,6 @@ Deno.serve(async (req) => {
         missing_causal_reasoning: [],
         improvement_suggestions: ['Sin retroalimentación disponible para este elemento.'],
         distinction_feedback: null,
-      }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      }
-    );
+      }, 500);
   }
 });

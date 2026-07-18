@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Open Response Lab Privado</title>
+<title>Laboratorio de Respuesta Abierta — EpistemicLab</title>
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <style>
@@ -357,8 +357,8 @@ ul { margin: 0; padding-left: 19px; }
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous"></script>
-<script>Sentry.init({ dsn: "https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720" });</script>
+<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous" defer></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.Sentry)Sentry.init({dsn:"https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720"});});</script>
 <script src="/shared/sw-register.js" defer></script>
 </head>
 <body>
@@ -459,6 +459,7 @@ ul { margin: 0; padding-left: 19px; }
   </aside>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
 <script src="../shared/session-store.js"></script>
 <script src="../shared/supabase-public-config.js"></script>
 <script src="../shared/auth-providers/supabase-auth-provider.js"></script>
@@ -469,7 +470,6 @@ ul { margin: 0; padding-left: 19px; }
 <script src="../shared/upgrade-gate.js"></script>
 <script src="../shared/mode-access-gate.js"></script>
 <script src="../shared/learning-sync.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
 <script src="../shared/auth-token.js"></script>
 <script src="../shared/mentor-engine.js"></script>
 <script src="../shared/mentor-ui.js"></script>
@@ -485,23 +485,32 @@ ul { margin: 0; padding-left: 19px; }
     return { short_practice: "Práctica corta", standard_practice: "Práctica estándar", extended_practice: "Práctica extendida", mock_theory_2: "Simulacro Teoría Parte 2" }[name] || name;
   }
 
+  const OR_REQUEST_TIMEOUT_MS = 15000;
+  async function requestOrApi(url, options = {}) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), OR_REQUEST_TIMEOUT_MS);
+    try {
+      return await fetch(url, { ...options, cache: 'no-store', signal: controller.signal });
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
   let items = [];
   let token = null;
   const sessionSizes = { short_practice: 1, standard_practice: 2, extended_practice: 4, mock_theory_2: 4 };
-  let initialSession = 'short_practice';
-  try {
-    const stored = JSON.parse(localStorage.getItem('or_lab_state_v1') || '{}');
-    if (sessionSizes[stored.sessionName]) initialSession = stored.sessionName;
-  } catch (_error) { /* use the short session */ }
+  const initialSession = 'short_practice';
   const position0 = document.querySelector("[data-testid='question-position']");
   try {
     token = await getAuthToken();
     if (!token) { if (position0) position0.textContent = 'Inicia sesión para acceder al laboratorio'; return; }
     const params = new URLSearchParams({ limit: String(sessionSizes[initialSession]), mode: initialSession });
-    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-or-bank?' + params.toString(), {headers:{'Authorization':'Bearer '+token}});
+    const resp = await requestOrApi('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-or-bank?' + params.toString(), {headers:{'Authorization':'Bearer '+token}});
     if (resp.status === 401) { if (position0) position0.textContent = 'Sesión expirada. Recarga la página.'; return; }
+    if (!resp.ok) throw new Error('get-or-bank status: ' + resp.status);
     const data = await resp.json();
     items = Array.isArray(data.items) ? data.items : [];
+    if (items.length !== sessionSizes[initialSession]) throw new Error('Unexpected open-response item count');
   } catch(e) { console.error('Failed to load OR bank:', e); }
 
   const payload = {
@@ -561,7 +570,7 @@ ul { margin: 0; padding-left: 19px; }
     try {
       const stored = JSON.parse(localStorage.getItem('or_lab_state_v1') || "{}");
       return {
-        sessionName: validSessionName(stored.sessionName || "short_practice"),
+        sessionName: "short_practice",
         index: 0,
         answers: stored.answers || {},
         feedback: stored.feedback || {},
@@ -585,13 +594,13 @@ ul { margin: 0; padding-left: 19px; }
     const count = sessionSizes[name] || 1;
     const params = new URLSearchParams({ limit: String(count), mode: name });
     const authToken = token || await getAuthToken();
-    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-or-bank?' + params.toString(), {
+    const resp = await requestOrApi('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-or-bank?' + params.toString(), {
       headers: { 'Authorization': 'Bearer ' + authToken }
     });
     if (!resp.ok) throw new Error('get-or-bank status: ' + resp.status);
     const data = await resp.json();
     const selected = Array.isArray(data.items) ? data.items : [];
-    if (!selected.length) throw new Error('No open-response questions available');
+    if (selected.length !== count) throw new Error('Unexpected open-response item count');
     selected.forEach(item => { payload.items[item.item_id] = item; });
     payload.sessions[name] = { item_ids: selected.map(item => item.item_id) };
   }
@@ -602,9 +611,16 @@ ul { margin: 0; padding-left: 19px; }
       extended_practice: "open_response_extended",
       mock_theory_2: "open_response_mock_theory"
     }[name] || name;
-    if (!window.WSETModeAccessGate) { startAllowedSession(name); return; }
+    if (!window.WSETModeAccessGate) {
+      if (els.sessionState) els.sessionState.textContent = 'No pudimos validar el acceso. Recarga la página.';
+      return;
+    }
     window.WSETModeAccessGate.request({ route: "/open-response-lab/", experience: "open_response_lab", mode: accessMode, enforcement: "active" })
-      .then((decision) => { if (decision.would_allow) startAllowedSession(name); });
+      .then((decision) => { if (decision.would_allow) startAllowedSession(name); })
+      .catch((error) => {
+        console.error('Unable to validate open-response access:', error);
+        if (els.sessionState) els.sessionState.textContent = 'No pudimos validar el acceso. Intenta de nuevo.';
+      });
   }
   async function startAllowedSession(name) {
     const buttons = document.querySelectorAll('[data-session]');
@@ -626,29 +642,41 @@ ul { margin: 0; padding-left: 19px; }
   async function submitAnswer() {
     const item = currentItem();
     if (!item) return;
-    state.answers[item.item_id] = els.answer.value;
+    const responseText = els.answer.value.trim();
+    if (!responseText) {
+      if (els.sessionState) els.sessionState.textContent = 'Escribe una respuesta antes de evaluar.';
+      els.answer.focus();
+      return;
+    }
+    state.answers[item.item_id] = responseText;
     // Evaluation runs SERVER-SIDE (evaluate-or). The rubric never reaches the
     // browser; we receive only the final result the student is allowed to see.
-    let fb = { concepts_detected: [], concepts_absent: [], missing_causal_reasoning: [], improvement_suggestions: ["Sin retroalimentación disponible para este elemento."] };
+    let fb;
     const submitBtn = document.getElementById("submit-answer");
     if (submitBtn) submitBtn.disabled = true;
     try {
       const t = token || await getAuthToken();
-      const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/evaluate-or', {
+      const resp = await requestOrApi('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/evaluate-or', {
         method: 'POST',
         headers: { 'Authorization': 'Bearer ' + t, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ item_id: item.item_id, response_text: els.answer.value })
+        body: JSON.stringify({ item_id: item.item_id, response_text: responseText, session_mode: state.sessionName })
       });
-      if (resp.ok) {
-        const r = await resp.json();
-        fb = {
-          concepts_detected: r.concepts_detected || [],
-          concepts_absent: r.concepts_absent || [],
-          missing_causal_reasoning: r.missing_causal_reasoning || [],
-          improvement_suggestions: r.improvement_suggestions || []
-        };
-      } else { console.error('evaluate-or status:', resp.status); }
-    } catch (e) { console.error('evaluate-or error:', e); }
+      if (!resp.ok) throw new Error('evaluate-or status: ' + resp.status);
+      const r = await resp.json();
+      fb = {
+        concepts_detected: r.concepts_detected || [],
+        concepts_absent: r.concepts_absent || [],
+        missing_causal_reasoning: r.missing_causal_reasoning || [],
+        improvement_suggestions: r.improvement_suggestions || [],
+        distinction_feedback: r.distinction_feedback || [],
+        depth: r.depth || null
+      };
+    } catch (e) {
+      console.error('evaluate-or error:', e);
+      if (submitBtn) submitBtn.disabled = false;
+      if (els.sessionState) els.sessionState.textContent = 'No pudimos evaluar tu respuesta. Intenta de nuevo.';
+      return;
+    }
     if (submitBtn) submitBtn.disabled = false;
     state.feedback[item.item_id] = fb;
     state.showingFeedback = true;
