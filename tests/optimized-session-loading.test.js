@@ -18,6 +18,9 @@ test('adaptive sessions request only the selected size and grade on the server',
   assert.match(adaptive, /cycle:'1',strategy:'adaptive',mode/);
   assert.doesNotMatch(adaptive, /get-sba-bank\?limit=670/);
   assert.match(adaptive, /functions\/v1\/validate-sba-answer/);
+  assert.match(adaptive, /session_mode: STATE\.payload\.api_mode/);
+  assert.match(adaptive, /adaptiveFetch/);
+  assert.match(adaptive, /selected\.length!==size/);
   assert.match(adaptive, /correct_answer:null/);
   assert.doesNotMatch(adaptive, /correct_answer:item\.correct_letter|correct_answer:i\.correct_letter/);
   assert.match(migration, /select_adaptive_sba_questions_for_user/);
@@ -26,6 +29,11 @@ test('adaptive sessions request only the selected size and grade on the server',
 test('adaptive route defers its local dependency graph', () => {
   assert.match(adaptiveHtml, /shared\/session-store\.js" defer/);
   assert.match(adaptiveHtml, /adaptive-session\.js" defer/);
+  assert.doesNotMatch(adaptiveHtml, /remediation-engine|sat-sprint|learning-analytics|pedagogical-coaching-engine|readiness-indicators|simulation-coaching|learning-loop|weakness-sync/);
+  assert.match(adaptiveHtml, /práctica formativa protegida/);
+  assert.doesNotMatch(adaptiveHtml, />DEBRIEFING</);
+  assert.match(adaptive, /No pudimos validar tu acceso\. Recarga la página/);
+  assert.match(adaptive, /intermediate: 'Intermedio'/);
 });
 
 test('open response loads exactly the visible session size without private rubrics', () => {

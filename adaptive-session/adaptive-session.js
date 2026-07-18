@@ -12,6 +12,41 @@ const STATE = {
   attempts:   [],
   sessionId:  new Date().toISOString(),
 };
+const ADAPTIVE_REQUEST_TIMEOUT_MS = 15000;
+
+async function adaptiveFetch(url, options) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ADAPTIVE_REQUEST_TIMEOUT_MS);
+  try {
+    return await fetch(url, { ...(options || {}), signal: controller.signal, cache: 'no-store' });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function localizedDifficulty(value) {
+  const key = String(value || '').trim().toLowerCase();
+  return {
+    foundation: 'Fundamento', beginner: 'Inicial', intermediate: 'Intermedio',
+    advanced: 'Avanzado', expert: 'Experto',
+  }[key] || value || '—';
+}
+
+function setAdaptiveStatus(message, state) {
+  const status = $('adp-status');
+  const loading = state === 'loading';
+  document.querySelectorAll('.adp-btn').forEach(button => { button.disabled = loading; });
+  if (!status) return;
+  status.textContent = message || '';
+  status.className = 'adp-status' + (message ? ' show' : '') + (state === 'error' ? ' error' : '');
+}
+
+function setAnswerStatus(message) {
+  const status = $('answer-status');
+  if (!status) return;
+  status.textContent = message || '';
+  status.classList.toggle('show', !!message);
+}
 
 /* ---- Challenge type labels ---- */
 const CHALLENGE_LABELS = {
@@ -47,7 +82,7 @@ const INCORRECT_PERFORMANCE = {
   recall:            'requiere refuerzo',
   reasoning:         'falta conectar la lógica',
   causal_chain:      'cadena causal incompleta',
-  misconception_repair: 'misconception activa',
+  misconception_repair: 'idea errónea activa',
   challenge:         'zona de desarrollo identificada',
   comparison:        'comparación requiere revisión',
 };
@@ -158,27 +193,6 @@ function renderScreen0() {
   container.appendChild(startBtn);
 }
 
-function renderError(err) {
-  const container = $('s0-content');
-  container.innerHTML = '';
-
-  const hdr = el('div', { class: 's0-header' });
-  hdr.appendChild(txt('div', 's0-eyebrow', 'Sesión Adaptativa'));
-  hdr.appendChild(txt('div', 's0-title', 'MISIÓN DE ENTRENAMIENTO'));
-  container.appendChild(hdr);
-
-  const box = el('div', { class: 'error-box' });
-  box.appendChild(txt('div', 'error-title', 'Payload no encontrado'));
-  box.appendChild(txt('p', '', 'Para generar el payload, ejecuta este comando desde la raíz del proyecto:'));
-  const cmd = el('div', { class: 'error-cmd' });
-  cmd.textContent = 'python tools/question_generation/generate_session_payload.py';
-  box.appendChild(cmd);
-  const hint = txt('p', '', '');
-  hint.innerHTML = `<br>Luego abre la página a través de un servidor local:<br><code style="color:var(--text-2)">python -m http.server 8000</code><br>y navega a <code style="color:var(--text-2)">http://localhost:8000/frontend/adaptive-session/</code>`;
-  box.appendChild(hint);
-  container.appendChild(box);
-}
-
 /* ---- Start mission ---- */
 function startMission() {
   if (!STATE.payload || STATE.payload.questions.length === 0) return;
@@ -192,6 +206,7 @@ function startMission() {
 
 /* ---- Screen 1: Question rendering ---- */
 function renderQuestion() {
+  setAnswerStatus('');
   const p = STATE.payload;
   const q = p.questions[STATE.qIdx];
   const total = p.questions.length;
@@ -262,12 +277,13 @@ async function confirmAnswer() {
   if (!STATE.selected || STATE.confirmed) return;
   STATE.confirmed = true;
   $('btn-continue').disabled = true;
+  setAnswerStatus('');
 
   const q = STATE.payload.questions[STATE.qIdx];
   let correct = false;
   try {
     const token = await requireAuth();
-    const resp = await fetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
+    const resp = await adaptiveFetch('https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/validate-sba-answer', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -279,6 +295,7 @@ async function confirmAnswer() {
     });
     if (!resp.ok) throw new Error('validate-sba-answer status: ' + resp.status);
     const result = await resp.json();
+    if (!/^[A-D]$/.test(result.correct_letter || '')) throw new Error('Invalid validation response');
     correct = !!result.correct;
     q.correct_answer = result.correct_letter || null;
     q.feedback = {
@@ -294,6 +311,7 @@ async function confirmAnswer() {
     STATE.confirmed = false;
     $('btn-continue').disabled = false;
     $('btn-continue').textContent = 'REINTENTAR VALIDACIÓN';
+    setAnswerStatus('No pudimos validar tu respuesta. Revisa tu conexión e intenta de nuevo.');
     return;
   }
 
@@ -365,7 +383,7 @@ function renderFeedback(q, correct) {
 
   // Next button label
   const isLast = STATE.qIdx >= STATE.payload.questions.length - 1;
-  $('btn-next').textContent = isLast ? 'VER DEBRIEFING' : 'SIGUIENTE RETO';
+  $('btn-next').textContent = isLast ? 'VER RESUMEN' : 'SIGUIENTE RETO';
 
   animateFeedbackReveal(fb.misconception_note);
 }
@@ -442,14 +460,6 @@ function renderDebriefing() {
 
   // Phase Y.1 — append to longitudinal learner history (analytics + weakness engine)
   if (window.LI) LI.recordSBASession(STATE.sessionId, p.session_mode, STATE.attempts);
-
-  // Phase Y.2.1 — persist weakness profiles (non-blocking)
-  if (window.WeaknessSync && window.auth && window.auth.currentUser) {
-    window.WeaknessSync.triggerWeaknessSyncAtSessionEnd(
-      window.auth.currentUser.id,
-      window.supabase
-    ).catch(err => console.warn('[Y.2.1] Weakness sync error (non-blocking):', err));
-  }
 
   // Timestamp
   $('db-timestamp').textContent = `${now.toLocaleDateString('es-ES')} · ${now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`;
@@ -585,15 +595,15 @@ async function buildSBA(mode){
       const params=new URLSearchParams({limit:String(size),cycle:'1',strategy:'adaptive',mode});
       if(weakness.weakTopics.length)params.set('weak_topics',weakness.weakTopics.slice(0,20).join(','));
       if(weakness.weakRAs.length)params.set('weak_ras',weakness.weakRAs.slice(0,10).join(','));
-      const response=await fetch(
+      const response=await adaptiveFetch(
         'https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sba-bank?'+params.toString(),
         {headers:{'Authorization':'Bearer '+token}}
       );
       if(!response.ok){console.error('get-sba-bank status:',response.status);return null;}
       const bank=await response.json();
       const selected=Array.isArray(bank.items)?bank.items:[];
-      if(!selected.length){console.error('API returned no adaptive questions');return null;}
-      const modeLabel={express_10:'EXPRESS_10',standard_25:'STANDARD_25',mock_theory_50:'MOCK_THEORY_50'}[mode]||mode;
+      if(selected.length!==size){console.error('API returned an incomplete adaptive session');return null;}
+      const modeLabel={express_10:'Exprés · 10',standard_25:'Estándar · 25',mock_theory_50:'Simulacro Teoría · 50'}[mode]||mode;
       return {
         generated_at:new Date().toISOString(), session_mode:modeLabel, api_mode:mode,
         pool_size:bank.remaining_in_cycle||selected.length, pool_source:'supabase_cycle', target_size:selected.length,
@@ -610,7 +620,7 @@ async function buildSBA(mode){
             question_id:item.id, priority_score:1, stem:item.text,
             options:(item.options||[]).reduce((result,value,index)=>{result[letters[index]||String(index)]=value;return result;},{}),
             correct_answer:null, topic:item.topic||'—', ra_id:item.ra||'—',
-            difficulty:item.difficulty||'—', challenge_type:'theory_foundation', feedback:{}
+            difficulty:localizedDifficulty(item.difficulty), challenge_type:'theory_foundation', feedback:{}
           };
         })
       };
@@ -646,21 +656,35 @@ function startAdp(mode){
     sat_practice: 'sat_practice',
     sat_mock: 'sat_mock',
   }[mode] || mode;
-  if(!window.WSETModeAccessGate)return;
+  setAdaptiveStatus('Validando tu acceso…','loading');
+  if(!window.WSETModeAccessGate){
+    setAdaptiveStatus('No pudimos validar tu acceso. Recarga la página e intenta de nuevo.','error');
+    return;
+  }
   window.WSETModeAccessGate.request({
       route: '/adaptive-session/',
       experience: 'adaptive_session',
       mode: accessMode,
       enforcement: 'active',
   }).then(decision=>{
-    if(decision.would_allow)startAllowedAdp(mode);
+    if(decision.would_allow) return startAllowedAdp(mode);
+    setAdaptiveStatus('','');
+  }).catch(error=>{
+    console.error('Adaptive access check failed:',error);
+    setAdaptiveStatus('No pudimos validar tu acceso. Intenta de nuevo.','error');
   });
 }
 
 async function startAllowedAdp(mode){
-  document.getElementById('adp-ol').classList.remove('active');
+  setAdaptiveStatus('Preparando tu sesión…','loading');
   if(mode.startsWith('sat_')){
     STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0; STATE.satResponses={};
+    if(!STATE.satPayload){
+      setAdaptiveStatus('No pudimos preparar la práctica SAT. Intenta de nuevo.','error');
+      return;
+    }
+    document.getElementById('adp-ol').classList.remove('active');
+    setAdaptiveStatus('','');
     showScreen('sat'); renderSAT();
     if(STATE.satPayload&&STATE.satPayload.duration_minutes){
       _satSec=STATE.satPayload.duration_minutes*60; clearInterval(_satTmr);
@@ -674,9 +698,11 @@ async function startAllowedAdp(mode){
   } else {
     STATE.payload=await buildSBA(mode);
     if(!STATE.payload){
-      document.getElementById('adp-ol').classList.add('active');
+      setAdaptiveStatus('No pudimos cargar las preguntas. Intenta de nuevo.','error');
       return;
     }
+    document.getElementById('adp-ol').classList.remove('active');
+    setAdaptiveStatus('','');
     STATE.screen=0; STATE.qIdx=0; STATE.selected=null; STATE.confirmed=false;
     showScreen(0); renderScreen0();
   }
@@ -760,26 +786,6 @@ function toggleProgress(){
   const box=document.getElementById('li-progress'); if(!box)return;
   if(box.style.display==='none'){box.innerHTML=window.LI?LI.renderProgress():'';box.style.display='block';}
   else box.style.display='none';
-}
-
-async function init() {
-  try {
-    // Session built client-side; no fetch needed.
-    return;
-    if (!res.ok) throw new Error(`HTTP ${res.status}: session_payload.json not found`);
-    STATE.payload = await res.json();
-
-    // Governance safety check
-    const gov = STATE.payload.governance || {};
-    if (gov.safe_for_examiner === true || gov.examiner_scoring_allowed === true) {
-      throw new Error('Governance violation detected in payload — aborting session.');
-    }
-
-    renderScreen0();
-  } catch (err) {
-    console.warn('[adaptive-session] Failed to load payload:', err.message);
-    renderError(err);
-  }
 }
 
 document.addEventListener('DOMContentLoaded',function(){/* mode overlay visible */});

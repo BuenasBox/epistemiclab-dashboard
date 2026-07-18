@@ -8,25 +8,17 @@
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <link rel="stylesheet" href="./adaptive-session.css">
 <script src="../shared/session-store.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2" defer></script>
 <script src="../shared/supabase-public-config.js" defer></script>
 <script src="../shared/auth-providers/supabase-auth-provider.js" defer></script>
 <script src="../shared/auth-providers/mock-auth-provider.js" defer></script>
 <script src="../shared/auth-provider.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2" defer></script>
 <script src="../shared/auth-token.js" defer></script>
 <script src="../shared/access-control.js" defer></script>
 <script src="../shared/access-audit.js" defer></script>
 <script src="../shared/upgrade-gate.js" defer></script>
 <script src="../shared/mode-access-gate.js" defer></script>
-<script src="../shared/remediation-engine.js" defer></script>
 <script src="../shared/sat-wine-data.js" defer></script>
-<script src="../shared/sat-sprint.js" defer></script>
-<script src="../shared/learning-analytics.js" defer></script>
-<script src="../shared/pedagogical-coaching-engine.js" defer></script>
-<script src="../shared/readiness-indicators.js" defer></script>
-<script src="../shared/simulation-coaching.js" defer></script>
-<script src="../shared/learning-loop.js" defer></script>
-<script src="../shared/weakness-sync.js" defer></script>
 <script src="coach_data.js" defer></script>
 <script src="learner_intelligence.js" defer></script>
 <script src="../shared/learning-sync.js" defer></script>
@@ -36,8 +28,8 @@
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous"></script>
-<script>Sentry.init({ dsn: "https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720" });</script>
+<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous" defer></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.Sentry)Sentry.init({dsn:"https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720"});});</script>
 <script src="/shared/sw-register.js" defer></script>
 </head>
 <body>
@@ -47,7 +39,7 @@
   <div class="adp-card">
     <div class="adp-eyebrow">Sesión Adaptativa</div>
     <div class="adp-title">Selecciona modo</div>
-    <div class="adp-sub">670 preguntas SBA + 6 prompts SAT · safe_for_examiner: false</div>
+    <div class="adp-sub">670 preguntas SBA + 6 ejercicios SAT · práctica formativa protegida</div>
     <div class="adp-slabel">Teoría · SBA</div>
     <div class="adp-btns">
       <button class="adp-btn" onclick="startAdp('express_10')"><span class="adp-blabel">Exprés · 10</span><span class="adp-bsub">10 preguntas · ~15 min</span></button>
@@ -65,6 +57,7 @@
       <button class="adp-btn" onclick="toggleProgress()"><span class="adp-blabel">Mi Progreso</span><span class="adp-bsub">RA · temas débiles · tendencias SAT</span></button>
     </div>
     <div id="li-progress" style="display:none"></div>
+    <div id="adp-status" class="adp-status" role="status" aria-live="polite"></div>
     <div class="adp-disc">Práctica formativa · Desarrollo de razonamiento profesional</div>
   </div>
 </div>
@@ -96,6 +89,7 @@
     <button class="btn btn-primary" id="btn-continue" onclick="confirmAnswer()" style="display:none">
       CONFIRMAR
     </button>
+    <div id="answer-status" class="answer-status" role="alert" aria-live="assertive"></div>
   </div>
   <!-- spacer -->
   <div style="height: 32px;"></div>
@@ -120,10 +114,10 @@
 <!-- =========================================================
      SCREEN 3 — DEBRIEFING
      ========================================================= -->
-<div id="screen-3" class="screen" role="main" aria-label="Debriefing de misión">
+<div id="screen-3" class="screen" role="main" aria-label="Resumen de misión">
   <div class="db-header">
     <div class="db-eyebrow">Misión completada</div>
-    <div class="db-title">DEBRIEFING</div>
+    <div class="db-title">RESUMEN</div>
     <div class="db-timestamp" id="db-timestamp"></div>
   </div>
   <div class="content" id="db-content"></div>

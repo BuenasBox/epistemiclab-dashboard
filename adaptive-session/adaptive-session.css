@@ -703,6 +703,12 @@ html, body {
 .adp-blabel{display:block;font-size:14px;font-weight:600;}
 .adp-bsub{display:block;font-size:11px;color:#a7b0be;margin-top:2px;}
 .adp-disc{font-size:10px;color:#8b96a5;text-align:center;margin-top:14px;}
+.adp-status{display:none;margin-top:12px;padding:9px 11px;border-radius:6px;font-size:12px;text-align:center;}
+.adp-status.show{display:block;background:#111722;color:#cbd5e1;border:1px solid #2f3b4d;}
+.adp-status.error{background:#251313;color:#ffd4d4;border-color:#8f4b4b;}
+.adp-btn:disabled{cursor:wait;opacity:.62;}
+.answer-status{display:none;margin-top:10px;padding:9px 11px;border:1px solid #8f4b4b;border-radius:6px;background:#251313;color:#ffd4d4;font-size:12px;}
+.answer-status.show{display:block;}
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
