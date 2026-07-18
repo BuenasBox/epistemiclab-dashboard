@@ -28,7 +28,7 @@ test('adaptive sessions request only the selected size and grade on the server',
 
 test('adaptive route defers its local dependency graph', () => {
   assert.match(adaptiveHtml, /shared\/session-store\.js" defer/);
-  assert.match(adaptiveHtml, /adaptive-session\.js" defer/);
+  assert.match(adaptiveHtml, /adaptive-session\.js\?v=20260718-1" defer/);
   assert.doesNotMatch(adaptiveHtml, /remediation-engine|sat-sprint|learning-analytics|pedagogical-coaching-engine|readiness-indicators|simulation-coaching|learning-loop|weakness-sync/);
   assert.doesNotMatch(adaptiveHtml, /sat-wine-data/);
   assert.doesNotMatch(adaptive, /WINE_INVENTORY|SESSION_BANK\.sat_prompts/);
