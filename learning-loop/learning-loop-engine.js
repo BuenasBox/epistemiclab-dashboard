@@ -192,8 +192,8 @@
       why: d.next.reason,
       whichMisconceptionFirst: d.topMis ? ((d.topMis.label || d.topMis.misconception_id)) : 'Ninguna idea abierta.',
       whichCompetencyBlocking: d.blocker ? (d.blocker.label + ' (' + d.blocker.kind + ')') : 'Sin bloqueador claro con la evidencia actual.',
-      repeatBottleWhen: 'Mientras la inferencia visual no esté consolidada (< ' + TH.minBottle + ' sesiones de Botellas). Ahora: ' + d.counts.bottle + ' sesión(es).',
-      moveToLabelWhen: 'Cuando Botellas esté consolidado (≥ ' + TH.minBottle + ' sesiones) y sin bloqueadores. Ahora: ' + (d.counts.bottle >= TH.minBottle ? 'cumplido' : 'aún no') + '.',
+      repeatBottleWhen: 'Mientras la inferencia visual no esté consolidada (< ' + TH.minBottle + ' sesiones de Botellas). Ahora: ' + d.counts.bottle + (d.counts.bottle === 1 ? ' sesión.' : ' sesiones.'),
+      moveToLabelWhen: 'Cuando la práctica con botellas esté consolidada (≥ ' + TH.minBottle + ' sesiones) y sin bloqueadores. Ahora: ' + (d.counts.bottle >= TH.minBottle ? 'cumplido' : 'aún no') + '.',
       recommendFullSimWhen: 'Cuando la preparación alcance ' + pct(TH.sim) + '% y no haya ideas erróneas, calibración o transferencia frenando. Ahora: preparación ' + rb(pct(val(readiness))) + ' → ' + (d.gate.open && !d.halt ? 'disponible' : 'aún no'),
       haltWhen: 'Detener y reforzar si hay idea abierta, calibración < ' + pct(TH.calMin) + '% o transferencia < ' + pct(TH.transferMin) + '%. Ahora: ' + (d.halt ? ('activo (' + d.state + ')') : 'sin bloqueadores')
     };
@@ -208,7 +208,7 @@
     if (has(transfer)) lines.push('transferencia ' + pct(transfer.value) + '% (' + transfer.evidence_count + ')');
     lines.push('sesiones: ' + d.counts.bottle + ' Botellas · ' + d.counts.label + ' Etiquetas · ' + d.counts.blind + ' ciego · ' + d.counts.sim + ' simulacro');
     lines.push('ideas erróneas abiertas: ' + n.misconceptions.length);
-    if (n.recommendations.length) lines.push('recomendaciones EP-03: ' + n.recommendations.map(function (r) { return r.recommendation_id; }).join(', '));
+    if (n.recommendations.length) lines.push('recomendaciones disponibles: ' + n.recommendations.length);
     return lines;
   }
 

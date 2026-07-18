@@ -72,7 +72,7 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
 <script src="/platform-nav.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
 <script src="../shared/auth-token.js"></script>
-<script src="./learning-loop-engine.js?v=20260718-1"></script>
+<script src="./learning-loop-engine.js?v=20260718-2"></script>
 <script>
 (function () {
   "use strict";
@@ -100,7 +100,7 @@ footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-si
         '<div class="next-practice">'+esc(r.next.label)+'</div>'+
         '<p class="next-reason">'+esc(r.next.reason)+'</p>'+
         '<div class="gate">Puerta del simulacro: '+(gate.open?'abierta':'cerrada')+
-          ' · preparación '+(gate.current==null?'sin evidencia':gate.current+'%')+' / '+gate.threshold+'%'+
+          ' · preparación '+(gate.current==null?'sin evidencia':gate.current+'%')+' / '+(gate.threshold<=1?Math.round(gate.threshold*100):gate.threshold)+'%'+
           (r.blocker?(' · frena: '+esc(r.blocker.label)+' ('+esc({metric:'métrica',competency:'competencia',component:'componente'}[r.blocker.kind]||r.blocker.kind)+')'):'')+'</div>'+
       '</div>';
   }

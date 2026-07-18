@@ -117,4 +117,6 @@ test('mentor and learning plan use one private live profile without sample fallb
   assert.doesNotMatch(learningLoopHtml, /get-epistemic-profile-summary|get-epistemic-profile-sessions|Promise\.all\(keys/);
   assert.doesNotMatch(learningLoopHtml, /var SAMPLE/);
   assert.doesNotMatch(mentorHtml, /var SAMPLE/);
+  assert.match(learningLoopHtml, /Math\.round\(gate\.threshold\*100\)/);
+  assert.doesNotMatch(learningLoopHtml, /collect_readiness_evidence|Datos de ejemplo/);
 });
