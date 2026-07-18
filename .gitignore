@@ -31,3 +31,5 @@
 /canonical-wine-catalog/exports/canonical_wines.xlsx
 /canonical-wine-catalog/exports/render_profiles.debrief.json
 /canonical-wine-catalog/exports/post_tasting_schema.md
+shared/sat-wine-data.js
+shared/sat-sprint.js

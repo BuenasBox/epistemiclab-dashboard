@@ -134,4 +134,5 @@ test('diagnostic defers required scripts and omits unused learning modules', () 
   for (const [, src, attrs] of localScripts) assert.match(attrs, /\bdefer\b/, `${src} should be deferred`);
   assert.doesNotMatch(diagnosticHtml, /learning-loop|learning-analytics|pedagogical-coaching-engine|readiness-indicators|simulation-coaching|recommendation-engine/);
   assert.match(diagnostic, /intermediate:'Intermedio'/);
+  assert.match(diagnostic, /youthful:'juvenil'/);
 });

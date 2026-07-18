@@ -24,6 +24,14 @@ function localizedDifficulty(value){
   }[key]||value||'—';
 }
 
+function localizedTopic(value){
+  const raw=String(value||'').trim();
+  if(!raw||/^RA\d(?:\s*\/.*)?$/i.test(raw))return raw||'—';
+  const terms={ageing:'crianza',vessel:'recipiente',comparison:'comparación',biological:'biológica',vs:'frente a',oxidative:'oxidativa',canada:'Canadá',icewine:'vino de hielo',acidity:'acidez',cost:'coste',fermentation:'fermentación',harvest:'cosecha',style:'estilo',variety:'variedad',drying:'secado',airflow:'flujo de aire',fortification:'fortificación',extraction:'extracción',port:'Oporto',sherry:'Jerez',volume:'volumen',fortified:'fortificados',wines:'vinos',germany:'Alemania',selection:'selección',concentration:'concentración',risk:'riesgo',press:'prensado',yield:'rendimiento',label:'etiqueta',law:'normativa',late:'tardía',colour:'color',aroma:'aroma',timing:'momento',heat:'calor',stability:'estabilidad',quality:'calidad',method:'método',cooling:'enfriamiento',influence:'influencia',early:'temprana',old:'vieja',oak:'madera',raisining:'pasificación',skin:'hollejos',contact:'contacto',warm:'cálida',young:'joven',blend:'mezcla',aged:'envejecido',youthful:'juvenil',maturation:'maduración',bottle:'botella',price:'precio',factors:'factores',acid:'acidez',morning:'matinal',mist:'niebla',balance:'equilibrio',selective:'selectiva',picking:'vendimia',vintage:'añada',transition:'transición',freshness:'frescura',first:'primera',classification:'clasificación',conditions:'condiciones',protection:'protección',consistency:'consistencia',overdraw:'extracción excesiva',sparkling:'espumosos',still:'tranquilos',storage:'conservación',and:'y',service:'servicio',readiness:'preparación',sweet:'dulce',must:'mosto',open:'abierta',pairing:'maridaje',blue:'azul',cheese:'queso',dessert:'postre',portion:'porción',temperature:'temperatura',addition:'adición',viticulture:'viticultura',wine:'vino',food:'gastronomía',winemaking:'vinificación'};
+  const label=raw.split('_').map(part=>terms[part.toLowerCase()]||part).join(' ');
+  return label.charAt(0).toUpperCase()+label.slice(1);
+}
+
 async function fetchWithTimeout(url,options){
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),REQUEST_TIMEOUT_MS);
@@ -34,7 +42,7 @@ async function fetchWithTimeout(url,options){
 function bankToQ(item){
   return {
     id:item.id, source_question_id:item.source_question_id,
-    topic:item.topic||'—', ra:item.ra||'—', difficulty:localizedDifficulty(item.difficulty),
+    topic:localizedTopic(item.topic), ra:item.ra||'—', difficulty:localizedDifficulty(item.difficulty),
     cognitive_skill:item.ra?('RA: '+item.ra):'—', est_time:'45–90 s',
     text:item.text||'', options:item.options||[],
     enriched:!!item.enriched,

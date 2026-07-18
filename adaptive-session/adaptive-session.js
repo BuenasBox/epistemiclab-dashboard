@@ -32,6 +32,14 @@ function localizedDifficulty(value) {
   }[key] || value || '—';
 }
 
+function localizedTopic(value) {
+  const raw = String(value || '').trim();
+  if (!raw || /^RA\d(?:\s*\/.*)?$/i.test(raw)) return raw || '—';
+  const terms = {ageing:'crianza',vessel:'recipiente',comparison:'comparación',biological:'biológica',vs:'frente a',oxidative:'oxidativa',canada:'Canadá',icewine:'vino de hielo',acidity:'acidez',cost:'coste',fermentation:'fermentación',harvest:'cosecha',style:'estilo',variety:'variedad',drying:'secado',airflow:'flujo de aire',fortification:'fortificación',extraction:'extracción',port:'Oporto',sherry:'Jerez',volume:'volumen',fortified:'fortificados',wines:'vinos',germany:'Alemania',selection:'selección',concentration:'concentración',risk:'riesgo',press:'prensado',yield:'rendimiento',label:'etiqueta',law:'normativa',late:'tardía',colour:'color',aroma:'aroma',timing:'momento',heat:'calor',stability:'estabilidad',quality:'calidad',method:'método',cooling:'enfriamiento',influence:'influencia',early:'temprana',old:'vieja',oak:'madera',raisining:'pasificación',skin:'hollejos',contact:'contacto',warm:'cálida',young:'joven',blend:'mezcla',aged:'envejecido',youthful:'juvenil',maturation:'maduración',bottle:'botella',price:'precio',factors:'factores',acid:'acidez',morning:'matinal',mist:'niebla',balance:'equilibrio',selective:'selectiva',picking:'vendimia',vintage:'añada',transition:'transición',freshness:'frescura',first:'primera',classification:'clasificación',conditions:'condiciones',protection:'protección',consistency:'consistencia',overdraw:'extracción excesiva',sparkling:'espumosos',still:'tranquilos',storage:'conservación',and:'y',service:'servicio',readiness:'preparación',sweet:'dulce',must:'mosto',open:'abierta',pairing:'maridaje',blue:'azul',cheese:'queso',dessert:'postre',portion:'porción',temperature:'temperatura',addition:'adición',viticulture:'viticultura',wine:'vino',food:'gastronomía',winemaking:'vinificación'};
+  const label = raw.split('_').map(part => terms[part.toLowerCase()] || part).join(' ');
+  return label.charAt(0).toUpperCase() + label.slice(1);
+}
+
 function setAdaptiveStatus(message, state) {
   const status = $('adp-status');
   const loading = state === 'loading';
@@ -159,7 +167,7 @@ function renderScreen0() {
   const cards = [
     { label: 'Áreas fuertes',    items: b.strong_areas,        labelCls: 'cs-card-label-green',  chipCls: 'chip-green'  },
     { label: 'Áreas débiles',    items: b.weak_areas,          labelCls: 'cs-card-label-amber',  chipCls: 'chip-amber'  },
-    { label: 'Misconceptions',   items: b.active_misconceptions, labelCls: 'cs-card-label-red',   chipCls: 'chip-red'    },
+    { label: 'Ideas erróneas',   items: b.active_misconceptions, labelCls: 'cs-card-label-red',   chipCls: 'chip-red'    },
     { label: 'Brechas causales', items: b.causal_gaps,         labelCls: 'cs-card-label-purple', chipCls: 'chip-purple' },
   ];
 
@@ -184,7 +192,8 @@ function renderScreen0() {
   meta.appendChild(count);
   const tbType = b.training_type || 'refuerzo';
   const tbCls = `training-badge tb-${tbType}`;
-  meta.appendChild(txt('span', tbCls, tbType.toUpperCase()));
+  const tbLabel = { diagnostico: 'DIAGNÓSTICO', refuerzo: 'REFUERZO' }[tbType] || tbType.toUpperCase();
+  meta.appendChild(txt('span', tbCls, tbLabel));
   container.appendChild(meta);
 
   // Start button
@@ -525,7 +534,7 @@ function renderDebriefing() {
   // Misconceptions triggered
   if (mc_hit.length > 0) {
     const sec = el('div', { class: 'db-section' });
-    sec.appendChild(txt('div', 'db-section-label', 'Misconceptions activadas'));
+    sec.appendChild(txt('div', 'db-section-label', 'Ideas erróneas activadas'));
     const chips = el('div', { class: 'db-chips' });
     mc_hit.forEach(a => chips.appendChild(txt('span', 'chip chip-red', a.question_id)));
     sec.appendChild(chips);
@@ -579,13 +588,8 @@ function restartSession() {
 /* ---- Bootstrap ---- */
 
 // ═══════════════════════════════════════════════════════════
-// SESSION BANK CLIENT (window.SESSION_BANK from session_bank.js)
+// PROTECTED SESSION CLIENTS
 // ═══════════════════════════════════════════════════════════
-function adpShuf(arr,salt){
-  const a=arr.slice();let s=Math.abs(((salt||Date.now()))&0x7fffffff);
-  for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0x7fffffff;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]];}
-  return a;
-}
 async function buildSBA(mode){
   try{
     const token=await requireAuth();
@@ -619,7 +623,7 @@ async function buildSBA(mode){
           return {
             question_id:item.id, priority_score:1, stem:item.text,
             options:(item.options||[]).reduce((result,value,index)=>{result[letters[index]||String(index)]=value;return result;},{}),
-            correct_answer:null, topic:item.topic||'—', ra_id:item.ra||'—',
+            correct_answer:null, topic:localizedTopic(item.topic), ra_id:item.ra||'—',
             difficulty:localizedDifficulty(item.difficulty), challenge_type:'theory_foundation', feedback:{}
           };
         })
@@ -627,19 +631,36 @@ async function buildSBA(mode){
     }
   }catch(e){console.error('buildSBA error:',e);return null;}
 }
-function buildSAT(mode){
+async function buildSAT(mode){
   const cnt=(mode==='sat_sprint')?1:2;
-  let wines=[];
-
-  // Try new wine inventory first
-  if(window.WINE_INVENTORY && window.WINE_INVENTORY.length > 0){
-    wines=adpShuf(window.WINE_INVENTORY,Date.now()).slice(0,cnt);
-  } else {
-    // Fallback to legacy SESSION_BANK.sat_prompts
-    const bk=window.SESSION_BANK;
-    if(!bk||!bk.sat_prompts){console.error('No wine inventory available');return null;}
-    wines=adpShuf(bk.sat_prompts,Date.now()).slice(0,cnt);
+  const wines=[];
+  try{
+    const token=await requireAuth();
+    for(let attempt=0;attempt<cnt*4 && wines.length<cnt;attempt++){
+      const response=await adaptiveFetch(
+        'https://hylknjjhmxsuuwbsslkr.supabase.co/functions/v1/get-sat-wines?mode=bottle_guided',
+        {headers:{'Authorization':'Bearer '+token}}
+      );
+      if(!response.ok)throw new Error('get-sat-wines status: '+response.status);
+      const payload=await response.json();
+      const row=Array.isArray(payload.wines)?payload.wines[0]:null;
+      if(!row||wines.some(w=>w.prompt_id===row.id))continue;
+      const identity=(row.guided_identity&&typeof row.guided_identity==='object')?row.guided_identity:{};
+      const name=identity.display_name||identity.wine_name||row.display_label||('Vino de práctica '+(wines.length+1));
+      const place=[identity.region,identity.country].filter(Boolean).join(' · ');
+      wines.push({
+        prompt_id:row.id,
+        wine_type:row.wine_type||identity.wine_type||'',
+        wine_name:name,
+        description:'Construye una nota SAT completa para '+name+(place?' ('+place+')':'')+'.',
+        training_note:'Practica la secuencia Aspecto → Nariz → Boca → Conclusiones. La plataforma revisará la estructura, no revelará un perfil canónico.',
+      });
+    }
+  }catch(error){
+    console.error('Unable to prepare protected SAT practice:',error);
+    return null;
   }
+  if(wines.length!==cnt)return null;
 
   return {type:'sat',mode,duration_minutes:mode==='sat_mock'?30:null,wines:wines,
     governance:{safe_for_examiner:false,examiner_scoring_allowed:false,training_item_only:true}};
@@ -678,7 +699,7 @@ function startAdp(mode){
 async function startAllowedAdp(mode){
   setAdaptiveStatus('Preparando tu sesión…','loading');
   if(mode.startsWith('sat_')){
-    STATE.satPayload=buildSAT(mode); STATE.satWineIdx=0; STATE.satResponses={};
+    STATE.satPayload=await buildSAT(mode); STATE.satWineIdx=0; STATE.satResponses={};
     if(!STATE.satPayload){
       setAdaptiveStatus('No pudimos preparar la práctica SAT. Intenta de nuevo.','error');
       return;

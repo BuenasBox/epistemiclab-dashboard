@@ -30,10 +30,17 @@ test('adaptive route defers its local dependency graph', () => {
   assert.match(adaptiveHtml, /shared\/session-store\.js" defer/);
   assert.match(adaptiveHtml, /adaptive-session\.js" defer/);
   assert.doesNotMatch(adaptiveHtml, /remediation-engine|sat-sprint|learning-analytics|pedagogical-coaching-engine|readiness-indicators|simulation-coaching|learning-loop|weakness-sync/);
+  assert.doesNotMatch(adaptiveHtml, /sat-wine-data/);
+  assert.doesNotMatch(adaptive, /WINE_INVENTORY|SESSION_BANK\.sat_prompts/);
+  assert.match(adaptive, /get-sat-wines\?mode=bottle_guided/);
+  assert.match(adaptive, /wines\.length!==cnt/);
   assert.match(adaptiveHtml, /práctica formativa protegida/);
   assert.doesNotMatch(adaptiveHtml, />DEBRIEFING</);
   assert.match(adaptive, /No pudimos validar tu acceso\. Recarga la página/);
   assert.match(adaptive, /intermediate: 'Intermedio'/);
+  assert.doesNotMatch(adaptive, /label: 'Misconceptions'|Misconceptions activadas/);
+  assert.match(adaptive, /DIAGNÓSTICO/);
+  assert.match(adaptive, /youthful:'juvenil'/);
 });
 
 test('open response loads exactly the visible session size without private rubrics', () => {
