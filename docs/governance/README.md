@@ -30,6 +30,9 @@ This folder defines the durable governance model for EpistemicLab. Governance is
 8. [CHANGE_CONTROL.md](CHANGE_CONTROL.md)  
    Defines required change declarations, critical-change approval, commit discipline, and rollback expectations.
 
+9. [SECURITY_DEFINER_FUNCTIONS.md](SECURITY_DEFINER_FUNCTIONS.md)
+   Documents the intentional privileged RPC surface, its internal authorization checks, and the rule against automatic grant revocation.
+
 ## Operating Rules
 
 - Use roles, not AI provider names, when assigning ownership.

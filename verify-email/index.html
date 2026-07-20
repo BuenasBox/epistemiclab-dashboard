@@ -272,14 +272,14 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
   <script src="../shared/supabase-public-config.js"></script>
   <script>
     // Initialize Supabase
     const publicConfig = window.WSET_SUPABASE_CONFIG || {};
     const supabaseUrl = publicConfig.url || localStorage.getItem('supabase_url') || '';
     const supabaseKey = publicConfig.publishableKey || localStorage.getItem('supabase_key') || '';
-    let supabase = null;
+    let supabaseClient = null;
 
     if (!supabaseUrl || !supabaseKey) {
       document.getElementById('status').textContent = 'Configuración de Supabase no encontrada';
@@ -288,7 +288,7 @@
     }
 
     if (supabaseUrl && supabaseKey) {
-      supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+      supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
     } else {
       document.getElementById('btn-resend').disabled = true;
     }
@@ -297,15 +297,15 @@
     // en 401; consultar primero la sesión local mantiene silenciosas las
     // visitas anónimas.
     async function getSessionUser() {
-      const { data: { session } } = await supabase.auth.getSession();
+      const { data: { session } } = await supabaseClient.auth.getSession();
       if (!session) return null;
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { user } } = await supabaseClient.auth.getUser();
       return user;
     }
 
     // Get current user email
     async function initializePage() {
-      if (!supabase) return;
+      if (!supabaseClient) return;
       const user = await getSessionUser();
 
       if (!user) {
@@ -322,7 +322,7 @@
 
     // Resend verification email
     document.getElementById('btn-resend').addEventListener('click', async function() {
-      if (!supabase) {
+      if (!supabaseClient) {
         showStatus('Configuración de Supabase no encontrada', 'error');
         return;
       }
@@ -340,7 +340,7 @@
       }
 
       try {
-        const { error } = await supabase.auth.resend({
+        const { error } = await supabaseClient.auth.resend({
           type: 'signup',
           email: user.email,
         });
@@ -389,7 +389,7 @@
     // Check email verification status periodically
     // If verified, redirect to home page
     async function checkVerification() {
-      if (!supabase) return;
+      if (!supabaseClient) return;
       const user = await getSessionUser();
 
       if (user && user.email_confirmed_at) {

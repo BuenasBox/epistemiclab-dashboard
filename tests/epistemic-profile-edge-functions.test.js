@@ -19,7 +19,7 @@ for (const [name, source] of Object.entries({
   'record-epistemic-event': recordSource,
   'get-epistemic-profile': getSource,
 })) {
-  assert(source.includes("import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';"), `${name} must use Supabase client`);
+  assert(source.includes("import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.108.2';"), `${name} must use pinned Supabase client`);
   assert(source.includes("if (!authHeader?.startsWith('Bearer '))"), `${name} must require bearer auth`);
   assert(source.includes('supabase.auth.getUser(token)'), `${name} must validate the JWT`);
   assert(source.includes('Unauthorized: missing token'), `${name} must return a clear missing-token error`);

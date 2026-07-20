@@ -1,4 +1,4 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.108.2';
 import { validateTimelineEvent } from '../_shared/ep04-backend-read-model.ts';
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';

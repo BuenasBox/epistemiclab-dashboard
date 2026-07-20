@@ -12,7 +12,7 @@
 
   var DEFAULT_CONFIG_URL = '/api/supabase-config';
   var DEFAULT_SDK_URL =
-    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2/dist/umd/supabase.min.js';
   var sharedClientPromise = null;
 
   function requireValue(value, name) {
