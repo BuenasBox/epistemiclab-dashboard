@@ -25,6 +25,15 @@
   --purple:        #8b7cf6;
 }
 
+[hidden] { display: none !important; }
+
+.brand-version { color: var(--text-muted); }
+.confidence-gauge-arc { transition: stroke-dashoffset 0.4s ease, stroke 0.3s; }
+.instrument-label-offset { margin-top: 5px; }
+.hesitation-block { margin-top: 14px; }
+.hesitation-title { margin-bottom: 6px; }
+.hesitation-value { font-size: 10px; color: var(--text-muted); margin-left: 3px; }
+
 html, body {
   background: var(--bg);
   color: var(--text);

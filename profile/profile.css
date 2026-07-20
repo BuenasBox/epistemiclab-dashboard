@@ -293,6 +293,10 @@ button {
   display: none !important;
 }
 
+.profile-insight-section {
+  margin-top: 24px;
+}
+
 @media (max-width: 760px) {
   .profile-hero {
     padding-top: 56px;

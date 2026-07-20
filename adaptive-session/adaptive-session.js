@@ -259,7 +259,7 @@ function renderQuestion() {
 
   // Reset continue button
   const cont = $('btn-continue');
-  cont.style.display = 'none';
+  cont.hidden = true;
   cont.disabled = false;
   cont.textContent = 'CONFIRMAR RESPUESTA';
 
@@ -278,7 +278,7 @@ function selectOption(letter) {
     }
   });
 
-  $('btn-continue').style.display = 'block';
+  $('btn-continue').hidden = false;
 }
 
 /* ---- Confirm and go to feedback ---- */
@@ -805,8 +805,8 @@ function finishSAT(){
 }
 function toggleProgress(){
   const box=document.getElementById('li-progress'); if(!box)return;
-  if(box.style.display==='none'){box.innerHTML=window.LI?LI.renderProgress():'';box.style.display='block';}
-  else box.style.display='none';
+  if(box.hidden){box.innerHTML=window.LI?LI.renderProgress():'';box.hidden=false;}
+  else box.hidden=true;
 }
 
 document.addEventListener('DOMContentLoaded',function(){/* mode overlay visible */});

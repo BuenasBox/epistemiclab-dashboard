@@ -5,6 +5,8 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+[hidden] { display: none !important; }
+
 :root {
   --bg:          #0f1115;
   --panel:       #171b22;
@@ -157,6 +159,8 @@ html, body {
   margin: 0 auto;
   padding: 20px 16px 40px;
 }
+
+.screen-bottom-spacer { height: 32px; }
 
 /* ================================================================
    SCREEN 0 — MISSION BRIEFING

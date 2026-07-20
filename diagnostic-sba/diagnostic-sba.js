@@ -368,7 +368,9 @@ function render() {
     const sel = document.getElementById('mentorMode');
     if (!sel) return;
     const q = (typeof QUESTIONS !== 'undefined' && QUESTIONS && QUESTIONS.length) ? currentQ() : null;
-    sel.style.display = (q && q.feedback_by_mode) ? 'inline-block' : 'none';
+    const isAvailable = Boolean(q && q.feedback_by_mode);
+    sel.hidden = !isAvailable;
+    sel.setAttribute('aria-hidden', String(!isAvailable));
   })();
   const stages = ['prepare','read','commit','cross','reveal','train','map'];
   setProgress(Math.round((stages.indexOf(STATE.stage) / 6) * 100));

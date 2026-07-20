@@ -55,7 +55,7 @@
     <div class="adp-btns">
       <button class="adp-btn" onclick="toggleProgress()"><span class="adp-blabel">Mi Progreso</span><span class="adp-bsub">RA · temas débiles · tendencias SAT</span></button>
     </div>
-    <div id="li-progress" style="display:none"></div>
+    <div id="li-progress" hidden></div>
     <div id="adp-status" class="adp-status" role="status" aria-live="polite"></div>
     <div class="adp-disc">Práctica formativa · Desarrollo de razonamiento profesional</div>
   </div>
@@ -85,13 +85,13 @@
   <div class="q-stem-wrap"><p class="q-stem" id="q-stem"></p></div>
   <div class="options-wrap" id="options-wrap"></div>
   <div class="q-action">
-    <button class="btn btn-primary" id="btn-continue" onclick="confirmAnswer()" style="display:none">
+    <button class="btn btn-primary" id="btn-continue" onclick="confirmAnswer()" hidden>
       CONFIRMAR
     </button>
     <div id="answer-status" class="answer-status" role="alert" aria-live="assertive"></div>
   </div>
   <!-- spacer -->
-  <div style="height: 32px;"></div>
+  <div class="screen-bottom-spacer" aria-hidden="true"></div>
 </div>
 
 <!-- =========================================================
@@ -107,7 +107,7 @@
   <div class="fb-action">
     <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">SIGUIENTE RETO</button>
   </div>
-  <div style="height: 32px;"></div>
+  <div class="screen-bottom-spacer" aria-hidden="true"></div>
 </div>
 
 <!-- =========================================================

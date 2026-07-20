@@ -66,7 +66,7 @@
   }
 
   function $(id){return document.getElementById(id);}
-  function show(id){['screen-intro','screen-loading','screen-tasting','screen-summary'].forEach(function(s){$(s).style.display=(s===id)?'block':'none';});}
+  function show(id){['screen-intro','screen-loading','screen-tasting','screen-summary'].forEach(function(s){$(s).hidden=(s!==id);});}
 
   async function authHeaders(json){
     var token = await requireAuth();
@@ -177,7 +177,7 @@
     }
     if($('hero-badges')) $('hero-badges').innerHTML=b;
     var obj=$('hero-objective');
-    if(obj){ if(id.objective){ obj.style.display=''; obj.innerHTML='<span aria-hidden="true">🎯</span><span>'+id.objective+'</span>'; } else obj.style.display='none'; }
+    if(obj){ if(id.objective){ obj.hidden=false; obj.innerHTML='<span aria-hidden="true">🎯</span><span>'+id.objective+'</span>'; } else obj.hidden=true; }
     if($('hero-motiv')) $('hero-motiv').textContent=id.motivational||'';
   }
 
@@ -219,7 +219,7 @@
     Array.prototype.forEach.call(document.querySelectorAll('.opt'), function(b){
       b.addEventListener('click', function(){ onSelect(b.getAttribute('data-dec'), b.getAttribute('data-val')); });
     });
-    $('btn-prev').style.display = S.phaseIdx>0?'inline-block':'none';
+    $('btn-prev').hidden = !(S.phaseIdx > 0);
     $('btn-next').textContent = (S.phaseIdx===PHASES.length-1)?'Finalizar práctica →':'Siguiente fase →';
     refreshNext();
   }
@@ -282,8 +282,8 @@
     show('screen-summary');
     S.finished = true;
     try{ if($('print-date')) $('print-date').textContent = new Date().toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'}); }catch(e){}
-    var _dp=$('debrief-panel'); if(_dp){ _dp.style.display='none'; _dp.innerHTML=''; }
-    var _cp=$('compare-panel'); if(_cp){ _cp.style.display='none'; _cp.innerHTML=''; }
+    var _dp=$('debrief-panel'); if(_dp){ _dp.hidden=true; _dp.innerHTML=''; }
+    var _cp=$('compare-panel'); if(_cp){ _cp.hidden=true; _cp.innerHTML=''; }
     if (window.SATWineGlass && $('glass-mount-summary')) { var sg=SATWineGlass.mount($('glass-mount-summary')); sg.update(glassState(false)); }
     $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT.';
     $('phases-box').innerHTML = PHASES.map(function(p){
@@ -491,8 +491,8 @@
   // ---- Ver Debrief ----
   function toggleDebrief(){
     var p=$('debrief-panel'); if(!p) return;
-    if(p.style.display!=='none' && p.innerHTML){ p.style.display='none'; return; }
-    p.style.display='block'; p.innerHTML='<span class="spin"></span>';
+    if(!p.hidden && p.innerHTML){ p.hidden=true; return; }
+    p.hidden=false; p.innerHTML='<span class="spin"></span>';
     fetchPost('post_tasting_debrief.json','debrief').then(function(j){
       var d=j;
       p.innerHTML = d ? renderDebrief(d) : '<p class="muted">Debrief no disponible para esta práctica.</p>';
@@ -566,8 +566,8 @@
   }
   function toggleCompare(){
     var p=$('compare-panel'); if(!p) return;
-    if(p.style.display!=='none' && p.innerHTML){ p.style.display='none'; return; }
-    p.style.display='block'; p.innerHTML='<span class="spin"></span>';
+    if(!p.hidden && p.innerHTML){ p.hidden=true; return; }
+    p.hidden=false; p.innerHTML='<span class="spin"></span>';
     fetchPost('post_tasting_model_comparison.json','comparison').then(function(j){
       var c=j;
       p.innerHTML = c ? renderCompare(c) : '<p class="muted">Comparación no disponible para esta práctica.</p>';

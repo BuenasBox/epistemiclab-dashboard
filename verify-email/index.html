@@ -74,6 +74,10 @@
       word-break: break-all;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
     .steps {
       margin-bottom: 24px;
     }
@@ -191,6 +195,12 @@
       text-decoration: underline;
     }
 
+    .footer-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #525e6e;
+    }
+
     #resend-timer {
       font-size: 12px;
       color: #f6b73c;
@@ -235,7 +245,7 @@
         Esto protege tu cuenta y te permite acceder a todas las funciones de EpistemicLab.
       </div>
 
-      <div id="email-display" class="email-display" style="display: none;"></div>
+      <div id="email-display" class="email-display" hidden></div>
 
       <div class="steps">
         <div class="step">
@@ -261,12 +271,12 @@
         </button>
       </div>
 
-      <div id="status" style="display: none;"></div>
+      <div id="status" hidden></div>
     </div>
 
     <div class="footer">
       <p>¿Problemas? <a href="/login/">Inicia sesión de nuevo</a> o <a href="mailto:support@epistemiclab.dpdns.org">contacta soporte</a></p>
-      <p style="margin-top: 12px; font-size: 11px; color: #525e6e;">
+      <p class="footer-note">
         Práctica formativa · Desarrollo de razonamiento profesional
       </p>
     </div>
@@ -284,7 +294,7 @@
     if (!supabaseUrl || !supabaseKey) {
       document.getElementById('status').textContent = 'Configuración de Supabase no encontrada';
       document.getElementById('status').className = 'status status-error';
-      document.getElementById('status').style.display = 'block';
+      document.getElementById('status').hidden = false;
     }
 
     if (supabaseUrl && supabaseKey) {
@@ -316,7 +326,7 @@
       // Display email
       if (user.email) {
         document.getElementById('email-display').textContent = user.email;
-        document.getElementById('email-display').style.display = 'block';
+        document.getElementById('email-display').hidden = false;
       }
     }
 
@@ -383,7 +393,7 @@
       const status = document.getElementById('status');
       status.textContent = message;
       status.className = 'status status-' + type;
-      status.style.display = 'block';
+      status.hidden = false;
     }
 
     // Check email verification status periodically

@@ -31,7 +31,7 @@
     <h1>Laboratorio SAT</h1>
     <p class="sub">Cata a ciegas guiada. Observa, infiere y comprométete con un juicio — como en una mesa de cata real. Entrenamiento formativo, desarrollo de criterio profesional.</p>
     <div class="card">
-      <h3 style="margin:0 0 12px">Elige un modo</h3>
+      <h3 class="mode-picker-title">Elige un modo</h3>
       <div class="mode-pick">
         <button class="btn full mode-opt" id="mode-blind"><span class="mode-ic" aria-hidden="true">🍷</span><span class="mode-tt"><b>Cata a ciegas</b><small>Entrena como en examen. La identidad se revela al final.</small></span></button>
         <button class="btn full ghost mode-opt" id="mode-guided"><span class="mode-ic" aria-hidden="true">📖</span><span class="mode-tt"><b>Práctica guiada</b><small>Estudia un estilo concreto desde el inicio.</small></span></button>
@@ -43,22 +43,22 @@
         <span class="soon-chip">📚 Simulacro completo</span>
       </div>
     </div>
-    <p class="muted" style="font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin:18px 2px 8px">Vista previa · Panel de inteligencia</p>
+    <p class="muted intelligence-preview-label">Vista previa · Panel de inteligencia</p>
     <div id="wic-demo"></div>
     <div id="intro-err" class="err"></div>
   </section>
 
-  <section id="screen-loading" style="display:none">
+  <section id="screen-loading" hidden>
     <div class="card center"><span class="spin"></span><p class="muted">Preparando tu copa…</p></div>
   </section>
 
-  <section id="screen-tasting" style="display:none">
+  <section id="screen-tasting" hidden>
     <div class="card sat-hero">
       <div class="sat-hero-main">
         <div class="sat-hero-eyebrow" id="hero-eyebrow">Cata a ciegas</div>
         <div class="sat-hero-title" id="wine-label">Vino</div>
         <div class="sat-hero-badges" id="hero-badges"></div>
-        <div class="sat-hero-objective" id="hero-objective" style="display:none"></div>
+        <div class="sat-hero-objective" id="hero-objective" hidden></div>
         <div class="sat-hero-motiv" id="hero-motiv"></div>
         <span class="chip" id="wine-chip" hidden>—</span>
       </div>
@@ -79,15 +79,15 @@
       <p class="phase-sub" id="phase-sub"></p>
       <div id="decisions"></div>
       <div class="row">
-        <button class="btn ghost" id="btn-prev" style="display:none">← Fase anterior</button>
+        <button class="btn ghost" id="btn-prev" hidden>← Fase anterior</button>
         <button class="btn full" id="btn-next" disabled>Siguiente fase →</button>
       </div>
       <div id="tasting-err" class="err" role="alert"></div>
     </div>
   </section>
 
-  <section id="screen-summary" style="display:none">
-    <div class="print-only" id="print-head"><h2 style="margin:0 0 2px">Informe de práctica SAT · EpistemicLab</h2><div id="print-date" class="muted" style="font-size:12px"></div></div>
+  <section id="screen-summary" hidden>
+    <div class="print-only" id="print-head"><h2 class="print-report-title">Informe de práctica SAT · EpistemicLab</h2><div id="print-date" class="muted print-report-date"></div></div>
     <div class="celebrate" aria-hidden="true"><span class="celebrate-ring"><span class="celebrate-check">✓</span></span></div>
     <h1>Informe de práctica</h1>
     <p class="sub" id="summary-msg"></p>
@@ -105,52 +105,52 @@
     </div>
 
     <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Fases completadas</h3>
+      <h3 class="summary-card-title">Fases completadas</h3>
       <div id="phases-box"></div>
     </div>
 
     <div class="report-grid">
-      <div class="card" style="margin:0">
-        <h3 style="margin:0 0 10px;font-size:16px">Fortalezas detectadas</h3>
+      <div class="card report-grid-card">
+        <h3 class="summary-card-title">Fortalezas detectadas</h3>
         <div id="strengths-box"></div>
       </div>
-      <div class="card" style="margin:0">
-        <h3 style="margin:0 0 10px;font-size:16px">Aspectos por reforzar</h3>
+      <div class="card report-grid-card">
+        <h3 class="summary-card-title">Aspectos por reforzar</h3>
         <div id="areas-box"></div>
       </div>
     </div>
 
     <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Señales del mentor</h3>
+      <h3 class="summary-card-title">Señales del mentor</h3>
       <div class="tally" id="tally-box"></div>
-      <p class="muted" style="font-size:13px;margin:6px 0 0">Sin puntuación oficial ni aprobado/reprobado: estas señales reflejan cómo construiste el razonamiento.</p>
+      <p class="muted mentor-signals-note">Sin puntuación oficial ni aprobado/reprobado: estas señales reflejan cómo construiste el razonamiento.</p>
     </div>
 
     <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Resumen de tus decisiones</h3>
+      <h3 class="summary-card-title">Resumen de tus decisiones</h3>
       <div id="summary-box"></div>
     </div>
 
     <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Preparación para la siguiente práctica</h3>
+      <h3 class="summary-card-title">Preparación para la siguiente práctica</h3>
       <div class="nextprep" id="nextprep-box"></div>
       <div class="recommend" id="recommend-box"></div>
     </div>
 
     <div class="card">
-      <h3 style="margin:0 0 10px;font-size:16px">Profundiza en esta práctica</h3>
-      <div class="row" style="flex-wrap:wrap">
+      <h3 class="summary-card-title">Profundiza en esta práctica</h3>
+      <div class="row post-actions">
         <button class="btn" id="btn-debrief">Ver debrief</button>
         <button class="btn ghost" id="btn-compare">Comparación con el modelo</button>
         <button class="btn ghost" id="btn-print">Imprimir / Descargar PDF</button>
       </div>
-      <div id="debrief-panel" class="post-panel" style="display:none"></div>
-      <div id="compare-panel" class="post-panel" style="display:none"></div>
+      <div id="debrief-panel" class="post-panel" hidden></div>
+      <div id="compare-panel" class="post-panel" hidden></div>
     </div>
 
     <p class="disclaimer" id="print-disclaimer">Práctica formativa · Desarrollo de razonamiento profesional en vino</p>
     <div class="card">
-      <p class="muted" style="margin:0 0 12px;font-size:13.5px">Recuerda: el SAT premia el razonamiento (observación → inferencia → causa → juicio) y el compromiso con una conclusión, no acertar a ciegas.</p>
+      <p class="muted summary-reminder">Recuerda: el SAT premia el razonamiento (observación → inferencia → causa → juicio) y el compromiso con una conclusión, no acertar a ciegas.</p>
       <div class="row">
         <button class="btn full" id="btn-restart">Nueva práctica</button>
         <button class="btn ghost" id="btn-home">Volver</button>

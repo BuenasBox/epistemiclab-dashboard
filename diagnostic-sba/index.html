@@ -69,7 +69,7 @@
 
   <header class="header">
     <div class="header-brand">
-      <div class="brand-name">EpistemicLab · Evaluación Teórica <span style="color:var(--text-muted)">v2.2</span></div>
+      <div class="brand-name">EpistemicLab · Evaluación Teórica <span class="brand-version">v2.2</span></div>
       <div class="brand-sub">Entrenamiento de razonamiento en vino</div>
     </div>
     <div class="header-controls">
@@ -80,7 +80,7 @@
       </label>
       <!-- Selector de mentor oculto hasta que el banco incluya feedback_by_mode
            (auditoría Z.2: con datos 0/523 los tres mentores emitían texto idéntico — control placebo) -->
-      <select class="mentor-select" id="mentorMode" onchange="updateMentorMode()" style="display:none" aria-hidden="true">
+      <select class="mentor-select" id="mentorMode" onchange="updateMentorMode()" hidden aria-hidden="true">
         <option value="mentor">Mentor Guía</option>
         <option value="trainer">Entrenador Técnico</option>
         <option value="reviewer">Revisor Estricto</option>
@@ -157,7 +157,7 @@
                 stroke-dasharray="138.2"
                 stroke-dashoffset="138.2"
                 transform="rotate(-90 27 27)"
-                style="transition: stroke-dashoffset 0.4s ease, stroke 0.3s;"/>
+                class="confidence-gauge-arc"/>
               <text id="confGaugeText" x="27" y="31" text-anchor="middle"
                 fill="#525e6e" font-size="8" font-family="system-ui" font-weight="700"
                 letter-spacing="0.03em">—</text>
@@ -174,7 +174,7 @@
               <div class="signal-bar" id="cbar4"></div>
               <div class="signal-bar" id="cbar5"></div>
             </div>
-            <div class="instr-item-label" style="margin-top:5px;">Precisión Causal</div>
+            <div class="instr-item-label instrument-label-offset">Precisión Causal</div>
           </div>
 
           <!-- Misconception warning glyph -->
@@ -182,19 +182,19 @@
             <div class="miscon-glyph" id="misconGlyph">
               <span class="glyph-icon">⚠</span>
             </div>
-            <div class="instr-item-label" style="margin-top:5px;">Misconception</div>
+            <div class="instr-item-label instrument-label-offset">Misconception</div>
           </div>
         </div>
 
         <!-- Hesitation timeline -->
-        <div style="margin-top:14px;">
-          <div class="instr-item-label" style="margin-bottom:6px;">Vacilación</div>
+        <div class="hesitation-block">
+          <div class="instr-item-label hesitation-title">Vacilación</div>
           <div class="hes-timeline" id="hesDots">
             <div class="hes-dot" id="hd0"></div>
             <div class="hes-dot" id="hd1"></div>
             <div class="hes-dot" id="hd2"></div>
             <div class="hes-dot" id="hd3"></div>
-            <span style="font-size:10px;color:var(--text-muted);margin-left:3px;" id="hesLabel">—</span>
+            <span class="hesitation-value" id="hesLabel">—</span>
           </div>
         </div>
       </div>
