@@ -1,0 +1,72 @@
+/* Intelligence Dashboard (Y.2.4) — hoja del componente.
+   Extraída 1:1 de los estilos inline de shared/intelligence-dashboard.js.
+   Dinámico en runtime: --progress (ancho de barra) y las clases de tono
+   is-ok / is-low / is-warn según umbral. */
+
+.idb-root{background:#0f1115;color:#f5f7fa;padding:16px;font-family:system-ui}
+.idb-inner{max-width:800px;margin:0 auto}
+
+.idb-header{border-bottom:1px solid #303944;padding-bottom:16px;margin-bottom:16px}
+.idb-title{font-size:20px;font-weight:700;margin:0 0 8px;color:#d5a84f}
+.idb-subtitle{font-size:12px;color:#a7b0be;margin:0}
+
+.idb-section{margin-bottom:24px}
+.idb-section-title{font-size:14px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:6px}
+.idb-section-title--strength{color:#2ec27e}
+.idb-section-title--weak{color:#e45c5c}
+.idb-section-title--improve{color:#f6b73c}
+.idb-section-title--misc{color:#9d7fd5}
+.idb-section-title--verb{color:#3fa9f5}
+.idb-section-title--readiness{color:#65b7c7}
+
+.idb-card{border-radius:6px;padding:10px;margin-bottom:8px}
+.idb-card--strength{background:#0a3d2f;border:1px solid #2ec27e}
+.idb-card--weak{background:#2a1515;border:1px solid #e45c5c}
+.idb-card--improve{background:#2a2015;border:1px solid #f6b73c}
+.idb-card--plain{background:#0f1115}
+.idb-card-name{font-size:12px;font-weight:600}
+.idb-card--strength .idb-card-name{color:#2ec27e}
+.idb-card--weak .idb-card-name{color:#e45c5c}
+.idb-card--improve .idb-card-name{color:#f6b73c}
+.idb-card-name--gold{color:#d5a84f}
+.idb-card-meta{font-size:11px;color:#a7b0be;margin-top:4px}
+
+.idb-row-between{display:flex;justify-content:space-between;align-items:baseline}
+.idb-delta{font-size:11px;color:#2ec27e}
+
+.idb-bar-row{display:flex;gap:8px;align-items:center;margin-top:6px}
+.idb-bar-track{flex:1;background:#0f1115;height:4px;border-radius:2px}
+.idb-bar-fill{background:#e45c5c;height:100%;border-radius:2px;width:var(--progress,0%)}
+.idb-bar-pct{font-size:11px;color:#a7b0be;min-width:40px}
+
+.idb-panel--misc{background:#1a1a2e;border:1px solid #5b4a7e;border-radius:8px;padding:12px}
+.idb-footnote--misc{font-size:10px;color:#9d7fd5;margin-top:8px;font-style:italic}
+.idb-note{font-size:10px;color:#525e6e;margin-top:6px}
+
+.idb-verb-row{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944}
+.idb-verb-name{font-size:12px;color:#f5f7fa}
+.idb-verb-rate{font-size:12px}
+.idb-verb-rate.is-ok{color:#2ec27e}
+.idb-verb-rate.is-low{color:#e45c5c}
+
+.idb-panel--readiness{background:#1e2a2e;border:1px solid #4a7c8c;border-radius:8px;padding:12px}
+.idb-readiness-row{display:flex;justify-content:space-between;padding:8px;font-size:12px}
+.idb-readiness-row .is-ok{color:#2ec27e}
+.idb-readiness-row .is-warn{color:#f6b73c}
+
+.idb-reco{background:linear-gradient(135deg, rgba(34, 211, 238, .1), rgba(45, 223, 145, .05));border:1px solid rgba(34, 211, 238, .25);border-radius:8px;padding:14px;margin-bottom:16px}
+.idb-reco-title{font-size:13px;font-weight:700;color:#22d3ee;margin:0 0 10px}
+.idb-reco-reason{font-size:12px;color:#f5f7fa;line-height:1.5;margin-bottom:10px}
+.idb-reco-actions{display:flex;gap:12px;margin-bottom:8px}
+.idb-action{flex:1;padding:10px;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer;text-align:center;text-decoration:none}
+.idb-action--primary{background:#22d3ee;color:#0f1115;border:none}
+.idb-action--secondary{background:transparent;color:#22d3ee;border:1px solid #22d3ee}
+.idb-action[disabled]{opacity:.68;cursor:not-allowed}
+.idb-action:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
+.idb-status-note{font-size:11px;color:#aab4bd;margin:0 0 8px}
+.idb-reco .idb-note{margin-top:0}
+
+.idb-empty{background:#0f1115;color:#f5f7fa;padding:24px;text-align:center;font-family:system-ui}
+.idb-empty-title{font-size:16px;font-weight:700;margin:0 0 12px}
+.idb-empty-lead{color:#a7b0be;font-size:13px;margin:0 0 16px}
+.idb-empty-note{color:#525e6e;font-size:12px;margin:0}

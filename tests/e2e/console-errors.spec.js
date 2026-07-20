@@ -43,7 +43,9 @@ for (const path of PAGES) {
     const errors = [];
     page.on('pageerror', (err) => errors.push(`pageerror: ${err.message}`));
     page.on('response', (response) => {
-      if (response.ok()) return;
+      // ok() cubre solo 2xx; los 3xx (304 de revalidación de caché,
+      // redirects) son respuestas normales, no errores. Error real: >= 400.
+      if (response.status() < 400) return;
       const url = response.url();
       if (isExpectedFailedUrl(url)) return;
       errors.push(`network ${response.status()}: ${url}`);

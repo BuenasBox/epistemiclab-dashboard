@@ -7,6 +7,9 @@
  *
  * Governance: formative_only=true; no official scoring
  * safe_for_examiner=false; mobile-first design
+ *
+ * Estilos: shared/intelligence-dashboard.css (familia .idb-*). Inline solo
+ * queda --progress; los tonos por umbral son clases is-ok / is-low / is-warn.
  */
 
 (function (root, factory) {
@@ -24,8 +27,8 @@
       return renderEmptyState();
     }
 
-    var html = '<div class="dashboard" style="background:#0f1115;color:#f5f7fa;padding:16px;font-family:system-ui">' +
-      '<div style="max-width:800px;margin:0 auto">';
+    var html = '<div class="dashboard idb-root">' +
+      '<div class="idb-inner">';
 
     // Header
     html += renderDashboardHeader();
@@ -71,9 +74,9 @@
    * Dashboard header with overall progress
    */
   function renderDashboardHeader() {
-    return '<div style="border-bottom:1px solid #303944;padding-bottom:16px;margin-bottom:16px">' +
-      '<h1 style="font-size:20px;font-weight:700;margin:0 0 8px;color:#d5a84f">Tu Perfil de Aprendizaje</h1>' +
-      '<p style="font-size:12px;color:#a7b0be;margin:0">Resumen de tu progreso · Actualizado: ' + new Date().toLocaleDateString('es') + '</p>' +
+    return '<div class="idb-header">' +
+      '<h1 class="idb-title">Tu Perfil de Aprendizaje</h1>' +
+      '<p class="idb-subtitle">Resumen de tu progreso · Actualizado: ' + new Date().toLocaleDateString('es') + '</p>' +
       '</div>';
   }
 
@@ -81,15 +84,15 @@
    * Strengths section
    */
   function renderStrengthsSection(strongTopics) {
-    var html = '<div style="margin-bottom:24px">' +
-      '<h2 style="font-size:14px;font-weight:700;color:#2ec27e;margin:0 0 12px;display:flex;align-items:center;gap:6px">' +
+    var html = '<div class="idb-section">' +
+      '<h2 class="idb-section-title idb-section-title--strength">' +
       '✓ Fortalezas</h2>';
 
     strongTopics.slice(0, 4).forEach(function (topic) {
       var strength = Math.round(topic.strength_score || 80);
-      html += '<div style="background:#0a3d2f;border:1px solid #2ec27e;border-radius:6px;padding:10px;margin-bottom:8px">' +
-        '<div style="font-size:12px;font-weight:600;color:#2ec27e">' + topic.name + '</div>' +
-        '<div style="font-size:11px;color:#a7b0be;margin-top:4px">' + strength + '% Dominio</div>' +
+      html += '<div class="idb-card idb-card--strength">' +
+        '<div class="idb-card-name">' + topic.name + '</div>' +
+        '<div class="idb-card-meta">' + strength + '% Dominio</div>' +
         '</div>';
     });
 
@@ -101,17 +104,17 @@
    * Weaknesses section
    */
   function renderWeaknessesSection(weakTopics) {
-    var html = '<div style="margin-bottom:24px">' +
-      '<h2 style="font-size:14px;font-weight:700;color:#e45c5c;margin:0 0 12px;display:flex;align-items:center;gap:6px">' +
+    var html = '<div class="idb-section">' +
+      '<h2 class="idb-section-title idb-section-title--weak">' +
       '⚠ Áreas de Mejora</h2>';
 
     weakTopics.slice(0, 3).forEach(function (topic) {
       var strength = Math.round(topic.strength_score || 40);
-      html += '<div style="background:#2a1515;border:1px solid #e45c5c;border-radius:6px;padding:10px;margin-bottom:8px">' +
-        '<div style="font-size:12px;font-weight:600;color:#e45c5c">' + topic.name + '</div>' +
-        '<div style="display:flex;gap:8px;align-items:center;margin-top:6px">' +
-        '<div style="flex:1;background:#0f1115;height:4px;border-radius:2px"><div style="background:#e45c5c;height:100%;width:' + strength + '%;border-radius:2px"></div></div>' +
-        '<div style="font-size:11px;color:#a7b0be;min-width:40px">' + strength + '%</div>' +
+      html += '<div class="idb-card idb-card--weak">' +
+        '<div class="idb-card-name">' + topic.name + '</div>' +
+        '<div class="idb-bar-row">' +
+        '<div class="idb-bar-track"><div class="idb-bar-fill" style="--progress:' + strength + '%"></div></div>' +
+        '<div class="idb-bar-pct">' + strength + '%</div>' +
         '</div>' +
         '</div>';
     });
@@ -124,16 +127,16 @@
    * Improving areas (positive velocity)
    */
   function renderImprovingAreasSection(improvingTopics) {
-    var html = '<div style="margin-bottom:24px">' +
-      '<h2 style="font-size:14px;font-weight:700;color:#f6b73c;margin:0 0 12px;display:flex;align-items:center;gap:6px">' +
+    var html = '<div class="idb-section">' +
+      '<h2 class="idb-section-title idb-section-title--improve">' +
       '📈 Mejorando</h2>';
 
     improvingTopics.slice(0, 3).forEach(function (topic) {
       var improvement = topic.improvement_delta || '+5%';
-      html += '<div style="background:#2a2015;border:1px solid #f6b73c;border-radius:6px;padding:10px;margin-bottom:8px">' +
-        '<div style="display:flex;justify-content:space-between;align-items:baseline">' +
-        '<div style="font-size:12px;font-weight:600;color:#f6b73c">' + topic.name + '</div>' +
-        '<div style="font-size:11px;color:#2ec27e">↑ ' + improvement + ' de sesión anterior</div>' +
+      html += '<div class="idb-card idb-card--improve">' +
+        '<div class="idb-row-between">' +
+        '<div class="idb-card-name">' + topic.name + '</div>' +
+        '<div class="idb-delta">↑ ' + improvement + ' de sesión anterior</div>' +
         '</div>' +
         '</div>';
     });
@@ -146,20 +149,20 @@
    * Misconceptions section
    */
   function renderMisconceptionsSection(misconceptions) {
-    var html = '<div style="margin-bottom:24px;background:#1a1a2e;border:1px solid #5b4a7e;border-radius:8px;padding:12px">' +
-      '<h2 style="font-size:14px;font-weight:700;color:#9d7fd5;margin:0 0 12px;display:flex;align-items:center;gap:6px">' +
+    var html = '<div class="idb-section idb-panel--misc">' +
+      '<h2 class="idb-section-title idb-section-title--misc">' +
       '💡 Conceptos a Aclarar</h2>';
 
     misconceptions.slice(0, 2).forEach(function (mc) {
       var confidence = Math.round((mc.confidence || 0.5) * 100);
-      html += '<div style="background:#0f1115;border-radius:6px;padding:10px;margin-bottom:8px">' +
-        '<div style="font-size:12px;font-weight:600;color:#d5a84f">' + mc.name + '</div>' +
-        '<div style="font-size:11px;color:#a7b0be;margin-top:4px">' + mc.description + '</div>' +
-        '<div style="font-size:10px;color:#525e6e;margin-top:6px">Confianza: ' + confidence + '%</div>' +
+      html += '<div class="idb-card idb-card--plain">' +
+        '<div class="idb-card-name idb-card-name--gold">' + mc.name + '</div>' +
+        '<div class="idb-card-meta">' + mc.description + '</div>' +
+        '<div class="idb-note">Confianza: ' + confidence + '%</div>' +
         '</div>';
     });
 
-    html += '<div style="font-size:10px;color:#9d7fd5;margin-top:8px;font-style:italic">Estos conceptos requieren revisión para progreso</div>' +
+    html += '<div class="idb-footnote--misc">Estos conceptos requieren revisión para progreso</div>' +
       '</div>';
     return html;
   }
@@ -168,15 +171,15 @@
    * Verb performance breakdown
    */
   function renderVerbPerformanceSection(verbPerformance) {
-    var html = '<div style="margin-bottom:24px">' +
-      '<h2 style="font-size:14px;font-weight:700;color:#3fa9f5;margin:0 0 12px">Desempeño por Verbo</h2>';
+    var html = '<div class="idb-section">' +
+      '<h2 class="idb-section-title idb-section-title--verb">Desempeño por Verbo</h2>';
 
     Object.keys(verbPerformance).slice(0, 4).forEach(function (verb) {
       var perf = verbPerformance[verb];
       var rate = perf.success_rate ? (perf.success_rate * 100).toFixed(0) : '0';
-      html += '<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944">' +
-        '<span style="font-size:12px;color:#f5f7fa">' + verb + '</span>' +
-        '<span style="font-size:12px;color:' + (perf.success_rate >= 0.7 ? '#2ec27e' : '#e45c5c') + '">' + rate + '%</span>' +
+      html += '<div class="idb-verb-row">' +
+        '<span class="idb-verb-name">' + verb + '</span>' +
+        '<span class="idb-verb-rate ' + (perf.success_rate >= 0.7 ? 'is-ok' : 'is-low') + '">' + rate + '%</span>' +
         '</div>';
     });
 
@@ -188,28 +191,28 @@
    * Readiness indicators
    */
   function renderReadinessSection(readiness) {
-    var html = '<div style="margin-bottom:24px;background:#1e2a2e;border:1px solid #4a7c8c;border-radius:8px;padding:12px">' +
-      '<h2 style="font-size:14px;font-weight:700;color:#65b7c7;margin:0 0 12px">Indicadores de Preparación</h2>';
+    var html = '<div class="idb-section idb-panel--readiness">' +
+      '<h2 class="idb-section-title idb-section-title--readiness">Indicadores de Preparación</h2>';
 
     if (readiness) {
       if (readiness.sba_readiness !== undefined) {
-        html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
+        html += '<div class="idb-readiness-row">' +
           '<span>Preparación SBA:</span>' +
-          '<span style="color:' + (readiness.sba_readiness > 0.6 ? '#2ec27e' : '#f6b73c') + '">' +
+          '<span class="' + (readiness.sba_readiness > 0.6 ? 'is-ok' : 'is-warn') + '">' +
           (readiness.sba_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';
       }
       if (readiness.sat_observation_readiness !== undefined) {
-        html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
+        html += '<div class="idb-readiness-row">' +
           '<span>Preparación en observación SAT:</span>' +
-          '<span style="color:' + (readiness.sat_observation_readiness > 0.5 ? '#2ec27e' : '#f6b73c') + '">' +
+          '<span class="' + (readiness.sat_observation_readiness > 0.5 ? 'is-ok' : 'is-warn') + '">' +
           (readiness.sat_observation_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';
       }
       if (readiness.or_structure_readiness !== undefined) {
-        html += '<div style="display:flex;justify-content:space-between;padding:8px;font-size:12px">' +
+        html += '<div class="idb-readiness-row">' +
           '<span>Preparación en estructura de respuesta abierta:</span>' +
-          '<span style="color:' + (readiness.or_structure_readiness > 0.5 ? '#2ec27e' : '#f6b73c') + '">' +
+          '<span class="' + (readiness.or_structure_readiness > 0.5 ? 'is-ok' : 'is-warn') + '">' +
           (readiness.or_structure_readiness * 100).toFixed(0) + '%</span>' +
           '</div>';
       }
@@ -241,15 +244,13 @@
 
   function renderRecommendationAction(rec, label, secondary) {
     var url = recommendationUrlFor(rec);
-    var baseStyle = secondary
-      ? 'flex:1;padding:10px;background:transparent;color:#22d3ee;border:1px solid #22d3ee;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer;text-align:center;text-decoration:none'
-      : 'flex:1;padding:10px;background:#22d3ee;color:#0f1115;border:none;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer;text-align:center;text-decoration:none';
+    var actionClass = 'idb-action ' + (secondary ? 'idb-action--secondary' : 'idb-action--primary');
 
     if (url) {
-      return '<a href="' + url + '" style="' + baseStyle + '">' + label + '</a>';
+      return '<a href="' + url + '" class="' + actionClass + '">' + label + '</a>';
     }
 
-    return '<button type="button" disabled aria-disabled="true" style="' + baseStyle + ';opacity:.68;cursor:not-allowed">' + label + '</button>';
+    return '<button type="button" disabled aria-disabled="true" class="' + actionClass + '">' + label + '</button>';
   }
 
   /**
@@ -266,17 +267,17 @@
     var hasPrimaryUrl = !!recommendationUrlFor(rec);
     var hasSecondaryUrl = !!recommendationUrlFor(secondary);
 
-    var html = '<div style="background:linear-gradient(135deg, rgba(34, 211, 238, .1), rgba(45, 223, 145, .05));border:1px solid rgba(34, 211, 238, .25);border-radius:8px;padding:14px;margin-bottom:16px">' +
-      '<h2 style="font-size:13px;font-weight:700;color:#22d3ee;margin:0 0 10px">🎯 Próximo Paso Recomendado</h2>' +
-      '<div style="font-size:12px;color:#f5f7fa;line-height:1.5;margin-bottom:10px">' + rec.reason + '</div>' +
-      '<div style="display:flex;gap:12px;margin-bottom:8px">' +
+    var html = '<div class="idb-reco">' +
+      '<h2 class="idb-reco-title">🎯 Próximo Paso Recomendado</h2>' +
+      '<div class="idb-reco-reason">' + rec.reason + '</div>' +
+      '<div class="idb-reco-actions">' +
       renderRecommendationAction(rec, 'Comenzar ahora', false) +
       renderRecommendationAction(secondary, 'Alternativa', true) +
       '</div>' +
       (!hasPrimaryUrl || !hasSecondaryUrl
-        ? '<div role="status" style="font-size:11px;color:#aab4bd;margin:0 0 8px">Práctica recomendada preparada. Selecciona una experiencia disponible para continuar.</div>'
+        ? '<div role="status" class="idb-status-note">Práctica recomendada preparada. Selecciona una experiencia disponible para continuar.</div>'
         : '') +
-      '<div style="font-size:10px;color:#525e6e">Confianza: ' + confidence + '%</div>' +
+      '<div class="idb-note">Confianza: ' + confidence + '%</div>' +
       '</div>';
 
     return html;
@@ -286,12 +287,12 @@
    * Empty state
    */
   function renderEmptyState() {
-    return '<div style="background:#0f1115;color:#f5f7fa;padding:24px;text-align:center;font-family:system-ui">' +
-      '<h2 style="font-size:16px;font-weight:700;margin:0 0 12px">Tu Perfil de Aprendizaje</h2>' +
-      '<p style="color:#a7b0be;font-size:13px;margin:0 0 16px">' +
+    return '<div class="idb-empty">' +
+      '<h2 class="idb-empty-title">Tu Perfil de Aprendizaje</h2>' +
+      '<p class="idb-empty-lead">' +
       'Aún necesitamos más intentos para crear tu perfil personalizado.' +
       '</p>' +
-      '<p style="color:#525e6e;font-size:12px;margin:0">Completa sesiones de entrenamiento para obtener recomendaciones personalizadas.</p>' +
+      '<p class="idb-empty-note">Completa sesiones de entrenamiento para obtener recomendaciones personalizadas.</p>' +
       '</div>';
   }
 
