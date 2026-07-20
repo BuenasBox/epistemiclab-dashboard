@@ -95,6 +95,27 @@ p{margin:0 0 .8em}
 .bl-done .delta{opacity:0;transform:translateY(6px)}
 .bl-done .delta.bl-in{opacity:1;transform:translateY(0);transition:opacity .4s ease,transform .4s ease}
 .bl-done .meter>span{transition:width .9s cubic-bezier(.16,1,.3,1)}
+/* ---- Extraídas de inline (auditoría INLINE_STYLE_AUDIT, lote 2) ---- */
+.flex-1{flex:1}
+.bl-narrow{max-width:640px}
+.bl-narrow-sm{max-width:620px}
+.mb-18{margin-bottom:18px}
+.mt-24{margin-top:24px}
+.mt-14{margin-top:14px}
+.mt-10{margin-top:10px}
+.mt-8{margin-top:8px}
+.mt-6{margin-top:6px}
+.mt-4{margin-top:4px}
+.mt-2{margin-top:2px}
+.mentor-text{margin:.2em 0 0}
+.card-label-left{text-align:left}
+.bl-evaluating{padding:60px 0}
+.bl-avatar-lg{margin:0 auto 14px;width:46px;height:46px}
+.bl-done-narrow{max-width:560px;margin:0 auto}
+.bl-done-body{max-width:560px;margin:18px auto 0}
+.delta-gold{border-color:rgba(201,162,39,.45)}
+.flowbar-center{justify-content:center}
+.meter>span{width:var(--progress,0%)}
 </style>
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#1a1119">
@@ -109,11 +130,11 @@ p{margin:0 0 .8em}
 <body>
 <div class="wrap">
   <div class="topline">
-    <div style="flex:1"></div>
+    <div class="flex-1"></div>
     <span class="chip gold" id="compChip">Teoría · Conclusiones</span>
   </div>
   <div id="app" aria-live="polite"></div>
-  <div class="note" id="fixtureNote" style="margin-top:24px">Práctica formativa · El Mentor evaluará tu lectura y confianza al finalizar.</div>
+  <div class="note mt-24" id="fixtureNote">Práctica formativa · El Mentor evaluará tu lectura y confianza al finalizar.</div>
 </div>
 
 <script src="./data/label-items.sample.js"></script>
@@ -176,9 +197,9 @@ p{margin:0 0 .8em}
     app.innerHTML=
       '<div class="eyebrow">Módulo · inferencia documental · transforma el Epistemic Profile</div>'+
       '<h1 class="serif">Etiquetas</h1>'+
-      '<p class="muted" style="max-width:640px">Aprende a <b>leer cualquier etiqueta</b> — denominación, clasificación, añada, términos legales — y a deducir estilo, calidad y guarda. Y a distinguir lo que <i>significa algo</i> de lo que <i>solo vende</i>.</p>'+
-      '<div class="note" style="max-width:640px;margin-bottom:18px">En el examen la cata es ciega, sin etiqueta. Esto entrena la <b>teoría de Unit 1</b> y tu expectativa de estilo. <b>No memorizamos etiquetas: aprendemos a parsearlas.</b></div>'+
-      '<div class="card" style="max-width:640px"><div class="card-label">Esta sesión</div>'+
+      '<p class="muted bl-narrow">Aprende a <b>leer cualquier etiqueta</b> — denominación, clasificación, añada, términos legales — y a deducir estilo, calidad y guarda. Y a distinguir lo que <i>significa algo</i> de lo que <i>solo vende</i>.</p>'+
+      '<div class="note bl-narrow mb-18">En el examen la cata es ciega, sin etiqueta. Esto entrena la <b>teoría de Unit 1</b> y tu expectativa de estilo. <b>No memorizamos etiquetas: aprendemos a parsearlas.</b></div>'+
+      '<div class="card bl-narrow"><div class="card-label">Esta sesión</div>'+
       '<h3>1 etiqueta · 5 zonas de lectura · ~6 min</h3>'+
       '<p class="small muted">En cada zona marcas tu lectura y tu nivel de confianza. Al final, qué cambió en ti.</p>'+
       '<div class="flowbar"><button class="btn primary" id="start">Empezar →</button></div></div>';
@@ -200,16 +221,16 @@ p{margin:0 0 .8em}
       '<div class="eyebrow">Lee la etiqueta · zona '+(S.zoneIdx+1)+' de '+S.item.zones.length+'</div>'+
       '<h2 class="serif">'+esc(z.prompt)+'</h2>'+ timelineHtml()+
       '<div class="grid g2"><div>'+
-        '<div class="card center"><div class="card-label" style="text-align:left">Etiqueta en lectura · identidad oculta</div>'+labelHtml(z.id)+
-          '<p class="xs muted" style="margin-top:8px">Zona activa resaltada: <b>'+esc(z.label)+'</b></p></div>'+
-        '<div class="card tight" style="margin-top:14px"><div class="card-label">'+esc(z.label)+'</div>'+opts+ confHtml(a.conf)+'</div>'+
+        '<div class="card center"><div class="card-label card-label-left">Etiqueta en lectura · identidad oculta</div>'+labelHtml(z.id)+
+          '<p class="xs muted mt-8">Zona activa resaltada: <b>'+esc(z.label)+'</b></p></div>'+
+        '<div class="card tight mt-14"><div class="card-label">'+esc(z.label)+'</div>'+opts+ confHtml(a.conf)+'</div>'+
         '<div class="flowbar">'+(S.zoneIdx>0?'<button class="btn ghost" id="back">Atrás</button>':'')+
-          '<button class="btn primary" id="next" style="flex:1" '+(ready?'':'disabled')+'>Confirmar y seguir →</button></div>'+
+          '<button class="btn primary flex-1" id="next" '+(ready?'':'disabled')+'>Confirmar y seguir →</button></div>'+
       '</div><div>'+
         '<div class="card-label">Mentor</div>'+
-        '<div class="mentor '+esc(m.sev)+'"><div class="avatar">✦</div><div><div class="sev">PISTA</div><p class="small" style="margin:.2em 0 0">'+esc(m.text)+'</p></div></div>'+
+        '<div class="mentor '+esc(m.sev)+'"><div class="avatar">✦</div><div><div class="sev">PISTA</div><p class="small mentor-text">'+esc(m.text)+'</p></div></div>'+
         '<div class="state eval"><span class="d"></span> Se evaluará tu lectura <b>y tu confianza</b></div>'+
-        '<div class="note" style="margin-top:14px">El control de confianza alimenta tu <b>calibración</b>. La identidad no se revela hasta el final (gobernanza).</div>'+
+        '<div class="note mt-14">El control de confianza alimenta tu <b>calibración</b>. La identidad no se revela hasta el final (gobernanza).</div>'+
       '</div></div>';
     app.querySelectorAll('[data-opt]').forEach(function(b){ b.onclick=function(){ (S.answers[z.id]=S.answers[z.id]||{}).opt=b.getAttribute('data-opt'); render(); }; });
     app.querySelectorAll('[data-conf]').forEach(function(b){ b.onclick=function(){ (S.answers[z.id]=S.answers[z.id]||{}).conf=b.getAttribute('data-conf'); render(); }; });
@@ -223,7 +244,7 @@ p{margin:0 0 .8em}
 
   function hypGroup(key,group){
     var sel=(S.hyp[key]||{}).opt;
-    return '<div class="card-label"'+(key==='quality'?' style="margin-top:14px"':'')+'>'+esc(group.prompt)+'</div>'+
+    return '<div class="card-label'+(key==='quality'?' mt-14':'')+'">'+esc(group.prompt)+'</div>'+
       group.options.map(function(o){return '<button class="opt'+(sel===o.id?' sel':'')+'" data-hyp="'+key+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+'</button>';}).join('');
   }
 
@@ -232,10 +253,10 @@ p{margin:0 0 .8em}
     var ready=(S.hyp.sweetness&&S.hyp.sweetness.opt)&&(S.hyp.quality&&S.hyp.quality.opt)&&S.hyp.conf;
     app.innerHTML=
       '<div class="eyebrow">Integra la lectura</div><h2 class="serif">Tu deducción de estilo</h2>'+
-      '<p class="muted small" style="max-width:620px">Has leído las cinco zonas. ¿Qué vino esperas? Justifica con la palabra que manda, no con el cebo.</p>'+
+      '<p class="muted small bl-narrow-sm">Has leído las cinco zonas. ¿Qué vino esperas? Justifica con la palabra que manda, no con el cebo.</p>'+
       '<div class="grid g2"><div class="card">'+ hypGroup('sweetness',h.sweetness)+ hypGroup('quality',h.quality)+ confHtml((S.hyp.conf||null))+'</div>'+
-      '<div><div class="mentor warn"><div class="avatar">✦</div><div><div class="sev">ATENCIÓN</div><p class="small" style="margin:.2em 0 0">Algunos términos tientan a una conclusión equivocada. Apóyate en la palabra reguladora correcta.</p></div></div>'+
-      '<div class="flowbar"><button class="btn ghost" id="back">Atrás</button><button class="btn primary" id="submit" style="flex:1" '+(ready?'':'disabled')+'>Enviar deducción →</button></div></div></div>';
+      '<div><div class="mentor warn"><div class="avatar">✦</div><div><div class="sev">ATENCIÓN</div><p class="small mentor-text">Algunos términos tientan a una conclusión equivocada. Apóyate en la palabra reguladora correcta.</p></div></div>'+
+      '<div class="flowbar"><button class="btn ghost" id="back">Atrás</button><button class="btn primary flex-1" id="submit" '+(ready?'':'disabled')+'>Enviar deducción →</button></div></div></div>';
     app.querySelectorAll('[data-hyp]').forEach(function(b){ b.onclick=function(){ var k=b.getAttribute('data-hyp'); (S.hyp[k]=S.hyp[k]||{}).opt=b.getAttribute('data-opt'); render(); }; });
     app.querySelectorAll('[data-conf]').forEach(function(b){ b.onclick=function(){ S.hyp.conf=b.getAttribute('data-conf'); render(); }; });
     document.getElementById('back').onclick=function(){ S.screen='parse'; S.zoneIdx=S.item.zones.length-1; render(); };
@@ -250,9 +271,9 @@ p{margin:0 0 .8em}
   }
 
   function renderEvaluating(){
-    app.innerHTML='<div class="center" style="padding:60px 0"><div class="avatar" style="margin:0 auto 14px;width:46px;height:46px">✦</div>'+
+    app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg">✦</div>'+
       '<div class="state eval"><span class="d"></span> Analizando tu deducción y tu confianza…</div>'+
-      '<p class="muted small" style="margin-top:14px"><a href="#" id="see" class="gold">ver resultado</a></p></div>';
+      '<p class="muted small mt-14"><a href="#" id="see" class="gold">ver resultado</a></p></div>';
     var go=function(e){ if(e)e.preventDefault(); S.screen='reveal'; render(); };
     document.getElementById('see').onclick=go; setTimeout(go,900);
   }
@@ -281,15 +302,15 @@ p{margin:0 0 .8em}
       '<div class="bl-reveal">'+
       '<div class="eyebrow">Revelación + calibración</div><h2 class="serif">'+esc(rv.identity)+'</h2>'+
       '<div class="grid g2"><div>'+
-        '<div class="card center">'+labelHtml(null)+'<div style="margin-top:10px">'+badges+'</div></div>'+
-        '<div class="card tight" style="margin-top:14px"><div class="card-label">Tus lecturas (con tu confianza)</div>'+rows+
+        '<div class="card center">'+labelHtml(null)+'<div class="mt-10">'+badges+'</div></div>'+
+        '<div class="card tight mt-14"><div class="card-label">Tus lecturas (con tu confianza)</div>'+rows+
           '<div class="fb-row"><span class="small">Hipótesis de dulzor <span class="xs muted">('+esc(S.hyp.conf||'—')+')</span></span><span class="tone '+hypTone+'">'+esc(TONE_LABEL[so.band]||'Revisar')+'</span><span class="small muted">'+esc(so.text||'')+'</span></div>'+
         '</div>'+
       '</div><div>'+
-        '<div class="mentor '+calSev+'"><div class="avatar">✦</div><div><div class="sev">CALIBRACIÓN</div><p class="small" style="margin:.2em 0 0">'+esc(calMsg)+'</p></div></div>'+
-        '<div class="mentor ok"><div class="avatar">✦</div><div><div class="sev">SÍNTESIS</div><p class="small" style="margin:.2em 0 0">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
-        (rv.misconception?'<div class="mentor crit"><div class="avatar">✦</div><div><div class="sev">IDEA CONSOLIDADA</div><p class="small" style="margin:.2em 0 0"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
-        '<div class="flowbar"><button class="btn primary" id="toDone" style="flex:1">Ver qué cambió en ti →</button></div>'+
+        '<div class="mentor '+calSev+'"><div class="avatar">✦</div><div><div class="sev">CALIBRACIÓN</div><p class="small mentor-text">'+esc(calMsg)+'</p></div></div>'+
+        '<div class="mentor ok"><div class="avatar">✦</div><div><div class="sev">SÍNTESIS</div><p class="small mentor-text">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
+        (rv.misconception?'<div class="mentor crit"><div class="avatar">✦</div><div><div class="sev">IDEA CONSOLIDADA</div><p class="small mentor-text"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
+        '<div class="flowbar"><button class="btn primary flex-1" id="toDone">Ver qué cambió en ti →</button></div>'+
       '</div></div></div>';
     document.getElementById('toDone').onclick=function(){ EP&&EP.sessionCompleted({module:'label-guided',itemId:it.id}); S.screen='done'; render(); };
     animateBlReveal();
@@ -324,20 +345,20 @@ p{margin:0 0 .8em}
                  : (d.calibration==='infraconfianza' ? 'Tiendes a infravalorar tu criterio · a reforzar'
                  : 'Confianza alineada con tu acierto');
     var misc=(d.misconceptions||[]).map(function(m){
-      return '<div class="delta"><div class="ic">💡</div><div><b class="small">Idea consolidada</b><div class="xs muted" style="margin-top:2px">'+esc(m.title||'Concepto reforzado')+'</div></div></div>';
+      return '<div class="delta"><div class="ic">💡</div><div><b class="small">Idea consolidada</b><div class="xs muted mt-2">'+esc(m.title||'Concepto reforzado')+'</div></div></div>';
     }).join('');
-    var transfer=d.transferTouched?'<div class="delta"><div class="ic">🔄</div><div><b class="small">Transferencia probada</b><div class="xs muted" style="margin-top:2px">Aplicado a una etiqueta reservada como nueva → aprendizaje real, no memoria.</div></div></div>':'';
+    var transfer=d.transferTouched?'<div class="delta"><div class="ic">🔄</div><div><b class="small">Transferencia probada</b><div class="xs muted mt-2">Aplicado a una etiqueta reservada como nueva → aprendizaje real, no memoria.</div></div></div>':'';
     app.innerHTML=
       '<div class="bl-done">'+
-      '<div class="center" style="max-width:560px;margin:0 auto"><div class="celebrate">✓</div>'+
+      '<div class="center bl-done-narrow"><div class="celebrate">✓</div>'+
       '<h2 class="serif">Qué cambió en ti</h2><p class="muted small">No "bien hecho": esto es lo que ahora sabes y razonas distinto.</p></div>'+
-      '<div style="max-width:560px;margin:18px auto 0">'+
-        '<div class="delta"><div class="ic">📚</div><div><b class="small">Teoría · denominaciones y clasificaciones</b><div class="meter" style="margin-top:6px"><span data-w="58" style="width:0%"></span></div><div class="xs muted" style="margin-top:4px">Sistema de lectura aplicable a otras etiquetas · aciertos: '+esc(d.accuracy)+'</div></div></div>'+
-        '<div class="delta"><div class="ic">🎯</div><div><b class="small">Calibración</b><div class="xs muted" style="margin-top:2px">'+esc(calLine)+'</div></div></div>'+
+      '<div class="bl-done-body">'+
+        '<div class="delta"><div class="ic">📚</div><div><b class="small">Teoría · denominaciones y clasificaciones</b><div class="meter mt-6"><span data-w="58"></span></div><div class="xs muted mt-4">Sistema de lectura aplicable a otras etiquetas · aciertos: '+esc(d.accuracy)+'</div></div></div>'+
+        '<div class="delta"><div class="ic">🎯</div><div><b class="small">Calibración</b><div class="xs muted mt-2">'+esc(calLine)+'</div></div></div>'+
         misc + transfer +
-        '<div class="delta" style="border-color:rgba(201,162,39,.45)"><div class="ic">📈</div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted" style="margin-top:2px">El Epistemic Profile recibió tus señales y tu confianza. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
-        '<div class="state done" style="margin-top:8px"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
-        '<div class="flowbar" style="justify-content:center"><button class="btn" id="another">Otra etiqueta</button><a class="btn ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn ghost" href="../">Volver a Mi progreso</a></div>'+
+        '<div class="delta delta-gold"><div class="ic">📈</div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted mt-2">El Epistemic Profile recibió tus señales y tu confianza. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
+        '<div class="state done mt-8"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
+        '<div class="flowbar flowbar-center"><button class="btn" id="another">Otra etiqueta</button><a class="btn ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn ghost" href="../">Volver a Mi progreso</a></div>'+
       '</div></div>';
     document.getElementById('another').onclick=function(){ reset(S.itemIndex+1); render(); };
     animateBlDone();
@@ -351,14 +372,14 @@ p{margin:0 0 .8em}
     if(blReduceMotion()){
       if(celeb) celeb.classList.add('bl-in');
       deltas.forEach(function(el){el.classList.add('bl-in');});
-      bars.forEach(function(b){ b.style.width=(b.getAttribute('data-w')||'0')+'%'; });
+      bars.forEach(function(b){ b.style.setProperty('--progress', (b.getAttribute('data-w')||'0')+'%'); });
       return;
     }
     if(celeb) celeb.classList.add('bl-in');
     blStagger(deltas,180,110);
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
-        bars.forEach(function(b){ b.style.width=(b.getAttribute('data-w')||'0')+'%'; });
+        bars.forEach(function(b){ b.style.setProperty('--progress', (b.getAttribute('data-w')||'0')+'%'); });
       });
     });
   }
