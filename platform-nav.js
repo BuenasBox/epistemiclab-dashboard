@@ -66,7 +66,7 @@
       '</div>';
 
     var menuBtn = '<button type="button" class="pnav-menu-btn" id="pnav-menu-btn" aria-label="Menú" aria-controls="pnav-menu" aria-expanded="false">☰</button>';
-    var menu = '<div class="pnav-menu" id="pnav-menu" style="display:none">' +
+    var menu = '<div class="pnav-menu" id="pnav-menu" hidden>' +
       MENU.map(function (item) {
         if (item.submenu) {
           return '<div class="pnav-menu-group">' +
@@ -76,8 +76,8 @@
             }).join('') +
             '</div>';
         } else {
-          var cls = item.admin ? ' style="opacity:.6"' : '';
-          return '<a class="pnav-menu-item"' + cls + ' href="' + item.href + '">' + item.label + '</a>';
+          var cls = item.admin ? ' pnav-menu-item--muted' : '';
+          return '<a class="pnav-menu-item' + cls + '" href="' + item.href + '">' + item.label + '</a>';
         }
       }).join('') +
       '</div>';
@@ -88,13 +88,12 @@
     var menuPanel = nav.querySelector('#pnav-menu');
     if (menuButton && menuPanel) {
       menuButton.onclick = function () {
-        var isHidden = menuPanel.style.display === 'none';
-        menuPanel.style.display = isHidden ? 'block' : 'none';
-        menuButton.setAttribute('aria-expanded', String(isHidden));
+        menuPanel.hidden = !menuPanel.hidden;
+        menuButton.setAttribute('aria-expanded', String(!menuPanel.hidden));
       };
       document.addEventListener('click', function (e) {
         if (e.target !== menuButton && !menuPanel.contains(e.target)) {
-          menuPanel.style.display = 'none';
+          menuPanel.hidden = true;
           menuButton.setAttribute('aria-expanded', 'false');
         }
       });

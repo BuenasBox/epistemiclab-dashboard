@@ -44,7 +44,7 @@ test('browser checks the worker itself without HTTP cache delay', () => {
 
 test('global menu exposes its expanded state accessibly', () => {
   assert.match(navigation, /type="button"[\s\S]+aria-controls="pnav-menu"[\s\S]+aria-expanded="false"/);
-  assert.match(navigation, /setAttribute\('aria-expanded', String\(isHidden\)\)/);
+  assert.match(navigation, /setAttribute\('aria-expanded', String\(!menuPanel\.hidden\)\)/);
 });
 
 test('protected SAT catalog paths bypass every browser cache', () => {

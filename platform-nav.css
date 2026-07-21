@@ -45,6 +45,7 @@
   font-size:13px;transition:all 150ms
 }
 .pnav-menu-item:hover{color:var(--pn-ink);background:rgba(100,217,245,.08)}
+.pnav-menu-item--muted{opacity:.6}
 #pfoot{
   display:block;margin-top:60px;padding:40px 22px 32px;border-top:1px solid var(--pn-line);
   font-size:12px;color:var(--pn-muted);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif
