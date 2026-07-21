@@ -134,11 +134,58 @@ Cuando compres el dominio, esto es lo que hay que dejar listo antes de mover el 
 - Decidir arquitectura final: ¿Cloudflare solo como DNS/CDN delante de Vercel, o migración completa a Cloudflare Pages? Son dos rutas distintas de trabajo — vale la pena decidirlo con tiempo, no el día de la migración.
 - Si se mantiene Vercel detrás de Cloudflare: configurar Cloudflare en modo proxy (naranja), SSL "Full (strict)", y replicar en Cloudflare las cabeceras de seguridad ya definidas en `vercel.json` (Fase 1) para que no haya conflicto entre ambas capas.
 - Si se migra a Cloudflare Pages/Workers: como el sitio es estático (HTML/CSS/JS sin build step), la migración es directa, pero las Edge Functions de Supabase y las funciones serverless de `/api` (`validate-user-plan`, `validate-trial-expiration`) hay que revisarlas — si dependen de runtime de Node de Vercel, migran distinto que un sitio puramente estático.
-- Actualizar `CNAME` (hoy apunta a `epistemiclab.dpdns.org`, dominio temporal) y todas las referencias absolutas de URL en el código (si las hay) al dominio final.
 - Activar HSTS con `includeSubDomains` y `preload` solo después de confirmar que todo el sitio (incluyendo subdominios, si los hay) sirve correctamente por HTTPS.
 - Cloudflare Web Analytics como capa adicional o sustituta de la Fase 7.
 
 **Esfuerzo:** depende de la ruta elegida (medio si es solo proxy, alto si es migración completa). **Prioridad:** es la fase final, condicionada a que compres el dominio.
+
+### Checklist exacto de migración de dominio (auditoría 2026-07-20)
+
+Se auditó todo el repo (`grep` exhaustivo de URLs absolutas, hostnames, dominios y
+correos) para localizar cada punto de acoplamiento con `epistemiclab.dpdns.org`.
+Resultado: el sitio ya es casi enteramente dominio-agnóstico (todas las rutas son
+relativas, el manifest usa paths relativos, el redirect de recuperación de
+contraseña en `login/login.js` se construye con `location.origin` en runtime,
+las funciones `isLocalDevelopment`/`shouldUseMockAdmin`/`shouldEnableMockFallback`
+solo distinguen `localhost`, no dominios de producción específicos). Lo único
+real que quedaba hardcodeado ya se corrigió en esta auditoría:
+
+- ✅ `verify-email/index.html`: el `mailto:support@...` ahora se recalcula con
+  `window.location.hostname` en tiempo de ejecución (antes era un string fijo).
+  No requiere ningún cambio futuro al migrar de dominio.
+
+Lo que SÍ hay que tocar el día de la migración (todo fuera del código, o de
+un solo archivo):
+
+1. **Vercel → Settings → Domains**: agregar el dominio nuevo al proyecto
+   `epistemiclab-dashboard` y marcarlo como producción (esto es 100% en el
+   dashboard de Vercel, ningún archivo del repo lo controla).
+2. **Supabase → Authentication → URL Configuration**: actualizar `Site URL` y
+   la lista de `Redirect URLs` al dominio nuevo (si esto no se hace, los
+   enlaces de verificación de correo y recuperación de contraseña seguirán
+   apuntando al dominio viejo). Acción manual en el dashboard de Supabase.
+3. **Sentry → Project Settings → Allowed Domains** (si está configurado):
+   agregar el dominio nuevo para que no se descarten los eventos por origen.
+4. **`CNAME`** (raíz del repo): hoy contiene `epistemiclab.dpdns.org`. Este
+   archivo es una convención de GitHub Pages y ningún workflow de CI/CD ni
+   la config de Vercel lo lee — es un artefacto inerte para este despliegue.
+   Al migrar: actualízalo para que no quede desactualizado y confunda a
+   futuro, o elimínalo si se confirma que GitHub Pages nunca se usa como
+   respaldo.
+5. **`system_state.json`** campo `hosting.domain` (o equivalente): actualizar
+   el valor descriptivo al dominio nuevo — es metadata informativa, no
+   afecta funcionalidad, pero mantiene el archivo como fuente de verdad real.
+6. Correr `npm test` (los tests que referencian `epistemiclab.dpdns.org` en
+   `tests/access-audit-mode.test.js`, `tests/mock-login-flow.test.js`,
+   `tests/student-profile.test.js`, `tests/supabase-admin-console.test.js` y
+   `tests/supabase-auth-provider.test.js` lo usan solo como ejemplo literal
+   de "hostname de producción" para probar que NO se activa el modo mock/local
+   — seguirán pasando igual con el dominio nuevo sin tocarlos, pero se pueden
+   actualizar por prolijidad).
+
+Con esto, migrar de dominio es: 2 clics en Vercel, 1 actualización en
+Supabase Auth, 1 archivo de texto (`CNAME`), y un valor de metadata — cero
+riesgo de romper rutas, CSP, manifest, service worker o lógica de auth.
 
 ---
 

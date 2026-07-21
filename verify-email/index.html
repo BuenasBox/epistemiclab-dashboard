@@ -60,13 +60,25 @@
     </div>
 
     <div class="footer">
-      <p>¿Problemas? <a href="/login/">Inicia sesión de nuevo</a> o <a href="mailto:support@epistemiclab.dpdns.org">contacta soporte</a></p>
+      <p>¿Problemas? <a href="/login/">Inicia sesión de nuevo</a> o <a id="support-link" href="mailto:support@epistemiclab.dpdns.org">contacta soporte</a></p>
       <p class="footer-note">
         Práctica formativa · Desarrollo de razonamiento profesional
       </p>
     </div>
   </div>
 
+  <script>
+    // Preparación para migración de dominio: el mailto: de soporte se
+    // recalcula con el hostname real en tiempo de ejecución, así este
+    // enlace nunca vuelve a necesitar edición manual al cambiar de dominio.
+    // El atributo href estático de arriba es solo un fallback si JS falla.
+    (function () {
+      var host = window.location.hostname;
+      if (!host || host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '[::1]') return;
+      var link = document.getElementById('support-link');
+      if (link) link.href = 'mailto:support@' + host;
+    })();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
   <script src="../shared/supabase-public-config.js"></script>
   <script>
