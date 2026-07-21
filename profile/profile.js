@@ -168,6 +168,34 @@
   }
 
   // Y.3.4: Build and render pedagogical coaching
+  function coachingSignalsFromHistory(sessionHistory) {
+    var orSessions = sessionHistory.filter(function (session) { return session && session.type === 'or'; });
+    var satSessions = sessionHistory.filter(function (session) { return session && session.type === 'sat'; });
+    var verbGaps = {};
+    orSessions.forEach(function (session) {
+      (session.items || []).forEach(function (item) {
+        if (!item || (!item.causal_missing && item.structure_ok !== false && item.chain_fuerza !== 'debil')) return;
+        var verb = item.verb || 'respuesta abierta';
+        verbGaps[verb] = (verbGaps[verb] || 0) + 1;
+      });
+    });
+    var weakVerb = Object.keys(verbGaps).sort(function (a, b) { return verbGaps[b] - verbGaps[a] || a.localeCompare(b); })[0];
+    var orCoaching = weakVerb ? {
+      verb: weakVerb,
+      structural_gaps: [verbGaps[weakVerb] + ' respuesta(s) con estructura o cadena causal incompleta']
+    } : null;
+
+    var satIssues = {};
+    satSessions.forEach(function (session) {
+      (session.reviews || []).forEach(function (review) {
+        (review.issues || []).forEach(function (issue) { satIssues[issue] = (satIssues[issue] || 0) + 1; });
+      });
+    });
+    var topSatIssue = Object.keys(satIssues).sort(function (a, b) { return satIssues[b] - satIssues[a] || a.localeCompare(b); })[0];
+    var satCoaching = topSatIssue ? { consistency_issues: [topSatIssue + ' (' + satIssues[topSatIssue] + ' observaciones)'] } : null;
+    return { orCoaching: orCoaching, satCoaching: satCoaching };
+  }
+
   function buildAndRenderPedagogicalCoaching() {
     if (typeof window.LI !== 'object' || typeof window.PedagogicalCoachingEngine !== 'object') {
       return '';
@@ -177,15 +205,16 @@
       var weakSet = window.LI.weakSet();
       if (!weakSet) return '';
 
-      // Get coaching signals
-      var orCoaching = {}; // Would come from OR history if available
-      var satCoaching = {}; // Would come from SAT history if available
-      var analytics = {};
+      var sessionHistory = typeof window.LI.history === 'function' ? window.LI.history() : [];
+      var signals = coachingSignalsFromHistory(sessionHistory);
+      var analytics = (window.LearningAnalytics && typeof window.LearningAnalytics.computeAnalytics === 'function')
+        ? window.LearningAnalytics.computeAnalytics(weakSet, sessionHistory)
+        : null;
 
       // Build integrated coaching
       var coaching = window.PedagogicalCoachingEngine.buildIntegratedCoaching(
-        orCoaching,
-        satCoaching,
+        signals.orCoaching,
+        signals.satCoaching,
         analytics,
         weakSet
       );

@@ -42,16 +42,25 @@
     const suggestions = evaluateOrResponse.improvement_suggestions || [];
     const depth = evaluateOrResponse.depth || 'emerging';
     const distinctionFeedback = evaluateOrResponse.distinction_feedback || null;
+    const coverage = evaluateOrResponse.conceptual_coverage || null;
+    const affirmed = coverage ? (coverage.affirmed || []) : detected;
+    const partial = coverage ? (coverage.partial || []) : [];
+    const negated = coverage ? (coverage.negated || []) : [];
+    const mentioned = coverage ? (coverage.mentioned || []) : [];
+    const missing = coverage ? (coverage.missing || []) : absent;
+    const causalChain = evaluateOrResponse.causal_chain || null;
+    const positiveConcepts = affirmed.concat(partial);
+    const unresolvedConcepts = missing.concat(mentioned, negated);
 
     // Strengths: conceptos detectados (present + partial) — se conserva como
     // lista textual (usada por el fallback y por lectores de pantalla).
-    const strengths = detected.length > 0
-      ? detected.slice(0, 4).map(c => `Identificaste: ${c}`)
+    const strengths = positiveConcepts.length > 0
+      ? positiveConcepts.slice(0, 4).map(c => `Razonaste bien: ${c}`)
       : ['Considera los conceptos clave del tema.'];
 
     // Gaps: conceptos ausentes (top 3)
-    const gaps = absent.length > 0
-      ? absent.slice(0, 3).map(c => `Profundiza en: ${c}`)
+    const gaps = missing.length > 0
+      ? missing.slice(0, 3).map(c => `Profundiza en: ${c}`)
       : [];
 
     // Causal flag
@@ -59,8 +68,10 @@
 
     // Next step: priorizar concepto faltante + causal si aplica
     let next_step = 'Mantén esta estructura en futuras respuestas.';
-    if (absent.length > 0) {
-      next_step = `Explica cómo ${absent[0].toLowerCase()} afecta tu respuesta.`;
+    if (negated.length > 0) {
+      next_step = `Revisa la polaridad de «${negated[0]}»: tu respuesta la niega o contradice.`;
+    } else if (missing.length > 0) {
+      next_step = `Explica cómo ${missing[0].toLowerCase()} afecta tu respuesta.`;
     } else if (causal_flag) {
       next_step = 'Conecta causa y efecto con lenguaje explícito (porque, provoca, resulta en).';
     } else if (suggestions && suggestions.length > 0) {
@@ -81,14 +92,21 @@
     // determina cuánto se llena el anillo. Mostrar "78%" sobre una respuesta
     // puntual leería como una calificación numérica, que es justo lo que la
     // gobernanza de este módulo prohíbe.
-    const totalConcepts = detected.length + absent.length;
-    const coverage_ratio = totalConcepts > 0 ? detected.length / totalConcepts : 0;
+    const totalConcepts = positiveConcepts.length + unresolvedConcepts.length;
+    const coverage_ratio = totalConcepts > 0 ? positiveConcepts.length / totalConcepts : 0;
 
     return {
       strengths,
       gaps,
-      concepts_lit: detected,
-      concepts_dim: absent,
+      concepts_lit: positiveConcepts,
+      concepts_dim: unresolvedConcepts,
+      conceptual_coverage: coverage,
+      negated_concepts: negated,
+      mentioned_concepts: mentioned,
+      causal_chain: causalChain,
+      command_verb: evaluateOrResponse.command_verb || null,
+      evidence_quality: evaluateOrResponse.evidence_quality || null,
+      answer_length_flag: evaluateOrResponse.answer_length_flag || null,
       coverage_ratio,
       causal_flag,
       causal_message: causal_flag ? '⚠️ Razonamiento causal pendiente' : null,
@@ -131,6 +149,9 @@
     const e = enrichedFeedback;
     const hasGaps = e.gaps && e.gaps.length > 0;
     const hasCausal = e.causal_flag && e.causal_message;
+    const escapeHtml = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
 
     // Validate governance before rendering
     if (!validateGovernance(e)) {
@@ -139,7 +160,7 @@
 
     const depthBadge = `
       <div class="feedback-depth ${e.depth_class}">
-        <strong class="feedback-depth-label">Nivel de desarrollo: ${e.depth_label}</strong>
+        <strong class="feedback-depth-label">Nivel de desarrollo: ${escapeHtml(e.depth_label)}</strong>
       </div>
     `;
 
@@ -150,7 +171,7 @@
     const distinctionSection = e.distinction_feedback ? `
       <div class="feedback-section feedback-section--depth ${e.depth_class}">
         <div class="feedback-title">🎯 Por qué tu respuesta está en este nivel</div>
-        <p class="feedback-copy feedback-copy--distinction">${e.distinction_feedback}</p>
+        <p class="feedback-copy feedback-copy--distinction">${escapeHtml(e.distinction_feedback)}</p>
       </div>
     ` : '';
 
@@ -158,7 +179,7 @@
       <div class="feedback-section feedback-section--strength">
         <div class="feedback-title">✓ Fortalezas</div>
         <ul class="feedback-list">
-          ${e.strengths.map(s => `<li>${s}</li>`).join('')}
+          ${e.strengths.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
         </ul>
       </div>
     `;
@@ -167,14 +188,31 @@
       <div class="feedback-section feedback-section--gap">
         <div class="feedback-title">⚠️ Por fortalecer</div>
         <ul class="feedback-list">
-          ${e.gaps.map(g => `<li>${g}</li>`).join('')}
+          ${e.gaps.map(g => `<li>${escapeHtml(g)}</li>`).join('')}
         </ul>
+      </div>
+    ` : '';
+
+    const polaritySection = e.negated_concepts && e.negated_concepts.length ? `
+      <div class="feedback-section feedback-section--gap">
+        <div class="feedback-title">↔ Conceptos contradichos</div>
+        <ul class="feedback-list">
+          ${e.negated_concepts.map(c => `<li>Revisa la afirmación: ${escapeHtml(c)}</li>`).join('')}
+        </ul>
+      </div>
+    ` : '';
+
+    const causalChainSection = e.causal_chain ? `
+      <div class="feedback-section feedback-section--causal">
+        <div class="feedback-title">Cadena causa → mecanismo → efecto</div>
+        <p class="feedback-copy feedback-copy--muted">Causa: ${escapeHtml(e.causal_chain.causa)} · Mecanismo: ${escapeHtml(e.causal_chain.mecanismo)} · Efecto: ${escapeHtml(e.causal_chain.efecto)}</p>
+        ${(e.causal_chain.transiciones_debiles || []).length ? `<p class="feedback-copy">Transiciones por reforzar: ${escapeHtml(e.causal_chain.transiciones_debiles.join(', '))}.</p>` : ''}
       </div>
     ` : '';
 
     const causalSection = hasCausal ? `
       <div class="feedback-section feedback-section--causal">
-        <div class="feedback-title">${e.causal_message}</div>
+        <div class="feedback-title">${escapeHtml(e.causal_message)}</div>
         <p class="feedback-copy feedback-copy--muted">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
       </div>
     ` : '';
@@ -182,11 +220,11 @@
     const nextSection = `
       <div class="feedback-section feedback-section--next">
         <div class="feedback-title">💡 Próxima mejora</div>
-        <p class="feedback-copy">${e.next_step}</p>
+        <p class="feedback-copy">${escapeHtml(e.next_step)}</p>
       </div>
     `;
 
-    return depthBadge + distinctionSection + strengthsSection + gapsSection + causalSection + nextSection;
+    return depthBadge + distinctionSection + strengthsSection + gapsSection + polaritySection + causalChainSection + causalSection + nextSection;
   }
 
   /**
@@ -257,8 +295,16 @@
 
     const causalHtml = hasCausal ? `
       <div class="orb-panel orb-panel--causal">
-        <div class="orb-panel-title">${e.causal_message}</div>
-        <p class="orb-panel-copy--muted">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
+        <div class="orb-panel-title">${escapeHtml(e.causal_message)}</div>
+        ${e.causal_chain ? `<p class="orb-panel-copy--muted">Causa: ${escapeHtml(e.causal_chain.causa)} · Mecanismo: ${escapeHtml(e.causal_chain.mecanismo)} · Efecto: ${escapeHtml(e.causal_chain.efecto)}</p>` : '<p class="orb-panel-copy--muted">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>'}
+        ${e.causal_chain && (e.causal_chain.transiciones_debiles || []).length ? `<p>Transiciones por reforzar: ${escapeHtml(e.causal_chain.transiciones_debiles.join(', '))}.</p>` : ''}
+      </div>
+    ` : '';
+
+    const polarityHtml = e.negated_concepts && e.negated_concepts.length ? `
+      <div class="orb-panel orb-panel--causal">
+        <div class="orb-panel-title">↔ Revisa una contradicción conceptual</div>
+        <p>${e.negated_concepts.map(c => escapeHtml(c)).join(' · ')}</p>
       </div>
     ` : '';
 
@@ -296,6 +342,7 @@
         <div class="orb-headline" aria-hidden="true">${escapeHtml(headline)}</div>
         <div class="orb-bubbles" aria-hidden="true">${bubblesHtml}</div>
         ${distinctionHtml}
+        ${polarityHtml}
         ${causalHtml}
         ${nextHtml}
       </div>

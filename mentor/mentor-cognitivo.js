@@ -112,6 +112,35 @@
     return out;
   }
 
+  function analyzePracticeSignals(history) {
+    var out = { sba: { correct: 0, total: 0 }, sat: { reviews: 0, issues: 0, top_issue: null }, or: { items: 0, weak: 0, top_verb: null } };
+    var satIssues = {}, orVerbs = {};
+    if (!Array.isArray(history)) return out;
+    history.forEach(function (session) {
+      if (!session) return;
+      if (session.type === 'sba') {
+        (session.attempts || []).forEach(function (attempt) { out.sba.total++; if (attempt.correct) out.sba.correct++; });
+      } else if (session.type === 'sat') {
+        (session.reviews || []).forEach(function (review) {
+          out.sat.reviews++;
+          (review.issues || []).forEach(function (issue) { out.sat.issues++; satIssues[issue] = (satIssues[issue] || 0) + 1; });
+        });
+      } else if (session.type === 'or') {
+        (session.items || []).forEach(function (item) {
+          out.or.items++;
+          if (item.causal_missing || item.structure_ok === false || (item.chain_fuerza && item.chain_fuerza !== 'completa')) {
+            out.or.weak++;
+            var verb = item.verb || 'respuesta abierta';
+            orVerbs[verb] = (orVerbs[verb] || 0) + 1;
+          }
+        });
+      }
+    });
+    out.sat.top_issue = Object.keys(satIssues).sort(function (a, b) { return satIssues[b] - satIssues[a] || a.localeCompare(b); })[0] || null;
+    out.or.top_verb = Object.keys(orVerbs).sort(function (a, b) { return orVerbs[b] - orVerbs[a] || a.localeCompare(b); })[0] || null;
+    return out;
+  }
+
   function weakestCompetency(byComp, minTotal) {
     var weakest = null;
     Object.keys(byComp).sort().forEach(function (k) {
@@ -150,6 +179,7 @@
     input = input || {};
     var metrics = input.metrics || {};
     var ev = analyzeEvents(input.events);
+    var practice = analyzePracticeSignals(input.practiceSignals);
     var messages = [];
     function push(sev, title, body, basis) { messages.push({ severity: sev, title: title, body: body, basis: basis || '' }); }
 
@@ -163,7 +193,7 @@
 
     var anyMetric = has(domain) || has(calibration) || has(transfer) || has(readiness);
     var anyEventSignal = ev.misconceptionsActive.length || ev.misconceptionsResolved.length ||
-      ev.confSamples > 0 || Object.keys(ev.decisionsByComp).length > 0;
+      ev.confSamples > 0 || Object.keys(ev.decisionsByComp).length > 0 || practice.sba.total || practice.sat.reviews || practice.or.items;
 
     // 0) Arranque en frío: sin NINGUNA señal usable, no inventamos lecturas.
     if (!anyMetric && !anyEventSignal) {
@@ -182,6 +212,23 @@
         'Detecté un concepto que vuelve a aparecer: «' + m.title + '». Conviene corregirlo antes de avanzar; en cata ciega un error de base se arrastra a la conclusión.',
         'Base: detectada ' + m.count + (m.count === 1 ? ' vez' : ' veces') + ' y aún no contradicha por tu desempeño posterior.');
     });
+
+    // Señales deterministas del historial local de OR, SAT y SBA.
+    if (practice.or.items && practice.or.weak) {
+      push(SEV.ATENCION, 'Estructura de respuesta abierta por reforzar',
+        'Tus respuestas abiertas muestran cadenas o estructuras incompletas' + (practice.or.top_verb ? ' especialmente en «' + practice.or.top_verb + '»' : '') + '.',
+        'Base OR: ' + practice.or.weak + '/' + practice.or.items + ' respuestas con una señal estructural pendiente.');
+    }
+    if (practice.sat.reviews && practice.sat.issues) {
+      push(SEV.ATENCION, 'Consistencia SAT por reforzar',
+        'La revisión SAT repite una observación' + (practice.sat.top_issue ? ': «' + practice.sat.top_issue + '».' : '.'),
+        'Base SAT: ' + practice.sat.issues + ' observaciones en ' + practice.sat.reviews + ' revisiones.');
+    }
+    if (practice.sba.total >= 3 && practice.sba.correct / practice.sba.total < 0.6) {
+      push(SEV.ATENCION, 'Base teórica SBA en formación',
+        'Conviene consolidar la teoría antes de aumentar la dificultad adaptativa.',
+        'Base SBA: ' + practice.sba.correct + '/' + practice.sba.total + ' respuestas correctas.');
+    }
 
     // 2) Transferencia: riesgo de memorización
     if (has(transfer) && transfer.value < TH.transferLow) {
@@ -244,23 +291,30 @@
     });
 
     // 7) Siguiente paso (una sola acción accionable, derivada del hueco prioritario)
-    var rec = recommend(ev, { domain: domain, calibration: calibration, transfer: transfer, readiness: readiness });
+    var rec = recommend(ev, { domain: domain, calibration: calibration, transfer: transfer, readiness: readiness }, practice);
     if (rec) push(SEV.RECOMENDACION, rec.title, rec.body, rec.basis);
 
     return finalize(messages, {
       readiness: has(readiness) ? readiness.value : null,
       band: has(readiness) ? readinessBand(readiness.value) : null,
-      competencies: competencySnapshot(ev.decisionsByComp)
+      competencies: competencySnapshot(ev.decisionsByComp),
+      practice_evidence: practice
     });
   }
 
-  function recommend(ev, m) {
+  function recommend(ev, m, practice) {
     if (ev.misconceptionsActive.length) {
       var top = ev.misconceptionsActive[0];
       return { title: 'Siguiente paso: cerrar «' + top.title + '»', body: 'Haz un mini-ejercicio dirigido a ese concepto antes de subir de dificultad.', basis: 'Prioridad: idea recurrente sin cerrar.' };
     }
     if (has(m.transfer) && m.transfer.value < TH.transferLow) {
       return { title: 'Siguiente paso: practica con material nuevo', body: 'Elige ítems que no hayas visto para convertir memoria en transferencia.', basis: 'Prioridad: transferencia ' + pct(m.transfer.value) + '%.' };
+    }
+    if (practice && practice.or.weak) {
+      return { title: 'Siguiente paso: respuesta abierta estructurada', body: 'Practica una respuesta con causa, mecanismo y efecto explícitos.', basis: 'Prioridad OR: ' + practice.or.weak + ' señales estructurales pendientes.' };
+    }
+    if (practice && practice.sat.issues) {
+      return { title: 'Siguiente paso: calibración SAT', body: 'Repite una nota SAT completa y comprueba el criterio que más se omite.', basis: 'Prioridad SAT: ' + practice.sat.issues + ' observaciones.' };
     }
     var weak = weakestCompetency(ev.decisionsByComp, 3);
     if (weak && weak.acc < 0.7) {

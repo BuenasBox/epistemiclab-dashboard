@@ -58,7 +58,10 @@
     var readinessBreakdown = unwrap(bundle.readiness_breakdown || bundle.readiness) || null;
     var metrics = summary.metrics || {};
     var loop = LearningLoop.orchestrate({ summary:summary, sessions:sessions, misconceptions:misconceptions, recommendations:recommendations, readiness_breakdown:readinessBreakdown });
-    var mentor = MentorCognitivo.interpret({ metrics:metrics, events:misconceptionEvents(misconceptions) });
+    var practiceSignals = (typeof window !== 'undefined' && window.LI && typeof window.LI.history === 'function')
+      ? window.LI.history()
+      : [];
+    var mentor = MentorCognitivo.interpret({ metrics:metrics, events:misconceptionEvents(misconceptions), practiceSignals:practiceSignals });
     var mentorHeadline = mentor.messages[0] || null;
     var last = sessions[0] || null;
     return {
@@ -139,11 +142,11 @@
       '<section class="card"><div class="eyebrow">Confianza y transferencia</div>'+meter('Confianza (calibración)',vm.confidence.pct)+meter('Transferencia (vinos nuevos)',vm.transfer.pct)+'</section></div>'+
       '<section class="card"><div class="eyebrow">Tu recorrido</div><div class="timeline">'+timeline+'</div></section>'+
       '<section class="card"><div class="eyebrow">Tu último avance</div>'+(vm.lastProgress?'<div class="last">'+sessionIcon(vm.lastProgress.type)+' '+sessionName(vm.lastProgress.type)+' · <span class="muted">'+esc(vm.lastProgress.status||'')+'</span></div>':'<div class="muted small">Aún no registras sesiones.</div>')+'<div class="card-sub">Sesiones recientes</div>'+sessHtml+'</section>';
-    if (MentorCognitivoUI && vm.mentor) {
+    if (MentorCognitivoUI && vm.mentorAll && vm.mentorAll.length) {
       var mount = document.getElementById('mentorMount');
       mount.innerHTML = '<div class="eyebrow">Qué espera el Mentor de ti</div>';
       var holder = document.createElement('div');
-      MentorCognitivoUI.render(holder, { messages:[vm.mentor] });
+      MentorCognitivoUI.render(holder, { messages:vm.mentorAll });
       mount.appendChild(holder);
     }
     animateReveal(rootEl, vm);

@@ -85,6 +85,8 @@
   function detectVerbFromStem(stem) {
     if (!stem) return null;
 
+    if (window.VerbContract) return window.VerbContract.detect(stem);
+
     const stemLower = String(stem).toLowerCase();
     const verbs = window.MENTOR_CONFIG.verb_mentors;
 

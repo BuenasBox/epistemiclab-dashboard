@@ -401,3 +401,9 @@ window.DISTINCTION_COACH = {
   "simple_wine_note": "Para vinos simples, indicar 'simple' es la observación correcta. No inventes aromas terciarios: en la clave oficial, declarar SIMPLE es lo que corresponde y los aromas primarios válidos completan la nota.",
   "source": "Phase X.1 assessment-intelligence assets (compiled)"
 };
+
+// The canonical taxonomy lives in shared/verb-contract.js. The embedded
+// values above remain only as a deployment fallback for old cached HTML.
+if (window.VerbContract) {
+  window.DISTINCTION_COACH.command_verbs = window.VerbContract.toCoachData();
+}

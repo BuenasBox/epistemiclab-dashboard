@@ -129,6 +129,9 @@
 <script src="../shared/mode-access-gate.js"></script>
 <script src="../shared/learning-sync.js"></script>
 <script src="../shared/auth-token.js"></script>
+<script src="../shared/verb-contract.js"></script>
+<script src="../adaptive-session/learner_intelligence.js"></script>
+<script src="../shared/mentor-config.js"></script>
 <script src="../shared/mentor-engine.js"></script>
 <script src="../shared/mentor-ui.js"></script>
 <script>
@@ -234,10 +237,11 @@
         answers: stored.answers || {},
         feedback: stored.feedback || {},
         completed: stored.completed === true,
-        showingFeedback: false
+      showingFeedback: false,
+      historyRecorded: stored.historyRecorded === true
       };
     } catch (_e) {
-      return { sessionName: "short_practice", index: 0, answers: {}, feedback: {}, completed: false, showingFeedback: false };
+    return { sessionName: "short_practice", index: 0, answers: {}, feedback: {}, completed: false, showingFeedback: false, historyRecorded: false };
     }
   }
   function saveState() { localStorage.setItem(storageKey, JSON.stringify(state)); }
@@ -294,7 +298,7 @@
       buttons.forEach(button => { button.disabled = false; });
     }
     state.sessionName = validSessionName(name);
-    state.index = 0; state.answers = {}; state.feedback = {}; state.completed = false; state.showingFeedback = false;
+    state.index = 0; state.answers = {}; state.feedback = {}; state.completed = false; state.showingFeedback = false; state.historyRecorded = false;
     saveState(); render();
   }
 
@@ -328,7 +332,12 @@
         missing_causal_reasoning: r.missing_causal_reasoning || [],
         improvement_suggestions: r.improvement_suggestions || [],
         distinction_feedback: r.distinction_feedback || [],
-        depth: r.depth || null
+        depth: r.depth || null,
+        conceptual_coverage: r.conceptual_coverage || null,
+        causal_chain: r.causal_chain || null,
+        command_verb: r.command_verb || null,
+        evidence_quality: r.evidence_quality || null,
+        answer_length_flag: r.answer_length_flag || null
       };
     } catch (e) {
       console.error('evaluate-or error:', e);
@@ -351,7 +360,37 @@
       saveState(); render();
     }
   }
-  function finishSession() { state.completed = true; saveState(); render(); }
+  function finishSession() {
+    state.completed = true;
+    if (!state.historyRecorded && window.LI && typeof window.LI.recordORSession === 'function') {
+      const results = items.map(item => {
+        const feedback = state.feedback[item.item_id];
+        if (!feedback) return null;
+        const coverage = feedback.conceptual_coverage || {};
+        const causal = feedback.causal_chain;
+        const total = ['affirmed', 'partial', 'negated', 'mentioned', 'missing']
+          .reduce((sum, key) => sum + ((coverage[key] || []).length), 0);
+        const causalWeak = !!(causal && ((causal.transiciones_debiles || []).length ||
+          causal.causa !== 'affirmed' || causal.mecanismo !== 'affirmed' || causal.efecto !== 'affirmed'));
+        const stagesPresent = causal && [causal.causa, causal.mecanismo, causal.efecto]
+          .filter(value => value === 'affirmed' || value === 'partial').length;
+        return {
+          item_id: item.item_id,
+          ra_id: item.ra_id || null,
+          topic: item.topic || null,
+          verb: feedback.command_verb || item.command_verb || null,
+          concepts_total: total || (feedback.concepts_detected || []).length + (feedback.concepts_absent || []).length,
+          concepts_absent: coverage.missing ? coverage.missing.length + (coverage.mentioned || []).length + (coverage.negated || []).length : (feedback.concepts_absent || []).length,
+          causal_missing: causalWeak || (feedback.missing_causal_reasoning || []).length > 0,
+          structure_ok: causal ? !causalWeak : null,
+          chain_fuerza: causal ? (!causalWeak ? 'completa' : (stagesPresent >= 2 ? 'parcial' : 'debil')) : null
+        };
+      }).filter(Boolean);
+      window.LI.recordORSession(state.sessionName, results);
+      state.historyRecorded = true;
+    }
+    saveState(); render();
+  }
 
   function closeDrawer() {
     if (drawer) drawer.hidden = true;
@@ -369,14 +408,9 @@
     if (panel) { panel.hidden = false; panel.classList.add('active'); if (drawerTitle) drawerTitle.textContent = title; }
   }
   function buildContextualChecklist(verb) {
-    const checklistMap = {
-      'explain': ['¿Identificaste el factor inicial?', '¿Explicaste el mecanismo?', '¿Nombraste el resultado final?', '¿Usaste lenguaje causal?'],
-      'compare': ['¿Identificaste los elementos a comparar?', '¿Cubriste similitudes?', '¿Cubriste diferencias?', '¿Organizaste por dimensiones?'],
-      'describe': ['¿Observaste características principales?', '¿Usaste vocabulario técnico?', '¿Cubriste múltiples dimensiones?'],
-      'justify': ['¿Enunciaste tu posición?', '¿Diste 3+ razones?', '¿Conectaste cada razón a tu afirmación?'],
-      'evaluate': ['¿Identificaste 3+ factores?', '¿Evaluaste el impacto?', '¿Sintetizaste en una conclusión?']
-    };
-    return checklistMap[(verb || '').toLowerCase()] || ['¿Respondiste lo que se preguntó?', '¿Tu respuesta es clara?', '¿Incluiste evidencia específica?'];
+    return window.VerbContract
+      ? window.VerbContract.checklist(verb)
+      : ['¿Respondiste lo que se preguntó?', '¿Tu respuesta es clara?', '¿Incluiste evidencia específica?'];
   }
 
   if (assistBtns) assistBtns.forEach(btn => btn.addEventListener('click', () => openDrawerPanel(btn.dataset.assistPanel)));

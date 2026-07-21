@@ -24,6 +24,7 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.108.2';
 import { privateJsonHeaders } from '../_shared/sat-access.ts';
 import { verifyLearningAccess } from '../_shared/learning-access.ts';
+import { evaluateSpec } from '../_shared/or-evaluation-core.mjs';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -58,7 +59,7 @@ const CONNECTORS = new Set([
 // of what separates a foundational / developing / distinction-level (strong)
 // response — this is the actual "why" the student needs, not just a list of
 // which concepts were found or missing.
-const DEPTH_TO_FEEDBACK_KEY = {
+const DEPTH_TO_FEEDBACK_KEY: Record<string, string> = {
   strong: 'STRONG_RESPONSE',
   developing: 'DEVELOPING_RESPONSE',
   emerging: 'FOUNDATIONAL_RESPONSE',
@@ -70,7 +71,7 @@ const DEPTH_TO_FEEDBACK_KEY = {
  * - remove diacritics
  * - collapse whitespace
  */
-function normalizeText(text) {
+function normalizeText(text: unknown): string {
   return String(text || '').toLowerCase().normalize('NFD')
     .replace(/[̀-ͯ]/g, '').replace(/₂/g, '2')
     .trim().replace(/\s+/g, ' ');
@@ -79,7 +80,7 @@ function normalizeText(text) {
 /**
  * Extract meaningful tokens (words >1 char, excluding stopwords)
  */
-function meaningfulTokens(text) {
+function meaningfulTokens(text: unknown): string[] {
   return (normalizeText(text).match(/\b[^\W\d_](?:[^\W_]|['-])*\b/gu) || [])
     .filter((t) => t.length > 1 && !STOPWORDS.has(t));
 }
@@ -102,7 +103,7 @@ function meaningfulTokens(text) {
  * - Cannot detect implicit reasoning (student knows but didn't write it)
  * - Cannot distinguish between presence and centrality (concept mentioned in passing vs. core)
  */
-function conceptState(concept, answer) {
+function conceptState(concept: unknown, answer: unknown): 'present' | 'partial' | 'missing' {
   const conceptNorm = normalizeText(concept);
   const answerNorm = normalizeText(answer);
 
@@ -131,7 +132,7 @@ function conceptState(concept, answer) {
  * 3. If no causal connector: suggest explicit causal language
  * 4. If complete: validate approach
  */
-function revisionSuggestion(missing, partial, hasConnector, depthTarget) {
+function revisionSuggestion(missing: string[], partial: string[], hasConnector: boolean, depthTarget: string): string {
   // Recommend incorporating missing/partial concepts
   const targets = missing.slice(0, 3).concat(partial.slice(0, 2));
   if (targets.length) {
@@ -165,8 +166,8 @@ Deno.serve(async (req) => {
 
     // Initialize Supabase with service role (secure server-side context)
     const supabase = createClient(
-      Deno.env.get('SUPABASE_URL'),
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+      Deno.env.get('SUPABASE_URL')!,
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
     );
 
     // Validate JWT token
@@ -212,7 +213,7 @@ Deno.serve(async (req) => {
     // 3. FETCH QUESTION DEFINITION
     const { data: item, error: itemError } = await supabase
       .from('or_bank')
-      .select('expected_concepts, response_depth_target, feedback_profile')
+      .select('expected_concepts, response_depth_target, feedback_profile, evaluation_spec')
       .eq('item_id', item_id)
       .single();
 
@@ -227,28 +228,57 @@ Deno.serve(async (req) => {
       ? item.feedback_profile
       : {};
 
-    const present = [];   // concepts_detected
-    const partial = [];   // also counts as detected for feedback purposes
-    const missing = [];   // concepts_absent
+    const evaluationSpec = item.evaluation_spec && typeof item.evaluation_spec === 'object'
+      ? item.evaluation_spec
+      : null;
+    const authoredEvaluation = evaluationSpec && Array.isArray(evaluationSpec.concepts)
+      ? evaluateSpec(evaluationSpec, answer)
+      : null;
 
-    for (const concept of expected) {
-      const state = conceptState(concept, answer);
-      if (state === 'present') present.push(concept);
-      else if (state === 'partial') partial.push(concept);
-      else missing.push(concept);
+    let present: string[] = [];     // concepts_detected (affirmed)
+    let partial: string[] = [];     // also counts as positive coverage
+    let missing: string[] = [];     // concepts_absent
+    let negated: string[] = [];
+    let mentioned: string[] = [];
+
+    if (authoredEvaluation) {
+      present = authoredEvaluation.conceptual_coverage.affirmed;
+      partial = authoredEvaluation.conceptual_coverage.partial;
+      missing = authoredEvaluation.conceptual_coverage.missing;
+      negated = authoredEvaluation.conceptual_coverage.negated;
+      mentioned = authoredEvaluation.conceptual_coverage.mentioned;
+    } else {
+      // Backward-compatible path for legacy rows without evaluation_spec.
+      for (const concept of expected) {
+        const state = conceptState(concept, answer);
+        if (state === 'present') present.push(concept);
+        else if (state === 'partial') partial.push(concept);
+        else missing.push(concept);
+      }
     }
 
     // 5. CAUSAL REASONING DETECTION
     const hasConnector = meaningfulTokens(answer).some((t) => CONNECTORS.has(t));
     const missing_causal_reasoning = [];
+    const causalChain = authoredEvaluation ? authoredEvaluation.causal_chain : null;
 
-    if (!hasConnector && answer.trim() && (depthTarget === 'strong' || depthTarget === 'developing')) {
+    if (causalChain && causalChain.required) {
+      if (causalChain.causa !== 'affirmed') missing_causal_reasoning.push('Aclara la causa o factor inicial.');
+      if (causalChain.mecanismo !== 'affirmed') missing_causal_reasoning.push('Desarrolla el mecanismo intermedio.');
+      if (causalChain.efecto !== 'affirmed') missing_causal_reasoning.push('Explicita el efecto o resultado final.');
+      causalChain.transiciones_debiles.forEach((transition) => {
+        missing_causal_reasoning.push(`Refuerza la transición causal ${transition}.`);
+      });
+    } else if (!authoredEvaluation && !hasConnector && answer.trim() && (depthTarget === 'strong' || depthTarget === 'developing')) {
+      // Legacy fallback: rows without a causal_chain retain connector detection.
       missing_causal_reasoning.push('Haz explícita la relación causa-efecto.');
     }
 
     // 6. DEPTH CLASSIFICATION (informational, not scoring)
     const covered = present.length + partial.length;
-    const total = expected.length || 1;
+    const total = authoredEvaluation
+      ? Object.values(authoredEvaluation.conceptual_coverage).reduce((sum, values) => sum + values.length, 0) || 1
+      : expected.length || 1;
     const ratio = covered / total;
     let depth = ratio >= 0.75 ? 'strong' : ratio >= 0.4 ? 'developing' : 'emerging';
 
@@ -293,7 +323,20 @@ Deno.serve(async (req) => {
         concepts_detected: present.concat(partial),      // what student got right/partially right
         concepts_absent: missing,                         // what's missing
         missing_causal_reasoning,                         // reasoning gaps
-        improvement_suggestions: [revisionSuggestion(missing, partial, hasConnector, depthTarget)],
+        improvement_suggestions: [revisionSuggestion(missing, partial.concat(mentioned), hasConnector, depthTarget)],
+
+        // Additive multi-dimensional contract for richer formative feedback.
+        conceptual_coverage: authoredEvaluation ? {
+          affirmed: present,
+          negated,
+          mentioned,
+          partial,
+          missing,
+        } : null,
+        causal_chain: causalChain,
+        command_verb: authoredEvaluation ? authoredEvaluation.command_verb : null,
+        evidence_quality: authoredEvaluation ? authoredEvaluation.evidence_quality : null,
+        answer_length_flag: authoredEvaluation ? authoredEvaluation.answer_length_flag : null,
 
         // Informational (depth classification, not official score)
         depth,                                            // 'emerging', 'developing', 'strong'

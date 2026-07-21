@@ -75,6 +75,7 @@ window.LI = (function () {
     ['how', /^[¿?\s]*como\b|\bde\s+que\s+manera\b/],
   ];
   function detectVerb(text) {
+    if (window.VerbContract) return window.VerbContract.detect(text);
     const low = String(text || '').toLowerCase()
       .normalize('NFD').replace(/[̀-ͯ]/g, '');
     for (let i = 0; i < VERB_PATTERNS.length; i++) {
@@ -85,7 +86,7 @@ window.LI = (function () {
 
   /* ───────── Phase Z — Matriz Maestra WSET L3 (estructura por verbo) ───────── */
   // Patrón pedagógico, no scoring oficial.
-  const VERB_MATRIX = {
+  const VERB_MATRIX_FALLBACK = {
     describe: { busca: 'Características objetivas. No análisis, no ventajas/desventajas.', estructura: ['Qué es', 'Características', 'Datos relevantes'], causal: false },
     explain: { busca: 'Relación causa-efecto.', estructura: ['Factor', 'Consecuencia', 'Resultado', 'Impacto en calidad'], causal: true },
     why: { busca: 'Justificación.', estructura: ['Problema', 'Método utilizado', 'Beneficio obtenido', 'Impacto final'], causal: true },
@@ -100,6 +101,7 @@ window.LI = (function () {
     state: { busca: 'Dato puntual.', estructura: ['Respuesta breve'], causal: false },
     list: { busca: 'Enumeración sin explicación.', estructura: ['Elementos'], causal: false },
   };
+  const VERB_MATRIX = window.VerbContract ? window.VerbContract.matrix() : VERB_MATRIX_FALLBACK;
 
   const CAUSAL_CONNECTORS = ['porque', 'ya que', 'debido', 'por lo tanto', 'esto provoca', 'lo que', 'conduce', 'resulta', 'provoca', 'produce', 'da lugar', 'como consecuencia', 'por ello'];
   const BALANCE_MARKERS = ['en conjunto', 'en general', 'sin embargo', 'por otro lado', 'en balance', 'aunque'];
