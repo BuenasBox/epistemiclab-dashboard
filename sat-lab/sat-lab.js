@@ -197,9 +197,10 @@
       return '<div class="'+cls+'"><span class="dot">'+mark+'</span><span class="lbl">'+(SHORT[i]||('F'+(i+1)))+'</span></div>';
     }).join('');
     var nextName = (S.phaseIdx<PHASES.length-1)? SHORT[S.phaseIdx+1] : null;
-    $('steps').innerHTML = '<div class="prog-track"><i style="width:'+pct+'%"></i></div>'
+    $('steps').innerHTML = '<div class="prog-track"><i></i></div>'
       + '<div class="prog-steps">'+dots+'</div>'
       + '<div class="prog-label">Fase <b>'+(S.phaseIdx+1)+'</b> de '+PHASES.length+(nextName?(' · Siguiente: '+nextName):' · Última fase')+'</div>';
+    var trackFill=$('steps').querySelector('.prog-track>i'); if(trackFill) trackFill.style.width=pct+'%';
     renderPhase();
   }
 
@@ -508,9 +509,9 @@
     var why=(si.wset_importance==='CORE'?'Estilo núcleo del examen WSET. ':'')+(tn.revision_priority?('Prioridad de repaso: '+escP(prioEs(tn.revision_priority))+'. '):'')+(styleEs?escP(styleEs):'Practica la identificación de este estilo y su diferenciación frente a perfiles similares.');
     var traps=uniqP([].concat(dna.typical_misconceptions||[], d.exam_traps||[], tn.student_traps||[]));
     var sim=uniqP([].concat(dna.comparison_styles||[]));
-    var h='<h3 style="margin:0 0 4px;font-size:17px">Debrief — '+escP(displayNameEs(si.display_name||'Vino'))+'</h3>';
+    var h='<h3 class="pp-h3-tight">Debrief — '+escP(displayNameEs(si.display_name||'Vino'))+'</h3>';
     if(rev) h+='<div class="pp-reveal">'+rev+'</div>';
-    if(why) h+='<div class="pp-sec"><h4>Por qué importa este estilo</h4><div class="pp-li" style="padding-left:0">'+why+'</div></div>';
+    if(why) h+='<div class="pp-sec"><h4>Por qué importa este estilo</h4><div class="pp-li pp-li--flush">'+why+'</div></div>';
     if(dna.core_concepts&&dna.core_concepts.length) h+='<div class="pp-sec"><h4>Conceptos clave</h4>'+ppListClean(dna.core_concepts,['Estructura sensorial característica del estilo.','Relación entre origen, variedades y método de elaboración.','Marcadores que permiten diferenciarlo de estilos cercanos.'])+'</div>';
     if(dna.learning_objectives&&dna.learning_objectives.length) h+='<div class="pp-sec"><h4>Objetivos de aprendizaje</h4>'+ppListClean(dna.learning_objectives,['Reconocer la estructura característica del estilo.','Relacionar las observaciones con el origen y la elaboración.','Distinguirlo de perfiles que pueden resultar similares.'])+'</div>';
     if(traps.length) h+='<div class="pp-sec"><h4>Trampas frecuentes</h4>'+ppListClean(traps,['No concluir la identidad a partir de un solo descriptor.','Confirmar la estructura completa antes de identificar el estilo.'])+'</div>';
@@ -576,7 +577,7 @@
   function renderCompare(c){
     var bands=(c.descriptor_bands&&c.descriptor_bands.palate)||{};
     var tn=c.teaching_notes||{}, av=c.acceptable_variations||{};
-    var h='<h3 style="margin:0 0 4px;font-size:17px">Comparación con el modelo</h3>';
+    var h='<h3 class="pp-h3-tight">Comparación con el modelo</h3>';
     if(tn.comparison_prompt) h+='<p class="cmp-intro">'+escP(presentEs(tn.comparison_prompt))+'</p>';
     var order=['dulzor','acidez','tanino','alcohol','cuerpo'];
     var rows='';
@@ -613,9 +614,9 @@
     fetchPost('next_practice_recommendations.json','recommend').then(function(j){
       var r=j; if(!r||!r.recommended_next||!r.recommended_next.length){ box.innerHTML=''; return; }
       var nextId=r.recommended_next[0];
-      var h='<div class="pp-sec" style="margin:6px 0 0"><h4>Siguiente práctica recomendada</h4>';
-      if(r.reason) h+='<div class="pp-li" style="padding-left:0">'+escP(presentEs(r.reason))+'</div>';
-      h+='<button class="btn" id="btn-start-rec" data-id="'+escP(nextId)+'" style="margin-top:10px">Iniciar práctica recomendada</button></div>';
+      var h='<div class="pp-sec pp-sec--tight"><h4>Siguiente práctica recomendada</h4>';
+      if(r.reason) h+='<div class="pp-li pp-li--flush">'+escP(presentEs(r.reason))+'</div>';
+      h+='<button class="btn pp-rec-btn" id="btn-start-rec" data-id="'+escP(nextId)+'">Iniciar práctica recomendada</button></div>';
       box.innerHTML=h;
       var b=$('btn-start-rec'); if(b) b.addEventListener('click', function(){ startRecommended(b.getAttribute('data-id')); });
     }).catch(function(){ box.innerHTML=''; });

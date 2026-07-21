@@ -265,7 +265,7 @@
       '<div class="fs-shell fs-debrief">' +
       '<div class="fs-eyebrow">Examen completado' + (S.examReason === 'time_expired' ? ' · se agotó el tiempo' : '') + '</div>' +
       '<h1 class="fs-h1">Tu resultado</h1>' +
-      '<div class="fs-result"><div class="fs-ring" style="--p:0"><i>' + accuracyPct + '%</i></div><div><div class="fs-result-k">' + r.correct + ' de ' + r.total + ' ejes en rango</div><div class="fs-lead">' + (accuracyPct >= 55 ? 'Por encima del umbral de aprobado (55%).' : 'Por debajo del umbral de aprobado (55%). Sigue practicando.') + '</div></div></div>' +
+      '<div class="fs-result"><div class="fs-ring"><i>' + accuracyPct + '%</i></div><div><div class="fs-result-k">' + r.correct + ' de ' + r.total + ' ejes en rango</div><div class="fs-lead">' + (accuracyPct >= 55 ? 'Por encima del umbral de aprobado (55%).' : 'Por debajo del umbral de aprobado (55%). Sigue practicando.') + '</div></div></div>' +
       (mentorMsg ? '<section class="fs-card fs-mentor"><div class="fs-eyebrow">Qué dice tu Mentor</div><div class="fs-m-title">' + esc(mentorMsg.title) + '</div><p class="fs-m-text">' + esc(mentorMsg.body) + '</p></section>' : '') +
       (loop ? '<section class="fs-card fs-next"><div class="fs-eyebrow">Tu siguiente paso (Learning Loop)</div><div class="fs-next-p">' + esc(loop.next.label) + '</div><p class="fs-m-text">' + esc(loop.next.reason) + '</p></section>' : '') +
       winesHtml +

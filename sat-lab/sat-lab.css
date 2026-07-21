@@ -141,6 +141,10 @@
   .pp-sec h4{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 6px; }
   .pp-li{ position:relative; padding:4px 0 4px 16px; font-size:13.7px; line-height:1.45; }
   .pp-li::before{ content:""; position:absolute; left:0; top:11px; width:6px; height:6px; border-radius:50%; background:var(--wine2); }
+  .pp-li--flush{ padding-left:0; }
+  .pp-h3-tight{ margin:0 0 4px; font-size:17px; }
+  .pp-sec--tight{ margin:6px 0 0; }
+  .pp-rec-btn{ margin-top:10px; }
   .cmp-intro{ font-size:13px; color:var(--muted); margin:0 0 10px; line-height:1.5; }
   .cmp-row{ display:grid; grid-template-columns:1.1fr 1.2fr auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line); font-size:13.5px; }
   .cmp-row .lab{ color:var(--muted); }

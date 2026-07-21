@@ -159,12 +159,19 @@
       var off = offs[Math.floor(i/2)%offs.length];
       var xpos = 60 + ((i%2)? off : -off) * hw;
       var delay = (i*0.5).toFixed(2);
-      html += '<g class="swg-tear" style="--swg-delay:'+delay+'s">'
+      html += '<g class="swg-tear" data-swg-delay="'+delay+'">'
         + '<line x1="'+xpos.toFixed(1)+'" y1="'+topY.toFixed(1)+'" x2="'+xpos.toFixed(1)+'" y2="'+botY.toFixed(1)+'" stroke="#ffffff" stroke-width="1.1" stroke-linecap="round" opacity="0.32"/>'
-        + '<circle class="swg-tear-drop" cx="'+xpos.toFixed(1)+'" cy="'+topY.toFixed(1)+'" r="1.5" fill="#ffffff" opacity="0.8" style="--swg-fall:'+(botY-topY).toFixed(1)+'px"/>'
+        + '<circle class="swg-tear-drop" cx="'+xpos.toFixed(1)+'" cy="'+topY.toFixed(1)+'" r="1.5" fill="#ffffff" opacity="0.8" data-swg-fall="'+(botY-topY).toFixed(1)+'"/>'
         + '</g>';
     }
     g.innerHTML = html;
+    // CSP-safe: --swg-delay/--swg-fall se aplican vía CSSOM, no style="" en el markup.
+    g.querySelectorAll('.swg-tear').forEach(function(el){
+      el.style.setProperty('--swg-delay', el.getAttribute('data-swg-delay')+'s');
+    });
+    g.querySelectorAll('.swg-tear-drop').forEach(function(el){
+      el.style.setProperty('--swg-fall', el.getAttribute('data-swg-fall')+'px');
+    });
   }
 
   function applyState(rootEl, state){

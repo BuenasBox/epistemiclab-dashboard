@@ -810,7 +810,7 @@ function finishSAT(){
 }
 function toggleProgress(){
   const box=document.getElementById('li-progress'); if(!box)return;
-  if(box.hidden){box.innerHTML=window.LI?LI.renderProgress():'';box.hidden=false;}
+  if(box.hidden){box.innerHTML=window.LI?LI.renderProgress():''; if(window.LI) LI.applyProgressStyles(box); box.hidden=false;}
   else box.hidden=true;
 }
 

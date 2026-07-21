@@ -161,7 +161,7 @@
     container.innerHTML =
       '<div class="mco-reveal' + (reduceMotion ? ' mco-no-motion' : '') + '">' +
         srList +
-        '<div class="mco-ring-wrap" aria-hidden="true" style="color:' + tone + ';">' +
+        '<div class="mco-ring-wrap" aria-hidden="true">' +
           '<svg viewBox="0 0 168 168" class="mco-ring-svg">' +
             '<circle cx="84" cy="84" r="72" fill="none" stroke="var(--panel2)" stroke-width="10"/>' +
             '<circle class="mco-ring" cx="84" cy="84" r="72" fill="none" stroke="' + tone + '" ' +
@@ -169,7 +169,7 @@
           '</svg>' +
           '<div class="mco-ring-label">' +
             (hasReading ? '<div class="mco-pct">' + pct + '%</div>' : '') +
-            '<div class="mco-band" style="color:' + tone + ';">' + esc(bandLabel) + '</div>' +
+            '<div class="mco-band">' + esc(bandLabel) + '</div>' +
           '</div>' +
         '</div>' +
         '<div class="mco-headline" aria-hidden="true">' + esc(headline) + '</div>' +
@@ -179,6 +179,11 @@
 
     var root = container.querySelector('.mco-reveal');
     if (!root) return;
+
+    var ringWrapNow = root.querySelector('.mco-ring-wrap');
+    if (ringWrapNow) ringWrapNow.style.color = tone;
+    var bandNow = root.querySelector('.mco-band');
+    if (bandNow) bandNow.style.color = tone;
 
     if (reduceMotion) {
       var ringNow = root.querySelector('.mco-ring');

@@ -546,7 +546,7 @@ window.LI = (function () {
       html += '<div class="li-progress-row">' +
         '<span class="li-progress-ra">' + r + '</span>' +
         '<div class="li-progress-track">' +
-        (pct === null ? '' : '<div class="li-progress-fill ' + toneClass + '" style="--progress:' + pct + '%"></div>') + '</div>' +
+        (pct === null ? '' : '<div class="li-progress-fill ' + toneClass + '" data-progress="' + pct + '"></div>') + '</div>' +
         '<span class="li-progress-value ' + toneClass + '">' + (pct === null ? 'sin datos' : pct + '% · ' + d.n) + '</span></div>';
     });
     const chips = (arr, cls) => arr.slice(0, 6).map(t => '<span class="chip ' + cls + '">' + esc(t) + '</span>').join('');
@@ -599,6 +599,17 @@ window.LI = (function () {
     return html;
   }
 
+  // applyProgressStyles: aplica el ancho CSS de las barras '--progress' tras
+  // insertar el HTML de renderProgress() en el DOM (CSP-safe: CSSOM, no
+  // style="" en el markup). Llamar inmediatamente después de asignar
+  // innerHTML con el resultado de renderProgress().
+  function applyProgressStyles(root) {
+    if (!root) return;
+    root.querySelectorAll('[data-progress]').forEach(function (el) {
+      el.style.setProperty('--progress', el.getAttribute('data-progress') + '%');
+    });
+  }
+
   return {
     history: history, recordSBASession: recordSBASession, recordSATSession: recordSATSession,
     recordORSession: recordORSession, detectVerb: detectVerb,
@@ -606,5 +617,6 @@ window.LI = (function () {
     coachSAT: coachSAT, renderCoachPanel: renderCoachPanel, renderProgress: renderProgress,
     renderVerbCoach: renderVerbCoach, structureCoach: structureCoach, chainCoach: chainCoach,
     coachOpenResponse: coachOpenResponse, recommendNext: recommendNext,
+    applyProgressStyles: applyProgressStyles,
   };
 })();

@@ -199,7 +199,7 @@
       html += '<div class="ri-metric">' +
         '<div class="ri-metric-label">' +
         'Cobertura de tópicos: ' + indicators.topic_coverage.coverage_percentage + '% (' + indicators.topic_coverage.attempted_topics + '/' + indicators.topic_coverage.total_topics + ')</div>' +
-        '<div class="ri-track"><div class="ri-fill" style="--progress:' + indicators.topic_coverage.coverage_percentage + '%"></div></div>' +
+        '<div class="ri-track"><div class="ri-fill" data-progress="' + indicators.topic_coverage.coverage_percentage + '"></div></div>' +
         '</div>';
     }
 
@@ -208,7 +208,7 @@
       html += '<div class="ri-metric">' +
         '<div class="ri-metric-label">' +
         'Cobertura de verbos: ' + indicators.verb_coverage.coverage_percentage + '% (' + indicators.verb_coverage.attempted_verbs + '/' + indicators.verb_coverage.total_verbs + ')</div>' +
-        '<div class="ri-track"><div class="ri-fill" style="--progress:' + indicators.verb_coverage.coverage_percentage + '%"></div></div>' +
+        '<div class="ri-track"><div class="ri-fill" data-progress="' + indicators.verb_coverage.coverage_percentage + '"></div></div>' +
         '</div>';
     }
 
@@ -230,9 +230,20 @@
     return html;
   }
 
+  // applyDynamicStyles: aplica --progress vía CSSOM tras insertar el HTML de
+  // renderReadinessIndicators() en el DOM (CSP-safe: sin style="" en el
+  // markup). Llamar inmediatamente después de asignar innerHTML.
+  function applyDynamicStyles(el) {
+    if (!el) return;
+    el.querySelectorAll('[data-progress]').forEach(function (i) {
+      i.style.setProperty('--progress', i.getAttribute('data-progress') + '%');
+    });
+  }
+
   // Public API
   return {
     computeReadinessIndicators: computeReadinessIndicators,
-    renderReadinessIndicators: renderReadinessIndicators
+    renderReadinessIndicators: renderReadinessIndicators,
+    applyDynamicStyles: applyDynamicStyles
   };
 });

@@ -8,8 +8,9 @@
  * Governance: formative_only=true; no official scoring
  * safe_for_examiner=false; mobile-first design
  *
- * Estilos: shared/intelligence-dashboard.css (familia .idb-*). Inline solo
- * queda --progress; los tonos por umbral son clases is-ok / is-low / is-warn.
+ * Estilos: shared/intelligence-dashboard.css (familia .idb-*). Sin style=
+ * inline: --progress se aplica vía CSSOM (applyDynamicStyles) a partir de
+ * data-progress; los tonos por umbral son clases is-ok / is-low / is-warn.
  */
 
 (function (root, factory) {
@@ -113,7 +114,7 @@
       html += '<div class="idb-card idb-card--weak">' +
         '<div class="idb-card-name">' + topic.name + '</div>' +
         '<div class="idb-bar-row">' +
-        '<div class="idb-bar-track"><div class="idb-bar-fill" style="--progress:' + strength + '%"></div></div>' +
+        '<div class="idb-bar-track"><div class="idb-bar-fill" data-progress="' + strength + '"></div></div>' +
         '<div class="idb-bar-pct">' + strength + '%</div>' +
         '</div>' +
         '</div>';
@@ -296,8 +297,19 @@
       '</div>';
   }
 
+  // applyDynamicStyles: aplica --progress vía CSSOM tras insertar el HTML de
+  // renderDashboard() en el DOM (CSP-safe: sin style="" en el markup).
+  // Llamar inmediatamente después de asignar innerHTML con el resultado.
+  function applyDynamicStyles(el) {
+    if (!el) return;
+    el.querySelectorAll('[data-progress]').forEach(function (i) {
+      i.style.setProperty('--progress', i.getAttribute('data-progress') + '%');
+    });
+  }
+
   // Public API
   return {
-    renderDashboard: renderDashboard
+    renderDashboard: renderDashboard,
+    applyDynamicStyles: applyDynamicStyles
   };
 });

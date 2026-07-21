@@ -694,6 +694,7 @@
         var dashboardHtml = buildAndRenderDashboard();
         if (dashboardHtml) {
           dashboardPanel.innerHTML = dashboardHtml;
+          if (root.IntelligenceDashboard) root.IntelligenceDashboard.applyDynamicStyles(dashboardPanel);
         }
       }
 
@@ -721,6 +722,7 @@
         var readinessHtml = buildAndRenderReadinessIndicators();
         if (readinessHtml) {
           readinessPanel.innerHTML = readinessHtml;
+          if (root.ReadinessIndicators) root.ReadinessIndicators.applyDynamicStyles(readinessPanel);
         }
       }
 

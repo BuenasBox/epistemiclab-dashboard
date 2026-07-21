@@ -93,7 +93,7 @@
     if(has(pr.percent)){
       var pct = Math.max(0, Math.min(100, parseInt(pr.percent,10)||0));
       progBody += '<div class="wic-prog-meta"><span>Progreso</span><span>'+pct+'%</span></div>'
-        + '<div class="wic-prog"><i style="width:'+pct+'%"></i></div>';
+        + '<div class="wic-prog"><i data-pct="'+pct+'"></i></div>';
     }
     progBody += row('Intentos previos', pr.attempts);
     progBody += row('Fase actual', pr.current_phase);
@@ -148,12 +148,18 @@
       + renderBody(profile) + '</section>';
   }
 
+  function applyDynamicStyles(el){
+    if(!el) return;
+    el.querySelectorAll('[data-pct]').forEach(function(i){ i.style.width = i.getAttribute('data-pct')+'%'; });
+  }
+
   function mount(el, profile){
     if(!el) return null;
     el.innerHTML = render(profile);
+    applyDynamicStyles(el);
     return {
       el: el,
-      update: function(p){ el.innerHTML = render(p); }
+      update: function(p){ el.innerHTML = render(p); applyDynamicStyles(el); }
     };
   }
 

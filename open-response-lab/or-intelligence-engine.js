@@ -31,7 +31,8 @@
         causal_flag: false,
         next_step: 'Revisa e intenta nuevamente.',
         depth_label: 'Fundacional',
-        depth_color: '#e0b15b'
+        depth_color: '#e0b15b',
+        depth_class: 'depth-emerging'
       };
     }
 
@@ -68,9 +69,9 @@
 
     // Depth classification (informational, not scoring)
     const depthMap = {
-      'emerging': { label: 'Fundacional', color: '#e0b15b' },
-      'developing': { label: 'En Desarrollo', color: '#65b7c7' },
-      'strong': { label: 'Sólida', color: '#7bc47f' }
+      'emerging': { label: 'Fundacional', color: '#e0b15b', cls: 'depth-emerging' },
+      'developing': { label: 'En Desarrollo', color: '#65b7c7', cls: 'depth-developing' },
+      'strong': { label: 'Sólida', color: '#7bc47f', cls: 'depth-strong' }
     };
 
     const depthInfo = depthMap[depth] || depthMap['emerging'];
@@ -94,6 +95,7 @@
       next_step,
       depth_label: depthInfo.label,
       depth_color: depthInfo.color,
+      depth_class: depthInfo.cls,
       distinction_feedback: distinctionFeedback,
       raw: evaluateOrResponse // Keep original for debugging
     };
@@ -136,7 +138,7 @@
     }
 
     const depthBadge = `
-      <div class="feedback-depth" style="--depth-color:${e.depth_color}">
+      <div class="feedback-depth ${e.depth_class}">
         <strong class="feedback-depth-label">Nivel de desarrollo: ${e.depth_label}</strong>
       </div>
     `;
@@ -146,7 +148,7 @@
     // answer requires. Only rendered when authored for this specific question
     // (or_bank.feedback_profile) — no generic filler when it's missing.
     const distinctionSection = e.distinction_feedback ? `
-      <div class="feedback-section feedback-section--depth" style="--depth-color:${e.depth_color}">
+      <div class="feedback-section feedback-section--depth ${e.depth_class}">
         <div class="feedback-title">🎯 Por qué tu respuesta está en este nivel</div>
         <p class="feedback-copy feedback-copy--distinction">${e.distinction_feedback}</p>
       </div>
@@ -279,7 +281,7 @@
     `;
 
     container.innerHTML = `
-      <div class="orb-reveal${reduceMotion ? ' orb-no-motion' : ''}" style="--depth-color:${e.depth_color}">
+      <div class="orb-reveal ${e.depth_class}${reduceMotion ? ' orb-no-motion' : ''}">
         ${srList}
         <div class="orb-ring-wrap" aria-hidden="true">
           <svg viewBox="0 0 168 168" class="orb-ring-svg">

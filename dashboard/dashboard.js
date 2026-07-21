@@ -78,7 +78,7 @@
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function sessionIcon(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return '🍾'; if(t.indexOf('label')>=0)return '📖'; if(t.indexOf('sim')>=0)return '⏱'; return '🍷'; }
   function sessionName(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return 'Botellas'; if(t.indexOf('label')>=0)return 'Etiquetas'; if(t.indexOf('sim')>=0)return 'Simulacro completo'; if(t.indexOf('blind')>=0||t.indexOf('sat')>=0)return 'Laboratorio SAT'; return esc(type||'Sesión'); }
-  function meter(label,p){ var shown=(p==null)?'sin evidencia':p+'%'; var w=(p==null)?0:p; return '<div class="ind"><div class="ind-top"><span>'+esc(label)+'</span><b>'+esc(shown)+'</b></div><div class="ind-bar"><span data-w="'+w+'" style="width:0%"></span></div></div>'; }
+  function meter(label,p){ var shown=(p==null)?'sin evidencia':p+'%'; var w=(p==null)?0:p; return '<div class="ind"><div class="ind-top"><span>'+esc(label)+'</span><b>'+esc(shown)+'</b></div><div class="ind-bar"><span data-w="'+w+'"></span></div></div>'; }
   // animateReveal: pinta el "momento de lectura" del dashboard — el anillo de
   // preparación se llena progresivamente, las barras de confianza/transferencia
   // crecen a su valor real, y el recorrido/las ideas abiertas aparecen en
@@ -132,7 +132,7 @@
     var sessHtml = vm.sessions.length ? vm.sessions.map(function(s){ return '<div class="sess"><span class="sess-ic">'+sessionIcon(s.session_type)+'</span><span class="sess-name">'+sessionName(s.session_type)+'</span><span class="sess-status">'+esc(s.status||'')+'</span></div>'; }).join('') : '<div class="muted small">Sin sesiones todavía.</div>';
     var haltBadge = vm.next.halt ? '<span class="pill pill-halt">Reforzar antes de avanzar</span>' : '<button class="pill pill-go" onclick="window.location.href=\''+routeFor(vm.next.practice)+'\'">Avanzar</button>';
     rootEl.innerHTML =
-      '<div class="grid-2"><section class="card hero-card"><div class="ring" style="--p:0"><i>'+(r.pct==null?'—':r.pct+'%')+'</i></div><div><div class="eyebrow">Tu preparación</div><div class="hero-state">'+esc(vm.where.stateLabel)+'</div><div class="muted small">'+(r.gateOpen?'Listo para el simulacro completo.':('Puerta del simulacro en '+(r.threshold||70)+'%.'))+'</div></div></section>'+
+      '<div class="grid-2"><section class="card hero-card"><div class="ring"><i>'+(r.pct==null?'—':r.pct+'%')+'</i></div><div><div class="eyebrow">Tu preparación</div><div class="hero-state">'+esc(vm.where.stateLabel)+'</div><div class="muted small">'+(r.gateOpen?'Listo para el simulacro completo.':('Puerta del simulacro en '+(r.threshold||70)+'%.'))+'</div></div></section>'+
       '<section class="card next-card'+(vm.next.halt?' halt':'')+'"><div class="eyebrow">Tu siguiente paso '+haltBadge+'</div><div class="next-practice">'+(vm.next.label === 'Bottle Guided' ? 'Botella Guiada' : esc(vm.next.label))+'</div><p class="next-reason">'+esc(vm.next.reason)+'</p></section></div>'+
       '<section class="card mentor-mount" id="mentorMount"></section>'+
       '<div class="grid-2"><section class="card"><div class="eyebrow">Tu mayor foco ahora</div><div class="weakness">'+esc(vm.weakness||'Sin un foco único con la evidencia actual')+'</div><div class="card-sub">Ideas a corregir</div>'+misHtml+'</section>'+

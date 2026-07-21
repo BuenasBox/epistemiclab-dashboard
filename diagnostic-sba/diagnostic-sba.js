@@ -770,6 +770,7 @@ function animateResultReveal() {
 function animateMapReveal(accuracy) {
   var root = document.getElementById('mainContent');
   if (!root) return;
+  if (window.LI) LI.applyProgressStyles(root);
   var ring = document.getElementById('mapRing');
   var cells = root.querySelectorAll('.stat-cell');
   var chips = root.querySelectorAll('.metric-chip');
@@ -1030,7 +1031,7 @@ function renderMap() {
     <div class="fade-in">
       <div class="section-label section-label--map">Mapa Cognitivo · Sesión completada</div>
 
-      <div class="stat-ring-wrap"><div class="stat-ring" id="mapRing" style="--p:0"><i>${accuracy}%</i></div></div>
+      <div class="stat-ring-wrap"><div class="stat-ring" id="mapRing"><i>${accuracy}%</i></div></div>
 
       <div class="session-stats-grid">
         <div class="stat-cell">

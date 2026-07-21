@@ -122,15 +122,15 @@ test('login route loads Supabase and mock fallback scripts before the controller
 });
 
 test('login route declares responsive and accessible interaction safeguards', () => {
-  const htmlPath = path.join(__dirname, '..', 'login', 'index.html');
-  const html = fs.readFileSync(htmlPath, 'utf8');
+  const cssPath = path.join(__dirname, '..', 'login', 'login.css');
+  const css = fs.readFileSync(cssPath, 'utf8');
 
-  assert.match(html, /\.home-link\s*\{[^}]*min-height:\s*44px/s);
-  assert.match(html, /summary\s*\{[^}]*min-height:\s*44px/s);
-  assert.match(html, /:focus-visible/);
-  assert.match(html, /overflow-wrap:\s*anywhere/);
-  assert.match(html, /pre\s*\{[^}]*font-size:\s*11px/s);
-  assert.match(html, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+  assert.match(css, /\.home-link\s*\{[^}]*min-height:\s*44px/s);
+  assert.match(css, /summary\s*\{[^}]*min-height:\s*44px/s);
+  assert.match(css, /:focus-visible/);
+  assert.match(css, /overflow-wrap:\s*anywhere/);
+  assert.match(css, /pre\s*\{[^}]*font-size:\s*11px/s);
+  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 });
 
 test('login controller initializes safely as a classic browser script', () => {
