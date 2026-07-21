@@ -112,10 +112,10 @@
 
     // Show what was trained
     if (sessionType && sessionType.indexOf('ra') !== -1) {
-      html += '<div class="re-summary-line">✓ Entrenaste esta área de responsabilidad</div>';
+      html += '<div class="re-summary-line"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Entrenaste esta área de responsabilidad</div>';
     }
     if (sessionType && sessionType.indexOf('topic') !== -1) {
-      html += '<div class="re-summary-line">✓ Practicaste un tema específico</div>';
+      html += '<div class="re-summary-line"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Practicaste un tema específico</div>';
     }
 
     // Show current weak areas

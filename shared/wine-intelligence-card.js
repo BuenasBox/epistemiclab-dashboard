@@ -74,7 +74,7 @@
 
     // Meta del hero: objetivo pedagógico + mensaje motivador (sin revelar identidad)
     var heroMeta = '';
-    if(has(id.objective)) heroMeta += '<div class="wic-objective"><span class="wic-obj-ic" aria-hidden="true">🎯</span><span>'+esc(id.objective)+'</span></div>';
+    if(has(id.objective)) heroMeta += '<div class="wic-objective"><span class="wic-obj-ic ep-icon ep-icon--learning-objective" aria-hidden="true"></span><span>'+esc(id.objective)+'</span></div>';
     if(has(id.motivational)) heroMeta += '<div class="wic-motiv">'+esc(id.motivational)+'</div>';
     if(heroMeta) heroMeta = '<div class="wic-hero-meta">'+heroMeta+'</div>';
 

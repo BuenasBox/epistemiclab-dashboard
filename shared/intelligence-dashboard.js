@@ -87,7 +87,7 @@
   function renderStrengthsSection(strongTopics) {
     var html = '<div class="idb-section">' +
       '<h2 class="idb-section-title idb-section-title--strength">' +
-      '✓ Fortalezas</h2>';
+      '<span class="ep-icon ep-icon--success" aria-hidden="true"></span> Fortalezas</h2>';
 
     strongTopics.slice(0, 4).forEach(function (topic) {
       var strength = Math.round(topic.strength_score || 80);
@@ -107,7 +107,7 @@
   function renderWeaknessesSection(weakTopics) {
     var html = '<div class="idb-section">' +
       '<h2 class="idb-section-title idb-section-title--weak">' +
-      '⚠ Áreas de Mejora</h2>';
+      '<span class="ep-icon ep-icon--warning" aria-hidden="true"></span> Áreas de Mejora</h2>';
 
     weakTopics.slice(0, 3).forEach(function (topic) {
       var strength = Math.round(topic.strength_score || 40);
@@ -130,7 +130,7 @@
   function renderImprovingAreasSection(improvingTopics) {
     var html = '<div class="idb-section">' +
       '<h2 class="idb-section-title idb-section-title--improve">' +
-      '📈 Mejorando</h2>';
+      '<span class="ep-icon ep-icon--progress-dashboard" aria-hidden="true"></span> Mejorando</h2>';
 
     improvingTopics.slice(0, 3).forEach(function (topic) {
       var improvement = topic.improvement_delta || '+5%';
@@ -152,7 +152,7 @@
   function renderMisconceptionsSection(misconceptions) {
     var html = '<div class="idb-section idb-panel--misc">' +
       '<h2 class="idb-section-title idb-section-title--misc">' +
-      '💡 Conceptos a Aclarar</h2>';
+      '<span class="ep-icon ep-icon--insight" aria-hidden="true"></span> Conceptos a Aclarar</h2>';
 
     misconceptions.slice(0, 2).forEach(function (mc) {
       var confidence = Math.round((mc.confidence || 0.5) * 100);
@@ -269,7 +269,7 @@
     var hasSecondaryUrl = !!recommendationUrlFor(secondary);
 
     var html = '<div class="idb-reco">' +
-      '<h2 class="idb-reco-title">🎯 Próximo Paso Recomendado</h2>' +
+      '<h2 class="idb-reco-title"><span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span> Próximo Paso Recomendado</h2>' +
       '<div class="idb-reco-reason">' + rec.reason + '</div>' +
       '<div class="idb-reco-actions">' +
       renderRecommendationAction(rec, 'Comenzar ahora', false) +

@@ -246,13 +246,13 @@
     }
 
     var targetMap = {
-      'targeted_practice': { step: 2, label: 'Practice Weakness', icon: '🎯' },
-      'misconception_intervention': { step: 2, label: 'Clarify Concept', icon: '💡' },
-      'strength_advancement': { step: 3, label: 'Deepen Strength', icon: '📈' },
-      'comprehensive_review': { step: 4, label: 'Full Review', icon: '📚' }
+      'targeted_practice': { step: 2, label: 'Practice Weakness', icon: 'learning-objective' },
+      'misconception_intervention': { step: 2, label: 'Clarify Concept', icon: 'insight' },
+      'strength_advancement': { step: 3, label: 'Deepen Strength', icon: 'progress-dashboard' },
+      'comprehensive_review': { step: 4, label: 'Full Review', icon: 'reference-material' }
     };
 
-    return targetMap[recommendation.primary.type] || { step: 0, label: 'Learn', icon: '🎓' };
+    return targetMap[recommendation.primary.type] || { step: 0, label: 'Learn', icon: 'learning-plan' };
   }
 
   // Public API

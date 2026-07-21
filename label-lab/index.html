@@ -6,6 +6,7 @@
 <title>Etiquetas — EpistemicLab</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="/platform-nav.css">
+<link rel="stylesheet" href="/shared/epistemic-icons.css">
 <link rel="stylesheet" href="/shared/theme-wine.css">
 <link rel="stylesheet" href="./label-lab.css">
 <link rel="manifest" href="/manifest.json">
@@ -72,7 +73,7 @@
     var z=S.item.zones, out='<div class="steps">';
     for(var i=0;i<z.length;i++){
       var cls=i<S.zoneIdx?'done':(i===S.zoneIdx?'active':'');
-      var mk=i<S.zoneIdx?'✓':(i===S.zoneIdx?'▶':'○');
+      var mk=i<S.zoneIdx?'<span class="ep-icon ep-icon--success" aria-hidden="true"></span>':(i===S.zoneIdx?'<span class="ep-icon ep-icon--current-step" aria-hidden="true"></span>':'<span class="ep-icon ep-icon--pending-step" aria-hidden="true"></span>');
       out+='<div class="step '+cls+'"><span class="dot">'+mk+'</span><span class="lbl">'+esc(z[i].label)+'</span></div>';
     }
     return out+'</div>';
@@ -119,7 +120,7 @@
           '<button class="btn primary flex-1" id="next" '+(ready?'':'disabled')+'>Confirmar y seguir →</button></div>'+
       '</div><div>'+
         '<div class="card-label">Mentor</div>'+
-        '<div class="mentor '+esc(m.sev)+'"><div class="avatar">✦</div><div><div class="sev">PISTA</div><p class="small mentor-text">'+esc(m.text)+'</p></div></div>'+
+        '<div class="mentor '+esc(m.sev)+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">PISTA</div><p class="small mentor-text">'+esc(m.text)+'</p></div></div>'+
         '<div class="state eval"><span class="d"></span> Se evaluará tu lectura <b>y tu confianza</b></div>'+
         '<div class="note mt-14">El control de confianza alimenta tu <b>calibración</b>. La identidad no se revela hasta el final (gobernanza).</div>'+
       '</div></div>';
@@ -146,7 +147,7 @@
       '<div class="eyebrow">Integra la lectura</div><h2 class="serif">Tu deducción de estilo</h2>'+
       '<p class="muted small bl-narrow-sm">Has leído las cinco zonas. ¿Qué vino esperas? Justifica con la palabra que manda, no con el cebo.</p>'+
       '<div class="grid g2"><div class="card">'+ hypGroup('sweetness',h.sweetness)+ hypGroup('quality',h.quality)+ confHtml((S.hyp.conf||null))+'</div>'+
-      '<div><div class="mentor warn"><div class="avatar">✦</div><div><div class="sev">ATENCIÓN</div><p class="small mentor-text">Algunos términos tientan a una conclusión equivocada. Apóyate en la palabra reguladora correcta.</p></div></div>'+
+      '<div><div class="mentor warn"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">ATENCIÓN</div><p class="small mentor-text">Algunos términos tientan a una conclusión equivocada. Apóyate en la palabra reguladora correcta.</p></div></div>'+
       '<div class="flowbar"><button class="btn ghost" id="back">Atrás</button><button class="btn primary flex-1" id="submit" '+(ready?'':'disabled')+'>Enviar deducción →</button></div></div></div>';
     app.querySelectorAll('[data-hyp]').forEach(function(b){ b.onclick=function(){ var k=b.getAttribute('data-hyp'); (S.hyp[k]=S.hyp[k]||{}).opt=b.getAttribute('data-opt'); render(); }; });
     app.querySelectorAll('[data-conf]').forEach(function(b){ b.onclick=function(){ S.hyp.conf=b.getAttribute('data-conf'); render(); }; });
@@ -162,7 +163,7 @@
   }
 
   function renderEvaluating(){
-    app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg">✦</div>'+
+    app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div>'+
       '<div class="state eval"><span class="d"></span> Analizando tu deducción y tu confianza…</div>'+
       '<p class="muted small mt-14"><a href="#" id="see" class="gold">ver resultado</a></p></div>';
     var go=function(e){ if(e)e.preventDefault(); S.screen='reveal'; render(); };
@@ -198,9 +199,9 @@
           '<div class="fb-row"><span class="small">Hipótesis de dulzor <span class="xs muted">('+esc(S.hyp.conf||'—')+')</span></span><span class="tone '+hypTone+'">'+esc(TONE_LABEL[so.band]||'Revisar')+'</span><span class="small muted">'+esc(so.text||'')+'</span></div>'+
         '</div>'+
       '</div><div>'+
-        '<div class="mentor '+calSev+'"><div class="avatar">✦</div><div><div class="sev">CALIBRACIÓN</div><p class="small mentor-text">'+esc(calMsg)+'</p></div></div>'+
-        '<div class="mentor ok"><div class="avatar">✦</div><div><div class="sev">SÍNTESIS</div><p class="small mentor-text">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
-        (rv.misconception?'<div class="mentor crit"><div class="avatar">✦</div><div><div class="sev">IDEA CONSOLIDADA</div><p class="small mentor-text"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
+        '<div class="mentor '+calSev+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">CALIBRACIÓN</div><p class="small mentor-text">'+esc(calMsg)+'</p></div></div>'+
+        '<div class="mentor ok"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">SÍNTESIS</div><p class="small mentor-text">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
+        (rv.misconception?'<div class="mentor crit"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">IDEA CONSOLIDADA</div><p class="small mentor-text"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
         '<div class="flowbar"><button class="btn primary flex-1" id="toDone">Ver qué cambió en ti →</button></div>'+
       '</div></div></div>';
     document.getElementById('toDone').onclick=function(){ EP&&EP.sessionCompleted({module:'label-guided',itemId:it.id}); S.screen='done'; render(); };
@@ -236,18 +237,18 @@
                  : (d.calibration==='infraconfianza' ? 'Tiendes a infravalorar tu criterio · a reforzar'
                  : 'Confianza alineada con tu acierto');
     var misc=(d.misconceptions||[]).map(function(m){
-      return '<div class="delta"><div class="ic">💡</div><div><b class="small">Idea consolidada</b><div class="xs muted mt-2">'+esc(m.title||'Concepto reforzado')+'</div></div></div>';
+      return '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--insight" aria-hidden="true"></span></div><div><b class="small">Idea consolidada</b><div class="xs muted mt-2">'+esc(m.title||'Concepto reforzado')+'</div></div></div>';
     }).join('');
-    var transfer=d.transferTouched?'<div class="delta"><div class="ic">🔄</div><div><b class="small">Transferencia probada</b><div class="xs muted mt-2">Aplicado a una etiqueta reservada como nueva → aprendizaje real, no memoria.</div></div></div>':'';
+    var transfer=d.transferTouched?'<div class="delta"><div class="ic"><span class="ep-icon ep-icon--transfer" aria-hidden="true"></span></div><div><b class="small">Transferencia probada</b><div class="xs muted mt-2">Aplicado a una etiqueta reservada como nueva → aprendizaje real, no memoria.</div></div></div>':'';
     app.innerHTML=
       '<div class="bl-done">'+
-      '<div class="center bl-done-narrow"><div class="celebrate">✓</div>'+
+      '<div class="center bl-done-narrow"><div class="celebrate"><span class="ep-icon ep-icon--success" aria-hidden="true"></span><span class="ep-sr-only">Completado</span></div>'+
       '<h2 class="serif">Qué cambió en ti</h2><p class="muted small">No "bien hecho": esto es lo que ahora sabes y razonas distinto.</p></div>'+
       '<div class="bl-done-body">'+
-        '<div class="delta"><div class="ic">📚</div><div><b class="small">Teoría · denominaciones y clasificaciones</b><div class="meter mt-6"><span data-w="58"></span></div><div class="xs muted mt-4">Sistema de lectura aplicable a otras etiquetas · aciertos: '+esc(d.accuracy)+'</div></div></div>'+
-        '<div class="delta"><div class="ic">🎯</div><div><b class="small">Calibración</b><div class="xs muted mt-2">'+esc(calLine)+'</div></div></div>'+
+        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--reference-material" aria-hidden="true"></span></div><div><b class="small">Teoría · denominaciones y clasificaciones</b><div class="meter mt-6"><span data-w="58"></span></div><div class="xs muted mt-4">Sistema de lectura aplicable a otras etiquetas · aciertos: '+esc(d.accuracy)+'</div></div></div>'+
+        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span></div><div><b class="small">Calibración</b><div class="xs muted mt-2">'+esc(calLine)+'</div></div></div>'+
         misc + transfer +
-        '<div class="delta delta-gold"><div class="ic">📈</div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted mt-2">El Epistemic Profile recibió tus señales y tu confianza. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
+        '<div class="delta delta-gold"><div class="ic"><span class="ep-icon ep-icon--progress-dashboard" aria-hidden="true"></span></div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted mt-2">El Epistemic Profile recibió tus señales y tu confianza. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
         '<div class="state done mt-8"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
         '<div class="flowbar flowbar-center"><button class="btn" id="another">Otra etiqueta</button><a class="btn ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn ghost" href="../">Volver a Mi progreso</a></div>'+
       '</div></div>';

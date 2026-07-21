@@ -1,0 +1,58 @@
+.ep-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  vertical-align: -0.125em;
+  background-color: currentColor !important;
+  -webkit-mask: var(--ep-icon) center / contain no-repeat;
+  mask: var(--ep-icon) center / contain no-repeat;
+  pointer-events: none;
+}
+
+.ep-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ep-icon--theory-assessment { --ep-icon: url("/Assets/epistemiclab-icons/icon-theory-assessment.svg"); }
+.ep-icon--sat-lab { --ep-icon: url("/Assets/epistemiclab-icons/icon-sat-lab.svg"); }
+.ep-icon--open-response { --ep-icon: url("/Assets/epistemiclab-icons/icon-open-response.svg"); }
+.ep-icon--adaptive-training { --ep-icon: url("/Assets/epistemiclab-icons/icon-adaptive-training.svg"); }
+.ep-icon--full-simulation { --ep-icon: url("/Assets/epistemiclab-icons/icon-full-simulation.svg"); }
+.ep-icon--reinforcement-plan { --ep-icon: url("/Assets/epistemiclab-icons/icon-reinforcement-plan.svg"); }
+.ep-icon--progress-dashboard { --ep-icon: url("/Assets/epistemiclab-icons/icon-progress-dashboard.svg"); }
+.ep-icon--mentor { --ep-icon: url("/Assets/epistemiclab-icons/icon-mentor.svg"); }
+.ep-icon--learning-plan { --ep-icon: url("/Assets/epistemiclab-icons/icon-learning-plan.svg"); }
+.ep-icon--bottle-observation { --ep-icon: url("/Assets/epistemiclab-icons/icon-bottle-observation.svg"); }
+.ep-icon--label-analysis { --ep-icon: url("/Assets/epistemiclab-icons/icon-label-analysis.svg"); }
+.ep-icon--account-access { --ep-icon: url("/Assets/epistemiclab-icons/icon-account-access.svg"); }
+.ep-icon--plans { --ep-icon: url("/Assets/epistemiclab-icons/icon-plans.svg"); }
+.ep-icon--profile { --ep-icon: url("/Assets/epistemiclab-icons/icon-profile.svg"); }
+.ep-icon--email-verification { --ep-icon: url("/Assets/epistemiclab-icons/icon-email-verification.svg"); }
+.ep-icon--insight { --ep-icon: url("/Assets/epistemiclab-icons/icon-insight.svg"); }
+.ep-icon--warning { --ep-icon: url("/Assets/epistemiclab-icons/icon-warning.svg"); }
+.ep-icon--success { --ep-icon: url("/Assets/epistemiclab-icons/icon-success.svg"); }
+.ep-icon--error { --ep-icon: url("/Assets/epistemiclab-icons/icon-error.svg"); }
+.ep-icon--current-step { --ep-icon: url("/Assets/epistemiclab-icons/icon-current-step.svg"); }
+.ep-icon--pending-step { --ep-icon: url("/Assets/epistemiclab-icons/icon-pending-step.svg"); }
+.ep-icon--learning-objective { --ep-icon: url("/Assets/epistemiclab-icons/icon-learning-objective.svg"); }
+.ep-icon--confidence-signal { --ep-icon: url("/Assets/epistemiclab-icons/icon-confidence-signal.svg"); }
+.ep-icon--lock { --ep-icon: url("/Assets/epistemiclab-icons/icon-lock.svg"); }
+.ep-icon--unlock { --ep-icon: url("/Assets/epistemiclab-icons/icon-unlock.svg"); }
+.ep-icon--support-material { --ep-icon: url("/Assets/epistemiclab-icons/icon-support-material.svg"); }
+.ep-icon--reference-material { --ep-icon: url("/Assets/epistemiclab-icons/icon-reference-material.svg"); }
+.ep-icon--transfer { --ep-icon: url("/Assets/epistemiclab-icons/icon-transfer.svg"); }
+.ep-icon--self-review { --ep-icon: url("/Assets/epistemiclab-icons/icon-self-review.svg"); }
+.ep-icon--thinking-prompt { --ep-icon: url("/Assets/epistemiclab-icons/icon-thinking-prompt.svg"); }
+.ep-icon--causal-chain { --ep-icon: url("/Assets/epistemiclab-icons/icon-causal-chain.svg"); }
+.ep-icon--answer-structure { --ep-icon: url("/Assets/epistemiclab-icons/icon-answer-structure.svg"); }
+.ep-icon--menu { --ep-icon: url("/Assets/epistemiclab-icons/icon-menu.svg"); }
+.ep-icon--close { --ep-icon: url("/Assets/epistemiclab-icons/icon-close.svg"); }

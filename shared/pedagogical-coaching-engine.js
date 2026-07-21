@@ -184,7 +184,7 @@
     });
 
     var html = '<div class="pce-card">' +
-      '<div class="pce-title">🎯 Tu Plan de Práctica Personalizado</div>';
+      '<div class="pce-title"><span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span> Tu Plan de Práctica Personalizado</div>';
 
     // Problem
     html += '<div class="pce-problem">' +

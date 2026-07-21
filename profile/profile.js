@@ -305,7 +305,7 @@
     var html = '<div class="profile-recommendation-card">' +
       '<div class="profile-recommendation-title">PRÓXIMO PASO RECOMENDADO</div>';
     (plan.actions || []).slice(0, 3).forEach(function (action) {
-      var icon = action.type.indexOf('weak') !== -1 ? '🎯' : '📚';
+      var icon = action.type.indexOf('weak') !== -1 ? 'learning-objective' : 'reference-material';
       html += '<div class="profile-recommendation-item">' +
         '<div class="profile-recommendation-label">' + icon + ' ' + (action.label || 'Practice') + '</div>' +
         '<div class="profile-recommendation-reason">' + (action.reason || '') + '</div>' +

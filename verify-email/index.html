@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verificar Correo Electrónico · EpistemicLab</title>
   <link rel="stylesheet" href="/platform-nav.css">
+  <link rel="stylesheet" href="/shared/epistemic-icons.css">
   <link rel="stylesheet" href="./verify-email.css">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#07090d">
@@ -19,7 +20,7 @@
 <body>
   <div class="container">
     <div class="header">
-      <div class="icon">✉️</div>
+      <div class="icon" aria-hidden="true"><span class="ep-icon ep-icon--email-verification"></span></div>
       <h1>Verificar Correo Electrónico</h1>
       <p class="subtitle">Te enviamos un enlace de confirmación</p>
     </div>
@@ -159,7 +160,7 @@
           return;
         }
 
-        showStatus('✓ Correo reenviado a ' + user.email, 'success');
+        showStatus('Correo reenviado a ' + user.email, 'success');
 
         // Disable button for 60 seconds
         let seconds = 60;
@@ -189,6 +190,12 @@
     function showStatus(message, type) {
       const status = document.getElementById('status');
       status.textContent = message;
+      if (type === 'success') {
+        const icon = document.createElement('span');
+        icon.className = 'ep-icon ep-icon--success';
+        icon.setAttribute('aria-hidden', 'true');
+        status.prepend(icon, ' ');
+      }
       status.className = 'status status-' + type;
       status.hidden = false;
     }
