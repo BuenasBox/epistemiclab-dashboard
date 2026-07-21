@@ -7,18 +7,6 @@ body{
   color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55
 }
 .wrap{max-width:920px;margin:0 auto;padding:56px 22px 40px}
-.home-hero{position:relative;isolation:isolate;overflow:hidden;margin:-56px -22px 0;padding:56px 22px 0}
-.home-hero-content{position:relative;z-index:1}
-.hero-analysis-orbit{position:absolute;z-index:0;top:50%;right:-18%;width:58vw;max-width:680px;height:auto;transform:translateY(-50%);pointer-events:none;opacity:.68;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 34%,#000 100%);mask-image:linear-gradient(to right,transparent 0%,#000 34%,#000 100%)}
-.hero-orbit-primary,.hero-orbit-secondary,.hero-orbit-focus{transform-box:view-box;transform-origin:center}
-.hero-orbit-primary{animation:hero-orbit-spin 42s linear infinite}
-.hero-orbit-secondary{animation:hero-orbit-spin-reverse 36s linear infinite}
-.hero-orbit-focus{animation:hero-orbit-scan 18s linear infinite}
-.hero-orbit-glow{animation:hero-orbit-breathe 10s ease-in-out infinite}
-@keyframes hero-orbit-spin{to{transform:rotate(360deg)}}
-@keyframes hero-orbit-spin-reverse{to{transform:rotate(-360deg)}}
-@keyframes hero-orbit-scan{from{transform:rotate(0deg) translateX(214px)}to{transform:rotate(360deg) translateX(214px)}}
-@keyframes hero-orbit-breathe{0%,100%{opacity:.44}50%{opacity:.78}}
 .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-weight:600}
 h1{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.1;margin:0 0 18px;letter-spacing:-.01em}
 .lead{color:var(--muted);font-size:17px;max-width:620px;margin:0 0 32px;font-weight:400}
@@ -42,6 +30,5 @@ h1{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.1;margi
 .admin-card{opacity:.5}
 .about-cta-box{margin:48px 0 0;padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:10px;text-align:center}
 .about-cta-box p{color:var(--muted);margin:0 0 12px;font-size:14px}
-@media (max-width:1024px){.hero-analysis-orbit{right:-14%;width:48vw;opacity:.55}}
-@media (max-width:680px){h1{font-size:32px}.wrap{padding:36px 16px 28px}.home-hero{margin:-36px -16px 0;padding:36px 16px 0}.hero-analysis-orbit{right:auto;left:50%;width:85vw;transform:translate(-50%,-50%);opacity:.14;-webkit-mask-image:none;mask-image:none}.hero-orbit-primary,.hero-orbit-secondary,.hero-orbit-focus{animation:none}.hero-orbit-focus{display:none}.cards{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.hero-orbit-primary,.hero-orbit-secondary,.hero-orbit-focus,.hero-orbit-glow{animation:none!important}}
+@media (max-width:680px){h1{font-size:32px}.wrap{padding:36px 16px 28px}.cards{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

@@ -10,6 +10,27 @@
 (function(window) {
   'use strict';
 
+  function resolveMentorConfig() {
+    if (window.MENTOR_CONFIG) return window.MENTOR_CONFIG;
+    if (!window.VerbContract || typeof window.VerbContract.toMentorConfig !== 'function') return null;
+
+    const contractConfig = window.VerbContract.toMentorConfig();
+    return Object.assign({
+      causal_path_templates: {},
+      concept_templates: {},
+      self_review_questions: [
+        {
+          category: 'Respuesta completa',
+          questions: [
+            '¿Respondí exactamente lo que pide el verbo de comando?',
+            '¿Organicé las ideas en un orden fácil de seguir?',
+            '¿Usé vocabulario técnico preciso y evidencia pertinente?'
+          ]
+        }
+      ]
+    }, contractConfig);
+  }
+
   /**
    * Main mentor function: take stem + context, return complete coaching packet
    * @param {string} stem - Question text
@@ -25,12 +46,12 @@
    * @returns {object} - Coaching packet with all 6 layers
    */
   function buildMentorGuidance(stem, topic, studentAnswer, learnerState, knownVerb) {
-    if (!window.MENTOR_CONFIG) {
-      console.error('MENTOR_CONFIG not loaded');
+    const config = resolveMentorConfig();
+    if (!config) {
+      console.error('Mentor contract not loaded');
       return { error: 'Config not loaded' };
     }
 
-    const config = window.MENTOR_CONFIG;
     const verb = (knownVerb && config.verb_mentors[knownVerb]) ? knownVerb : detectVerbFromStem(stem);
     const verbMentor = verb ? config.verb_mentors[verb] : null;
 
@@ -88,7 +109,8 @@
     if (window.VerbContract) return window.VerbContract.detect(stem);
 
     const stemLower = String(stem).toLowerCase();
-    const verbs = window.MENTOR_CONFIG.verb_mentors;
+    const config = resolveMentorConfig();
+    const verbs = config ? config.verb_mentors : {};
 
     // Check for explicit verb patterns (English + Spanish)
     const patterns = {

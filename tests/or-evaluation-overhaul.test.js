@@ -110,6 +110,15 @@ test('a new command verb is available to every consumer through the single contr
   assert.ok(verbs.toMentorConfig().verb_mentors.summarize);
 });
 
+test('open response mentor uses the tracked verb contract without a protected config asset', () => {
+  const page = fs.readFileSync(path.join(root, 'open-response-lab', 'index.html'), 'utf8');
+  const mentorEngine = fs.readFileSync(path.join(root, 'shared', 'mentor-engine.js'), 'utf8');
+
+  assert.doesNotMatch(page, /mentor-config\.js/);
+  assert.match(page, /shared\/verb-contract\.js/);
+  assert.match(mentorEngine, /VerbContract\.toMentorConfig/);
+});
+
 test('mentor integrates OR, SAT and SBA history and dashboard renders the ordered list', () => {
   const result = mentor.interpret({
     practiceSignals: [

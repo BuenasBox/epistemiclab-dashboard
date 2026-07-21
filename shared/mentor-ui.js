@@ -413,11 +413,12 @@
             </ul>
           </div>
 
-          <div class="mentor-example">
-            <strong>Ejemplo:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>
-            <strong>Camino de pensamiento:</strong><br>
-            ${escapeHtml(verbMentor.example_thinking_path)}
-          </div>
+          ${verbMentor.example_stem || verbMentor.example_thinking_path ? `
+            <div class="mentor-example">
+              ${verbMentor.example_stem ? `<strong>Ejemplo:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>` : ''}
+              ${verbMentor.example_thinking_path ? `<strong>Camino de pensamiento:</strong><br>${escapeHtml(verbMentor.example_thinking_path)}` : ''}
+            </div>
+          ` : ''}
         </div>
       </div>
     `;
@@ -751,10 +752,12 @@
         <ul class="mentor-list mentor-list--top-sm">
           ${verbMentor.avoid.map(a => `<li class="mentor-list-item">${escapeHtml(a)}</li>`).join('')}
         </ul>
-        <div class="mentor-example">
-          <strong>Ejemplo:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>
-          <strong>Camino de pensamiento:</strong> ${escapeHtml(verbMentor.example_thinking_path)}
-        </div>
+        ${verbMentor.example_stem || verbMentor.example_thinking_path ? `
+          <div class="mentor-example">
+            ${verbMentor.example_stem ? `<strong>Ejemplo:</strong> "${escapeHtml(verbMentor.example_stem)}"<br>` : ''}
+            ${verbMentor.example_thinking_path ? `<strong>Camino de pensamiento:</strong> ${escapeHtml(verbMentor.example_thinking_path)}` : ''}
+          </div>
+        ` : ''}
       </details>
     `;
   }

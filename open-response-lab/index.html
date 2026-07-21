@@ -132,7 +132,6 @@
 <script src="../shared/auth-token.js"></script>
 <script src="../shared/verb-contract.js"></script>
 <script src="../adaptive-session/learner_intelligence.js"></script>
-<script src="../shared/mentor-config.js"></script>
 <script src="../shared/mentor-engine.js"></script>
 <script src="../shared/mentor-ui.js"></script>
 <script>
@@ -452,7 +451,7 @@
       checklistDiv.innerHTML = checklist.map(c => `<label class="checklist-option"><input type="checkbox"> <span>${escapeHtml(c)}</span></label>`).join('');
     }
     if (els.verbCoach) {
-      if (window.MentorEngine && window.MentorUI && window.MENTOR_CONFIG) {
+      if (window.MentorEngine && window.MentorUI) {
         // knownVerb = item.command_verb, read straight from or_bank — the
         // authoritative field, bypassing stem-based verb detection.
         const guidance = window.MentorEngine.buildMentorGuidance(questionText, item.topic, null, null, item.command_verb || verb);
