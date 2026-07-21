@@ -376,7 +376,7 @@ function renderFeedback(q, correct) {
   const mcNote = $('fb-mc-note');
   if (fb.misconception_note) {
     mcNote.hidden = false;
-    mcNote.innerHTML = `<span class="fb-mc-icon">⚠</span>${escTxt(fb.misconception_note)}`;
+    mcNote.innerHTML = `<span class="fb-mc-icon ep-icon ep-icon--warning" aria-hidden="true"></span>${escTxt(fb.misconception_note)}`;
   } else {
     mcNote.hidden = true;
   }
@@ -768,7 +768,7 @@ function renderSAT(){
     <div class="as-sat-actions">
       ${idx+1<tot
         ?`<button class="as-sat-button as-sat-button--next" onclick="satNext()">Siguiente →</button>`
-        :`<button class="as-sat-button as-sat-button--finish" onclick="finishSAT()">Finalizar ✓</button>`}
+        :`<button class="as-sat-button as-sat-button--finish" onclick="finishSAT()">Finalizar <span class="ep-icon ep-icon--success" aria-hidden="true"></span></button>`}
     </div>
   </div>`;
 }
@@ -800,7 +800,7 @@ function finishSAT(){
     if(reviews.length)LI.recordSATSession(p.mode,reviews);
   }
   document.getElementById('sat-content').innerHTML=`<div class="as-sat-complete">
-    <div class="as-sat-complete-icon">✓</div>
+    <div class="as-sat-complete-icon"><span class="ep-icon ep-icon--success" aria-hidden="true"></span><span class="ep-sr-only">Completado</span></div>
     <div class="as-sat-complete-title">Práctica SAT completada</div>
     <div class="as-sat-complete-note">Entrenamiento formativo. Evaluación oficial requiere Examiner WSET acreditado.</div>
     ${coachHtml}

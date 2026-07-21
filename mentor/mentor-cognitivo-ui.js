@@ -33,7 +33,7 @@
     var label = SEV_LABEL[msg.severity] || 'NOTA';
     return '' +
       '<div class="mentor-card ' + cls + '">' +
-        '<div class="mc-avatar">✦</div>' +
+        '<div class="mc-avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div>' +
         '<div class="mc-body">' +
           '<div class="mc-sev">' + esc(label) + '</div>' +
           '<div class="mc-title">' + esc(msg.title) + '</div>' +

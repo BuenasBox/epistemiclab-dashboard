@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../shared/sat-wine-glass.css">
 <link rel="stylesheet" href="../shared/wine-intelligence-card.css">
 <link rel="stylesheet" href="../platform-nav.css">
+<link rel="stylesheet" href="/shared/epistemic-icons.css">
 <link rel="stylesheet" href="../shared/theme-platform.css">
 <link rel="stylesheet" href="./sat-lab.css">
 <link rel="manifest" href="/manifest.json">
@@ -33,14 +34,14 @@
     <div class="card">
       <h3 class="mode-picker-title">Elige un modo</h3>
       <div class="mode-pick">
-        <button class="btn full mode-opt" id="mode-blind"><span class="mode-ic" aria-hidden="true">🍷</span><span class="mode-tt"><b>Cata a ciegas</b><small>Entrena como en examen. La identidad se revela al final.</small></span></button>
-        <button class="btn full ghost mode-opt" id="mode-guided"><span class="mode-ic" aria-hidden="true">📖</span><span class="mode-tt"><b>Práctica guiada</b><small>Estudia un estilo concreto desde el inicio.</small></span></button>
+        <button class="btn full mode-opt" id="mode-blind"><span class="mode-ic ep-icon ep-icon--sat-lab" aria-hidden="true"></span><span class="mode-tt"><b>Cata a ciegas</b><small>Entrena como en examen. La identidad se revela al final.</small></span></button>
+        <button class="btn full ghost mode-opt" id="mode-guided"><span class="mode-ic ep-icon ep-icon--reference-material" aria-hidden="true"></span><span class="mode-tt"><b>Práctica guiada</b><small>Estudia un estilo concreto desde el inicio.</small></span></button>
       </div>
       <div class="mode-soon">
         <span class="mode-soon-lbl">Pronto</span>
-        <span class="soon-chip">🍾 Botellas</span>
-        <span class="soon-chip">🏷 Etiquetas</span>
-        <span class="soon-chip">📚 Simulacro completo</span>
+        <span class="soon-chip"><span class="ep-icon ep-icon--bottle-observation" aria-hidden="true"></span> Botellas</span>
+        <span class="soon-chip"><span class="ep-icon ep-icon--label-analysis" aria-hidden="true"></span> Etiquetas</span>
+        <span class="soon-chip"><span class="ep-icon ep-icon--full-simulation" aria-hidden="true"></span> Simulacro completo</span>
       </div>
     </div>
     <p class="muted intelligence-preview-label">Vista previa · Panel de inteligencia</p>
@@ -88,7 +89,7 @@
 
   <section id="screen-summary" hidden>
     <div class="print-only" id="print-head"><h2 class="print-report-title">Informe de práctica SAT · EpistemicLab</h2><div id="print-date" class="muted print-report-date"></div></div>
-    <div class="celebrate" aria-hidden="true"><span class="celebrate-ring"><span class="celebrate-check">✓</span></span></div>
+    <div class="celebrate" aria-hidden="true"><span class="celebrate-ring"><span class="celebrate-check ep-icon ep-icon--success"></span></span></div>
     <h1>Informe de práctica</h1>
     <p class="sub" id="summary-msg"></p>
 

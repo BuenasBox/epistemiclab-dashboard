@@ -168,7 +168,7 @@ test('home presents the current experiences without legacy placeholders', () => 
   [
     'Evaluación Teórica',
     'Respuesta Abierta',
-    'Laboratorio de Cata',
+    'Laboratorio SAT',
     'Entrenamiento Adaptativo',
     'Simulacro Completo',
   ].forEach((experience) => assert.match(html, new RegExp(experience)));

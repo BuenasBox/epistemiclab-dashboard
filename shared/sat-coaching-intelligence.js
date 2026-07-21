@@ -273,7 +273,7 @@
     if (!coaching) return '';
 
     var html = '<div class="sci-card">' +
-      '<div class="sci-title">💡 COACHING SAT</div>';
+      '<div class="sci-title"><span class="ep-icon ep-icon--insight" aria-hidden="true"></span> COACHING SAT</div>';
 
     // Quality analysis
     html += '<div class="sci-quality">' +

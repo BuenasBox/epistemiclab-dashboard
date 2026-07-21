@@ -333,7 +333,7 @@ window.LI = (function () {
     return '<div class="li-coach-card">' +
       '<div class="li-coach-heading li-coach-heading--compact">DISTINCTION COACH · VERBO DE COMANDO: ' + esc(VERB_LABELS[verb] || verb.toUpperCase()) + '</div>' +
       '<div class="li-coach-definition">' + esc(cv.definition || '') + '</div>' +
-      li(cv.do, '✓', 'is-ok') + li(cv.do_not, '✗', 'needs-work') +
+      li(cv.do, '<span class="ep-icon ep-icon--success" aria-hidden="true"></span>', 'is-ok') + li(cv.do_not, '<span class="ep-icon ep-icon--error" aria-hidden="true"></span>', 'needs-work') +
       (cv.mentor_hint ? '<div class="li-mentor-box li-mentor-box--compact"><div class="li-mentor-label">MENTOR</div><div class="li-mentor-copy li-mentor-copy--small">' + esc(cv.mentor_hint) + '</div></div>' : '') +
       '<div class="li-governance-note">Guía estructural formativa · NO evaluación oficial WSET</div></div>';
   }
@@ -366,7 +366,7 @@ window.LI = (function () {
       : (ch && ch.fuerza !== 'completa' ? 'Practica encadenar causa → efecto hasta la calidad del vino.' : null);
     let html = '<div class="li-coach-card">'
       + '<div class="li-coach-heading">DISTINCTION COACH · TU RESPUESTA</div>';
-    bien.forEach(b => { html += '<div class="li-coach-response-line"><span class="li-tone is-ok">✓</span> ' + esc(b) + '</div>'; });
+    bien.forEach(b => { html += '<div class="li-coach-response-line"><span class="li-tone is-ok"><span class="ep-icon ep-icon--success" aria-hidden="true"></span></span> ' + esc(b) + '</div>'; });
     mejorar.forEach(x => { html += '<div class="li-coach-response-line"><span class="li-tone is-warn">△</span> ' + esc(x) + '</div>'; });
     if (topic) html += '<div class="li-coach-response-line li-coach-response-line--topic"><span class="li-tone is-gold">↻</span> Tema a repasar: ' + esc(topic) + '.</div>';
     if (practica) html += '<div class="li-coach-response-line"><span class="li-tone is-gold">→</span> ' + esc(practica) + '</div>';
@@ -512,7 +512,7 @@ window.LI = (function () {
     if (!findings) return '';
     const rows = findings.map(f =>
       '<div class="li-review-row">' +
-      '<span class="li-review-mark ' + (f.ok ? 'is-ok' : 'is-warn') + '">' + (f.ok ? '✓' : '△') + '</span>' +
+      '<span class="li-review-mark ' + (f.ok ? 'is-ok' : 'is-warn') + '"><span class="ep-icon ep-icon--' + (f.ok ? 'success' : 'pending-step') + '" aria-hidden="true"></span></span>' +
       '<div><div class="li-review-label">' + esc(f.label) + '</div>' +
       '<div class="li-review-detail">' + esc(f.detail) + '</div></div></div>'
     ).join('');

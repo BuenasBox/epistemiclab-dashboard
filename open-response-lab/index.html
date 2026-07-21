@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Laboratorio de Respuesta Abierta — EpistemicLab</title>
 <link rel="stylesheet" href="/platform-nav.css">
+<link rel="stylesheet" href="/shared/epistemic-icons.css">
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <link rel="stylesheet" href="./open-response-lab.css">
 <link rel="manifest" href="/manifest.json">
@@ -38,9 +39,9 @@
     </div>
 
     <div class="assistance-toolbar" data-testid="assistance-toolbar">
-      <button type="button" class="assist-btn" data-assist-panel="mentor">🎓 Mentor</button>
-      <button type="button" class="assist-btn" data-assist-panel="concepts">📋 Conceptos</button>
-      <button type="button" class="assist-btn" data-assist-panel="checklist">✓ Checklist</button>
+      <button type="button" class="assist-btn" data-assist-panel="mentor"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span> Mentor</button>
+      <button type="button" class="assist-btn" data-assist-panel="concepts"><span class="ep-icon ep-icon--theory-assessment" aria-hidden="true"></span> Conceptos</button>
+      <button type="button" class="assist-btn" data-assist-panel="checklist"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Checklist</button>
     </div>
 
     <section class="question-panel" aria-live="polite">
@@ -94,7 +95,7 @@
     <div class="assist-drawer" data-testid="assist-drawer" hidden>
       <div class="drawer-header">
         <h2 class="drawer-title" data-testid="drawer-title">Mentoría</h2>
-        <button type="button" class="drawer-close" data-testid="drawer-close" aria-label="Cerrar">✕</button>
+        <button type="button" class="drawer-close" data-testid="drawer-close" aria-label="Cerrar"><span class="ep-icon ep-icon--close" aria-hidden="true"></span></button>
       </div>
       <div class="drawer-content">
         <div class="drawer-panel" id="mentor-panel" data-testid="mentor-panel"><div data-testid="verb-coach"></div></div>

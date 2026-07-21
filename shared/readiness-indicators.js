@@ -215,7 +215,7 @@
     // Preparation signals
     if (indicators.preparation_signals && indicators.preparation_signals.length > 0) {
       html += '<div class="ri-signals">' +
-        '<div class="ri-signals-title">✓ Señales positivas:</div>';
+        '<div class="ri-signals-title"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Señales positivas:</div>';
       indicators.preparation_signals.forEach(function(signal) {
         html += '<div class="ri-signal">• ' + signal + '</div>';
       });

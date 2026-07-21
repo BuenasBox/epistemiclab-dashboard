@@ -299,7 +299,7 @@ function triggerHesDot(idx) {
   const dot = document.getElementById('hd' + idx);
   if (dot) dot.classList.add('triggered');
   const lbl = document.getElementById('hesLabel');
-  if (lbl) lbl.textContent = '⚡ ' + STATE.session.hesitated;
+  if (lbl) lbl.innerHTML = '<span class="ep-icon ep-icon--confidence-signal" aria-hidden="true"></span> ' + STATE.session.hesitated;
 }
 
 // ---- Misconception glyph ----
@@ -314,7 +314,7 @@ function updateSessionStats() {
   document.getElementById('statCorrect').textContent =
     s.answered > 0 ? Math.round(s.correct / s.answered * 100) + '%' : '—';
   document.getElementById('statConf').textContent =
-    s.overconfident > 0 ? '⚠ ' + s.overconfident : '—';
+    s.overconfident > 0 ? '<span class="ep-icon ep-icon--warning" aria-hidden="true"></span> ' + s.overconfident : '—';
   document.getElementById('statHes').textContent =
     s.hesitated > 0 ? s.hesitated : '—';
 }
@@ -398,7 +398,7 @@ function renderPrepare() {
       <div class="section-label section-label--prepare">Preparar</div>
 
       <div class="q-meta">
-        <span class="q-tag train">🔒 Entrenamiento</span>
+        <span class="q-tag train"><span class="ep-icon ep-icon--lock" aria-hidden="true"></span> Entrenamiento</span>
         <span class="q-tag topic">${escapeHtml(q.topic)}</span>
         <span class="q-tag diff">Nivel 3 · ${escapeHtml(q.difficulty)}</span>
         <span class="q-tag skill">${escapeHtml(q.cognitive_skill)}</span>
@@ -415,7 +415,7 @@ function renderPrepare() {
         </div>
         <div class="prepare-meta-item">
           <div class="prepare-meta-item-label">Modo presión</div>
-          <div class="prepare-meta-item-value">${STATE.pressureMode ? '⚡ Activado' : 'Normal'}</div>
+          <div class="prepare-meta-item-value">${STATE.pressureMode ? '<span class="ep-icon ep-icon--confidence-signal" aria-hidden="true"></span> Activado' : 'Normal'}</div>
         </div>
 
       </div>
@@ -524,7 +524,7 @@ function renderCommit() {
       </div>
 
       <button class="commit-btn" id="commitBtn" onclick="commitAnswer()" disabled>
-        <span class="lock-animation" id="lockIcon">🔓</span>
+        <span class="lock-animation" id="lockIcon"><span class="ep-icon ep-icon--unlock" aria-hidden="true"></span></span>
         Confirmar respuesta
       </button>
     </div>
@@ -574,7 +574,7 @@ function commitAnswer() {
   if (btn) {
     btn.classList.add('locked','locking');
     const icon = document.getElementById('lockIcon');
-    if (icon) setTimeout(() => { icon.textContent = '🔒'; }, 200);
+    if (icon) setTimeout(() => { icon.innerHTML = '<span class="ep-icon ep-icon--lock" aria-hidden="true"></span>'; }, 200);
     btn.disabled = true;
   }
   setTimeout(() => { STATE.stage = 'cross'; render(); }, 500);
@@ -600,7 +600,7 @@ function renderCross() {
 
       ${q.cross_exam_challenge ? `
       <div class="cross-challenge">
-        <div class="cross-challenge-label">⚡ Desafío del mentor</div>
+        <div class="cross-challenge-label"><span class="ep-icon ep-icon--confidence-signal" aria-hidden="true"></span> Desafío del mentor</div>
         <div class="cross-challenge-text">${escapeHtml(q.cross_exam_challenge)}</div>
       </div>` : ''}
 
@@ -614,7 +614,7 @@ function renderCross() {
       </div>
 
       <div class="btn-row cross-actions">
-        <button class="commit-btn" onclick="confirmCross()">✓ Confirmo mi respuesta</button>
+        <button class="commit-btn" onclick="confirmCross()"><span class="ep-icon ep-icon--lock" aria-hidden="true"></span> Confirmo mi respuesta</button>
         <button class="btn-secondary" onclick="changeCross()">↩ Cambiar respuesta</button>
       </div>
 
@@ -631,7 +631,7 @@ function renderCross() {
           `).join('')}
         </div>
         <button class="commit-btn change-options-submit" onclick="hardLock()">
-          🔒 Confirmar nueva respuesta (definitivo)
+          <span class="ep-icon ep-icon--lock" aria-hidden="true"></span> Confirmar nueva respuesta (definitivo)
         </button>
       </div>
     </div>
@@ -642,7 +642,7 @@ function changeCross() {
   STATE.crossChanged = true;
   document.getElementById('hesitationDot')?.classList.add('triggered');
   const lbl = document.getElementById('hesitationLabel');
-  if (lbl) lbl.textContent = '⚡ Vacilación detectada';
+  if (lbl) lbl.innerHTML = '<span class="ep-icon ep-icon--confidence-signal" aria-hidden="true"></span> Vacilación detectada';
   document.getElementById('changeOptionsArea')?.classList.remove('hidden');
 }
 
@@ -798,7 +798,7 @@ function renderReveal() {
       <div class="section-label section-label--stage">Resultado y retroalimentación</div>
 
       <div class="correctness-badge ${isCorrect ? 'correct' : 'wrong'}">
-        <div class="correctness-icon">${isCorrect ? '✓' : '✗'}</div>
+        <div class="correctness-icon"><span class="ep-icon ep-icon--${isCorrect ? 'success' : 'error'}" aria-hidden="true"></span><span class="ep-sr-only">${isCorrect ? 'Respuesta correcta' : 'Respuesta incorrecta'}</span></div>
         <div>
           <div class="correctness-text">${isCorrect ? 'Respuesta correcta' : 'Respuesta incorrecta'}</div>
           <div class="correctness-detail">
@@ -809,7 +809,7 @@ function renderReveal() {
         </div>
       </div>
 
-      ${isOverconf ? `<div class="overconf-banner">⚠ Sobreconfianza detectada — respondiste "Seguro/a" pero la respuesta fue incorrecta</div>` : ''}
+      ${isOverconf ? `<div class="overconf-banner"><span class="ep-icon ep-icon--warning" aria-hidden="true"></span> Sobreconfianza detectada — respondiste "Seguro/a" pero la respuesta fue incorrecta</div>` : ''}
 
       <div class="reveal-metrics">
         <div class="metric-chip">
@@ -968,7 +968,7 @@ function submitDrill() {
   const expEl = document.getElementById('drillExplanation');
   if (expEl) {
     expEl.className = 'drill-explanation ' + (isCorrect ? 'correct' : 'wrong');
-    expEl.textContent = isCorrect ? '✓ ' + drill.explanation : '✗ ' + drill.remediation_signal + ' · Respuesta correcta: ' + String.fromCharCode(65 + drill.correct_index) + '.';
+    expEl.innerHTML = isCorrect ? '<span class="ep-icon ep-icon--success" aria-hidden="true"></span> ' + drill.explanation : '<span class="ep-icon ep-icon--error" aria-hidden="true"></span> ' + drill.remediation_signal + ' · Respuesta correcta: ' + String.fromCharCode(65 + drill.correct_index) + '.';
   }
 
   const btn = document.getElementById('drillSubmitBtn');

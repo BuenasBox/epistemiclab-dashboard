@@ -79,7 +79,7 @@
     };
   }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-  function sessionIcon(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return '🍾'; if(t.indexOf('label')>=0)return '📖'; if(t.indexOf('sim')>=0)return '⏱'; return '🍷'; }
+  function sessionIcon(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return 'bottle-observation'; if(t.indexOf('label')>=0)return 'label-analysis'; if(t.indexOf('sim')>=0)return 'full-simulation'; return 'sat-lab'; }
   function sessionName(type){ var t=String(type||'').toLowerCase(); if(t.indexOf('bottle')>=0)return 'Botellas'; if(t.indexOf('label')>=0)return 'Etiquetas'; if(t.indexOf('sim')>=0)return 'Simulacro completo'; if(t.indexOf('blind')>=0||t.indexOf('sat')>=0)return 'Laboratorio SAT'; return esc(type||'Sesión'); }
   function meter(label,p){ var shown=(p==null)?'sin evidencia':p+'%'; var w=(p==null)?0:p; return '<div class="ind"><div class="ind-top"><span>'+esc(label)+'</span><b>'+esc(shown)+'</b></div><div class="ind-bar"><span data-w="'+w+'"></span></div></div>'; }
   // animateReveal: pinta el "momento de lectura" del dashboard — el anillo de
@@ -130,9 +130,9 @@
   function render(rootEl, vm) {
     if (!rootEl) return;
     var r = vm.readiness;
-    var timeline = vm.where.phases.map(function(ph,i){ var cls=i<vm.where.phaseIndex?'done':(i===vm.where.phaseIndex?'active':''); var mk=i<vm.where.phaseIndex?'✓':(i===vm.where.phaseIndex?'▶':'○'); return '<div class="tl-step '+cls+'"><span class="tl-dot">'+mk+'</span><span class="tl-lbl">'+esc(ph)+'</span></div>'; }).join('');
+    var timeline = vm.where.phases.map(function(ph,i){ var cls=i<vm.where.phaseIndex?'done':(i===vm.where.phaseIndex?'active':''); var mk=i<vm.where.phaseIndex?'success':(i===vm.where.phaseIndex?'current-step':'pending-step'); return '<div class="tl-step '+cls+'"><span class="tl-dot"><span class="ep-icon ep-icon--'+mk+'" aria-hidden="true"></span></span><span class="tl-lbl">'+esc(ph)+'</span></div>'; }).join('');
     var misHtml = vm.misconceptions.length ? vm.misconceptions.map(function(m){return '<span class="chip chip-crit">'+esc(m.label||m.misconception_id)+'</span>';}).join(' ') : '<span class="muted small">Ninguna idea abierta. Buen trabajo.</span>';
-    var sessHtml = vm.sessions.length ? vm.sessions.map(function(s){ return '<div class="sess"><span class="sess-ic">'+sessionIcon(s.session_type)+'</span><span class="sess-name">'+sessionName(s.session_type)+'</span><span class="sess-status">'+esc(s.status||'')+'</span></div>'; }).join('') : '<div class="muted small">Sin sesiones todavía.</div>';
+    var sessHtml = vm.sessions.length ? vm.sessions.map(function(s){ return '<div class="sess"><span class="sess-ic ep-icon ep-icon--'+sessionIcon(s.session_type)+'" aria-hidden="true"></span><span class="sess-name">'+sessionName(s.session_type)+'</span><span class="sess-status">'+esc(s.status||'')+'</span></div>'; }).join('') : '<div class="muted small">Sin sesiones todavía.</div>';
     var haltBadge = vm.next.halt ? '<span class="pill pill-halt">Reforzar antes de avanzar</span>' : '<button class="pill pill-go" onclick="window.location.href=\''+routeFor(vm.next.practice)+'\'">Avanzar</button>';
     rootEl.innerHTML =
       '<div class="grid-2"><section class="card hero-card"><div class="ring"><i>'+(r.pct==null?'—':r.pct+'%')+'</i></div><div><div class="eyebrow">Tu preparación</div><div class="hero-state">'+esc(vm.where.stateLabel)+'</div><div class="muted small">'+(r.gateOpen?'Listo para el simulacro completo.':('Puerta del simulacro en '+(r.threshold||70)+'%.'))+'</div></div></section>'+
@@ -141,7 +141,7 @@
       '<div class="grid-2"><section class="card"><div class="eyebrow">Tu mayor foco ahora</div><div class="weakness">'+esc(vm.weakness||'Sin un foco único con la evidencia actual')+'</div><div class="card-sub">Ideas a corregir</div>'+misHtml+'</section>'+
       '<section class="card"><div class="eyebrow">Confianza y transferencia</div>'+meter('Confianza (calibración)',vm.confidence.pct)+meter('Transferencia (vinos nuevos)',vm.transfer.pct)+'</section></div>'+
       '<section class="card"><div class="eyebrow">Tu recorrido</div><div class="timeline">'+timeline+'</div></section>'+
-      '<section class="card"><div class="eyebrow">Tu último avance</div>'+(vm.lastProgress?'<div class="last">'+sessionIcon(vm.lastProgress.type)+' '+sessionName(vm.lastProgress.type)+' · <span class="muted">'+esc(vm.lastProgress.status||'')+'</span></div>':'<div class="muted small">Aún no registras sesiones.</div>')+'<div class="card-sub">Sesiones recientes</div>'+sessHtml+'</section>';
+      '<section class="card"><div class="eyebrow">Tu último avance</div>'+(vm.lastProgress?'<div class="last"><span class="ep-icon ep-icon--'+sessionIcon(vm.lastProgress.type)+'" aria-hidden="true"></span> '+sessionName(vm.lastProgress.type)+' · <span class="muted">'+esc(vm.lastProgress.status||'')+'</span></div>':'<div class="muted small">Aún no registras sesiones.</div>')+'<div class="card-sub">Sesiones recientes</div>'+sessHtml+'</section>';
     if (MentorCognitivoUI && vm.mentorAll && vm.mentorAll.length) {
       var mount = document.getElementById('mentorMount');
       mount.innerHTML = '<div class="eyebrow">Qué espera el Mentor de ti</div>';
