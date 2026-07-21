@@ -103,9 +103,9 @@
   .fb.warn{ border-left:3px solid var(--warn); }
   .fb.block{ border-left:3px solid var(--block); }
   .fb .hint, .fb .bicl, .fb .step{ display:block; padding-left:20px; position:relative; }
-  .fb .hint::before{ content:"🧠"; position:absolute; left:0; top:0; }
-  .fb .bicl::before{ content:"🔎"; position:absolute; left:0; top:0; }
-  .fb .step::before{ content:"➡"; position:absolute; left:0; top:0; }
+  .fb .hint::before{ content:""; position:absolute; left:0; top:0; width:1em; height:1em; background:currentColor; -webkit-mask:url("/Assets/epistemiclab-icons/icon-mentor.svg") center / contain no-repeat; mask:url("/Assets/epistemiclab-icons/icon-mentor.svg") center / contain no-repeat; }
+  .fb .bicl::before{ content:""; position:absolute; left:0; top:0; width:1em; height:1em; background:currentColor; -webkit-mask:url("/Assets/epistemiclab-icons/icon-self-review.svg") center / contain no-repeat; mask:url("/Assets/epistemiclab-icons/icon-self-review.svg") center / contain no-repeat; }
+  .fb .step::before{ content:""; position:absolute; left:0; top:0; width:1em; height:1em; background:currentColor; -webkit-mask:url("/Assets/epistemiclab-icons/icon-current-step.svg") center / contain no-repeat; mask:url("/Assets/epistemiclab-icons/icon-current-step.svg") center / contain no-repeat; }
 
   /* Informe final (resumen pedagógico) */
   .report-hero{ background:var(--panel); border:1px solid var(--line);
@@ -120,7 +120,7 @@
   .rep-li{ position:relative; padding:7px 0 7px 22px; font-size:13.7px; line-height:1.45; border-bottom:1px solid var(--line); opacity:0; transform:translateY(4px); }
   .rep-li.rli-in{ opacity:1; transform:translateY(0); transition:opacity .35s ease, transform .35s ease; }
   .rep-li:last-child{ border-bottom:0; }
-  .rep-li.ok::before{ content:"✔"; position:absolute; left:0; top:7px; color:var(--ok); }
+  .rep-li.ok::before{ content:""; position:absolute; left:0; top:7px; width:1em; height:1em; background:var(--ok); -webkit-mask:url("/Assets/epistemiclab-icons/icon-success.svg") center / contain no-repeat; mask:url("/Assets/epistemiclab-icons/icon-success.svg") center / contain no-repeat; }
   .rep-li.warn::before{ content:"●"; position:absolute; left:0; top:7px; color:var(--warn); }
   .rep-li .pick{ color:var(--muted); }
   .rep-empty{ color:var(--muted); font-size:13px; }

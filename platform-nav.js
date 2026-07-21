@@ -11,7 +11,7 @@
     { href: '/', label: 'Inicio', match: ['/', '/index.html'] },
     { href: '/about/', label: '¿Qué es EpistemicLab?', match: ['/about'] },
     { href: '/dashboard/', label: 'Mi progreso', match: ['/dashboard'] },
-    { href: '/bottle-lab/', label: 'Aprender', match: ['/bottle-lab', '/label-lab', '/sat-lab', '/adaptive-review'] },
+    { href: '/sat-lab/', label: 'Aprender', match: ['/bottle-lab', '/label-lab', '/sat-lab', '/adaptive-review'] },
     { href: '/full-simulation-v2/', label: 'Evaluarte', match: ['/full-simulation-v2', '/diagnostic-sba', '/open-response-lab', '/adaptive-session'] },
     { href: '/mentor/', label: 'Mi aprendizaje', match: ['/mentor', '/learning-loop', '/profile'] },
     { href: '/login/', label: 'Mi cuenta', match: ['/login', '/upgrade'] }
@@ -23,16 +23,18 @@
       { label: '¿Qué es EpistemicLab?', href: '/about/' }
     ]},
     { label: 'Aprender', submenu: [
-      { label: 'Botellas', href: '/bottle-lab/' },
-      { label: 'Etiquetas', href: '/label-lab/' },
       { label: 'Laboratorio SAT', href: '/sat-lab/' },
-      { label: 'Plan de refuerzo', href: '/adaptive-review/' }
+      { label: 'Plan de Refuerzo', href: '/adaptive-review/' }
     ]},
     { label: 'Evaluarte', submenu: [
-      { label: 'Diagnóstico teórico', href: '/diagnostic-sba/' },
-      { label: 'Respuesta escrita', href: '/open-response-lab/' },
-      { label: 'Sesión adaptativa', href: '/adaptive-session/' },
-      { label: 'Simulacro completo', href: '/full-simulation-v2/' }
+      { label: 'Evaluación Teórica', href: '/diagnostic-sba/' },
+      { label: 'Respuesta Abierta', href: '/open-response-lab/' },
+      { label: 'Entrenamiento Adaptativo', href: '/adaptive-session/' },
+      { label: 'Simulacro Completo', href: '/full-simulation-v2/' }
+    ]},
+    { label: 'Experiencias complementarias', submenu: [
+      { label: 'Botellas', href: '/bottle-lab/' },
+      { label: 'Etiquetas', href: '/label-lab/' }
     ]},
     { label: 'Mi aprendizaje', submenu: [
       { label: 'Mi progreso', href: '/dashboard/' },
@@ -65,7 +67,7 @@
       }).join('') +
       '</div>';
 
-    var menuBtn = '<button type="button" class="pnav-menu-btn" id="pnav-menu-btn" aria-label="Menú" aria-controls="pnav-menu" aria-expanded="false">☰</button>';
+    var menuBtn = '<button type="button" class="pnav-menu-btn" id="pnav-menu-btn" aria-label="Menú" aria-controls="pnav-menu" aria-expanded="false"><span class="ep-icon ep-icon--menu" aria-hidden="true"></span><span class="ep-sr-only">Menú</span></button>';
     var menu = '<div class="pnav-menu" id="pnav-menu" hidden>' +
       MENU.map(function (item) {
         if (item.submenu) {
@@ -90,11 +92,15 @@
       menuButton.onclick = function () {
         menuPanel.hidden = !menuPanel.hidden;
         menuButton.setAttribute('aria-expanded', String(!menuPanel.hidden));
+        var icon = menuButton.querySelector('.ep-icon');
+        if (icon) icon.className = 'ep-icon ep-icon--' + (menuPanel.hidden ? 'menu' : 'close');
       };
       document.addEventListener('click', function (e) {
         if (e.target !== menuButton && !menuPanel.contains(e.target)) {
           menuPanel.hidden = true;
           menuButton.setAttribute('aria-expanded', 'false');
+          var icon = menuButton.querySelector('.ep-icon');
+          if (icon) icon.className = 'ep-icon ep-icon--menu';
         }
       });
     }

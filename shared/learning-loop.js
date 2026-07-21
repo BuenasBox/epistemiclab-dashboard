@@ -24,7 +24,7 @@
         reason: 'Build foundation with more SBA practice',
         label: 'Práctica SBA — Fundación',
         url: '/diagnostic-sba/',
-        icon: '🎯'
+        icon: 'learning-objective'
       };
     }
     // Have SBA, try adaptive for weakness-focused
@@ -35,7 +35,7 @@
         reason: 'Focus on your weak areas with Adaptive Session',
         label: 'Sesión Adaptativa — Debilidades',
         url: '/adaptive-session/',
-        icon: '📊'
+        icon: 'progress-dashboard'
       };
     }
     // Good SBA foundation, try OR for articulation
@@ -46,7 +46,7 @@
         reason: 'Practice answering with command verbs (explain, justify, compare...)',
         label: 'Respuesta Abierta — Articulación',
         url: '/open-response-lab/',
-        icon: '✍️'
+        icon: 'open-response'
       };
     }
     // Have OR practice, try SAT for quality calibration
@@ -57,7 +57,7 @@
         reason: 'Calibrate your quality assessment with a single wine',
         label: 'SAT Sprint — Calibración',
         url: '/adaptive-session/?mode=sat_sprint',
-        icon: '🍷'
+        icon: 'sat-lab'
       };
     }
     // Have SAT, try full simulation
@@ -68,7 +68,7 @@
         reason: 'Take the full exam simulation: SBA → OR → SAT under time pressure',
         label: 'Simulacro Completo — WSET Exam',
         url: '/full-simulation/',
-        icon: '🏆'
+        icon: 'answer-structure'
       };
     }
     // Default: keep practicing weak areas
@@ -78,7 +78,7 @@
       reason: 'Continue improving your weak areas',
       label: 'Seguir Practicando',
       url: '/adaptive-session/',
-      icon: '🔄'
+      icon: 'adaptive-training'
     };
   }
 
@@ -91,7 +91,7 @@
       '<div class="ll-heading">YOUR LEARNING PATH</div>' +
       '<div class="ll-recommendation">' +
       '<div class="ll-recommendation-row">' +
-      '<span class="ll-icon">' + (rec.icon || '→') + '</span>' +
+      '<span class="ll-icon">' + (rec.icon ? '<span class="ep-icon ep-icon--' + rec.icon + '" aria-hidden="true"></span>' : '→') + '</span>' +
       '<div>' +
       '<div class="ll-recommendation-title">' + rec.label + '</div>' +
       '<div class="ll-recommendation-reason">' + rec.reason + '</div>' +

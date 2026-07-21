@@ -550,7 +550,7 @@
 
           ${concepts.tip ? `
             <div class="mentor-footer-note">
-              💡 ${escapeHtml(concepts.tip)}
+              <span class="ep-icon ep-icon--insight" aria-hidden="true"></span> ${escapeHtml(concepts.tip)}
             </div>
           ` : ''}
         </div>
@@ -579,13 +579,13 @@
               ${escapeHtml(distinction.instruction)}
             </div>
             ${distinction.elements.map(element =>
-              `<div class="mentor-structure-element">✓ ${escapeHtml(element)}</div>`
+              `<div class="mentor-structure-element"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> ${escapeHtml(element)}</div>`
             ).join('')}
           </div>
 
           ${distinction.common_weakness ? `
             <div class="mentor-warning">
-              ⚠️ ${escapeHtml(distinction.common_weakness)}
+              <span class="ep-icon ep-icon--warning" aria-hidden="true"></span> ${escapeHtml(distinction.common_weakness)}
             </div>
           ` : ''}
         </div>
@@ -703,12 +703,12 @@
 
     const layers = guidance.layers || {};
     const paneDefs = [
-      { key: 'verb_mentor', icon: '🎯', title: 'Guía del verbo', body: renderVerbMentorPane(layers.verb_mentor) },
-      { key: 'thinking_prompts', icon: '💭', title: 'Preguntas para pensar', body: renderThinkingPromptsPane(layers.thinking_prompts) },
-      { key: 'causal_paths', icon: '🔗', title: 'Cadena causal', body: renderCausalPathsPane(layers.causal_paths) },
-      { key: 'concept_checklist', icon: '✅', title: 'Conceptos', body: renderConceptChecklistPane(layers.concept_checklist) },
-      { key: 'distinction_structure', icon: '🏆', title: 'Estructura sólida', body: renderDistinctionStructurePane(layers.distinction_structure) },
-      { key: 'self_review', icon: '🔍', title: 'Autorrevisión', body: renderSelfReviewPane(layers.self_review) }
+      { key: 'verb_mentor', icon: 'learning-objective', title: 'Guía del verbo', body: renderVerbMentorPane(layers.verb_mentor) },
+      { key: 'thinking_prompts', icon: 'thinking-prompt', title: 'Preguntas para pensar', body: renderThinkingPromptsPane(layers.thinking_prompts) },
+      { key: 'causal_paths', icon: 'causal-chain', title: 'Cadena causal', body: renderCausalPathsPane(layers.causal_paths) },
+      { key: 'concept_checklist', icon: 'theory-assessment', title: 'Conceptos', body: renderConceptChecklistPane(layers.concept_checklist) },
+      { key: 'distinction_structure', icon: 'answer-structure', title: 'Estructura sólida', body: renderDistinctionStructurePane(layers.distinction_structure) },
+      { key: 'self_review', icon: 'self-review', title: 'Autorrevisión', body: renderSelfReviewPane(layers.self_review) }
     ].filter(function (p) { return p.body; });
 
     if (!paneDefs.length) {
@@ -716,7 +716,7 @@
     }
 
     const tabs = paneDefs.map(function (p, i) {
-      return `<button type="button" class="mentor-tab${i === 0 ? ' active' : ''}" data-mentor-tab="${p.key}" onclick="mentorShowPane(this,'${p.key}')" title="${escapeHtml(p.title)}">${p.icon}</button>`;
+      return `<button type="button" class="mentor-tab${i === 0 ? ' active' : ''}" data-mentor-tab="${p.key}" onclick="mentorShowPane(this,'${p.key}')" title="${escapeHtml(p.title)}"><span class="ep-icon ep-icon--${p.icon}" aria-hidden="true"></span></button>`;
     }).join('');
 
     const panes = paneDefs.map(function (p, i) {
@@ -728,7 +728,7 @@
       <div class="mentor-compact" data-mentor-compact>
         <div class="mentor-compact-tabs">${tabs}</div>
         <div class="mentor-compact-body">${panes}</div>
-        <button type="button" class="mentor-done-btn" onclick="mentorFinishReview()">✓ Listo, a responder</button>
+        <button type="button" class="mentor-done-btn" onclick="mentorFinishReview()"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Listo, a responder</button>
       </div>
     `;
 
@@ -811,8 +811,8 @@
     if (!distinction) return '';
     return `
       <div class="mentor-pane-title">${escapeHtml(distinction.title)}</div>
-      ${distinction.elements.map(el => `<div class="mentor-structure-element">✓ ${escapeHtml(el)}</div>`).join('')}
-      ${distinction.common_weakness ? `<div class="mentor-warning mentor-warning--spaced">⚠️ ${escapeHtml(distinction.common_weakness)}</div>` : ''}
+      ${distinction.elements.map(el => `<div class="mentor-structure-element"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> ${escapeHtml(el)}</div>`).join('')}
+      ${distinction.common_weakness ? `<div class="mentor-warning mentor-warning--spaced"><span class="ep-icon ep-icon--warning" aria-hidden="true"></span> ${escapeHtml(distinction.common_weakness)}</div>` : ''}
     `;
   }
 

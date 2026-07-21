@@ -109,7 +109,7 @@
       answer_length_flag: evaluateOrResponse.answer_length_flag || null,
       coverage_ratio,
       causal_flag,
-      causal_message: causal_flag ? '⚠️ Razonamiento causal pendiente' : null,
+      causal_message: causal_flag ? 'Razonamiento causal pendiente' : null,
       next_step,
       depth_label: depthInfo.label,
       depth_color: depthInfo.color,
@@ -170,14 +170,14 @@
     // (or_bank.feedback_profile) — no generic filler when it's missing.
     const distinctionSection = e.distinction_feedback ? `
       <div class="feedback-section feedback-section--depth ${e.depth_class}">
-        <div class="feedback-title">🎯 Por qué tu respuesta está en este nivel</div>
+        <div class="feedback-title"><span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span> Por qué tu respuesta está en este nivel</div>
         <p class="feedback-copy feedback-copy--distinction">${escapeHtml(e.distinction_feedback)}</p>
       </div>
     ` : '';
 
     const strengthsSection = `
       <div class="feedback-section feedback-section--strength">
-        <div class="feedback-title">✓ Fortalezas</div>
+        <div class="feedback-title"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Fortalezas</div>
         <ul class="feedback-list">
           ${e.strengths.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
         </ul>
@@ -186,7 +186,7 @@
 
     const gapsSection = hasGaps ? `
       <div class="feedback-section feedback-section--gap">
-        <div class="feedback-title">⚠️ Por fortalecer</div>
+        <div class="feedback-title"><span class="ep-icon ep-icon--warning" aria-hidden="true"></span> Por fortalecer</div>
         <ul class="feedback-list">
           ${e.gaps.map(g => `<li>${escapeHtml(g)}</li>`).join('')}
         </ul>
@@ -212,14 +212,14 @@
 
     const causalSection = hasCausal ? `
       <div class="feedback-section feedback-section--causal">
-        <div class="feedback-title">${escapeHtml(e.causal_message)}</div>
+        <div class="feedback-title"><span class="ep-icon ep-icon--warning" aria-hidden="true"></span> ${escapeHtml(e.causal_message)}</div>
         <p class="feedback-copy feedback-copy--muted">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
       </div>
     ` : '';
 
     const nextSection = `
       <div class="feedback-section feedback-section--next">
-        <div class="feedback-title">💡 Próxima mejora</div>
+        <div class="feedback-title"><span class="ep-icon ep-icon--insight" aria-hidden="true"></span> Próxima mejora</div>
         <p class="feedback-copy">${escapeHtml(e.next_step)}</p>
       </div>
     `;
@@ -288,7 +288,7 @@
 
     const distinctionHtml = e.distinction_feedback ? `
       <div class="orb-panel orb-distinction">
-        <div class="orb-panel-title">🎯 Por qué tu respuesta está en este nivel</div>
+        <div class="orb-panel-title"><span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span> Por qué tu respuesta está en este nivel</div>
         <p>${escapeHtml(e.distinction_feedback)}</p>
       </div>
     ` : '';
@@ -310,7 +310,7 @@
 
     const nextHtml = `
       <div class="orb-panel orb-panel--next">
-        <div class="orb-panel-title">💡 Próxima mejora</div>
+        <div class="orb-panel-title"><span class="ep-icon ep-icon--insight" aria-hidden="true"></span> Próxima mejora</div>
         <p>${escapeHtml(e.next_step)}</p>
       </div>
     `;

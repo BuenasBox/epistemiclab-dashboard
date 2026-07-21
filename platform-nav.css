@@ -28,6 +28,8 @@
   display:none;background:none;border:1px solid var(--pn-line);color:var(--pn-ink);
   padding:6px 10px;border-radius:6px;cursor:pointer;font-size:18px;line-height:1
 }
+.pnav-menu-btn .ep-icon{font-size:1.1em;vertical-align:-.15em}
+.pnav-menu-btn:focus-visible,.pnav-link:focus-visible,.pnav-menu-item:focus-visible{outline:2px solid var(--pn-cyan);outline-offset:2px}
 .pnav-menu-btn:hover{border-color:var(--pn-cyan);color:var(--pn-cyan)}
 .pnav-menu{
   position:absolute;top:100%;right:0;background:var(--pn-panel);border:1px solid var(--pn-line);

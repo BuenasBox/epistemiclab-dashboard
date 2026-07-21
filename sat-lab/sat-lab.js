@@ -177,7 +177,7 @@
     }
     if($('hero-badges')) $('hero-badges').innerHTML=b;
     var obj=$('hero-objective');
-    if(obj){ if(id.objective){ obj.hidden=false; obj.innerHTML='<span aria-hidden="true">🎯</span><span>'+id.objective+'</span>'; } else obj.hidden=true; }
+    if(obj){ if(id.objective){ obj.hidden=false; obj.innerHTML='<span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span><span>'+id.objective+'</span>'; } else obj.hidden=true; }
     if($('hero-motiv')) $('hero-motiv').textContent=id.motivational||'';
   }
 
@@ -193,7 +193,7 @@
     var pct=(PHASES.length>1?(S.phaseIdx/(PHASES.length-1))*100:0);
     var dots = PHASES.map(function(p,i){
       var cls = i<S.phaseIdx?'step done':(i===S.phaseIdx?'step active':'step');
-      var mark = i<S.phaseIdx?'✓':(i===S.phaseIdx?'▶':'○');
+      var mark = i<S.phaseIdx?'<span class="ep-icon ep-icon--success" aria-hidden="true"></span>':(i===S.phaseIdx?'<span class="ep-icon ep-icon--current-step" aria-hidden="true"></span>':'<span class="ep-icon ep-icon--pending-step" aria-hidden="true"></span>');
       return '<div class="'+cls+'"><span class="dot">'+mark+'</span><span class="lbl">'+(SHORT[i]||('F'+(i+1)))+'</span></div>';
     }).join('');
     var nextName = (S.phaseIdx<PHASES.length-1)? SHORT[S.phaseIdx+1] : null;
@@ -244,11 +244,11 @@
       if(!r.ok || !b.ok) throw new Error(b.error||'Error al evaluar.');
       if(!S.answers[dn]) S.decisionsCount++;
       S.answers[dn] = {value:val, label:LABELS[dn][val], severity:b.severity, phase:phase.id};
-      var SEV={INFORMATIVA:{cls:'info',ic:'💡',name:'Observación'},
-               ADVERTENCIA:{cls:'warn',ic:'⚠',name:'Atención'},
-               BLOQUEANTE:{cls:'block',ic:'🎯',name:'Punto crítico'}};
+      var SEV={INFORMATIVA:{cls:'info',ic:'insight',name:'Observación'},
+               ADVERTENCIA:{cls:'warn',ic:'warning',name:'Atención'},
+               BLOQUEANTE:{cls:'block',ic:'learning-objective',name:'Punto crítico'}};
       var sv = SEV[b.severity] || SEV.INFORMATIVA;
-      var html = '<span class="mentor-ic" aria-hidden="true">'+sv.ic+'</span>'
+      var html = '<span class="mentor-ic ep-icon ep-icon--'+sv.ic+'" aria-hidden="true"></span>'
         + '<span class="sev">'+sv.name+'</span>'+ (b.feedback_message||'');
       if(b.reasoning_hint) html += '<div class="hint">'+b.reasoning_hint+'</div>';
       if(b.bicl_signal) html += '<div class="bicl">'+b.bicl_signal+'</div>';
@@ -288,7 +288,7 @@
     if (window.SATWineGlass && $('glass-mount-summary')) { var sg=SATWineGlass.mount($('glass-mount-summary')); sg.update(glassState(false)); }
     $('summary-msg').textContent = 'Registraste '+S.decisionsCount+' decisiones a lo largo de las 5 fases del SAT.';
     $('phases-box').innerHTML = PHASES.map(function(p){
-      return '<div class="ph-done">✓ '+PHASE_NAME[p.id]+'</div>';
+      return '<div class="ph-done"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> '+PHASE_NAME[p.id]+'</div>';
     }).join('');
     var tally={INFORMATIVA:0,ADVERTENCIA:0,BLOQUEANTE:0};
     Object.keys(S.answers).forEach(function(dn){ var s=S.answers[dn].severity; if(tally[s]!=null)tally[s]++; });

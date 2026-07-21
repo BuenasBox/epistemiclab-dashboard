@@ -122,7 +122,7 @@
       '<div class="fs-rule"><span>2</span> vinos tranquilos a ciegas</div>' +
       '<div class="fs-rule"><span>30</span> minutos cronometrados</div>' +
       '<div class="fs-rule"><span>SAT</span> completo por vino</div>' +
-      '<div class="fs-rule"><span>★</span> evaluación diferida al cierre</div>' +
+      '<div class="fs-rule"><span class="ep-icon ep-icon--lock" aria-hidden="true"></span> evaluación diferida al cierre</div>' +
       '</div>' +
       '<div class="fs-config"><div class="fs-config-label">Duración</div><div class="fs-seg" id="fs-dur">' +
       [20, 30, 45].map(function (dd) { return '<button class="fs-seg-btn' + (dd === S.durationMin ? ' on' : '') + '" data-dur="' + dd + '">' + dd + ' min</button>'; }).join('') +
