@@ -1,0 +1,16 @@
+/* Learning Loop component. Breadcrumb state is represented by classes. */
+.ll-card{background:linear-gradient(135deg,#1a2332 0%,#0f1519 100%);border:1px solid #4a7c8c;border-radius:8px;padding:16px;margin:12px 0}
+.ll-heading{color:#65b7c7;font-weight:700;margin-bottom:12px}
+.ll-recommendation{background:#0f1519;border-radius:6px;padding:14px;margin-bottom:12px;border-left:3px solid #4a7c8c}
+.ll-recommendation-row{display:flex;align-items:flex-start;gap:12px}
+.ll-icon{font-size:20px}
+.ll-recommendation-title{color:#d5a84f;font-weight:600;font-size:13px}
+.ll-recommendation-reason{color:#aab4bd;font-size:12px;margin:6px 0}
+.ll-action{display:inline-block;margin-top:8px;color:#65b7c7;text-decoration:none;font-weight:600;font-size:12px;padding:6px 12px;background:#0d2a30;border-radius:4px;border:1px solid #2a5a63}
+.ll-note{color:#525e6e;font-size:10px}
+.ll-breadcrumb{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap}
+.ll-step{padding:6px 10px;border-radius:4px;font-size:11px;font-weight:600;color:#aab4bd}
+.ll-step.is-current{background:#4a7c8c;color:#0f1519;font-weight:700}
+.ll-step.is-started{background:#2a5a63}
+.ll-step.is-pending{background:#1c2230}
+.ll-separator{color:#303944;font-size:12px}

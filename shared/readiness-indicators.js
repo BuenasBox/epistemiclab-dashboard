@@ -191,38 +191,38 @@
   function renderReadinessIndicators(indicators) {
     if (!indicators) return '';
 
-    var html = '<div style="background:#1e2a2e;border:1px solid #4a7c8c;border-radius:8px;padding:16px;margin:16px 0">' +
-      '<h3 style="color:#65b7c7;font-weight:700;margin:0 0 12px;font-size:13px">Indicadores de Preparación</h3>';
+    var html = '<div class="ri-card">' +
+      '<h3 class="ri-title">Indicadores de Preparación</h3>';
 
     // Topic coverage
     if (indicators.topic_coverage) {
-      html += '<div style="margin-bottom:12px">' +
-        '<div style="font-size:11px;color:#aab4bd;margin-bottom:4px">' +
+      html += '<div class="ri-metric">' +
+        '<div class="ri-metric-label">' +
         'Cobertura de tópicos: ' + indicators.topic_coverage.coverage_percentage + '% (' + indicators.topic_coverage.attempted_topics + '/' + indicators.topic_coverage.total_topics + ')</div>' +
-        '<div style="height:4px;background:#0f1115;border-radius:2px"><div style="background:#65b7c7;height:100%;width:' + indicators.topic_coverage.coverage_percentage + '%;border-radius:2px"></div></div>' +
+        '<div class="ri-track"><div class="ri-fill" style="--progress:' + indicators.topic_coverage.coverage_percentage + '%"></div></div>' +
         '</div>';
     }
 
     // Verb coverage
     if (indicators.verb_coverage) {
-      html += '<div style="margin-bottom:12px">' +
-        '<div style="font-size:11px;color:#aab4bd;margin-bottom:4px">' +
+      html += '<div class="ri-metric">' +
+        '<div class="ri-metric-label">' +
         'Cobertura de verbos: ' + indicators.verb_coverage.coverage_percentage + '% (' + indicators.verb_coverage.attempted_verbs + '/' + indicators.verb_coverage.total_verbs + ')</div>' +
-        '<div style="height:4px;background:#0f1115;border-radius:2px"><div style="background:#65b7c7;height:100%;width:' + indicators.verb_coverage.coverage_percentage + '%;border-radius:2px"></div></div>' +
+        '<div class="ri-track"><div class="ri-fill" style="--progress:' + indicators.verb_coverage.coverage_percentage + '%"></div></div>' +
         '</div>';
     }
 
     // Preparation signals
     if (indicators.preparation_signals && indicators.preparation_signals.length > 0) {
-      html += '<div style="margin-top:12px">' +
-        '<div style="font-size:11px;color:#2ec27e;font-weight:600;margin-bottom:6px">✓ Señales positivas:</div>';
+      html += '<div class="ri-signals">' +
+        '<div class="ri-signals-title">✓ Señales positivas:</div>';
       indicators.preparation_signals.forEach(function(signal) {
-        html += '<div style="font-size:11px;color:#aab4bd;margin:4px 0">• ' + signal + '</div>';
+        html += '<div class="ri-signal">• ' + signal + '</div>';
       });
       html += '</div>';
     }
 
-    html += '<div style="font-size:10px;color:#525e6e;margin-top:12px;font-style:italic">' +
+    html += '<div class="ri-note">' +
       'Indicadores formativos. No son predicciones oficiales.' +
       '</div>';
 

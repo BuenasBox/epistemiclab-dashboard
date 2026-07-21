@@ -272,39 +272,39 @@
   function renderSATCoachingCard(coaching) {
     if (!coaching) return '';
 
-    var html = '<div style="background:#1a2332;border:1px solid #4a7c8c;border-radius:8px;padding:14px;margin:16px 0;font-size:12px">' +
-      '<div style="color:#65b7c7;font-weight:700;margin-bottom:8px">💡 COACHING SAT</div>';
+    var html = '<div class="sci-card">' +
+      '<div class="sci-title">💡 COACHING SAT</div>';
 
     // Quality analysis
-    html += '<div style="background:#0f1115;border-radius:6px;padding:10px;margin-bottom:10px">' +
-      '<div style="color:#d5a84f;font-weight:600;font-size:11px;margin-bottom:4px">Calidad declarada: ' + coaching.declared_quality.toUpperCase() + '</div>' +
-      '<div style="color:#a7b0be;font-size:11px">' + coaching.expected_characteristics + '</div>' +
+    html += '<div class="sci-quality">' +
+      '<div class="sci-quality-title">Calidad declarada: ' + coaching.declared_quality.toUpperCase() + '</div>' +
+      '<div class="sci-quality-copy">' + coaching.expected_characteristics + '</div>' +
       '</div>';
 
     // Issues
     if (coaching.consistency_issues.length > 0) {
-      html += '<div style="margin-bottom:10px">' +
-        '<div style="color:#e45c5c;font-weight:600;font-size:11px;margin-bottom:6px">INCONSISTENCIAS</div>';
+      html += '<div class="sci-section">' +
+        '<div class="sci-section-title is-error">INCONSISTENCIAS</div>';
       coaching.consistency_issues.forEach(function(issue) {
-        html += '<div style="color:#d4a574;font-size:11px;margin:4px 0">• ' + issue + '</div>';
+        html += '<div class="sci-issue">• ' + issue + '</div>';
       });
       html += '</div>';
     }
 
     if (coaching.completeness_issues.length > 0) {
-      html += '<div style="margin-bottom:10px">' +
-        '<div style="color:#f6b73c;font-weight:600;font-size:11px;margin-bottom:6px">ÁREAS INCOMPLETAS</div>';
+      html += '<div class="sci-section">' +
+        '<div class="sci-section-title is-warning">ÁREAS INCOMPLETAS</div>';
       coaching.completeness_issues.forEach(function(issue) {
-        html += '<div style="color:#d4a574;font-size:11px;margin:4px 0">• ' + issue + '</div>';
+        html += '<div class="sci-issue">• ' + issue + '</div>';
       });
       html += '</div>';
     }
 
     // Main coaching
-    html += '<div style="color:#f5f7fa;margin-bottom:10px;line-height:1.5">' + coaching.coaching + '</div>';
+    html += '<div class="sci-coaching">' + coaching.coaching + '</div>';
 
     // Governance
-    html += '<div style="font-size:10px;color:#525e6e;margin-top:8px;font-style:italic">' +
+    html += '<div class="sci-note">' +
       'Coaching formativo. No es evaluación oficial.' +
       '</div>';
 

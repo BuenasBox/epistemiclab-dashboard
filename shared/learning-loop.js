@@ -87,17 +87,17 @@
     var rec = recommendNextExperience();
     if (!rec) return '';
 
-    var html = '<div style="background:linear-gradient(135deg,#1a2332 0%,#0f1519 100%);border:1px solid #4a7c8c;border-radius:8px;padding:16px;margin:12px 0">' +
-      '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px">YOUR LEARNING PATH</div>' +
-      '<div style="background:#0f1519;border-radius:6px;padding:14px;margin-bottom:12px;border-left:3px solid #4a7c8c">' +
-      '<div style="display:flex;align-items:flex-start;gap:12px">' +
-      '<span style="font-size:20px">' + (rec.icon || '→') + '</span>' +
+    var html = '<div class="ll-card">' +
+      '<div class="ll-heading">YOUR LEARNING PATH</div>' +
+      '<div class="ll-recommendation">' +
+      '<div class="ll-recommendation-row">' +
+      '<span class="ll-icon">' + (rec.icon || '→') + '</span>' +
       '<div>' +
-      '<div style="color:#d5a84f;font-weight:600;font-size:13px">' + rec.label + '</div>' +
-      '<div style="color:#aab4bd;font-size:12px;margin:6px 0">' + rec.reason + '</div>' +
-      '<a href="' + rec.url + '" style="display:inline-block;margin-top:8px;color:#65b7c7;text-decoration:none;font-weight:600;font-size:12px;padding:6px 12px;background:#0d2a30;border-radius:4px;border:1px solid #2a5a63">Empezar →</a>' +
+      '<div class="ll-recommendation-title">' + rec.label + '</div>' +
+      '<div class="ll-recommendation-reason">' + rec.reason + '</div>' +
+      '<a href="' + rec.url + '" class="ll-action">Empezar →</a>' +
       '</div></div></div>' +
-      '<div style="color:#525e6e;font-size:10px">Tu camino personalizado basado en tu historial de aprendizaje.</div>' +
+      '<div class="ll-note">Tu camino personalizado basado en tu historial de aprendizaje.</div>' +
       '</div>';
     return html;
   }
@@ -113,17 +113,16 @@
       { name: 'Full Simulation', count: 0, current: currentExperience === 'simulation' }
     ];
 
-    var html = '<div style="display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap">';
+    var html = '<div class="ll-breadcrumb">';
     steps.forEach(function (step, idx) {
       var isCurrent = step.current;
       var hasStarted = step.count > 0;
-      var bgColor = isCurrent ? '#4a7c8c' : (hasStarted ? '#2a5a63' : '#1c2230');
-      var textColor = isCurrent ? '#0f1519' : '#aab4bd';
-      html += '<div style="background:' + bgColor + ';color:' + textColor + ';padding:6px 10px;border-radius:4px;font-size:11px;font-weight:' + (isCurrent ? '700' : '600') + '">' +
+      var stateClass = isCurrent ? 'is-current' : (hasStarted ? 'is-started' : 'is-pending');
+      html += '<div class="ll-step ' + stateClass + '">' +
         step.name + (step.count > 0 ? ' (' + step.count + ')' : '') +
         '</div>';
       if (idx < steps.length - 1) {
-        html += '<span style="color:#303944;font-size:12px">→</span>';
+        html += '<span class="ll-separator">→</span>';
       }
     });
     html += '</div>';

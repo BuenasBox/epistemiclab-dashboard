@@ -375,20 +375,20 @@ function renderFeedback(q, correct) {
   // Misconception note
   const mcNote = $('fb-mc-note');
   if (fb.misconception_note) {
-    mcNote.style.display = 'block';
+    mcNote.hidden = false;
     mcNote.innerHTML = `<span class="fb-mc-icon">⚠</span>${escTxt(fb.misconception_note)}`;
   } else {
-    mcNote.style.display = 'none';
+    mcNote.hidden = true;
   }
 
   // Auditoría Z.2: se retira el "mentor hint" estático (mismo texto en inglés para
   // toda respuesta incorrecta — mensaje placebo). Reactivar solo con hints por ítem.
   const mentor = document.getElementById('fb-mentor');
-  if (mentor) mentor.style.display = 'none';
+  if (mentor) mentor.hidden = true;
 
   // WWJ badge
   const wwj = $('fb-wwj-badge');
-  wwj.style.display = fb.wwj_available ? 'block' : 'none';
+  wwj.hidden = !fb.wwj_available;
 
   // Next button label
   const isLast = STATE.qIdx >= STATE.payload.questions.length - 1;
@@ -734,36 +734,36 @@ function renderSAT(){
   const wines=p.wines||[], idx=STATE.satWineIdx||0, wine=wines[idx], el=document.getElementById('sat-content');
   if(!wine||!el)return;
   const tot=wines.length, dur=p.duration_minutes;
-  el.innerHTML=`<div style="max-width:640px;margin:0 auto;padding:24px 0">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-      <div><div style="font-size:11px;color:#525e6e;letter-spacing:.1em;text-transform:uppercase">Cata SAT · Vino ${idx+1} de ${tot}</div>
-      <div style="font-size:18px;font-weight:700;color:#e5c97a;margin-top:4px">${escTxt(wine.wine_name)}</div></div>
-      ${dur?`<div style="text-align:right"><div style="font-size:10px;color:#525e6e">Tiempo restante</div><div id="sat-timer" style="font-size:20px;font-weight:700;color:#c9a84c">${dur}:00</div></div>`:''}
+  el.innerHTML=`<div class="as-sat-shell">
+    <div class="as-sat-header">
+      <div><div class="as-sat-eyebrow">Cata SAT · Vino ${idx+1} de ${tot}</div>
+      <div class="as-sat-wine-name">${escTxt(wine.wine_name)}</div></div>
+      ${dur?`<div class="as-sat-timer-wrap"><div class="as-sat-timer-label">Tiempo restante</div><div id="sat-timer" class="as-sat-timer">${dur}:00</div></div>`:''}
     </div>
-    <div style="background:#1e2430;border:1px solid #252c38;border-radius:8px;padding:16px;margin-bottom:14px">
-      <div style="font-size:11px;color:#a7b0be;margin-bottom:8px">DESCRIPCIÓN</div>
-      <div style="font-size:13px;color:#f5f7fa;line-height:1.6">${escTxt(wine.description)}</div>
+    <div class="as-sat-panel">
+      <div class="as-sat-panel-label">DESCRIPCIÓN</div>
+      <div class="as-sat-description">${escTxt(wine.description)}</div>
     </div>
-    <div style="background:#1e2430;border:1px solid #252c38;border-radius:8px;padding:16px;margin-bottom:14px">
-      <div style="font-size:11px;color:#a7b0be;margin-bottom:8px">TU ANÁLISIS SAT</div>
-      <div style="font-size:12px;color:#525e6e;margin-bottom:8px">Orden WSET: Aspecto → Nariz → Boca → Conclusiones</div>
-      <textarea id="sat-resp-${wine.prompt_id}" style="width:100%;min-height:160px;background:#0f1115;border:1px solid #252c38;border-radius:6px;color:#f5f7fa;font-size:13px;padding:12px;font-family:inherit;resize:vertical;box-sizing:border-box"
+    <div class="as-sat-panel">
+      <div class="as-sat-panel-label">TU ANÁLISIS SAT</div>
+      <div class="as-sat-order-note">Orden WSET: Aspecto → Nariz → Boca → Conclusiones</div>
+      <textarea id="sat-resp-${wine.prompt_id}" class="as-sat-response"
         placeholder="ASPECTO: [intensidad] [color]&#10;NARIZ: [intensidad] · [aromas]&#10;BOCA: [dulzor] · [acidez] · [tanino] · [alcohol] · [cuerpo] · [sabores] · [final]&#10;CONCLUSIONES: [calidad] · [potencial]"></textarea>
     </div>
-    <div style="background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:8px;padding:12px;margin-bottom:16px">
-      <div style="font-size:11px;color:#c9a84c;margin-bottom:4px">NOTA FORMATIVA</div>
-      <div style="font-size:12px;color:#a7b0be">${escTxt(wine.training_note||wine.style||'Entrenamiento SAT formativo')}</div>
+    <div class="as-sat-training-note">
+      <div class="as-sat-training-label">NOTA FORMATIVA</div>
+      <div class="as-sat-training-copy">${escTxt(wine.training_note||wine.style||'Entrenamiento SAT formativo')}</div>
     </div>
-    ${wine.coaching_hints && wine.coaching_hints.length > 0 ? `<div style="background:rgba(63,169,245,.07);border:1px solid #3fa9f5;border-radius:8px;padding:12px;margin-bottom:16px">
-      <div style="font-size:11px;color:#3fa9f5;margin-bottom:6px;font-weight:700">ORIENTACIÓN PEDAGÓGICA</div>
-      <ul style="font-size:12px;color:#a7b0be;margin:0;padding-left:18px">
-        ${wine.coaching_hints.slice(0,2).map(h => `<li style="margin-bottom:4px">${escTxt(h)}</li>`).join('')}
+    ${wine.coaching_hints && wine.coaching_hints.length > 0 ? `<div class="as-sat-coaching">
+      <div class="as-sat-coaching-title">ORIENTACIÓN PEDAGÓGICA</div>
+      <ul class="as-sat-coaching-list">
+        ${wine.coaching_hints.slice(0,2).map(h => `<li class="as-sat-coaching-item">${escTxt(h)}</li>`).join('')}
       </ul>
     </div>` : ''}
-    <div style="display:flex;gap:10px;justify-content:flex-end">
+    <div class="as-sat-actions">
       ${idx+1<tot
-        ?`<button onclick="satNext()" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px">Siguiente →</button>`
-        :`<button onclick="finishSAT()" style="background:#1e2430;border:1px solid #2ec27e;border-radius:6px;padding:9px 20px;color:#2ec27e;cursor:pointer;font-size:13px">Finalizar ✓</button>`}
+        ?`<button class="as-sat-button as-sat-button--next" onclick="satNext()">Siguiente →</button>`
+        :`<button class="as-sat-button as-sat-button--finish" onclick="finishSAT()">Finalizar ✓</button>`}
     </div>
   </div>`;
 }
@@ -789,17 +789,17 @@ function finishSAT(){
       const findings=LI.coachSAT(resp[w.prompt_id]||'',w);
       if(findings){
         reviews.push({prompt_id:w.prompt_id,findings:findings});
-        coachHtml+=`<div style="font-size:12px;color:#e5c97a;text-align:left;margin-top:18px;font-weight:700">${escTxt(w.wine_name)}</div>`+LI.renderCoachPanel(findings);
+        coachHtml+=`<div class="as-sat-coach-wine">${escTxt(w.wine_name)}</div>`+LI.renderCoachPanel(findings);
       }
     });
     if(reviews.length)LI.recordSATSession(p.mode,reviews);
   }
-  document.getElementById('sat-content').innerHTML=`<div style="text-align:center;padding:40px 20px;max-width:640px;margin:0 auto">
-    <div style="font-size:40px;margin-bottom:14px">✓</div>
-    <div style="font-size:18px;font-weight:700;color:#e5c97a;margin-bottom:8px">Práctica SAT completada</div>
-    <div style="font-size:12px;color:#a7b0be;margin-bottom:10px">Entrenamiento formativo. Evaluación oficial requiere Examiner WSET acreditado.</div>
+  document.getElementById('sat-content').innerHTML=`<div class="as-sat-complete">
+    <div class="as-sat-complete-icon">✓</div>
+    <div class="as-sat-complete-title">Práctica SAT completada</div>
+    <div class="as-sat-complete-note">Entrenamiento formativo. Evaluación oficial requiere Examiner WSET acreditado.</div>
     ${coachHtml}
-    <button onclick="document.getElementById('adp-ol').classList.add('active')" style="background:#1e2430;border:1px solid #7a6230;border-radius:6px;padding:9px 20px;color:#e5c97a;cursor:pointer;font-size:13px;margin-top:18px">← Nueva sesión</button>
+    <button class="as-sat-button as-sat-button--restart" onclick="document.getElementById('adp-ol').classList.add('active')">← Nueva sesión</button>
   </div>`;
   window.scrollTo({top:0,behavior:'smooth'});
 }

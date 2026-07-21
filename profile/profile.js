@@ -229,21 +229,21 @@
   function renderMisconceptionInsights(insights) {
     insights = Array.isArray(insights) ? insights : [];
     if (insights.length === 0) {
-      return '<div style="color:#aab4bd;font-size:14px;padding:16px">Aún no hay evidencia suficiente de concepciones recurrentes.</div>';
+      return '<div class="profile-empty-insight">Aún no hay evidencia suficiente de concepciones recurrentes.</div>';
     }
     var labels = { low: 'baja', medium: 'media', high: 'alta' };
-    var html = '<div style="display:flex;flex-direction:column;gap:12px">';
+    var html = '<div class="profile-insight-list">';
     insights.slice(0, 3).forEach(function(insight) {
       var label = labels[insight.confidence_label] || 'baja';
-      html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:14px">' +
-        '<div style="color:#e0b15b;font-weight:600;margin-bottom:8px;font-size:13px">Patrón conceptual observado</div>' +
-        '<div style="color:#f3f6f8;margin-bottom:8px;line-height:1.5">' + escapeHtml(insight.statement) + '</div>' +
-        '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">Evidencia: ' +
+      html += '<div class="profile-concept-card">' +
+        '<div class="profile-concept-title">Patrón conceptual observado</div>' +
+        '<div class="profile-concept-statement">' + escapeHtml(insight.statement) + '</div>' +
+        '<div class="profile-concept-evidence">Evidencia: ' +
           insight.evidence_count + ' respuesta(s) · Frecuencia de evidencia: ' + label + '</div>' +
         (insight.why_it_matters
-          ? '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">' + escapeHtml(insight.why_it_matters) + '</div>'
+          ? '<div class="profile-concept-evidence">' + escapeHtml(insight.why_it_matters) + '</div>'
           : '') +
-        '<div style="color:#75818c;font-size:12px;padding:8px;background:#101418;border-radius:4px">' +
+        '<div class="profile-concept-note">' +
           escapeHtml(insight.improvement_signal || 'Una respuesta correcta y explicada reducirá este patrón activo.') +
         '</div></div>';
     });
@@ -269,22 +269,22 @@
   function renderRemediationCard() {
     var plan = getRemediationPlan();
     if (!plan || plan.status === 'insufficient_data') {
-      return '<div style="background:#202830;border:1px solid #303944;border-radius:8px;padding:16px;margin:16px 0;color:#aab4bd;font-size:14px">' +
+      return '<div class="profile-recommendation-empty">' +
         'Aún necesitamos más intentos para recomendar con precisión. ¡Sigue practicando!' +
         '</div>';
     }
-    var html = '<div style="background:#1a2332;border:2px solid #4a7c8c;border-radius:8px;padding:18px;margin:16px 0">' +
-      '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px;font-size:13px">PRÓXIMO PASO RECOMENDADO</div>';
+    var html = '<div class="profile-recommendation-card">' +
+      '<div class="profile-recommendation-title">PRÓXIMO PASO RECOMENDADO</div>';
     (plan.actions || []).slice(0, 3).forEach(function (action) {
       var icon = action.type.indexOf('weak') !== -1 ? '🎯' : '📚';
-      html += '<div style="background:#202830;border:1px solid #303944;border-radius:6px;padding:12px;margin:8px 0;cursor:pointer">' +
-        '<div style="color:#d5a84f;font-weight:600;margin-bottom:4px">' + icon + ' ' + (action.label || 'Practice') + '</div>' +
-        '<div style="color:#aab4bd;font-size:12px;margin-bottom:8px">' + (action.reason || '') + '</div>' +
-        '<div style="display:inline-block;background:#17343b;color:#d6f7fb;padding:6px 12px;border-radius:4px;font-size:12px;font-weight:600">' +
+      html += '<div class="profile-recommendation-item">' +
+        '<div class="profile-recommendation-label">' + icon + ' ' + (action.label || 'Practice') + '</div>' +
+        '<div class="profile-recommendation-reason">' + (action.reason || '') + '</div>' +
+        '<div class="profile-recommendation-action">' +
         (action.mode || 'start') + '</div>' +
         '</div>';
     });
-    html += '<div style="color:#525e6e;font-size:11px;margin-top:12px">Recomendaciones basadas en tu historial. Actualiza después de cada sesión.</div>';
+    html += '<div class="profile-recommendation-note">Recomendaciones basadas en tu historial. Actualiza después de cada sesión.</div>';
     html += '</div>';
     return html;
   }

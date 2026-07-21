@@ -162,6 +162,86 @@ html, body {
 
 .screen-bottom-spacer { height: 32px; }
 
+.as-sat-shell{max-width:640px;margin:0 auto;padding:24px 0}
+.as-sat-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+.as-sat-eyebrow{font-size:11px;color:#525e6e;letter-spacing:.1em;text-transform:uppercase}
+.as-sat-wine-name{font-size:18px;font-weight:700;color:#e5c97a;margin-top:4px}
+.as-sat-timer-wrap{text-align:right}
+.as-sat-timer-label{font-size:10px;color:#525e6e}
+.as-sat-timer{font-size:20px;font-weight:700;color:#c9a84c}
+.as-sat-panel{background:#1e2430;border:1px solid #252c38;border-radius:8px;padding:16px;margin-bottom:14px}
+.as-sat-panel-label{font-size:11px;color:#a7b0be;margin-bottom:8px}
+.as-sat-description{font-size:13px;color:#f5f7fa;line-height:1.6}
+.as-sat-order-note{font-size:12px;color:#525e6e;margin-bottom:8px}
+.as-sat-response{width:100%;min-height:160px;background:#0f1115;border:1px solid #252c38;border-radius:6px;color:#f5f7fa;font-size:13px;padding:12px;font-family:inherit;resize:vertical;box-sizing:border-box}
+.as-sat-training-note{background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:8px;padding:12px;margin-bottom:16px}
+.as-sat-training-label{font-size:11px;color:#c9a84c;margin-bottom:4px}
+.as-sat-training-copy{font-size:12px;color:#a7b0be}
+.as-sat-coaching{background:rgba(63,169,245,.07);border:1px solid #3fa9f5;border-radius:8px;padding:12px;margin-bottom:16px}
+.as-sat-coaching-title{font-size:11px;color:#3fa9f5;margin-bottom:6px;font-weight:700}
+.as-sat-coaching-list{font-size:12px;color:#a7b0be;margin:0;padding-left:18px}
+.as-sat-coaching-item{margin-bottom:4px}
+.as-sat-actions{display:flex;gap:10px;justify-content:flex-end}
+.as-sat-button{background:#1e2430;border-radius:6px;padding:9px 20px;cursor:pointer;font-size:13px}
+.as-sat-button--next,.as-sat-button--restart{border:1px solid #7a6230;color:#e5c97a}
+.as-sat-button--finish{border:1px solid #2ec27e;color:#2ec27e}
+.as-sat-coach-wine{font-size:12px;color:#e5c97a;text-align:left;margin-top:18px;font-weight:700}
+.as-sat-complete{text-align:center;padding:40px 20px;max-width:640px;margin:0 auto}
+.as-sat-complete-icon{font-size:40px;margin-bottom:14px}
+.as-sat-complete-title{font-size:18px;font-weight:700;color:#e5c97a;margin-bottom:8px}
+.as-sat-complete-note{font-size:12px;color:#a7b0be;margin-bottom:10px}
+.as-sat-button--restart{margin-top:18px}
+
+.li-coach-card,.li-review-card{background:#161b24;border:1px solid #2a3242;border-radius:8px;text-align:left}
+.li-coach-card{padding:14px;margin:12px 0}
+.li-review-card{padding:16px;margin:14px 0}
+.li-coach-heading{font-size:11px;letter-spacing:.12em;color:#c9a84c;margin-bottom:8px}
+.li-coach-heading--compact{margin-bottom:6px}
+.li-coach-definition{font-size:12px;color:#f5f7fa;margin-bottom:8px}
+.li-coach-line{font-size:11px;color:#a7b0be;margin:2px 0}
+.li-coach-response-line{font-size:12px;color:#a7b0be;margin:3px 0}
+.li-coach-response-line--topic{margin:6px 0 0}
+.li-tone.is-ok,.li-review-mark.is-ok,.li-progress-value.is-ok,.li-verb-value.is-ok,.li-chain-value.is-ok{color:#2ec27e}
+.li-tone.is-warn,.li-review-mark.is-warn{color:#e0a93e}
+.li-progress-value.is-warn,.li-verb-value.is-warn,.li-chain-value.is-warn{color:#c9a84c}
+.li-tone.needs-work{color:#e45c5c}
+.li-tone.is-gold{color:#c9a84c}
+.li-mentor-box{margin-top:10px;background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:6px;padding:10px}
+.li-mentor-box--compact{margin-top:8px;padding:8px}
+.li-mentor-label{font-size:10px;color:#c9a84c;margin-bottom:2px}
+.li-mentor-label--spaced{margin-bottom:3px}
+.li-mentor-copy{font-size:12px;color:#a7b0be}
+.li-mentor-copy--small{font-size:11px}
+.li-governance-note{font-size:10px;color:#525e6e;margin-top:8px}
+.li-governance-note--review{margin-top:10px}
+.li-review-row{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid #1c222d}
+.li-review-mark{font-size:12px}
+.li-review-label{font-size:12px;color:#f5f7fa}
+.li-review-detail{font-size:11px;color:#a7b0be}
+.li-progress-empty{font-size:12px;color:#a7b0be;padding:14px 0}
+.li-progress{text-align:left}
+.li-progress-section-title{font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px}
+.li-progress-section-title--first{margin-top:10px}
+.li-progress-row{display:flex;align-items:center;gap:8px;margin:4px 0}
+.li-progress-ra{font-size:11px;color:#a7b0be;width:30px}
+.li-progress-track{flex:1;height:7px;background:#1c222d;border-radius:4px;overflow:hidden}
+.li-progress-fill{width:var(--progress,0%);height:100%}
+.li-progress-fill.is-ok{background:#2ec27e}
+.li-progress-fill.is-warn{background:#c9a84c}
+.li-progress-fill.needs-work{background:#e45c5c}
+.li-progress-value{font-size:11px;width:70px;text-align:right}
+.li-progress-value.is-empty{color:#525e6e}
+.li-progress-value.needs-work,.li-verb-value.needs-work,.li-chain-value.needs-work{color:#e45c5c}
+.li-progress-chips{margin-top:6px}
+.li-verb-row{display:flex;align-items:center;gap:8px;margin:3px 0}
+.li-verb-name{font-size:11px;color:#a7b0be;width:78px}
+.li-verb-value,.li-chain-value{font-size:11px}
+.li-chain-value{font-size:12px}
+.li-progress-item{font-size:12px;color:#a7b0be;margin:3px 0}
+.li-progress-count{color:#525e6e}
+.li-progress-evolution{font-size:12px;color:#a7b0be}
+.li-progress-note{font-size:10px;color:#525e6e;margin-top:14px}
+
 /* ================================================================
    SCREEN 0 — MISSION BRIEFING
    ================================================================ */

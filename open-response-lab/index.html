@@ -154,6 +154,25 @@ textarea:focus { outline: none; border-color: var(--accent-2); }
 .assist-drawer[hidden], .assist-overlay[hidden] { display: none !important; }
 .feedback-grid[hidden], #submit-answer[hidden], #next-question[hidden], .drawer-panel[hidden] { display: none !important; }
 
+.feedback-depth{background-color:color-mix(in srgb,var(--depth-color) 13%,transparent);border-left:3px solid var(--depth-color);padding:10px 12px;border-radius:4px;margin-bottom:16px;font-size:12px}
+.feedback-depth-label{color:var(--depth-color)}
+.feedback-section{padding:12px 14px;border-radius:4px;margin-bottom:12px}
+.feedback-section--depth{border-left:3px solid var(--depth-color);background:color-mix(in srgb,var(--depth-color) 8%,transparent)}
+.feedback-section--strength{border-left:3px solid #7bc47f;background:rgba(123,196,127,.08)}
+.feedback-section--gap{border-left:3px solid #e0b15b;background:rgba(224,177,91,.08)}
+.feedback-section--causal{border-left:3px solid #65b7c7;background:rgba(101,183,199,.08)}
+.feedback-section--next{border-left:3px solid #d5a84f;background:rgba(213,168,79,.08)}
+.feedback-title{font-size:11px;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.feedback-section--depth .feedback-title{color:var(--depth-color)}
+.feedback-section--strength .feedback-title{color:#7bc47f}
+.feedback-section--gap .feedback-title{color:#e0b15b}
+.feedback-section--causal .feedback-title{color:#65b7c7}
+.feedback-section--next .feedback-title{color:#d5a84f}
+.feedback-list{margin:0;padding-left:18px;font-size:13px;line-height:1.5}
+.feedback-copy{margin:0;font-size:13px;line-height:1.5}
+.feedback-copy--distinction{line-height:1.55}
+.feedback-copy--muted{color:var(--muted)}
+
 .assistance-toolbar {
   display: flex;
   gap: 8px;
@@ -310,6 +329,13 @@ textarea:focus { outline: none; border-color: var(--accent-2); }
   font-weight: 600;
   margin-bottom: 8px;
 }
+.orb-distinction{border-left:3px solid var(--depth-color);background:color-mix(in srgb,var(--depth-color) 8%,transparent)}
+.orb-distinction .orb-panel-title,.orb-band{color:var(--depth-color)}
+.orb-panel--causal{border-left:3px solid #65b7c7;background:rgba(101,183,199,.08)}
+.orb-panel--causal .orb-panel-title{color:#65b7c7}
+.orb-panel-copy--muted{color:var(--muted)}
+.orb-panel--next{border-left:3px solid #d5a84f;background:rgba(213,168,79,.08)}
+.orb-panel--next .orb-panel-title{color:#d5a84f}
 .orb-panel p { margin: 0; font-size: 13px; line-height: 1.55; }
 .orb-no-motion .orb-ring,
 .orb-no-motion .orb-headline,
@@ -392,6 +418,7 @@ ul { margin: 0; padding-left: 19px; }
 .global-nav-separator { color: #525e6e; font-size: 10px; }
 </style>
 <link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="../shared/mentor-ui.css?v=20260721-1">
 <meta name="theme-color" content="#101418">
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
 <link rel="icon" href="/icons/icon-192.png" type="image/png">

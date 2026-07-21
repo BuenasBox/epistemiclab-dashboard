@@ -210,22 +210,22 @@
   function renderAnalyticsDashboard(analytics) {
     if (!analytics) return '';
 
-    var html = '<div style="background:#0f1115;color:#f5f7fa;padding:16px;font-family:system-ui">' +
-      '<div style="max-width:900px;margin:0 auto">';
+    var html = '<div class="la-root">' +
+      '<div class="la-inner">';
 
-    html += '<h2 style="font-size:18px;font-weight:700;margin:0 0 16px;color:#d5a84f">Tu Análisis de Aprendizaje</h2>';
+    html += '<h2 class="la-title">Tu Análisis de Aprendizaje</h2>';
 
     // Progress by verb
     if (Object.keys(analytics.progress_by_verb).length > 0) {
-      html += '<div style="margin-bottom:24px">' +
-        '<h3 style="font-size:13px;font-weight:700;color:#65b7c7;margin:0 0 12px">Desempeño por Verbo</h3>';
+      html += '<div class="la-section">' +
+        '<h3 class="la-section-title la-section-title--verb">Desempeño por Verbo</h3>';
       Object.keys(analytics.progress_by_verb).forEach(function(verb) {
         var verb_data = analytics.progress_by_verb[verb];
         var rate = (verb_data.success_rate * 100).toFixed(0);
-        var color = verb_data.success_rate >= 0.7 ? '#2ec27e' : verb_data.success_rate >= 0.5 ? '#f6b73c' : '#e45c5c';
-        html += '<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944">' +
-          '<span style="font-size:12px">' + verb + '</span>' +
-          '<span style="font-size:12px;color:' + color + '">' + verb_data.attempts + ' intentos · ' + rate + '% éxito</span>' +
+        var toneClass = verb_data.success_rate >= 0.7 ? 'is-ok' : verb_data.success_rate >= 0.5 ? 'is-warn' : 'needs-work';
+        html += '<div class="la-row">' +
+          '<span class="la-row-label">' + verb + '</span>' +
+          '<span class="la-row-value ' + toneClass + '">' + verb_data.attempts + ' intentos · ' + rate + '% éxito</span>' +
           '</div>';
       });
       html += '</div>';
@@ -233,21 +233,21 @@
 
     // Persistence
     if (Object.keys(analytics.persistence_index).length > 0) {
-      html += '<div style="margin-bottom:24px">' +
-        '<h3 style="font-size:13px;font-weight:700;color:#e45c5c;margin:0 0 12px">Debilidades Persistentes</h3>';
+      html += '<div class="la-section">' +
+        '<h3 class="la-section-title la-section-title--weak">Debilidades Persistentes</h3>';
       Object.keys(analytics.persistence_index).slice(0, 3).forEach(function(topic) {
         var persist = analytics.persistence_index[topic];
-        html += '<div style="padding:8px;border-bottom:1px solid #303944">' +
-          '<div style="font-size:12px;font-weight:600;color:#d5a84f">' + topic + '</div>' +
-          '<div style="font-size:11px;color:#a7b0be">Aparece en ' + persist.occurrences + ' sesiones</div>' +
+        html += '<div class="la-persistence-row">' +
+          '<div class="la-topic">' + topic + '</div>' +
+          '<div class="la-topic-meta">Aparece en ' + persist.occurrences + ' sesiones</div>' +
           '</div>';
       });
       html += '</div>';
     }
 
     // Recommendation effectiveness
-    html += '<div style="background:#1a2332;border-radius:6px;padding:12px">' +
-      '<div style="font-size:11px;color:#aab4bd;font-style:italic">' +
+    html += '<div class="la-disclaimer-card">' +
+      '<div class="la-disclaimer">' +
       'Análisis formativo de progreso. No es evaluación oficial.' +
       '</div></div>';
 

@@ -326,14 +326,14 @@ window.LI = (function () {
     const C = coach();
     const cv = C && C.command_verbs && C.command_verbs[verb];
     if (!cv) return '';
-    const li = (arr, mark, col) => (arr || []).map(x =>
-      '<div style="font-size:11px;color:#a7b0be;margin:2px 0"><span style="color:' + col + '">' + mark + '</span> ' + esc(x) + '</div>').join('');
-    return '<div style="background:#161b24;border:1px solid #2a3242;border-radius:8px;padding:14px;margin:12px 0;text-align:left">' +
-      '<div style="font-size:11px;letter-spacing:.12em;color:#c9a84c;margin-bottom:6px">DISTINCTION COACH · VERBO DE COMANDO: ' + esc(VERB_LABELS[verb] || verb.toUpperCase()) + '</div>' +
-      '<div style="font-size:12px;color:#f5f7fa;margin-bottom:8px">' + esc(cv.definition || '') + '</div>' +
-      li(cv.do, '✓', '#2ec27e') + li(cv.do_not, '✗', '#e45c5c') +
-      (cv.mentor_hint ? '<div style="margin-top:8px;background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:6px;padding:8px"><div style="font-size:10px;color:#c9a84c;margin-bottom:2px">MENTOR</div><div style="font-size:11px;color:#a7b0be">' + esc(cv.mentor_hint) + '</div></div>' : '') +
-      '<div style="font-size:10px;color:#525e6e;margin-top:8px">Guía estructural formativa · NO evaluación oficial WSET</div></div>';
+    const li = (arr, mark, toneClass) => (arr || []).map(x =>
+      '<div class="li-coach-line"><span class="li-tone ' + toneClass + '">' + mark + '</span> ' + esc(x) + '</div>').join('');
+    return '<div class="li-coach-card">' +
+      '<div class="li-coach-heading li-coach-heading--compact">DISTINCTION COACH · VERBO DE COMANDO: ' + esc(VERB_LABELS[verb] || verb.toUpperCase()) + '</div>' +
+      '<div class="li-coach-definition">' + esc(cv.definition || '') + '</div>' +
+      li(cv.do, '✓', 'is-ok') + li(cv.do_not, '✗', 'needs-work') +
+      (cv.mentor_hint ? '<div class="li-mentor-box li-mentor-box--compact"><div class="li-mentor-label">MENTOR</div><div class="li-mentor-copy li-mentor-copy--small">' + esc(cv.mentor_hint) + '</div></div>' : '') +
+      '<div class="li-governance-note">Guía estructural formativa · NO evaluación oficial WSET</div></div>';
   }
 
 
@@ -362,13 +362,13 @@ window.LI = (function () {
     const practica = verb && st && !st.ok
       ? 'Practica más preguntas «' + verb + '» con la estructura ' + st.estructura.join(' → ') + '.'
       : (ch && ch.fuerza !== 'completa' ? 'Practica encadenar causa → efecto hasta la calidad del vino.' : null);
-    let html = '<div style="background:#161b24;border:1px solid #2a3242;border-radius:8px;padding:14px;margin:12px 0;text-align:left">'
-      + '<div style="font-size:11px;letter-spacing:.12em;color:#c9a84c;margin-bottom:8px">DISTINCTION COACH · TU RESPUESTA</div>';
-    bien.forEach(b => { html += '<div style="font-size:12px;color:#a7b0be;margin:3px 0"><span style="color:#2ec27e">✓</span> ' + esc(b) + '</div>'; });
-    mejorar.forEach(x => { html += '<div style="font-size:12px;color:#a7b0be;margin:3px 0"><span style="color:#e0a93e">△</span> ' + esc(x) + '</div>'; });
-    if (topic) html += '<div style="font-size:12px;color:#a7b0be;margin:6px 0 0"><span style="color:#c9a84c">↻</span> Tema a repasar: ' + esc(topic) + '.</div>';
-    if (practica) html += '<div style="font-size:12px;color:#a7b0be;margin:3px 0"><span style="color:#c9a84c">→</span> ' + esc(practica) + '</div>';
-    html += '<div style="font-size:10px;color:#525e6e;margin-top:8px">Guía formativa sobre estructura y razonamiento. No valida precisión enológica ni asigna notas. NO evaluación oficial WSET.</div></div>';
+    let html = '<div class="li-coach-card">'
+      + '<div class="li-coach-heading">DISTINCTION COACH · TU RESPUESTA</div>';
+    bien.forEach(b => { html += '<div class="li-coach-response-line"><span class="li-tone is-ok">✓</span> ' + esc(b) + '</div>'; });
+    mejorar.forEach(x => { html += '<div class="li-coach-response-line"><span class="li-tone is-warn">△</span> ' + esc(x) + '</div>'; });
+    if (topic) html += '<div class="li-coach-response-line li-coach-response-line--topic"><span class="li-tone is-gold">↻</span> Tema a repasar: ' + esc(topic) + '.</div>';
+    if (practica) html += '<div class="li-coach-response-line"><span class="li-tone is-gold">→</span> ' + esc(practica) + '</div>';
+    html += '<div class="li-governance-note">Guía formativa sobre estructura y razonamiento. No valida precisión enológica ni asigna notas. NO evaluación oficial WSET.</div></div>';
     return { html: html, verb: verb, structure_ok: st ? st.ok : null, chain_fuerza: ch ? ch.fuerza : null };
   }
 
@@ -509,17 +509,17 @@ window.LI = (function () {
   function renderCoachPanel(findings) {
     if (!findings) return '';
     const rows = findings.map(f =>
-      '<div style="display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid #1c222d">' +
-      '<span style="font-size:12px;color:' + (f.ok ? '#2ec27e' : '#e0a93e') + '">' + (f.ok ? '✓' : '△') + '</span>' +
-      '<div><div style="font-size:12px;color:#f5f7fa">' + esc(f.label) + '</div>' +
-      '<div style="font-size:11px;color:#a7b0be">' + esc(f.detail) + '</div></div></div>'
+      '<div class="li-review-row">' +
+      '<span class="li-review-mark ' + (f.ok ? 'is-ok' : 'is-warn') + '">' + (f.ok ? '✓' : '△') + '</span>' +
+      '<div><div class="li-review-label">' + esc(f.label) + '</div>' +
+      '<div class="li-review-detail">' + esc(f.detail) + '</div></div></div>'
     ).join('');
     const hint = hintFor(findings);
-    return '<div style="background:#161b24;border:1px solid #2a3242;border-radius:8px;padding:16px;margin:14px 0;text-align:left">' +
-      '<div style="font-size:11px;letter-spacing:.12em;color:#c9a84c;margin-bottom:8px">DISTINCTION COACH · REVISIÓN ESTRUCTURAL</div>' +
+    return '<div class="li-review-card">' +
+      '<div class="li-coach-heading">DISTINCTION COACH · REVISIÓN ESTRUCTURAL</div>' +
       rows +
-      (hint ? '<div style="margin-top:10px;background:rgba(201,168,76,.07);border:1px solid #7a6230;border-radius:6px;padding:10px"><div style="font-size:10px;color:#c9a84c;margin-bottom:3px">MENTOR</div><div style="font-size:12px;color:#a7b0be">' + esc(hint) + '</div></div>' : '') +
-      '<div style="font-size:10px;color:#525e6e;margin-top:10px">Revisión estructural formativa. No valida la precisión de tus descriptores ni asigna notas. NO evaluación oficial WSET.</div></div>';
+      (hint ? '<div class="li-mentor-box"><div class="li-mentor-label li-mentor-label--spaced">MENTOR</div><div class="li-mentor-copy">' + esc(hint) + '</div></div>' : '') +
+      '<div class="li-governance-note li-governance-note--review">Revisión estructural formativa. No valida la precisión de tus descriptores ni asigna notas. NO evaluación oficial WSET.</div></div>';
   }
 
   const SAT_ISSUE_LABELS = {
@@ -534,68 +534,68 @@ window.LI = (function () {
     const a = analytics();
     const ws = weakSet(a);
     if (!a.sbaSessions && !a.satSessions && !a.orSessions) {
-      return '<div style="font-size:12px;color:#a7b0be;padding:14px 0">Aún no hay sesiones registradas. Completa una sesión para activar tu análisis de progreso.</div>';
+      return '<div class="li-progress-empty">Aún no hay sesiones registradas. Completa una sesión para activar tu análisis de progreso.</div>';
     }
-    let html = '<div style="text-align:left">';
+    let html = '<div class="li-progress">';
     // RA bars
-    html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:10px 0 6px">RENDIMIENTO POR RESULTADO DE APRENDIZAJE</div>';
+    html += '<div class="li-progress-section-title li-progress-section-title--first">RENDIMIENTO POR RESULTADO DE APRENDIZAJE</div>';
     ['RA1', 'RA2', 'RA3', 'RA4', 'RA5'].forEach(r => {
       const d = a.ra[r];
       const pct = d && d.n ? Math.round(100 * d.c / d.n) : null;
-      const col = pct === null ? '#525e6e' : pct >= 75 ? '#2ec27e' : pct >= 60 ? '#c9a84c' : '#e45c5c';
-      html += '<div style="display:flex;align-items:center;gap:8px;margin:4px 0">' +
-        '<span style="font-size:11px;color:#a7b0be;width:30px">' + r + '</span>' +
-        '<div style="flex:1;height:7px;background:#1c222d;border-radius:4px;overflow:hidden">' +
-        (pct === null ? '' : '<div style="width:' + pct + '%;height:100%;background:' + col + '"></div>') + '</div>' +
-        '<span style="font-size:11px;color:' + col + ';width:70px;text-align:right">' + (pct === null ? 'sin datos' : pct + '% · ' + d.n) + '</span></div>';
+      const toneClass = pct === null ? 'is-empty' : pct >= 75 ? 'is-ok' : pct >= 60 ? 'is-warn' : 'needs-work';
+      html += '<div class="li-progress-row">' +
+        '<span class="li-progress-ra">' + r + '</span>' +
+        '<div class="li-progress-track">' +
+        (pct === null ? '' : '<div class="li-progress-fill ' + toneClass + '" style="--progress:' + pct + '%"></div>') + '</div>' +
+        '<span class="li-progress-value ' + toneClass + '">' + (pct === null ? 'sin datos' : pct + '% · ' + d.n) + '</span></div>';
     });
     const chips = (arr, cls) => arr.slice(0, 6).map(t => '<span class="chip ' + cls + '">' + esc(t) + '</span>').join('');
     if (ws.weakTopics.length) {
-      html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px">TEMAS DÉBILES (≥2 fallos)</div><div class="db-chips">' + chips(ws.weakTopics, 'chip-amber') + '</div>';
+      html += '<div class="li-progress-section-title">TEMAS DÉBILES (≥2 fallos)</div><div class="db-chips">' + chips(ws.weakTopics, 'chip-amber') + '</div>';
     }
     if (ws.mcTrends.length) {
-      html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px">FALLOS RECURRENTES (varias sesiones)</div><div class="db-chips">' + chips(ws.mcTrends, 'chip-red') + '</div>';
+      html += '<div class="li-progress-section-title">FALLOS RECURRENTES (varias sesiones)</div><div class="db-chips">' + chips(ws.mcTrends, 'chip-red') + '</div>';
     }
     const verbKeys = Object.keys(a.verbs || {}).sort();
     if (verbKeys.length) {
-      html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px">VERBOS DE COMANDO (respuesta abierta)</div>';
+      html += '<div class="li-progress-section-title">VERBOS DE COMANDO (respuesta abierta)</div>';
       verbKeys.forEach(v => {
         const d = a.verbs[v];
         const weakPct = Math.round(100 * d.weak / d.n);
-        const col = weakPct >= 50 ? '#e45c5c' : weakPct > 0 ? '#c9a84c' : '#2ec27e';
-        html += '<div style="display:flex;align-items:center;gap:8px;margin:3px 0">' +
-          '<span style="font-size:11px;color:#a7b0be;width:78px">' + esc(VERB_LABELS[v] || v) + '</span>' +
-          '<span style="font-size:11px;color:' + col + '">' + d.weak + ' de ' + d.n + ' con lagunas estructurales</span></div>';
+        const toneClass = weakPct >= 50 ? 'needs-work' : weakPct > 0 ? 'is-warn' : 'is-ok';
+        html += '<div class="li-verb-row">' +
+          '<span class="li-verb-name">' + esc(VERB_LABELS[v] || v) + '</span>' +
+          '<span class="li-verb-value ' + toneClass + '">' + d.weak + ' de ' + d.n + ' con lagunas estructurales</span></div>';
       });
       if (ws.weakVerbs.length) {
-        html += '<div class="db-chips" style="margin-top:6px">' + chips(ws.weakVerbs.map(v => VERB_LABELS[v] || v), 'chip-red') + '</div>';
+        html += '<div class="db-chips li-progress-chips">' + chips(ws.weakVerbs.map(v => VERB_LABELS[v] || v), 'chip-red') + '</div>';
       }
     }
     if (a.chain.n) {
-      const ccol = a.chain.weak / a.chain.n >= 0.5 ? '#e45c5c' : a.chain.weak ? '#c9a84c' : '#2ec27e';
-      html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px">CADENAS CAUSALES</div>'
-        + '<div style="font-size:12px;color:' + ccol + '">' + a.chain.weak + ' de ' + a.chain.n + ' respuesta(s) causal(es) con eslabones débiles</div>';
+      const toneClass = a.chain.weak / a.chain.n >= 0.5 ? 'needs-work' : a.chain.weak ? 'is-warn' : 'is-ok';
+      html += '<div class="li-progress-section-title">CADENAS CAUSALES</div>'
+        + '<div class="li-chain-value ' + toneClass + '">' + a.chain.weak + ' de ' + a.chain.n + ' respuesta(s) causal(es) con eslabones débiles</div>';
     }
     const satKeys = Object.keys(a.satIssues).sort((x, y) => a.satIssues[y] - a.satIssues[x] || x.localeCompare(y));
     if (satKeys.length) {
-      html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px">DEBILIDADES SAT</div>';
+      html += '<div class="li-progress-section-title">DEBILIDADES SAT</div>';
       satKeys.slice(0, 5).forEach(k => {
-        html += '<div style="font-size:12px;color:#a7b0be;margin:3px 0">△ ' + esc(SAT_ISSUE_LABELS[k] || k) + ' <span style="color:#525e6e">×' + a.satIssues[k] + '</span></div>';
+        html += '<div class="li-progress-item">△ ' + esc(SAT_ISSUE_LABELS[k] || k) + ' <span class="li-progress-count">×' + a.satIssues[k] + '</span></div>';
       });
     }
     const recs = recommendNext();
     if (recs.length) {
-      html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px">PRÓXIMA RUTA RECOMENDADA</div>';
-      recs.slice(0, 5).forEach(r => { html += '<div style="font-size:12px;color:#a7b0be;margin:3px 0"><span style="color:#c9a84c">→</span> ' + esc(r) + '</div>'; });
+      html += '<div class="li-progress-section-title">PRÓXIMA RUTA RECOMENDADA</div>';
+      recs.slice(0, 5).forEach(r => { html += '<div class="li-progress-item"><span class="li-tone is-gold">→</span> ' + esc(r) + '</div>'; });
     }
     // Evolución por sesión (SBA)
     const evo = history().filter(s => s.type === 'sba' && (s.attempts || []).length)
       .slice(-5).map(s => Math.round(100 * s.attempts.filter(x => x.correct).length / s.attempts.length));
     if (evo.length >= 2) {
-      html += '<div style="font-size:11px;letter-spacing:.1em;color:#525e6e;margin:14px 0 6px">EVOLUCIÓN (últimas sesiones SBA)</div>'
-        + '<div style="font-size:12px;color:#a7b0be">' + evo.join('% → ') + '%</div>';
+      html += '<div class="li-progress-section-title">EVOLUCIÓN (últimas sesiones SBA)</div>'
+        + '<div class="li-progress-evolution">' + evo.join('% → ') + '%</div>';
     }
-    html += '<div style="font-size:10px;color:#525e6e;margin-top:14px">' + a.sbaSessions + ' sesión(es) SBA · ' + a.satSessions + ' sesión(es) SAT · ' + a.orSessions + ' sesión(es) respuesta abierta · datos locales de entrenamiento · NO evaluación oficial WSET</div></div>';
+    html += '<div class="li-progress-note">' + a.sbaSessions + ' sesión(es) SBA · ' + a.satSessions + ' sesión(es) SAT · ' + a.orSessions + ' sesión(es) respuesta abierta · datos locales de entrenamiento · NO evaluación oficial WSET</div></div>';
     return html;
   }
 

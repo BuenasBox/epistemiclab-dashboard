@@ -136,8 +136,8 @@
     }
 
     const depthBadge = `
-      <div class="feedback-depth" style="background-color: ${e.depth_color}22; border-left: 3px solid ${e.depth_color}; padding: 10px 12px; border-radius: 4px; margin-bottom: 16px; font-size: 12px;">
-        <strong style="color: ${e.depth_color}">Nivel de desarrollo: ${e.depth_label}</strong>
+      <div class="feedback-depth" style="--depth-color:${e.depth_color}">
+        <strong class="feedback-depth-label">Nivel de desarrollo: ${e.depth_label}</strong>
       </div>
     `;
 
@@ -146,41 +146,41 @@
     // answer requires. Only rendered when authored for this specific question
     // (or_bank.feedback_profile) — no generic filler when it's missing.
     const distinctionSection = e.distinction_feedback ? `
-      <div class="feedback-section" style="border-left: 3px solid ${e.depth_color}; padding: 12px 14px; background: ${e.depth_color}14; border-radius: 4px; margin-bottom: 12px;">
-        <div class="feedback-title" style="font-size: 11px; text-transform: uppercase; color: ${e.depth_color}; font-weight: 600; margin-bottom: 8px;">🎯 Por qué tu respuesta está en este nivel</div>
-        <p style="margin: 0; font-size: 13px; line-height: 1.55;">${e.distinction_feedback}</p>
+      <div class="feedback-section feedback-section--depth" style="--depth-color:${e.depth_color}">
+        <div class="feedback-title">🎯 Por qué tu respuesta está en este nivel</div>
+        <p class="feedback-copy feedback-copy--distinction">${e.distinction_feedback}</p>
       </div>
     ` : '';
 
     const strengthsSection = `
-      <div class="feedback-section" style="border-left: 3px solid #7bc47f; padding: 12px 14px; background: rgba(123, 196, 127, 0.08); border-radius: 4px; margin-bottom: 12px;">
-        <div class="feedback-title" style="font-size: 11px; text-transform: uppercase; color: #7bc47f; font-weight: 600; margin-bottom: 8px;">✓ Fortalezas</div>
-        <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5;">
+      <div class="feedback-section feedback-section--strength">
+        <div class="feedback-title">✓ Fortalezas</div>
+        <ul class="feedback-list">
           ${e.strengths.map(s => `<li>${s}</li>`).join('')}
         </ul>
       </div>
     `;
 
     const gapsSection = hasGaps ? `
-      <div class="feedback-section" style="border-left: 3px solid #e0b15b; padding: 12px 14px; background: rgba(224, 177, 91, 0.08); border-radius: 4px; margin-bottom: 12px;">
-        <div class="feedback-title" style="font-size: 11px; text-transform: uppercase; color: #e0b15b; font-weight: 600; margin-bottom: 8px;">⚠️ Por fortalecer</div>
-        <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5;">
+      <div class="feedback-section feedback-section--gap">
+        <div class="feedback-title">⚠️ Por fortalecer</div>
+        <ul class="feedback-list">
           ${e.gaps.map(g => `<li>${g}</li>`).join('')}
         </ul>
       </div>
     ` : '';
 
     const causalSection = hasCausal ? `
-      <div class="feedback-section" style="border-left: 3px solid #65b7c7; padding: 12px 14px; background: rgba(101, 183, 199, 0.08); border-radius: 4px; margin-bottom: 12px;">
-        <div class="feedback-title" style="font-size: 11px; text-transform: uppercase; color: #65b7c7; font-weight: 600; margin-bottom: 8px;">${e.causal_message}</div>
-        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted);">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
+      <div class="feedback-section feedback-section--causal">
+        <div class="feedback-title">${e.causal_message}</div>
+        <p class="feedback-copy feedback-copy--muted">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
       </div>
     ` : '';
 
     const nextSection = `
-      <div class="feedback-section" style="border-left: 3px solid #d5a84f; padding: 12px 14px; background: rgba(213, 168, 79, 0.08); border-radius: 4px; margin-bottom: 12px;">
-        <div class="feedback-title" style="font-size: 11px; text-transform: uppercase; color: #d5a84f; font-weight: 600; margin-bottom: 8px;">💡 Próxima mejora</div>
-        <p style="margin: 0; font-size: 13px; line-height: 1.5;">${e.next_step}</p>
+      <div class="feedback-section feedback-section--next">
+        <div class="feedback-title">💡 Próxima mejora</div>
+        <p class="feedback-copy">${e.next_step}</p>
       </div>
     `;
 
@@ -247,22 +247,22 @@
     )).join('');
 
     const distinctionHtml = e.distinction_feedback ? `
-      <div class="orb-panel orb-distinction" style="border-left: 3px solid ${e.depth_color}; background: ${e.depth_color}14;">
-        <div class="orb-panel-title" style="color: ${e.depth_color};">🎯 Por qué tu respuesta está en este nivel</div>
+      <div class="orb-panel orb-distinction">
+        <div class="orb-panel-title">🎯 Por qué tu respuesta está en este nivel</div>
         <p>${escapeHtml(e.distinction_feedback)}</p>
       </div>
     ` : '';
 
     const causalHtml = hasCausal ? `
-      <div class="orb-panel" style="border-left: 3px solid #65b7c7; background: rgba(101, 183, 199, 0.08);">
-        <div class="orb-panel-title" style="color: #65b7c7;">${e.causal_message}</div>
-        <p style="color: var(--muted);">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
+      <div class="orb-panel orb-panel--causal">
+        <div class="orb-panel-title">${e.causal_message}</div>
+        <p class="orb-panel-copy--muted">Conecta causa y efecto explícitamente en tu próxima respuesta.</p>
       </div>
     ` : '';
 
     const nextHtml = `
-      <div class="orb-panel" style="border-left: 3px solid #d5a84f; background: rgba(213, 168, 79, 0.08);">
-        <div class="orb-panel-title" style="color: #d5a84f;">💡 Próxima mejora</div>
+      <div class="orb-panel orb-panel--next">
+        <div class="orb-panel-title">💡 Próxima mejora</div>
         <p>${escapeHtml(e.next_step)}</p>
       </div>
     `;
@@ -279,7 +279,7 @@
     `;
 
     container.innerHTML = `
-      <div class="orb-reveal${reduceMotion ? ' orb-no-motion' : ''}">
+      <div class="orb-reveal${reduceMotion ? ' orb-no-motion' : ''}" style="--depth-color:${e.depth_color}">
         ${srList}
         <div class="orb-ring-wrap" aria-hidden="true">
           <svg viewBox="0 0 168 168" class="orb-ring-svg">
@@ -288,7 +288,7 @@
               stroke-width="10" stroke-linecap="round" stroke-dasharray="452.4" stroke-dashoffset="452.4"/>
           </svg>
           <div class="orb-ring-label">
-            <div class="orb-band" style="color: ${e.depth_color};">${escapeHtml(e.depth_label)}</div>
+            <div class="orb-band">${escapeHtml(e.depth_label)}</div>
           </div>
         </div>
         <div class="orb-headline" aria-hidden="true">${escapeHtml(headline)}</div>

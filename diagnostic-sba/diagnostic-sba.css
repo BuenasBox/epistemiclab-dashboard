@@ -33,6 +33,32 @@
 .hesitation-block { margin-top: 14px; }
 .hesitation-title { margin-bottom: 6px; }
 .hesitation-value { font-size: 10px; color: var(--text-muted); margin-left: 3px; }
+.section-label--prepare { margin-bottom: 14px; }
+.section-label--stage { margin-bottom: 16px; }
+.section-label--map { margin-bottom: 18px; }
+.cross-current-answer { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+.cross-current-answer-value { color: var(--gold); }
+.cross-confirmation-copy { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+.hesitation-track-label { font-size: 11px; color: var(--text-muted); }
+.cross-actions, .change-options-area { margin-top: 18px; }
+.change-options-label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: 12px; }
+.change-options-submit { margin-top: 12px; }
+.answer-validation-error { margin: 0 0 16px; padding: 12px 14px; border: 1px solid #8f4b4b; border-radius: 7px; background: #251313; color: #ffd4d4; font-size: 13px; }
+.correctness-detail { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.correct-answer-letter { color: var(--green); }
+.metric-chip-value--small { font-size: 11px; }
+.reveal-options { margin-bottom: 16px; }
+.reveal-options-label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: 10px; }
+.drill-submit-btn { background: var(--blue); box-shadow: 0 2px 8px rgba(63,169,245,.2); }
+.drill-submit-btn.is-submitted { opacity: .3; }
+.cognitive-indicators-label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin: 4px 0 10px; }
+.cognitive-indicators-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; margin-bottom: 22px; }
+.metric-chip--centered { text-align: center; }
+.session-info-panel { margin-top: 18px; padding: 14px 18px; border-radius: 8px; }
+.session-info-panel--progress { background: #10141c; border: 1px solid #1e2430; }
+.session-info-panel--governance { background: #0d0800; border: 1px solid #2a1a00; }
+.session-info-title { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--gold-dim); margin-bottom: 7px; font-weight: 700; }
+.session-info-copy { font-size: 11px; color: var(--text-muted); line-height: 1.65; }
 
 html, body {
   background: var(--bg);

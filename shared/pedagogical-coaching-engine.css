@@ -1,0 +1,14 @@
+/* Pedagogical Coaching Engine component. */
+.pce-card{background:linear-gradient(135deg,rgba(34,211,238,.1),rgba(45,223,145,.05));border:1px solid rgba(34,211,238,.25);border-radius:8px;padding:16px;margin:16px 0}
+.pce-title{color:#22d3ee;font-weight:700;margin-bottom:12px;font-size:13px}
+.pce-problem{background:#0f1115;border-radius:6px;padding:10px;margin-bottom:12px}
+.pce-problem-label{color:#d5a84f;font-weight:600;font-size:11px;margin-bottom:4px}
+.pce-problem-text{color:#f5f7fa;font-size:12px}
+.pce-significance{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944;margin-bottom:12px}
+.pce-significance-label{font-size:11px;color:#a7b0be}
+.pce-significance-value{font-size:11px}
+.pce-significance-value.is-high{color:#e45c5c}
+.pce-significance-value.is-medium{color:#f6b73c}
+.pce-plan-label{color:#65b7c7;font-weight:600;font-size:11px;margin-bottom:6px}
+.pce-plan{color:#aab4bd;font-size:12px;margin-bottom:10px;line-height:1.5}
+.pce-evidence{font-size:10px;color:#525e6e;font-style:italic}

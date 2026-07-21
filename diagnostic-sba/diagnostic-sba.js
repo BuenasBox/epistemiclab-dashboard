@@ -395,7 +395,7 @@ function renderPrepare() {
         &nbsp;·&nbsp; Pregunta de Entrenamiento
       </div>
 
-      <div class="section-label" style="margin-bottom:14px;">Preparar</div>
+      <div class="section-label section-label--prepare">Preparar</div>
 
       <div class="q-meta">
         <span class="q-tag train">🔒 Entrenamiento</span>
@@ -488,7 +488,7 @@ function renderCommit() {
   document.getElementById('mainContent').innerHTML = `
     <div class="fade-in">
       <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
-      <div class="section-label" style="margin-bottom:16px;">Confirmar respuesta</div>
+      <div class="section-label section-label--stage">Confirmar respuesta</div>
 
       <div class="question-text">${escapeHtml(q.text)}</div>
 
@@ -589,13 +589,13 @@ function renderCross() {
   document.getElementById('mainContent').innerHTML = `
     <div class="fade-in">
       <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
-      <div class="section-label" style="margin-bottom:16px;">Contraste · Pre-revelación</div>
+      <div class="section-label section-label--stage">Contraste · Pre-revelación</div>
 
       <div class="question-text">${escapeHtml(q.text)}</div>
 
-      <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">
+      <div class="cross-current-answer">
         Tu respuesta:
-        <strong style="color:var(--gold)">${String.fromCharCode(65 + STATE.selectedOption)}. ${escapeHtml(q.options[STATE.selectedOption])}</strong>
+        <strong class="cross-current-answer-value">${String.fromCharCode(65 + STATE.selectedOption)}. ${escapeHtml(q.options[STATE.selectedOption])}</strong>
       </div>
 
       ${q.cross_exam_challenge ? `
@@ -604,22 +604,22 @@ function renderCross() {
         <div class="cross-challenge-text">${escapeHtml(q.cross_exam_challenge)}</div>
       </div>` : ''}
 
-      <div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">
+      <div class="cross-confirmation-copy">
         ¿Confirmas tu respuesta o deseas cambiarla?
       </div>
 
       <div class="hesitation-track">
         <div class="hesitation-dot" id="hesitationDot"></div>
-        <span id="hesitationLabel" style="font-size:11px;color:var(--text-muted);">Sin vacilación registrada</span>
+        <span id="hesitationLabel" class="hesitation-track-label">Sin vacilación registrada</span>
       </div>
 
-      <div class="btn-row" style="margin-top:18px;">
+      <div class="btn-row cross-actions">
         <button class="commit-btn" onclick="confirmCross()">✓ Confirmo mi respuesta</button>
         <button class="btn-secondary" onclick="changeCross()">↩ Cambiar respuesta</button>
       </div>
 
-      <div id="changeOptionsArea" class="hidden" style="margin-top:18px;">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:12px;">
+      <div id="changeOptionsArea" class="hidden change-options-area">
+        <div class="change-options-label">
           Selecciona nueva respuesta (bloqueo definitivo):
         </div>
         <div class="options-list" id="changeOptionsList">
@@ -630,7 +630,7 @@ function renderCross() {
             </button>
           `).join('')}
         </div>
-        <button class="commit-btn" onclick="hardLock()" style="margin-top:12px;">
+        <button class="commit-btn change-options-submit" onclick="hardLock()">
           🔒 Confirmar nueva respuesta (definitivo)
         </button>
       </div>
@@ -660,7 +660,7 @@ function showAnswerError(message){
     alert=document.createElement('div');
     alert.id='answerValidationError';
     alert.setAttribute('role','alert');
-    alert.style.cssText='margin:0 0 16px;padding:12px 14px;border:1px solid #8f4b4b;border-radius:7px;background:#251313;color:#ffd4d4;font-size:13px;';
+    alert.className='answer-validation-error';
     document.getElementById('mainContent')?.prepend(alert);
   }
   alert.textContent=message;
@@ -794,16 +794,16 @@ function renderReveal() {
   document.getElementById('mainContent').innerHTML = `
     <div class="fade-in">
       <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
-      <div class="section-label" style="margin-bottom:16px;">Resultado y retroalimentación</div>
+      <div class="section-label section-label--stage">Resultado y retroalimentación</div>
 
       <div class="correctness-badge ${isCorrect ? 'correct' : 'wrong'}">
         <div class="correctness-icon">${isCorrect ? '✓' : '✗'}</div>
         <div>
           <div class="correctness-text">${isCorrect ? 'Respuesta correcta' : 'Respuesta incorrecta'}</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
+          <div class="correctness-detail">
             ${isCorrect
               ? 'Bien razonado.'
-              : (correctIdx>=0 ? `La correcta era: <strong style="color:var(--green)">${String.fromCharCode(65 + correctIdx)}</strong>` : '')}
+              : (correctIdx>=0 ? `La correcta era: <strong class="correct-answer-letter">${String.fromCharCode(65 + correctIdx)}</strong>` : '')}
           </div>
         </div>
       </div>
@@ -817,7 +817,7 @@ function renderReveal() {
         </div>
         <div class="metric-chip">
           <div class="metric-chip-label">Banda temporal</div>
-          <div class="metric-chip-value ${timing.cls}" style="font-size:11px;">${timing.label}</div>
+          <div class="metric-chip-value metric-chip-value--small ${timing.cls}">${timing.label}</div>
         </div>
         <div class="metric-chip">
           <div class="metric-chip-label">Confianza declarada</div>
@@ -829,8 +829,8 @@ function renderReveal() {
         </div>
       </div>
 
-      <div style="margin-bottom:16px;">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px;">Opciones</div>
+      <div class="reveal-options">
+        <div class="reveal-options-label">Opciones</div>
         <div class="options-list">
           ${q.options.map((o, i) => `
             <button class="option-btn ${
@@ -911,7 +911,7 @@ function renderTrain() {
   document.getElementById('mainContent').innerHTML = `
     <div class="fade-in">
       <div class="q-counter">Pregunta <strong>${STATE.questionIndex + 1} de ${QUESTIONS.length}</strong></div>
-      <div class="section-label" style="margin-bottom:16px;">Micro-entrenamiento</div>
+      <div class="section-label section-label--stage">Micro-entrenamiento</div>
 
       <div class="drill-section">
         <div class="drill-title">▶ Ejercicio de Consolidación · SBA</div>
@@ -926,15 +926,14 @@ function renderTrain() {
           `).join('')}
         </div>
 
-        <button class="commit-btn" id="drillSubmitBtn" onclick="submitDrill()" disabled
-          style="background:var(--blue);box-shadow:0 2px 8px rgba(63,169,245,0.2);">
+        <button class="commit-btn drill-submit-btn" id="drillSubmitBtn" onclick="submitDrill()" disabled>
           Verificar respuesta
         </button>
 
         <div id="drillExplanation" class="drill-explanation"></div>
       </div>
 
-      <button class="nav-btn" id="nextQBtn" style="display:none;" onclick="nextQuestion()">
+      <button class="nav-btn" id="nextQBtn" hidden onclick="nextQuestion()">
         ${STATE.questionIndex + 1 < QUESTIONS.length ? 'Siguiente pregunta →' : 'Ver Mapa Cognitivo →'}
       </button>
     </div>
@@ -972,9 +971,9 @@ function submitDrill() {
   }
 
   const btn = document.getElementById('drillSubmitBtn');
-  if (btn) { btn.disabled = true; btn.style.opacity = '0.3'; }
+  if (btn) { btn.disabled = true; btn.classList.add('is-submitted'); }
 
-  document.getElementById('nextQBtn').style.display = 'block';
+  document.getElementById('nextQBtn').hidden = false;
 }
 
 function nextQuestion() {
@@ -1029,7 +1028,7 @@ function renderMap() {
 
   document.getElementById('mainContent').innerHTML = `
     <div class="fade-in">
-      <div class="section-label" style="margin-bottom:18px;">Mapa Cognitivo · Sesión completada</div>
+      <div class="section-label section-label--map">Mapa Cognitivo · Sesión completada</div>
 
       <div class="stat-ring-wrap"><div class="stat-ring" id="mapRing" style="--p:0"><i>${accuracy}%</i></div></div>
 
@@ -1070,12 +1069,12 @@ function renderMap() {
         </p>
       </div>
 
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px;margin-top:4px;">
+      <div class="cognitive-indicators-label">
         Indicadores de huella cognitiva
       </div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:22px;">
+      <div class="cognitive-indicators-grid">
         ${radarLabels.map((l, i) => `
-          <div class="metric-chip" style="text-align:center;">
+          <div class="metric-chip metric-chip--centered">
             <div class="metric-chip-label">${l}</div>
             <div class="metric-chip-value ${radarData[i] >= 70 ? 'good' : radarData[i] >= 40 ? 'warn' : 'danger'}">${radarData[i]}</div>
           </div>
@@ -1085,18 +1084,18 @@ function renderMap() {
       <button class="nav-btn primary-nav" onclick="restartSession()">↺ Nueva sesión de entrenamiento</button>
       <button class="nav-btn" onclick="restartSession()">↩ Repasar desde pregunta 1</button>
 
-      <div style="margin-top:18px;padding:14px 18px;background:#10141c;border:1px solid #1e2430;border-radius:8px;">
-        <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-dim);margin-bottom:7px;font-weight:700;">
+      <div class="session-info-panel session-info-panel--progress">
+        <div class="session-info-title">
           Tu progreso acumulado
         </div>
         ${window.LI ? LI.renderProgress() : ''}
       </div>
 
-      <div style="margin-top:18px;padding:14px 18px;background:#0d0800;border:1px solid #2a1a00;border-radius:8px;">
-        <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-dim);margin-bottom:7px;font-weight:700;">
+      <div class="session-info-panel session-info-panel--governance">
+        <div class="session-info-title">
           Recordatorio de gobernanza
         </div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.65;">
+        <div class="session-info-copy">
           Este es un instrumento de entrenamiento para desarrollar tu razonamiento.
           Tu progreso se registra automáticamente.
         </div>

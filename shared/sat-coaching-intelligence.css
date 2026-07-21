@@ -1,0 +1,13 @@
+/* SAT Coaching Intelligence component. */
+.sci-card{background:#1a2332;border:1px solid #4a7c8c;border-radius:8px;padding:14px;margin:16px 0;font-size:12px}
+.sci-title{color:#65b7c7;font-weight:700;margin-bottom:8px}
+.sci-quality{background:#0f1115;border-radius:6px;padding:10px;margin-bottom:10px}
+.sci-quality-title{color:#d5a84f;font-weight:600;font-size:11px;margin-bottom:4px}
+.sci-quality-copy{color:#a7b0be;font-size:11px}
+.sci-section{margin-bottom:10px}
+.sci-section-title{font-weight:600;font-size:11px;margin-bottom:6px}
+.sci-section-title.is-error{color:#e45c5c}
+.sci-section-title.is-warning{color:#f6b73c}
+.sci-issue{color:#d4a574;font-size:11px;margin:4px 0}
+.sci-coaching{color:#f5f7fa;margin-bottom:10px;line-height:1.5}
+.sci-note{font-size:10px;color:#525e6e;margin-top:8px;font-style:italic}

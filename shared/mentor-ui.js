@@ -464,17 +464,17 @@
       ? causalPaths.paths.map(path => `
           <div class="mentor-causal-path">
             <strong>${escapeHtml(path.label)}</strong>
-            <div style="margin-top:8px;">
+            <div class="mentor-flow-top-sm">
               ${path.steps.map(step =>
                 `<div class="mentor-causal-step">${escapeHtml(step)}</div>`
               ).join('')}
             </div>
             ${path.thinking_prompts ? `
-              <div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(101,183,199,0.2);">
-                <strong style="font-size:12px; color:var(--accent-2, #65b7c7);">Piensa en:</strong>
-                <ul class="mentor-list" style="margin-top:6px;">
+              <div class="mentor-thinking-prompts">
+                <strong class="mentor-thinking-title">Piensa en:</strong>
+                <ul class="mentor-list mentor-list--top-xs">
                   ${path.thinking_prompts.map(q =>
-                    `<li class="mentor-list-item" style="font-size:12px;">${escapeHtml(q)}</li>`
+                    `<li class="mentor-list-item mentor-list-item--small">${escapeHtml(q)}</li>`
                   ).join('')}
                 </ul>
               </div>
@@ -669,16 +669,16 @@
     const summary = window.MentorEngine ? window.MentorEngine.getMentorSummary(guidance) : {};
 
     return `
-      <div style="background: rgba(201,168,76,0.06); border-left: 2px solid var(--accent, #d5a84f); padding: 12px 14px; border-radius: 4px; margin: 12px 0;">
+      <div class="mentor-summary">
         ${summary.main_guidance ? `
-          <div style="font-size: 13px; color: var(--text, #f3f6f8); line-height: 1.6; margin-bottom: 8px;">
+          <div class="mentor-summary-guidance">
             <strong>Consejo del mentor:</strong> ${escapeHtml(summary.main_guidance)}
           </div>
         ` : ''}
         ${summary.quick_tips && summary.quick_tips.length > 0 ? `
-          <div style="font-size: 12px; color: var(--muted, #aab4bd);">
+          <div class="mentor-summary-tips">
             <strong>Usa estas frases:</strong>
-            ${summary.quick_tips.map(tip => `<code style="background: rgba(0,0,0,0.2); padding: 2px 4px; border-radius: 2px; margin-right: 4px;">"${escapeHtml(tip)}"</code>`).join('')}
+            ${summary.quick_tips.map(tip => `<code class="mentor-summary-tip">"${escapeHtml(tip)}"</code>`).join('')}
           </div>
         ` : ''}
       </div>
@@ -698,7 +698,7 @@
    */
   function renderMentorCompact(guidance) {
     if (!guidance || guidance.error) {
-      return '<p style="font-size:13px;opacity:.75;">El mentor no está disponible para esta pregunta todavía.</p>';
+      return '<p class="mentor-unavailable">El mentor no está disponible para esta pregunta todavía.</p>';
     }
 
     const layers = guidance.layers || {};
@@ -712,7 +712,7 @@
     ].filter(function (p) { return p.body; });
 
     if (!paneDefs.length) {
-      return '<p style="font-size:13px;opacity:.75;">Aún no hay guía específica para esta pregunta. Identifica qué pide el verbo, conecta causa y efecto, y revisa tu respuesta antes de enviarla.</p>';
+      return '<p class="mentor-unavailable">Aún no hay guía específica para esta pregunta. Identifica qué pide el verbo, conecta causa y efecto, y revisa tu respuesta antes de enviarla.</p>';
     }
 
     const tabs = paneDefs.map(function (p, i) {
@@ -739,16 +739,16 @@
     if (!verbMentor) return '';
     return `
       <div class="mentor-pane-title">Qué significa «${escapeHtml(verbMentor.verb)}» — ${escapeHtml(verbMentor.mentor_role)}</div>
-      <p class="mentor-guidance-text" style="margin-bottom:8px;">${escapeHtml(verbMentor.core_guidance)}</p>
+      <p class="mentor-guidance-text mentor-guidance-text--spaced">${escapeHtml(verbMentor.core_guidance)}</p>
       <ol class="mentor-list">
         ${verbMentor.thinking_structure.map(step => `<li class="mentor-list-item">${escapeHtml(step)}</li>`).join('')}
       </ol>
       <details class="mentor-more">
         <summary>Ver frases clave, qué evitar y un ejemplo</summary>
-        <div style="margin-top:8px;">
+        <div class="mentor-flow-top-sm">
           ${verbMentor.key_phrases.map(phrase => `<span class="mentor-phrase-tag">${escapeHtml(phrase)}</span>`).join('')}
         </div>
-        <ul class="mentor-list" style="margin-top:8px;">
+        <ul class="mentor-list mentor-list--top-sm">
           ${verbMentor.avoid.map(a => `<li class="mentor-list-item">${escapeHtml(a)}</li>`).join('')}
         </ul>
         <div class="mentor-example">
@@ -763,7 +763,7 @@
     if (!prompts) return '';
     return `
       <div class="mentor-pane-title">Preguntas para pensar</div>
-      <p class="mentor-guidance-text" style="margin-bottom:8px;">${escapeHtml(prompts.instruction)}</p>
+      <p class="mentor-guidance-text mentor-guidance-text--spaced">${escapeHtml(prompts.instruction)}</p>
       <ol class="mentor-list">
         ${prompts.prompts.map(prompt => `<li class="mentor-list-item">${escapeHtml(prompt)}</li>`).join('')}
       </ol>
@@ -776,7 +776,7 @@
       ? causalPaths.paths.map(path => `
           <div class="mentor-causal-path">
             <strong>${escapeHtml(path.label)}</strong>
-            <div style="margin-top:8px;">
+            <div class="mentor-flow-top-sm">
               ${path.steps.map(step => `<div class="mentor-causal-step">${escapeHtml(step)}</div>`).join('')}
             </div>
           </div>
@@ -799,7 +799,7 @@
       ${hasDistinction ? `
         <details class="mentor-more">
           <summary>Ver conceptos de nivel de distinción</summary>
-          <ul class="mentor-concept-list" style="margin-top:8px;">
+          <ul class="mentor-concept-list mentor-concept-list--top-sm">
             ${concepts.distinction_level.map(c => `<li class="mentor-concept-item">${escapeHtml(c)}</li>`).join('')}
           </ul>
         </details>
@@ -812,7 +812,7 @@
     return `
       <div class="mentor-pane-title">${escapeHtml(distinction.title)}</div>
       ${distinction.elements.map(el => `<div class="mentor-structure-element">✓ ${escapeHtml(el)}</div>`).join('')}
-      ${distinction.common_weakness ? `<div class="mentor-warning" style="margin-top:8px;">⚠️ ${escapeHtml(distinction.common_weakness)}</div>` : ''}
+      ${distinction.common_weakness ? `<div class="mentor-warning mentor-warning--spaced">⚠️ ${escapeHtml(distinction.common_weakness)}</div>` : ''}
     `;
   }
 
@@ -823,7 +823,7 @@
       ${reviewQuestions.map(group => `
         <details class="mentor-review-group">
           <summary>${escapeHtml(group.category)}</summary>
-          <ul class="mentor-list" style="margin:6px 0 10px;">
+          <ul class="mentor-list mentor-list--review">
             ${group.questions.map(q => `<li class="mentor-list-item">${escapeHtml(q)}</li>`).join('')}
           </ul>
         </details>

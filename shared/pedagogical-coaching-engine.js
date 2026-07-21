@@ -170,24 +170,25 @@
   function renderIntegratedCoachingCard(coaching) {
     if (!coaching) return '';
 
-    var html = '<div style="background:linear-gradient(135deg, rgba(34,211,238,.1), rgba(45,223,145,.05));border:1px solid rgba(34,211,238,.25);border-radius:8px;padding:16px;margin:16px 0">' +
-      '<div style="color:#22d3ee;font-weight:700;margin-bottom:12px;font-size:13px">🎯 Tu Plan de Práctica Personalizado</div>';
+    var html = '<div class="pce-card">' +
+      '<div class="pce-title">🎯 Tu Plan de Práctica Personalizado</div>';
 
     // Problem
-    html += '<div style="background:#0f1115;border-radius:6px;padding:10px;margin-bottom:12px">' +
-      '<div style="color:#d5a84f;font-weight:600;font-size:11px;margin-bottom:4px">Problema identificado:</div>' +
-      '<div style="color:#f5f7fa;font-size:12px">' + coaching.problem + '</div>' +
+    html += '<div class="pce-problem">' +
+      '<div class="pce-problem-label">Problema identificado:</div>' +
+      '<div class="pce-problem-text">' + coaching.problem + '</div>' +
       '</div>';
 
     // Significance
-    html += '<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944;margin-bottom:12px">' +
-      '<span style="font-size:11px;color:#a7b0be">Importancia:</span>' +
-      '<span style="font-size:11px;color:' + (coaching.significance === 'high' ? '#e45c5c' : '#f6b73c') + '">' + ({ high: 'ALTA', moderate: 'MODERADA', low: 'BAJA' }[coaching.significance] || 'MODERADA') + '</span>' +
+    var significanceClass = coaching.significance === 'high' ? 'is-high' : 'is-medium';
+    html += '<div class="pce-significance">' +
+      '<span class="pce-significance-label">Importancia:</span>' +
+      '<span class="pce-significance-value ' + significanceClass + '">' + ({ high: 'ALTA', moderate: 'MODERADA', low: 'BAJA' }[coaching.significance] || 'MODERADA') + '</span>' +
       '</div>';
 
     // Recommendation
-    html += '<div style="color:#65b7c7;font-weight:600;font-size:11px;margin-bottom:6px">Plan recomendado:</div>';
-    html += '<div style="color:#aab4bd;font-size:12px;margin-bottom:10px;line-height:1.5">' +
+    html += '<div class="pce-plan-label">Plan recomendado:</div>';
+    html += '<div class="pce-plan">' +
       '<strong>Qué:</strong> ' + coaching.practice_recommendation + '<br>' +
       '<strong>Dónde:</strong> ' + coaching.practice_location + '<br>' +
       '<strong>Éxito:</strong> ' + coaching.success_signal +
@@ -195,7 +196,7 @@
 
     // Evidence
     if (coaching.evidence_sources && coaching.evidence_sources.length > 0) {
-      html += '<div style="font-size:10px;color:#525e6e;font-style:italic">' +
+      html += '<div class="pce-evidence">' +
         'Evidencia: ' + coaching.evidence_sources.join(', ') +
         '</div>';
     }

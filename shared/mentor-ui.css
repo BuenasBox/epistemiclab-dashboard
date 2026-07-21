@@ -1,0 +1,15 @@
+/* Mentor UI additions extracted from generated markup. */
+.mentor-flow-top-sm{margin-top:8px}
+.mentor-thinking-prompts{margin-top:10px;padding-top:10px;border-top:1px solid rgba(101,183,199,.2)}
+.mentor-thinking-title{font-size:12px;color:var(--accent-2,#65b7c7)}
+.mentor-list.mentor-list--top-xs{margin-top:6px}
+.mentor-list.mentor-list--top-sm,.mentor-concept-list.mentor-concept-list--top-sm{margin-top:8px}
+.mentor-list-item.mentor-list-item--small{font-size:12px}
+.mentor-summary{background:rgba(201,168,76,.06);border-left:2px solid var(--accent,#d5a84f);padding:12px 14px;border-radius:4px;margin:12px 0}
+.mentor-summary-guidance{font-size:13px;color:var(--text,#f3f6f8);line-height:1.6;margin-bottom:8px}
+.mentor-summary-tips{font-size:12px;color:var(--muted,#aab4bd)}
+.mentor-summary-tip{background:rgba(0,0,0,.2);padding:2px 4px;border-radius:2px;margin-right:4px}
+.mentor-unavailable{font-size:13px;opacity:.75}
+.mentor-guidance-text.mentor-guidance-text--spaced{margin-bottom:8px}
+.mentor-warning.mentor-warning--spaced{margin-top:8px}
+.mentor-list.mentor-list--review{margin:6px 0 10px}

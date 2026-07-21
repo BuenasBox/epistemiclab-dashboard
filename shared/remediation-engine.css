@@ -1,0 +1,16 @@
+/* Remediation Engine component. */
+.re-summary{background:#1a2332;border:1px solid #4a7c8c;border-radius:8px;padding:16px;margin:16px 0;color:#aab4bd}
+.re-summary-title{color:#65b7c7;font-weight:700;margin-bottom:12px}
+.re-summary-line{margin:8px 0;font-size:13px}
+.re-improvement-title{margin:12px 0;color:#d5a84f;font-weight:600;font-size:12px}
+.re-improvement-item{margin:6px 0;font-size:12px}
+.re-next-step{margin-top:12px;padding:12px;background:#202830;border-radius:6px;font-size:12px}
+.re-progress{background:#202830;border:1px solid #303944;border-radius:8px;padding:14px;margin:12px 0}
+.re-progress-title{color:#d5a84f;font-weight:700;margin-bottom:10px;font-size:12px}
+.re-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.re-metric-tile{background:#161b24;border-radius:6px;padding:10px;text-align:center}
+.re-metric-value{font-size:24px;font-weight:700}
+.re-metric-value.is-info{color:#65b7c7}
+.re-metric-value.is-ok{color:#2ec27e}
+.re-metric-value.needs-work{color:#e0a93e}
+.re-metric-label{font-size:11px;color:#aab4bd}

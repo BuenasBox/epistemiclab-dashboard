@@ -1,0 +1,18 @@
+/* Learning Analytics component. Runtime tones are finite semantic classes. */
+.la-root{background:#0f1115;color:#f5f7fa;padding:16px;font-family:system-ui}
+.la-inner{max-width:900px;margin:0 auto}
+.la-title{font-size:18px;font-weight:700;margin:0 0 16px;color:#d5a84f}
+.la-section{margin-bottom:24px}
+.la-section-title{font-size:13px;font-weight:700;margin:0 0 12px}
+.la-section-title--verb{color:#65b7c7}
+.la-section-title--weak{color:#e45c5c}
+.la-row{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944}
+.la-row-label,.la-row-value{font-size:12px}
+.la-row-value.is-ok{color:#2ec27e}
+.la-row-value.is-warn{color:#f6b73c}
+.la-row-value.needs-work{color:#e45c5c}
+.la-persistence-row{padding:8px;border-bottom:1px solid #303944}
+.la-topic{font-size:12px;font-weight:600;color:#d5a84f}
+.la-topic-meta{font-size:11px;color:#a7b0be}
+.la-disclaimer-card{background:#1a2332;border-radius:6px;padding:12px}
+.la-disclaimer{font-size:11px;color:#aab4bd;font-style:italic}

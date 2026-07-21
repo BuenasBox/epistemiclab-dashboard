@@ -107,27 +107,27 @@
     var ws = root.LI.weakSet();
     if (!ws) return '';
 
-    var html = '<div style="background:#1a2332;border:1px solid #4a7c8c;border-radius:8px;padding:16px;margin:16px 0;color:#aab4bd">';
-    html += '<div style="color:#65b7c7;font-weight:700;margin-bottom:12px">RESUMEN DE SESIÓN</div>';
+    var html = '<div class="re-summary">';
+    html += '<div class="re-summary-title">RESUMEN DE SESIÓN</div>';
 
     // Show what was trained
     if (sessionType && sessionType.indexOf('ra') !== -1) {
-      html += '<div style="margin:8px 0;font-size:13px">✓ Entrenaste esta área de responsabilidad</div>';
+      html += '<div class="re-summary-line">✓ Entrenaste esta área de responsabilidad</div>';
     }
     if (sessionType && sessionType.indexOf('topic') !== -1) {
-      html += '<div style="margin:8px 0;font-size:13px">✓ Practicaste un tema específico</div>';
+      html += '<div class="re-summary-line">✓ Practicaste un tema específico</div>';
     }
 
     // Show current weak areas
     if (ws.weakRAs && ws.weakRAs.length) {
-      html += '<div style="margin:12px 0;color:#d5a84f;font-weight:600;font-size:12px">ÁREAS PARA MEJORAR</div>';
+      html += '<div class="re-improvement-title">ÁREAS PARA MEJORAR</div>';
       ws.weakRAs.slice(0, 2).forEach(function (ra) {
-        html += '<div style="margin:6px 0;font-size:12px">• ' + ra + '</div>';
+        html += '<div class="re-improvement-item">• ' + ra + '</div>';
       });
     }
 
     // CTA for next action
-    html += '<div style="margin-top:12px;padding:12px;background:#202830;border-radius:6px;font-size:12px">' +
+    html += '<div class="re-next-step">' +
       'Ve a tu perfil para ver las recomendaciones de tu próximo paso.' +
       '</div>';
 
@@ -179,28 +179,28 @@
     var a = root.LI.analytics();
     var ws = root.LI.weakSet(a);
 
-    var html = '<div style="background:#202830;border:1px solid #303944;border-radius:8px;padding:14px;margin:12px 0">';
-    html += '<div style="color:#d5a84f;font-weight:700;margin-bottom:10px;font-size:12px">PROGRESO GENERAL</div>';
-    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">';
+    var html = '<div class="re-progress">';
+    html += '<div class="re-progress-title">PROGRESO GENERAL</div>';
+    html += '<div class="re-metric-grid">';
 
-    html += '<div style="background:#161b24;border-radius:6px;padding:10px;text-align:center">' +
-      '<div style="font-size:24px;font-weight:700;color:#65b7c7">' + a.sbaSessions + '</div>' +
-      '<div style="font-size:11px;color:#aab4bd">Sesiones SBA</div>' +
+    html += '<div class="re-metric-tile">' +
+      '<div class="re-metric-value is-info">' + a.sbaSessions + '</div>' +
+      '<div class="re-metric-label">Sesiones SBA</div>' +
       '</div>';
 
-    html += '<div style="background:#161b24;border-radius:6px;padding:10px;text-align:center">' +
-      '<div style="font-size:24px;font-weight:700;color:#2ec27e">' + ws.strongTopics.length + '</div>' +
-      '<div style="font-size:11px;color:#aab4bd">Temas dominados</div>' +
+    html += '<div class="re-metric-tile">' +
+      '<div class="re-metric-value is-ok">' + ws.strongTopics.length + '</div>' +
+      '<div class="re-metric-label">Temas dominados</div>' +
       '</div>';
 
-    html += '<div style="background:#161b24;border-radius:6px;padding:10px;text-align:center">' +
-      '<div style="font-size:24px;font-weight:700;color:#e0a93e">' + ws.weakRAs.length + '</div>' +
-      '<div style="font-size:11px;color:#aab4bd">Áreas de mejora</div>' +
+    html += '<div class="re-metric-tile">' +
+      '<div class="re-metric-value needs-work">' + ws.weakRAs.length + '</div>' +
+      '<div class="re-metric-label">Áreas de mejora</div>' +
       '</div>';
 
-    html += '<div style="background:#161b24;border-radius:6px;padding:10px;text-align:center">' +
-      '<div style="font-size:24px;font-weight:700;color:#65b7c7">' + a.orSessions + '</div>' +
-      '<div style="font-size:11px;color:#aab4bd">Respuestas abiertas</div>' +
+    html += '<div class="re-metric-tile">' +
+      '<div class="re-metric-value is-info">' + a.orSessions + '</div>' +
+      '<div class="re-metric-label">Respuestas abiertas</div>' +
       '</div>';
 
     html += '</div></div>';
