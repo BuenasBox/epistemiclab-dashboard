@@ -33,4 +33,15 @@ t('responde las 8 preguntas (answers del Loop)', () => { var vm=Dashboard.buildV
 t('determinista: mismo bundle → mismo view model', () => { assert.strictEqual(JSON.stringify(Dashboard.buildViewModel(bundle())),JSON.stringify(Dashboard.buildViewModel(bundle()))); });
 t('readiness sin evidencia → pct null', () => { var vm=Dashboard.buildViewModel(bundle({ metrics:{ readiness:metric(null,0), calibration:metric(null,0), transfer:metric(null,0), domain:metric(null,0), adherence:metric(null,0) }, misconceptions:[] })); assert.strictEqual(vm.readiness.pct,null); assert.strictEqual(vm.confidence.pct,null); });
 t('último avance = sesión más reciente', () => { assert.strictEqual(Dashboard.buildViewModel(bundle()).lastProgress.type,'label-guided'); });
+t('routeFor: cada práctica del Learning Loop tiene una ruta real distinta de bottle-lab por defecto', () => {
+  assert.strictEqual(Dashboard.routeFor('diagnostic'), '/diagnostic-sba/');
+  assert.strictEqual(Dashboard.routeFor('bottle-guided'), '/bottle-lab/');
+  assert.strictEqual(Dashboard.routeFor('label-guided'), '/label-lab/');
+  assert.strictEqual(Dashboard.routeFor('sat-blind'), '/sat-lab/');
+  assert.strictEqual(Dashboard.routeFor('calibration-drill'), '/adaptive-session/?mode=sat_sprint');
+  assert.strictEqual(Dashboard.routeFor('novel-practice'), '/adaptive-session/');
+  assert.strictEqual(Dashboard.routeFor('targeted-remediation'), '/adaptive-session/');
+  assert.strictEqual(Dashboard.routeFor('full-simulation'), '/full-simulation-v2/');
+  assert.strictEqual(Dashboard.routeFor('practica-desconocida'), '/adaptive-session/');
+});
 console.log('\nTODAS LAS PRUEBAS OK (' + pass + ')');

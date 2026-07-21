@@ -16,6 +16,20 @@
   function pct(v) { return (typeof v === 'number' && isFinite(v)) ? Math.round(v * 100) : null; }
   var STATE_LABEL = { cold_start:'Comenzando', reinforce:'Reforzando una habilidad', progress:'En progreso', simulation_ready:'Listo para simulacro', exam_ready:'Listo para examen' };
   var PHASES = ['Diagnóstico','Fundamentos','Contextual','Ciego','Integración','Examen'];
+  // Ruta real para cada práctica que puede devolver el Learning Loop (learning-loop-engine.js PRACTICE).
+  // 'calibration-drill' usa el modo 'Sprint SAT' ya cableado en adaptive-session (startAdp('sat_sprint')).
+  // 'novel-practice' y 'targeted-remediation' no tienen página dedicada: caen en la sesión adaptativa general.
+  var PRACTICE_ROUTE = {
+    'diagnostic': '/diagnostic-sba/',
+    'bottle-guided': '/bottle-lab/',
+    'label-guided': '/label-lab/',
+    'sat-blind': '/sat-lab/',
+    'calibration-drill': '/adaptive-session/?mode=sat_sprint',
+    'novel-practice': '/adaptive-session/',
+    'targeted-remediation': '/adaptive-session/',
+    'full-simulation': '/full-simulation-v2/'
+  };
+  function routeFor(practice) { return PRACTICE_ROUTE[practice] || '/adaptive-session/'; }
   function phaseIndex(loop) {
     if (loop.state === 'cold_start') return 0;
     if (loop.state === 'exam_ready') return 5;
@@ -116,7 +130,7 @@
     var timeline = vm.where.phases.map(function(ph,i){ var cls=i<vm.where.phaseIndex?'done':(i===vm.where.phaseIndex?'active':''); var mk=i<vm.where.phaseIndex?'✓':(i===vm.where.phaseIndex?'▶':'○'); return '<div class="tl-step '+cls+'"><span class="tl-dot">'+mk+'</span><span class="tl-lbl">'+esc(ph)+'</span></div>'; }).join('');
     var misHtml = vm.misconceptions.length ? vm.misconceptions.map(function(m){return '<span class="chip chip-crit">'+esc(m.label||m.misconception_id)+'</span>';}).join(' ') : '<span class="muted small">Ninguna idea abierta. Buen trabajo.</span>';
     var sessHtml = vm.sessions.length ? vm.sessions.map(function(s){ return '<div class="sess"><span class="sess-ic">'+sessionIcon(s.session_type)+'</span><span class="sess-name">'+sessionName(s.session_type)+'</span><span class="sess-status">'+esc(s.status||'')+'</span></div>'; }).join('') : '<div class="muted small">Sin sesiones todavía.</div>';
-    var haltBadge = vm.next.halt ? '<span class="pill pill-halt">Reforzar antes de avanzar</span>' : '<button class="pill pill-go" onclick="window.location.href=\'/bottle-lab/\'">Avanzar</button>';
+    var haltBadge = vm.next.halt ? '<span class="pill pill-halt">Reforzar antes de avanzar</span>' : '<button class="pill pill-go" onclick="window.location.href=\''+routeFor(vm.next.practice)+'\'">Avanzar</button>';
     rootEl.innerHTML =
       '<div class="grid-2"><section class="card hero-card"><div class="ring" style="--p:0"><i>'+(r.pct==null?'—':r.pct+'%')+'</i></div><div><div class="eyebrow">Tu preparación</div><div class="hero-state">'+esc(vm.where.stateLabel)+'</div><div class="muted small">'+(r.gateOpen?'Listo para el simulacro completo.':('Puerta del simulacro en '+(r.threshold||70)+'%.'))+'</div></div></section>'+
       '<section class="card next-card'+(vm.next.halt?' halt':'')+'"><div class="eyebrow">Tu siguiente paso '+haltBadge+'</div><div class="next-practice">'+(vm.next.label === 'Bottle Guided' ? 'Botella Guiada' : esc(vm.next.label))+'</div><p class="next-reason">'+esc(vm.next.reason)+'</p></section></div>'+
@@ -134,5 +148,5 @@
     }
     animateReveal(rootEl, vm);
   }
-  return { buildViewModel: buildViewModel, render: render };
+  return { buildViewModel: buildViewModel, render: render, routeFor: routeFor };
 });

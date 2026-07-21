@@ -608,7 +608,8 @@ ul { margin: 0; padding-left: 19px; }
     verbCoach: document.querySelector("[data-testid='verb-coach']"),
     progress: document.querySelector("[data-testid='progress-list']"),
     localState: document.querySelector("[data-testid='local-state']"),
-    next: document.getElementById("next-question")
+    next: document.getElementById("next-question"),
+    nextRoute: document.querySelector("[data-testid='next-route']")
   };
 
   document.querySelectorAll("[data-session]").forEach((button) => {
@@ -840,6 +841,9 @@ ul { margin: 0; padding-left: 19px; }
     els.next.disabled = state.index >= session.item_ids.length - 1;
     els.feedback.hidden = !(itemFeedback && state.showingFeedback);
     els.completion.hidden = !state.completed;
+    if (els.nextRoute && state.completed && !els.nextRoute.childElementCount) {
+      els.nextRoute.innerHTML = '<button type="button" class="primary" onclick="window.location.href=\'/dashboard/\'">Ir a mi Dashboard</button>';
+    }
     els.localState.textContent = `${Object.keys(state.answers).length} respuesta(s) guardada(s) localmente.`;
     document.getElementById("submit-answer").hidden = state.showingFeedback;
     document.getElementById("next-question").hidden = !(state.answers[item.item_id] && state.showingFeedback);

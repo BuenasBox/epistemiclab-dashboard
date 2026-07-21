@@ -482,12 +482,12 @@ function renderDebriefing() {
   const gap_topics    = [...new Set(STATE.attempts.filter(a => !a.correct).map(a => a.topic).filter(Boolean))];
 
   // Next mission suggestion
-  let nextMission = 'Continúa con la siguiente sesión EXPRESS_10 para consolidar lo trabajado.';
+  let nextMission = 'Continúa con la siguiente sesión Exprés · 10 para consolidar lo trabajado.';
   if (gap_topics.length > 0) {
     const focus = gap_topics.slice(0, 2).join(' y ');
     nextMission = `Próxima sesión: refuerzo enfocado en ${focus}. ${solid > 0 ? `Consolida los ${solid} conceptos sólidos primero.` : ''}`;
   } else if (solid === total && total > 0) {
-    nextMission = `Excelente rendimiento. Siguiente paso: sesión DESAFÍO o QUICK_25 para avanzar en profundidad.`;
+    nextMission = `Excelente rendimiento. Siguiente paso: sesión Estándar · 25 o Simulacro Teoría Parte 1 · 50 para avanzar en profundidad.`;
   }
 
   const container = $('db-content');
@@ -546,6 +546,11 @@ function renderDebriefing() {
   nextBox.appendChild(txt('div', 'db-next-label', 'Siguiente misión sugerida'));
   nextBox.appendChild(txt('div', 'db-next-text', nextMission));
   container.appendChild(nextBox);
+
+  // Dashboard CTA
+  const dashboardBtn = el('button', { class: 'btn btn-primary', onclick: "window.location.href='/dashboard/'" });
+  dashboardBtn.textContent = 'IR A MI DASHBOARD';
+  container.appendChild(dashboardBtn);
 
   // Restart button
   const restartBtn = el('button', { class: 'btn btn-secondary', onclick: 'restartSession()' });
