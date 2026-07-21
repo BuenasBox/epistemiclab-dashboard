@@ -178,10 +178,28 @@ Deno.serve(async (req) => {
     }
 
     // 2. INPUT VALIDATION
-    const body = await req.json();
-    const item_id = body.item_id;
-    const answer = (body.response_text || '').toString();
-    const sessionMode = typeof body.session_mode === 'string' ? body.session_mode.trim() : '';
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return json({ error: 'Invalid JSON body' }, 400);
+    }
+    if (body === null || typeof body !== 'object' || Array.isArray(body)) {
+      return json({ error: 'Invalid request body' }, 400);
+    }
+
+    const requestBody = body as Record<string, unknown>;
+    const item_id = requestBody.item_id;
+    const responseText = requestBody.response_text;
+    if (typeof item_id !== 'string') {
+      return json({ error: 'Invalid item_id' }, 400);
+    }
+    if (typeof responseText !== 'string') {
+      return json({ error: 'Invalid response_text' }, 400);
+    }
+
+    const answer = responseText;
+    const sessionMode = typeof requestBody.session_mode === 'string' ? requestBody.session_mode.trim() : '';
 
     if (!item_id || typeof item_id !== 'string' || item_id.length > 160 || !sessionMode) {
       return json({ error: 'Invalid request' }, 400);

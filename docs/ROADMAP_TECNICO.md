@@ -1,7 +1,15 @@
-# EpistemicLab — Roadmap técnico hacia producción final
+# EpistemicLab — Roadmap técnico hacia producción final [CERRADO]
 
 Fecha del diagnóstico: 12 de julio de 2026
+Fecha de cierre: 21 de julio de 2026
 Estado actual: desplegado en Vercel (`epistemiclab-dashboard.vercel.app` / dominio temporal `epistemiclab.dpdns.org`), backend en Supabase, sin dominio propio ni CDN dedicado todavía.
+
+**Este roadmap se da por cerrado.** Las Fases 0–8 se completaron e implementaron
+en producción. Las Fases 5, 9 y 10 quedaban condicionadas a decisiones de
+negocio (lanzamiento público, compra de dominio) que Erick decidió posponer
+indefinidamente — se cierran aquí como referencia histórica, sin implementar,
+y su contenido continúa en **`docs/ROADMAP_TECNICO_2.md`** como las Fases 1, 2
+y 3 de ese documento nuevo.
 
 Este documento recoge una auditoría real del repositorio, la base de datos (Supabase) y el despliegue (Vercel) hecha el 12 de julio de 2026, y la traduce en fases de trabajo ordenadas por prioridad. El objetivo es dejar el sitio en el nivel técnico, de rendimiento y de experiencia que corresponde a un producto que se va a lanzar con dominio propio y Cloudflare por delante.
 
@@ -83,7 +91,7 @@ Infraestructura Vercel:
 
 ---
 
-## Fase 5 — SEO y descubribilidad (activar solo al lanzar)
+## Fase 5 — SEO y descubribilidad (activar solo al lanzar) [CERRADA — continúa en ROADMAP_TECNICO_2.md, Fase 1]
 
 Hoy el `robots.txt` bloquea deliberadamente todo rastreo (incluyendo bots de IA) y no hay `sitemap.xml` — correcto mientras el sitio es privado/interno. Esta fase se activa el día que decidas que el sitio es público:
 
@@ -127,7 +135,7 @@ Hoy el `robots.txt` bloquea deliberadamente todo rastreo (incluyendo bots de IA)
 
 ---
 
-## Fase 9 — Preparación para Cloudflare + dominio propio
+## Fase 9 — Preparación para Cloudflare + dominio propio [CERRADA — continúa en ROADMAP_TECNICO_2.md, Fase 2]
 
 Cuando compres el dominio, esto es lo que hay que dejar listo antes de mover el DNS:
 
@@ -189,7 +197,7 @@ riesgo de romper rutas, CSP, manifest, service worker o lógica de auth.
 
 ---
 
-## Fase 10 — Checklist final de lanzamiento
+## Fase 10 — Checklist final de lanzamiento [CERRADA — continúa en ROADMAP_TECNICO_2.md, Fase 3]
 
 Antes de anunciar el sitio como público:
 

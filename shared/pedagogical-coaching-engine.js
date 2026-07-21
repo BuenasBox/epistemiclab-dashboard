@@ -167,8 +167,21 @@
   /**
    * Render integrated coaching card
    */
+  function escapeHtml(text) {
+    return String(text == null ? '' : text).replace(/[&<>\"]/g, function (character) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[character];
+    });
+  }
+
   function renderIntegratedCoachingCard(coaching) {
     if (!coaching) return '';
+
+    coaching = Object.assign({}, coaching, {
+      practice_recommendation: escapeHtml(coaching.practice_recommendation),
+      practice_location: escapeHtml(coaching.practice_location),
+      success_signal: escapeHtml(coaching.success_signal),
+      evidence_sources: (coaching.evidence_sources || []).map(escapeHtml),
+    });
 
     var html = '<div class="pce-card">' +
       '<div class="pce-title">🎯 Tu Plan de Práctica Personalizado</div>';
@@ -176,7 +189,7 @@
     // Problem
     html += '<div class="pce-problem">' +
       '<div class="pce-problem-label">Problema identificado:</div>' +
-      '<div class="pce-problem-text">' + coaching.problem + '</div>' +
+      '<div class="pce-problem-text">' + escapeHtml(coaching.problem) + '</div>' +
       '</div>';
 
     // Significance
