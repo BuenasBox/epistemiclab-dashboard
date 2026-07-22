@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Admin Supabase · EpistemicLab</title>
+  <link rel="stylesheet" href="/shared/epistemic-icons.css">
+  <link rel="stylesheet" href="/shared/theme-platform.css">
+  <link rel="stylesheet" href="/shared/ui-buttons.css">
   <link rel="stylesheet" href="./admin.css?v=20260615-runtime6">
   <script src="../shared/session-store.js"></script>
   <script src="../shared/supabase-public-config.js"></script>
@@ -24,8 +27,8 @@
         <span>Administración de identidad y acceso</span>
       </div>
       <nav class="top-links" aria-label="Navegación administrativa">
-        <a href="/">Home</a>
-        <a href="/login/">Cambiar sesión</a>
+        <a class="btn btn--ghost" href="/">Home</a>
+        <a class="btn btn--ghost" href="/login/">Cambiar sesión</a>
       </nav>
     </header>
 
@@ -49,7 +52,7 @@
         Para administrar usuarios, inicia sesión con una cuenta administradora.
       </p>
       <a
-        class="button button--primary"
+        class="btn btn--shine btn--glow"
         href="/login/?next=/admin/"
         data-admin-login
       >Iniciar sesión como admin</a>
@@ -95,7 +98,7 @@
           <span>Código generado</span>
           <strong data-generated-code-value></strong>
           <button
-            class="button button--small"
+            class="btn btn--ghost admin-btn--small"
             type="button"
             data-copy-generated-code
           >Copiar</button>
@@ -173,13 +176,13 @@
               <p class="allowed-modules" data-allowed-modules></p>
             </div>
             <div class="form-actions">
-              <button class="button button--primary" type="submit" data-save-user>
+              <button class="btn btn--shine btn--glow" type="submit" data-save-user>
                 Selecciona un usuario
               </button>
-              <button class="button" type="button" data-cancel-edit hidden>
+              <button class="btn btn--ghost" type="button" data-cancel-edit hidden>
                 Cancelar edición
               </button>
-              <button class="button" type="button" data-reset-password hidden aria-label="Enviar email de recuperación de contraseña al usuario">
+              <button class="btn btn--ghost" type="button" data-reset-password hidden aria-label="Enviar email de recuperación de contraseña al usuario">
                 Enviar recuperación de contraseña
               </button>
             </div>

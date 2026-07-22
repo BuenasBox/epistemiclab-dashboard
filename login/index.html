@@ -7,6 +7,8 @@
   <title>Acceso · EpistemicLab</title>
   <link rel="stylesheet" href="/platform-nav.css">
   <link rel="stylesheet" href="/shared/epistemic-icons.css">
+  <link rel="stylesheet" href="/shared/theme-platform.css">
+  <link rel="stylesheet" href="/shared/ui-buttons.css">
   <link rel="stylesheet" href="./login.css">
   <script src="../shared/session-store.js"></script>
   <script src="../shared/supabase-public-config.js"></script>
@@ -53,9 +55,9 @@
                 <span>Contraseña</span>
                 <input name="password" type="password" autocomplete="current-password" minlength="8" required>
               </label>
-              <button class="auth-submit" type="submit">Iniciar sesión</button>
+              <button class="btn btn--shine btn--glow auth-submit" type="submit">Iniciar sesión</button>
             </form>
-            <button class="recovery-toggle" type="button" data-recovery-toggle>
+            <button class="btn btn--ghost recovery-toggle" type="button" data-recovery-toggle>
               Recuperar contraseña
             </button>
             <form class="auth-form" data-recovery-form hidden>
@@ -63,7 +65,7 @@
                 <span>Correo electrónico</span>
                 <input name="email" type="email" autocomplete="email" required>
               </label>
-              <button class="auth-submit" type="submit">Enviar enlace de recuperación</button>
+              <button class="btn btn--shine btn--glow auth-submit" type="submit">Enviar enlace de recuperación</button>
             </form>
           </section>
 
@@ -83,7 +85,7 @@
                 <span>Contraseña</span>
                 <input name="password" type="password" autocomplete="new-password" minlength="8" required>
               </label>
-              <button class="auth-submit" type="submit">Crear cuenta</button>
+              <button class="btn btn--shine btn--glow auth-submit" type="submit">Crear cuenta</button>
             </form>
           </section>
 
@@ -95,7 +97,7 @@
                 <span>Nueva contraseña</span>
                 <input name="password" type="password" autocomplete="new-password" minlength="8" required>
               </label>
-              <button class="auth-submit" type="submit">Actualizar contraseña</button>
+              <button class="btn btn--shine btn--glow auth-submit" type="submit">Actualizar contraseña</button>
             </form>
           </section>
         </div>
@@ -103,27 +105,27 @@
         <details class="fallback" data-internal-access-tools hidden>
           <summary>Acceso mock temporal para pruebas locales</summary>
           <div class="profile-grid" data-profile-grid>
-            <button class="profile-card" type="button" data-profile="visitor" aria-pressed="false">
+            <button class="btn btn--ghost profile-card" type="button" data-profile="visitor" aria-pressed="false">
               <span class="profile-card__eyebrow">Sin sesión</span>
               <strong>Visitante</strong>
               <p>Cierra cualquier sesión mock sin borrar el historial local.</p>
             </button>
-            <button class="profile-card" type="button" data-profile="demo" aria-pressed="false">
+            <button class="btn btn--ghost profile-card" type="button" data-profile="demo" aria-pressed="false">
               <span class="profile-card__eyebrow">Prueba local</span>
               <strong>Demo</strong>
               <p>Perfil mock de estudiante.</p>
             </button>
-            <button class="profile-card" type="button" data-profile="premium" aria-pressed="false">
+            <button class="btn btn--ghost profile-card" type="button" data-profile="premium" aria-pressed="false">
               <span class="profile-card__eyebrow">Prueba local</span>
               <strong>Premium</strong>
               <p>Perfil mock de acceso intermedio.</p>
             </button>
-            <button class="profile-card" type="button" data-profile="full_access" aria-pressed="false">
+            <button class="btn btn--ghost profile-card" type="button" data-profile="full_access" aria-pressed="false">
               <span class="profile-card__eyebrow">Prueba local</span>
               <strong>Acceso Completo</strong>
               <p>Perfil mock con acceso total.</p>
             </button>
-            <button class="profile-card" type="button" data-profile="admin" aria-pressed="false">
+            <button class="btn btn--ghost profile-card" type="button" data-profile="admin" aria-pressed="false">
               <span class="profile-card__eyebrow">Prueba local</span>
               <strong>Admin</strong>
               <p>Rol administrativo mock.</p>
@@ -131,7 +133,7 @@
           </div>
           <div class="panel-head">
             <h2>Usuarios administrados</h2>
-            <a class="admin-link" href="/admin/">Abrir Admin mock local</a>
+            <a class="btn btn--ghost admin-link" href="/admin/">Abrir Admin mock local</a>
           </div>
           <div class="managed-grid" data-managed-users></div>
         </details>
@@ -149,8 +151,8 @@
           </div>
         </div>
         <p class="feedback" data-feedback role="status">Preparando acceso seguro...</p>
-        <a class="profile-cta" data-profile-cta href="/profile/" hidden>Ir a mi perfil</a>
-        <button class="logout" type="button" data-logout disabled>Cerrar sesión</button>
+        <a class="btn btn--shine btn--glow profile-cta" data-profile-cta href="/profile/" hidden>Ir a mi perfil</a>
+        <button class="btn btn--ghost logout" type="button" data-logout disabled>Cerrar sesión</button>
         <details data-internal-session-snapshot hidden>
           <summary>Ver snapshot técnico</summary>
           <pre data-session-snapshot>{}</pre>

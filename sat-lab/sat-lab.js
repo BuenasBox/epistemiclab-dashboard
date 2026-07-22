@@ -197,10 +197,9 @@
       return '<div class="'+cls+'"><span class="dot">'+mark+'</span><span class="lbl">'+(SHORT[i]||('F'+(i+1)))+'</span></div>';
     }).join('');
     var nextName = (S.phaseIdx<PHASES.length-1)? SHORT[S.phaseIdx+1] : null;
-    $('steps').innerHTML = '<div class="prog-track"><i></i></div>'
+    $('steps').innerHTML = '<progress class="prog-track" max="100" value="'+pct+'" aria-label="Progreso de la práctica"></progress>'
       + '<div class="prog-steps">'+dots+'</div>'
       + '<div class="prog-label">Fase <b>'+(S.phaseIdx+1)+'</b> de '+PHASES.length+(nextName?(' · Siguiente: '+nextName):' · Última fase')+'</div>';
-    var trackFill=$('steps').querySelector('.prog-track>i'); if(trackFill) trackFill.style.width=pct+'%';
     renderPhase();
   }
 
@@ -212,7 +211,7 @@
     var html = decs.map(function(dn){
       var opts = optionValues(dn).map(function(val){
         var sel = (S.answers[dn] && S.answers[dn].value===val)?' sel':'';
-        return '<button class="opt'+sel+'" data-dec="'+dn+'" data-val="'+val+'">'+LABELS[dn][val]+'</button>';
+        return '<button class="btn btn--ghost opt'+sel+'" data-dec="'+dn+'" data-val="'+val+'">'+LABELS[dn][val]+'</button>';
       }).join('');
       return '<div class="decision"><h3>'+DEC_TITLE[dn]+'</h3><div class="opts">'+opts+'</div><div class="fb" id="fb-'+dn+'"></div></div>';
     }).join('');
@@ -334,28 +333,6 @@
     $('summary-box').innerHTML = rows || '<p class="muted">Sin decisiones registradas.</p>';
     loadRecommend();
     loadRevealHeader();
-    animateSummaryReveal();
-  }
-  // SAT-UX-07 reconciliación: el resumen ya tenía entrada cascada por tarjeta
-  // (ux7-rise) y celebración (se-ring/se-check) — mismo vocabulario que el
-  // resto del sistema. Lo único que faltaba: 1) que las tarjetas entren en
-  // cascada real (antes entraban todas a la vez) y 2) que "Fortalezas" y
-  // "Aspectos por reforzar" — el verdadero mapa de burbujas de esta página —
-  // aparezcan una a una en vez de en bloque. No se toca el celebrate-ring
-  // existente. Respeta prefers-reduced-motion.
-  function animateSummaryReveal(){
-    var root = $('screen-summary');
-    if(!root) return;
-    var reduce = typeof window!=='undefined' && window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var cascade = root.querySelectorAll('.report-hero, .card');
-    var items = root.querySelectorAll('.rep-li');
-    if(reduce){
-      items.forEach(function(el){ el.classList.add('rli-in'); });
-      return;
-    }
-    cascade.forEach(function(el,i){ el.style.animationDelay = (i*0.07)+'s'; });
-    items.forEach(function(el,i){ setTimeout(function(){ el.classList.add('rli-in'); }, 260 + i*70); });
   }
 
   // ============================================================================
@@ -616,7 +593,7 @@
       var nextId=r.recommended_next[0];
       var h='<div class="pp-sec pp-sec--tight"><h4>Siguiente práctica recomendada</h4>';
       if(r.reason) h+='<div class="pp-li pp-li--flush">'+escP(presentEs(r.reason))+'</div>';
-      h+='<button class="btn pp-rec-btn" id="btn-start-rec" data-id="'+escP(nextId)+'">Iniciar práctica recomendada</button></div>';
+      h+='<button class="btn btn--shine btn--glow pp-rec-btn" id="btn-start-rec" data-id="'+escP(nextId)+'">Iniciar práctica recomendada</button></div>';
       box.innerHTML=h;
       var b=$('btn-start-rec'); if(b) b.addEventListener('click', function(){ startRecommended(b.getAttribute('data-id')); });
     }).catch(function(){ box.innerHTML=''; });

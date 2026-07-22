@@ -245,7 +245,9 @@
 
   function renderRecommendationAction(rec, label, secondary) {
     var url = recommendationUrlFor(rec);
-    var actionClass = 'idb-action ' + (secondary ? 'idb-action--secondary' : 'idb-action--primary');
+    var actionClass = secondary
+      ? 'btn btn--ghost idb-action idb-action--secondary'
+      : 'btn btn--shine btn--glow idb-action idb-action--primary';
 
     if (url) {
       return '<a href="' + url + '" class="' + actionClass + '">' + label + '</a>';

@@ -8,9 +8,11 @@
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="/shared/epistemic-icons.css">
 <link rel="stylesheet" href="/shared/theme-wine.css">
+<link rel="stylesheet" href="/shared/theme-platform.css">
+<link rel="stylesheet" href="/shared/ui-buttons.css">
 <link rel="stylesheet" href="./label-lab.css">
 <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#1a1119">
+<meta name="theme-color" content="#07090d">
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -81,7 +83,7 @@
 
   function confHtml(current){
     return '<div class="conf"><div class="q">¿Cuánta seguridad tienes en esta lectura?</div><div class="opts">'+
-      CONF.map(function(c){return '<button class="pillbtn'+(current===c?' sel':'')+'" data-conf="'+esc(c)+'">'+esc(c)+'</button>';}).join('')+
+      CONF.map(function(c){return '<button class="btn btn--ghost pillbtn'+(current===c?' sel':'')+'" data-conf="'+esc(c)+'">'+esc(c)+'</button>';}).join('')+
       '</div></div>';
   }
 
@@ -94,7 +96,7 @@
       '<div class="card bl-narrow"><div class="card-label">Esta sesión</div>'+
       '<h3>1 etiqueta · 5 zonas de lectura · ~6 min</h3>'+
       '<p class="small muted">En cada zona marcas tu lectura y tu nivel de confianza. Al final, qué cambió en ti.</p>'+
-      '<div class="flowbar"><button class="btn primary" id="start">Empezar →</button></div></div>';
+      '<div class="flowbar"><button class="btn btn--shine btn--glow" id="start">Empezar →</button></div></div>';
     document.getElementById('start').onclick=function(){
       EP&&EP.startSession({module:'label-guided',competencies:S.item.competencies});
       S.screen='parse'; S.zoneIdx=0; render();
@@ -105,7 +107,7 @@
     var z=S.item.zones[S.zoneIdx];
     var a=S.answers[z.id]||{};
     var opts=z.options.map(function(o){
-      return '<button class="opt'+(a.opt===o.id?' sel':'')+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+(o.sub?'<small>'+esc(o.sub)+'</small>':'')+'</button>';
+      return '<button class="btn btn--ghost opt'+(a.opt===o.id?' sel':'')+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+(o.sub?'<small>'+esc(o.sub)+'</small>':'')+'</button>';
     }).join('');
     var m=z.mentor||{sev:'info',text:''};
     var ready = a.opt && a.conf;
@@ -116,8 +118,8 @@
         '<div class="card center"><div class="card-label card-label-left">Etiqueta en lectura · identidad oculta</div>'+labelHtml(z.id)+
           '<p class="xs muted mt-8">Zona activa resaltada: <b>'+esc(z.label)+'</b></p></div>'+
         '<div class="card tight mt-14"><div class="card-label">'+esc(z.label)+'</div>'+opts+ confHtml(a.conf)+'</div>'+
-        '<div class="flowbar">'+(S.zoneIdx>0?'<button class="btn ghost" id="back">Atrás</button>':'')+
-          '<button class="btn primary flex-1" id="next" '+(ready?'':'disabled')+'>Confirmar y seguir →</button></div>'+
+        '<div class="flowbar">'+(S.zoneIdx>0?'<button class="btn btn--ghost" id="back">Atrás</button>':'')+
+          '<button class="btn btn--shine btn--glow flex-1" id="next" '+(ready?'':'disabled')+'>Confirmar y seguir →</button></div>'+
       '</div><div>'+
         '<div class="card-label">Mentor</div>'+
         '<div class="mentor '+esc(m.sev)+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">PISTA</div><p class="small mentor-text">'+esc(m.text)+'</p></div></div>'+
@@ -137,7 +139,7 @@
   function hypGroup(key,group){
     var sel=(S.hyp[key]||{}).opt;
     return '<div class="card-label'+(key==='quality'?' mt-14':'')+'">'+esc(group.prompt)+'</div>'+
-      group.options.map(function(o){return '<button class="opt'+(sel===o.id?' sel':'')+'" data-hyp="'+key+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+'</button>';}).join('');
+      group.options.map(function(o){return '<button class="btn btn--ghost opt'+(sel===o.id?' sel':'')+'" data-hyp="'+key+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+'</button>';}).join('');
   }
 
   function renderHypothesis(){
@@ -148,7 +150,7 @@
       '<p class="muted small bl-narrow-sm">Has leído las cinco zonas. ¿Qué vino esperas? Justifica con la palabra que manda, no con el cebo.</p>'+
       '<div class="grid g2"><div class="card">'+ hypGroup('sweetness',h.sweetness)+ hypGroup('quality',h.quality)+ confHtml((S.hyp.conf||null))+'</div>'+
       '<div><div class="mentor warn"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">ATENCIÓN</div><p class="small mentor-text">Algunos términos tientan a una conclusión equivocada. Apóyate en la palabra reguladora correcta.</p></div></div>'+
-      '<div class="flowbar"><button class="btn ghost" id="back">Atrás</button><button class="btn primary flex-1" id="submit" '+(ready?'':'disabled')+'>Enviar deducción →</button></div></div></div>';
+      '<div class="flowbar"><button class="btn btn--ghost" id="back">Atrás</button><button class="btn btn--shine btn--glow flex-1" id="submit" '+(ready?'':'disabled')+'>Enviar deducción →</button></div></div></div>';
     app.querySelectorAll('[data-hyp]').forEach(function(b){ b.onclick=function(){ var k=b.getAttribute('data-hyp'); (S.hyp[k]=S.hyp[k]||{}).opt=b.getAttribute('data-opt'); render(); }; });
     app.querySelectorAll('[data-conf]').forEach(function(b){ b.onclick=function(){ S.hyp.conf=b.getAttribute('data-conf'); render(); }; });
     document.getElementById('back').onclick=function(){ S.screen='parse'; S.zoneIdx=S.item.zones.length-1; render(); };
@@ -202,35 +204,10 @@
         '<div class="mentor '+calSev+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">CALIBRACIÓN</div><p class="small mentor-text">'+esc(calMsg)+'</p></div></div>'+
         '<div class="mentor ok"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">SÍNTESIS</div><p class="small mentor-text">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
         (rv.misconception?'<div class="mentor crit"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">IDEA CONSOLIDADA</div><p class="small mentor-text"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
-        '<div class="flowbar"><button class="btn primary flex-1" id="toDone">Ver qué cambió en ti →</button></div>'+
+        '<div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="toDone">Ver qué cambió en ti →</button></div>'+
       '</div></div></div>';
     document.getElementById('toDone').onclick=function(){ EP&&EP.sessionCompleted({module:'label-guided',itemId:it.id}); S.screen='done'; render(); };
-    animateBlReveal();
   }
-  // Reveal animado — Fase de animación unificada del sistema (ver bottle-lab
-  // para el mismo patrón). Escopado a .bl-reveal / .bl-done para no tocar
-  // los .mentor de las pantallas de parseo/hipótesis. Respeta reduced-motion.
-  function blReduceMotion(){
-    return typeof window!=='undefined' && window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }
-  function blStagger(nodes,startDelay,gap){
-    nodes.forEach(function(el,i){ setTimeout(function(){ el.classList.add('bl-in'); }, startDelay+i*gap); });
-  }
-  function animateBlReveal(){
-    var root=app.querySelector('.bl-reveal');
-    if(!root) return;
-    var rows=root.querySelectorAll('.fb-row');
-    var mentors=root.querySelectorAll('.mentor');
-    if(blReduceMotion()){
-      rows.forEach(function(el){el.classList.add('bl-in');});
-      mentors.forEach(function(el){el.classList.add('bl-in');});
-      return;
-    }
-    blStagger(rows,80,90);
-    blStagger(mentors,80+rows.length*90+150,140);
-  }
-
   function renderDone(){
     var d=(EP&&EP.getSessionDelta())||{accuracy:'—',misconceptions:[],transferTouched:false,calibration:'calibrado'};
     var calLine = d.calibration==='sobreconfianza' ? 'Sobreconfianza detectada y señalada · a trabajar'
@@ -245,35 +222,14 @@
       '<div class="center bl-done-narrow"><div class="celebrate"><span class="ep-icon ep-icon--success" aria-hidden="true"></span><span class="ep-sr-only">Completado</span></div>'+
       '<h2 class="serif">Qué cambió en ti</h2><p class="muted small">No "bien hecho": esto es lo que ahora sabes y razonas distinto.</p></div>'+
       '<div class="bl-done-body">'+
-        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--reference-material" aria-hidden="true"></span></div><div><b class="small">Teoría · denominaciones y clasificaciones</b><div class="meter mt-6"><span data-w="58"></span></div><div class="xs muted mt-4">Sistema de lectura aplicable a otras etiquetas · aciertos: '+esc(d.accuracy)+'</div></div></div>'+
+        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--reference-material" aria-hidden="true"></span></div><div><b class="small">Teoría · denominaciones y clasificaciones</b><progress class="meter mt-6" value="58" max="100" aria-label="Progreso reforzado: 58%">58%</progress><div class="xs muted mt-4">Sistema de lectura aplicable a otras etiquetas · aciertos: '+esc(d.accuracy)+'</div></div></div>'+
         '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span></div><div><b class="small">Calibración</b><div class="xs muted mt-2">'+esc(calLine)+'</div></div></div>'+
         misc + transfer +
         '<div class="delta delta-gold"><div class="ic"><span class="ep-icon ep-icon--progress-dashboard" aria-hidden="true"></span></div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted mt-2">El Epistemic Profile recibió tus señales y tu confianza. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
         '<div class="state done mt-8"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
-        '<div class="flowbar flowbar-center"><button class="btn" id="another">Otra etiqueta</button><a class="btn ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn ghost" href="../">Volver a Mi progreso</a></div>'+
+        '<div class="flowbar flowbar-center"><button class="btn btn--ghost" id="another">Otra etiqueta</button><a class="btn btn--ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn btn--ghost" href="../">Volver a Mi progreso</a></div>'+
       '</div></div>';
     document.getElementById('another').onclick=function(){ reset(S.itemIndex+1); render(); };
-    animateBlDone();
-  }
-  function animateBlDone(){
-    var root=app.querySelector('.bl-done');
-    if(!root) return;
-    var celeb=root.querySelector('.celebrate');
-    var deltas=root.querySelectorAll('.delta');
-    var bars=root.querySelectorAll('.meter>span');
-    if(blReduceMotion()){
-      if(celeb) celeb.classList.add('bl-in');
-      deltas.forEach(function(el){el.classList.add('bl-in');});
-      bars.forEach(function(b){ b.style.setProperty('--progress', (b.getAttribute('data-w')||'0')+'%'); });
-      return;
-    }
-    if(celeb) celeb.classList.add('bl-in');
-    blStagger(deltas,180,110);
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        bars.forEach(function(b){ b.style.setProperty('--progress', (b.getAttribute('data-w')||'0')+'%'); });
-      });
-    });
   }
 
   reset(0); render();

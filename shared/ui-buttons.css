@@ -1,0 +1,40 @@
+/* Botones canónicos de EpistemicLab. */
+.btn{
+  --btn-bg:linear-gradient(92deg,#8fe4fb,var(--cyan));
+  --btn-fg:#04222b;
+  position:relative; overflow:hidden; display:inline-flex; align-items:center;
+  gap:8px; border:0; cursor:pointer; font:600 14.5px/1 var(--sans);
+  color:var(--btn-fg); padding:13px 22px; border-radius:var(--r-btn);
+  background:var(--btn-bg); text-decoration:none;
+  box-shadow:0 8px 26px rgba(100,217,245,.30);
+  transition:transform .18s ease, box-shadow .25s ease;
+}
+.btn:hover{ transform:translateY(-1px); }
+.btn:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+.btn:disabled,.btn[aria-disabled="true"]{ opacity:.5; cursor:not-allowed; transform:none; }
+
+.btn--shine::after{
+  content:""; position:absolute; top:0; left:-70%; width:55%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.72),transparent);
+  transform:skewX(-18deg); animation:btnShimmer 2.8s 1.2s ease-in-out infinite;
+}
+.btn--glow{ animation:btnGlow 3.2s 1.2s ease-in-out infinite; }
+
+.btn--ghost{
+  --btn-bg:rgba(18,26,36,.5); --btn-fg:#cfe0ea;
+  border:1px solid #2a3746; box-shadow:none; font-weight:500;
+}
+.btn--ghost::after{ background:linear-gradient(100deg,transparent,rgba(100,217,245,.35),transparent); }
+.btn--ghost:hover{ border-color:var(--cyan); color:#fff; }
+
+@keyframes btnShimmer{0%{left:-70%;}60%,100%{left:135%;}}
+@keyframes btnGlow{0%,100%{box-shadow:0 8px 26px rgba(100,217,245,.30);}50%{box-shadow:0 8px 34px rgba(100,217,245,.55);}}
+
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .btn--shine::after,.btn--glow{ animation:none; }
+}

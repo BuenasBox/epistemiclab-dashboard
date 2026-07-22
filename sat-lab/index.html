@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../platform-nav.css">
 <link rel="stylesheet" href="/shared/epistemic-icons.css">
 <link rel="stylesheet" href="../shared/theme-platform.css">
+<link rel="stylesheet" href="../shared/ui-buttons.css">
 <link rel="stylesheet" href="./sat-lab.css">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#07090d">
@@ -34,8 +35,8 @@
     <div class="card">
       <h3 class="mode-picker-title">Elige un modo</h3>
       <div class="mode-pick">
-        <button class="btn full mode-opt" id="mode-blind"><span class="mode-ic ep-icon ep-icon--sat-lab" aria-hidden="true"></span><span class="mode-tt"><b>Cata a ciegas</b><small>Entrena como en examen. La identidad se revela al final.</small></span></button>
-        <button class="btn full ghost mode-opt" id="mode-guided"><span class="mode-ic ep-icon ep-icon--reference-material" aria-hidden="true"></span><span class="mode-tt"><b>Práctica guiada</b><small>Estudia un estilo concreto desde el inicio.</small></span></button>
+        <button class="btn btn--shine btn--glow full mode-opt" id="mode-blind"><span class="mode-ic ep-icon ep-icon--sat-lab" aria-hidden="true"></span><span class="mode-tt"><b>Cata a ciegas</b><small>Entrena como en examen. La identidad se revela al final.</small></span></button>
+        <button class="btn btn--ghost btn--shine full mode-opt" id="mode-guided"><span class="mode-ic ep-icon ep-icon--reference-material" aria-hidden="true"></span><span class="mode-tt"><b>Práctica guiada</b><small>Estudia un estilo concreto desde el inicio.</small></span></button>
       </div>
       <div class="mode-soon">
         <span class="mode-soon-lbl">Pronto</span>
@@ -66,9 +67,9 @@
       <div class="sat-hero-glass">
         <div id="glass-mount" class="glass-mount" role="img" aria-label="Copa de cata">
           <svg width="64" height="84" viewBox="0 0 64 84" aria-hidden="true">
-            <path d="M14 8 Q32 2 50 8 Q50 34 32 46 Q14 34 14 8 Z" fill="rgba(255,255,255,.05)" stroke="#6a5562"/>
-            <rect x="30" y="46" width="4" height="26" fill="#d9c7d2"/>
-            <rect x="18" y="72" width="28" height="4" rx="2" fill="#d9c7d2"/>
+            <path d="M14 8 Q32 2 50 8 Q50 34 32 46 Q14 34 14 8 Z" fill="rgba(255,255,255,.05)" stroke="var(--line)"/>
+            <rect x="30" y="46" width="4" height="26" fill="var(--muted)"/>
+            <rect x="18" y="72" width="28" height="4" rx="2" fill="var(--muted)"/>
           </svg>
         </div>
         <div class="sat-hero-glasscap" id="hero-glasscap">Tu copa refleja lo que declaras</div>
@@ -80,8 +81,8 @@
       <p class="phase-sub" id="phase-sub"></p>
       <div id="decisions"></div>
       <div class="row">
-        <button class="btn ghost" id="btn-prev" hidden>← Fase anterior</button>
-        <button class="btn full" id="btn-next" disabled>Siguiente fase →</button>
+        <button class="btn btn--ghost" id="btn-prev" hidden>← Fase anterior</button>
+        <button class="btn btn--shine btn--glow full" id="btn-next" disabled>Siguiente fase →</button>
       </div>
       <div id="tasting-err" class="err" role="alert"></div>
     </div>
@@ -141,9 +142,9 @@
     <div class="card">
       <h3 class="summary-card-title">Profundiza en esta práctica</h3>
       <div class="row post-actions">
-        <button class="btn" id="btn-debrief">Ver debrief</button>
-        <button class="btn ghost" id="btn-compare">Comparación con el modelo</button>
-        <button class="btn ghost" id="btn-print">Imprimir / Descargar PDF</button>
+        <button class="btn btn--shine btn--glow" id="btn-debrief">Ver debrief</button>
+        <button class="btn btn--ghost" id="btn-compare">Comparación con el modelo</button>
+        <button class="btn btn--ghost" id="btn-print">Imprimir / Descargar PDF</button>
       </div>
       <div id="debrief-panel" class="post-panel" hidden></div>
       <div id="compare-panel" class="post-panel" hidden></div>
@@ -153,9 +154,9 @@
     <div class="card">
       <p class="muted summary-reminder">Recuerda: el SAT premia el razonamiento (observación → inferencia → causa → juicio) y el compromiso con una conclusión, no acertar a ciegas.</p>
       <div class="row">
-        <button class="btn full" onclick="window.location.href='/dashboard/'">Ir a mi Dashboard</button>
-        <button class="btn ghost" id="btn-restart">Nueva práctica</button>
-        <button class="btn ghost" id="btn-home">Volver</button>
+        <button class="btn btn--shine btn--glow full" onclick="window.location.href='/dashboard/'">Ir a mi Dashboard</button>
+        <button class="btn btn--ghost" id="btn-restart">Nueva práctica</button>
+        <button class="btn btn--ghost" id="btn-home">Volver</button>
       </div>
     </div>
   </section>

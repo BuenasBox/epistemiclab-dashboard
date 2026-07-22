@@ -8,7 +8,7 @@
 .pce-significance-label{font-size:11px;color:#a7b0be}
 .pce-significance-value{font-size:11px}
 .pce-significance-value.is-high{color:#e45c5c}
-.pce-significance-value.is-medium{color:#f6b73c}
+.pce-significance-value.is-medium{color:var(--warn)}
 .pce-plan-label{color:#65b7c7;font-weight:600;font-size:11px;margin-bottom:6px}
 .pce-plan{color:#aab4bd;font-size:12px;margin-bottom:10px;line-height:1.5}
 .pce-evidence{font-size:10px;color:#525e6e;font-style:italic}

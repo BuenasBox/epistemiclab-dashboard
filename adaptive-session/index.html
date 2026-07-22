@@ -6,6 +6,8 @@
 <title>Entrenamiento Adaptativo — EpistemicLab</title>
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="/shared/epistemic-icons.css">
+<link rel="stylesheet" href="/shared/theme-platform.css">
+<link rel="stylesheet" href="/shared/ui-buttons.css">
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <link rel="stylesheet" href="./adaptive-session.css?v=20260718-1">
 <script src="../shared/session-store.js" defer></script>
@@ -24,7 +26,7 @@
 <script src="learner_intelligence.js" defer></script>
 <script src="../shared/learning-sync.js" defer></script>
 <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0f1115">
+<meta name="theme-color" content="#07090d">
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -43,19 +45,19 @@
     <div class="adp-sub">670 preguntas SBA + 6 ejercicios SAT · práctica formativa protegida</div>
     <div class="adp-slabel">Teoría · SBA</div>
     <div class="adp-btns">
-      <button class="adp-btn" onclick="startAdp('express_10')"><span class="adp-blabel">Exprés · 10</span><span class="adp-bsub">10 preguntas · ~15 min</span></button>
-      <button class="adp-btn" onclick="startAdp('standard_25')"><span class="adp-blabel">Estándar · 25</span><span class="adp-bsub">25 preguntas · ~35 min</span></button>
-      <button class="adp-btn" onclick="startAdp('mock_theory_50')"><span class="adp-blabel">Simulacro Teoría Parte 1 · 50</span><span class="adp-bsub">RA1=8 · RA2=28 · RA3=5 · RA4=5 · RA5=4 · ~75 min</span></button>
+      <button class="btn btn--shine btn--glow adp-btn" onclick="startAdp('express_10')"><span class="adp-blabel">Exprés · 10</span><span class="adp-bsub">10 preguntas · ~15 min</span></button>
+      <button class="btn btn--ghost adp-btn" onclick="startAdp('standard_25')"><span class="adp-blabel">Estándar · 25</span><span class="adp-bsub">25 preguntas · ~35 min</span></button>
+      <button class="btn btn--ghost adp-btn" onclick="startAdp('mock_theory_50')"><span class="adp-blabel">Simulacro Teoría Parte 1 · 50</span><span class="adp-bsub">RA1=8 · RA2=28 · RA3=5 · RA4=5 · RA5=4 · ~75 min</span></button>
     </div>
     <div class="adp-slabel">Cata SAT</div>
     <div class="adp-btns">
-      <button class="adp-btn adp-sat" onclick="startAdp('sat_sprint')"><span class="adp-blabel">Sprint SAT</span><span class="adp-bsub">1 vino · práctica rápida</span></button>
-      <button class="adp-btn adp-sat" onclick="startAdp('sat_practice')"><span class="adp-blabel">Práctica SAT</span><span class="adp-bsub">2 vinos · práctica completa</span></button>
-      <button class="adp-btn adp-sat" onclick="startAdp('sat_mock')"><span class="adp-blabel">Simulacro SAT</span><span class="adp-bsub">2 vinos · 30 min · simulación examen</span></button>
+      <button class="btn btn--ghost adp-btn adp-sat" onclick="startAdp('sat_sprint')"><span class="adp-blabel">Sprint SAT</span><span class="adp-bsub">1 vino · práctica rápida</span></button>
+      <button class="btn btn--ghost adp-btn adp-sat" onclick="startAdp('sat_practice')"><span class="adp-blabel">Práctica SAT</span><span class="adp-bsub">2 vinos · práctica completa</span></button>
+      <button class="btn btn--ghost adp-btn adp-sat" onclick="startAdp('sat_mock')"><span class="adp-blabel">Simulacro SAT</span><span class="adp-bsub">2 vinos · 30 min · simulación examen</span></button>
     </div>
     <div class="adp-slabel">Análisis</div>
     <div class="adp-btns">
-      <button class="adp-btn" onclick="toggleProgress()"><span class="adp-blabel">Mi Progreso</span><span class="adp-bsub">RA · temas débiles · tendencias SAT</span></button>
+      <button class="btn btn--ghost adp-btn" onclick="toggleProgress()"><span class="adp-blabel">Mi Progreso</span><span class="adp-bsub">RA · temas débiles · tendencias SAT</span></button>
     </div>
     <div id="li-progress" hidden></div>
     <div id="adp-status" class="adp-status" role="status" aria-live="polite"></div>
@@ -80,14 +82,12 @@
      SCREEN 1 — ACTIVE CHALLENGE
      ========================================================= -->
 <div id="screen-1" class="screen" role="main" aria-label="Reto activo">
-  <div class="progress-wrap">
-    <div class="progress-fill" id="progress-fill"></div>
-  </div>
+  <progress class="progress-wrap" id="progress-fill" value="0" max="100" aria-label="Progreso de la sesión">0%</progress>
   <div class="q-header" id="q-header"></div>
   <div class="q-stem-wrap"><p class="q-stem" id="q-stem"></p></div>
   <div class="options-wrap" id="options-wrap"></div>
   <div class="q-action">
-    <button class="btn btn-primary" id="btn-continue" onclick="confirmAnswer()" hidden>
+    <button class="btn btn--shine btn--glow" id="btn-continue" onclick="confirmAnswer()" hidden>
       CONFIRMAR
     </button>
     <div id="answer-status" class="answer-status" role="alert" aria-live="assertive"></div>
@@ -107,7 +107,7 @@
     <span class="ep-icon ep-icon--support-material" aria-hidden="true"></span> Fragmento de apoyo disponible — revisa tu material WWJ para este concepto
   </div>
   <div class="fb-action">
-    <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">SIGUIENTE RETO</button>
+    <button class="btn btn--shine btn--glow" id="btn-next" onclick="nextQuestion()">SIGUIENTE RETO</button>
   </div>
   <div class="screen-bottom-spacer" aria-hidden="true"></div>
 </div>

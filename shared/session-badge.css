@@ -17,7 +17,6 @@
   pointer-events: auto;
   touch-action: manipulation;
   overflow-wrap: anywhere;
-  transition: border-color .18s ease, background .18s ease, color .18s ease;
 }
 
 .access-session-badge__main {

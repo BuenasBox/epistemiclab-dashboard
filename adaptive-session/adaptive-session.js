@@ -129,7 +129,7 @@ function showScreen(n) {
   STATE.screen = n;
   // Scroll to top before making it active
   screen.scrollTop = 0;
-  requestAnimationFrame(() => screen.classList.add('active'));
+  screen.classList.add('active');
 }
 
 /* ---- Chip factories ---- */
@@ -197,7 +197,7 @@ function renderScreen0() {
   container.appendChild(meta);
 
   // Start button
-  const startBtn = el('button', { class: 'btn btn-primary', onclick: 'startMission()' });
+  const startBtn = el('button', { class: 'btn btn--shine btn--glow', onclick: 'startMission()' });
   startBtn.textContent = 'INICIAR MISIÓN';
   container.appendChild(startBtn);
 }
@@ -221,7 +221,7 @@ function renderQuestion() {
   const total = p.questions.length;
 
   // Progress bar
-  $('progress-fill').style.width = `${(STATE.qIdx / total) * 100}%`;
+  $('progress-fill').value = (STATE.qIdx / total) * 100;
 
   // Header
   const hdr = $('q-header');
@@ -346,10 +346,8 @@ async function confirmAnswer() {
     }
   });
 
-  setTimeout(() => {
-    renderFeedback(q, correct);
-    showScreen(2);
-  }, 400);
+  renderFeedback(q, correct);
+  showScreen(2);
 }
 
 /* ---- Screen 2: Feedback ---- */
@@ -402,27 +400,14 @@ function renderFeedback(q, correct) {
 // (no un veredicto seco) y, en el debriefing, las métricas y las burbujas
 // de fortalezas/brechas/misconceptions entran en cascada. Respeta
 // prefers-reduced-motion.
-function asReduceMotion() {
-  return typeof window !== 'undefined' && window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-function asStagger(nodes, startDelay, gap) {
-  nodes.forEach((el, i) => { setTimeout(() => { el.classList.add('as-in'); }, startDelay + i * gap); });
-}
 function animateFeedbackReveal(hasMcNote) {
   const status = $('fb-status');
   const expl = $('fb-explanation');
   const mcNote = $('fb-mc-note');
   [status, expl, mcNote].forEach(el => el && el.classList.remove('as-in'));
-  if (asReduceMotion()) {
-    if (status) status.classList.add('as-in');
-    if (expl) expl.classList.add('as-in');
-    if (hasMcNote && mcNote) mcNote.classList.add('as-in');
-    return;
-  }
-  if (status) setTimeout(() => status.classList.add('as-in'), 40);
-  if (expl) setTimeout(() => expl.classList.add('as-in'), 160);
-  if (hasMcNote && mcNote) setTimeout(() => mcNote.classList.add('as-in'), 300);
+  if (status) status.classList.add('as-in');
+  if (expl) expl.classList.add('as-in');
+  if (hasMcNote && mcNote) mcNote.classList.add('as-in');
 }
 
 function escTxt(s) {
@@ -505,7 +490,7 @@ function renderDebriefing() {
     const v = txt('div', `db-metric-val ${cls}`, String(val));
     card.appendChild(v);
     const lbl = txt('div', 'db-metric-label', label);
-    lbl.style.whiteSpace = 'pre-line';
+    lbl.classList.add('db-metric-label--multiline');
     card.appendChild(lbl);
     metrics.appendChild(card);
   });
@@ -548,12 +533,12 @@ function renderDebriefing() {
   container.appendChild(nextBox);
 
   // Dashboard CTA
-  const dashboardBtn = el('button', { class: 'btn btn-primary', onclick: "window.location.href='/dashboard/'" });
+  const dashboardBtn = el('button', { class: 'btn btn--shine btn--glow', onclick: "window.location.href='/dashboard/'" });
   dashboardBtn.textContent = 'IR A MI DASHBOARD';
   container.appendChild(dashboardBtn);
 
   // Restart button
-  const restartBtn = el('button', { class: 'btn btn-secondary', onclick: 'restartSession()' });
+  const restartBtn = el('button', { class: 'btn btn--ghost', onclick: 'restartSession()' });
   restartBtn.textContent = 'NUEVA SESIÓN';
   container.appendChild(restartBtn);
 
@@ -568,16 +553,9 @@ function animateDebriefingReveal(container) {
   const metricCards = container.querySelectorAll('.db-metric');
   const chips = container.querySelectorAll('.chip');
   const nextBox = container.querySelector('.db-next');
-  if (asReduceMotion()) {
-    metricCards.forEach(el => el.classList.add('as-in'));
-    chips.forEach(el => el.classList.add('as-in'));
-    if (nextBox) nextBox.classList.add('as-in');
-    return;
-  }
-  asStagger(metricCards, 60, 90);
-  const chipsStart = 60 + metricCards.length * 90 + 140;
-  asStagger(chips, chipsStart, 70);
-  if (nextBox) setTimeout(() => nextBox.classList.add('as-in'), chipsStart + chips.length * 70 + 120);
+  metricCards.forEach(el => el.classList.add('as-in'));
+  chips.forEach(el => el.classList.add('as-in'));
+  if (nextBox) nextBox.classList.add('as-in');
 }
 
 /* ---- Restart ---- */
@@ -717,7 +695,7 @@ async function startAllowedAdp(mode){
       _satTmr=setInterval(()=>{
         _satSec=Math.max(0,_satSec-1);
         const el=document.getElementById('sat-timer');
-        if(el){const m=Math.floor(_satSec/60),s=_satSec%60;el.textContent=m+':'+String(s).padStart(2,'0');el.style.color=_satSec<120?'#e45c5c':'#c9a84c';}
+        if(el){const m=Math.floor(_satSec/60),s=_satSec%60;el.textContent=m+':'+String(s).padStart(2,'0');el.classList.toggle('as-sat-timer--urgent',_satSec<120);}
         if(!_satSec)clearInterval(_satTmr);
       },1000);
     }
@@ -767,8 +745,8 @@ function renderSAT(){
     </div>` : ''}
     <div class="as-sat-actions">
       ${idx+1<tot
-        ?`<button class="as-sat-button as-sat-button--next" onclick="satNext()">Siguiente →</button>`
-        :`<button class="as-sat-button as-sat-button--finish" onclick="finishSAT()">Finalizar <span class="ep-icon ep-icon--success" aria-hidden="true"></span></button>`}
+        ?`<button class="btn btn--shine btn--glow as-sat-button as-sat-button--next" onclick="satNext()">Siguiente →</button>`
+        :`<button class="btn btn--shine btn--glow as-sat-button as-sat-button--finish" onclick="finishSAT()">Finalizar <span class="ep-icon ep-icon--success" aria-hidden="true"></span></button>`}
     </div>
   </div>`;
 }
@@ -804,7 +782,7 @@ function finishSAT(){
     <div class="as-sat-complete-title">Práctica SAT completada</div>
     <div class="as-sat-complete-note">Entrenamiento formativo. Evaluación oficial requiere Examiner WSET acreditado.</div>
     ${coachHtml}
-    <button class="as-sat-button as-sat-button--restart" onclick="document.getElementById('adp-ol').classList.add('active')">← Nueva sesión</button>
+    <button class="btn btn--ghost as-sat-button as-sat-button--restart" onclick="document.getElementById('adp-ol').classList.add('active')">Nueva sesión</button>
   </div>`;
   window.scrollTo({top:0,behavior:'smooth'});
 }

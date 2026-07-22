@@ -9,7 +9,7 @@
 .la-row{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #303944}
 .la-row-label,.la-row-value{font-size:12px}
 .la-row-value.is-ok{color:#2ec27e}
-.la-row-value.is-warn{color:#f6b73c}
+.la-row-value.is-warn{color:var(--warn)}
 .la-row-value.needs-work{color:#e45c5c}
 .la-persistence-row{padding:8px;border-bottom:1px solid #303944}
 .la-topic{font-size:12px;font-weight:600;color:#d5a84f}

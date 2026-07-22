@@ -8,9 +8,11 @@
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="/shared/epistemic-icons.css">
 <link rel="stylesheet" href="/shared/theme-wine.css">
+<link rel="stylesheet" href="/shared/theme-platform.css">
+<link rel="stylesheet" href="/shared/ui-buttons.css">
 <link rel="stylesheet" href="./learning-loop.css">
 <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#1a1119">
+<meta name="theme-color" content="#07090d">
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -26,8 +28,8 @@
   <p class="lead">La plataforma analiza tu progreso y recomienda exactamente qué practicar a continuación, basándose en tu desempeño, áreas de mejora y estado de preparación.</p>
   <div class="src" id="src"><span class="d"></span> <span id="srcLabel">Cargando…</span></div>
   <div id="decision"></div>
-  <div class="qa" id="qa"></div>
-  <div class="rat" id="rat"></div>
+  <div class="qa ll-in" id="qa"></div>
+  <div class="rat ll-in" id="rat"></div>
 </div>
 
 <script src="/platform-nav.js" defer></script>
@@ -52,7 +54,7 @@
     var halt = r.halt;
     var gate = r.simulation_gate || {};
     document.getElementById('decision').innerHTML =
-      '<div class="decision'+(halt?' halt':'')+'">'+
+      '<div class="decision ll-in'+(halt?' halt':'')+'">'+
         '<div class="state-row">'+
           '<span class="pill state">'+esc({cold_start:'Inicio',reinforce:'Refuerzo',progress:'Progreso',simulation_ready:'Simulacro disponible',exam_ready:'Preparación completa'}[r.state]||r.state)+'</span>'+
           (halt?'<span class="pill halt">Detener y reforzar</span>':'<span class="pill go">Avanzar</span>')+
@@ -74,37 +76,13 @@
       ['¿Cuándo recomendar Simulacro Completo?', a.recommendFullSimWhen], ['¿Cuándo detener y reforzar?', a.haltWhen]
     ];
     document.getElementById('qa').innerHTML = Q.map(function(x){
-      return '<div class="qa-row"><div class="qa-q">'+esc(x[0])+'</div><div class="qa-a">'+esc(x[1])+'</div></div>';
+      return '<div class="qa-row ll-in"><div class="qa-q">'+esc(x[0])+'</div><div class="qa-a">'+esc(x[1])+'</div></div>';
     }).join('');
   }
   function renderRat(r){
     document.getElementById('rat').innerHTML = '<b>Base de la decisión:</b><ul>'+
       r.rationale.map(function(l){return '<li>'+esc(l)+'</li>';}).join('')+'</ul>';
   }
-  // animateReveal: el plan de aprendizaje aparece en cascada — la decisión
-  // primero, luego cada pregunta/respuesta del contrato, luego la base de la
-  // decisión — mismo lenguaje visual que el resto del sistema. Respeta
-  // prefers-reduced-motion.
-  function animateReveal(){
-    var reduce = typeof window!=='undefined' && window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var decision = document.getElementById('decision').querySelector('.decision');
-    var qaBox = document.getElementById('qa');
-    var qaRows = qaBox.querySelectorAll('.qa-row');
-    var rat = document.getElementById('rat');
-    if (reduce){
-      if (decision) decision.classList.add('ll-in');
-      qaBox.classList.add('ll-in');
-      qaRows.forEach(function(row){ row.classList.add('ll-in'); });
-      rat.classList.add('ll-in');
-      return;
-    }
-    if (decision) setTimeout(function(){ decision.classList.add('ll-in'); }, 40);
-    setTimeout(function(){ qaBox.classList.add('ll-in'); }, 160);
-    qaRows.forEach(function(row, i){ setTimeout(function(){ row.classList.add('ll-in'); }, 220 + i*70); });
-    setTimeout(function(){ rat.classList.add('ll-in'); }, 220 + qaRows.length*70 + 150);
-  }
-
   async function fetchProfile(token){
     var controller = new AbortController();
     var timeout = setTimeout(function(){ controller.abort(); }, 15000);
@@ -132,7 +110,6 @@
     setSrc(live?'live':'sample', live?'Analizando tu progreso en vivo':(token?'No pudimos cargar tu progreso':'Inicia sesión para construir tu plan'));
     var r = window.LearningLoop.fromEndpoints(bundle);
     renderDecision(r); renderQA(r.answers); renderRat(r);
-    animateReveal();
   }
   load();
 })();

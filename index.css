@@ -11,15 +11,16 @@ body{
 h1{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.1;margin:0 0 18px;letter-spacing:-.01em}
 .lead{color:var(--muted);font-size:17px;max-width:620px;margin:0 0 32px;font-weight:400}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
-.cta{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--bg);background:var(--cyan);border:none;border-radius:8px;padding:13px 24px;text-decoration:none;cursor:pointer;transition:background 200ms}
-.cta:hover{background:#5ac8e8}
-.cta2{font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:12px 20px;background:transparent;cursor:pointer;transition:border-color 200ms}
+.cta{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;font:600 14.5px/1 var(--sans);color:#04222b;background:linear-gradient(92deg,#8fe4fb,var(--cyan));border:0;border-radius:var(--r-btn);padding:13px 22px;text-decoration:none;cursor:pointer;box-shadow:0 8px 26px rgba(100,217,245,.30);transition:transform .18s ease,box-shadow .25s ease;animation:btnGlow 3.2s 1.2s ease-in-out infinite}
+.cta::after{content:"";position:absolute;top:0;left:-70%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.72),transparent);transform:skewX(-18deg);animation:btnShimmer 2.8s 1.2s ease-in-out infinite}
+.cta:hover{transform:translateY(-1px)}
+.cta2{display:inline-flex;align-items:center;font:500 14.5px/1 var(--sans);color:#cfe0ea;text-decoration:none;border:1px solid #2a3746;border-radius:var(--r-btn);padding:13px 22px;background:rgba(18,26,36,.5);cursor:pointer;transition:transform .18s ease}
 .cta2:hover{border-color:var(--cyan)}
 .note{font-size:12px;color:var(--muted);margin:0 0 48px}
 .sec-h{font-family:var(--serif);font-size:26px;margin:60px 0 8px;font-weight:500;letter-spacing:-.01em}
 .sec-s{color:var(--muted);font-size:14px;margin:0 0 24px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;text-decoration:none;color:var(--ink);transition:border-color 200ms}
+.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);padding:22px;text-decoration:none;color:var(--ink)}
 .card:hover{border-color:var(--cyan)}
 .card .ic{font-size:26px;margin-bottom:8px}
 .card h3{font-family:var(--serif);font-size:17px;margin:0 0 6px;font-weight:500;letter-spacing:-.01em}
@@ -28,7 +29,7 @@ h1{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.1;margi
 .sec-note{color:var(--muted);font-size:12px;margin:36px 0 0;padding-top:28px;border-top:1px solid var(--line);font-style:italic}
 .sec-label{font-size:18px;margin:40px 0 16px;font-weight:600;color:var(--cyan)}
 .admin-card{opacity:.5}
-.about-cta-box{margin:48px 0 0;padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:10px;text-align:center}
+.about-cta-box{margin:48px 0 0;padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);text-align:center}
 .about-cta-box p{color:var(--muted);margin:0 0 12px;font-size:14px}
 @media (max-width:680px){h1{font-size:32px}.wrap{padding:36px 16px 28px}.cards{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

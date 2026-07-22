@@ -6,7 +6,7 @@
 .ll-icon{font-size:20px}
 .ll-recommendation-title{color:#d5a84f;font-weight:600;font-size:13px}
 .ll-recommendation-reason{color:#aab4bd;font-size:12px;margin:6px 0}
-.ll-action{display:inline-block;margin-top:8px;color:#65b7c7;text-decoration:none;font-weight:600;font-size:12px;padding:6px 12px;background:#0d2a30;border-radius:4px;border:1px solid #2a5a63}
+.ll-action{margin-top:8px;font-size:12px;padding:9px 14px}
 .ll-note{color:#525e6e;font-size:10px}
 .ll-breadcrumb{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap}
 .ll-step{padding:6px 10px;border-radius:4px;font-size:11px;font-weight:600;color:#aab4bd}

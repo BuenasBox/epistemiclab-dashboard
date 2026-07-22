@@ -14,7 +14,7 @@
 .idb-section-title{font-size:14px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:6px}
 .idb-section-title--strength{color:#2ec27e}
 .idb-section-title--weak{color:#e45c5c}
-.idb-section-title--improve{color:#f6b73c}
+.idb-section-title--improve{color:var(--warn)}
 .idb-section-title--misc{color:#9d7fd5}
 .idb-section-title--verb{color:#3fa9f5}
 .idb-section-title--readiness{color:#65b7c7}
@@ -22,12 +22,12 @@
 .idb-card{border-radius:6px;padding:10px;margin-bottom:8px}
 .idb-card--strength{background:#0a3d2f;border:1px solid #2ec27e}
 .idb-card--weak{background:#2a1515;border:1px solid #e45c5c}
-.idb-card--improve{background:#2a2015;border:1px solid #f6b73c}
+.idb-card--improve{background:#2a2015;border:1px solid var(--warn)}
 .idb-card--plain{background:#0f1115}
 .idb-card-name{font-size:12px;font-weight:600}
 .idb-card--strength .idb-card-name{color:#2ec27e}
 .idb-card--weak .idb-card-name{color:#e45c5c}
-.idb-card--improve .idb-card-name{color:#f6b73c}
+.idb-card--improve .idb-card-name{color:var(--warn)}
 .idb-card-name--gold{color:#d5a84f}
 .idb-card-meta{font-size:11px;color:#a7b0be;margin-top:4px}
 
@@ -52,17 +52,15 @@
 .idb-panel--readiness{background:#1e2a2e;border:1px solid #4a7c8c;border-radius:8px;padding:12px}
 .idb-readiness-row{display:flex;justify-content:space-between;padding:8px;font-size:12px}
 .idb-readiness-row .is-ok{color:#2ec27e}
-.idb-readiness-row .is-warn{color:#f6b73c}
+.idb-readiness-row .is-warn{color:var(--warn)}
 
 .idb-reco{background:linear-gradient(135deg, rgba(34, 211, 238, .1), rgba(45, 223, 145, .05));border:1px solid rgba(34, 211, 238, .25);border-radius:8px;padding:14px;margin-bottom:16px}
 .idb-reco-title{font-size:13px;font-weight:700;color:#22d3ee;margin:0 0 10px}
 .idb-reco-reason{font-size:12px;color:#f5f7fa;line-height:1.5;margin-bottom:10px}
 .idb-reco-actions{display:flex;gap:12px;margin-bottom:8px}
-.idb-action{flex:1;padding:10px;border-radius:4px;font-weight:600;font-size:12px;cursor:pointer;text-align:center;text-decoration:none}
-.idb-action--primary{background:#22d3ee;color:#0f1115;border:none}
-.idb-action--secondary{background:transparent;color:#22d3ee;border:1px solid #22d3ee}
+.idb-action{flex:1;padding:10px;font-size:12px;justify-content:center;text-align:center}
 .idb-action[disabled]{opacity:.68;cursor:not-allowed}
-.idb-action:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
+.idb-action:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .idb-status-note{font-size:11px;color:#aab4bd;margin:0 0 8px}
 .idb-reco .idb-note{margin-top:0}
 

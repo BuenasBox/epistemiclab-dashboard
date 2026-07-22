@@ -468,7 +468,7 @@
           actions.className = 'user-card__actions';
           actions.appendChild(createButton(
             'Editar',
-            'button button--small',
+            'btn btn--ghost admin-btn--small',
             'edit',
             user.user_id
           ));
@@ -480,8 +480,8 @@
             actions.appendChild(createButton(
               action.label,
               action.id === 'suspend'
-                ? 'button button--small button--danger'
-                : 'button button--small',
+                ? 'btn btn--ghost admin-btn--small admin-btn--danger'
+                : 'btn btn--ghost admin-btn--small',
               action.id,
               user.user_id
             ));
@@ -496,7 +496,7 @@
             codeActions.forEach(function (action) {
               var codeButton = createButton(
                 action.label,
-                'button button--small button--primary',
+                'btn admin-btn--small admin-btn--accent',
                 action.id,
                 user.user_id
               );
@@ -507,7 +507,7 @@
           if (adminMode === 'mock') {
             actions.appendChild(createButton(
               'Eliminar',
-              'button button--small button--danger',
+              'btn btn--ghost admin-btn--small admin-btn--danger',
               'delete',
               user.user_id
             ));
@@ -602,20 +602,20 @@
             ], 30));
             actions.appendChild(createButton(
               'Generar código',
-              'button button--small button--primary',
+              'btn admin-btn--small admin-btn--accent',
               'request_generate',
               request.id
             ));
             actions.appendChild(createButton(
               'Rechazar',
-              'button button--small button--danger',
+              'btn btn--ghost admin-btn--small admin-btn--danger',
               'request_rejected',
               request.id
             ));
           } else if (request.status === 'approved') {
             actions.appendChild(createButton(
               'Marcar completada',
-              'button button--small',
+              'btn btn--ghost admin-btn--small',
               'request_fulfilled',
               request.id
             ));
@@ -681,14 +681,14 @@
           actions.className = 'request-card__actions';
           actions.appendChild(createButton(
             'Copiar',
-            'button button--small',
+            'btn btn--ghost admin-btn--small',
             'code_copy',
             code.id
           ));
           if (code.status === 'active') {
             actions.appendChild(createButton(
               'Revocar',
-              'button button--small button--danger',
+              'btn btn--ghost admin-btn--small admin-btn--danger',
               'code_revoke',
               code.id
             ));

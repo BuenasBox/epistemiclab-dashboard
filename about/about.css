@@ -11,14 +11,10 @@ body{
 h1{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.1;margin:0 0 18px;letter-spacing:-.01em}
 .lead{color:var(--muted);font-size:17px;max-width:680px;margin:0 0 32px;font-weight:400;line-height:1.6}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
-.cta{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--bg);background:var(--cyan);border:none;border-radius:8px;padding:13px 24px;text-decoration:none;cursor:pointer;transition:background 200ms}
-.cta:hover{background:#5ac8e8}
-.cta2{font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:12px 20px;background:transparent;cursor:pointer;transition:border-color 200ms}
-.cta2:hover{border-color:var(--cyan)}
 .sec-h{font-family:var(--serif);font-size:26px;margin:60px 0 8px;font-weight:500;letter-spacing:-.01em}
 .sec-s{color:var(--muted);font-size:14px;margin:0 0 24px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;text-decoration:none;color:var(--ink);transition:border-color 200ms}
+.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);padding:22px;text-decoration:none;color:var(--ink)}
 .card:hover{border-color:var(--cyan)}
 .card .ic{font-size:26px;margin-bottom:8px}
 .card h3{font-family:var(--serif);font-size:17px;margin:0 0 6px;font-weight:500;letter-spacing:-.01em}
@@ -34,4 +30,4 @@ h1{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.1;margi
 .highlight strong{color:var(--ink);font-weight:600;display:block;margin-bottom:4px}
 .sec-note{color:var(--muted);font-size:12px;margin:36px 0 0;padding-top:28px;border-top:1px solid var(--line);font-style:italic}
 @media (max-width:680px){h1{font-size:32px}.wrap{padding:36px 16px 28px}.cards{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

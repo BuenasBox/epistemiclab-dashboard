@@ -125,10 +125,10 @@
       '<div class="fs-rule"><span class="ep-icon ep-icon--lock" aria-hidden="true"></span> evaluación diferida al cierre</div>' +
       '</div>' +
       '<div class="fs-config"><div class="fs-config-label">Duración</div><div class="fs-seg" id="fs-dur">' +
-      [20, 30, 45].map(function (dd) { return '<button class="fs-seg-btn' + (dd === S.durationMin ? ' on' : '') + '" data-dur="' + dd + '">' + dd + ' min</button>'; }).join('') +
+      [20, 30, 45].map(function (dd) { return '<button class="btn btn--ghost fs-seg-btn' + (dd === S.durationMin ? ' on' : '') + '" data-dur="' + dd + '">' + dd + ' min</button>'; }).join('') +
       '</div></div>' +
       '<p class="fs-note">Al comenzar entrarás en <b>modo concentración</b>: pantalla limpia, sin distracciones. Puedes pausar, pero el examen real no permite pausas — úsalo con criterio. La entrega es <b>definitiva</b>.</p>' +
-      '<button class="fs-cta" id="fs-start">Comenzar examen →</button>' +
+      '<button class="btn btn--shine btn--glow fs-cta" id="fs-start">Comenzar examen →</button>' +
       '<div class="fs-gov">Práctica formativa · No es evaluación oficial</div>' +
       '</div></div>';
     document.querySelectorAll('[data-dur]').forEach(function (b) { b.onclick = function () { S.durationMin = +b.getAttribute('data-dur'); S.remaining = S.durationMin * 60; render(); }; });
@@ -142,9 +142,9 @@
     var ans = S.answers[wid] || {};
     if (axis === 'aromas') {
       var sel = ans.aromas || [];
-      return AROMAS.map(function (a) { return '<button class="fs-chip' + (sel.indexOf(a[0]) >= 0 ? ' on' : '') + '" data-aroma="' + a[0] + '">' + esc(a[1]) + '</button>'; }).join('');
+      return AROMAS.map(function (a) { return '<button class="btn btn--ghost fs-chip' + (sel.indexOf(a[0]) >= 0 ? ' on' : '') + '" data-aroma="' + a[0] + '">' + esc(a[1]) + '</button>'; }).join('');
     }
-    return SCALES[scale].map(function (v) { return '<button class="fs-chip' + (ans[axis] === v ? ' on' : '') + '" data-axis="' + axis + '" data-val="' + v + '">' + esc(lbl(v)) + '</button>'; }).join('');
+    return SCALES[scale].map(function (v) { return '<button class="btn btn--ghost fs-chip' + (ans[axis] === v ? ' on' : '') + '" data-axis="' + axis + '" data-val="' + v + '">' + esc(lbl(v)) + '</button>'; }).join('');
   }
   function renderExam() {
     document.body.className = 'fs-focus';
@@ -160,22 +160,22 @@
         inner += '<div class="fs-axis"><div class="fs-axis-l">Hipótesis · variedad</div><input class="fs-input" id="fs-grape" placeholder="p. ej. Chardonnay" value="' + esc(id.grape || '') + '"></div>' +
           '<div class="fs-axis"><div class="fs-axis-l">Hipótesis · país</div><input class="fs-input" id="fs-country" placeholder="p. ej. Francia" value="' + esc(id.country || '') + '"></div>' +
           '<div class="fs-axis"><div class="fs-axis-l">Confianza en tu conclusión</div><div class="fs-chips" id="fs-conf">' +
-          ['Intuyo', 'Bastante seguro', 'Seguro'].map(function (c) { return '<button class="fs-chip' + (S.conf[wid] === c ? ' on' : '') + '" data-conf="' + c + '">' + c + '</button>'; }).join('') + '</div></div>';
+          ['Intuyo', 'Bastante seguro', 'Seguro'].map(function (c) { return '<button class="btn btn--ghost fs-chip' + (S.conf[wid] === c ? ' on' : '') + '" data-conf="' + c + '">' + c + '</button>'; }).join('') + '</div></div>';
       }
       return '<div class="fs-sec"><div class="fs-sec-h">' + esc(sec) + '</div>' + inner + '</div>';
     }).join('');
     app.innerHTML =
       '<div class="fs-exam">' +
       '<header class="fs-bar">' +
-      '<div class="fs-wines">' + S.wines.map(function (ww, i) { return '<button class="fs-wtab' + (i === S.idx ? ' on' : '') + '" data-wine="' + i + '">Vino ' + (i + 1) + ' <span class="fs-wprog">' + wineProgress(ww) + '%</span></button>'; }).join('') + '</div>' +
+      '<div class="fs-wines">' + S.wines.map(function (ww, i) { return '<button class="btn btn--ghost fs-wtab' + (i === S.idx ? ' on' : '') + '" data-wine="' + i + '">Vino ' + (i + 1) + ' <span class="fs-wprog">' + wineProgress(ww) + '%</span></button>'; }).join('') + '</div>' +
       '<div class="fs-timer" id="fs-timer">' + mmss(S.remaining) + '</div>' +
-      '<div class="fs-bar-actions"><button class="fs-ghost" id="fs-pause">Pausar</button><button class="fs-submit" id="fs-submit">Entregar</button></div>' +
+      '<div class="fs-bar-actions"><button class="btn btn--ghost fs-ghost" id="fs-pause">Pausar</button><button class="btn fs-submit" id="fs-submit">Entregar</button></div>' +
       '</header>' +
       '<main class="fs-main">' +
       '<div class="fs-wine-id"><span class="fs-glass" data-type="' + esc(w.blind.wine_type) + '"></span><div><div class="fs-wine-k">' + esc(w.blind.display_label) + '</div><div class="fs-wine-s">Identidad oculta · descríbelo con el SAT</div></div></div>' +
       gridHtml + '<div class="fs-spacer"></div>' +
       '</main></div>' +
-      '<div class="fs-pause-ov" id="fs-pauseov" hidden><div><div class="fs-eyebrow">En pausa</div><h2 class="fs-h2">Examen en pausa</h2><p class="fs-lead">El contenido está oculto. Reanuda cuando estés listo.</p><button class="fs-cta" id="fs-resume">Reanudar</button></div></div>';
+      '<div class="fs-pause-ov" id="fs-pauseov" hidden><div><div class="fs-eyebrow">En pausa</div><h2 class="fs-h2">Examen en pausa</h2><p class="fs-lead">El contenido está oculto. Reanuda cuando estés listo.</p><button class="btn btn--shine btn--glow fs-cta" id="fs-resume">Reanudar</button></div></div>';
     bindExam(wid); updateTimer();
   }
   function bindExam(wid) {
@@ -193,7 +193,7 @@
     var avg = Math.round(S.wines.reduce(function (a, w) { return a + wineProgress(w); }, 0) / S.wines.length);
     app.innerHTML = '<div class="fs-shell"><div class="fs-pre"><div class="fs-eyebrow">Entrega</div><h1 class="fs-h1">¿Entregar el examen?</h1>' +
       '<p class="fs-lead">La entrega es <b>definitiva</b>. No podrás editar tus respuestas. Has completado un <b>' + avg + '%</b> del SAT de los dos vinos. Quedan <b>' + mmss(S.remaining) + '</b>.</p>' +
-      '<div class="fs-confirm-actions"><button class="fs-ghost" id="fs-back">Volver al examen</button><button class="fs-cta" id="fs-final">Entregar definitivamente</button></div></div></div>';
+      '<div class="fs-confirm-actions"><button class="btn btn--ghost fs-ghost" id="fs-back">Volver al examen</button><button class="btn btn--shine btn--glow fs-cta" id="fs-final">Entregar definitivamente</button></div></div></div>';
     document.getElementById('fs-back').onclick = function () { S.screen = 'exam'; S.running = true; render(); };
     document.getElementById('fs-final').onclick = function () { submit('session_completed'); };
   }
@@ -258,58 +258,34 @@
     var accuracyPct = Math.round(r.accuracy * 100);
     var winesHtml = r.perWine.map(function (p) {
       var rev = p.wine.reveal;
-      var rows = p.lines.map(function (l) { return '<div class="fs-fb"><span class="fs-fb-l">' + esc(l.label) + '</span><span class="fs-tone t-' + l.tone + '">' + ({ coincide: 'Coincide', cerca: 'Cerca', revisar: 'Revisar' }[l.tone] || l.tone) + '</span><span class="fs-fb-m">tú: ' + esc(l.your || '—') + ' · modelo: ' + esc(l.model || '—') + '</span></div>'; }).join('');
-      return '<section class="fs-card"><div class="fs-reveal"><div class="fs-eyebrow">Era…</div><h3 class="fs-reveal-name">' + esc(rev.display_name) + '</h3><div class="fs-reveal-meta">' + esc(rev.grape_varieties.join(', ')) + ' · ' + esc(rev.region) + ', ' + esc(rev.country) + '</div><div class="fs-reveal-style">' + esc(rev.wine_style) + '</div></div><div class="fs-score">' + p.correct + '/' + p.total + ' ejes en rango</div><div class="fs-fbs">' + rows + '</div></section>';
+      var rows = p.lines.map(function (l) { return '<div class="fs-fb fs-in"><span class="fs-fb-l">' + esc(l.label) + '</span><span class="fs-tone t-' + l.tone + '">' + ({ coincide: 'Coincide', cerca: 'Cerca', revisar: 'Revisar' }[l.tone] || l.tone) + '</span><span class="fs-fb-m">tú: ' + esc(l.your || '—') + ' · modelo: ' + esc(l.model || '—') + '</span></div>'; }).join('');
+      return '<section class="fs-card fs-in"><div class="fs-reveal"><div class="fs-eyebrow">Era…</div><h3 class="fs-reveal-name">' + esc(rev.display_name) + '</h3><div class="fs-reveal-meta">' + esc(rev.grape_varieties.join(', ')) + ' · ' + esc(rev.region) + ', ' + esc(rev.country) + '</div><div class="fs-reveal-style">' + esc(rev.wine_style) + '</div></div><div class="fs-score">' + p.correct + '/' + p.total + ' ejes en rango</div><div class="fs-fbs">' + rows + '</div></section>';
     }).join('');
     app.innerHTML =
       '<div class="fs-shell fs-debrief">' +
       '<div class="fs-eyebrow">Examen completado' + (S.examReason === 'time_expired' ? ' · se agotó el tiempo' : '') + '</div>' +
       '<h1 class="fs-h1">Tu resultado</h1>' +
-      '<div class="fs-result"><div class="fs-ring"><i>' + accuracyPct + '%</i></div><div><div class="fs-result-k">' + r.correct + ' de ' + r.total + ' ejes en rango</div><div class="fs-lead">' + (accuracyPct >= 55 ? 'Por encima del umbral de aprobado (55%).' : 'Por debajo del umbral de aprobado (55%). Sigue practicando.') + '</div></div></div>' +
-      (mentorMsg ? '<section class="fs-card fs-mentor"><div class="fs-eyebrow">Qué dice tu Mentor</div><div class="fs-m-title">' + esc(mentorMsg.title) + '</div><p class="fs-m-text">' + esc(mentorMsg.body) + '</p></section>' : '') +
-      (loop ? '<section class="fs-card fs-next"><div class="fs-eyebrow">Tu siguiente paso (Learning Loop)</div><div class="fs-next-p">' + esc(loop.next.label) + '</div><p class="fs-m-text">' + esc(loop.next.reason) + '</p></section>' : '') +
+      '<div class="fs-result"><svg class="fs-ring fs-in" viewBox="0 0 92 92" role="img" aria-label="Resultado: ' + accuracyPct + '%"><circle class="fs-ring-track" cx="46" cy="46" r="38"/><circle class="fs-ring-value" cx="46" cy="46" r="38" stroke-dasharray="238.8" stroke-dashoffset="238.8"/><text x="46" y="51" text-anchor="middle">' + accuracyPct + '%</text></svg><div><div class="fs-result-k">' + r.correct + ' de ' + r.total + ' ejes en rango</div><div class="fs-lead">' + (accuracyPct >= 55 ? 'Por encima del umbral de aprobado (55%).' : 'Por debajo del umbral de aprobado (55%). Sigue practicando.') + '</div></div></div>' +
+      (mentorMsg ? '<section class="fs-card fs-in fs-mentor"><div class="fs-eyebrow">Qué dice tu Mentor</div><div class="fs-m-title">' + esc(mentorMsg.title) + '</div><p class="fs-m-text">' + esc(mentorMsg.body) + '</p></section>' : '') +
+      (loop ? '<section class="fs-card fs-in fs-next"><div class="fs-eyebrow">Tu siguiente paso (Learning Loop)</div><div class="fs-next-p">' + esc(loop.next.label) + '</div><p class="fs-m-text">' + esc(loop.next.reason) + '</p></section>' : '') +
       winesHtml +
       '<div class="fs-ep-note">Tu Epistemic Profile se actualizó con esta sesión. El Dashboard, el Mentor y el Learning Loop reflejarán este examen.</div>' +
-      '<div class="fs-debrief-actions"><a class="fs-cta" href="../dashboard/">Ver mi Dashboard →</a><button class="fs-ghost" id="fs-again">Otro simulacro</button></div>' +
+      '<div class="fs-debrief-actions"><a class="btn btn--shine btn--glow fs-cta" href="../dashboard/">Ver mi Dashboard →</a><button class="btn btn--ghost fs-ghost" id="fs-again">Otro simulacro</button></div>' +
       '<div class="fs-gov">Práctica formativa · No es evaluación oficial</div></div>';
-    var again = document.getElementById('fs-again'); if (again) again.onclick = function () { reset(); render(); };
-    animateDebrief(app, accuracyPct);
-  }
-  // animateDebrief: revela el resultado del simulacro con el mismo lenguaje
-  // visual que Open Response Lab y Mentor — anillo que se llena progresivamente
-  // más mapa de "burbujas" (cada fs-fb entra en cascada según su tono) — sin
-  // tocar el texto ya existente (umbral 55% es contexto agregado legítimo,
-  // igual que en Mentor). Respeta prefers-reduced-motion.
-  function animateDebrief(root, accuracyPct) {
-    if (!root) return;
-    var reduceMotion = typeof window !== 'undefined' && window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var ring = root.querySelector('.fs-ring');
-    var cards = root.querySelectorAll('.fs-card');
-    var fbs = root.querySelectorAll('.fs-fb');
-
-    if (reduceMotion) {
-      if (ring) { ring.style.setProperty('--p', accuracyPct); ring.classList.add('fs-in'); }
-      cards.forEach(function (c) { c.classList.add('fs-in'); });
-      fbs.forEach(function (f) { f.classList.add('fs-in'); });
-      return;
-    }
-
-    if (ring) {
-      ring.classList.add('fs-in');
-      var start = null, duration = 1000;
-      function step(ts) {
-        if (!start) start = ts;
-        var t = Math.min(1, (ts - start) / duration);
-        var eased = 1 - Math.pow(1 - t, 3);
-        ring.style.setProperty('--p', (accuracyPct * eased).toFixed(1));
-        if (t < 1) requestAnimationFrame(step);
+    var ringValue = app.querySelector('.fs-ring-value');
+    if (ringValue) {
+      var finalOffset = (238.8 * (1 - accuracyPct / 100)).toFixed(1);
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        ringValue.setAttribute('stroke-dashoffset', finalOffset);
+      } else {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            ringValue.setAttribute('stroke-dashoffset', finalOffset);
+          });
+        });
       }
-      requestAnimationFrame(step);
     }
-
-    cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('fs-in'); }, 250 + i * 120); });
-    fbs.forEach(function (f, i) { setTimeout(function () { f.classList.add('fs-in'); }, 500 + i * 55); });
+    var again = document.getElementById('fs-again'); if (again) again.onclick = function () { reset(); render(); };
   }
   function init(rootEl) { app = rootEl || document.getElementById('fs-root'); reset(); render(); }
   var api = { gradeWith: grade, ordinalTone: ordinalTone, aromaTone: aromaTone, exactTone: exactTone, toneToOutcome: toneToOutcome, buildExamMetrics: buildExamMetrics, SCALES: SCALES, init: init };

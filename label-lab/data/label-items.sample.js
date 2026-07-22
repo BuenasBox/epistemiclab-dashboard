@@ -2,7 +2,7 @@
  * Label Guided — FIXTURE PROVISIONAL (no canónico)
  * Contrato: label-guided.items.v1
  *
- * ⚠ FIXTURE temporal para correr y validar el módulo. El contenido real debe
+ * Aviso: FIXTURE temporal para correr y validar el módulo. El contenido real debe
  *   provenir de un export canónico del backend (Codex) con la MISMA forma
  *   (ver ./README.md). NO es la fuente de verdad. NO editar canonical-wine-catalog/.
  *

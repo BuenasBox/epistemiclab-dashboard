@@ -1,8 +1,4 @@
-/* EP-04 Dashboard — Design System (continuo con Bottle/Label/Mentor). Sin tokens nuevos.
-   Tema (colores) en /shared/theme-wine.css, enlazado desde index.html. */
-:root{
-  --r-card:12px;--r-pill:999px;
-}
+/* EP-04 Dashboard — superficie de plataforma compartida. */
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
 .wrap{max-width:900px;margin:0 auto;padding:30px 20px 36px}
@@ -18,31 +14,34 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .src .d{width:8px;height:8px;border-radius:50%;background:var(--muted)}.src.live .d{background:var(--ok)}.src.sample .d{background:var(--warn)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--r-card);padding:18px;margin-bottom:14px}
-.eyebrow{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .card-sub{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
 .hero-card{display:flex;align-items:center;gap:18px}
-.ring{--p:0;width:84px;height:84px;flex:0 0 84px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--panel2) 0);opacity:0;transform:scale(.9)}
-.ring.dash-in{opacity:1;transform:scale(1);transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.ring{width:84px;height:84px;flex:0 0 84px;border:3px solid var(--gold);border-radius:50%;display:grid;place-items:center;background:var(--panel2);opacity:0;transform:scale(.9)}
+.ring.dash-in{animation:dashRise .5s cubic-bezier(.34,1.56,.64,1) forwards}
 .ring>i{width:66px;height:66px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-style:normal;font-weight:600;font-size:17px}
 .hero-state{font-family:var(--serif);font-size:20px;margin:2px 0 4px}
 .next-card.halt{border-color:rgba(193,72,63,.5)}
 .next-practice{font-family:var(--serif);font-size:21px;margin:2px 0 8px}
-.next-reason{font-size:13.5px;color:#e6d6e0;margin:0}
+.next-reason{font-size:13.5px;color:var(--ink);margin:0}
 .pill{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:var(--r-pill);border:1px solid var(--line);margin-left:auto}
-.pill-halt{color:var(--block);border-color:var(--block)}.pill-go{color:var(--ok);border-color:var(--ok)}
+.pill-halt{color:var(--block);border-color:var(--block)}
+.next-action{margin-left:auto;padding:8px 12px;font-size:12px}
 .weakness{font-size:16px;font-weight:600;margin-bottom:4px}
 .chip{display:inline-flex;align-items:center;padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-pill);font-size:11.5px;color:var(--muted);margin:0 6px 6px 0;opacity:0}
-.chip.dash-in{opacity:1;transition:opacity .4s ease}
+.chip.dash-in{animation:dashFade .4s ease forwards}
 .chip-crit{color:var(--block);border-color:rgba(193,72,63,.5)}
 .ind{margin-bottom:12px}
 .ind-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
 .ind-top b{color:var(--gold)}
-.ind-bar{height:7px;border-radius:var(--r-pill);background:var(--panel2);border:1px solid var(--line);overflow:hidden}
-.ind-bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--wine2),var(--gold));transition:width .9s cubic-bezier(.16,1,.3,1)}
+.ind-bar{width:100%;height:7px;border:1px solid var(--line);border-radius:var(--r-pill);overflow:hidden;background:var(--panel2);appearance:none}
+.ind-bar::-webkit-progress-bar{background:var(--panel2)}
+.ind-bar::-webkit-progress-value{background:linear-gradient(90deg,var(--cyan),var(--gold))}
+.ind-bar::-moz-progress-bar{background:linear-gradient(90deg,var(--cyan),var(--gold))}
 .timeline{display:flex;gap:6px;align-items:flex-start;position:relative}
 .timeline::before{content:"";position:absolute;left:11px;right:11px;top:11px;height:1px;background:var(--line)}
 .tl-step{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;position:relative;z-index:1;opacity:0;transform:translateY(4px)}
-.tl-step.dash-in{opacity:1;transform:translateY(0);transition:opacity .45s ease,transform .45s ease}
+.tl-step.dash-in{animation:dashRise .45s ease forwards}
 .tl-dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
 .tl-step.done .tl-dot{background:var(--ok);color:#0d2b1c;border-color:transparent}
 .tl-step.active .tl-dot{border-color:var(--gold);color:var(--gold)}
@@ -55,7 +54,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .mc-avatar{width:34px;height:34px;border-radius:50%;flex:0 0 34px;display:grid;place-items:center;font-size:15px;background:radial-gradient(circle at 35% 30%,var(--wine2),var(--wine) 75%);border:1px solid var(--gold)}
 .mc-sev{font-size:11px;font-weight:700;letter-spacing:.05em}
 .mc-title{font-weight:600;font-size:15px;margin:2px 0 4px}
-.mc-text{margin:0;font-size:13.5px;color:#e6d6e0}
+.mc-text{margin:0;font-size:13.5px;color:var(--ink)}
 .mc-basis{margin-top:8px;font-size:11px;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px}
 .m-info{border-left-color:var(--gold)}.m-info .mc-sev{color:var(--gold)}
 .m-ok{border-left-color:var(--ok)}.m-ok .mc-sev{color:var(--ok)}
@@ -65,5 +64,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .m-act{border-left-color:var(--wine2)}.m-act .mc-sev{color:#e0a7bd}
 .mentor-empty{color:var(--muted);font-size:13px}
 footer{margin-top:24px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;color:var(--muted);text-align:center}
+@keyframes dashRise{from{opacity:0;transform:translateY(4px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes dashFade{from{opacity:0}to{opacity:1}}
 @media (max-width:680px){ .grid-2{grid-template-columns:1fr} .wrap{padding:20px 16px} .tl-lbl{font-size:9.5px} }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

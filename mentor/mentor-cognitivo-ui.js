@@ -65,7 +65,7 @@
     var text = JSON.stringify(result || {}).toLowerCase();
     var found = FORBIDDEN.filter(function (word) { return text.indexOf(word) !== -1; });
     if (found.length > 0) {
-      console.warn('⚠️ Governance check (mentor-cognitivo): forbidden words detected:', found);
+      console.warn('Governance check (mentor-cognitivo): forbidden words detected:', found);
       return false;
     }
     return true;
@@ -94,10 +94,10 @@
     return DEFAULT_COMP_ORDER;
   }
 
-  var BAND_TONE = {
-    'Construyendo': 'var(--warn)',
-    'En camino': 'var(--gold)',
-    'Listo': 'var(--ok)'
+  var BAND_CLASS = {
+    'Construyendo': 'mco-tone-building',
+    'En camino': 'mco-tone-progress',
+    'Listo': 'mco-tone-ready'
   };
 
   /**
@@ -110,6 +110,26 @@
    * respecto al examen" — no una nota sobre una respuesta puntual. Ver la
    * nota de validateGovernance más arriba.
    */
+  function triggerMcoReveal(container, ringOffset, reduceMotion) {
+    if (!container) return;
+    var ring = container.querySelector('.mco-ring');
+    var bubbles = container.querySelectorAll('.mco-bubble');
+    function reveal() {
+      if (ring) ring.setAttribute('stroke-dashoffset', String(ringOffset));
+      bubbles.forEach(function (bubble, index) {
+        bubble.style.setProperty('--i', String(index));
+      });
+      container.classList.add('mco-revealed');
+    }
+    if (reduceMotion) {
+      reveal();
+    } else {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(reveal);
+      });
+    }
+  }
+
   function renderReveal(container, result) {
     if (!container) return;
     validateGovernance(result);
@@ -120,12 +140,10 @@
     var competencies = summary.competencies || {};
     var msgs = (result && result.messages) || [];
 
-    var reduceMotion = typeof window !== 'undefined' && window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     var hasReading = readiness != null && band != null;
     var pct = hasReading ? Math.round(readiness * 100) : 0;
-    var tone = hasReading ? (BAND_TONE[band] || 'var(--gold)') : 'var(--muted)';
+    var toneClass = hasReading ? (BAND_CLASS[band] || 'mco-tone-progress') : 'mco-tone-neutral';
+    var ringOffset = 452.4 - 452.4 * (hasReading ? readiness : 0);
     var bandLabel = hasReading ? band : 'Sin lecturas aún';
 
     // Titular: reutiliza el mensaje de síntesis ya redactado por
@@ -159,12 +177,12 @@
       '<div class="mentor-empty">El Mentor no tiene observaciones con la evidencia actual.</div>';
 
     container.innerHTML =
-      '<div class="mco-reveal' + (reduceMotion ? ' mco-no-motion' : '') + '">' +
+      '<div class="mco-reveal ' + toneClass + '">' +
         srList +
         '<div class="mco-ring-wrap" aria-hidden="true">' +
           '<svg viewBox="0 0 168 168" class="mco-ring-svg">' +
             '<circle cx="84" cy="84" r="72" fill="none" stroke="var(--panel2)" stroke-width="10"/>' +
-            '<circle class="mco-ring" cx="84" cy="84" r="72" fill="none" stroke="' + tone + '" ' +
+            '<circle class="mco-ring" cx="84" cy="84" r="72" fill="none" stroke="currentColor" ' +
               'stroke-width="10" stroke-linecap="round" stroke-dasharray="452.4" stroke-dashoffset="452.4"/>' +
           '</svg>' +
           '<div class="mco-ring-label">' +
@@ -177,32 +195,8 @@
         '<div class="mco-cards">' + cardsHtml + '</div>' +
       '</div>';
 
-    var root = container.querySelector('.mco-reveal');
-    if (!root) return;
+    triggerMcoReveal(container, ringOffset, reduceMotion);
 
-    var ringWrapNow = root.querySelector('.mco-ring-wrap');
-    if (ringWrapNow) ringWrapNow.style.color = tone;
-    var bandNow = root.querySelector('.mco-band');
-    if (bandNow) bandNow.style.color = tone;
-
-    if (reduceMotion) {
-      var ringNow = root.querySelector('.mco-ring');
-      if (ringNow) ringNow.setAttribute('stroke-dashoffset', String(452.4 - 452.4 * (hasReading ? readiness : 0)));
-      root.querySelectorAll('.mco-bubble').forEach(function (el) { el.classList.add('mco-in'); });
-      root.classList.add('mco-revealed');
-      return;
-    }
-
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        var ring = root.querySelector('.mco-ring');
-        if (ring) ring.setAttribute('stroke-dashoffset', String(452.4 - 452.4 * (hasReading ? readiness : 0)));
-        root.classList.add('mco-revealed');
-        root.querySelectorAll('.mco-bubble').forEach(function (el, i) {
-          setTimeout(function () { el.classList.add('mco-in'); }, 650 + i * 90);
-        });
-      });
-    });
   }
 
   return {

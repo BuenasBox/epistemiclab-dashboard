@@ -177,11 +177,6 @@ const STATE = {
 // -----------------------------------------------------------------------
 function currentQ() { return QUESTIONS[STATE.questionIndex]; }
 
-function setProgress(pct) {
-  const progressBar = document.getElementById('progressBar');
-  if (progressBar) progressBar.style.width = pct + '%';
-}
-
 function escapeHtml(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
@@ -222,13 +217,13 @@ function updateStagePips() {
 
 // ---- Orb ----
 const ORB_CONFIGS = {
-  prepare: { speed:'orb-calm',   color:'#3fa9f5', label:'En espera',     reading:'Preparando sesión...' },
-  read:    { speed:'orb-calm',   color:'#2ec27e', label:'Activo',         reading:'Observando lectura...' },
-  commit:  { speed:'orb-active', color:'#c9a84c', label:'Atento',         reading:'Registrando razonamiento...' },
-  cross:   { speed:'orb-intense',color:'#f6b73c', label:'Intenso',        reading:'Analizando decisión...' },
+  prepare: { speed:'orb-calm',   color:'var(--cyan)', label:'En espera',     reading:'Preparando sesión...' },
+  read:    { speed:'orb-calm',   color:'var(--ok)', label:'Activo',         reading:'Observando lectura...' },
+  commit:  { speed:'orb-active', color:'var(--gold)', label:'Atento',         reading:'Registrando razonamiento...' },
+  cross:   { speed:'orb-intense',color:'var(--warn)', label:'Intenso',        reading:'Analizando decisión...' },
   reveal:  { speed:'orb-active', color:'#8b7cf6', label:'Procesando',     reading:'Evaluando respuesta...' },
-  train:   { speed:'orb-calm',   color:'#3fa9f5', label:'Entrenando',     reading:'Reforzando concepto...' },
-  map:     { speed:'orb-calm',   color:'#c9a84c', label:'Mapa listo',     reading:'Generando huella cognitiva...' }
+  train:   { speed:'orb-calm',   color:'var(--cyan)', label:'Entrenando',     reading:'Reforzando concepto...' },
+  map:     { speed:'orb-calm',   color:'var(--gold)', label:'Mapa listo',     reading:'Generando huella cognitiva...' }
 };
 
 function setOrbStage(stage) {
@@ -266,10 +261,10 @@ function setConfGauge(conf) {
   const txt = document.getElementById('confGaugeText');
   if (!arc || !txt) return;
   const map = {
-    seguro:     { pct:1.0, color:'#2ec27e', label:'100%' },
-    bastante:   { pct:0.7, color:'#f6b73c', label:'70%' },
-    dudas:      { pct:0.4, color:'#c9a84c', label:'40%' },
-    adivinando: { pct:0.15,color:'#e45c5c', label:'15%' }
+    seguro:     { pct:1.0, color:'var(--ok)', label:'100%' },
+    bastante:   { pct:0.7, color:'var(--warn)', label:'70%' },
+    dudas:      { pct:0.4, color:'var(--gold)', label:'40%' },
+    adivinando: { pct:0.15,color:'var(--block)', label:'15%' }
   };
   const d = map[conf];
   if (!d) return;
@@ -339,9 +334,9 @@ function startTimer(seconds, onTick, onEnd) {
 }
 
 function timerColor(pct) {
-  if (pct > 0.55) return '#2ec27e';
-  if (pct > 0.25) return '#f6b73c';
-  return '#e45c5c';
+  if (pct > 0.55) return 'var(--ok)';
+  if (pct > 0.25) return 'var(--warn)';
+  return 'var(--block)';
 }
 
 // ---- Pressure / Mentor ----
@@ -372,8 +367,6 @@ function render() {
     sel.hidden = !isAvailable;
     sel.setAttribute('aria-hidden', String(!isAvailable));
   })();
-  const stages = ['prepare','read','commit','cross','reveal','train','map'];
-  setProgress(Math.round((stages.indexOf(STATE.stage) / 6) * 100));
   ({ prepare:renderPrepare, read:renderRead, commit:renderCommit,
      cross:renderCross, reveal:renderReveal, train:renderTrain, map:renderMap
   })[STATE.stage]?.();
@@ -428,7 +421,7 @@ function renderPrepare() {
         </div>
       </div>
 
-      <button class="commit-btn" onclick="goToRead()">
+      <button class="btn btn--shine btn--glow commit-btn" onclick="goToRead()">
         Entrar en modo examen →
       </button>
     </div>
@@ -456,7 +449,7 @@ function renderRead() {
 
       <div class="read-hint">Lee la pregunta con atención. Las opciones aparecerán cuando estés listo.</div>
 
-      <button class="commit-btn" id="readyBtn" onclick="goToCommit()">
+      <button class="btn btn--shine btn--glow commit-btn" id="readyBtn" onclick="goToCommit()">
         Estoy listo para responder →
       </button>
     </div>
@@ -494,7 +487,7 @@ function renderCommit() {
 
       <div class="options-list" id="optionsList">
         ${q.options.map((o, i) => `
-          <button class="option-btn" id="opt${i}" onclick="selectOption(${i})">
+          <button class="btn btn--ghost option-btn" id="opt${i}" onclick="selectOption(${i})">
             <span class="opt-letter">${String.fromCharCode(65+i)}</span>
             <span>${escapeHtml(o)}</span>
           </button>
@@ -506,24 +499,24 @@ function renderCommit() {
       <div class="confidence-section">
         <div class="conf-label">Calibración de confianza — selecciona antes de confirmar</div>
         <div class="conf-options">
-          <button class="conf-btn" id="conf-seguro" onclick="selectConf('seguro')">Seguro/a</button>
-          <button class="conf-btn" id="conf-bastante" onclick="selectConf('bastante')">Bastante seguro/a</button>
-          <button class="conf-btn" id="conf-dudas" onclick="selectConf('dudas')">Tengo dudas</button>
-          <button class="conf-btn" id="conf-adivinando" onclick="selectConf('adivinando')">Estoy adivinando</button>
+          <button class="btn btn--ghost conf-btn" id="conf-seguro" onclick="selectConf('seguro')">Seguro/a</button>
+          <button class="btn btn--ghost conf-btn" id="conf-bastante" onclick="selectConf('bastante')">Bastante seguro/a</button>
+          <button class="btn btn--ghost conf-btn" id="conf-dudas" onclick="selectConf('dudas')">Tengo dudas</button>
+          <button class="btn btn--ghost conf-btn" id="conf-adivinando" onclick="selectConf('adivinando')">Estoy adivinando</button>
         </div>
       </div>
 
       <div class="microtag-section">
         <div class="microtag-label">Razonamiento (opcional)</div>
         <div class="microtag-options">
-          <button class="microtag-btn" id="tag-eliminacion" onclick="selectTag('eliminacion')">Por eliminación</button>
-          <button class="microtag-btn" id="tag-libro" onclick="selectTag('libro')">Lo recuerdo del libro</button>
-          <button class="microtag-btn" id="tag-causal" onclick="selectTag('causal')">Razonamiento causal</button>
-          <button class="microtag-btn" id="tag-instinto" onclick="selectTag('instinto')">Instinto</button>
+          <button class="btn btn--ghost microtag-btn" id="tag-eliminacion" onclick="selectTag('eliminacion')">Por eliminación</button>
+          <button class="btn btn--ghost microtag-btn" id="tag-libro" onclick="selectTag('libro')">Lo recuerdo del libro</button>
+          <button class="btn btn--ghost microtag-btn" id="tag-causal" onclick="selectTag('causal')">Razonamiento causal</button>
+          <button class="btn btn--ghost microtag-btn" id="tag-instinto" onclick="selectTag('instinto')">Instinto</button>
         </div>
       </div>
 
-      <button class="commit-btn" id="commitBtn" onclick="commitAnswer()" disabled>
+      <button class="btn btn--shine btn--glow commit-btn" id="commitBtn" onclick="commitAnswer()" disabled>
         <span class="lock-animation" id="lockIcon"><span class="ep-icon ep-icon--unlock" aria-hidden="true"></span></span>
         Confirmar respuesta
       </button>
@@ -574,10 +567,11 @@ function commitAnswer() {
   if (btn) {
     btn.classList.add('locked','locking');
     const icon = document.getElementById('lockIcon');
-    if (icon) setTimeout(() => { icon.innerHTML = '<span class="ep-icon ep-icon--lock" aria-hidden="true"></span>'; }, 200);
+    if (icon) icon.innerHTML = '<span class="ep-icon ep-icon--lock" aria-hidden="true"></span>';
     btn.disabled = true;
   }
-  setTimeout(() => { STATE.stage = 'cross'; render(); }, 500);
+  STATE.stage = 'cross';
+  render();
 }
 
 // -----------------------------------------------------------------------
@@ -614,8 +608,8 @@ function renderCross() {
       </div>
 
       <div class="btn-row cross-actions">
-        <button class="commit-btn" onclick="confirmCross()"><span class="ep-icon ep-icon--lock" aria-hidden="true"></span> Confirmo mi respuesta</button>
-        <button class="btn-secondary" onclick="changeCross()">↩ Cambiar respuesta</button>
+        <button class="btn btn--shine btn--glow commit-btn" onclick="confirmCross()"><span class="ep-icon ep-icon--lock" aria-hidden="true"></span> Confirmo mi respuesta</button>
+        <button class="btn btn--ghost" onclick="changeCross()">Cambiar respuesta</button>
       </div>
 
       <div id="changeOptionsArea" class="hidden change-options-area">
@@ -624,13 +618,13 @@ function renderCross() {
         </div>
         <div class="options-list" id="changeOptionsList">
           ${q.options.map((o, i) => `
-            <button class="option-btn ${i === STATE.selectedOption ? 'selected' : ''}" id="chopt${i}" onclick="reSelectOption(${i})">
+            <button class="btn btn--ghost option-btn ${i === STATE.selectedOption ? 'selected' : ''}" id="chopt${i}" onclick="reSelectOption(${i})">
               <span class="opt-letter">${String.fromCharCode(65+i)}</span>
               <span>${escapeHtml(o)}</span>
             </button>
           `).join('')}
         </div>
-        <button class="commit-btn change-options-submit" onclick="hardLock()">
+        <button class="btn btn--shine btn--glow commit-btn change-options-submit" onclick="hardLock()">
           <span class="ep-icon ep-icon--lock" aria-hidden="true"></span> Confirmar nueva respuesta (definitivo)
         </button>
       </div>
@@ -732,57 +726,41 @@ async function goToReveal() {
 // como golpe seco, sino una revelación en cascada que además señala dónde
 // reforzar. Respeta prefers-reduced-motion.
 // -----------------------------------------------------------------------
-function prefersReducedMotion() {
-  return typeof window !== 'undefined' && window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-function staggerIn(nodes, startDelay, gap) {
-  nodes.forEach(function (el, i) { setTimeout(function () { el.classList.add('rv-in'); }, startDelay + i * gap); });
-}
-function animateRingTo(el, targetPct, duration) {
-  if (!el) return;
-  var start = null;
-  function step(ts) {
-    if (!start) start = ts;
-    var t = Math.min(1, (ts - start) / duration);
-    var eased = 1 - Math.pow(1 - t, 3);
-    el.style.setProperty('--p', (targetPct * eased).toFixed(1));
-    if (t < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
 function animateResultReveal() {
   var root = document.getElementById('mainContent');
   if (!root) return;
   var badge = root.querySelector('.correctness-badge');
   var chips = root.querySelectorAll('.reveal-metrics .metric-chip');
   var nodes = root.querySelectorAll('.causal-node');
-  if (prefersReducedMotion()) {
+  function reveal() {
     if (badge) badge.classList.add('rv-in');
-    chips.forEach(function (c) { c.classList.add('rv-in'); });
-    nodes.forEach(function (n) { n.classList.add('rv-in'); });
-    return;
+    chips.forEach(function (c, idx) { c.style.setProperty('--i', String(idx)); c.classList.add('rv-in'); });
+    nodes.forEach(function (n, idx) { n.style.setProperty('--i', String(idx)); n.classList.add('rv-in'); });
   }
-  if (badge) setTimeout(function () { badge.classList.add('rv-in'); }, 60);
-  staggerIn(chips, 220, 90);
-  staggerIn(nodes, 220 + chips.length * 90 + 150, 140);
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    reveal();
+  } else {
+    requestAnimationFrame(function () { requestAnimationFrame(reveal); });
+  }
 }
 function animateMapReveal(accuracy) {
   var root = document.getElementById('mainContent');
   if (!root) return;
   if (window.LI) LI.applyProgressStyles(root);
-  var ring = document.getElementById('mapRing');
   var cells = root.querySelectorAll('.stat-cell');
   var chips = root.querySelectorAll('.metric-chip');
-  if (prefersReducedMotion()) {
-    if (ring) { ring.style.setProperty('--p', accuracy); ring.classList.add('rv-in'); }
-    cells.forEach(function (c) { c.classList.add('rv-in'); });
-    chips.forEach(function (c) { c.classList.add('rv-in'); });
-    return;
+  var ringValue = root.querySelector('.stat-ring-value');
+  var finalOffset = 263.9 * (1 - accuracy / 100);
+  function reveal() {
+    if (ringValue) ringValue.setAttribute('stroke-dashoffset', String(finalOffset));
+    cells.forEach(function (c, idx) { c.style.setProperty('--i', String(idx)); c.classList.add('rv-in'); });
+    chips.forEach(function (c, idx) { c.style.setProperty('--i', String(idx)); c.classList.add('rv-in'); });
   }
-  if (ring) { ring.classList.add('rv-in'); animateRingTo(ring, accuracy, 900); }
-  staggerIn(cells, 180, 90);
-  staggerIn(chips, 180 + cells.length * 90 + 150, 70);
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    reveal();
+  } else {
+    requestAnimationFrame(function () { requestAnimationFrame(reveal); });
+  }
 }
 function renderReveal() {
   const q = currentQ();
@@ -834,7 +812,7 @@ function renderReveal() {
         <div class="reveal-options-label">Opciones</div>
         <div class="options-list">
           ${q.options.map((o, i) => `
-            <button class="option-btn ${
+            <button class="btn btn--ghost option-btn ${
               i === correctIdx ? 'correct-reveal' :
               (i === STATE.selectedOption && !isCorrect) ? 'wrong-reveal' : 'neutral-reveal'
             }" disabled>
@@ -889,7 +867,7 @@ function renderReveal() {
         <p>${escapeHtml(feedback)}</p>
       </div>
 
-      <button class="nav-btn primary-nav" onclick="goToTrain()">${
+      <button class="btn btn--shine btn--glow nav-btn primary-nav" onclick="goToTrain()">${
         q.micro_drill
           ? 'Continuar → Micro-entrenamiento SBA'
           : (STATE.questionIndex + 1 < QUESTIONS.length ? 'Siguiente pregunta →' : 'Ver Mapa Cognitivo →')
@@ -920,21 +898,21 @@ function renderTrain() {
 
         <div class="drill-options" id="drillOptions">
           ${drill.options.map((o, i) => `
-            <button class="drill-opt-btn" id="dopt${i}" onclick="selectDrillOption(${i})">
+            <button class="btn btn--ghost drill-opt-btn" id="dopt${i}" onclick="selectDrillOption(${i})">
               <span class="drill-opt-letter">${String.fromCharCode(65+i)}</span>
               <span>${escapeHtml(o)}</span>
             </button>
           `).join('')}
         </div>
 
-        <button class="commit-btn drill-submit-btn" id="drillSubmitBtn" onclick="submitDrill()" disabled>
+        <button class="btn btn--shine btn--glow commit-btn drill-submit-btn" id="drillSubmitBtn" onclick="submitDrill()" disabled>
           Verificar respuesta
         </button>
 
         <div id="drillExplanation" class="drill-explanation"></div>
       </div>
 
-      <button class="nav-btn" id="nextQBtn" hidden onclick="nextQuestion()">
+      <button class="btn btn--ghost nav-btn" id="nextQBtn" hidden onclick="nextQuestion()">
         ${STATE.questionIndex + 1 < QUESTIONS.length ? 'Siguiente pregunta →' : 'Ver Mapa Cognitivo →'}
       </button>
     </div>
@@ -1031,7 +1009,7 @@ function renderMap() {
     <div class="fade-in">
       <div class="section-label section-label--map">Mapa Cognitivo · Sesión completada</div>
 
-      <div class="stat-ring-wrap"><div class="stat-ring" id="mapRing"><i>${accuracy}%</i></div></div>
+      <div class="stat-ring-wrap"><svg class="stat-ring rv-in" viewBox="0 0 100 100" role="img" aria-label="Precisión global: ${accuracy}%"><circle class="stat-ring-track" cx="50" cy="50" r="42"/><circle class="stat-ring-value" cx="50" cy="50" r="42" stroke-dasharray="263.9" stroke-dashoffset="263.9"/><text x="50" y="55" text-anchor="middle">${accuracy}%</text></svg></div>
 
       <div class="session-stats-grid">
         <div class="stat-cell">
@@ -1082,8 +1060,8 @@ function renderMap() {
         `).join('')}
       </div>
 
-      <button class="nav-btn primary-nav" onclick="restartSession()">↺ Nueva sesión de entrenamiento</button>
-      <button class="nav-btn" onclick="restartSession()">↩ Repasar desde pregunta 1</button>
+      <button class="btn btn--shine btn--glow nav-btn primary-nav" onclick="restartSession()">Nueva sesión de entrenamiento</button>
+      <button class="btn btn--ghost nav-btn" onclick="restartSession()">Repasar desde pregunta 1</button>
 
       <div class="session-info-panel session-info-panel--progress">
         <div class="session-info-title">
@@ -1135,9 +1113,9 @@ function buildRadarSVG(data, labels) {
   });
   data.forEach((d,i) => {
     const {x,y}=toCart((360/n)*i,(d/100)*r);
-    dots+=`<circle cx="${x}" cy="${y}" r="3.5" fill="#c9a84c"/>`;
+    dots+=`<circle cx="${x}" cy="${y}" r="3.5" fill="var(--gold)"/>`;
   });
-  return `<svg viewBox="0 0 300 300" width="280" height="280" xmlns="http://www.w3.org/2000/svg">${gridLines}${axes}<polygon points="${dataPts}" fill="#c9a84c" fill-opacity="0.12" stroke="#c9a84c" stroke-width="1.5"/>${dots}${lbls}<circle cx="${cx}" cy="${cy}" r="3" fill="#3a3a4a"/></svg>`;
+  return `<svg viewBox="0 0 300 300" width="280" height="280" xmlns="http://www.w3.org/2000/svg">${gridLines}${axes}<polygon points="${dataPts}" fill="var(--gold)" fill-opacity="0.12" stroke="var(--gold)" stroke-width="1.5"/>${dots}${lbls}<circle cx="${cx}" cy="${cy}" r="3" fill="#3a3a4a"/></svg>`;
 }
 
 // -----------------------------------------------------------------------

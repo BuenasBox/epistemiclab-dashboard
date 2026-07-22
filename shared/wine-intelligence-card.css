@@ -78,7 +78,7 @@
 /* Barra de progreso */
 .wic-prog{ height:9px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; }
 .wic-prog > i{ display:block; height:100%; width:0; border-radius:999px;
-  background:linear-gradient(90deg,var(--wic-wine2),var(--wic-gold)); transition:width .5s ease; }
+  background:linear-gradient(90deg,var(--wic-wine2),var(--wic-gold)); }
 .wic-prog-meta{ display:flex; justify-content:space-between; font-size:12px; color:var(--wic-muted); margin:6px 0 2px; }
 
 /* Estado SAT (fases) */
@@ -92,7 +92,7 @@
   border-top:1px solid var(--wic-line); padding-top:12px; }
 
 /* Microinteracciones */
-.wic-sec{ transition:transform .15s ease, border-color .15s ease; }
+.wic-sec{ transition:transform .15s ease; }
 .wic-sec:hover{ transform:translateY(-2px); border-color:rgba(201,162,39,.3); }
 
 @media (prefers-reduced-motion: reduce){

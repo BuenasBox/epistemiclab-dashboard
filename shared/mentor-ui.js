@@ -717,7 +717,7 @@
     }
 
     const tabs = paneDefs.map(function (p, i) {
-      return `<button type="button" class="mentor-tab${i === 0 ? ' active' : ''}" data-mentor-tab="${p.key}" onclick="mentorShowPane(this,'${p.key}')" title="${escapeHtml(p.title)}"><span class="ep-icon ep-icon--${p.icon}" aria-hidden="true"></span></button>`;
+      return `<button type="button" class="btn btn--ghost mentor-tab${i === 0 ? ' active' : ''}" data-mentor-tab="${p.key}" onclick="mentorShowPane(this,'${p.key}')" title="${escapeHtml(p.title)}"><span class="ep-icon ep-icon--${p.icon}" aria-hidden="true"></span><span class="ep-sr-only">${escapeHtml(p.title)}</span></button>`;
     }).join('');
 
     const panes = paneDefs.map(function (p, i) {
@@ -729,7 +729,7 @@
       <div class="mentor-compact" data-mentor-compact>
         <div class="mentor-compact-tabs">${tabs}</div>
         <div class="mentor-compact-body">${panes}</div>
-        <button type="button" class="mentor-done-btn" onclick="mentorFinishReview()"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Listo, a responder</button>
+        <button type="button" class="btn btn--shine mentor-done-btn" onclick="mentorFinishReview()"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Listo, a responder</button>
       </div>
     `;
 

@@ -6,6 +6,8 @@
   <title>Planes de acceso · EpistemicLab</title>
   <link rel="stylesheet" href="/platform-nav.css">
   <link rel="stylesheet" href="/shared/epistemic-icons.css">
+  <link rel="stylesheet" href="/shared/theme-platform.css">
+  <link rel="stylesheet" href="/shared/ui-buttons.css">
   <link rel="stylesheet" href="./upgrade.css?v=20260615-codes4">
   <script src="../shared/session-store.js"></script>
   <script src="../shared/supabase-public-config.js"></script>
@@ -38,12 +40,12 @@
     <section class="plan-grid" data-plan-grid aria-label="Planes disponibles">
       <article class="plan-card">
         <h2>Demo</h2>
-        <a class="plan-card__cta" href="/login/">Iniciar sesión</a>
+        <a class="btn btn--ghost plan-card__cta" href="/login/">Iniciar sesión</a>
       </article>
       <article class="plan-card">
         <h2>Premium</h2>
         <button
-          class="plan-card__cta"
+          class="btn btn--ghost plan-card__cta"
           type="button"
           data-upgrade-request
           data-requested-plan="premium"
@@ -54,7 +56,7 @@
       <article class="plan-card">
         <h2>Acceso Completo</h2>
         <button
-          class="plan-card__cta"
+          class="btn btn--shine btn--glow plan-card__cta"
           type="button"
           data-upgrade-request
           data-requested-plan="full_access"
@@ -83,7 +85,7 @@
             required
           >
         </label>
-        <button type="submit">Activar acceso</button>
+        <button class="btn btn--shine btn--glow" type="submit">Activar acceso</button>
       </form>
     </section>
   </main>
@@ -104,11 +106,11 @@
         La solicitud no pudo guardarse. Inténtalo nuevamente.
       </p>
       <div class="upgrade-modal__actions">
-        <button type="button" data-upgrade-modal-close>Entendido</button>
-        <a href="/login/" data-upgrade-modal-login hidden>
+        <button class="btn btn--shine" type="button" data-upgrade-modal-close>Entendido</button>
+        <a class="btn btn--ghost" href="/login/" data-upgrade-modal-login hidden>
           Iniciar sesión
         </a>
-        <a href="/profile/" data-upgrade-modal-profile hidden>
+        <a class="btn btn--ghost" href="/profile/" data-upgrade-modal-profile hidden>
           Ir a mi perfil
         </a>
       </div>

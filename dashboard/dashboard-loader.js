@@ -31,7 +31,7 @@
     card.innerHTML =
       '<div class="eyebrow">No pudimos cargar tu progreso</div>' +
       '<p class="muted small">Intenta de nuevo.</p>' +
-      '<button type="button" class="pill pill-go" id="dashboard-retry">Reintentar</button>';
+      '<button type="button" class="btn btn--shine btn--glow" id="dashboard-retry">Reintentar</button>';
     root.insertBefore(card, root.firstChild);
     var retry = card.querySelector('#dashboard-retry');
     if (retry) retry.addEventListener('click', function () {

@@ -78,28 +78,28 @@
     if (!rootEl) return;
     var failedHtml = plan.whatFailed.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('');
     var evHtml = plan.evidenceToImprove.length
-      ? plan.evidenceToImprove.map(function (e) { return '<div class="ar-ev"><span class="ar-ev-l">' + esc(e.label) + '</span><span class="ar-ev-v">' + (e.now == null ? '—' : e.now + '%') + ' → ' + e.target + '%</span></div>'; }).join('')
+      ? plan.evidenceToImprove.map(function (e) { return '<div class="ar-ev ar-in"><span class="ar-ev-l">' + esc(e.label) + '</span><span class="ar-ev-v">' + (e.now == null ? '—' : e.now + '%') + ' → ' + e.target + '%</span></div>'; }).join('')
       : '<div class="muted small">Tus métricas están en rango. Mantén el ritmo.</div>';
     var gate = plan.simulationGate || {};
     rootEl.innerHTML =
-      '<section class="ar-card ar-headline' + (plan.halt ? ' halt' : '') + '">' +
+      '<section class="ar-card ar-in ar-headline' + (plan.halt ? ' halt' : '') + '">' +
         '<div class="eyebrow">Qué hacer ahora</div>' +
         '<div class="ar-practice">' + esc(plan.practiceNow.label) + '</div>' +
         '<p class="ar-reason">' + esc(plan.practiceNow.reason) + '</p>' +
-        '<a class="ar-cta" href="' + esc(practiceHref(plan.practiceNow.practice)) + '">Empezar ahora →</a>' +
+        '<a class="btn btn--shine btn--glow ar-cta" href="' + esc(practiceHref(plan.practiceNow.practice)) + '">Empezar ahora →</a>' +
       '</section>' +
-      '<section class="ar-card mentor-mount" id="arMentor"></section>' +
+      '<section class="ar-card ar-in mentor-mount" id="arMentor"></section>' +
       '<div class="ar-grid">' +
-        '<section class="ar-card"><div class="eyebrow">Qué falló</div><ul class="ar-list">' + failedHtml + '</ul></section>' +
-        '<section class="ar-card"><div class="eyebrow">Corrige primero</div><div class="ar-mis">' + esc(plan.misconceptionFirst) + '</div>' +
+        '<section class="ar-card ar-in"><div class="eyebrow">Qué falló</div><ul class="ar-list">' + failedHtml + '</ul></section>' +
+        '<section class="ar-card ar-in"><div class="eyebrow">Corrige primero</div><div class="ar-mis">' + esc(plan.misconceptionFirst) + '</div>' +
           '<div class="card-sub">Habilidad que frena</div><div class="ar-skill">' + esc(plan.blockingSkill) + '</div></section>' +
       '</div>' +
-      '<section class="ar-card"><div class="eyebrow">Qué evidencia debes mejorar para avanzar</div>' + evHtml + '</section>' +
-      '<section class="ar-card ar-return"><div class="eyebrow">¿Cuándo volver a Full Simulation?</div>' +
+      '<section class="ar-card ar-in"><div class="eyebrow">Qué evidencia debes mejorar para avanzar</div>' + evHtml + '</section>' +
+      '<section class="ar-card ar-in ar-return"><div class="eyebrow">¿Cuándo volver a Full Simulation?</div>' +
         '<p class="ar-reason">' + esc(plan.returnToSimWhen) + '</p>' +
-        (gate.open ? '<a class="ar-cta" href="../full-simulation-v2/">Ir al simulacro →</a>' : '<span class="ar-locked">Aún no — primero cierra lo de arriba.</span>') +
+        (gate.open ? '<a class="btn btn--shine btn--glow ar-cta" href="../full-simulation-v2/">Ir al simulacro →</a>' : '<span class="ar-locked">Aún no — primero cierra lo de arriba.</span>') +
       '</section>' +
-      '<div class="ar-actions"><a class="ar-ghost" href="../dashboard/">Volver a Mi progreso</a></div>' +
+      '<div class="ar-actions"><a class="btn btn--ghost ar-ghost" href="../dashboard/">Volver a Mi progreso</a></div>' +
       '<div class="ar-gov">Práctica formativa · Desarrollo de razonamiento profesional en vino · Plan determinista (sin LLM)</div>';
     if (MentorCognitivoUI && plan.mentor) {
       var mount = document.getElementById('arMentor');
@@ -108,30 +108,6 @@
       MentorCognitivoUI.render(holder, { messages: [plan.mentor] });
       mount.appendChild(holder);
     }
-    animateArReveal(rootEl);
-  }
-  // animateArReveal: revela el plan de recuperación en cascada — las
-  // secciones aparecen una a una y, dentro de "Qué evidencia debes mejorar",
-  // cada métrica (now% → target%) entra por separado, dando tiempo a leer
-  // dónde reforzar en vez de volcar todo de golpe. Mismo espíritu que el
-  // resto del sistema. Respeta prefers-reduced-motion.
-  function animateArReveal(root) {
-    if (!root) return;
-    var reduce = typeof window !== 'undefined' && window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var cards = root.querySelectorAll('.ar-card');
-    var evs = root.querySelectorAll('.ar-ev');
-    var items = root.querySelectorAll('.ar-list li');
-    if (reduce) {
-      cards.forEach(function (c) { c.classList.add('ar-in'); });
-      evs.forEach(function (e) { e.classList.add('ar-in'); });
-      items.forEach(function (li) { li.classList.add('ar-in'); });
-      return;
-    }
-    cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('ar-in'); }, 60 + i * 90); });
-    items.forEach(function (li, i) { setTimeout(function () { li.classList.add('ar-in'); }, 60 + i * 70); });
-    var evStart = 60 + cards.length * 90 + 120;
-    evs.forEach(function (e, i) { setTimeout(function () { e.classList.add('ar-in'); }, evStart + i * 80); });
   }
   return { buildRecoveryPlan: buildRecoveryPlan, render: render };
 });

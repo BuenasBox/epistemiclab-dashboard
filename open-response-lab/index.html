@@ -7,11 +7,13 @@
 <title>Laboratorio de Respuesta Abierta — EpistemicLab</title>
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="/shared/epistemic-icons.css">
+<link rel="stylesheet" href="/shared/theme-platform.css">
+<link rel="stylesheet" href="/shared/ui-buttons.css">
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <link rel="stylesheet" href="./open-response-lab.css">
 <link rel="manifest" href="/manifest.json">
 <link rel="stylesheet" href="../shared/mentor-ui.css?v=20260721-1">
-<meta name="theme-color" content="#101418">
+<meta name="theme-color" content="#07090d">
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -31,17 +33,17 @@
         <p class="subtitle" data-testid="lab-subtitle">Práctica guiada de respuesta abierta · Mentoría integrada</p>
       </div>
       <div class="session-picker" role="group" aria-label="Modo de sesión">
-        <button type="button" data-session="short_practice" aria-pressed="true">Práctica corta · 1</button>
-        <button type="button" data-session="standard_practice" aria-pressed="false">Práctica estándar · 2</button>
-        <button type="button" data-session="extended_practice" aria-pressed="false">Práctica extendida · 4</button>
-        <button type="button" data-session="mock_theory_2" aria-pressed="false">Simulacro Teoría Parte 2 · 4</button>
+        <button type="button" class="btn btn--ghost" data-session="short_practice" aria-pressed="true">Práctica corta · 1</button>
+        <button type="button" class="btn btn--ghost" data-session="standard_practice" aria-pressed="false">Práctica estándar · 2</button>
+        <button type="button" class="btn btn--ghost" data-session="extended_practice" aria-pressed="false">Práctica extendida · 4</button>
+        <button type="button" class="btn btn--ghost" data-session="mock_theory_2" aria-pressed="false">Simulacro Teoría Parte 2 · 4</button>
       </div>
     </div>
 
     <div class="assistance-toolbar" data-testid="assistance-toolbar">
-      <button type="button" class="assist-btn" data-assist-panel="mentor"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span> Mentor</button>
-      <button type="button" class="assist-btn" data-assist-panel="concepts"><span class="ep-icon ep-icon--theory-assessment" aria-hidden="true"></span> Conceptos</button>
-      <button type="button" class="assist-btn" data-assist-panel="checklist"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Checklist</button>
+      <button type="button" class="btn btn--ghost assist-btn" data-assist-panel="mentor"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span> Mentor</button>
+      <button type="button" class="btn btn--ghost assist-btn" data-assist-panel="concepts"><span class="ep-icon ep-icon--theory-assessment" aria-hidden="true"></span> Conceptos</button>
+      <button type="button" class="btn btn--ghost assist-btn" data-assist-panel="checklist"><span class="ep-icon ep-icon--success" aria-hidden="true"></span> Checklist</button>
     </div>
 
     <section class="question-panel" aria-live="polite">
@@ -57,10 +59,10 @@
       <label for="answer">Respuesta libre</label>
       <textarea id="answer" data-testid="answer-input" autocomplete="off"></textarea>
       <div class="actions">
-        <button type="button" class="primary" id="submit-answer" data-testid="submit-answer">Revisar respuesta</button>
-        <button type="button" id="next-question" data-testid="next-question" hidden>Siguiente pregunta</button>
-        <button type="button" id="finish-session" data-testid="finish-session">Finalizar sesión</button>
-        <button type="button" class="danger" id="restart-session" data-testid="restart-session">Reiniciar sesión</button>
+        <button type="button" class="btn btn--shine btn--glow" id="submit-answer" data-testid="submit-answer">Revisar respuesta</button>
+        <button type="button" class="btn btn--ghost" id="next-question" data-testid="next-question" hidden>Siguiente pregunta</button>
+        <button type="button" class="btn btn--ghost" id="finish-session" data-testid="finish-session">Finalizar sesión</button>
+        <button type="button" class="btn btn--ghost danger" id="restart-session" data-testid="restart-session">Reiniciar sesión</button>
       </div>
 
       <section class="feedback" data-testid="feedback-panel" aria-live="polite" hidden>
@@ -95,7 +97,7 @@
     <div class="assist-drawer" data-testid="assist-drawer" hidden>
       <div class="drawer-header">
         <h2 class="drawer-title" data-testid="drawer-title">Mentoría</h2>
-        <button type="button" class="drawer-close" data-testid="drawer-close" aria-label="Cerrar"><span class="ep-icon ep-icon--close" aria-hidden="true"></span></button>
+        <button type="button" class="btn btn--ghost drawer-close" data-testid="drawer-close" aria-label="Cerrar"><span class="ep-icon ep-icon--close" aria-hidden="true"></span><span class="ep-sr-only">Cerrar</span></button>
       </div>
       <div class="drawer-content">
         <div class="drawer-panel" id="mentor-panel" data-testid="mentor-panel"><div data-testid="verb-coach"></div></div>
@@ -417,7 +419,7 @@
   if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
   if (overlay) overlay.addEventListener('click', closeDrawer);
 
-  // The "✓ Listo, a responder" button inside the compact Mentor popover
+  // The "Listo, a responder" button inside the compact Mentor popover
   // (rendered by MentorUI.renderMentorCompact) calls this global hook when
   // clicked. Here it closes the drawer and returns focus to the answer box,
   // so reading a hint flows straight back into writing the response.
@@ -467,7 +469,7 @@
     els.feedback.hidden = !(itemFeedback && state.showingFeedback);
     els.completion.hidden = !state.completed;
     if (els.nextRoute && state.completed && !els.nextRoute.childElementCount) {
-      els.nextRoute.innerHTML = '<button type="button" class="primary" onclick="window.location.href=\'/dashboard/\'">Ir a mi Dashboard</button>';
+      els.nextRoute.innerHTML = '<button type="button" class="btn btn--shine btn--glow" onclick="window.location.href=\'/dashboard/\'">Ir a mi Dashboard</button>';
     }
     els.localState.textContent = `${Object.keys(state.answers).length} respuesta(s) guardada(s) localmente.`;
     document.getElementById("submit-answer").hidden = state.showingFeedback;

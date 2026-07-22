@@ -6,6 +6,8 @@
 <title>Evaluación Teórica (Selección Única) — EpistemicLab</title>
 <link rel="stylesheet" href="/platform-nav.css">
 <link rel="stylesheet" href="/shared/epistemic-icons.css">
+<link rel="stylesheet" href="/shared/theme-platform.css">
+<link rel="stylesheet" href="/shared/ui-buttons.css">
 <link rel="stylesheet" href="../shared/upgrade-gate.css">
 <link rel="stylesheet" href="./diagnostic-sba.css?v=20260717-2">
 <script src="../shared/session-store.js" defer></script>
@@ -24,7 +26,7 @@
 <script src="../adaptive-session/learner_intelligence.js" defer></script>
 <script src="../shared/learning-sync.js" defer></script>
 <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0f1115">
+<meta name="theme-color" content="#07090d">
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
 <link rel="icon" href="/icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -42,19 +44,19 @@
     <div class="mode-card-title">Selecciona modo</div>
     <div class="mode-card-sub">670 preguntas de entrenamiento disponibles</div>
     <div class="mode-buttons">
-      <button class="mode-btn" onclick="startMode('quick_drill')">
+      <button class="btn btn--ghost mode-btn" onclick="startMode('quick_drill')">
         <span class="mode-btn-label">Práctica Rápida</span>
         <span class="mode-btn-count">5 preguntas</span>
       </button>
-      <button class="mode-btn" onclick="startMode('express')">
+      <button class="btn btn--ghost mode-btn" onclick="startMode('express')">
         <span class="mode-btn-label">Exprés</span>
         <span class="mode-btn-count">10 preguntas</span>
       </button>
-      <button class="mode-btn mode-featured" onclick="startMode('standard')">
+      <button class="btn btn--shine btn--glow mode-btn mode-featured" onclick="startMode('standard')">
         <span class="mode-btn-label">Estándar</span>
         <span class="mode-btn-count">25 preguntas</span>
       </button>
-      <button class="mode-btn" onclick="startMode('mock_theory_1')">
+      <button class="btn btn--ghost mode-btn" onclick="startMode('mock_theory_1')">
         <span class="mode-btn-label">Simulacro Teoría · Parte 1</span>
         <span class="mode-btn-count">50 preguntas de simulacro completo</span>
         <span class="mode-btn-detail">Distribución balanceada según temas</span>
@@ -106,21 +108,21 @@
             <svg class="orb-svg orb-calm" id="signalOrb" viewBox="0 0 80 80">
               <defs>
                 <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#e5c97a"/>
-                  <stop offset="100%" stop-color="#c9a84c"/>
+                  <stop offset="0%" stop-color="var(--gold)"/>
+                  <stop offset="100%" stop-color="var(--gold)"/>
                 </radialGradient>
               </defs>
               <!-- Timer arc (outer) — circumference of r=36 ≈ 226.2 -->
               <circle id="timerArc" class="timer-arc"
                 cx="40" cy="40" r="36"
-                stroke="#c9a84c"
+                stroke="var(--gold)"
                 stroke-dasharray="226.2"
                 stroke-dashoffset="0"
                 opacity="0"/>
               <!-- Rings -->
-              <circle class="ring ring-1" cx="40" cy="40" r="26" stroke="#c9a84c" opacity="0"/>
-              <circle class="ring ring-2" cx="40" cy="40" r="30" stroke="#c9a84c" opacity="0"/>
-              <circle class="ring ring-3" cx="40" cy="40" r="34" stroke="#c9a84c" opacity="0"/>
+              <circle class="ring ring-1" cx="40" cy="40" r="26" stroke="var(--gold)" opacity="0"/>
+              <circle class="ring ring-2" cx="40" cy="40" r="30" stroke="var(--gold)" opacity="0"/>
+              <circle class="ring ring-3" cx="40" cy="40" r="34" stroke="var(--gold)" opacity="0"/>
               <!-- Core -->
               <circle class="core-pulse" cx="40" cy="40" r="10" fill="url(#coreGrad)"/>
             </svg>

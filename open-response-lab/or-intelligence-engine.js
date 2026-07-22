@@ -31,7 +31,7 @@
         causal_flag: false,
         next_step: 'Revisa e intenta nuevamente.',
         depth_label: 'Fundacional',
-        depth_color: '#e0b15b',
+        depth_color: 'var(--warn)',
         depth_class: 'depth-emerging'
       };
     }
@@ -80,9 +80,9 @@
 
     // Depth classification (informational, not scoring)
     const depthMap = {
-      'emerging': { label: 'Fundacional', color: '#e0b15b', cls: 'depth-emerging' },
-      'developing': { label: 'En Desarrollo', color: '#65b7c7', cls: 'depth-developing' },
-      'strong': { label: 'Sólida', color: '#7bc47f', cls: 'depth-strong' }
+      'emerging': { label: 'Fundacional', color: 'var(--warn)', cls: 'depth-emerging' },
+      'developing': { label: 'En Desarrollo', color: 'var(--cyan)', cls: 'depth-developing' },
+      'strong': { label: 'Sólida', color: 'var(--ok)', cls: 'depth-strong' }
     };
 
     const depthInfo = depthMap[depth] || depthMap['emerging'];
@@ -132,7 +132,7 @@
     const found = forbidden.filter(word => text.includes(word));
 
     if (found.length > 0) {
-      console.warn('⚠️ Governance check: forbidden words detected:', found);
+      console.warn('Governance check: forbidden words detected:', found);
       return false;
     }
 
@@ -235,8 +235,7 @@
    * función recibe el contenedor directamente y dispara la animación de
    * entrada — necesario porque <script> insertado vía innerHTML no se
    * ejecuta, y porque la animación necesita referencias reales a los nodos
-   * del DOM (para el requestAnimationFrame del anillo y el stagger de las
-   * burbujas).
+   * del DOM; el estado visual entra con CSS desde su primer render.
    *
    * Gobernanza: el anillo se llena según coverage_ratio pero NUNCA imprime
    * un número (ni "%" ni "de 5 conceptos") — solo la etiqueta cualitativa de
@@ -245,6 +244,26 @@
    * validateGovernance() sigue aplicando sobre el objeto enriquecido antes
    * de renderizar, como red de seguridad.
    */
+  function triggerOrbReveal(container, ringOffset, reduceMotion) {
+    if (!container) return;
+    var ring = container.querySelector('.orb-ring');
+    var bubbles = container.querySelectorAll('.orb-bubble');
+    function reveal() {
+      if (ring) ring.setAttribute('stroke-dashoffset', String(ringOffset));
+      bubbles.forEach(function (bubble, index) {
+        bubble.style.setProperty('--i', String(index));
+      });
+      container.classList.add('orb-revealed');
+    }
+    if (reduceMotion) {
+      reveal();
+    } else {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(reveal);
+      });
+    }
+  }
+
   function renderReveal(container, enrichedFeedback) {
     if (!container) return;
 
@@ -303,7 +322,7 @@
 
     const polarityHtml = e.negated_concepts && e.negated_concepts.length ? `
       <div class="orb-panel orb-panel--causal">
-        <div class="orb-panel-title">↔ Revisa una contradicción conceptual</div>
+        <div class="orb-panel-title"><span class="ep-icon ep-icon--warning" aria-hidden="true"></span> Revisa una contradicción conceptual</div>
         <p>${e.negated_concepts.map(c => escapeHtml(c)).join(' · ')}</p>
       </div>
     ` : '';
@@ -326,6 +345,7 @@
       </ul>
     `;
 
+    const ringOffset = 452.4 - (452.4 * e.coverage_ratio);
     container.innerHTML = `
       <div class="orb-reveal ${e.depth_class}${reduceMotion ? ' orb-no-motion' : ''}">
         ${srList}
@@ -348,31 +368,8 @@
       </div>
     `;
 
-    const root = container.querySelector('.orb-reveal');
-    if (!root) return;
+    triggerOrbReveal(container, ringOffset, reduceMotion);
 
-    if (reduceMotion) {
-      // Estado final directo, sin animación de entrada.
-      const ring = root.querySelector('.orb-ring');
-      if (ring) ring.setAttribute('stroke-dashoffset', String(452.4 - 452.4 * e.coverage_ratio));
-      root.querySelectorAll('.orb-bubble').forEach((el) => { el.classList.add('orb-in'); });
-      root.classList.add('orb-revealed');
-      return;
-    }
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const ring = root.querySelector('.orb-ring');
-        if (ring) {
-          const offset = 452.4 - (452.4 * e.coverage_ratio);
-          ring.setAttribute('stroke-dashoffset', String(offset));
-        }
-        root.classList.add('orb-revealed');
-        root.querySelectorAll('.orb-bubble').forEach((el, i) => {
-          setTimeout(() => { el.classList.add('orb-in'); }, 650 + i * 90);
-        });
-      });
-    });
   }
 
   /**
@@ -397,11 +394,11 @@
     // Utility: map depth to color
     depthColor: function (depth) {
       const map = {
-        'emerging': '#e0b15b',
-        'developing': '#65b7c7',
-        'strong': '#7bc47f'
+        'emerging': 'var(--warn)',
+        'developing': 'var(--cyan)',
+        'strong': 'var(--ok)'
       };
-      return map[depth] || '#aab4bd';
+      return map[depth] || 'var(--muted)';
     }
   };
 

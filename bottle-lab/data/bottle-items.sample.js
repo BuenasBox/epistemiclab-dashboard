@@ -2,7 +2,7 @@
  * Bottle Guided — FIXTURE PROVISIONAL (no canónico)
  * Contrato: bottle-guided.items.v1
  *
- * ⚠ Este archivo es un FIXTURE temporal para que el módulo corra y se valide.
+ * Aviso: este archivo es un FIXTURE temporal para que el módulo corra y se valide.
  *   El contenido real debe provenir de un export canónico del backend (Codex),
  *   respetando exactamente la forma documentada en ./README.md.
  *   NO es la fuente de verdad. NO editar canonical-wine-catalog/ desde aquí.

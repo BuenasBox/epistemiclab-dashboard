@@ -188,7 +188,9 @@
       limitationsTitle.textContent = 'Limitaciones';
       recommended.className = 'plan-card__recommended';
       recommended.textContent = 'Recomendado para: ' + plan.recommendedUse;
-      cta.className = 'plan-card__cta';
+      cta.className = plan.code === 'full_access'
+        ? 'btn btn--shine btn--glow plan-card__cta'
+        : 'btn btn--ghost plan-card__cta';
       if (plan.code === 'demo') {
         cta.href = plan.cta.href;
         cta.textContent = plan.cta.label;

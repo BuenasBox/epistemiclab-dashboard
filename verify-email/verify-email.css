@@ -2,9 +2,9 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: linear-gradient(135deg, #0f1115 0%, #1a1f2e 100%);
-      color: #f5f7fa;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg,var(--bg),var(--panel2));
+      color: var(--ink);
+      font-family: var(--sans);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -12,9 +12,9 @@
     }
 
     .container {
-      background: #171b22;
-      border: 1px solid #252c38;
-      border-radius: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--r-card);
       padding: 48px;
       max-width: 500px;
       width: 90%;
@@ -38,7 +38,7 @@
     }
 
     .subtitle {
-      color: #a7b0be;
+      color: var(--muted);
       font-size: 14px;
     }
 
@@ -47,8 +47,8 @@
     }
 
     .message {
-      background: #1e2430;
-      border-left: 4px solid #3fa9f5;
+      background: var(--panel2);
+      border-left: 4px solid var(--cyan);
       padding: 16px;
       border-radius: 6px;
       margin-bottom: 20px;
@@ -57,12 +57,12 @@
     }
 
     .email-display {
-      background: #252c38;
+      background: var(--panel2);
       padding: 12px 16px;
       border-radius: 6px;
       font-family: 'Courier New', monospace;
       font-size: 13px;
-      color: #3fa9f5;
+      color: var(--cyan);
       margin-bottom: 20px;
       word-break: break-all;
     }
@@ -86,8 +86,8 @@
       min-width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: #3fa9f5;
-      color: #0f1115;
+      background: var(--cyan);
+      color: #04222b;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -105,82 +105,45 @@
       flex-direction: column;
     }
 
-    button {
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: #3fa9f5;
-      color: #0f1115;
-    }
-
-    .btn-primary:hover {
-      background: #2d8fd4;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: #252c38;
-      color: #f5f7fa;
-      border: 1px solid #3a4553;
-    }
-
-    .btn-secondary:hover {
-      background: #2d3547;
-    }
-
-    .btn-disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .btn-disabled:hover {
-      transform: none;
-    }
+    .actions .btn{width:100%;justify-content:center}
 
     .status {
       text-align: center;
       padding: 12px;
       margin-top: 16px;
       font-size: 12px;
-      border-radius: 6px;
+      border-radius: var(--r-btn);
     }
 
     .status-success {
-      background: #0d3d2f;
-      color: #2ec27e;
-      border: 1px solid #2ec27e;
+      background: rgba(123,196,127,.12);
+      color: var(--ok);
+      border: 1px solid var(--ok);
     }
 
     .status-error {
-      background: #3d0d0d;
-      color: #e45c5c;
-      border: 1px solid #e45c5c;
+      background: rgba(193,72,63,.12);
+      color: var(--block);
+      border: 1px solid var(--block);
     }
 
     .status-info {
-      background: #0d2a3d;
-      color: #3fa9f5;
-      border: 1px solid #3fa9f5;
+      background: rgba(100,217,245,.12);
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
     }
 
     .footer {
       text-align: center;
       margin-top: 32px;
       padding-top: 24px;
-      border-top: 1px solid #252c38;
+      border-top: 1px solid var(--line);
       font-size: 13px;
-      color: #a7b0be;
+      color: var(--muted);
     }
 
     .footer a {
-      color: #3fa9f5;
+      color: var(--cyan);
       text-decoration: none;
     }
 
@@ -191,12 +154,12 @@
     .footer-note {
       margin-top: 12px;
       font-size: 11px;
-      color: #525e6e;
+      color: var(--muted);
     }
 
     #resend-timer {
       font-size: 12px;
-      color: #f6b73c;
+      color: var(--warn);
     }
 
     .loading {
@@ -212,4 +175,8 @@
     @keyframes pulse {
       0%, 100% { opacity: 0.4; }
       50% { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .loading{animation:none}
     }

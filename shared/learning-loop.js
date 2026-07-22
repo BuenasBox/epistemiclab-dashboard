@@ -91,11 +91,11 @@
       '<div class="ll-heading">YOUR LEARNING PATH</div>' +
       '<div class="ll-recommendation">' +
       '<div class="ll-recommendation-row">' +
-      '<span class="ll-icon">' + (rec.icon ? '<span class="ep-icon ep-icon--' + rec.icon + '" aria-hidden="true"></span>' : '→') + '</span>' +
+      '<span class="ll-icon"><span class="ep-icon ep-icon--' + (rec.icon || 'current-step') + '" aria-hidden="true"></span></span>' +
       '<div>' +
       '<div class="ll-recommendation-title">' + rec.label + '</div>' +
       '<div class="ll-recommendation-reason">' + rec.reason + '</div>' +
-      '<a href="' + rec.url + '" class="ll-action">Empezar →</a>' +
+      '<a href="' + rec.url + '" class="btn btn--shine btn--glow ll-action">Empezar →</a>' +
       '</div></div></div>' +
       '<div class="ll-note">Tu camino personalizado basado en tu historial de aprendizaje.</div>' +
       '</div>';

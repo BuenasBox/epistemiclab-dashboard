@@ -291,7 +291,7 @@
       managedUsers.replaceChildren();
       userStore.listUsers().forEach(function (user) {
         var button = documentRef.createElement('button');
-        button.className = 'managed-user';
+        button.className = 'btn btn--ghost managed-user';
         button.type = 'button';
         button.dataset.userId = user.user_id;
         button.textContent = user.display_name + ' · ' + user.plan;

@@ -1,12 +1,8 @@
 :root {
   color-scheme: dark;
-  --bg: #0b0f14;
-  --panel: #141b24;
-  --line: rgba(135, 170, 210, .2);
-  --text: #edf4ff;
-  --muted: #9bacc2;
-  --accent: #64d9f5;
-  --success: #2ec27e;
+  --text: var(--ink);
+  --accent: var(--cyan);
+  --success: var(--ok);
 }
 
 * { box-sizing: border-box; }
@@ -18,7 +14,7 @@ body {
     radial-gradient(circle at 18% 0%, rgba(0, 212, 255, .11), transparent 38%),
     var(--bg);
   color: var(--text);
-  font-family: Inter, system-ui, sans-serif;
+  font-family: var(--sans);
 }
 
 .upgrade-shell {
@@ -51,7 +47,7 @@ body {
 }
 
 .upgrade-feedback[data-kind="success"] { color: var(--success); }
-.upgrade-feedback[data-kind="error"] { color: #ff7a7a; }
+.upgrade-feedback[data-kind="error"] { color: var(--block); }
 
 .upgrade-modal {
   position: fixed;
@@ -70,7 +66,7 @@ body {
   width: min(460px, 100%);
   padding: 28px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--r-card);
   background: var(--panel);
   box-shadow: 0 28px 80px rgba(0, 0, 0, .55);
 }
@@ -101,24 +97,9 @@ body {
   margin-top: 24px;
 }
 
-.upgrade-modal__actions button,
-.upgrade-modal__actions a {
+.upgrade-modal__actions .btn {
   min-height: 46px;
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  padding: 10px 16px;
-  color: var(--text);
-  text-decoration: none;
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  background: transparent;
-  cursor: pointer;
-}
-
-.upgrade-modal__actions button {
-  color: var(--bg);
-  background: var(--accent);
 }
 
 [data-upgrade-modal-login][hidden] {
@@ -137,7 +118,7 @@ body {
   margin-top: 28px;
   padding: 28px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--r-card);
   background: var(--panel);
 }
 
@@ -150,20 +131,15 @@ body {
   font-size: 11px;
   text-transform: uppercase;
 }
-.access-code-form input,
-.access-code-form button {
+.access-code-form input {
   min-height: 48px;
-  padding: 11px 14px;
   color: var(--text);
   border: 1px solid var(--line);
-  border-radius: 9px;
-  background: #0b0f14;
+  border-radius: var(--r-btn);
+  background: var(--bg);
   font: inherit;
 }
-.access-code-form button {
-  border-color: var(--accent);
-  cursor: pointer;
-}
+.access-code-form .btn { min-height: 48px; justify-content: center; }
 
 .upgrade-hero {
   max-width: 760px;
@@ -171,9 +147,9 @@ body {
 }
 
 .upgrade-eyebrow {
-  color: var(--success);
-  font: 700 12px/1.4 ui-monospace, monospace;
-  letter-spacing: .12em;
+  color: var(--cyan);
+  font: 700 12px/1.4 var(--sans);
+  letter-spacing: .22em;
   text-transform: uppercase;
 }
 
@@ -200,7 +176,7 @@ body {
   min-height: 440px;
   padding: 24px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--r-card);
   background: linear-gradient(145deg, rgba(255, 255, 255, .035), transparent);
 }
 
@@ -233,15 +209,8 @@ body {
 
 .plan-card__cta {
   margin-top: auto;
-  padding: 12px 16px;
-  border: 1px solid rgba(0, 212, 255, .45);
-  border-radius: 10px;
+  justify-content:center;
   text-align: center;
-}
-
-.plan-card__cta:hover,
-.plan-card__cta:focus-visible {
-  background: rgba(0, 212, 255, .12);
 }
 
 @media (max-width: 900px) {
