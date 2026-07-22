@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/shared/theme-platform.css">
 <link rel="stylesheet" href="/shared/ui-buttons.css">
 <link rel="stylesheet" href="./index.css">
+<link rel="stylesheet" href="/index-hero.css">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#07090d">
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
@@ -21,16 +22,101 @@
 <script src="/shared/sw-register.js" defer></script>
 </head>
 <body>
-<div class="wrap">
-  <div class="eyebrow">ENTRENAMIENTO PROFESIONAL EN VINOS</div>
-  <h1>Aprende a pensar como un profesional del vino.</h1>
-  <p class="lead">EpistemicLab reúne evaluación, entrenamiento, mentoría y práctica guiada en una sola plataforma para ayudarte a comprender el vino, desarrollar criterio profesional y avanzar con un plan de aprendizaje personalizado basado en tu propio progreso.</p>
-  <div class="ctas">
-    <a class="cta" href="/diagnostic-sba/">Probar una experiencia ahora →</a>
-    <a class="cta2" href="/sat-lab/">Entrar al Laboratorio SAT</a>
+<section class="elx-hero" role="img" aria-label="EpistemicLab: aprende a pensar como un profesional del vino. La constelación Corona Borealis, la corona de Dioniso, se traza como una corona de conocimiento mientras nuevas estrellas brotan a su alrededor.">
+  <h2 class="elx-sr">EpistemicLab. Aprende a pensar como un profesional del vino. La constelación Corona Borealis, con Alphecca como estrella principal, se dibuja mientras nacen estrellas de conocimiento a su alrededor.</h2>
+  <div class="elx-neb" aria-hidden="true"></div>
+  <div class="elx-field" aria-hidden="true"></div>
+  <div class="elx-wrap">
+    <div class="elx-copy">
+      <div class="elx-eyebrow"><span class="elx-dot"></span>Entrenamiento profesional en vinos</div>
+      <h1 class="elx-title">
+        <span class="w">Aprende</span> <span class="w">a</span>
+        <span class="w">pensar</span> <span class="w">como</span>
+        <span class="w">un</span> <span class="w elx-accent">profesional</span>
+        <span class="w elx-accent">del</span> <span class="w elx-accent">vino.</span>
+      </h1>
+      <p class="elx-sub">Evaluación determinista, mentoría y práctica guiada. Construyes criterio &mdash; concepto a concepto, estrella a estrella.</p>
+      <div class="elx-chips">
+        <span class="elx-chip">Aspecto</span>
+        <span class="elx-chip">Nariz</span>
+        <span class="elx-chip">Paladar</span>
+        <span class="elx-chip">Conclusiones</span>
+      </div>
+      <div class="elx-cta-row">
+        <a class="elx-cta" href="/diagnostic-sba/">Probar una experiencia ahora<span class="elx-arrow">&rarr;</span></a>
+        <a class="elx-cta elx-cta--ghost" href="/sat-lab/">Entrar al Laboratorio SAT</a>
+      </div>
+    </div>
+    <div class="elx-stage" aria-hidden="true">
+      <svg class="elx-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="cbG" cx="50%" cy="52%" r="55%">
+            <stop offset="42%" stop-color="#64d9f5" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#3a6cff" stop-opacity="0.12"/>
+          </radialGradient>
+          <filter id="cbSoft" x="-140%" y="-140%" width="380%" height="380%"><feGaussianBlur stdDeviation="2.6"/></filter>
+          <filter id="cbBlur" x="-140%" y="-140%" width="380%" height="380%"><feGaussianBlur stdDeviation="1.1"/></filter>
+        </defs>
+        <circle cx="150" cy="155" r="152" fill="url(#cbG)"/>
+        <g class="cb-edges" fill="none" stroke="#6bb6d6" stroke-width="1.15" stroke-linecap="round" opacity="0.92">
+          <path class="cb-edge" d="M74,200 L51,120" pathLength="1"/>
+          <path class="cb-edge" d="M122,222 L74,200" pathLength="1"/>
+          <path class="cb-edge" d="M163,215 L122,222" pathLength="1"/>
+          <path class="cb-edge" d="M212,204 L163,215" pathLength="1"/>
+          <path class="cb-edge" d="M253,140 L212,204" pathLength="1"/>
+          <path class="cb-edge" d="M222,78 L253,140" pathLength="1"/>
+        </g>
+        <circle class="cb-pulse" r="2.5" fill="#bff0ff"><animateMotion dur="3.6s" begin="3.0s" repeatCount="indefinite" path="M222,78 L253,140 L212,204 L163,215"/></circle>
+        <circle class="cb-pulse" r="2.3" fill="#ffe6a8"><animateMotion dur="3.9s" begin="3.5s" repeatCount="indefinite" path="M51,120 L74,200 L122,222 L163,215"/></circle>
+        <g class="cb-slines" fill="none" stroke="#4f8aa4" stroke-width="0.8" stroke-linecap="round">
+          <path class="cb-sline" d="M250,58 L222,78" pathLength="1"/>
+          <path class="cb-sline" d="M288,172 L253,140" pathLength="1"/>
+          <path class="cb-sline" d="M244,250 L212,204" pathLength="1"/>
+          <path class="cb-sline" d="M150,262 L122,222" pathLength="1"/>
+          <path class="cb-sline" d="M58,252 L74,200" pathLength="1"/>
+          <path class="cb-sline" d="M28,92 L51,120" pathLength="1"/>
+          <path class="cb-sline" d="M150,50 L222,78" pathLength="1"/>
+          <path class="cb-sline" d="M296,232 L212,204" pathLength="1"/>
+        </g>
+        <g class="cb-sats">
+          <circle class="cb-sat" cx="250" cy="58" r="2.3" fill="#a9ecff"/>
+          <circle class="cb-sat" cx="288" cy="172" r="2.1" fill="#a9ecff"/>
+          <circle class="cb-sat" cx="244" cy="250" r="2.3" fill="#f8d98a"/>
+          <circle class="cb-sat" cx="150" cy="262" r="2.2" fill="#a9ecff"/>
+          <circle class="cb-sat" cx="58" cy="252" r="2.2" fill="#a9ecff"/>
+          <circle class="cb-sat" cx="28" cy="92" r="2.1" fill="#a9ecff"/>
+          <circle class="cb-sat" cx="150" cy="50" r="2.0" fill="#a9ecff"/>
+          <circle class="cb-sat" cx="296" cy="232" r="2.1" fill="#f8d98a"/>
+        </g>
+        <g class="cb-halos">
+          <circle class="cb-halo" cx="51" cy="120" r="6" fill="#cdecff" opacity="0.22" filter="url(#cbSoft)"/>
+          <circle class="cb-halo" cx="74" cy="200" r="7" fill="#cdecff" opacity="0.22" filter="url(#cbSoft)"/>
+          <circle class="cb-halo" cx="122" cy="222" r="6" fill="#cdecff" opacity="0.2" filter="url(#cbSoft)"/>
+          <circle class="cb-halo" cx="163" cy="215" r="8" fill="#cdecff" opacity="0.24" filter="url(#cbSoft)"/>
+          <circle class="cb-halo cb-jewelhalo" cx="212" cy="204" r="18" fill="#e5c97a" opacity="0.32" filter="url(#cbSoft)"/>
+          <circle class="cb-halo" cx="253" cy="140" r="8" fill="#cdecff" opacity="0.24" filter="url(#cbSoft)"/>
+          <circle class="cb-halo" cx="222" cy="78" r="7" fill="#cdecff" opacity="0.22" filter="url(#cbSoft)"/>
+        </g>
+        <g class="cb-stars">
+          <circle class="cb-star" cx="51" cy="120" r="2.3" fill="#eaf7ff"/>
+          <circle class="cb-star" cx="74" cy="200" r="2.9" fill="#eaf7ff"/>
+          <circle class="cb-star" cx="122" cy="222" r="2.5" fill="#eaf7ff"/>
+          <circle class="cb-star" cx="163" cy="215" r="3" fill="#f2f9ff"/>
+          <circle class="cb-star" cx="253" cy="140" r="3.2" fill="#f2f9ff"/>
+          <circle class="cb-star" cx="222" cy="78" r="2.9" fill="#eaf7ff"/>
+        </g>
+        <g class="cb-jewel">
+          <line x1="212" y1="185" x2="212" y2="223" stroke="#ffe6a8" stroke-width="1.1" opacity="0.85" filter="url(#cbBlur)"/>
+          <line x1="193" y1="204" x2="231" y2="204" stroke="#ffe6a8" stroke-width="1.1" opacity="0.85" filter="url(#cbBlur)"/>
+          <circle cx="212" cy="204" r="5" fill="#ffd873"/>
+          <circle cx="212" cy="204" r="2" fill="#fff6df"/>
+        </g>
+      </svg>
+    </div>
   </div>
-  <p class="note">Sin registro para probar. Empieza en 10 segundos.</p>
+</section>
 
+<div class="wrap">
   <div class="about-cta-box">
     <p>¿Quieres entender cómo funciona?</p>
     <a href="/about/" class="cta">Descubre la filosofía de EpistemicLab →</a>
