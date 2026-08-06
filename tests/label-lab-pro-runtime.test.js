@@ -12,6 +12,8 @@ const reveal = read('supabase', 'functions', 'reveal-label-session', 'index.ts')
 const evaluation = require('../supabase/functions/_shared/label-evaluation.mjs');
 const importer = require('../tools/label-lab-pro-import.js');
 const exampleItem = require('../content-bank/label-lab-pro/schema/example-item.js');
+const labelHtml = read('label-lab', 'index.html');
+const buildStatic = read('tools', 'build-static.js');
 
 test('Label Lab Pro stores private content and immutable versioned responses', () => {
   assert.match(migration, /create table if not exists public\.lab_items/);
@@ -96,4 +98,15 @@ test('publication rejects the editorial example and never projects private hypot
   assert.doesNotMatch(publicJson, /acceptable_hypotheses|unsupported_hypotheses|evaluation_rules|misconceptions|reveal/);
   assert.match(JSON.stringify(runtime.evaluation_spec), /supported_responses/);
   assert.match(JSON.stringify(runtime.reveal_content), /layer1/);
+});
+
+test('the browser route uses the protected runtime and excludes the old fixture', () => {
+  assert.match(labelHtml, /data\/label-demo\.public\.js/);
+  assert.doesNotMatch(labelHtml, /label-items\.sample\.js/);
+  assert.match(labelHtml, /start-label-session/);
+  assert.match(labelHtml, /submit-label-step/);
+  assert.match(labelHtml, /reveal-label-session/);
+  assert.match(labelHtml, /cache:'no-store'/);
+  assert.doesNotMatch(labelHtml, /acceptable_hypotheses|unsupported_hypotheses|evaluation_spec|reveal_content/);
+  assert.match(buildStatic, /label-lab\/data\/label-items\.sample\.js/);
 });

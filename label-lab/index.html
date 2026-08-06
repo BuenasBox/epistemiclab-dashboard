@@ -1,240 +1,36 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Etiquetas — EpistemicLab</title>
-<meta name="robots" content="noindex">
-<link rel="stylesheet" href="/platform-nav.css">
-<link rel="stylesheet" href="/shared/epistemic-icons.css">
-<link rel="stylesheet" href="/shared/theme-wine.css">
-<link rel="stylesheet" href="/shared/theme-platform.css">
-<link rel="stylesheet" href="/shared/ui-buttons.css">
-<link rel="stylesheet" href="./label-lab.css">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#07090d">
-<link rel="icon" href="/icons/favicon.ico" sizes="any">
-<link rel="icon" href="/icons/icon-192.png" type="image/png">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous" defer></script>
-<script>window.addEventListener('DOMContentLoaded',function(){if(window.Sentry)Sentry.init({dsn:"https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720"});});</script>
-<script src="/shared/sw-register.js" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Etiquetas — EpistemicLab</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="/platform-nav.css"><link rel="stylesheet" href="/shared/epistemic-icons.css"><link rel="stylesheet" href="/shared/theme-wine.css"><link rel="stylesheet" href="/shared/theme-platform.css"><link rel="stylesheet" href="/shared/ui-buttons.css"><link rel="stylesheet" href="./label-lab.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
+<script src="/shared/supabase-public-config.js"></script><script src="../shared/auth-token.js"></script><script src="./data/label-demo.public.js"></script>
 </head>
 <body>
-<div class="wrap">
-  <div class="topline">
-    <div class="flex-1"></div>
-    <span class="chip gold" id="compChip">Teoría · Conclusiones</span>
-  </div>
-  <div id="app" aria-live="polite"></div>
-  <div class="note mt-24" id="fixtureNote">Práctica formativa · El Mentor evaluará tu lectura y confianza al finalizar.</div>
-</div>
-
-<script src="./data/label-items.sample.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
-<script src="../shared/auth-token.js"></script>
-<script src="../epistemic-profile/epistemic-profile-client.js"></script>
-<script src="/ep-bootstrap.js"></script>
+<div class="wrap"><header class="topline"><div class="flex-1"></div><span class="chip gold" id="statusChip">Label Lab Pro</span></header><main id="app" aria-live="polite"></main><div class="note mt-24" id="networkStatus" hidden></div></div>
 <script>
 (function(){
-  "use strict";
-  var DATA = window.LABEL_GUIDED_ITEMS || { items: [] };
-  var EP = window.EpistemicProfile;
-  var app = document.getElementById('app');
-  var CONF = ["Intuyo","Bastante seguro","Seguro"];
-  var TONE = { coincide:'ok', cerca:'near', revisar:'rev', contradiccion:'con' };
-  var TONE_LABEL = { coincide:'Coincide', cerca:'Cerca', revisar:'Revisar', contradiccion:'Posible contradicción' };
-
-  var S = null;
-  function reset(i){
-    var idx = i % (DATA.items.length || 1);
-    S = { screen:'frame', itemIndex:idx, item:DATA.items[idx], zoneIdx:0, answers:{}, hyp:{}, finished:false };
-  }
-  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-
-  function render(){
-    if(!S.item){ app.innerHTML='<div class="card">No hay etiquetas en el set.</div>'; return; }
-    document.getElementById('compChip').textContent=(S.item.competencies||[]).join(' · ');
-    ({frame:renderFrame,parse:renderParse,hypothesis:renderHypothesis,evaluating:renderEvaluating,reveal:renderReveal,done:renderDone}[S.screen]||renderFrame)();
-  }
-
-  function labelHtml(activeZone){
-    var L=S.item.label||{};
-    function z(id,html){ return '<span class="'+(activeZone===id?'zone-mark':'')+'">'+html+'</span>'; }
-    return '<div class="label-hero">'+
-      '<div class="est">'+z('producer',esc(L.estate))+'</div>'+
-      '<div class="nm">'+esc(L.wine)+'</div>'+
-      '<div class="sub">'+z('classification',esc(L.classification))+' · '+z('style',esc(L.classification&&L.classification.indexOf('Trocken')>=0?'':''))+'</div>'+
-      '<div class="line"></div>'+
-      '<div class="meta">'+z('origin',esc(L.region))+' · '+z('vintage',esc(L.vintage))+' · '+esc(L.abv)+'</div>'+
-    '</div>';
-  }
-
-  function timelineHtml(){
-    var z=S.item.zones, out='<div class="steps">';
-    for(var i=0;i<z.length;i++){
-      var cls=i<S.zoneIdx?'done':(i===S.zoneIdx?'active':'');
-      var mk=i<S.zoneIdx?'<span class="ep-icon ep-icon--success" aria-hidden="true"></span>':(i===S.zoneIdx?'<span class="ep-icon ep-icon--current-step" aria-hidden="true"></span>':'<span class="ep-icon ep-icon--pending-step" aria-hidden="true"></span>');
-      out+='<div class="step '+cls+'"><span class="dot">'+mk+'</span><span class="lbl">'+esc(z[i].label)+'</span></div>';
-    }
-    return out+'</div>';
-  }
-
-  function confHtml(current){
-    return '<div class="conf"><div class="q">¿Cuánta seguridad tienes en esta lectura?</div><div class="opts">'+
-      CONF.map(function(c){return '<button class="btn btn--ghost pillbtn'+(current===c?' sel':'')+'" data-conf="'+esc(c)+'">'+esc(c)+'</button>';}).join('')+
-      '</div></div>';
-  }
-
-  function renderFrame(){
-    app.innerHTML=
-      '<div class="eyebrow">Módulo · inferencia documental · transforma el Epistemic Profile</div>'+
-      '<h1 class="serif">Etiquetas</h1>'+
-      '<p class="muted bl-narrow">Aprende a <b>leer cualquier etiqueta</b> — denominación, clasificación, añada, términos legales — y a deducir estilo, calidad y guarda. Y a distinguir lo que <i>significa algo</i> de lo que <i>solo vende</i>.</p>'+
-      '<div class="note bl-narrow mb-18">En el examen la cata es ciega, sin etiqueta. Esto entrena la <b>teoría de Unit 1</b> y tu expectativa de estilo. <b>No memorizamos etiquetas: aprendemos a parsearlas.</b></div>'+
-      '<div class="card bl-narrow"><div class="card-label">Esta sesión</div>'+
-      '<h3>1 etiqueta · 5 zonas de lectura · ~6 min</h3>'+
-      '<p class="small muted">En cada zona marcas tu lectura y tu nivel de confianza. Al final, qué cambió en ti.</p>'+
-      '<div class="flowbar"><button class="btn btn--shine btn--glow" id="start">Empezar →</button></div></div>';
-    document.getElementById('start').onclick=function(){
-      EP&&EP.startSession({module:'label-guided',competencies:S.item.competencies});
-      S.screen='parse'; S.zoneIdx=0; render();
-    };
-  }
-
-  function renderParse(){
-    var z=S.item.zones[S.zoneIdx];
-    var a=S.answers[z.id]||{};
-    var opts=z.options.map(function(o){
-      return '<button class="btn btn--ghost opt'+(a.opt===o.id?' sel':'')+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+(o.sub?'<small>'+esc(o.sub)+'</small>':'')+'</button>';
-    }).join('');
-    var m=z.mentor||{sev:'info',text:''};
-    var ready = a.opt && a.conf;
-    app.innerHTML=
-      '<div class="eyebrow">Lee la etiqueta · zona '+(S.zoneIdx+1)+' de '+S.item.zones.length+'</div>'+
-      '<h2 class="serif">'+esc(z.prompt)+'</h2>'+ timelineHtml()+
-      '<div class="grid g2"><div>'+
-        '<div class="card center"><div class="card-label card-label-left">Etiqueta en lectura · identidad oculta</div>'+labelHtml(z.id)+
-          '<p class="xs muted mt-8">Zona activa resaltada: <b>'+esc(z.label)+'</b></p></div>'+
-        '<div class="card tight mt-14"><div class="card-label">'+esc(z.label)+'</div>'+opts+ confHtml(a.conf)+'</div>'+
-        '<div class="flowbar">'+(S.zoneIdx>0?'<button class="btn btn--ghost" id="back">Atrás</button>':'')+
-          '<button class="btn btn--shine btn--glow flex-1" id="next" '+(ready?'':'disabled')+'>Confirmar y seguir →</button></div>'+
-      '</div><div>'+
-        '<div class="card-label">Mentor</div>'+
-        '<div class="mentor '+esc(m.sev)+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">PISTA</div><p class="small mentor-text">'+esc(m.text)+'</p></div></div>'+
-        '<div class="state eval"><span class="d"></span> Se evaluará tu lectura <b>y tu confianza</b></div>'+
-        '<div class="note mt-14">El control de confianza alimenta tu <b>calibración</b>. La identidad no se revela hasta el final (gobernanza).</div>'+
-      '</div></div>';
-    app.querySelectorAll('[data-opt]').forEach(function(b){ b.onclick=function(){ (S.answers[z.id]=S.answers[z.id]||{}).opt=b.getAttribute('data-opt'); render(); }; });
-    app.querySelectorAll('[data-conf]').forEach(function(b){ b.onclick=function(){ (S.answers[z.id]=S.answers[z.id]||{}).conf=b.getAttribute('data-conf'); render(); }; });
-    var back=document.getElementById('back'); if(back) back.onclick=function(){ S.zoneIdx--; render(); };
-    document.getElementById('next').onclick=function(){
-      var opt=z.options.filter(function(o){return o.id===a.opt;})[0]||{};
-      EP&&EP.decisionMade({competency:(S.item.competencies||[])[0],itemId:S.item.id,zoneId:z.id,response:a.opt,correctnessBand:opt.band,confidence:a.conf,novel:S.item.novel});
-      if(S.zoneIdx<S.item.zones.length-1){ S.zoneIdx++; render(); } else { S.screen='hypothesis'; render(); }
-    };
-  }
-
-  function hypGroup(key,group){
-    var sel=(S.hyp[key]||{}).opt;
-    return '<div class="card-label'+(key==='quality'?' mt-14':'')+'">'+esc(group.prompt)+'</div>'+
-      group.options.map(function(o){return '<button class="btn btn--ghost opt'+(sel===o.id?' sel':'')+'" data-hyp="'+key+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+'</button>';}).join('');
-  }
-
-  function renderHypothesis(){
-    var h=S.item.hypothesis;
-    var ready=(S.hyp.sweetness&&S.hyp.sweetness.opt)&&(S.hyp.quality&&S.hyp.quality.opt)&&S.hyp.conf;
-    app.innerHTML=
-      '<div class="eyebrow">Integra la lectura</div><h2 class="serif">Tu deducción de estilo</h2>'+
-      '<p class="muted small bl-narrow-sm">Has leído las cinco zonas. ¿Qué vino esperas? Justifica con la palabra que manda, no con el cebo.</p>'+
-      '<div class="grid g2"><div class="card">'+ hypGroup('sweetness',h.sweetness)+ hypGroup('quality',h.quality)+ confHtml((S.hyp.conf||null))+'</div>'+
-      '<div><div class="mentor warn"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">ATENCIÓN</div><p class="small mentor-text">Algunos términos tientan a una conclusión equivocada. Apóyate en la palabra reguladora correcta.</p></div></div>'+
-      '<div class="flowbar"><button class="btn btn--ghost" id="back">Atrás</button><button class="btn btn--shine btn--glow flex-1" id="submit" '+(ready?'':'disabled')+'>Enviar deducción →</button></div></div></div>';
-    app.querySelectorAll('[data-hyp]').forEach(function(b){ b.onclick=function(){ var k=b.getAttribute('data-hyp'); (S.hyp[k]=S.hyp[k]||{}).opt=b.getAttribute('data-opt'); render(); }; });
-    app.querySelectorAll('[data-conf]').forEach(function(b){ b.onclick=function(){ S.hyp.conf=b.getAttribute('data-conf'); render(); }; });
-    document.getElementById('back').onclick=function(){ S.screen='parse'; S.zoneIdx=S.item.zones.length-1; render(); };
-    document.getElementById('submit').onclick=function(){
-      var h2=S.item.hypothesis;
-      var so=h2.sweetness.options.filter(function(o){return o.id===S.hyp.sweetness.opt;})[0]||{};
-      var qo=h2.quality.options.filter(function(o){return o.id===S.hyp.quality.opt;})[0]||{};
-      EP&&EP.hypothesisSubmitted({competency:'Conclusiones',itemId:S.item.id,confidence:S.hyp.conf,
-        sweetness:{response:S.hyp.sweetness.opt,band:so.band},quality:{response:S.hyp.quality.opt,band:qo.band}});
-      S.finished=true; S.screen='evaluating'; render();
-    };
-  }
-
-  function renderEvaluating(){
-    app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div>'+
-      '<div class="state eval"><span class="d"></span> Analizando tu deducción y tu confianza…</div>'+
-      '<p class="muted small mt-14"><a href="#" id="see" class="gold">ver resultado</a></p></div>';
-    var go=function(e){ if(e)e.preventDefault(); S.screen='reveal'; render(); };
-    document.getElementById('see').onclick=go; setTimeout(go,900);
-  }
-
-  function renderReveal(){
-    if(!S.finished){ S.screen='parse'; return render(); }
-    var it=S.item, rv=it.reveal;
-    var rows=it.zones.map(function(z){
-      var a=S.answers[z.id]||{}; var opt=z.options.filter(function(o){return o.id===a.opt;})[0]||{};
-      var tone=TONE[opt.band]||'rev';
-      return '<div class="fb-row"><span class="small">'+esc(z.label)+' <span class="xs muted">('+esc(a.conf||'—')+')</span></span>'+
-        '<span class="tone '+tone+'">'+esc(TONE_LABEL[opt.band]||'Revisar')+'</span>'+
-        '<span class="small muted">'+esc(opt.explain||'')+'</span></div>';
-    }).join('');
-    var so=it.hypothesis.sweetness.options.filter(function(o){return o.id===(S.hyp.sweetness||{}).opt;})[0]||{};
-    var hypTone=TONE[so.band]||'rev';
-    var badges=(rv.badges||[]).map(function(b){return '<span class="chip gold">'+esc(b)+'</span>';}).join(' ');
-    var d=(EP&&EP.getSessionDelta())||{};
-    var calMsg = d.calibration==='sobreconfianza'
-      ? 'Fallaste alguna lectura en la que te declaraste seguro: ojo con la sobreconfianza en estos términos.'
-      : (d.calibration==='infraconfianza' ? 'Acertaste con poca confianza: tu criterio es mejor de lo que crees.'
-                                          : 'Tu confianza acompañó a tu acierto: bien calibrado en esta sesión.');
-    var calSev = d.calibration==='sobreconfianza' ? 'warn' : 'ok';
-    EP&&rv.misconception&&EP.misconception({id:rv.misconception.id,status:'resolved',title:rv.misconception.title});
-    app.innerHTML=
-      '<div class="bl-reveal">'+
-      '<div class="eyebrow">Revelación + calibración</div><h2 class="serif">'+esc(rv.identity)+'</h2>'+
-      '<div class="grid g2"><div>'+
-        '<div class="card center">'+labelHtml(null)+'<div class="mt-10">'+badges+'</div></div>'+
-        '<div class="card tight mt-14"><div class="card-label">Tus lecturas (con tu confianza)</div>'+rows+
-          '<div class="fb-row"><span class="small">Hipótesis de dulzor <span class="xs muted">('+esc(S.hyp.conf||'—')+')</span></span><span class="tone '+hypTone+'">'+esc(TONE_LABEL[so.band]||'Revisar')+'</span><span class="small muted">'+esc(so.text||'')+'</span></div>'+
-        '</div>'+
-      '</div><div>'+
-        '<div class="mentor '+calSev+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">CALIBRACIÓN</div><p class="small mentor-text">'+esc(calMsg)+'</p></div></div>'+
-        '<div class="mentor ok"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">SÍNTESIS</div><p class="small mentor-text">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
-        (rv.misconception?'<div class="mentor crit"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">IDEA CONSOLIDADA</div><p class="small mentor-text"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
-        '<div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="toDone">Ver qué cambió en ti →</button></div>'+
-      '</div></div></div>';
-    document.getElementById('toDone').onclick=function(){ EP&&EP.sessionCompleted({module:'label-guided',itemId:it.id}); S.screen='done'; render(); };
-  }
-  function renderDone(){
-    var d=(EP&&EP.getSessionDelta())||{accuracy:'—',misconceptions:[],transferTouched:false,calibration:'calibrado'};
-    var calLine = d.calibration==='sobreconfianza' ? 'Sobreconfianza detectada y señalada · a trabajar'
-                 : (d.calibration==='infraconfianza' ? 'Tiendes a infravalorar tu criterio · a reforzar'
-                 : 'Confianza alineada con tu acierto');
-    var misc=(d.misconceptions||[]).map(function(m){
-      return '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--insight" aria-hidden="true"></span></div><div><b class="small">Idea consolidada</b><div class="xs muted mt-2">'+esc(m.title||'Concepto reforzado')+'</div></div></div>';
-    }).join('');
-    var transfer=d.transferTouched?'<div class="delta"><div class="ic"><span class="ep-icon ep-icon--transfer" aria-hidden="true"></span></div><div><b class="small">Transferencia probada</b><div class="xs muted mt-2">Aplicado a una etiqueta reservada como nueva → aprendizaje real, no memoria.</div></div></div>':'';
-    app.innerHTML=
-      '<div class="bl-done">'+
-      '<div class="center bl-done-narrow"><div class="celebrate"><span class="ep-icon ep-icon--success" aria-hidden="true"></span><span class="ep-sr-only">Completado</span></div>'+
-      '<h2 class="serif">Qué cambió en ti</h2><p class="muted small">No "bien hecho": esto es lo que ahora sabes y razonas distinto.</p></div>'+
-      '<div class="bl-done-body">'+
-        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--reference-material" aria-hidden="true"></span></div><div><b class="small">Teoría · denominaciones y clasificaciones</b><progress class="meter mt-6" value="58" max="100" aria-label="Progreso reforzado: 58%">58%</progress><div class="xs muted mt-4">Sistema de lectura aplicable a otras etiquetas · aciertos: '+esc(d.accuracy)+'</div></div></div>'+
-        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--learning-objective" aria-hidden="true"></span></div><div><b class="small">Calibración</b><div class="xs muted mt-2">'+esc(calLine)+'</div></div></div>'+
-        misc + transfer +
-        '<div class="delta delta-gold"><div class="ic"><span class="ep-icon ep-icon--progress-dashboard" aria-hidden="true"></span></div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted mt-2">El Epistemic Profile recibió tus señales y tu confianza. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
-        '<div class="state done mt-8"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
-        '<div class="flowbar flowbar-center"><button class="btn btn--ghost" id="another">Otra etiqueta</button><a class="btn btn--ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn btn--ghost" href="../">Volver a Mi progreso</a></div>'+
-      '</div></div>';
-    document.getElementById('another').onclick=function(){ reset(S.itemIndex+1); render(); };
-  }
-
-  reset(0); render();
+  'use strict';
+  var app=document.getElementById('app'), chip=document.getElementById('statusChip'), network=document.getElementById('networkStatus');
+  var demo=window.LABEL_DEMO_PUBLIC||{}; var state={session:null,step:null,selection:'',evidence:[],confidence:'',justification:'',busy:false};
+  var API=((window.WSET_SUPABASE_CONFIG||{}).url||'https://hylknjjhmxsuuwbsslkr.supabase.co')+'/functions/v1/';
+  var KEY=(window.WSET_SUPABASE_CONFIG||{}).publishableKey||'';
+  function esc(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function labelHtml(){var l=demo.label||{};return '<div class="label-hero"><div class="est">'+esc(l.estate)+'</div><div class="nm">'+esc(l.wine)+'</div><div class="sub">'+esc(l.classification)+'</div><div class="line"></div><div class="meta">'+esc(l.region)+' · '+esc(l.vintage)+' · '+esc(l.abv)+'</div></div>';}
+  function setNetwork(){network.hidden=navigator.onLine;network.textContent='Sin conexión. La sesión no se enviará hasta recuperar la red.';}
+  window.addEventListener('online',setNetwork);window.addEventListener('offline',setNetwork);setNetwork();
+  function renderDemo(){chip.textContent='Demo pública · sin progreso';app.innerHTML='<div class="eyebrow">Módulo · inferencia documental</div><h1 class="serif">Etiquetas</h1><p class="muted bl-narrow">Aprende a separar evidencia explícita, términos regulados e inferencias que necesitan cautela.</p><div class="grid g2"><div class="card center">'+labelHtml()+'</div><div class="card"><div class="card-label">Demo segura</div><p class="small">'+esc(demo.note)+'</p><div class="state eval"><span class="d"></span> La evaluación Pro requiere una cuenta activa.</div><div class="flowbar"><a class="btn btn--shine btn--glow flex-1" href="/login/?next=/label-lab/">Entrar para practicar</a></div></div></div>';}
+  function renderLoading(text){chip.textContent='Cargando sesión';app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div class="state eval"><span class="d"></span> '+esc(text||'Preparando Label Lab Pro…')+'</div></div>';}
+  function renderError(message,link){chip.textContent='Label Lab Pro';app.innerHTML='<div class="card bl-narrow"><div class="card-label">No pudimos continuar</div><h2 class="serif">'+esc(message)+'</h2><p class="small muted">Tu progreso server-side no se ha marcado como completado.</p><div class="flowbar"><button class="btn btn--ghost" id="retry">Reintentar</button>'+(link?'<a class="btn btn--shine" href="/login/?next=/label-lab/">Iniciar sesión</a>':'')+'</div></div>';var r=document.getElementById('retry');if(r)r.onclick=start;}
+  function stepView(){var s=state.step;if(!s)return renderError('No hay un paso activo.');chip.textContent='Label Lab Pro · '+esc(s.kind);var opts=(s.options||[]).map(function(o){var id=typeof o==='string'?o:o.id;var text=typeof o==='string'?o:(o.text||o.label||o.id);return '<button class="btn btn--ghost opt '+(state.selection===id?' sel':'')+'" data-option="'+esc(id)+'">'+esc(text)+'</button>';}).join('');var evidence=(s.evidence||[]).map(function(e){return '<button class="btn btn--ghost opt '+(state.evidence.indexOf(e.id)>=0?' sel':'')+'" data-evidence="'+esc(e.id)+'"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></button>';}).join('');var ready=state.selection||state.justification||state.confidence;app.innerHTML='<div class="eyebrow">Label Lab Pro · paso activo</div><h2 class="serif">'+esc(s.prompt||s.id)+'</h2><div class="steps"><div class="step active"><span class="dot">1</span><span class="lbl">Evidencia</span></div><div class="step active"><span class="dot">2</span><span class="lbl">Lectura</span></div><div class="step"><span class="dot">3</span><span class="lbl">Confianza</span></div></div><div class="grid g2"><div><div class="card"><div class="card-label">Evidencia visible</div>'+labelHtml()+'<div class="mt-14">'+(evidence||'<p class="small muted">Selecciona la evidencia que realmente usas.</p>')+'</div></div></div><div class="card"><div class="card-label">Tu respuesta</div>'+(opts||'<textarea id="justification" class="opt" rows="5" placeholder="Escribe tu lectura sin inventar datos…">'+esc(state.justification)+'</textarea>')+'<div class="conf"><div class="q">Nivel de confianza</div><div class="opts">'+['cannot_determine','intuition','probable','fairly_sure','certain'].map(function(c){return '<button class="btn btn--ghost pillbtn '+(state.confidence===c?' sel':'')+'" data-confidence="'+c+'">'+c+'</button>';}).join('')+'</div></div><div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="send" '+(ready?'':'disabled')+'>Enviar paso →</button></div></div></div>';app.querySelectorAll('[data-option]').forEach(function(b){b.onclick=function(){state.selection=b.getAttribute('data-option');stepView();};});app.querySelectorAll('[data-evidence]').forEach(function(b){b.onclick=function(){var id=b.getAttribute('data-evidence'),i=state.evidence.indexOf(id);if(i>=0)state.evidence.splice(i,1);else state.evidence.push(id);stepView();};});app.querySelectorAll('[data-confidence]').forEach(function(b){b.onclick=function(){state.confidence=b.getAttribute('data-confidence');stepView();};});var ta=document.getElementById('justification');if(ta)ta.oninput=function(){state.justification=ta.value;};document.getElementById('send').onclick=submit;}
+  async function api(path,body){if(!navigator.onLine)throw new Error('OFFLINE');var token=await getAuthToken();if(!token)throw new Error('NO_AUTH_SESSION');var response=await fetch(API+path,{method:'POST',cache:'no-store',headers:{'Authorization':'Bearer '+token,'apikey':KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await response.json().catch(function(){return {};});if(!response.ok)throw new Error(data.error||'REQUEST_FAILED');return data;}
+  function requestKey(){var key=sessionStorage.getItem('label_lab_pro_request_key');if(!key){key=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random());sessionStorage.setItem('label_lab_pro_request_key',key);}return key;}
+  async function start(){renderLoading('Recuperando tu sesión…');try{var data=await api('start-label-session',{request_key:requestKey()});state.session=data.session_id;state.step=data.step;stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')renderError('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')renderError('Estás sin conexión.');else renderError('La asignación no está disponible.');}}
+  async function submit(){if(state.busy)return;state.busy=true;renderLoading('Evaluando tu paso en servidor…');var key=crypto.randomUUID?crypto.randomUUID():String(Date.now());try{var data=await api('submit-label-step',{session_id:state.session,idempotency_key:key,step_key:state.step.id,step_kind:state.step.kind,answer:{response:state.selection||state.justification,evidence_used:state.evidence,justification:state.justification,confidence:state.confidence}});if(data.step){state.step=data.step;state.selection='';state.evidence=[];state.justification='';state.confidence='';stepView();}else reveal();}catch(e){renderError(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}}
+  async function reveal(){renderLoading('Preparando reveal autorizado…');try{var data=await api('reveal-label-session',{session_id:state.session});var r=data.reveal||{};chip.textContent='Label Lab Pro · completado';app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor</div><h2 class="serif">Qué cambió en tu lectura</h2><div class="grid g2"><div class="card center">'+labelHtml()+'</div><div><div class="mentor ok"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">RESULTADO</div><p class="small mentor-text">'+esc(r.layer1||'Resultado registrado.')+'</p></div></div><div class="card tight"><div class="card-label">Comparación y evidencia</div><p class="small">'+esc(r.layer2||'Comparación de hipótesis y confianza registrada.')+'</p><p class="small">'+esc(r.layer3||'Evidencia usada y omitida registrada.')+'</p></div><div class="mentor info"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">TRANSFERENCIA</div><p class="small mentor-text">'+esc(r.layer4||'Regla transferible registrada.')+'</p></div></div></div></div></div>';}catch(e){renderError('El reveal todavía no está autorizado.');}}
+  renderDemo();
+  (async function(){try{var token=await getAuthToken();if(token)start();}catch(_){}})();
 })();
-</script>
-<script src="/platform-nav.js" defer></script>
-</body>
-</html>
+</script><script src="/platform-nav.js" defer></script>
+</body></html>

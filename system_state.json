@@ -36,18 +36,18 @@
       "/upgrade/",
       "/verify-email/"
     ],
-    "javascript_files": 123,
+    "javascript_files": 130,
     "html_files": 21,
-    "supabase_migrations": 34,
+    "supabase_migrations": 35,
     "supabase_functions": 27
   },
   "validation": {
     "command": "npm test",
     "status": "verified",
-    "evidence_fingerprint": "86cbb94970419434d55d4209c14f9521e106073cd410de558521832a3cf5e71f",
-    "last_successful_fingerprint": "86cbb94970419434d55d4209c14f9521e106073cd410de558521832a3cf5e71f",
-    "test_files": 40,
-    "node_test_files": 23,
+    "evidence_fingerprint": "309d154f8c94a616c2cb70e1ec9d6876b4b975dd5b3cfab37224b555b3fcd44a",
+    "last_successful_fingerprint": "309d154f8c94a616c2cb70e1ec9d6876b4b975dd5b3cfab37224b555b3fcd44a",
+    "test_files": 41,
+    "node_test_files": 24,
     "deterministic_test_files": 17,
     "dependency_audit_command": "npm run audit:dependencies"
   },

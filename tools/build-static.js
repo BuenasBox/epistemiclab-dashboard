@@ -30,7 +30,8 @@ const PROTECTED_FILES = new Set([
   'shared/mentor-config.js',
   'shared/misconception-engine.js',
   'shared/or-coaching-engine.js',
-  'shared/sat-coaching-intelligence.js'
+  'shared/sat-coaching-intelligence.js',
+  'label-lab/data/label-items.sample.js'
 ]);
 
 function normalize(relativePath) {
