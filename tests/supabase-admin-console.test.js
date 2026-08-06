@@ -96,21 +96,28 @@ function createClient() {
     calls,
     rpc(name, values) {
       calls.push(['rpc', name, values]);
+      var response = {
+        data: {
+          user_id: values.p_user_id,
+          email: 'student@epistemiclab.test',
+          display_name: values.p_display_name,
+          role: values.p_role,
+          plan: values.p_plan,
+          is_active: values.p_is_active,
+          access_start_date: values.p_access_start_date,
+          access_end_date: values.p_access_end_date,
+        },
+        error: null,
+      };
       return {
         single() {
-          return Promise.resolve({
-            data: {
-              user_id: values.p_user_id,
-              email: 'student@epistemiclab.test',
-              display_name: values.p_display_name,
-              role: values.p_role,
-              plan: values.p_plan,
-              is_active: values.p_is_active,
-              access_start_date: values.p_access_start_date,
-              access_end_date: values.p_access_end_date,
-            },
-            error: null,
-          });
+          return Promise.resolve(response);
+        },
+        then(resolve, reject) {
+          return Promise.resolve({ data: null, error: null }).then(
+            resolve,
+            reject,
+          );
         },
       };
     },
@@ -216,6 +223,36 @@ test('Supabase admin store updates profile and real access grant', async () => {
         && call[1] === 'admin_update_user_access'
       ),
     ),
+  );
+});
+
+test('Supabase admin store sets a new user password via RPC', async () => {
+  const client = createClient();
+  const store = createSupabaseAdminStore({ client });
+
+  const result = await store.setUserPassword('user-001', 'a-strong-password');
+
+  assert.equal(result, true);
+  assert.ok(
+    client.calls.some(
+      (call) => (
+        call[0] === 'rpc'
+        && call[1] === 'admin_set_user_password'
+        && call[2].p_user_id === 'user-001'
+        && call[2].p_new_password === 'a-strong-password'
+      ),
+    ),
+  );
+});
+
+test('Supabase admin store rejects passwords shorter than 8 characters', () => {
+  const client = createClient();
+  const store = createSupabaseAdminStore({ client });
+
+  assert.throws(() => store.setUserPassword('user-001', 'short'));
+  assert.equal(
+    client.calls.some((call) => call[0] === 'rpc'),
+    false,
   );
 });
 

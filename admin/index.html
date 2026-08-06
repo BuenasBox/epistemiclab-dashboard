@@ -175,6 +175,10 @@
               <span>Módulos permitidos</span>
               <p class="allowed-modules" data-allowed-modules></p>
             </div>
+            <label class="field field--wide" data-new-password-field hidden>
+              <span>Nueva contraseña</span>
+              <input name="new_password" type="text" autocomplete="off" minlength="8" placeholder="Mínimo 8 caracteres">
+            </label>
             <div class="form-actions">
               <button class="btn btn--shine btn--glow" type="submit" data-save-user>
                 Selecciona un usuario
@@ -182,8 +186,8 @@
               <button class="btn btn--ghost" type="button" data-cancel-edit hidden>
                 Cancelar edición
               </button>
-              <button class="btn btn--ghost" type="button" data-reset-password hidden aria-label="Enviar email de recuperación de contraseña al usuario">
-                Enviar recuperación de contraseña
+              <button class="btn btn--ghost" type="button" data-set-password hidden aria-label="Fijar una nueva contraseña para el usuario">
+                Fijar contraseña
               </button>
             </div>
             <p class="feedback" data-admin-feedback role="status"></p>

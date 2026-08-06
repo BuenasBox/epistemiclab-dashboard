@@ -246,19 +246,19 @@
         .then(dataOrThrow);
     }
 
-    function requestPasswordReset(email) {
-      var normalizedEmail = requireString(email, 'email');
-      if (typeof client.auth !== 'object' || typeof client.auth.admin !== 'object') {
-        throw new TypeError('Client must support auth admin operations');
+    function setUserPassword(userId, newPassword) {
+      var id = requireString(userId, 'user_id');
+      var password = requireString(newPassword, 'new_password');
+      if (password.length < 8) {
+        throw new TypeError('new_password must be at least 8 characters');
       }
-      return Promise.resolve(
-        client.auth.admin.generateLink({
-          type: 'recovery',
-          email: normalizedEmail
-        })
-      ).then(function(response) {
-        if (response && response.error) throw response.error;
-        return response;
+
+      return client.rpc('admin_set_user_password', {
+        p_user_id: id,
+        p_new_password: password,
+      }).then(function (result) {
+        if (result && result.error) throw result.error;
+        return true;
       });
     }
 
@@ -268,8 +268,8 @@
       listAccessCodes: listAccessCodes,
       listUsers: listUsers,
       listUpgradeRequests: listUpgradeRequests,
-      requestPasswordReset: requestPasswordReset,
       revokeAccessCode: revokeAccessCode,
+      setUserPassword: setUserPassword,
       updateUpgradeRequest: updateUpgradeRequest,
       updateUser: updateUser,
     };
