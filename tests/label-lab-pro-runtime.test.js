@@ -105,6 +105,12 @@ test('publication rejects the editorial example and never projects private hypot
   assert.match(JSON.stringify(runtime.reveal_content), /layer1/);
 });
 
+test('the Supabase importer is an explicit server-side operation', () => {
+  assert.match(importer.toString ? String(importer.importToSupabase) : '', /SERVICE_ROLE/);
+  assert.match(require('node:fs').readFileSync(require('node:path').join(__dirname, '..', 'tools', 'label-lab-pro-import.js'), 'utf8'), /--supabase/);
+  assert.match(require('node:fs').readFileSync(require('node:path').join(__dirname, '..', 'tools', 'label-lab-pro-import.js'), 'utf8'), /--json/);
+});
+
 test('the browser route uses the protected runtime and excludes the old fixture', () => {
   assert.match(labelHtml, /data\/label-demo\.public\.js/);
   assert.doesNotMatch(labelHtml, /label-items\.sample\.js/);

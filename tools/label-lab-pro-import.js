@@ -108,6 +108,17 @@ function buildImportPlan(items) {
   return { records, excluded };
 }
 
+async function importToSupabase(records) {
+  const url = process.env.LABEL_LAB_SUPABASE_URL || process.env.SUPABASE_URL;
+  const key = process.env.LABEL_LAB_SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error('Faltan LABEL_LAB_SUPABASE_URL y LABEL_LAB_SUPABASE_SERVICE_ROLE_KEY');
+  const { createClient } = require('@supabase/supabase-js');
+  const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  const { error } = await client.from('lab_items').upsert(records, { onConflict: 'item_id' });
+  if (error) throw new Error(`No se pudo importar lab_items: ${error.message}`);
+  return records.length;
+}
+
 if (require.main === module) {
   const bankDir = path.join(__dirname, '..', 'content-bank', 'label-lab-pro', 'bank');
   const items = loadItems(bankDir);
@@ -117,9 +128,13 @@ if (require.main === module) {
   if (failures.length) {
     console.error(failures.join('\n'));
     process.exitCode = 1;
+  } else if (process.argv.includes('--json')) {
+    process.stdout.write(JSON.stringify(plan.records, null, 2));
+  } else if (process.argv.includes('--supabase')) {
+    importToSupabase(plan.records).then((count) => console.log(`Label Lab Pro importado en Supabase: ${count} item(s)`)).catch((error) => { console.error(error.message); process.exitCode = 1; });
   } else {
     console.log(`Label Lab Pro import plan passed: ${plan.records.length} importable, ${plan.excluded.length} excluded`);
   }
 }
 
-module.exports = { publicationErrors, buildRuntimeRecord, buildImportPlan, loadItems, IMPORTABLE_STATUSES };
+module.exports = { publicationErrors, buildRuntimeRecord, buildImportPlan, loadItems, importToSupabase, IMPORTABLE_STATUSES };
