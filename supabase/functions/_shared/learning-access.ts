@@ -3,6 +3,7 @@ type SupabaseAdmin = {
 };
 
 export type LearningMode =
+  | 'label_lab'
   | 'quick_drill'
   | 'express'
   | 'standard'
@@ -18,6 +19,7 @@ export type LearningMode =
 type Requirement = 'public' | 'demo' | 'premium' | 'full_access';
 
 const MODE_REQUIREMENT: Record<LearningMode, Requirement> = {
+  label_lab: 'premium',
   quick_drill: 'public',
   express: 'demo',
   standard: 'full_access',

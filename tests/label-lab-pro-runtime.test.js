@@ -1,0 +1,42 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.join(__dirname, '..');
+const read = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
+const migration = read('supabase', 'migrations', '20260806090000_label_lab_pro_runtime.sql');
+const access = read('supabase', 'functions', '_shared', 'learning-access.ts');
+const start = read('supabase', 'functions', 'start-label-session', 'index.ts');
+const submit = read('supabase', 'functions', 'submit-label-step', 'index.ts');
+const reveal = read('supabase', 'functions', 'reveal-label-session', 'index.ts');
+
+test('Label Lab Pro stores private content and immutable versioned responses', () => {
+  assert.match(migration, /create table if not exists public\.label_lab_items/);
+  assert.match(migration, /evaluation_spec jsonb not null/);
+  assert.match(migration, /reveal_content jsonb not null/);
+  assert.match(migration, /unique \(session_id, step_kind, step_key, version\)/);
+  assert.match(migration, /revoke all on table public\.label_lab_items from public, anon, authenticated/);
+  assert.match(migration, /create policy label_lab_sessions_select_owner_or_admin/);
+});
+
+test('Label Lab Pro requires a server-side access mode and returns only public content at start', () => {
+  assert.match(access, /label_lab: 'premium'/);
+  assert.match(start, /verifyLearningAccess\(supabase, user\.id, 'label_lab'\)/);
+  assert.match(start, /select\('item_id,canonical_id,public_content'\)/);
+  assert.doesNotMatch(start, /evaluation_spec|reveal_content/);
+});
+
+test('responses are evaluated and hypotheses are versioned on the server', () => {
+  assert.match(submit, /label_lab_responses/);
+  assert.match(submit, /order\('version', \{ ascending: false \}\)/);
+  assert.match(submit, /evaluateLabelResponse/);
+  assert.match(submit, /label_lab_evaluations/);
+  assert.match(submit, /state: 'submitted'/);
+  assert.doesNotMatch(submit, /answer\.correct|body\.band|body\.misconception/);
+});
+
+test('reveal is impossible until the server marks the session submitted', () => {
+  assert.match(reveal, /\['submitted', 'revealed'\]\.includes\(session\.state\)/);
+  assert.match(reveal, /select\('reveal_content'\)/);
+  assert.match(reveal, /state: 'revealed'/);
+});
