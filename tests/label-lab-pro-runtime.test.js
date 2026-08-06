@@ -10,6 +10,8 @@ const start = read('supabase', 'functions', 'start-label-session', 'index.ts');
 const submit = read('supabase', 'functions', 'submit-label-step', 'index.ts');
 const reveal = read('supabase', 'functions', 'reveal-label-session', 'index.ts');
 const evaluation = require('../supabase/functions/_shared/label-evaluation.mjs');
+const importer = require('../tools/label-lab-pro-import.js');
+const exampleItem = require('../content-bank/label-lab-pro/schema/example-item.js');
 
 test('Label Lab Pro stores private content and immutable versioned responses', () => {
   assert.match(migration, /create table if not exists public\.lab_items/);
@@ -84,4 +86,14 @@ test('the evaluator preserves partial, plausible, contradictory, overprecise and
   for (const [expected, spec, response] of cases) {
     assert.equal(evaluation.evaluateLabelResponse(spec, { response }).result.band, expected);
   }
+});
+
+test('publication rejects the editorial example and never projects private hypothesis fields', () => {
+  assert.ok(importer.publicationErrors(exampleItem).some((error) => error.includes('plantilla')));
+  const published = { ...exampleItem, item_id: 'LABEL_PRO_001', editorial_status: 'published', _legal_regional_review_passed: true };
+  const runtime = importer.buildRuntimeRecord(published);
+  const publicJson = JSON.stringify(runtime.public_content);
+  assert.doesNotMatch(publicJson, /acceptable_hypotheses|unsupported_hypotheses|evaluation_rules|misconceptions|reveal/);
+  assert.match(JSON.stringify(runtime.evaluation_spec), /supported_responses/);
+  assert.match(JSON.stringify(runtime.reveal_content), /layer1/);
 });
