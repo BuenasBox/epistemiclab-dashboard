@@ -9,7 +9,8 @@ const navigation = fs.readFileSync(path.join(__dirname, '..', 'platform-nav.js')
 
 test('navigations bypass stale browser HTTP caches', () => {
   assert.match(source, /networkFirstNavigation/);
-  assert.match(source, /new Request\(request, \{ cache: 'no-store' \}\)/);
+assert.match(source, /new Request\(request, \{ cache: 'no-store' \}\)/);
+assert.match(source, /label-lab\\\/data/);
 });
 
 test('unversioned JavaScript and CSS use network-first revalidation', () => {

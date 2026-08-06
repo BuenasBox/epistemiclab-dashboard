@@ -30,6 +30,7 @@ var NEVER_CACHE_PATTERNS = [
   /\/api\//,
   /\/supabase\//,
   /\/canonical-wine-catalog\//,
+  /\/label-lab\/data\//,
   /supabase\.co/,
   /jsdelivr\.net/,
   /cdnjs\.cloudflare\.com/
