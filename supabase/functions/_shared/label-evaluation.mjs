@@ -24,6 +24,19 @@ function resultBand(spec, answer) {
   return 'unsupported';
 }
 
+function mentorContext(spec, answer, result, calibration) {
+  const misconceptionCode = spec.misconception_by_response?.[String(answer.response)] || null;
+  if (misconceptionCode) return { category: 'misconception', error_type: 'conceptual_error', misconception_code: misconceptionCode };
+  if (calibration.band === 'overconfident') return { category: 'calibration', error_type: 'overconfidence', misconception_code: null };
+  if (calibration.band === 'underconfident') return { category: 'calibration', error_type: 'underconfidence', misconception_code: null };
+  if (calibration.band === 'uncertainty_correct') return { category: 'calibration', error_type: 'correct_prudence', misconception_code: null };
+  if (result === 'contradictory') return { category: 'contradiction', error_type: 'conceptual_error', misconception_code: null };
+  if (result === 'overprecise') return { category: 'precision', error_type: 'overconfidence', misconception_code: null };
+  if (result === 'unsupported' || result === 'evasive_uncertainty') return { category: 'caution', error_type: result === 'evasive_uncertainty' ? 'evasion' : 'hierarchy_error', misconception_code: null };
+  if (result === 'partially_supported' || result === 'plausible') return { category: 'integration', error_type: 'accidental_correctness', misconception_code: null };
+  return { category: 'confirmation', error_type: null, misconception_code: null };
+}
+
 function evidenceResult(spec, answer) {
   const selected = list(answer.evidence_used || answer.evidence).map(String);
   const required = list(spec.required_evidence_ids);
@@ -74,6 +87,7 @@ export function evaluateLabelResponse(spec = {}, answer = {}) {
   const justification = justificationResult(spec, answer);
   const confidence = confidenceResult(answer);
   const calibration = calibrationResult(spec, { band: result }, evidence, confidence);
+  const mentor = mentorContext(spec, answer, result, calibration);
   return {
     version: spec.version || 'label-v1',
     result: { band: result, correct: ['supported', 'uncertainty_correct'].includes(result) },
@@ -81,5 +95,6 @@ export function evaluateLabelResponse(spec = {}, answer = {}) {
     justification,
     confidence,
     calibration,
+    mentor,
   };
 }

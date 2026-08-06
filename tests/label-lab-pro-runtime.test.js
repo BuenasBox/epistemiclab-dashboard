@@ -92,15 +92,16 @@ test('the evaluator preserves partial, plausible, contradictory, overprecise and
 test('publication rejects the editorial example and never projects private hypothesis fields', () => {
   const template = { item_id: 'LABEL_PRO_000', editorial_status: 'draft' };
   assert.ok(importer.publicationErrors(template).some((error) => error.includes('plantilla')));
-  if (!require('node:fs').existsSync(require('node:path').join(__dirname, '..', 'content-bank', 'label-lab-pro', 'schema', 'item-schema.js'))) {
-    assert.ok(importer.publicationErrors({ item_id: 'LABEL_PRO_001', editorial_status: 'published' }).some((error) => error.includes('banco editorial no disponible')));
-    return;
-  }
-  const published = { item_id: 'LABEL_PRO_001', editorial_status: 'published', version: '1.0.0', learning_objectives: ['leer evidencia'], difficulty: 1, prompt_sequence: ['observe', 'hypothesize'], visible_evidence: [], acceptable_hypotheses: [{ id: 'h1', supporting_evidence_ids: [] }], partially_acceptable_hypotheses: [], unsupported_hypotheses: [], overprecise_conclusions: [], reveal: { layer1: 'ok', layer2: 'ok', layer3: 'ok', layer4: 'ok' } };
-  const runtime = importer.buildRuntimeRecord(published);
+  const items = require('../content-bank/label-lab-pro/bank').items;
+  const plan = importer.buildImportPlan(items);
+  assert.equal(plan.records.length, 6);
+  assert.equal(plan.excluded.length, 6);
+  assert.ok(plan.excluded.every((item) => item.editorial_status === 'legal_regional_review'));
+  const runtime = plan.records[0];
   const publicJson = JSON.stringify(runtime.public_content);
   assert.doesNotMatch(publicJson, /acceptable_hypotheses|unsupported_hypotheses|evaluation_rules|misconceptions|reveal/);
   assert.match(JSON.stringify(runtime.evaluation_spec), /supported_responses/);
+  assert.match(JSON.stringify(runtime.evaluation_spec), /mentor_feedback/);
   assert.match(JSON.stringify(runtime.reveal_content), /layer1/);
 });
 

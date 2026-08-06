@@ -1,5 +1,6 @@
 import { authenticatedLabUser, LAB_CORS, labJson, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
 import { evaluateLabelResponse } from '../_shared/label-evaluation.ts';
+import { selectLabelMentor } from '../_shared/label-mentor.ts';
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: LAB_CORS });
@@ -31,6 +32,8 @@ Deno.serve(async (req) => {
     if (!step || step.kind !== stepKind) return labJson({ ok: false, error: 'Invalid active step' }, 409);
     const spec = item.evaluation_spec?.[stepKey] && typeof item.evaluation_spec[stepKey] === 'object' ? item.evaluation_spec[stepKey] : {};
     const evaluation = evaluateLabelResponse(spec, answer);
+    const mentor = selectLabelMentor(spec, evaluation.mentor, `${session.id}:${idempotencyKey}`);
+    evaluation.mentor_feedback = mentor;
     const steps = Array.isArray(item.public_content.steps) ? item.public_content.steps : [];
     const index = steps.findIndex((candidate: any) => candidate.id === stepKey);
     const next = steps[index + 1] || null;
