@@ -9,6 +9,7 @@ const access = read('supabase', 'functions', '_shared', 'learning-access.ts');
 const start = read('supabase', 'functions', 'start-label-session', 'index.ts');
 const submit = read('supabase', 'functions', 'submit-label-step', 'index.ts');
 const reveal = read('supabase', 'functions', 'reveal-label-session', 'index.ts');
+const evaluation = require('../supabase/functions/_shared/label-evaluation.mjs');
 
 test('Label Lab Pro stores private content and immutable versioned responses', () => {
   assert.match(migration, /create table if not exists public\.lab_items/);
@@ -47,4 +48,40 @@ test('reveal is impossible until the server marks the session submitted', () => 
   assert.match(reveal, /\['reveal_available', 'completed'\]\.includes\(session\.state\)/);
   assert.match(reveal, /select\('reveal_content'\)/);
   assert.match(reveal, /state: 'completed'/);
+});
+
+test('the Label evaluator returns rich bands without an LLM', () => {
+  const result = evaluation.evaluateLabelResponse({
+    version: 'label-v1', supported_responses: ['rioja'], required_evidence_ids: ['origin'],
+    strong_evidence_ids: ['origin'], required_justification_terms: ['denominación'],
+    editorial_evidence_strength: 0.85,
+  }, { response: 'rioja', evidence_used: ['origin'], justification: 'La denominación lo sustenta.', confidence: 'certain' });
+  assert.equal(result.result.band, 'supported');
+  assert.equal(result.evidence.band, 'supported');
+  assert.equal(result.justification.band, 'supported');
+  assert.equal(result.calibration.band, 'aligned');
+});
+
+test('overconfidence, underconfidence and uncertainty are separated', () => {
+  const over = evaluation.evaluateLabelResponse({ unsupported_responses: ['quality_high'], editorial_evidence_strength: 0.2 }, { response: 'quality_high', confidence: 'certain' });
+  const under = evaluation.evaluateLabelResponse({ supported_responses: ['rioja'], editorial_evidence_strength: 0.9 }, { response: 'rioja', confidence: 'intuition' });
+  const prudent = evaluation.evaluateLabelResponse({ uncertainty_allowed: true, editorial_evidence_strength: 0.1 }, { response: 'cannot_determine', confidence: 'intuition' });
+  assert.equal(over.result.band, 'unsupported');
+  assert.equal(over.calibration.band, 'overconfident');
+  assert.equal(under.calibration.band, 'underconfident');
+  assert.equal(prudent.result.band, 'uncertainty_correct');
+  assert.equal(prudent.calibration.band, 'uncertainty_correct');
+});
+
+test('the evaluator preserves partial, plausible, contradictory, overprecise and evasive bands', () => {
+  const cases = [
+    ['partially_supported', { partially_supported_responses: ['maybe'] }, 'maybe'],
+    ['plausible', { plausible_responses: ['likely'] }, 'likely'],
+    ['contradictory', { contradictory_responses: ['sweet'] }, 'sweet'],
+    ['overprecise', { overprecise_responses: ['exact_vintage'] }, 'exact_vintage'],
+    ['evasive_uncertainty', { evasive_uncertainty_responses: ['cannot_determine'] }, 'cannot_determine'],
+  ];
+  for (const [expected, spec, response] of cases) {
+    assert.equal(evaluation.evaluateLabelResponse(spec, { response }).result.band, expected);
+  }
 });
