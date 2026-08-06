@@ -9,7 +9,7 @@ const { minify: minifyHtml } = require('html-minifier-terser');
 const ROOT = path.resolve(__dirname, '..');
 const OUTPUT = path.join(ROOT, 'dist');
 const EXCLUDED_ROOTS = new Set([
-  '.git', '.github', '.vercel', 'api', 'dist', 'docs', 'node_modules',
+  '.git', '.github', '.vercel', 'api', 'content-bank', 'dist', 'docs', 'node_modules',
   'supabase', 'tests', 'tools'
 ]);
 const EXCLUDED_FILES = new Set([
