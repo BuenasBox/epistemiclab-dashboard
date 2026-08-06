@@ -2,7 +2,12 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { validateItemShape } = require('../content-bank/label-lab-pro/schema/item-schema.js');
+let validateItemShape;
+try {
+  ({ validateItemShape } = require('../content-bank/label-lab-pro/schema/item-schema.js'));
+} catch {
+  validateItemShape = () => ({ valid: false, errors: ['content-bank/label-lab-pro/schema/item-schema.js: banco editorial no disponible'] });
+}
 
 function publicationErrors(item) {
   const errors = validateItemShape(item).errors;

@@ -34,9 +34,11 @@
 
   // Transporte opcional. La app (Dashboard/host) puede configurarlo con
   // EpistemicProfile.configure({ endpoint, getToken }). Sin esto → buffer local.
-  var transport = { endpoint: null, getToken: null };
+  var transport = { endpoint: null, getToken: null, flushing: false, retryTimer: null };
 
   var buffer = [];     // eventos canónicos de la sesión (transitorio)
+  var pending = [];
+  var sent = {};
   var session = null;
 
   function nowIso() { return new Date().toISOString(); }
@@ -44,8 +46,12 @@
     if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
     return "ep-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
   }
-  function bandToOutcome(band) { return band === "coincide" ? "correct" : "incorrect"; }
-  function conf100(label) { return CONF_TO_100[label] != null ? CONF_TO_100[label] : null; }
+  function bandToOutcome(band) { return band === "coincide" || band === "supported" || band === "uncertainty_correct" ? "correct" : "incorrect"; }
+  function conf100(label) {
+    if (CONF_TO_100[label] != null) return CONF_TO_100[label];
+    var pro = { cannot_determine: 0, intuition: 25, probable: 50, fairly_sure: 75, certain: 100 };
+    return pro[label] != null ? pro[label] : null;
+  }
 
   function makeEvent(type, payload, evidence) {
     return {
@@ -61,9 +67,41 @@
     };
   }
 
+  function flush() {
+    if (!transport.endpoint || transport.flushing || !pending.length || typeof fetch !== "function") return Promise.resolve(false);
+    transport.flushing = true;
+    var work = pending.slice();
+    function next() {
+      if (!work.length) { transport.flushing = false; return Promise.resolve(true); }
+      var ev = work.shift();
+      var headers = { "Content-Type": "application/json" };
+      var token = null;
+      try { token = transport.getToken && transport.getToken(); } catch (e) { token = null; }
+      return Promise.resolve(token).then(function (resolvedToken) {
+        if (resolvedToken) headers["Authorization"] = "Bearer " + resolvedToken;
+        return fetch(transport.endpoint, { method: "POST", headers: headers, body: JSON.stringify(ev), cache: "no-store" });
+      }).then(function (response) {
+        if (!response || (!response.ok && response.status !== 409)) throw new Error("EP transport failed");
+        sent[ev.event_id] = true;
+        pending = pending.filter(function (candidate) { return candidate.event_id !== ev.event_id; });
+        return next();
+      }).catch(function () {
+        transport.flushing = false;
+        if (!transport.retryTimer) transport.retryTimer = setTimeout(function () { transport.retryTimer = null; flush(); }, 3000);
+        return false;
+      });
+    }
+    return next();
+  }
+  if (typeof window !== "undefined" && window.addEventListener) window.addEventListener("online", flush);
+
   function emit(ev) {
+    if (sent[ev.event_id] || pending.some(function (candidate) { return candidate.event_id === ev.event_id; })) return ev;
     buffer.push(ev);
+    pending.push(ev);
     if (session) session.events.push(ev);
+    flush();
+    return ev;
     // Transporte: fire-and-forget; nunca bloquea la UI. Si no hay endpoint, no-op.
     if (transport.endpoint) {
       try {
@@ -76,6 +114,7 @@
         }
       } catch (e) { /* no-op */ }
     }
+    flush();
     return ev;
   }
 
@@ -89,6 +128,7 @@
         if (opts.endpoint) transport.endpoint = opts.endpoint;
         if (typeof opts.getToken === "function") transport.getToken = opts.getToken;
       }
+      flush();
       return transport;
     },
 
@@ -156,13 +196,19 @@
     sessionCompleted: function (p) {
       p = p || {};
       var mod = (session && session.module) || p.module || "unknown";
-      var transferApplied = !!(session && session.events.some(function (e) { return e.event_type === "novel_item_presented"; })
-        && session.events.some(function (e) { return e.event_type === "decision_made" && e.evidence.outcome === "correct"; }));
+      var transferApplied = !!(session && session.transferCompleted);
       emit(makeEvent("practice_completed",
         { practice_type: mod }, { completed: true, transfer_applied: transferApplied, item_id: p.itemId }));
       emit(makeEvent("session_completed",
         { session_type: mod }, { completed: true, item_id: p.itemId }));
       if (session) session.completedAt = nowIso();
+      return true;
+    },
+
+    transferCompleted: function (p) {
+      p = p || {};
+      if (session) session.transferCompleted = true;
+      emit(makeEvent("practice_completed", { practice_type: "transfer" }, { completed: true, transfer_applied: true, item_id: p.itemId }));
       return true;
     },
 
@@ -197,12 +243,14 @@
         calibration: calibration,
         confidentMisses: confidentMisses,
         misconceptions: misc,
-        transferTouched: evs.some(function (e) { return e.event_type === "novel_item_presented"; })
+        transferTouched: !!session.transferCompleted
       };
     },
 
     /* Utilidad de desarrollo: ver el flujo de eventos canónicos. */
-    dump: function () { return buffer.slice(); }
+    dump: function () { return buffer.slice(); },
+    flush: flush,
+    pending: function () { return pending.slice(); }
   };
 
   window.EpistemicProfile = window.EpistemicProfile || EP;

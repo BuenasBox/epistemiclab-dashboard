@@ -11,7 +11,6 @@ const submit = read('supabase', 'functions', 'submit-label-step', 'index.ts');
 const reveal = read('supabase', 'functions', 'reveal-label-session', 'index.ts');
 const evaluation = require('../supabase/functions/_shared/label-evaluation.mjs');
 const importer = require('../tools/label-lab-pro-import.js');
-const exampleItem = require('../content-bank/label-lab-pro/schema/example-item.js');
 const labelHtml = read('label-lab', 'index.html');
 const buildStatic = read('tools', 'build-static.js');
 
@@ -91,8 +90,13 @@ test('the evaluator preserves partial, plausible, contradictory, overprecise and
 });
 
 test('publication rejects the editorial example and never projects private hypothesis fields', () => {
-  assert.ok(importer.publicationErrors(exampleItem).some((error) => error.includes('plantilla')));
-  const published = { ...exampleItem, item_id: 'LABEL_PRO_001', editorial_status: 'published', _legal_regional_review_passed: true };
+  const template = { item_id: 'LABEL_PRO_000', editorial_status: 'draft' };
+  assert.ok(importer.publicationErrors(template).some((error) => error.includes('plantilla')));
+  if (!require('node:fs').existsSync(require('node:path').join(__dirname, '..', 'content-bank', 'label-lab-pro', 'schema', 'item-schema.js'))) {
+    assert.ok(importer.publicationErrors({ item_id: 'LABEL_PRO_001', editorial_status: 'published' }).some((error) => error.includes('banco editorial no disponible')));
+    return;
+  }
+  const published = { item_id: 'LABEL_PRO_001', editorial_status: 'published', version: '1.0.0', learning_objectives: ['leer evidencia'], difficulty: 1, prompt_sequence: ['observe', 'hypothesize'], visible_evidence: [], acceptable_hypotheses: [{ id: 'h1', supporting_evidence_ids: [] }], partially_acceptable_hypotheses: [], unsupported_hypotheses: [], overprecise_conclusions: [], reveal: { layer1: 'ok', layer2: 'ok', layer3: 'ok', layer4: 'ok' } };
   const runtime = importer.buildRuntimeRecord(published);
   const publicJson = JSON.stringify(runtime.public_content);
   assert.doesNotMatch(publicJson, /acceptable_hypotheses|unsupported_hypotheses|evaluation_rules|misconceptions|reveal/);
