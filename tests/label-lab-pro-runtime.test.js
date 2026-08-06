@@ -26,22 +26,25 @@ test('Label Lab Pro stores private content and immutable versioned responses', (
 
 test('Label Lab Pro requires a server-side access mode and returns only public content at start', () => {
   assert.match(access, /label_lab: 'premium'/);
-  assert.match(start, /verifyLearningAccess\(supabase, user\.id, 'label_lab'\)/);
-  assert.match(start, /select\('item_id,canonical_id,public_content'\)/);
+  assert.match(start, /authenticatedLabUser/);
+  assert.match(start, /request_key/);
+  assert.match(start, /select\('public_content,content_version,evaluation_version'\)/);
+  assert.doesNotMatch(start, /body\.item_id/);
   assert.doesNotMatch(start, /evaluation_spec|reveal_content/);
 });
 
 test('responses are evaluated and hypotheses are versioned on the server', () => {
-  assert.match(submit, /label_lab_responses/);
-  assert.match(submit, /order\('version', \{ ascending: false \}\)/);
+  assert.match(submit, /idempotency_key/);
+  assert.match(submit, /current_step !== stepKey/);
+  assert.match(submit, /hypotheses/);
   assert.match(submit, /evaluateLabelResponse/);
-  assert.match(submit, /label_lab_evaluations/);
-  assert.match(submit, /state: 'submitted'/);
+  assert.match(submit, /lab_evaluations/);
+  assert.match(submit, /upsert/);
   assert.doesNotMatch(submit, /answer\.correct|body\.band|body\.misconception/);
 });
 
 test('reveal is impossible until the server marks the session submitted', () => {
-  assert.match(reveal, /\['submitted', 'revealed'\]\.includes\(session\.state\)/);
+  assert.match(reveal, /\['reveal_available', 'completed'\]\.includes\(session\.state\)/);
   assert.match(reveal, /select\('reveal_content'\)/);
-  assert.match(reveal, /state: 'revealed'/);
+  assert.match(reveal, /state: 'completed'/);
 });
