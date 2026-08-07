@@ -17,13 +17,13 @@ export function labClient() {
   return createClient(Deno.env.get('SUPABASE_URL') || '', Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '');
 }
 
-export async function authenticatedLabUser(req: Request) {
+export async function authenticatedLabUser(req: Request, mode: 'label_lab' | 'bottle_lab' = 'label_lab') {
   const auth = req.headers.get('authorization') || '';
   if (!auth.startsWith('Bearer ')) return { supabase: null, user: null, response: labJson({ ok: false, error: 'Unauthorized' }, 401) };
   const supabase = labClient();
   const { data: { user } } = await supabase.auth.getUser(auth.slice(7));
   if (!user) return { supabase: null, user: null, response: labJson({ ok: false, error: 'Unauthorized' }, 401) };
-  const access = await verifyLearningAccess(supabase, user.id, 'label_lab');
+  const access = await verifyLearningAccess(supabase, user.id, mode);
   if (!access.allowed) return { supabase: null, user: null, response: labJson({ ok: false, error: 'Access denied', reason: access.reason }, 403) };
   return { supabase, user, response: null };
 }
