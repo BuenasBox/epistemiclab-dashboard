@@ -30,7 +30,13 @@ Deno.serve(async (req) => {
     if (!item) return labJson({ ok: false, error: 'Item unavailable' }, 404);
     const step = (item.public_content.steps || []).find((candidate: any) => candidate.id === stepKey);
     if (!step || step.kind !== stepKind) return labJson({ ok: false, error: 'Invalid active step' }, 409);
-    const spec = item.evaluation_spec?.[stepKey] && typeof item.evaluation_spec[stepKey] === 'object' ? item.evaluation_spec[stepKey] : {};
+    // BUGFIX (found via live testing 2026-08-07): evaluation_spec is a single flat
+    // per-item ruleset (produced by tools/label-lab-pro-import.js buildRuntimeRecord),
+    // not a map keyed by step_key. The previous lookup indexed into evaluation_spec
+    // using the current step_key, which always resolved to undefined against this flat
+    // shape and silently evaluated every answer against an empty {} spec -- no response
+    // was ever actually judged correct.
+    const spec = item.evaluation_spec && typeof item.evaluation_spec === 'object' ? item.evaluation_spec : {};
     const evaluation = evaluateLabelResponse(spec, answer);
     const mentor = selectLabelMentor(spec, evaluation.mentor, `${session.id}:${idempotencyKey}`);
     evaluation.mentor_feedback = mentor;

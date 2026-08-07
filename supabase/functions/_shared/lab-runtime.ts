@@ -30,10 +30,18 @@ export async function authenticatedLabUser(req: Request) {
 
 export const validStepKind = (value: unknown) => value === 'observation' || value === 'classification' || value === 'hypothesis';
 
+// BUGFIX (found via live testing 2026-08-07): reveal_available must only fire on the
+// TRUE LAST step. The previous check (`step.kind === 'hypothesis'`) unlocked reveal on the
+// FIRST hypothesis-kind step, since almost every non-observation/classification phase is
+// kind:'hypothesis' -- this let a session leak into reveal_available (and let reveal-label-session
+// authorize the reveal) many steps before the sequence actually finished. Non-final
+// hypothesis-kind steps now map to the 'hypothesizing' state, which was already a valid
+// value in the state CHECK constraint but was never actually reachable because of this bug.
 export function stateForStep(step: Record<string, unknown>, last: boolean) {
-  if (last || step.kind === 'hypothesis') return 'reveal_available';
+  if (last) return 'reveal_available';
   if (step.kind === 'observation') return 'observing';
   if (step.kind === 'classification') return 'classifying';
+  if (step.kind === 'hypothesis') return 'hypothesizing';
   return 'evaluating';
 }
 

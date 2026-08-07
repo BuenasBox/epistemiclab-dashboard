@@ -4,8 +4,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
-const migration = read('supabase', 'migrations', '20260806090000_label_lab_pro_runtime.sql');
+// Renamed 2026-08-07 to match the timestamp Supabase actually assigned when the
+// migration was applied to hylknjjhmxsuuwbsslkr (MCP apply_migration assigns the
+// version at execution time, not from the local filename -- same gotcha already
+// documented for 20260718013917_add_assignment_fk_covering_indexes).
+const migration = read('supabase', 'migrations', '20260807012751_label_lab_pro_runtime.sql');
+const perfMigration = read('supabase', 'migrations', '20260807013130_label_lab_pro_performance_hardening.sql');
 const access = read('supabase', 'functions', '_shared', 'learning-access.ts');
+const runtime = read('supabase', 'functions', '_shared', 'lab-runtime.ts');
 const start = read('supabase', 'functions', 'start-label-session', 'index.ts');
 const submit = read('supabase', 'functions', 'submit-label-step', 'index.ts');
 const reveal = read('supabase', 'functions', 'reveal-label-session', 'index.ts');
@@ -26,6 +32,38 @@ test('Label Lab Pro stores private content and immutable versioned responses', (
   assert.match(migration, /confidence jsonb not null/);
   assert.match(migration, /revoke all on table public\.lab_items from public, anon, authenticated/);
   assert.match(migration, /create policy lab_sessions_select_owner_or_admin/);
+});
+
+test('the performance-hardening migration covers the item_id FKs and wraps auth calls in RLS policies', () => {
+  assert.match(perfMigration, /create index if not exists lab_assignments_item_id_idx on public\.lab_assignments\(item_id\)/);
+  assert.match(perfMigration, /create index if not exists lab_sessions_item_id_idx on public\.lab_sessions\(item_id\)/);
+  assert.match(perfMigration, /\(select auth\.uid\(\)\)/);
+  assert.match(perfMigration, /\(select is_admin\(\)\)/);
+});
+
+test('regression: assignment insert uses the requestKey variable, not the undefined bare identifier', () => {
+  // Found via live testing 2026-08-07: `request_key` as an object-shorthand property threw
+  // ReferenceError (no such variable in scope -- only `requestKey` exists), so start-label-session
+  // could never create an assignment for anyone.
+  assert.doesNotMatch(start, /item_id: item\.item_id, request_key,/);
+  assert.match(start, /item_id: item\.item_id, request_key: requestKey,/);
+});
+
+test('regression: reveal_available only fires on the true last step', () => {
+  // Found via live testing 2026-08-07: the old check treated ANY hypothesis-kind step as
+  // reveal-eligible (almost every non-observation/classification phase is kind:'hypothesis'),
+  // letting reveal-label-session authorize a reveal long before the sequence finished.
+  assert.doesNotMatch(runtime, /if \(last \|\| step\.kind === 'hypothesis'\) return 'reveal_available';/);
+  assert.match(runtime, /if \(last\) return 'reveal_available';/);
+  assert.match(runtime, /if \(step\.kind === 'hypothesis'\) return 'hypothesizing';/);
+});
+
+test('regression: evaluation_spec is read as the flat per-item ruleset, not a map keyed by step_key', () => {
+  // Found via live testing 2026-08-07: item.evaluation_spec?.[stepKey] always resolved to
+  // undefined against the importer's flat shape, so every answer was silently evaluated
+  // against an empty {} spec -- no response was ever actually judged correct.
+  assert.doesNotMatch(submit, /item\.evaluation_spec\?\.\[stepKey\]/);
+  assert.match(submit, /item\.evaluation_spec && typeof item\.evaluation_spec === 'object' \? item\.evaluation_spec : \{\}/);
 });
 
 test('Label Lab Pro requires a server-side access mode and returns only public content at start', () => {

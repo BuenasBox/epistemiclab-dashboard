@@ -22,7 +22,7 @@ Deno.serve(async (req) => {
       const { data: item, error: itemError } = await supabase.from('lab_items').select('item_id,public_content,content_version,evaluation_version').eq('lab_type', 'label').eq('is_active', true).order('created_at', { ascending: true }).limit(1).maybeSingle();
       if (itemError) return labJson({ ok: false, error: 'Unable to load Label Lab item' }, 500);
       if (!item) return labJson({ ok: false, error: 'No Label Lab item available' }, 404);
-      const inserted = await supabase.from('lab_assignments').insert({ user_id: user.id, lab_type: 'label', item_id: item.item_id, request_key, status: 'started', started_at: new Date().toISOString() }).select('id,item_id,status,expires_at').single();
+      const inserted = await supabase.from('lab_assignments').insert({ user_id: user.id, lab_type: 'label', item_id: item.item_id, request_key: requestKey, status: 'started', started_at: new Date().toISOString() }).select('id,item_id,status,expires_at').single();
       if (inserted.error) {
         const replay = await supabase.from('lab_assignments').select('id,item_id,status,expires_at').eq('user_id', user.id).eq('lab_type', 'label').eq('request_key', requestKey).maybeSingle();
         if (replay.error || !replay.data) return labJson({ ok: false, error: 'Unable to create assignment' }, 500);
