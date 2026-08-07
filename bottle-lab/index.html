@@ -11,10 +11,15 @@
 (function(){'use strict';
 var app=document.getElementById('app'),chip=document.getElementById('statusChip'),network=document.getElementById('networkStatus');
 var API=((window.WSET_SUPABASE_CONFIG||{}).url||'')+'/functions/v1/',KEY=(window.WSET_SUPABASE_CONFIG||{}).publishableKey||'';
-var state={session:null,step:null,selection:'',evidence:[],confidence:'',justification:'',committed:false,busy:false};
+var state={session:null,step:null,selection:'',evidenceWeights:{},confidence:'',justification:'',committed:false,busy:false,evaluations:[],commitments:[],evidenceCatalog:{}};
 var CONF_ORDER=['cannot_determine','intuition','probable','fairly_sure','certain'];
 var CONF_LABEL={cannot_determine:'No puede determinarse',intuition:'Intuyo',probable:'Probable',fairly_sure:'Bastante seguro',certain:'Seguro'};
 var KIND_LABEL={observation:'Observación',classification:'Clasificación',hypothesis:'Hipótesis'};
+var WEIGHT_ORDER=['secondary','relevant','key'];
+var WEIGHT_LABEL={secondary:'Secundaria',relevant:'Relevante',key:'Clave'};
+// Copy determinista basada en evaluation.calibration.band -- ya calculado y autorizado por
+// evaluateBottleResponse() en submit-bottle-step; nunca se recalcula en cliente.
+var CALIBRATION_LABEL={aligned:'Tu confianza estuvo alineada con lo que la evidencia permitía sostener.',overconfident:'Tu certeza excedía lo que tu propia evidencia podía sostener.',underconfident:'Tenías más evidencia disponible de la que tu confianza reflejaba.',uncertainty_correct:'Reconociste correctamente que la evidencia no permitía concluir.',evasive_uncertainty:'Declaraste "no puede determinarse" cuando la evidencia sí permitía concluir algo.'};
 function esc(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function setNetwork(){network.hidden=navigator.onLine;network.textContent='Sin conexión. La sesión no se enviará hasta recuperar la red.';}window.addEventListener('online',setNetwork);window.addEventListener('offline',setNetwork);setNetwork();
 function loading(text){chip.textContent='Cargando sesión';app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor"></span></div><div class="state eval"><span class="d"></span>'+esc(text)+'</div></div>';}
@@ -26,7 +31,12 @@ function stepView(){
   var hasChoice=(s.options||[]).length>0;
   var locked=hasChoice&&state.committed;
   var opts=(s.options||[]).map(function(o){return '<button class="btn btn--ghost opt '+(state.selection===o.id?'sel':'')+(locked?' locked':'')+'" data-option="'+esc(o.id)+'" '+(locked?'disabled':'')+'>'+esc(o.text||o.id)+'</button>';}).join('');
-  var ev=(s.evidence||[]).map(function(e){var used=state.evidence.indexOf(e.id)>=0;return '<button class="btn btn--ghost opt ev '+(used?'sel':'')+'" data-evidence="'+esc(e.id)+'"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small><span class="use-state">'+(used?'usada en tu lectura':'sin usar')+'</span></button>';}).join('');
+  (s.evidence||[]).forEach(function(e){state.evidenceCatalog[e.id]={label:e.label,value:e.value};});
+  var ev=(s.evidence||[]).map(function(e){
+    var w=state.evidenceWeights[e.id]||null;
+    var weightBtns=WEIGHT_ORDER.map(function(wt){return '<button type="button" role="radio" aria-checked="'+(w===wt?'true':'false')+'" class="wbtn '+(w===wt?'sel':'')+'" data-weight-for="'+esc(e.id)+'" data-weight="'+wt+'">'+WEIGHT_LABEL[wt]+'</button>';}).join('');
+    return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div><div class="ev-weight" role="radiogroup" aria-label="Peso que le das a '+esc(e.label)+'">'+weightBtns+'</div></div>';
+  }).join('');
   var conf=CONF_ORDER.map(function(c){return '<button class="btn btn--ghost pillbtn '+(state.confidence===c?'sel':'')+(locked?' locked':'')+'" data-confidence="'+c+'" '+(locked?'disabled':'')+'>'+CONF_LABEL[c]+'</button>';}).join('');
   var commitBar=!hasChoice?'':(state.committed?
     '<div class="commit-bar is-committed"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>Hipótesis comprometida</b>Esto era lo que pensabas con la información disponible en este momento. Si aparece evidencia nueva, la revisión quedará registrada aparte.</div></div>'
@@ -35,12 +45,12 @@ function stepView(){
   var readyNoChoice=!hasChoice&&(state.confidence||state.justification);
   var showCommitBtn=hasChoice&&!state.committed;
   var showSendBtn=(!hasChoice&&readyNoChoice)||(hasChoice&&state.committed);
-  app.innerHTML='<div class="eyebrow">Bottle Lab Pro · '+(KIND_LABEL[s.kind]||'paso activo')+'</div><h2 class="serif">'+esc(s.prompt||s.id)+'</h2><div class="grid g2"><div><div class="card"><div class="card-label">Evidencia observada</div><p class="small muted">Marca la evidencia que realmente usas para tu lectura -- el resto queda registrada como observada, no usada.</p>'+ev+'</div></div><div class="card"><div class="card-label">Tu lectura</div>'+opts+'<textarea id="justification" class="opt" rows="3" placeholder="Explica qué permite y qué no permite inferir…" '+(locked?'disabled':'')+'>'+esc(state.justification)+'</textarea><div class="conf"><div class="q">¿Qué tan seguro estás?</div><div class="opts">'+conf+'</div></div>'+commitBar+'<div class="flowbar">'+(showCommitBtn?'<button class="btn btn--shine flex-1" id="commit" '+(canCommit?'':'disabled')+'>Comprometer hipótesis</button>':'<button class="btn btn--shine btn--glow flex-1" id="send" '+(showSendBtn?'':'disabled')+'>Enviar paso →</button>')+'</div></div></div>';
+  app.innerHTML='<div class="eyebrow">Bottle Lab Pro · '+(KIND_LABEL[s.kind]||'paso activo')+'</div><h2 class="serif">'+esc(s.prompt||s.id)+'</h2><div class="grid g2"><div><div class="card"><div class="card-label">Evidencia observada</div><p class="small muted">Para cada señal, marca qué tan relevante te parece para tu lectura -- el resto queda registrada como observada, sin peso.</p>'+ev+'</div></div><div class="card"><div class="card-label">Tu lectura</div>'+opts+'<textarea id="justification" class="opt" rows="3" placeholder="Explica qué permite y qué no permite inferir…" '+(locked?'disabled':'')+'>'+esc(state.justification)+'</textarea><div class="conf"><div class="q">¿Qué tan seguro estás?</div><div class="opts">'+conf+'</div></div>'+commitBar+'<div class="flowbar">'+(showCommitBtn?'<button class="btn btn--shine flex-1" id="commit" '+(canCommit?'':'disabled')+'>Comprometer hipótesis</button>':'<button class="btn btn--shine btn--glow flex-1" id="send" '+(showSendBtn?'':'disabled')+'>Enviar paso →</button>')+'</div></div></div>';
   app.querySelectorAll('[data-option]').forEach(function(b){b.onclick=function(){if(locked)return;state.selection=b.dataset.option;stepView();};});
-  app.querySelectorAll('[data-evidence]').forEach(function(b){b.onclick=function(){var i=state.evidence.indexOf(b.dataset.evidence);if(i>=0)state.evidence.splice(i,1);else state.evidence.push(b.dataset.evidence);stepView();};});
+  app.querySelectorAll('[data-weight-for]').forEach(function(b){b.onclick=function(){var id=b.dataset.weightFor,wt=b.dataset.weight;state.evidenceWeights[id]=state.evidenceWeights[id]===wt?null:wt;stepView();};});
   app.querySelectorAll('[data-confidence]').forEach(function(b){b.onclick=function(){if(locked)return;state.confidence=b.dataset.confidence;stepView();};});
   var ta=document.getElementById('justification');if(ta)ta.oninput=function(){state.justification=ta.value;};
-  var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){state.committed=true;stepView();};
+  var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){state.committed=true;state.commitments.push({step_id:s.id,hypothesis:state.selection,confidence:state.confidence,evidence_weights:Object.assign({},state.evidenceWeights),committed_at:new Date().toISOString()});stepView();};
   var sendBtn=document.getElementById('send');if(sendBtn)sendBtn.onclick=submit;
 }
 function mentorInterstitial(feedback,next){
@@ -51,15 +61,44 @@ function mentorInterstitial(feedback,next){
 async function api(path,body){if(!navigator.onLine)throw Error('OFFLINE');var token=await getAuthToken();if(!token)throw Error('NO_AUTH_SESSION');var res=await fetch(API+path,{method:'POST',cache:'no-store',headers:{Authorization:'Bearer '+token,apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await res.json().catch(function(){return{};});if(!res.ok)throw Error(data.error||'REQUEST_FAILED');return data;}
 function requestKey(){var k=sessionStorage.getItem('bottle_lab_pro_request_key');if(!k){k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);}return k;}
 async function start(){loading('Recuperando tu sesión…');try{var d=await api('start-bottle-session',{request_key:requestKey()});state.session=d.session_id;state.step=d.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'bottle-lab-pro',mode:'server',competencies:['Bottle Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')error('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')error('Estás sin conexión.');else error('La asignación no está disponible.');}}
-async function submit(){if(state.busy)return;state.busy=true;loading('Evaluando tu razonamiento en servidor…');try{var d=await api('submit-bottle-step',{session_id:state.session,idempotency_key:crypto.randomUUID(),step_key:state.step.id,step_kind:state.step.kind,answer:{response:state.selection||'cannot_determine',evidence_used:state.evidence,justification:state.justification,confidence:state.confidence}});var advance=function(){if(d.step){state.step=d.step;state.selection='';state.evidence=[];state.confidence='';state.justification='';state.committed=false;stepView();}else reveal();};var feedback=d.evaluation&&d.evaluation.mentor_feedback;if(feedback&&feedback.text)mentorInterstitial(feedback,advance);else advance();}catch(e){error(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}}
+async function submit(){
+  if(state.busy)return;state.busy=true;loading('Evaluando tu razonamiento en servidor…');
+  var usedIds=Object.keys(state.evidenceWeights).filter(function(id){return state.evidenceWeights[id];});
+  try{
+    var d=await api('submit-bottle-step',{session_id:state.session,idempotency_key:crypto.randomUUID(),step_key:state.step.id,step_kind:state.step.kind,answer:{response:state.selection||'cannot_determine',evidence_used:usedIds,evidence_weights:state.evidenceWeights,justification:state.justification,confidence:state.confidence}});
+    if(state.step.kind==='hypothesis'&&d.evaluation)state.evaluations.push(d.evaluation);
+    var advance=function(){if(d.step){state.step=d.step;state.selection='';state.evidenceWeights={};state.confidence='';state.justification='';state.committed=false;stepView();}else reveal();};
+    var feedback=d.evaluation&&d.evaluation.mentor_feedback;
+    if(feedback&&feedback.text)mentorInterstitial(feedback,advance);else advance();
+  }catch(e){error(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}
+}
 var REVEAL_MOMENTOS=['layer1','layer2','layer3','layer4'];
 var REVEAL_LABEL={layer1:'Qué ocurrió',layer2:'Qué pensabas',layer3:'Cómo usaste la evidencia',layer4:'Regla transferible'};
 var revealData=null,revealStep=0;
+// El Reveal Board se construye SOLO a partir de evaluation.* ya autorizado por el servidor en
+// cada paso de hipótesis (evaluateBottleResponse en submit-bottle-step) -- nunca se recalcula
+// ni se infiere en cliente. Visible solo desde el reveal (nunca antes).
+function evidenceLabels(ids){return ids.map(function(id){var e=state.evidenceCatalog[id];return e?e.label:id;}).join(', ');}
+function buildRevealBoard(){
+  if(!state.evaluations.length)return '';
+  return state.evaluations.map(function(ev,i){
+    var wellUsed=ev.evidence.selected.filter(function(id){return ev.evidence.overweighted.indexOf(id)<0;});
+    var overweighted=ev.evidence.overweighted||[];
+    var ignored=ev.evidence.ignored||[];
+    var calib=CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.';
+    var rows='';
+    if(wellUsed.length)rows+='<div class="rb-row rb-good"><span class="rb-tag">Bien usada</span>'+esc(evidenceLabels(wellUsed))+'</div>';
+    if(overweighted.length)rows+='<div class="rb-row rb-warn"><span class="rb-tag">Sobreponderada</span>'+esc(evidenceLabels(overweighted))+'</div>';
+    if(ignored.length)rows+='<div class="rb-row rb-muted"><span class="rb-tag">Ignorada</span>'+esc(evidenceLabels(ignored))+'</div>';
+    return '<div class="reveal-board">'+(state.evaluations.length>1?'<div class="card-label">Paso de hipótesis '+(i+1)+'</div>':'')+(rows||'<p class="small muted">Sin evidencia citada en este paso.</p>')+'<p class="small mentor-text">'+esc(calib)+'</p></div>';
+  }).join('');
+}
 function revealView(){
   var r=revealData,key=REVEAL_MOMENTOS[revealStep];
   var progress=REVEAL_MOMENTOS.map(function(_,i){return '<span class="'+(i<=revealStep?'done':'')+'"></span>';}).join('');
   var isLast=revealStep===REVEAL_MOMENTOS.length-1;
-  app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc(REVEAL_LABEL[key].toUpperCase())+'</div><p class="small mentor-text">'+esc(r[key])+'</p></div></div><div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<a class="btn btn--shine btn--glow" href="/bottle-lab/">Intentar otro caso</a>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
+  var board=key==='layer3'?buildRevealBoard():'';
+  app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc(REVEAL_LABEL[key].toUpperCase())+'</div><p class="small mentor-text">'+esc(r[key])+'</p></div></div>'+board+'<div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<a class="btn btn--shine btn--glow" href="/bottle-lab/">Intentar otro caso</a>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
   var prev=document.getElementById('rprev');if(prev)prev.onclick=function(){revealStep--;revealView();};
   var next=document.getElementById('rnext');if(next)next.onclick=function(){revealStep++;revealView();};
 }

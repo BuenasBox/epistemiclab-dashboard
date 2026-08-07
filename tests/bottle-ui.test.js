@@ -25,5 +25,33 @@ test('Bottle UI is server-driven and does not ship the public fixture as authori
 test('Bottle UI surfaces mentor_feedback from submit-bottle-step without leaking evaluation internals', () => {
   assert.match(html, /d\.evaluation&&d\.evaluation\.mentor_feedback/);
   assert.match(html, /esc\(feedback\.text\)/);
-  assert.doesNotMatch(html, /evaluation\.result|evaluation\.confidence\.scale|evaluation\.calibration/);
+});
+
+test('Bottle UI Evidence Board (Loop 2): stepView never renders raw evaluation.* bands pre-reveal', () => {
+  // stepView() es la única función que pinta ANTES del reveal (paso activo). No debe leer
+  // ninguno de los campos que evaluateBottleResponse() calcula server-side.
+  const stepViewBody = html.slice(html.indexOf('function stepView()'), html.indexOf('function mentorInterstitial'));
+  assert.doesNotMatch(stepViewBody, /evaluation|\.calibration\.band|\.overweighted|editorial_evidence_strength/);
+  // La única señal que declara el propio estudiante es el peso (secondary/relevant/key) -- nunca
+  // se muestra evidence_strength editorial real ni bandas del evaluador en este paso.
+  assert.match(stepViewBody, /WEIGHT_LABEL\[wt\]/);
+});
+
+test('Bottle UI Reveal Board (Loop 2): usa evaluation.* real del servidor, solo dentro del reveal', () => {
+  assert.match(html, /function buildRevealBoard\(\)/);
+  assert.match(html, /ev\.evidence\.overweighted/);
+  assert.match(html, /ev\.calibration\.band/);
+  assert.match(html, /CALIBRATION_LABEL\[ev\.calibration\.band\]/);
+  // Se acumula solo en pasos de hipótesis, nunca en observation/classification.
+  assert.match(html, /state\.step\.kind==='hypothesis'&&d\.evaluation/);
+  assert.match(html, /state\.evaluations\.push\(d\.evaluation\)/);
+  // El board solo se renderiza dentro de revealView(), gateado por session.state==reveal_available
+  // en el servidor (reveal-bottle-session ya lo exige antes de devolver nada).
+  const revealViewBody = html.slice(html.indexOf('function revealView()'), html.indexOf('async function reveal()'));
+  assert.match(revealViewBody, /buildRevealBoard\(\)/);
+});
+
+test('Bottle UI sends declared evidence weights without inventing a new answer contract', () => {
+  assert.match(html, /evidence_used:usedIds/);
+  assert.match(html, /evidence_weights:state\.evidenceWeights/);
 });
