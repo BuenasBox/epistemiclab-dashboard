@@ -43,8 +43,8 @@
   },
   "validation": {
     "command": "npm test",
-    "status": "verified",
-    "evidence_fingerprint": "c8361a09840b9aba7e86156641f4a8117bbeb31b45d975fcaa1a1dd6c0c033da",
+    "status": "unverified_changes",
+    "evidence_fingerprint": "bbbc4f225d12f3effe0a03bb91bfe9a53577e3a3ad5a7e4d8a07282242e1af8a",
     "last_successful_fingerprint": "c8361a09840b9aba7e86156641f4a8117bbeb31b45d975fcaa1a1dd6c0c033da",
     "test_files": 49,
     "node_test_files": 32,

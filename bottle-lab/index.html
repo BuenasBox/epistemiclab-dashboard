@@ -1,251 +1,28 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Botellas — EpistemicLab</title>
-<meta name="robots" content="noindex">
-<link rel="stylesheet" href="/platform-nav.css">
-<link rel="stylesheet" href="/shared/epistemic-icons.css">
-<link rel="stylesheet" href="/shared/theme-wine.css">
-<link rel="stylesheet" href="/shared/theme-platform.css">
-<link rel="stylesheet" href="/shared/ui-buttons.css">
-<link rel="stylesheet" href="./bottle-lab.css">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#07090d">
-<link rel="icon" href="/icons/favicon.ico" sizes="any">
-<link rel="icon" href="/icons/icon-192.png" type="image/png">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script src="https://browser.sentry-cdn.com/10.65.0/bundle.min.js" integrity="sha384-d3YaoAU3tHG6Fp+i9wDLHT6HoknMt4cUZYob+LhIw2Z7SNMubeealjekiA4fR3h8" crossorigin="anonymous" defer></script>
-<script>window.addEventListener('DOMContentLoaded',function(){if(window.Sentry)Sentry.init({dsn:"https://e155fc5d71bdb7a61a98f949c560531a@o4511743369347072.ingest.us.sentry.io/4511743386910720"});});</script>
-<script src="/shared/sw-register.js" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Botellas — EpistemicLab</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="/platform-nav.css"><link rel="stylesheet" href="/shared/epistemic-icons.css"><link rel="stylesheet" href="/shared/theme-wine.css"><link rel="stylesheet" href="/shared/theme-platform.css"><link rel="stylesheet" href="/shared/ui-buttons.css"><link rel="stylesheet" href="./bottle-lab.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script><script src="/shared/supabase-public-config.js"></script><script src="../shared/auth-token.js"></script><script src="../epistemic-profile/epistemic-profile-client.js"></script><script src="/ep-bootstrap.js"></script>
 </head>
-<body>
-<div class="wrap">
-  <div class="topline">
-    <div class="flex-1"></div>
-    <span class="chip gold" id="compChip">Aspecto · Teoría</span>
-  </div>
-  <div id="app" aria-live="polite"></div>
-  <div class="note mt-24" id="fixtureNote">Práctica formativa · El Mentor evaluará tu razonamiento al finalizar.</div>
-</div>
-
-<script src="./data/bottle-items.sample.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
-<script src="../shared/auth-token.js"></script>
-<script src="../epistemic-profile/epistemic-profile-client.js"></script>
-<script src="/ep-bootstrap.js"></script>
+<body><div class="wrap"><header class="topline"><div class="flex-1"></div><span class="chip gold" id="statusChip">Bottle Lab Pro</span></header><main id="app" aria-live="polite"></main><div class="note mt-24" id="networkStatus" hidden></div></div>
 <script>
-(function(){
-  "use strict";
-  var DATA = window.BOTTLE_GUIDED_ITEMS || { items: [] };
-  var EP = window.EpistemicProfile;
-  var app = document.getElementById('app');
-
-  var TONE = { coincide:'ok', cerca:'near', revisar:'rev', contradiccion:'con' };
-  var TONE_LABEL = { coincide:'Coincide', cerca:'Cerca', revisar:'Revisar', contradiccion:'Posible contradicción' };
-
-  var S = null;
-  function reset(itemIndex){
-    var idx = itemIndex % (DATA.items.length || 1);
-    S = { screen:'frame', itemIndex:idx, item:DATA.items[idx], phaseIdx:0,
-          answers:{}, hyp:{}, finished:false };
-  }
-
-  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-  function el(html){ var d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild; }
-
-  /* ---------- screen renderers ---------- */
-  function render(){
-    if(!S.item){ app.innerHTML = '<div class="card">No hay botellas en el set.</div>'; return; }
-    document.getElementById('compChip').textContent = (S.item.competencies||[]).join(' · ');
-    if(S.screen==='frame') return renderFrame();
-    if(S.screen==='observe') return renderObserve();
-    if(S.screen==='hypothesis') return renderHypothesis();
-    if(S.screen==='evaluating') return renderEvaluating();
-    if(S.screen==='reveal') return renderReveal();
-    if(S.screen==='done') return renderDone();
-  }
-
-  function renderFrame(){
-    app.innerHTML =
-      '<div class="eyebrow">Módulo · inferencia contextual</div>'+
-      '<h1 class="serif">Botellas</h1>'+
-      '<p class="muted bl-narrow">Deduce el estilo de un vino observando la <b>botella</b>: forma, color del vidrio, formato, cierre y nivel. Entrenas tu ojo y tu razonamiento antes de oler nada.</p>'+
-      '<div class="note bl-narrow mb-18">En el examen la cata es <b>ciega</b> — no verás la botella. Esto entrena la <b>teoría de envasado</b> y el hábito de formular hipótesis. <b>No memorizamos botellas: aprendemos a leerlas.</b></div>'+
-      '<div class="card bl-narrow">'+
-        '<div class="card-label">Esta sesión</div>'+
-        '<h3>1 botella · 5 pasos de observación · ~5 min</h3>'+
-        '<p class="small muted">Observas zona a zona, formulas tu hipótesis y el Mentor te devuelve qué cambió en ti.</p>'+
-        '<div class="flowbar"><button class="btn btn--shine btn--glow" id="start">Empezar →</button></div>'+
-      '</div>';
-    document.getElementById('start').onclick = function(){
-      EP && EP.startSession({ module:'bottle-guided', competencies:S.item.competencies });
-      S.screen='observe'; S.phaseIdx=0; render();
-    };
-  }
-
-  function bottleHtml(r){
-    r = r||{};
-    return '<div class="bottle shape-'+esc(r.shape||'burgundy')+' gc-'+esc(r.glassColor||'dark-green')+'">'+
-      '<span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div>';
-  }
-
-  function timelineHtml(){
-    var ph = S.item.phases;
-    var out = '<div class="steps">';
-    for(var i=0;i<ph.length;i++){
-      var cls = i<S.phaseIdx?'done':(i===S.phaseIdx?'active':'');
-      var mk = i<S.phaseIdx?'<span class="ep-icon ep-icon--success" aria-hidden="true"></span>':(i===S.phaseIdx?'<span class="ep-icon ep-icon--current-step" aria-hidden="true"></span>':'<span class="ep-icon ep-icon--pending-step" aria-hidden="true"></span>');
-      out += '<div class="step '+cls+'"><span class="dot">'+mk+'</span><span class="lbl">'+esc(ph[i].label)+'</span></div>';
-    }
-    return out+'</div>';
-  }
-
-  function renderObserve(){
-    var ph = S.item.phases[S.phaseIdx];
-    var sel = S.answers[ph.id];
-    var optsHtml = ph.options.map(function(o){
-      return '<button class="btn btn--ghost opt'+(sel===o.id?' sel':'')+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+
-        (o.sub?'<small>'+esc(o.sub)+'</small>':'')+'</button>';
-    }).join('');
-    var m = ph.mentor||{sev:'info',text:''};
-    app.innerHTML =
-      '<div class="eyebrow">Observa la botella · paso '+(S.phaseIdx+1)+' de '+S.item.phases.length+'</div>'+
-      '<h2 class="serif">'+esc(ph.prompt)+'</h2>'+
-      timelineHtml()+
-      '<div class="grid g2"><div>'+
-        '<div class="card center"><div class="card-label card-label-left">Botella en observación · identidad oculta</div>'+bottleHtml(S.item.render)+'</div>'+
-        '<div class="card tight mt-14"><div class="card-label">'+esc(ph.label)+'</div>'+optsHtml+'</div>'+
-        '<div class="flowbar">'+
-          (S.phaseIdx>0?'<button class="btn btn--ghost" id="back">Atrás</button>':'')+
-          '<button class="btn btn--shine btn--glow flex-1" id="next" '+(sel?'':'disabled')+'>Confirmar y seguir →</button>'+
-        '</div>'+
-      '</div><div>'+
-        '<div class="card-label">Mentor</div>'+
-        '<div class="mentor '+esc(m.sev)+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">PISTA</div><p class="small mentor-text">'+esc(m.text)+'</p></div></div>'+
-        '<div class="state eval"><span class="d"></span> El Mentor analizará tu deducción al confirmar</div>'+
-        '<div class="note mt-14">El razonamiento se valora más que el acierto. La identidad no se revela hasta el final (gobernanza).</div>'+
-      '</div></div>';
-    app.querySelectorAll('[data-opt]').forEach(function(b){
-      b.onclick = function(){ S.answers[ph.id]=b.getAttribute('data-opt'); render(); };
-    });
-    var back=document.getElementById('back'); if(back) back.onclick=function(){ S.phaseIdx--; render(); };
-    document.getElementById('next').onclick = function(){
-      var opt = ph.options.filter(function(o){return o.id===sel;})[0]||{};
-      EP && EP.decisionMade({ competency:(S.item.competencies||[])[0], itemId:S.item.id, phaseId:ph.id,
-        response:sel, correctnessBand:opt.band, novel:S.item.novel });
-      if(S.phaseIdx < S.item.phases.length-1){ S.phaseIdx++; render(); }
-      else { S.screen='hypothesis'; render(); }
-    };
-  }
-
-  function hypGroup(key, group){
-    var sel = S.hyp[key];
-    return '<div class="card-label'+(key==='positioning'?' mt-14':'')+'">'+esc(group.prompt)+'</div>'+
-      group.options.map(function(o){
-        return '<button class="btn btn--ghost opt'+(sel===o.id?' sel':'')+'" data-hyp="'+key+'" data-opt="'+esc(o.id)+'">'+esc(o.text)+'</button>';
-      }).join('');
-  }
-
-  function renderHypothesis(){
-    var h = S.item.hypothesis;
-    var ready = S.hyp.style && S.hyp.positioning;
-    app.innerHTML =
-      '<div class="eyebrow">Integra las pistas</div><h2 class="serif">Tu hipótesis</h2>'+
-      '<p class="muted small bl-narrow">Has observado las cinco zonas. ¿Qué deduces del conjunto? Justifica con la combinación, no con una sola pista.</p>'+
-      '<div class="grid g2"><div class="card">'+ hypGroup('style',h.style) + hypGroup('positioning',h.positioning) +'</div>'+
-      '<div><div class="mentor warn"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">ATENCIÓN</div><p class="small mentor-text">La forma es <i>tradición</i>, no ley. Una botella puede sorprender: lo que vale es tu razonamiento.</p></div></div>'+
-      '<div class="flowbar"><button class="btn btn--ghost" id="back">Atrás</button><button class="btn btn--shine btn--glow flex-1" id="submit" '+(ready?'':'disabled')+'>Enviar hipótesis →</button></div>'+
-      '</div></div>';
-    app.querySelectorAll('[data-hyp]').forEach(function(b){
-      b.onclick=function(){ S.hyp[b.getAttribute('data-hyp')]=b.getAttribute('data-opt'); render(); };
-    });
-    document.getElementById('back').onclick=function(){ S.screen='observe'; S.phaseIdx=S.item.phases.length-1; render(); };
-    document.getElementById('submit').onclick=function(){
-      var hs=S.item.hypothesis;
-      var so=hs.style.options.filter(function(o){return o.id===S.hyp.style;})[0]||{};
-      var po=hs.positioning.options.filter(function(o){return o.id===S.hyp.positioning;})[0]||{};
-      EP && EP.hypothesisSubmitted({ competency:'Conclusiones', itemId:S.item.id,
-        style:{response:S.hyp.style,band:so.band}, positioning:{response:S.hyp.positioning,band:po.band} });
-      S.finished=true;            // finish-gate: sólo ahora se puede revelar
-      S.screen='evaluating'; render();
-    };
-  }
-
-  function renderEvaluating(){
-    app.innerHTML =
-      '<div class="center bl-evaluating">'+
-      '<div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div>'+
-      '<div class="state eval"><span class="d"></span> Analizando tu deducción…</div>'+
-      '<p class="muted small mt-14"><a href="#" id="see" class="gold">ver resultado</a></p></div>';
-    var go=function(e){ if(e)e.preventDefault(); S.screen='reveal'; render(); };
-    document.getElementById('see').onclick=go;
-    var t=setTimeout(go,900);     // timeout, no es animación; ok bajo reduce-motion
-    app._t=t;
-  }
-
-  function renderReveal(){
-    if(!S.finished){ S.screen='observe'; return render(); } // gobernanza
-    var it=S.item, rv=it.reveal;
-    // feedback por fase
-    var rows = it.phases.map(function(ph){
-      var sel=S.answers[ph.id]; var opt=ph.options.filter(function(o){return o.id===sel;})[0]||{};
-      var tone=TONE[opt.band]||'rev';
-      return '<div class="fb-row"><span class="small">'+esc(ph.label)+': '+esc((opt.text||'').split('(')[0])+'</span>'+
-        '<span class="tone '+tone+'">'+esc(TONE_LABEL[opt.band]||'Revisar')+'</span>'+
-        '<span class="small muted">'+esc(opt.explain||'')+'</span></div>';
-    }).join('');
-    var hs=it.hypothesis;
-    var so=hs.style.options.filter(function(o){return o.id===S.hyp.style;})[0]||{};
-    var hypTone=TONE[so.band]||'rev';
-    var badges=(rv.badges||[]).map(function(b){return '<span class="chip gold">'+esc(b)+'</span>';}).join(' ');
-    EP && rv.misconception && EP.misconception({ id:rv.misconception.id, status:'resolved', title:rv.misconception.title });
-    app.innerHTML =
-      '<div class="bl-reveal">'+
-      '<div class="eyebrow">Revelación</div><h2 class="serif">Era… '+esc(rv.identity)+'</h2>'+
-      '<div class="grid g2"><div>'+
-        '<div class="card center">'+bottleHtml(it.render)+'<div class="mt-10">'+badges+'</div></div>'+
-        '<div class="card tight mt-14"><div class="card-label">Tus lecturas</div>'+rows+
-          '<div class="fb-row"><span class="small">Hipótesis de estilo</span><span class="tone '+hypTone+'">'+esc(TONE_LABEL[so.band]||'Revisar')+'</span><span class="small muted">'+esc((so.text||''))+'</span></div>'+
-        '</div>'+
-      '</div><div>'+
-        '<div class="mentor ok"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">SÍNTESIS</div><p class="small mentor-text">'+esc(rv.mentorSynthesis)+'</p></div></div>'+
-        (rv.misconception?'<div class="mentor crit"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">CONCEPTO CLAVE</div><p class="small mentor-text"><b>'+esc(rv.misconception.title)+'.</b> '+esc(rv.misconception.text)+'</p></div></div>':'')+
-        '<div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="toDone">Ver qué cambió en ti →</button></div>'+
-      '</div></div></div>';
-    document.getElementById('toDone').onclick=function(){
-      EP && EP.sessionCompleted({ module:'bottle-guided', itemId:it.id });
-      S.screen='done'; render();
-    };
-  }
-  function renderDone(){
-    var d = (EP && EP.getSessionDelta()) || { accuracy:'—', misconceptions:[], transferTouched:false, competencies:S.item.competencies };
-    var misc = (d.misconceptions||[]).map(function(m){
-      return '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--insight" aria-hidden="true"></span></div><div><b class="small">Idea consolidada</b><div class="xs muted mt-2">'+esc(m.title||'Concepto reforzado')+'</div></div></div>';
-    }).join('');
-    var transfer = d.transferTouched ?
-        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--transfer" aria-hidden="true"></span></div><div><b class="small">Transferencia probada</b><div class="xs muted mt-2">Aplicado a una botella reservada como nueva → señal de aprendizaje real, no memoria.</div></div></div>' : '';
-    app.innerHTML =
-      '<div class="bl-done">'+
-      '<div class="center bl-done-narrow"><div class="celebrate"><span class="ep-icon ep-icon--success" aria-hidden="true"></span><span class="ep-sr-only">Completado</span></div>'+
-      '<h2 class="serif">Qué cambió en ti</h2><p class="muted small">No "bien hecho": esto es lo que ahora razonas distinto.</p></div>'+
-      '<div class="bl-done-body">'+
-        '<div class="delta"><div class="ic"><span class="ep-icon ep-icon--reference-material" aria-hidden="true"></span></div><div><b class="small">Análisis visual + Teoría de envasado</b><progress class="meter mt-6" value="74" max="100" aria-label="Progreso reforzado: 74%">74%</progress><div class="xs muted mt-4">Lectura de pistas físicas reforzada · aciertos en esta sesión: '+esc(d.accuracy)+'</div></div></div>'+
-        misc + transfer +
-        '<div class="delta delta-gold"><div class="ic"><span class="ep-icon ep-icon--progress-dashboard" aria-hidden="true"></span></div><div><b class="small">Aporte a Exam Readiness <span class="plus">registrado</span></b><div class="xs muted mt-2">El Epistemic Profile recibió las señales de esta sesión. <i>(Stub hasta el módulo de perfil.)</i></div></div></div>'+
-        '<div class="state done mt-8"><span class="d"></span> Epistemic Profile actualizado · repaso espaciado programado</div>'+
-        '<div class="flowbar flowbar-center"><button class="btn btn--ghost" id="another">Otra botella</button><a class="btn btn--ghost" href="/login/?next=/dashboard/">Guardar mi progreso</a><a class="btn btn--ghost" href="../">Volver a Mi progreso</a></div>'+
-      '</div></div>';
-    document.getElementById('another').onclick=function(){ reset(S.itemIndex+1); render(); };
-  }
-
-  /* ---------- boot ---------- */
-  reset(0);
-  render();
+(function(){'use strict';
+var app=document.getElementById('app'),chip=document.getElementById('statusChip'),network=document.getElementById('networkStatus');
+var API=((window.WSET_SUPABASE_CONFIG||{}).url||'')+'/functions/v1/',KEY=(window.WSET_SUPABASE_CONFIG||{}).publishableKey||'';
+var state={session:null,step:null,selection:'',evidence:[],confidence:'',justification:'',busy:false};
+function esc(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function setNetwork(){network.hidden=navigator.onLine;network.textContent='Sin conexión. La sesión no se enviará hasta recuperar la red.';}window.addEventListener('online',setNetwork);window.addEventListener('offline',setNetwork);setNetwork();
+function loading(text){chip.textContent='Cargando sesión';app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor"></span></div><div class="state eval"><span class="d"></span>'+esc(text)+'</div></div>';}
+function error(message,login){chip.textContent='Bottle Lab Pro';app.innerHTML='<div class="card bl-narrow"><div class="card-label">No pudimos continuar</div><h2 class="serif">'+esc(message)+'</h2><p class="small muted">Tu progreso server-side no se ha marcado como completado.</p><div class="flowbar"><button class="btn btn--ghost" id="retry">Reintentar</button>'+(login?'<a class="btn btn--shine" href="/login/?next=/bottle-lab/">Iniciar sesión</a>':'')+'</div></div>';document.getElementById('retry').onclick=start;}
+function publicDemo(){chip.textContent='Demo pública · sin progreso';app.innerHTML='<div class="eyebrow">Módulo · inferencia física</div><h1 class="serif">Botellas</h1><p class="muted bl-narrow">Aprende a distinguir señales técnicas, tradición, marketing y evidencia no diagnóstica.</p><div class="grid g2"><div class="card center"><div class="bottle shape-burgundy gc-dark-green"><span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div></div><div class="card"><div class="card-label">Demo segura</div><p class="small">La práctica Pro evalúa observación, hipótesis, evidencia y confianza en servidor.</p><div class="state eval"><span class="d"></span>La asignación Pro requiere una cuenta activa.</div><div class="flowbar"><a class="btn btn--shine btn--glow flex-1" href="/login/?next=/bottle-lab/">Entrar para practicar</a></div></div></div>';}
+function stepView(){var s=state.step;if(!s)return error('No hay un paso activo.');chip.textContent='Bottle Lab Pro · '+s.kind;var opts=(s.options||[]).map(function(o){return '<button class="btn btn--ghost opt '+(state.selection===o.id?'sel':'')+'" data-option="'+esc(o.id)+'">'+esc(o.text||o.id)+'</button>';}).join('');var ev=(s.evidence||[]).map(function(e){return '<button class="btn btn--ghost opt '+(state.evidence.indexOf(e.id)>=0?'sel':'')+'" data-evidence="'+esc(e.id)+'"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></button>';}).join('');var ready=state.selection||state.confidence||state.justification;app.innerHTML='<div class="eyebrow">Bottle Lab Pro · paso activo</div><h2 class="serif">'+esc(s.prompt||s.id)+'</h2><div class="steps"><div class="step active"><span class="dot">1</span><span class="lbl">Observa</span></div><div class="step active"><span class="dot">2</span><span class="lbl">Clasifica</span></div><div class="step"><span class="dot">3</span><span class="lbl">Hipótesis</span></div></div><div class="grid g2"><div><div class="card"><div class="card-label">Señales visibles</div><p class="small muted">El servidor entrega únicamente la evidencia visible de este paso.</p>'+ev+'</div></div><div class="card"><div class="card-label">Tu lectura</div>'+opts+'<textarea id="justification" class="opt" rows="3" placeholder="Explica qué permite y qué no permite inferir…">'+esc(state.justification)+'</textarea><div class="conf"><div class="q">Confianza</div><div class="opts">'+['cannot_determine','intuition','probable','fairly_sure','certain'].map(function(c){return '<button class="btn btn--ghost pillbtn '+(state.confidence===c?'sel':'')+'" data-confidence="'+c+'">'+c+'</button>';}).join('')+'</div></div><div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="send" '+(ready?'':'disabled')+'>Enviar paso →</button></div></div></div>';app.querySelectorAll('[data-option]').forEach(function(b){b.onclick=function(){state.selection=b.dataset.option;stepView();};});app.querySelectorAll('[data-evidence]').forEach(function(b){b.onclick=function(){var i=state.evidence.indexOf(b.dataset.evidence);if(i>=0)state.evidence.splice(i,1);else state.evidence.push(b.dataset.evidence);stepView();};});app.querySelectorAll('[data-confidence]').forEach(function(b){b.onclick=function(){state.confidence=b.dataset.confidence;stepView();};});var ta=document.getElementById('justification');ta.oninput=function(){state.justification=ta.value;};document.getElementById('send').onclick=submit;}
+async function api(path,body){if(!navigator.onLine)throw Error('OFFLINE');var token=await getAuthToken();if(!token)throw Error('NO_AUTH_SESSION');var res=await fetch(API+path,{method:'POST',cache:'no-store',headers:{Authorization:'Bearer '+token,apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await res.json().catch(function(){return{};});if(!res.ok)throw Error(data.error||'REQUEST_FAILED');return data;}
+function requestKey(){var k=sessionStorage.getItem('bottle_lab_pro_request_key');if(!k){k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);}return k;}
+async function start(){loading('Recuperando tu sesión…');try{var d=await api('start-bottle-session',{request_key:requestKey()});state.session=d.session_id;state.step=d.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'bottle-lab-pro',mode:'server',competencies:['Bottle Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')error('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')error('Estás sin conexión.');else error('La asignación no está disponible.');}}
+async function submit(){if(state.busy)return;state.busy=true;loading('Evaluando tu razonamiento en servidor…');try{var d=await api('submit-bottle-step',{session_id:state.session,idempotency_key:crypto.randomUUID(),step_key:state.step.id,step_kind:state.step.kind,answer:{response:state.selection||'cannot_determine',evidence_used:state.evidence,justification:state.justification,confidence:state.confidence}});if(d.step){state.step=d.step;state.selection='';state.evidence=[];state.confidence='';state.justification='';stepView();}else reveal();}catch(e){error(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}}
+async function reveal(){loading('Preparando reveal autorizado…');try{var d=await api('reveal-bottle-session',{session_id:state.session}),r=d.reveal||{};window.EpistemicProfile&&window.EpistemicProfile.sessionCompleted({module:'bottle-lab-pro',itemId:state.session});chip.textContent='Bottle Lab Pro · completado';app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor</div><h2 class="serif">Qué cambió en tu inferencia</h2><div class="grid g2"><div class="card center"><div class="bottle shape-burgundy gc-dark-green"><span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div></div><div><div class="mentor ok"><div class="avatar"><span class="ep-icon ep-icon--mentor"></span></div><div><div class="sev">RESULTADO</div><p class="small mentor-text">'+esc(r.layer1&&r.layer1.title)+' · '+esc(r.layer1&&r.layer1.identity)+'</p></div></div><div class="card tight"><div class="card-label">Hipótesis, evidencia y calibración</div><p class="small">'+esc(r.layer2&&r.layer2.text)+'</p><p class="small">'+esc(r.layer3&&('Usada: '+r.layer3.used.join(', ')+' · Ignorada: '+r.layer3.ignored.join(', ')))+'</p></div><div class="mentor info"><div class="avatar"><span class="ep-icon ep-icon--mentor"></span></div><div><div class="sev">REGLA TRANSFERIBLE</div><p class="small mentor-text">'+esc(r.layer4&&r.layer4.rule)+'</p></div></div></div></div></div>';}catch(e){error('El reveal todavía no está autorizado.');}}
+publicDemo();(async function(){try{if(await getAuthToken())start();}catch(_){}})();
 })();
-</script>
-<script src="/platform-nav.js" defer></script>
-</body>
-</html>
+</script><script src="/platform-nav.js" defer></script></body></html>
