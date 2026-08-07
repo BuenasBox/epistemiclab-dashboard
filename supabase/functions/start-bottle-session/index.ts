@@ -1,4 +1,4 @@
-import { authenticatedLabUser, LAB_CORS, labJson } from '../_shared/lab-runtime.ts';
+import { authenticatedLabUser, LAB_CORS, labJson, recordLabEpistemicEvent } from '../_shared/lab-runtime.ts';
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: LAB_CORS });
@@ -38,6 +38,7 @@ Deno.serve(async (req) => {
       session = created.data;
     }
     const active = item.public_content.steps.find((step: any) => step.id === session.current_step) || null;
+    await recordLabEpistemicEvent(supabase, { userId: user.id, sessionId: session.id, occurredAt: new Date().toISOString(), sourceMode: 'bottle_lab_pro', eventId: `bottle:${session.id}:started`, eventType: 'session_started', payload: { item_id: session.item_id }, metadata: { lab_type: 'bottle' } });
     return labJson({ ok: true, session_id: session.id, assignment_id: assignment.id, state: session.state, content_version: session.content_version, evaluation_version: session.evaluation_version, step: active ? { id: active.id, kind: active.kind, prompt: active.prompt, options: active.options || [], evidence: active.evidence || null } : null });
   } catch { return labJson({ ok: false, error: 'Unable to start Bottle Lab' }, 500); }
 });

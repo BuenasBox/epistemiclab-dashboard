@@ -22,4 +22,8 @@ test('Bottle uses the shared protected Lab Engine flow', () => {
   assert.doesNotMatch(submit, /answer\.correct|body\.band|body\.misconception|body\.evidence_strength/);
   assert.match(reveal, /\['reveal_available', 'completed'\]\.includes\(session\.state\)/);
   assert.match(reveal, /select\('reveal_content'\)/);
+  assert.match(start, /eventType: 'session_started'/);
+  assert.match(submit, /eventType: 'confidence_selected'/);
+  assert.match(submit, /eventType: 'hypothesis_revised'/);
+  assert.match(submit, /eventType: 'misconception_detected'/);
 });
