@@ -543,6 +543,7 @@ const ITEMS = Object.freeze([
     contradictions: [
       {
         evidence_id_a: 'ev_special_format', evidence_id_b: 'ev_marketing_text',
+        pattern_code: 'format_suggests_aging_but_insufficient',
         breaks_inference: 'La hipótesis de que el formato grande implica que este vino está pensado para guardarse.',
         strength_level: 'moderate',
         mentor_response: 'El formato sí ralentiza la evolución en términos físicos, pero el propio productor declara que este vino está pensado para tomarse joven -- la función del formato solo importa si hay vocación real de guarda.',
@@ -641,6 +642,7 @@ const ITEMS = Object.freeze([
     contradictions: [
       {
         evidence_id_a: 'ev_graphic_design', evidence_id_b: 'ev_closure_screwcap',
+        pattern_code: 'closure_contradicts_price_stereotype',
         breaks_inference: 'La expectativa popular de que un cierre de rosca es incompatible con un posicionamiento de gama alta.',
         strength_level: 'moderate',
         mentor_response: 'No hay contradicción real aquí -- solo choca con un estereotipo. El diseño premium y la rosca pueden convivir perfectamente: la rosca es cada vez más una elección deliberada en la gama alta.',
@@ -822,6 +824,7 @@ const ITEMS = Object.freeze([
     contradictions: [
       {
         evidence_id_a: 'ev_punt', evidence_id_b: 'ev_fill_level',
+        pattern_code: 'weak_convergence_vs_strong_signal',
         breaks_inference: 'La hipótesis de que la convergencia de señales de presentación (peso, punt, relieve, diseño) confirma una guarda prolongada real.',
         strength_level: 'moderate',
         mentor_response: 'Varias señales débiles apuntando en la misma dirección no equivalen a una señal fuerte -- y aquí, además, la señal más fuerte disponible (el nivel de llenado) apunta en la dirección contraria.',
@@ -920,6 +923,7 @@ const ITEMS = Object.freeze([
     contradictions: [
       {
         evidence_id_a: 'ev_marketing_text', evidence_id_b: 'ev_lot_code',
+        pattern_code: 'marketing_prestige_vs_technical_evidence',
         breaks_inference: 'La narrativa de producción artesanal en pequeños lotes que construyen el diseño, el relieve, la cápsula y el propio texto de contraetiqueta.',
         strength_level: 'strong',
         mentor_response: 'Este es exactamente el tipo de contradicción que hay que priorizar: una narrativa de marketing coherente y persuasiva, contra un dato técnico de producción (el código de lote) que apunta en la dirección contraria. El dato técnico pesa más.',
@@ -1027,6 +1031,7 @@ const ITEMS = Object.freeze([
     contradictions: [
       {
         evidence_id_a: 'ev_special_format', evidence_id_b: 'ev_fill_level',
+        pattern_code: 'format_suggests_aging_but_insufficient',
         breaks_inference: 'La hipótesis de que el formato magnum implica que este vino está pensado para guarda prolongada.',
         strength_level: 'moderate',
         mentor_response: 'El formato es compatible con guarda, pero el nivel de llenado real -propio de un embotellado joven- es la evidencia que efectivamente habla del destino real de este vino, y contradice esa expectativa.',
