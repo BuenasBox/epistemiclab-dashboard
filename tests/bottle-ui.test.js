@@ -13,5 +13,7 @@ test('Bottle UI is server-driven and does not ship the public fixture as authori
   assert.match(html, /reveal-bottle-session/);
   assert.match(html, /cache:'no-store'/);
   assert.doesNotMatch(html, /supported_responses|misconception_by_response|reveal_content|evidence_strength/);
+  assert.match(html, /esc\(r\.layer1\)/);
+  assert.doesNotMatch(html, /r\.layer1\.title|r\.layer2\.text|r\.layer4\.rule/);
   assert.match(build, /bottle-lab\/data\/bottle-items\.sample\.js/);
 });

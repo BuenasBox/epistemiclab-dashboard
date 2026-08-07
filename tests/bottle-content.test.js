@@ -4,8 +4,9 @@ const importer = require('../tools/bottle-lab-pro-import.js');
 
 test('Bottle Pro importer publishes only approved editorial content', () => {
   const plan = importer.buildImportPlan();
-  assert.equal(plan.records.length, 2);
-  assert.equal(plan.excluded.length, 0);
+  assert.equal(plan.records.length, 6);
+  assert.equal(plan.excluded.length, 6);
+  assert.ok(plan.excluded.every((item) => item.editorial_status === 'legal_regional_review'));
   for (const record of plan.records) {
     const publicJson = JSON.stringify(record.public_content);
     assert.doesNotMatch(publicJson, /supported_responses|misconception|reveal_content|evidence_strength/);
