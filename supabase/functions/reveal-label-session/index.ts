@@ -1,4 +1,4 @@
-import { authenticatedLabUser, LAB_CORS, labJson } from '../_shared/lab-runtime.ts';
+import { authenticatedLabUser, LAB_CORS, labJson, recordLabEpistemicEvent } from '../_shared/lab-runtime.ts';
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: LAB_CORS });
@@ -18,6 +18,12 @@ Deno.serve(async (req) => {
       const now = new Date().toISOString();
       await supabase.from('lab_sessions').update({ state: 'completed', current_step: null, completed_at: now, updated_at: now }).eq('id', session.id).eq('user_id', user.id);
       await supabase.from('lab_assignments').update({ status: 'completed', completed_at: now }).eq('id', session.assignment_id).eq('user_id', user.id);
+      // EP-01: mark the session as closed (best-effort, never blocks the reveal response).
+      await recordLabEpistemicEvent(supabase, {
+        userId: user.id, sessionId: session.id, occurredAt: now, sourceMode: 'label_lab_pro',
+        eventId: `label:${session.id}:completed`, eventType: 'session_completed',
+        payload: { item_id: session.item_id }, evidence: {}, metadata: { lab_type: 'label' },
+      });
     }
     return labJson({ ok: true, session_id: session.id, reveal: item.reveal_content });
   } catch { return labJson({ ok: false, error: 'Unable to reveal Label Lab' }, 500); }

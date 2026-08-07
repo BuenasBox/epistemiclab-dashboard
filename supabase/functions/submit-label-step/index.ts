@@ -1,4 +1,4 @@
-import { authenticatedLabUser, LAB_CORS, labJson, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
+import { authenticatedLabUser, LAB_CORS, labJson, recordLabEpistemicEvent, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
 import { evaluateLabelResponse } from '../_shared/label-evaluation.ts';
 import { selectLabelMentor } from '../_shared/label-mentor.ts';
 
@@ -59,6 +59,36 @@ Deno.serve(async (req) => {
     }
     await supabase.from('lab_assignments').update({ status: nextState, completed_at: nextState === 'reveal_available' ? now : null }).eq('id', assignment.id).eq('user_id', user.id);
     await supabase.from('lab_evaluations').upsert({ session_id: session.id, response_key: idempotencyKey, evaluation_version: item.evaluation_version, result: evaluation }, { onConflict: 'session_id,response_key' });
+
+    // EP-01: record reasoning evidence for hypothesis-kind steps (best-effort, never blocks the response).
+    if (stepKind === 'hypothesis') {
+      await recordLabEpistemicEvent(supabase, {
+        userId: user.id, sessionId: session.id, occurredAt: now, sourceMode: 'label_lab_pro',
+        eventId: `label:${session.id}:${idempotencyKey}:decision`, eventType: 'decision_made',
+        payload: { item_id: session.item_id, step_key: stepKey, result_band: evaluation.result.band },
+        evidence: { evidence_band: evaluation.evidence.band, selected: evaluation.evidence.selected, ignored: evaluation.evidence.ignored },
+        metadata: { evaluation_version: item.evaluation_version, mentor_category: evaluation.mentor.category },
+      });
+      if (evaluation.confidence.valid) {
+        await recordLabEpistemicEvent(supabase, {
+          userId: user.id, sessionId: session.id, occurredAt: now, sourceMode: 'label_lab_pro',
+          eventId: `label:${session.id}:${idempotencyKey}:confidence`, eventType: 'confidence_selected',
+          payload: { item_id: session.item_id, step_key: stepKey, confidence: evaluation.confidence.scale, calibration_band: evaluation.calibration.band },
+          evidence: { evidence_strength: evaluation.evidence.strength, delta: evaluation.calibration.delta },
+          metadata: { evaluation_version: item.evaluation_version },
+        });
+      }
+      if (evaluation.mentor.misconception_code) {
+        await recordLabEpistemicEvent(supabase, {
+          userId: user.id, sessionId: session.id, occurredAt: now, sourceMode: 'label_lab_pro',
+          eventId: `label:${session.id}:${idempotencyKey}:misconception`, eventType: 'misconception_detected',
+          payload: { item_id: session.item_id, step_key: stepKey, misconception_code: evaluation.mentor.misconception_code },
+          evidence: { result_band: evaluation.result.band },
+          metadata: { evaluation_version: item.evaluation_version },
+        });
+      }
+    }
+
     return labJson({ ok: true, replay: false, state: nextState, evaluation, step: next ? { id: next.id, kind: next.kind, prompt: next.prompt, options: next.options || [], evidence: next.evidence || null } : null });
   } catch { return labJson({ ok: false, error: 'Unable to submit Label Lab step' }, 500); }
 });

@@ -66,6 +66,22 @@ test('regression: evaluation_spec is read as the flat per-item ruleset, not a ma
   assert.match(submit, /item\.evaluation_spec && typeof item\.evaluation_spec === 'object' \? item\.evaluation_spec : \{\}/);
 });
 
+test('EP-01: hypothesis-kind steps and session completion record epistemic events server-side', () => {
+  // Added 2026-08-07: the runtime never called record_epistemic_event / inserted into
+  // epistemic_events before this -- confirmed empirically (0 rows before/after completed
+  // sessions). recordLabEpistemicEvent uses a direct table insert (not the RPC, which reads
+  // auth.uid() and sees nobody when called from a service_role client with no forwarded JWT).
+  assert.match(runtime, /export async function recordLabEpistemicEvent/);
+  assert.match(runtime, /source_experience: 'label_guided'/);
+  assert.match(runtime, /related_table: 'external'/);
+  assert.match(submit, /recordLabEpistemicEvent/);
+  assert.match(submit, /eventType: 'decision_made'/);
+  assert.match(submit, /eventType: 'confidence_selected'/);
+  assert.match(submit, /eventType: 'misconception_detected'/);
+  assert.match(reveal, /recordLabEpistemicEvent/);
+  assert.match(reveal, /eventType: 'session_completed'/);
+});
+
 test('Label Lab Pro requires a server-side access mode and returns only public content at start', () => {
   assert.match(access, /label_lab: 'premium'/);
   assert.match(start, /authenticatedLabUser/);
