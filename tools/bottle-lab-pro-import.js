@@ -39,6 +39,7 @@ function buildRuntimeRecord(item) {
       version: `bottle-${item.version}`, observation_rules: [{ response: 'dark_glass', band: item.item_id === 'BOTTLE_PRO_001' ? 'supported' : 'partially_supported' }], classification_rules: [{ response: 'technical', band: 'supported' }, { response: 'marketing', band: 'contradictory' }],
       supported_responses: item.supported_hypotheses, partially_supported_responses: item.partially_supported_hypotheses, unsupported_responses: (item.unsupported_hypotheses || []).map((h) => h.id), contradictory_responses: (item.unsupported_hypotheses || []).filter((h) => h.band === 'incompatible').map((h) => h.id), uncertainty_correct_responses: item.uncertainty_hypotheses, evasive_uncertainty_responses: [],
       evidence_strengths: evidence.map(({ id, strength: value }) => ({ id, strength: value })), required_evidence_ids: required, editorial_evidence_strength: Math.max(...evidence.map((entry) => strength[entry.strength] || 0)), uncertainty_allowed: true, misconception_by_response: misconceptionByResponse,
+      mentor_feedback: item.mentor_feedback || [], misconception_feedback: item.misconception_feedback || {},
     },
     reveal_content: item.reveal,
   };

@@ -24,6 +24,8 @@ const items = [
     supported_hypotheses: ['reasonable_style'], partially_supported_hypotheses: [],
     unsupported_hypotheses: [{ id: 'quality_from_weight', band: 'unsupported', misconception_code: 'bottle.weight_equals_quality' }],
     uncertainty_hypotheses: ['cannot_determine'],
+    mentor_feedback: [{ category: 'confirmation', text: 'Usaste una combinación de señales, pero mantuviste el límite de lo que la botella permite concluir.' }, { category: 'calibration', text: 'La confianza debe seguir a la fuerza real de la evidencia, no a la familiaridad del envase.' }],
+    misconception_feedback: { 'bottle.weight_equals_quality': 'El peso puede ser una decisión logística o de posicionamiento; no demuestra calidad intrínseca.' },
     reveal: { layer1: { title: 'Resultado', identity: 'La botella no determina una identidad concreta' }, layer2: { title: 'Hipótesis y calibración', text: 'La forma y el vidrio orientan; el peso no prueba calidad.' }, layer3: { title: 'Evidencia', used: ['glass', 'shape'], ignored: ['weight'] }, layer4: { title: 'Regla transferible', misconception: 'bottle.weight_equals_quality', rule: 'El peso del envase es una señal débil o no diagnóstica para calidad.' } },
   },
   {
@@ -39,6 +41,8 @@ const items = [
     supported_hypotheses: ['freshness_intent'], partially_supported_hypotheses: [],
     unsupported_hypotheses: [{ id: 'screwcap_cheap', band: 'incompatible', misconception_code: 'bottle.screwcap_equals_cheap' }],
     uncertainty_hypotheses: ['cannot_determine'],
+    mentor_feedback: [{ category: 'confirmation', text: 'Separaste una función técnica del cierre de una conclusión sobre calidad.' }, { category: 'contradiction', text: 'La conclusión contradice la evidencia: una rosca puede ser una elección técnica de frescura.' }],
+    misconception_feedback: { 'bottle.screwcap_equals_cheap': 'La rosca no fija el precio ni la calidad; evalúa su función técnica antes de inferir.' },
     reveal: { layer1: { title: 'Resultado', identity: 'La rosca es compatible con una intención de frescura' }, layer2: { title: 'Hipótesis y calibración', text: 'La lectura técnica es defendible; convertirla en precio sería una sobreinferencia.' }, layer3: { title: 'Evidencia', used: ['closure', 'fill'], ignored: ['design'] }, layer4: { title: 'Regla transferible', misconception: 'bottle.screwcap_equals_cheap', rule: 'Un cierre no permite inferir por sí solo calidad o precio.' } },
   },
 ];

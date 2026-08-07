@@ -1,5 +1,6 @@
 import { authenticatedLabUser, LAB_CORS, labJson, recordLabEpistemicEvent, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
 import { evaluateBottleResponse } from '../_shared/bottle-evaluation.ts';
+import { selectBottleMentor } from '../_shared/bottle-mentor.ts';
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: LAB_CORS });
@@ -27,6 +28,8 @@ Deno.serve(async (req) => {
     const step = (item.public_content.steps || []).find((candidate: any) => candidate.id === stepKey);
     if (!step || step.kind !== body.step_kind) return labJson({ ok: false, error: 'Invalid active step' }, 409);
     const evaluation = evaluateBottleResponse(item.evaluation_spec || {}, { ...answer, kind: body.step_kind });
+    const mentor = selectBottleMentor(item.evaluation_spec || {}, evaluation.mentor, `${session.id}:${key}`);
+    evaluation.mentor_feedback = mentor;
     const steps = item.public_content.steps || [];
     const index = steps.findIndex((candidate: any) => candidate.id === stepKey);
     const next = steps[index + 1] || null;
