@@ -11,7 +11,9 @@
 (function(){'use strict';
 var app=document.getElementById('app'),chip=document.getElementById('statusChip'),network=document.getElementById('networkStatus');
 var API=((window.WSET_SUPABASE_CONFIG||{}).url||'')+'/functions/v1/',KEY=(window.WSET_SUPABASE_CONFIG||{}).publishableKey||'';
-var state={session:null,step:null,selection:'',evidenceWeights:{},confidence:'',justification:'',committed:false,busy:false,evaluations:[],commitments:[],evidenceCatalog:{}};
+var state={session:null,step:null,selection:'',evidenceWeights:{},confidence:'',justification:'',committed:false,busy:false,evaluations:[],commitments:[],evidenceCatalog:{},contradictionInterp:null,contradictionAction:null,contradictionResolvedStepId:null,pendingRevisionMeta:null};
+var CONTRADICTION_INTERP={reinforces:'Refuerza',weakens:'Debilita',contradicts:'Contradice',no_change:'No cambia nada'};
+var REVISION_ACTION={maintain:'Mantener',nuance:'Matizar',revise:'Revisar'};
 var CONF_ORDER=['cannot_determine','intuition','probable','fairly_sure','certain'];
 var CONF_LABEL={cannot_determine:'No puede determinarse',intuition:'Intuyo',probable:'Probable',fairly_sure:'Bastante seguro',certain:'Seguro'};
 var KIND_LABEL={observation:'Observación',classification:'Clasificación',hypothesis:'Hipótesis'};
@@ -25,8 +27,39 @@ function setNetwork(){network.hidden=navigator.onLine;network.textContent='Sin c
 function loading(text){chip.textContent='Cargando sesión';app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor"></span></div><div class="state eval"><span class="d"></span>'+esc(text)+'</div></div>';}
 function error(message,login){chip.textContent='Bottle Lab Pro';app.innerHTML='<div class="card bl-narrow"><div class="card-label">No pudimos continuar</div><h2 class="serif">'+esc(message)+'</h2><p class="small muted">Tu progreso server-side no se ha marcado como completado.</p><div class="flowbar"><button class="btn btn--ghost" id="retry">Reintentar</button>'+(login?'<a class="btn btn--shine" href="/login/?next=/bottle-lab/">Iniciar sesión</a>':'')+'</div></div>';document.getElementById('retry').onclick=start;}
 function publicDemo(){chip.textContent='Demo pública · sin progreso';app.innerHTML='<div class="eyebrow">Módulo · inferencia física</div><h1 class="serif">Botellas</h1><p class="muted bl-narrow">Aprende a distinguir señales técnicas, tradición, marketing y evidencia no diagnóstica.</p><div class="grid g2"><div class="card center"><div class="bottle shape-burgundy gc-dark-green"><span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div></div><div class="card"><div class="card-label">Demo segura</div><p class="small">La práctica Pro evalúa observación, hipótesis, evidencia y confianza en servidor.</p><div class="state eval"><span class="d"></span>La asignación Pro requiere una cuenta activa.</div><div class="flowbar"><a class="btn btn--shine btn--glow flex-1" href="/login/?next=/bottle-lab/">Entrar para practicar</a></div></div></div>';}
+// Contradiction Moment (Loop 3): se activa cuando (a) ya existe un compromiso previo de
+// hipótesis en esta sesión y (b) el paso actual trae evidencia que el estudiante no había
+// visto antes -- ambas señales derivadas de estado ya en el cliente (historial de commitments
+// + catálogo de evidencia acumulado), sin ningún campo privado del servidor. No afirma que
+// haya contradicción real: le pregunta al estudiante qué cree que hace la evidencia nueva.
+function pendingContradiction(s){
+  var priorCommit=state.commitments[state.commitments.length-1]||null;
+  var hasChoice=(s.options||[]).length>0;
+  if(!hasChoice||!priorCommit||state.contradictionResolvedStepId===s.id)return null;
+  var newEvidence=(s.evidence||[]).filter(function(e){return !(e.id in state.evidenceCatalog);});
+  if(!newEvidence.length)return null;
+  return {priorCommit:priorCommit,newEvidence:newEvidence};
+}
+function contradictionMomentView(s,pending){
+  chip.textContent='Bottle Lab Pro · Nueva evidencia';
+  var priorCommit=pending.priorCommit;
+  var evCards=pending.newEvidence.map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
+  var interpBtns=Object.keys(CONTRADICTION_INTERP).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionInterp===k?'sel':'')+'" data-interp="'+k+'">'+CONTRADICTION_INTERP[k]+'</button>';}).join('');
+  var actionSection=!state.contradictionInterp?'':'<div class="card-label mt-24">¿Qué haces con tu hipótesis?</div><div class="mt-14">'+Object.keys(REVISION_ACTION).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionAction===k?'sel':'')+'" data-action="'+k+'">'+REVISION_ACTION[k]+'</button>';}).join('')+'</div>';
+  app.innerHTML='<div class="eyebrow">Momento de contradicción</div><h2 class="serif">Apareció evidencia nueva</h2><div class="cm-flow"><div class="cm-step"><span class="cm-lbl">Hipótesis inicial</span><p class="small">'+esc(priorCommit.hypothesis_text)+'</p></div><div class="cm-arrow" aria-hidden="true">↓</div><div class="cm-step"><span class="cm-lbl">Evidencia nueva</span>'+evCards+'</div></div><div class="card"><div class="card-label">¿Qué crees que hace esta evidencia con tu hipótesis?</div><div class="mt-14">'+interpBtns+'</div>'+actionSection+'<div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="cmContinue" '+(state.contradictionAction?'':'disabled')+'>Continuar →</button></div></div>';
+  app.querySelectorAll('[data-interp]').forEach(function(b){b.onclick=function(){state.contradictionInterp=b.dataset.interp;state.contradictionAction=null;contradictionMomentView(s,pending);};});
+  app.querySelectorAll('[data-action]').forEach(function(b){b.onclick=function(){state.contradictionAction=b.dataset.action;contradictionMomentView(s,pending);};});
+  document.getElementById('cmContinue').onclick=function(){
+    state.contradictionResolvedStepId=s.id;
+    state.pendingRevisionMeta={interpretation:state.contradictionInterp,action:state.contradictionAction,prior_hypothesis:priorCommit.hypothesis_text,new_evidence_ids:pending.newEvidence.map(function(e){return e.id;})};
+    state.contradictionInterp=null;state.contradictionAction=null;
+    stepView();
+  };
+}
 function stepView(){
   var s=state.step;if(!s)return error('No hay un paso activo.');
+  var pending=pendingContradiction(s);
+  if(pending)return contradictionMomentView(s,pending);
   chip.textContent='Bottle Lab Pro · '+(KIND_LABEL[s.kind]||s.kind);
   var hasChoice=(s.options||[]).length>0;
   var locked=hasChoice&&state.committed;
@@ -38,9 +71,10 @@ function stepView(){
     return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div><div class="ev-weight" role="radiogroup" aria-label="Peso que le das a '+esc(e.label)+'">'+weightBtns+'</div></div>';
   }).join('');
   var conf=CONF_ORDER.map(function(c){return '<button class="btn btn--ghost pillbtn '+(state.confidence===c?'sel':'')+(locked?' locked':'')+'" data-confidence="'+c+'" '+(locked?'disabled':'')+'>'+CONF_LABEL[c]+'</button>';}).join('');
+  var isRevision=Boolean(state.pendingRevisionMeta);
   var commitBar=!hasChoice?'':(state.committed?
-    '<div class="commit-bar is-committed"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>Hipótesis comprometida</b>Esto era lo que pensabas con la información disponible en este momento. Si aparece evidencia nueva, la revisión quedará registrada aparte.</div></div>'
-    :'<div class="commit-bar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>Todavía no has comprometido tu hipótesis</b>Elige una lectura y una confianza para comprometerte.</div></div>');
+    '<div class="commit-bar is-committed"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Revisión comprometida':'Hipótesis comprometida')+'</b>Esto era lo que pensabas con la información disponible en este momento. Si aparece evidencia nueva, la revisión quedará registrada aparte.</div></div>'
+    :'<div class="commit-bar'+(isRevision?' is-revision':'')+'"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Estás comprometiendo una revisión':'Todavía no has comprometido tu hipótesis')+'</b>'+(isRevision?'Tu hipótesis original queda registrada aparte -- esto es una nueva versión.':'Elige una lectura y una confianza para comprometerte.')+'</div></div>');
   var canCommit=hasChoice&&!state.committed&&state.selection&&state.confidence;
   var readyNoChoice=!hasChoice&&(state.confidence||state.justification);
   var showCommitBtn=hasChoice&&!state.committed;
@@ -50,7 +84,14 @@ function stepView(){
   app.querySelectorAll('[data-weight-for]').forEach(function(b){b.onclick=function(){var id=b.dataset.weightFor,wt=b.dataset.weight;state.evidenceWeights[id]=state.evidenceWeights[id]===wt?null:wt;stepView();};});
   app.querySelectorAll('[data-confidence]').forEach(function(b){b.onclick=function(){if(locked)return;state.confidence=b.dataset.confidence;stepView();};});
   var ta=document.getElementById('justification');if(ta)ta.oninput=function(){state.justification=ta.value;};
-  var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){state.committed=true;state.commitments.push({step_id:s.id,hypothesis:state.selection,confidence:state.confidence,evidence_weights:Object.assign({},state.evidenceWeights),committed_at:new Date().toISOString()});stepView();};
+  var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){
+    state.committed=true;
+    var chosen=(s.options||[]).find(function(o){return o.id===state.selection;});
+    var snapshot={step_id:s.id,hypothesis:state.selection,hypothesis_text:chosen?chosen.text:state.selection,confidence:state.confidence,evidence_weights:Object.assign({},state.evidenceWeights),committed_at:new Date().toISOString()};
+    if(state.pendingRevisionMeta){snapshot.revision=state.pendingRevisionMeta;state.pendingRevisionMeta=null;}
+    state.commitments.push(snapshot);
+    stepView();
+  };
   var sendBtn=document.getElementById('send');if(sendBtn)sendBtn.onclick=submit;
 }
 function mentorInterstitial(feedback,next){

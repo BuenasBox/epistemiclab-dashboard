@@ -129,3 +129,10 @@ p{margin:0 0 .8em}
 .rb-tag{flex:0 0 auto;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:var(--r-pill);border:1px solid currentColor}
 .rb-good{color:var(--ok)}.rb-warn{color:var(--warn)}.rb-muted{color:var(--muted)}
 .rb-row.rb-good .rb-tag,.rb-row.rb-warn .rb-tag,.rb-row.rb-muted .rb-tag{color:inherit}
+/* ---- Contradiction Moment (Loop 3) ---- */
+.commit-bar.is-revision{border-color:var(--warn)}
+.commit-bar.is-revision b{color:var(--warn)}
+.cm-flow{display:flex;flex-direction:column;gap:4px;margin:var(--s4) 0 var(--s5)}
+.cm-step{border:1px solid var(--line);border-radius:var(--r-card);background:var(--panel2);padding:var(--s4);animation:blReveal .35s ease both}
+.cm-lbl{display:block;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.cm-arrow{text-align:center;color:var(--muted);font-size:18px;line-height:1;margin:2px 0}

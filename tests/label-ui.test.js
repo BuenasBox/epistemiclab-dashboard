@@ -50,3 +50,16 @@ test('Label Evidence Board uses its own documental vocabulary, not a copy of Bot
   assert.match(html, /Decisiva/);
   assert.doesNotMatch(html, /Secundaria.*Clave|Clave.*Secundaria/); // vocabulario físico de Bottle
 });
+
+test('Label UI Contradiction Moment (Loop 3): trigger derived only from client-side history', () => {
+  assert.match(html, /function pendingContradiction\(s\)/);
+  const gateBody = html.slice(html.indexOf('function pendingContradiction(s)'), html.indexOf('function contradictionMomentView'));
+  assert.match(gateBody, /state\.commitments\[state\.commitments\.length-1\]/);
+  assert.match(gateBody, /!\(e\.id in state\.evidenceCatalog\)/);
+  assert.doesNotMatch(gateBody, /evaluation|contradiction_hint|is_contradiction/);
+});
+
+test('Label UI Contradiction Moment: no fuerza contradicciones artificiales, solo pregunta la interpretación del estudiante', () => {
+  assert.match(html, /CONTRADICTION_INTERP=\{reinforces:'Refuerza',weakens:'Debilita',contradicts:'Contradice',no_change:'No cambia nada'\}/);
+  assert.match(html, /state\.commitments\.push\(snapshot\)/);
+});

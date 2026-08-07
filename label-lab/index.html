@@ -13,7 +13,9 @@
 (function(){
   'use strict';
   var app=document.getElementById('app'), chip=document.getElementById('statusChip'), network=document.getElementById('networkStatus');
-  var demo=window.LABEL_DEMO_PUBLIC||{}; var state={session:null,step:null,selection:'',evidenceWeights:{},confidence:'',justification:'',committed:false,busy:false,evaluations:[],commitments:[],evidenceCatalog:{}};
+  var demo=window.LABEL_DEMO_PUBLIC||{}; var state={session:null,step:null,selection:'',evidenceWeights:{},confidence:'',justification:'',committed:false,busy:false,evaluations:[],commitments:[],evidenceCatalog:{},contradictionInterp:null,contradictionAction:null,contradictionResolvedStepId:null,pendingRevisionMeta:null};
+  var CONTRADICTION_INTERP={reinforces:'Refuerza',weakens:'Debilita',contradicts:'Contradice',no_change:'No cambia nada'};
+  var REVISION_ACTION={maintain:'Mantener',nuance:'Matizar',revise:'Revisar'};
   var API=((window.WSET_SUPABASE_CONFIG||{}).url||'https://hylknjjhmxsuuwbsslkr.supabase.co')+'/functions/v1/';
   var KEY=(window.WSET_SUPABASE_CONFIG||{}).publishableKey||'';
   var CONF_ORDER=['cannot_determine','intuition','probable','fairly_sure','certain'];
@@ -32,8 +34,34 @@
   function renderDemo(){chip.textContent='Demo pública · sin progreso';app.innerHTML='<div class="eyebrow">Módulo · inferencia documental</div><h1 class="serif">Etiquetas</h1><p class="muted bl-narrow">Aprende a separar evidencia explícita, términos regulados e inferencias que necesitan cautela.</p><div class="grid g2"><div class="card center">'+labelHtml()+'</div><div class="card"><div class="card-label">Demo segura</div><p class="small">'+esc(demo.note)+'</p><div class="state eval"><span class="d"></span> La evaluación Pro requiere una cuenta activa.</div><div class="flowbar"><a class="btn btn--shine btn--glow flex-1" href="/login/?next=/label-lab/">Entrar para practicar</a></div></div></div>';}
   function renderLoading(text){chip.textContent='Cargando sesión';app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div class="state eval"><span class="d"></span> '+esc(text||'Preparando Label Lab Pro…')+'</div></div>';}
   function renderError(message,link){chip.textContent='Label Lab Pro';app.innerHTML='<div class="card bl-narrow"><div class="card-label">No pudimos continuar</div><h2 class="serif">'+esc(message)+'</h2><p class="small muted">Tu progreso server-side no se ha marcado como completado.</p><div class="flowbar"><button class="btn btn--ghost" id="retry">Reintentar</button>'+(link?'<a class="btn btn--shine" href="/login/?next=/label-lab/">Iniciar sesión</a>':'')+'</div></div>';var r=document.getElementById('retry');if(r)r.onclick=start;}
+  function pendingContradiction(s){
+    var priorCommit=state.commitments[state.commitments.length-1]||null;
+    var hasChoice=(s.options||[]).length>0;
+    if(!hasChoice||!priorCommit||state.contradictionResolvedStepId===s.id)return null;
+    var newEvidence=(s.evidence||[]).filter(function(e){return !(e.id in state.evidenceCatalog);});
+    if(!newEvidence.length)return null;
+    return {priorCommit:priorCommit,newEvidence:newEvidence};
+  }
+  function contradictionMomentView(s,pending){
+    chip.textContent='Label Lab Pro · Nueva evidencia';
+    var priorCommit=pending.priorCommit;
+    var evCards=pending.newEvidence.map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
+    var interpBtns=Object.keys(CONTRADICTION_INTERP).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionInterp===k?'sel':'')+'" data-interp="'+k+'">'+CONTRADICTION_INTERP[k]+'</button>';}).join('');
+    var actionSection=!state.contradictionInterp?'':'<div class="card-label mt-24">¿Qué haces con tu lectura?</div><div class="mt-14">'+Object.keys(REVISION_ACTION).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionAction===k?'sel':'')+'" data-action="'+k+'">'+REVISION_ACTION[k]+'</button>';}).join('')+'</div>';
+    app.innerHTML='<div class="eyebrow">Momento de contradicción</div><h2 class="serif">Apareció evidencia nueva en el documento</h2><div class="cm-flow"><div class="cm-step"><span class="cm-lbl">Lectura inicial</span><p class="small">'+esc(priorCommit.hypothesis_text)+'</p></div><div class="cm-arrow" aria-hidden="true">↓</div><div class="cm-step"><span class="cm-lbl">Evidencia nueva</span>'+evCards+'</div></div><div class="card"><div class="card-label">¿Qué crees que hace esta evidencia con tu lectura?</div><div class="mt-14">'+interpBtns+'</div>'+actionSection+'<div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="cmContinue" '+(state.contradictionAction?'':'disabled')+'>Continuar →</button></div></div>';
+    app.querySelectorAll('[data-interp]').forEach(function(b){b.onclick=function(){state.contradictionInterp=b.getAttribute('data-interp');state.contradictionAction=null;contradictionMomentView(s,pending);};});
+    app.querySelectorAll('[data-action]').forEach(function(b){b.onclick=function(){state.contradictionAction=b.getAttribute('data-action');contradictionMomentView(s,pending);};});
+    document.getElementById('cmContinue').onclick=function(){
+      state.contradictionResolvedStepId=s.id;
+      state.pendingRevisionMeta={interpretation:state.contradictionInterp,action:state.contradictionAction,prior_hypothesis:priorCommit.hypothesis_text,new_evidence_ids:pending.newEvidence.map(function(e){return e.id;})};
+      state.contradictionInterp=null;state.contradictionAction=null;
+      stepView();
+    };
+  }
   function stepView(){
     var s=state.step;if(!s)return renderError('No hay un paso activo.');
+    var pending=pendingContradiction(s);
+    if(pending)return contradictionMomentView(s,pending);
     chip.textContent='Label Lab Pro · '+(KIND_LABEL[s.kind]||s.kind);
     var hasChoice=(s.options||[]).length>0;
     var locked=hasChoice&&state.committed;
@@ -45,9 +73,10 @@
       return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div><div class="ev-weight" role="radiogroup" aria-label="Peso que le das a '+esc(e.label)+'">'+weightBtns+'</div></div>';
     }).join('');
     var conf=CONF_ORDER.map(function(c){return '<button class="btn btn--ghost pillbtn '+(state.confidence===c?'sel':'')+(locked?' locked':'')+'" data-confidence="'+c+'" '+(locked?'disabled':'')+'>'+CONF_LABEL[c]+'</button>';}).join('');
+    var isRevision=Boolean(state.pendingRevisionMeta);
     var commitBar=!hasChoice?'':(state.committed?
-      '<div class="commit-bar is-committed"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>Lectura comprometida</b>Esto era lo que interpretabas del documento con la evidencia disponible en este momento. Si aparece evidencia nueva, la revisión quedará registrada aparte.</div></div>'
-      :'<div class="commit-bar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>Todavía no has comprometido tu lectura</b>Elige una interpretación y una confianza para comprometerte.</div></div>');
+      '<div class="commit-bar is-committed"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Revisión comprometida':'Lectura comprometida')+'</b>Esto era lo que interpretabas del documento con la evidencia disponible en este momento. Si aparece evidencia nueva, la revisión quedará registrada aparte.</div></div>'
+      :'<div class="commit-bar'+(isRevision?' is-revision':'')+'"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Estás comprometiendo una revisión':'Todavía no has comprometido tu lectura')+'</b>'+(isRevision?'Tu lectura original queda registrada aparte -- esto es una nueva versión.':'Elige una interpretación y una confianza para comprometerte.')+'</div></div>');
     var canCommit=hasChoice&&!state.committed&&state.selection&&state.confidence;
     var readyNoChoice=!hasChoice&&(state.justification||state.confidence);
     var showCommitBtn=hasChoice&&!state.committed;
@@ -57,7 +86,15 @@
     app.querySelectorAll('[data-weight-for]').forEach(function(b){b.onclick=function(){var id=b.getAttribute('data-weight-for'),wt=b.getAttribute('data-weight');state.evidenceWeights[id]=state.evidenceWeights[id]===wt?null:wt;stepView();};});
     app.querySelectorAll('[data-confidence]').forEach(function(b){b.onclick=function(){if(locked)return;state.confidence=b.getAttribute('data-confidence');stepView();};});
     var ta=document.getElementById('justification');if(ta)ta.oninput=function(){state.justification=ta.value;};
-    var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){state.committed=true;state.commitments.push({step_id:s.id,hypothesis:state.selection,confidence:state.confidence,evidence_weights:Object.assign({},state.evidenceWeights),committed_at:new Date().toISOString()});stepView();};
+    var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){
+      state.committed=true;
+      var chosen=(s.options||[]).find(function(o){return (typeof o==='string'?o:o.id)===state.selection;});
+      var chosenText=chosen?(typeof chosen==='string'?chosen:(chosen.text||chosen.label||chosen.id)):state.selection;
+      var snapshot={step_id:s.id,hypothesis:state.selection,hypothesis_text:chosenText,confidence:state.confidence,evidence_weights:Object.assign({},state.evidenceWeights),committed_at:new Date().toISOString()};
+      if(state.pendingRevisionMeta){snapshot.revision=state.pendingRevisionMeta;state.pendingRevisionMeta=null;}
+      state.commitments.push(snapshot);
+      stepView();
+    };
     var sendBtn=document.getElementById('send');if(sendBtn)sendBtn.onclick=submit;
   }
   function mentorInterstitial(feedback,next){

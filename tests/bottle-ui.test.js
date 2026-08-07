@@ -55,3 +55,21 @@ test('Bottle UI sends declared evidence weights without inventing a new answer c
   assert.match(html, /evidence_used:usedIds/);
   assert.match(html, /evidence_weights:state\.evidenceWeights/);
 });
+
+test('Bottle UI Contradiction Moment (Loop 3): trigger derived only from client-side history, never from a private server signal', () => {
+  assert.match(html, /function pendingContradiction\(s\)/);
+  // El gate depende solo de commitments previos + evidencia ya vista -- ambos ya en el
+  // cliente -- nunca de un campo nuevo del servidor que delate una contradicción real.
+  const gateBody = html.slice(html.indexOf('function pendingContradiction(s)'), html.indexOf('function contradictionMomentView'));
+  assert.match(gateBody, /state\.commitments\[state\.commitments\.length-1\]/);
+  assert.match(gateBody, /!\(e\.id in state\.evidenceCatalog\)/);
+  assert.doesNotMatch(gateBody, /evaluation|contradiction_hint|is_contradiction/);
+});
+
+test('Bottle UI Contradiction Moment: hipótesis inicial inmutable, revisión versionada, nunca sobrescribe', () => {
+  assert.match(html, /state\.commitments\.push\(snapshot\)/);
+  // pendingRevisionMeta se adjunta como sub-objeto nuevo (snapshot.revision), nunca reescribe
+  // hypothesis_text de un commitment anterior.
+  assert.match(html, /snapshot\.revision=state\.pendingRevisionMeta/);
+  assert.doesNotMatch(html, /state\.commitments\[.*\]\.hypothesis_text=/);
+});
