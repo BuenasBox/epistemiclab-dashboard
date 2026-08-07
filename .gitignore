@@ -21,6 +21,7 @@
 # Playwright (Fase 8 — testing e2e)
 /playwright-report
 /test-results
+/.playwright-mcp
 
 # Exportaciones completas reproducibles; producción usa sólo contratos render_*
 # y post_tasting_*.json seleccionados.
