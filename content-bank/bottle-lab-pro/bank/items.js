@@ -359,6 +359,9 @@ const ITEMS = Object.freeze([
       {
         id: 'ev_shoulders', label: 'Hombros', value: 'Inclinados y redondeados',
         signal_type: 'shoulders', strength: 'weak',
+        _needs_review: true,
+        _source: 'Convención general de la industria del vidrio y el envasado vitivinícola',
+        _basis: 'Confirmar alcance exacto de la asociación varietal antes de legal_regional_review',
         technical_function: null,
         traditional_association: 'Familia estética asociada débilmente a ciertas tradiciones varietales, coherente con la forma borgoñona.',
         marketing_reading: null,
@@ -628,7 +631,7 @@ const ITEMS = Object.freeze([
     ],
     prompt_sequence: ['observe', 'classify_evidence', 'hierarchize', 'interpret', 'hypothesize', 'declare_confidence', 'justify', 'search_contradictions', 'revise'],
     acceptable_hypotheses: [
-      { id: 'h_no_conflict_real', text: 'El cierre de rosca no contradice en absoluto un posicionamiento de gama alta; es una elección técnica deliberada, no un indicio de precio bajo.', band: 'correct_well_justified', supporting_evidence_ids: ['ev_closure_screwcap'] },
+      { id: 'h_no_conflict_real', text: 'El cierre de rosca no contradice al resto de la presentación; es una elección técnica deliberada y no indica nada, en ningún sentido, sobre el precio del vino.', band: 'correct_well_justified', supporting_evidence_ids: ['ev_closure_screwcap'] },
     ],
     partial_hypotheses: [
       { id: 'h_premium_positioning_uncertain', text: 'Las señales de presentación apuntan a un posicionamiento premium, pero ninguna de ellas -ni siquiera juntas- prueba la calidad real del vino.', band: 'plausible_insufficiently_supported', supporting_evidence_ids: ['ev_graphic_design', 'ev_embossing', 'ev_capsule'] },
