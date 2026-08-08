@@ -71,3 +71,10 @@ test('Label UI Reasoning Replay (Loop 4): usa exclusivamente state.commitments[]
   assert.match(replayBody, /ev\.result\.correct&&ev\.calibration\.band==='overconfident'/);
   assert.doesNotMatch(replayBody, /accidental_correctness|good_revision|error_type/);
 });
+
+test('Label UI Transfer Challenge (Loop 5): usa las nuevas Edge Functions dedicadas, nunca decide localmente si la respuesta es correcta', () => {
+  assert.match(html, /api\('start-label-transfer',\{misconception_hint:firstMisconceptionHint\(\)\}\)/);
+  assert.match(html, /api\('submit-label-transfer',\{task_id:task\.id,option_id:optionId\}\)/);
+  assert.doesNotMatch(html, /correct_option_id/);
+  assert.match(html, /result\.correct\?'ok':'warn'/);
+});

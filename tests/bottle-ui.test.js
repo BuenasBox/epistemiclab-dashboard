@@ -93,3 +93,17 @@ test('Bottle UI Reasoning Replay: solo se activa dentro del reveal, mobile-first
   assert.match(html, /isReplay\?buildReasoningReplay\(\)/);
   assert.doesNotMatch(html, /overflow-x|white-space:nowrap.*rp-/);
 });
+
+test('Bottle UI Transfer Challenge (Loop 5): usa las nuevas Edge Functions dedicadas, nunca decide localmente si la respuesta es correcta', () => {
+  assert.match(html, /api\('start-bottle-transfer',\{misconception_hint:firstMisconceptionHint\(\)\}\)/);
+  assert.match(html, /api\('submit-bottle-transfer',\{task_id:task\.id,option_id:optionId\}\)/);
+  // El resultado (correct/feedback) viene siempre de la respuesta del servidor (d/result), nunca
+  // se compara una opción contra un valor esperado en el cliente.
+  assert.doesNotMatch(html, /correct_option_id/);
+  assert.match(html, /result\.correct\?'ok':'warn'/);
+});
+
+test('Bottle UI Transfer Challenge: la pista de misconception viene solo de evaluation.mentor.misconception_code ya recibido, nunca de un campo nuevo inventado', () => {
+  const fnBody = html.slice(html.indexOf('function firstMisconceptionHint()'), html.indexOf('async function transferChallengeStart'));
+  assert.match(fnBody, /state\.evaluations\[i\]&&state\.evaluations\[i\]\.mentor&&state\.evaluations\[i\]\.mentor\.misconception_code/);
+});

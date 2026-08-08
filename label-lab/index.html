@@ -162,9 +162,39 @@
     var board=key==='layer3'?buildRevealBoard():'';
     var isReplay=key==='replay';
     var bodyHtml=isReplay?buildReasoningReplay():'<p class="small mentor-text">'+esc(r[key]||'Registrado.')+'</p>';
-    app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="grid g2"><div class="card center">'+labelHtml()+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc((REVEAL_LABEL[key]||key).toUpperCase())+'</div>'+bodyHtml+'</div></div></div>'+board+'<div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<a class="btn btn--shine btn--glow" href="/label-lab/">Intentar otro caso</a>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
+    app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="grid g2"><div class="card center">'+labelHtml()+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc((REVEAL_LABEL[key]||key).toUpperCase())+'</div>'+bodyHtml+'</div></div></div>'+board+'<div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<button class="btn btn--shine btn--glow" id="rtransfer">Reto de transferencia →</button>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
     var prev=document.getElementById('rprev');if(prev)prev.onclick=function(){revealStep--;revealView();};
     var next=document.getElementById('rnext');if(next)next.onclick=function(){revealStep++;revealView();};
+    var transferBtn=document.getElementById('rtransfer');if(transferBtn)transferBtn.onclick=transferChallengeStart;
+  }
+  function firstMisconceptionHint(){
+    for(var i=0;i<state.evaluations.length;i++){
+      var code=state.evaluations[i]&&state.evaluations[i].mentor&&state.evaluations[i].mentor.misconception_code;
+      if(code)return code;
+    }
+    return null;
+  }
+  async function transferChallengeStart(){
+    renderLoading('Preparando reto de transferencia…');
+    try{
+      var data=await api('start-label-transfer',{misconception_hint:firstMisconceptionHint()});
+      transferChallengeView(data.task,null);
+    }catch(e){renderError('El reto de transferencia no está disponible ahora mismo.');}
+  }
+  function transferChallengeView(task,result){
+    chip.textContent='Label Lab Pro · Transferencia';
+    var ev=(task.relevant_evidence||[]).map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
+    var opts=(task.options||[]).map(function(o){return '<button class="btn btn--ghost opt" data-transfer-option="'+esc(o.id)+'" '+(result?'disabled':'')+'>'+esc(o.text)+'</button>';}).join('');
+    var feedback=!result?'':'<div class="mentor '+(result.correct?'ok':'warn')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+(result.correct?'RECONOCISTE LA REGLA':'TODAVÍA NO')+'</div><p class="small mentor-text">'+esc(result.feedback)+'</p></div></div>';
+    app.innerHTML='<div class="eyebrow">Transfer Challenge</div><h2 class="serif">La misma regla, disfrazada</h2><div class="card tight"><p class="small mentor-text">'+esc(task.rule)+'</p></div><p class="small muted mt-14">'+esc(task.new_context)+'</p>'+ev+'<div class="card mt-14">'+opts+'</div>'+feedback+'<div class="flowbar">'+(result?'<a class="btn btn--shine btn--glow flex-1" href="/label-lab/">Intentar otro caso</a>':'')+'</div></div>';
+    app.querySelectorAll('[data-transfer-option]').forEach(function(b){b.onclick=function(){transferChallengeSubmit(task,b.getAttribute('data-transfer-option'));};});
+  }
+  async function transferChallengeSubmit(task,optionId){
+    renderLoading('Evaluando tu decisión…');
+    try{
+      var data=await api('submit-label-transfer',{task_id:task.id,option_id:optionId});
+      transferChallengeView(task,data);
+    }catch(e){renderError('No pudimos evaluar tu decisión.');}
   }
   async function reveal(){renderLoading('Preparando reveal autorizado…');try{var data=await api('reveal-label-session',{session_id:state.session});revealData=data.reveal||{};revealStep=0;if(window.EpistemicProfile)window.EpistemicProfile.sessionCompleted({module:'label-lab-pro',itemId:state.session});revealView();}catch(e){renderError('El reveal todavía no está autorizado.');}}
   renderDemo();
