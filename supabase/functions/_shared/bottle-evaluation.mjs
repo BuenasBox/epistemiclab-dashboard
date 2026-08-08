@@ -72,7 +72,18 @@ function mentorContext(spec, result, calibration, answer) {
   if (code) return { category: 'misconception', error_type: 'conceptual_error', misconception_code: code };
   if (calibration.band === 'overconfident') return { category: 'calibration', error_type: 'overconfidence', misconception_code: null };
   if (calibration.band === 'underconfident') return { category: 'calibration', error_type: 'underconfidence', misconception_code: null };
-  if (calibration.band === 'uncertainty_correct') return { category: 'calibration', error_type: 'correct_prudence', misconception_code: null };
+  // Real bug found via Priority 4 (cannot_determine real verification, Product Implementation
+  // Marathon): the content bank's generic mentor pool DOES author a correct_prudence message
+  // ("Correcto: declarar que no puede determinarse... es la respuesta más rigurosa disponible
+  // -- no una salida fácil.") but files it under category:'caution', while this function
+  // returned category:'calibration' for the exact same case. selectBottleMentor() filters
+  // ONLY by category (never error_type), so a student who correctly recognized the evidence
+  // was non-diagnostic and correctly declared cannot_determine got a RANDOM other
+  // calibration-category message instead (observed live: the overconfidence/underconfidence
+  // pool, once literally telling a correctly-prudent student they were being underconfident --
+  // actively undermining the exact epistemic skill this item is designed to reward). Returning
+  // category:'caution' here matches where the real, correct, already-authored message lives.
+  if (calibration.band === 'uncertainty_correct') return { category: 'caution', error_type: 'correct_prudence', misconception_code: null };
   if (result.band === 'contradictory') return { category: 'contradiction', error_type: 'conceptual_error', misconception_code: null };
   if (result.band === 'overprecise') return { category: 'precision', error_type: 'overconfidence', misconception_code: null };
   if (result.band === 'unsupported' || result.band === 'evasive_uncertainty') return { category: 'caution', error_type: result.band === 'evasive_uncertainty' ? 'evasion' : 'hierarchy_error', misconception_code: null };

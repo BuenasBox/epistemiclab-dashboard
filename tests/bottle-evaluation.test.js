@@ -59,6 +59,19 @@ test('Prudent uncertainty and calibration are explicit', () => {
   assert.equal(under.calibration.band, 'underconfident');
 });
 
+test('Priority 4 regression: correct_prudence gets category "caution", matching where the content bank actually authors that message', () => {
+  // Real bug found via live testing (Product Implementation Marathon, Priority 4):
+  // this evaluator returned category:'calibration' for correct_prudence, but the
+  // content bank's generic mentor pool only files a correct_prudence message under
+  // category:'caution' -- selectBottleMentor() filters by category alone, so a
+  // student who correctly declared cannot_determine got handed an unrelated
+  // (sometimes actively contradictory, e.g. "you're being underconfident")
+  // calibration message instead of praise for the correct call.
+  const prudent = evaluator.evaluateBottleResponse(spec, { response: 'cannot_determine', confidence: 'intuition', evidence_used: ['glass'] });
+  assert.equal(prudent.mentor.category, 'caution');
+  assert.equal(prudent.mentor.error_type, 'correct_prudence');
+});
+
 test('Required Bottle bias taxonomy is represented by editorial codes', () => {
   const codes = [
     'bottle.weight_equals_quality', 'bottle.punt_equals_quality', 'bottle.cork_equals_quality',
