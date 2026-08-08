@@ -72,7 +72,12 @@ test('EP-01: hypothesis-kind steps and session completion record epistemic event
   // sessions). recordLabEpistemicEvent uses a direct table insert (not the RPC, which reads
   // auth.uid() and sees nobody when called from a service_role client with no forwarded JWT).
   assert.match(runtime, /export async function recordLabEpistemicEvent/);
-  assert.match(runtime, /source_experience: 'label_guided'/);
+  // Updated (Loop 10, Learning Experience 2.0): source_experience must not be hardcoded to
+  // 'label_guided' -- the schema (20260620033000_epistemic_profile_core.sql) reserves a
+  // distinct 'bottle_guided' value, and recordLabEpistemicEvent is shared by both labs. It is
+  // derived from the sourceMode every caller already passes ('label_lab_pro' / 'bottle_lab_pro').
+  assert.match(runtime, /source_experience: sourceExperience/);
+  assert.match(runtime, /sourceExperience = params\.sourceMode.*bottle.*'bottle_guided' : 'label_guided'/);
   assert.match(runtime, /related_table: 'external'/);
   assert.match(submit, /recordLabEpistemicEvent/);
   assert.match(submit, /eventType: 'decision_made'/);

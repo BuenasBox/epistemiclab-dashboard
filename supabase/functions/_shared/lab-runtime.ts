@@ -89,12 +89,19 @@ export async function recordLabEpistemicEvent(supabase: any, params: {
   metadata?: Record<string, unknown>;
 }): Promise<{ ok: boolean; id: string | null }> {
   try {
+    // BUGFIX (found before deploy, Loop 10): source_experience was hardcoded to
+    // 'label_guided' for every caller, even though the schema
+    // (20260620033000_epistemic_profile_core.sql) reserves a distinct 'bottle_guided'
+    // value and every Bottle Lab caller already passes sourceMode:'bottle_lab_pro'.
+    // Deriving it from the sourceMode every caller already sends avoids mislabeling
+    // Bottle's EP-01 events as Label's without changing this function's signature.
+    const sourceExperience = params.sourceMode && params.sourceMode.indexOf('bottle') === 0 ? 'bottle_guided' : 'label_guided';
     await supabase.from('epistemic_profiles').upsert({ user_id: params.userId }, { onConflict: 'user_id', ignoreDuplicates: true });
     const inserted = await supabase.from('epistemic_events').insert({
       user_id: params.userId,
       event_id: params.eventId,
       event_type: params.eventType,
-      source_experience: 'label_guided',
+      source_experience: sourceExperience,
       source_mode: params.sourceMode,
       occurred_at: params.occurredAt,
       payload: params.payload || {},
