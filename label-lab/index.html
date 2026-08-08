@@ -105,7 +105,7 @@
   async function api(path,body){if(!navigator.onLine)throw new Error('OFFLINE');var token=await getAuthToken();if(!token)throw new Error('NO_AUTH_SESSION');var response=await fetch(API+path,{method:'POST',cache:'no-store',headers:{'Authorization':'Bearer '+token,'apikey':KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await response.json().catch(function(){return {};});if(!response.ok)throw new Error(data.error||'REQUEST_FAILED');return data;}
   function requestKey(){var key=sessionStorage.getItem('label_lab_pro_request_key');if(!key){key=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random());sessionStorage.setItem('label_lab_pro_request_key',key);}return key;}
   function newRequestKey(){var key=crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random();sessionStorage.setItem('label_lab_pro_request_key',key);return key;}
-  async function beginSession(){try{var data=await api('start-label-session',{request_key:requestKey()});state.session=data.session_id;state.step=data.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'label-lab-pro',mode:'server',competencies:['Label Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')renderError('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')renderError('Estás sin conexión.');else renderError('La asignación no está disponible.');}}
+  async function beginSession(){try{var data=await api('start-label-session',{request_key:requestKey()});state.session=data.session_id;state.step=data.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'label_guided',mode:'server',competencies:['Label Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')renderError('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')renderError('Estás sin conexión.');else renderError('La asignación no está disponible.');}}
   async function start(){renderLoading('Recuperando tu sesión…');await beginSession();}
   // "Intentar otro caso" (Priority 2): see bottle-lab/index.html for the full explanation --
   // same bug (persisted sessionStorage request_key made a page reload resume the completed
@@ -211,7 +211,7 @@
       transferChallengeView(task,data);
     }catch(e){renderError('No pudimos evaluar tu decisión.');}
   }
-  async function reveal(){renderLoading('Preparando reveal autorizado…');try{var data=await api('reveal-label-session',{session_id:state.session});revealData=data.reveal||{};revealStep=0;if(window.EpistemicProfile)window.EpistemicProfile.sessionCompleted({module:'label-lab-pro',itemId:state.session});revealView();}catch(e){renderError('El reveal todavía no está autorizado.');}}
+  async function reveal(){renderLoading('Preparando reveal autorizado…');try{var data=await api('reveal-label-session',{session_id:state.session});revealData=data.reveal||{};revealStep=0;if(window.EpistemicProfile)window.EpistemicProfile.sessionCompleted({module:'label_guided',itemId:state.session});revealView();}catch(e){renderError('El reveal todavía no está autorizado.');}}
   renderDemo();
   (async function(){try{var token=await getAuthToken();if(token)start();}catch(_){}})();
 })();

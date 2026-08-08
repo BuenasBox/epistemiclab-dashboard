@@ -102,7 +102,7 @@ function mentorInterstitial(feedback,next){
 async function api(path,body){if(!navigator.onLine)throw Error('OFFLINE');var token=await getAuthToken();if(!token)throw Error('NO_AUTH_SESSION');var res=await fetch(API+path,{method:'POST',cache:'no-store',headers:{Authorization:'Bearer '+token,apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await res.json().catch(function(){return{};});if(!res.ok)throw Error(data.error||'REQUEST_FAILED');return data;}
 function requestKey(){var k=sessionStorage.getItem('bottle_lab_pro_request_key');if(!k){k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);}return k;}
 function newRequestKey(){var k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);return k;}
-async function beginSession(){try{var d=await api('start-bottle-session',{request_key:requestKey()});state.session=d.session_id;state.step=d.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'bottle-lab-pro',mode:'server',competencies:['Bottle Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')error('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')error('Estás sin conexión.');else error('La asignación no está disponible.');}}
+async function beginSession(){try{var d=await api('start-bottle-session',{request_key:requestKey()});state.session=d.session_id;state.step=d.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'bottle_guided',mode:'server',competencies:['Bottle Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')error('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')error('Estás sin conexión.');else error('La asignación no está disponible.');}}
 async function start(){loading('Recuperando tu sesión…');await beginSession();}
 // "Intentar otro caso" (Priority 2): previously a plain <a href="/bottle-lab/">, which did a
 // full page reload -- since requestKey() persists in sessionStorage across reloads within the
@@ -222,7 +222,7 @@ async function transferChallengeSubmit(task,optionId){
     transferChallengeView(task,d);
   }catch(e){error('No pudimos evaluar tu decisión.');}
 }
-async function reveal(){loading('Preparando reveal autorizado…');try{var d=await api('reveal-bottle-session',{session_id:state.session});revealData=d.reveal||{};revealStep=0;window.EpistemicProfile&&window.EpistemicProfile.sessionCompleted({module:'bottle-lab-pro',itemId:state.session});revealView();}catch(e){error('El reveal todavía no está autorizado.');}}
+async function reveal(){loading('Preparando reveal autorizado…');try{var d=await api('reveal-bottle-session',{session_id:state.session});revealData=d.reveal||{};revealStep=0;window.EpistemicProfile&&window.EpistemicProfile.sessionCompleted({module:'bottle_guided',itemId:state.session});revealView();}catch(e){error('El reveal todavía no está autorizado.');}}
 publicDemo();(async function(){try{if(await getAuthToken())start();}catch(_){}})();
 })();
 </script><script src="/platform-nav.js" defer></script></body></html>
