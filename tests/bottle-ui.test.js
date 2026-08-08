@@ -76,15 +76,20 @@ test('Bottle UI Contradiction Moment: hipótesis inicial inmutable, revisión ve
   assert.doesNotMatch(html, /state\.commitments\[.*\]\.hypothesis_text=/);
 });
 
-test('Bottle UI Reasoning Replay (Loop 4): usa exclusivamente state.commitments[]/state.evaluations[] ya persistidos, nunca inventa un error_type que el evaluador real no calcula', () => {
+test('Bottle UI Reasoning Replay (Loop 4): usa exclusivamente campos 100% reales del evaluador (state.commitments[]/state.evaluations[] ya persistidos), nunca infiere nada client-side', () => {
   assert.match(html, /function buildReasoningReplay\(\)/);
   assert.match(html, /REVEAL_MOMENTOS=\['layer1','layer2','layer3','replay','layer4'\]/);
-  // "Acierto accidental" se deriva de dos campos 100% reales (result.correct + calibration.band
-  // === 'overconfident'), nunca de un campo inventado tipo error_type==='accidental_correctness'
-  // que evaluateBottleResponse() no produce.
+  // "Acierto accidental" se deriva de DOS señales reales y mutuamente excluyentes que el
+  // evaluador ya calcula (Priority 7/8, Product Implementation Marathon): la preexistente
+  // (result.correct + calibration.band==='overconfident') y la que mentorContext() empezó a
+  // emitir en Priority 5/7 (mentor.error_type==='accidental_correctness', para evidencia citada
+  // incompleta con confianza bien calibrada). mentorContext() revisa calibration ANTES que la
+  // rama de accidental_correctness, así que un mismo paso nunca dispara ambas -- pero Reasoning
+  // Replay debe reconocer cualquiera de las dos, no solo la primera que existió.
   const replayBody = html.slice(html.indexOf('function buildReasoningReplay()'), html.indexOf('function revealView()'));
   assert.match(replayBody, /ev\.result\.correct&&ev\.calibration\.band==='overconfident'/);
-  assert.doesNotMatch(replayBody, /accidental_correctness|good_revision|error_type/);
+  assert.match(replayBody, /ev\.mentor&&ev\.mentor\.error_type==='accidental_correctness'/);
+  assert.doesNotMatch(replayBody, /good_revision/);
   assert.match(replayBody, /state\.commitments\.map/);
 });
 

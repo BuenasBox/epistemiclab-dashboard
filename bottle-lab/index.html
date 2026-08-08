@@ -170,8 +170,22 @@ function buildReasoningReplay(){
     }
     blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Confianza declarada</span><p class="small">'+esc(CONF_LABEL[c.confidence]||c.confidence)+'</p></div>';
     if(ev){
-      var accidental=ev.result.correct&&ev.calibration.band==='overconfident';
-      blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Resultado y calibración</span><p class="small">'+esc(CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.')+'</p>'+(accidental?'<p class="small rp-flag">Tu conclusión coincidió con el resultado, pero tu confianza excedía lo que la evidencia sostenía -- vale la pena revisar si acertaste por la razón correcta.</p>':'')+'</div>';
+      // Priority 7/8 (Mentor value review + Reasoning Replay verification, Product Implementation
+      // Marathon): the server now also flags accidental correctness via evidence citation
+      // (mentorContext() -> mentor.error_type==='accidental_correctness', wired in Priority 5/7) --
+      // a real signal the evaluator computes, distinct from the pre-existing overconfidence-based
+      // check. Both are genuine, evaluator-authored signals (never inferred client-side): a
+      // student can reach the right conclusion while overconfident in their stated certainty, OR
+      // while citing incomplete evidence with well-calibrated confidence -- mentorContext() checks
+      // calibration first, so the two branches are mutually exclusive per step, and either one
+      // reaching the client means the server already decided this step was "right for a shaky
+      // reason." Before this, Reasoning Replay silently dropped the evidence-based case even
+      // though the Mentor interstitial had already told the student about it mid-session.
+      var overconfidentButRight=ev.result.correct&&ev.calibration.band==='overconfident';
+      var rightEvidenceIncomplete=Boolean(ev.mentor&&ev.mentor.error_type==='accidental_correctness');
+      var accidental=overconfidentButRight||rightEvidenceIncomplete;
+      var accidentalText=overconfidentButRight?'Tu conclusión coincidió con el resultado, pero tu confianza excedía lo que la evidencia sostenía -- vale la pena revisar si acertaste por la razón correcta.':'Tu conclusión coincidió con el resultado, pero la evidencia que citaste para sostenerla estaba incompleta -- vale la pena revisar si acertaste por la razón correcta.';
+      blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Resultado y calibración</span><p class="small">'+esc(CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.')+'</p>'+(accidental?'<p class="small rp-flag">'+esc(accidentalText)+'</p>':'')+'</div>';
     }
     return '<div class="rp-block">'+(state.commitments.length>1?'<div class="card-label">Paso de hipótesis '+(i+1)+'</div>':'')+blocks+'</div>';
   }).join('<div class="hairline"></div>');
