@@ -30,7 +30,11 @@ async function login(page, nextPath) {
   await loginForm.locator('button[type="submit"]').click();
   await page.waitForURL(/\/dashboard\//, { timeout: 15000 });
   await page.waitForLoadState('networkidle');
-  await page.goto(nextPath, { waitUntil: 'networkidle' });
+  // Login already lands on /dashboard/ (the only other allowlisted ?next= value is
+  // /admin/, which this suite never targets) -- re-navigating to the exact URL
+  // we're already on/mid-loading can abort in Chromium (ERR_ABORTED). Only
+  // navigate onward when the real destination differs.
+  if (nextPath !== '/dashboard/') await page.goto(nextPath, { waitUntil: 'networkidle' });
   // The lab pages paint the public demo instantly, then asynchronously check for a
   // token and swap to the real session (see bottle-lab/index.html's bootstrap:
   // `publicDemo();(async function(){if(await getAuthToken())start();})();`). On a
