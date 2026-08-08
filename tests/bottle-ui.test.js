@@ -17,7 +17,9 @@ test('Bottle UI is server-driven and does not ship the public fixture as authori
   // un esc(r.layer1) hardcodeado; el invariante real es que layer1..4 siguen siendo strings
   // planos, nunca objetos con sub-propiedades como .title/.text/.rule.
   assert.match(html, /esc\(r\[key\]\)/);
-  assert.match(html, /REVEAL_MOMENTOS=\['layer1','layer2','layer3','layer4'\]/);
+  // Loop 4 añade un momento 'replay' (Reasoning Replay) entre layer3 y layer4 -- sigue siendo
+  // acceso dinámico a strings planos para layer1..4; 'replay' se renderiza aparte (client-only).
+  assert.match(html, /REVEAL_MOMENTOS=\['layer1','layer2','layer3','replay','layer4'\]/);
   assert.doesNotMatch(html, /r\.layer1\.title|r\.layer2\.text|r\.layer4\.rule|r\[key\]\.title|r\[key\]\.text/);
   assert.match(build, /bottle-lab\/data\/bottle-items\.sample\.js/);
 });
@@ -72,4 +74,22 @@ test('Bottle UI Contradiction Moment: hipótesis inicial inmutable, revisión ve
   // hypothesis_text de un commitment anterior.
   assert.match(html, /snapshot\.revision=state\.pendingRevisionMeta/);
   assert.doesNotMatch(html, /state\.commitments\[.*\]\.hypothesis_text=/);
+});
+
+test('Bottle UI Reasoning Replay (Loop 4): usa exclusivamente state.commitments[]/state.evaluations[] ya persistidos, nunca inventa un error_type que el evaluador real no calcula', () => {
+  assert.match(html, /function buildReasoningReplay\(\)/);
+  assert.match(html, /REVEAL_MOMENTOS=\['layer1','layer2','layer3','replay','layer4'\]/);
+  // "Acierto accidental" se deriva de dos campos 100% reales (result.correct + calibration.band
+  // === 'overconfident'), nunca de un campo inventado tipo error_type==='accidental_correctness'
+  // que evaluateBottleResponse() no produce.
+  const replayBody = html.slice(html.indexOf('function buildReasoningReplay()'), html.indexOf('function revealView()'));
+  assert.match(replayBody, /ev\.result\.correct&&ev\.calibration\.band==='overconfident'/);
+  assert.doesNotMatch(replayBody, /accidental_correctness|good_revision|error_type/);
+  assert.match(replayBody, /state\.commitments\.map/);
+});
+
+test('Bottle UI Reasoning Replay: solo se activa dentro del reveal, mobile-first (sin timeline horizontal)', () => {
+  assert.match(html, /var isReplay=key==='replay'/);
+  assert.match(html, /isReplay\?buildReasoningReplay\(\)/);
+  assert.doesNotMatch(html, /overflow-x|white-space:nowrap.*rp-/);
 });

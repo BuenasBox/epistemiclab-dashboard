@@ -63,3 +63,11 @@ test('Label UI Contradiction Moment: no fuerza contradicciones artificiales, sol
   assert.match(html, /CONTRADICTION_INTERP=\{reinforces:'Refuerza',weakens:'Debilita',contradicts:'Contradice',no_change:'No cambia nada'\}/);
   assert.match(html, /state\.commitments\.push\(snapshot\)/);
 });
+
+test('Label UI Reasoning Replay (Loop 4): usa exclusivamente state.commitments[]/state.evaluations[] ya persistidos', () => {
+  assert.match(html, /function buildReasoningReplay\(\)/);
+  assert.match(html, /REVEAL_MOMENTOS=\['layer1','layer2','layer3','replay','layer4'\]/);
+  const replayBody = html.slice(html.indexOf('function buildReasoningReplay()'), html.indexOf('function revealView()'));
+  assert.match(replayBody, /ev\.result\.correct&&ev\.calibration\.band==='overconfident'/);
+  assert.doesNotMatch(replayBody, /accidental_correctness|good_revision|error_type/);
+});

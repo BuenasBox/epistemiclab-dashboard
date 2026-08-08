@@ -113,8 +113,8 @@ async function submit(){
     if(feedback&&feedback.text)mentorInterstitial(feedback,advance);else advance();
   }catch(e){error(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}
 }
-var REVEAL_MOMENTOS=['layer1','layer2','layer3','layer4'];
-var REVEAL_LABEL={layer1:'Qué ocurrió',layer2:'Qué pensabas',layer3:'Cómo usaste la evidencia',layer4:'Regla transferible'};
+var REVEAL_MOMENTOS=['layer1','layer2','layer3','replay','layer4'];
+var REVEAL_LABEL={layer1:'Qué ocurrió',layer2:'Qué pensabas',layer3:'Cómo usaste la evidencia',replay:'Cómo evolucionó tu razonamiento',layer4:'Regla transferible'};
 var revealData=null,revealStep=0;
 // El Reveal Board se construye SOLO a partir de evaluation.* ya autorizado por el servidor en
 // cada paso de hipótesis (evaluateBottleResponse en submit-bottle-step) -- nunca se recalcula
@@ -134,12 +134,35 @@ function buildRevealBoard(){
     return '<div class="reveal-board">'+(state.evaluations.length>1?'<div class="card-label">Paso de hipótesis '+(i+1)+'</div>':'')+(rows||'<p class="small muted">Sin evidencia citada en este paso.</p>')+'<p class="small mentor-text">'+esc(calib)+'</p></div>';
   }).join('');
 }
+// Reasoning Replay (Loop 4): reconstrucción breve del camino cognitivo, exclusivamente a
+// partir de datos reales ya persistidos en cliente (state.commitments[] + state.evaluations[],
+// en el mismo orden -- cada compromiso de hipótesis produce exactamente una evaluación). No
+// reconstruye nada que no haya ocurrido; no moraliza -- describe, no juzga.
+function buildReasoningReplay(){
+  if(!state.commitments.length)return '<p class="small muted">No hubo pasos de hipótesis en esta sesión.</p>';
+  return state.commitments.map(function(c,i){
+    var ev=state.evaluations[i]||null;
+    var isRevision=Boolean(c.revision);
+    var blocks='<div class="rp-step"><span class="cm-lbl">'+(isRevision?'Revisaste tu hipótesis':i===0?'Observaste y formulaste tu hipótesis':'Nueva hipótesis')+'</span><p class="small">'+esc(c.hypothesis_text)+'</p></div>';
+    if(isRevision){
+      blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step rp-revision"><span class="cm-lbl">Evidencia nueva</span><p class="small">Interpretaste que '+esc((CONTRADICTION_INTERP[c.revision.interpretation]||'').toLowerCase())+' tu hipótesis anterior ("'+esc(c.revision.prior_hypothesis)+'") y decidiste '+esc((REVISION_ACTION[c.revision.action]||'').toLowerCase())+'la.</p></div>';
+    }
+    blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Confianza declarada</span><p class="small">'+esc(CONF_LABEL[c.confidence]||c.confidence)+'</p></div>';
+    if(ev){
+      var accidental=ev.result.correct&&ev.calibration.band==='overconfident';
+      blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Resultado y calibración</span><p class="small">'+esc(CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.')+'</p>'+(accidental?'<p class="small rp-flag">Tu conclusión coincidió con el resultado, pero tu confianza excedía lo que la evidencia sostenía -- vale la pena revisar si acertaste por la razón correcta.</p>':'')+'</div>';
+    }
+    return '<div class="rp-block">'+(state.commitments.length>1?'<div class="card-label">Paso de hipótesis '+(i+1)+'</div>':'')+blocks+'</div>';
+  }).join('<div class="hairline"></div>');
+}
 function revealView(){
   var r=revealData,key=REVEAL_MOMENTOS[revealStep];
   var progress=REVEAL_MOMENTOS.map(function(_,i){return '<span class="'+(i<=revealStep?'done':'')+'"></span>';}).join('');
   var isLast=revealStep===REVEAL_MOMENTOS.length-1;
   var board=key==='layer3'?buildRevealBoard():'';
-  app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc(REVEAL_LABEL[key].toUpperCase())+'</div><p class="small mentor-text">'+esc(r[key])+'</p></div></div>'+board+'<div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<a class="btn btn--shine btn--glow" href="/bottle-lab/">Intentar otro caso</a>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
+  var isReplay=key==='replay';
+  var bodyHtml=isReplay?buildReasoningReplay():'<p class="small mentor-text">'+esc(r[key])+'</p>';
+  app.innerHTML='<div class="bl-reveal"><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc(REVEAL_LABEL[key].toUpperCase())+'</div>'+bodyHtml+'</div></div>'+board+'<div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<a class="btn btn--shine btn--glow" href="/bottle-lab/">Intentar otro caso</a>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
   var prev=document.getElementById('rprev');if(prev)prev.onclick=function(){revealStep--;revealView();};
   var next=document.getElementById('rnext');if(next)next.onclick=function(){revealStep++;revealView();};
 }
