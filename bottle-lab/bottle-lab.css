@@ -54,6 +54,15 @@ p{margin:0 0 .8em}
 .opt{display:block;width:100%;text-align:left;padding:11px var(--s4);border:1px solid var(--line);border-radius:var(--r-ctl);background:var(--panel2);color:var(--ink);margin-bottom:8px;cursor:pointer;font-family:inherit;font-size:14px}
 .opt:hover{border-color:var(--gold)}.opt.sel{background:var(--wine);border-color:transparent;font-weight:600}
 .opt small{display:block;color:var(--muted);font-weight:400;margin-top:2px}.opt.sel small{color:rgba(255,255,255,.8)}
+/* Confidence Control (componente transversal del Design System) -- bottle-lab.css nunca lo
+   definió pese a que index.html ya usaba class="conf"/"pillbtn" desde antes de Learning
+   Experience 2.0 (confirmado contra e16a044): el control de confianza se veía sin estilo.
+   Corregido en el Loop 8 (mobile + accesibilidad), portado 1:1 desde label-lab.css. */
+.conf{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:var(--r-ctl);background:rgba(201,162,39,.05)}
+.conf .q{font-size:11.5px;color:var(--gold);margin-bottom:8px;font-weight:600}
+.conf .opts{display:flex;gap:8px;flex-wrap:wrap}
+.pillbtn{font-family:inherit;font-size:12.5px;padding:8px 12px;border-radius:var(--r-pill);border:1px solid var(--line);background:var(--panel2);color:var(--muted);cursor:pointer;min-height:40px}
+.pillbtn.sel{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.12)}
 /* mentor / states / feedback */
 .mentor{display:flex;gap:var(--s3);padding:var(--s4);border-radius:var(--r-card);background:var(--panel2);border:1px solid var(--line);border-left-width:3px;margin-bottom:10px}
 .mentor.info{border-left-color:var(--gold)}.mentor.ok{border-left-color:var(--ok)}.mentor.warn{border-left-color:var(--warn)}.mentor.crit{border-left-color:var(--block)}
@@ -120,7 +129,7 @@ p{margin:0 0 .8em}
 .ev-head b{flex:1 1 auto}
 .ev-head small{color:var(--muted);flex:1 1 100%}
 .ev-weight{display:flex;gap:6px;flex-wrap:wrap}
-.wbtn{font-family:inherit;font-size:11.5px;padding:6px 10px;border-radius:var(--r-pill);border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;min-height:32px}
+.wbtn{font-family:inherit;font-size:11.5px;padding:6px 10px;border-radius:var(--r-pill);border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;min-height:40px}
 .wbtn:hover{border-color:var(--gold)}
 .wbtn.sel{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.12);font-weight:600}
 /* ---- Reveal Board: evaluation.* real, ya autorizada por el servidor (Loop 2) ---- */

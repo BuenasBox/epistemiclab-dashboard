@@ -83,3 +83,20 @@ test('Label UI (Loop 7 polish): Mentor no interrumpe con un interstitial para la
   assert.match(html, /feedback&&feedback\.text&&feedback\.category!=='confirmation'/);
   assert.match(html, /state\.evaluations\.push\(data\.evaluation\)/);
 });
+
+test('Label UI (Loop 8): cada pantalla real de la sesión tiene exactamente un <h1> (mismo hallazgo de axe que Bottle)', () => {
+  assert.match(html, /<h1 class="serif">'\+esc\(s\.prompt\|\|s\.id\)\+'<\/h1>/);
+  assert.match(html, /<h1 class="serif">Apareció evidencia nueva en el documento<\/h1>/);
+  assert.match(html, /<h1 class="serif">La misma regla, disfrazada<\/h1>/);
+  assert.match(html, /<h1 class="ep-sr-only">Mensaje del Mentor<\/h1>/);
+  assert.match(html, /<h1 class="ep-sr-only">Reveal de tu sesión/);
+  assert.match(html, /<h1 class="serif">Etiquetas<\/h1>/);
+});
+
+test('Label UI (Loop 8): touch targets de los controles nuevos cumplen un mínimo de 40px', () => {
+  const css = fs.readFileSync(path.join(root, 'label-lab', 'label-lab.css'), 'utf8');
+  const wbtnRule = css.match(/\.wbtn\{[^}]*\}/)[0];
+  const pillbtnRule = css.match(/\.pillbtn\{[^}]*\}/)[0];
+  assert.match(wbtnRule, /min-height:40px/);
+  assert.match(pillbtnRule, /min-height:40px/);
+});

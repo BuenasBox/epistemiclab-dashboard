@@ -114,3 +114,31 @@ test('Bottle UI (Loop 7 polish): Mentor no interrumpe con un interstitial para l
   // interrupción visual, nunca se descarta la información.
   assert.match(html, /state\.evaluations\.push\(d\.evaluation\)/);
 });
+
+test('Bottle UI (Loop 8, regresión): .conf/.pillbtn (usados por index.html desde antes de este trabajo) están definidos en bottle-lab.css', () => {
+  const css = fs.readFileSync(path.join(root, 'bottle-lab', 'bottle-lab.css'), 'utf8');
+  assert.match(html, /class="conf"/);
+  assert.match(html, /pillbtn/);
+  assert.match(css, /\.conf\{/);
+  assert.match(css, /\.pillbtn\{/);
+  assert.match(css, /\.pillbtn\.sel\{/);
+});
+
+test('Bottle UI (Loop 8): touch targets de los controles nuevos (peso de evidencia, confianza) cumplen un mínimo de 40px', () => {
+  const css = fs.readFileSync(path.join(root, 'bottle-lab', 'bottle-lab.css'), 'utf8');
+  const wbtnRule = css.match(/\.wbtn\{[^}]*\}/)[0];
+  const pillbtnRule = css.match(/\.pillbtn\{[^}]*\}/)[0];
+  assert.match(wbtnRule, /min-height:40px/);
+  assert.match(pillbtnRule, /min-height:40px/);
+});
+
+test('Bottle UI (Loop 8): cada pantalla real de la sesión (paso, contradicción, mentor, reveal, transferencia) tiene exactamente un <h1> -- hallazgo real de axe (page-has-heading-one), ninguna pantalla autenticada tenía encabezado nivel 1', () => {
+  assert.match(html, /<h1 class="serif">'\+esc\(s\.prompt\|\|s\.id\)\+'<\/h1>/);
+  assert.match(html, /<h1 class="serif">Apareció evidencia nueva<\/h1>/);
+  assert.match(html, /<h1 class="serif">La misma regla, disfrazada<\/h1>/);
+  assert.match(html, /<h1 class="ep-sr-only">Mensaje del Mentor<\/h1>/);
+  assert.match(html, /<h1 class="ep-sr-only">Reveal de tu sesión/);
+  // publicDemo() ya tenía su propio h1 ("Botellas") -- nunca coexiste con los de sesión porque
+  // cada vista reemplaza #app por completo.
+  assert.match(html, /<h1 class="serif">Botellas<\/h1>/);
+});

@@ -50,7 +50,7 @@ p{margin:0 0 .8em}
 .conf{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:var(--r-ctl);background:rgba(201,162,39,.05)}
 .conf .q{font-size:11.5px;color:var(--gold);margin-bottom:8px;font-weight:600}
 .conf .opts{display:flex;gap:8px;flex-wrap:wrap}
-.pillbtn{font-family:inherit;font-size:12.5px;padding:8px 12px;border-radius:var(--r-pill);border:1px solid var(--line);background:var(--panel2);color:var(--muted);cursor:pointer;min-height:36px}
+.pillbtn{font-family:inherit;font-size:12.5px;padding:8px 12px;border-radius:var(--r-pill);border:1px solid var(--line);background:var(--panel2);color:var(--muted);cursor:pointer;min-height:40px}
 .pillbtn.sel{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.12)}
 /* mentor / states / feedback */
 .mentor{display:flex;gap:var(--s3);padding:var(--s4);border-radius:var(--r-card);background:var(--panel2);border:1px solid var(--line);border-left-width:3px;margin-bottom:10px}
@@ -119,7 +119,7 @@ p{margin:0 0 .8em}
 .ev-head b{flex:1 1 auto}
 .ev-head small{color:var(--muted);flex:1 1 100%}
 .ev-weight{display:flex;gap:6px;flex-wrap:wrap}
-.wbtn{font-family:inherit;font-size:11.5px;padding:6px 10px;border-radius:var(--r-pill);border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;min-height:32px}
+.wbtn{font-family:inherit;font-size:11.5px;padding:6px 10px;border-radius:var(--r-pill);border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;min-height:40px}
 .wbtn:hover{border-color:var(--gold)}
 .wbtn.sel{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.12);font-weight:600}
 /* ---- Reveal Board: evaluation.* real, ya autorizada por el servidor (Loop 2) ---- */
