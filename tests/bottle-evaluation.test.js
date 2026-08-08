@@ -51,6 +51,25 @@ test('Correct answer with wrong evidence is not a full success', () => {
   assert.deepEqual(result.evidence.overweighted, ['weight']);
 });
 
+test('Priority 5/7 regression: correct conclusion + imperfect evidence citation is flagged as accidental correctness', () => {
+  // Real gap found via Mentor value review (Product Implementation Marathon): the content
+  // bank already authors a bottle_mentor_confirmation_accidental_correctness message in
+  // every item's generic pool, but mentorContext() never emitted that error_type -- dead
+  // content, unreachable no matter what a student answered. Label's evaluator already
+  // flags the equivalent pattern (its 'integration' category); this was Bottle's one gap.
+  const result = evaluator.evaluateBottleResponse(spec, { response: 'reasonable_style', confidence: 'fairly_sure', evidence_used: ['weight'] });
+  assert.equal(result.calibration.band, 'aligned'); // not caught by an overconfidence/underconfidence branch first
+  assert.equal(result.mentor.category, 'confirmation');
+  assert.equal(result.mentor.error_type, 'accidental_correctness');
+});
+
+test('Priority 5/7 regression: a genuinely clean, fully-supported answer is NOT flagged as accidental', () => {
+  const clean = evaluator.evaluateBottleResponse(spec, { response: 'reasonable_style', confidence: 'fairly_sure', evidence_used: ['glass', 'closure'] });
+  assert.equal(clean.evidence.band, 'supported');
+  assert.equal(clean.mentor.category, 'confirmation');
+  assert.equal(clean.mentor.error_type, null);
+});
+
 test('Prudent uncertainty and calibration are explicit', () => {
   const prudent = evaluator.evaluateBottleResponse(spec, { response: 'cannot_determine', confidence: 'intuition', evidence_used: ['glass'] });
   assert.equal(prudent.result.band, 'uncertainty_correct');
