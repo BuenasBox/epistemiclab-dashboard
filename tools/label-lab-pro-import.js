@@ -27,19 +27,28 @@ function publicationErrors(item) {
   return [...new Set(errors)];
 }
 
-function publicEvidence(item) {
-  return (item.visible_evidence || []).map(({ id, label, value, category }) => ({ id, label, value, category }));
+function publicEvidence(entries) {
+  return (entries || []).map(({ id, label, value, category }) => ({ id, label, value, category }));
 }
 
 function buildRuntimeRecord(item) {
   const errors = publicationErrors(item);
   if (errors.length) throw new Error(`${item.item_id || 'unknown'}: ${errors.join('; ')}`);
-  const evidence = publicEvidence(item);
-  const steps = (item.prompt_sequence || []).map((phase, index, phases) => ({
+  const visibleEvidence = publicEvidence(item.visible_evidence);
+  const hiddenEvidence = publicEvidence(item.hidden_evidence);
+  const phaseList = item.prompt_sequence || [];
+  // Mirrors the Bottle fix (Priority 8, Product Implementation Marathon): hidden_evidence was
+  // authored (LABEL_PRO_002, LABEL_PRO_008) but never merged into any step's evidence array --
+  // for LABEL_PRO_008 specifically, its second acceptable_hypotheses entry requires citing
+  // ev_marketing_fresh, a hidden_evidence id the client never rendered, making that acceptable
+  // path unreachable. Reveal starting at 'search_contradictions' if present, else from the
+  // final step, matching Bottle's rule exactly.
+  const revealIndex = phaseList.includes('search_contradictions') ? phaseList.indexOf('search_contradictions') : phaseList.length - 1;
+  const steps = phaseList.map((phase, index, phases) => ({
     id: phase,
     kind: phase === 'observe' ? 'observation' : phase === 'classify_evidence' ? 'classification' : phase === 'declare_confidence' ? 'hypothesis' : phase === 'hypothesize' ? 'hypothesis' : 'hypothesis',
     prompt: phase === 'observe' ? '¿Qué información está explícitamente presente?' : phase === 'classify_evidence' ? 'Clasifica la fuerza y función de la evidencia visible.' : phase === 'hypothesize' ? 'Formula una hipótesis y limita su alcance.' : phase === 'declare_confidence' ? 'Declara tu nivel de confianza.' : 'Justifica y revisa tu inferencia.',
-    evidence,
+    evidence: hiddenEvidence.length && index >= revealIndex ? [...visibleEvidence, ...hiddenEvidence] : visibleEvidence,
     options: phase === 'classify_evidence' ? [...new Set((item.visible_evidence || []).map((entry) => entry.category))].map((category) => ({ id: category, text: category })) : [],
     order: index,
     last: index === phases.length - 1,
@@ -52,6 +61,9 @@ function buildRuntimeRecord(item) {
   const misconceptionByResponse = Object.fromEntries((item.unsupported_hypotheses || []).filter((hypothesis) => hypothesis.misconception_code).map((hypothesis) => [hypothesis.id, hypothesis.misconception_code]));
   const requiredEvidence = acceptable.flatMap((id) => (item.acceptable_hypotheses || []).find((hypothesis) => hypothesis.id === id)?.supporting_evidence_ids || []);
   const strength = { determinative: 1, strong: .85, moderate: .6, weak: .3, non_diagnostic: 0 };
+  // Same reasoning as the evidence-reveal fix above: strength buckets/editorial ceiling must
+  // also know about hidden_evidence ids now that they can actually be cited.
+  const allEvidence = [...(item.visible_evidence || []), ...(item.hidden_evidence || [])];
   const evaluationSpec = {
     version: `label-${item.version}`,
     supported_responses: acceptable,
@@ -62,10 +74,10 @@ function buildRuntimeRecord(item) {
     uncertainty_correct_responses: item.max_expected_confidence === 'cannot_determine' ? ['cannot_determine'] : [],
     evasive_uncertainty_responses: item.max_expected_confidence === 'cannot_determine' ? [] : ['cannot_determine'],
     required_evidence_ids: requiredEvidence,
-    strong_evidence_ids: (item.visible_evidence || []).filter((entry) => ['determinative', 'strong'].includes(entry.strength)).map((entry) => entry.id),
-    moderate_evidence_ids: (item.visible_evidence || []).filter((entry) => entry.strength === 'moderate').map((entry) => entry.id),
-    weak_evidence_ids: (item.visible_evidence || []).filter((entry) => ['weak', 'non_diagnostic'].includes(entry.strength)).map((entry) => entry.id),
-    editorial_evidence_strength: Math.max(...(item.visible_evidence || []).map((entry) => strength[entry.strength] || 0), 0),
+    strong_evidence_ids: allEvidence.filter((entry) => ['determinative', 'strong'].includes(entry.strength)).map((entry) => entry.id),
+    moderate_evidence_ids: allEvidence.filter((entry) => entry.strength === 'moderate').map((entry) => entry.id),
+    weak_evidence_ids: allEvidence.filter((entry) => ['weak', 'non_diagnostic'].includes(entry.strength)).map((entry) => entry.id),
+    editorial_evidence_strength: Math.max(...allEvidence.map((entry) => strength[entry.strength] || 0), 0),
     uncertainty_allowed: item.max_expected_confidence === 'cannot_determine',
     misconceptions: item.misconceptions || [],
     misconception_by_response: misconceptionByResponse,

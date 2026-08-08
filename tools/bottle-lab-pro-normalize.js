@@ -5,8 +5,8 @@ const { MESSAGES } = require('../content-bank/bottle-lab-pro/mentor/messages.js'
 
 const STRENGTH = { determinative: 1, strong: .85, moderate: .6, weak: .3, non_diagnostic: 0 };
 
-function publicEvidence(item) {
-  return (item.visible_evidence || []).map(({ id, label, value, signal_type, technical_function, traditional_association, marketing_reading }) => ({
+function publicEvidence(entries) {
+  return (entries || []).map(({ id, label, value, signal_type, technical_function, traditional_association, marketing_reading }) => ({
     id, label, value, signal_type, technical_function, traditional_association, marketing_reading,
   }));
 }
@@ -41,12 +41,31 @@ function hypothesisOptions(item) {
   ].map(({ id, text }) => ({ id, text }));
 }
 
+// Real bug found via Reasoning Replay verification (Priority 8, Product Implementation
+// Marathon): every step's evidence array was built once from ONLY item.visible_evidence and
+// reused unchanged across the whole sequence -- item.hidden_evidence was authored (9 of 12
+// Bottle items have it, several explicitly required by acceptable_hypotheses.
+// supporting_evidence_ids) but never merged into public_content anywhere, for any item, ever.
+// Two compounding real-product consequences: (1) required_evidence_ids could reference
+// evidence ids the client never rendered as selectable, making the fully-'supported' evidence
+// band mathematically unreachable for those items; (2) the entire Contradiction Moment /
+// hypothesis-revision UI mechanic (bottle-lab/index.html's pendingContradiction(), which
+// triggers on evidence not previously seen in state.evidenceCatalog) could never fire, because
+// no step ever introduced evidence the student hadn't already seen in step 1. The item bank
+// explicitly authors a 'search_contradictions' phase ("Busca señales que contradigan o limiten
+// tu hipótesis") for exactly this reveal -- hidden_evidence now appears starting there (and
+// persists through 'revise'). Items without that phase but with hidden_evidence still reveal
+// it, from the final step onward, so authored content is never silently dropped.
 function publicContent(item) {
-  const evidence = publicEvidence(item);
+  const visible = publicEvidence(item.visible_evidence);
+  const hidden = publicEvidence(item.hidden_evidence);
   const options = hypothesisOptions(item);
+  const phases = item.prompt_sequence || [];
+  const revealIndex = phases.includes('search_contradictions') ? phases.indexOf('search_contradictions') : phases.length - 1;
   return {
-    steps: (item.prompt_sequence || []).map((phase, order) => ({
-      id: phase, kind: stepKind(phase), prompt: promptFor(phase), evidence,
+    steps: phases.map((phase, order) => ({
+      id: phase, kind: stepKind(phase), prompt: promptFor(phase),
+      evidence: hidden.length && order >= revealIndex ? [...visible, ...hidden] : visible,
       options: stepKind(phase) === 'hypothesis' ? options : [], order,
     })),
     learning_objectives: item.learning_objectives,
@@ -63,7 +82,11 @@ function buildRuntimeRecord(item) {
   const partial = item.partial_hypotheses || [];
   const unsupported = item.unsupported_hypotheses || [];
   const overprecise = item.overprecise_hypotheses || [];
-  const evidence = item.visible_evidence || [];
+  // Priority 8 fix (see publicContent() above): required_evidence_ids can legitimately point at
+  // hidden_evidence ids now that they're actually revealed client-side at 'search_contradictions'.
+  // evidence_strengths/editorial_evidence_strength must know about those ids too, or a correctly
+  // cited hidden-evidence answer would still score as strength 0 (unset id) even after the UI fix.
+  const evidence = [...(item.visible_evidence || []), ...(item.hidden_evidence || [])];
   const misconceptionByResponse = Object.fromEntries(unsupported.filter((h) => h.misconception_code).map((h) => [h.id, h.misconception_code]));
   const misconceptionFeedback = Object.fromEntries((item.misconceptions || []).flatMap((code) => {
     const entry = MISCONCEPTIONS_BY_CODE[code];
