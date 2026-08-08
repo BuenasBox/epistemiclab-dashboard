@@ -176,6 +176,8 @@
     var cardsHtml = msgs.length ? msgs.map(cardHtml).join('') :
       '<div class="mentor-empty">El Mentor no tiene observaciones con la evidencia actual.</div>';
 
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
     container.innerHTML =
       '<div class="mco-reveal ' + toneClass + '">' +
         srList +
