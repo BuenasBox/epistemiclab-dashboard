@@ -49,6 +49,25 @@ export function responseVersion(rows: unknown[], stepKey: string) {
   return rows.filter((row: any) => row && row.step_key === stepKey).length + 1;
 }
 
+// Continuidad ligera entre sesiones (Learning Experience 2.0 - Loop 6). Lee del propio EP-01
+// ya existente (epistemic_events, event_type='misconception_detected', ya emitido desde antes
+// de este loop) -- no crea tablas nuevas, no rediseña Epistemic Profile, no usa metadata de
+// Auth. Determinista: mismo historial real -> mismo conteo, siempre. Best-effort: cualquier
+// fallo de la consulta degrada a 0 (nunca "no repetido" se confunde con un error).
+export async function countPriorMisconceptionOccurrences(supabase: any, userId: string, misconceptionCode: string): Promise<number> {
+  try {
+    const { count } = await supabase
+      .from('epistemic_events')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', userId)
+      .eq('event_type', 'misconception_detected')
+      .eq('payload->>misconception_code', misconceptionCode);
+    return typeof count === 'number' && count > 0 ? count : 0;
+  } catch {
+    return 0;
+  }
+}
+
 // EP-01 integration. Server-side, best-effort: a failure here must never break the lab
 // response the student is waiting on. `source_experience: 'label_guided'` is a pre-existing
 // value in the epistemic_events CHECK constraint (20260620033000_epistemic_profile_core.sql)

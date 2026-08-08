@@ -1,4 +1,4 @@
-import { authenticatedLabUser, LAB_CORS, labJson, recordLabEpistemicEvent, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
+import { authenticatedLabUser, countPriorMisconceptionOccurrences, LAB_CORS, labJson, recordLabEpistemicEvent, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
 import { evaluateLabelResponse } from '../_shared/label-evaluation.ts';
 import { selectLabelMentor } from '../_shared/label-mentor.ts';
 
@@ -39,6 +39,14 @@ Deno.serve(async (req) => {
     const spec = item.evaluation_spec && typeof item.evaluation_spec === 'object' ? item.evaluation_spec : {};
     const evaluation = evaluateLabelResponse(spec, answer);
     const mentor = selectLabelMentor(spec, evaluation.mentor, `${session.id}:${idempotencyKey}`);
+    // Continuidad ligera (Loop 6): mismo mecanismo que Bottle -- lee epistemic_events real,
+    // determinista, best-effort, sin inventar contenido pedagógico nuevo.
+    if (evaluation.mentor.misconception_code && mentor.text) {
+      const priorCount = await countPriorMisconceptionOccurrences(supabase, user.id, evaluation.mentor.misconception_code);
+      if (priorCount > 0) {
+        mentor.text = `${mentor.text} Ya viste este mismo patrón antes en tus sesiones -- van ${priorCount + 1} veces.`;
+      }
+    }
     evaluation.mentor_feedback = mentor;
     const steps = Array.isArray(item.public_content.steps) ? item.public_content.steps : [];
     const index = steps.findIndex((candidate: any) => candidate.id === stepKey);

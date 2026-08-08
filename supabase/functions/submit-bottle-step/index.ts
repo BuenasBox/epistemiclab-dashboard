@@ -1,4 +1,4 @@
-import { authenticatedLabUser, LAB_CORS, labJson, recordLabEpistemicEvent, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
+import { authenticatedLabUser, countPriorMisconceptionOccurrences, LAB_CORS, labJson, recordLabEpistemicEvent, responseVersion, stateForStep, validStepKind } from '../_shared/lab-runtime.ts';
 import { evaluateBottleResponse } from '../_shared/bottle-evaluation.ts';
 import { selectBottleMentor } from '../_shared/bottle-mentor.ts';
 
@@ -29,6 +29,15 @@ Deno.serve(async (req) => {
     if (!step || step.kind !== body.step_kind) return labJson({ ok: false, error: 'Invalid active step' }, 409);
     const evaluation = evaluateBottleResponse(item.evaluation_spec || {}, { ...answer, kind: body.step_kind });
     const mentor = selectBottleMentor(item.evaluation_spec || {}, evaluation.mentor, `${session.id}:${key}`);
+    // Continuidad ligera (Loop 6): si esta misconception ya apareció antes en el historial real
+    // de este estudiante, Mentor lo reconoce con una frase breve y determinista -- nunca
+    // inventa contenido pedagógico nuevo, solo añade el hecho ya verificado.
+    if (evaluation.mentor.misconception_code && mentor.text) {
+      const priorCount = await countPriorMisconceptionOccurrences(supabase, user.id, evaluation.mentor.misconception_code);
+      if (priorCount > 0) {
+        mentor.text = `${mentor.text} Ya viste este mismo patrón antes en tus sesiones -- van ${priorCount + 1} veces.`;
+      }
+    }
     evaluation.mentor_feedback = mentor;
     const steps = item.public_content.steps || [];
     const index = steps.findIndex((candidate: any) => candidate.id === stepKey);
