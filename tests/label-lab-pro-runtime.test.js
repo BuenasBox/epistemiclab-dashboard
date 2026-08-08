@@ -45,8 +45,11 @@ test('regression: assignment insert uses the requestKey variable, not the undefi
   // Found via live testing 2026-08-07: `request_key` as an object-shorthand property threw
   // ReferenceError (no such variable in scope -- only `requestKey` exists), so start-label-session
   // could never create an assignment for anyone.
-  assert.doesNotMatch(start, /item_id: item\.item_id, request_key,/);
-  assert.match(start, /item_id: item\.item_id, request_key: requestKey,/);
+  // Priority 1 (Content Selection Engine v1) replaced the hardcoded item.item_id
+  // lookup with selectNextItem()'s pickedItemId -- the invariant that matters
+  // (request_key: requestKey, never the buggy bare shorthand) still holds.
+  assert.doesNotMatch(start, /item_id: pickedItemId, request_key,/);
+  assert.match(start, /item_id: pickedItemId, request_key: requestKey,/);
 });
 
 test('regression: reveal_available only fires on the true last step', () => {

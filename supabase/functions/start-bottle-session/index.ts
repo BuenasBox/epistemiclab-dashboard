@@ -1,4 +1,5 @@
 import { authenticatedLabUser, LAB_CORS, labJson, recordLabEpistemicEvent } from '../_shared/lab-runtime.ts';
+import { selectNextItem } from '../_shared/content-selection.ts';
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: LAB_CORS });
@@ -14,10 +15,13 @@ Deno.serve(async (req) => {
     if (existing.error) return labJson({ ok: false, error: 'Unable to load assignment' }, 500);
     if (assignment && new Date(assignment.expires_at).getTime() <= Date.now()) return labJson({ ok: false, error: 'Assignment expired' }, 409);
     if (!assignment) {
-      const { data: item, error } = await supabase.from('lab_items').select('item_id').eq('lab_type', 'bottle').eq('is_active', true).order('created_at', { ascending: true }).limit(1).maybeSingle();
-      if (error) return labJson({ ok: false, error: 'Unable to load Bottle Lab item' }, 500);
-      if (!item) return labJson({ ok: false, error: 'No Bottle Lab item available' }, 404);
-      const created = await supabase.from('lab_assignments').insert({ user_id: user.id, lab_type: 'bottle', item_id: item.item_id, request_key: requestKey, status: 'started', started_at: new Date().toISOString() }).select('id,item_id,status,expires_at').single();
+      // Content Selection Engine v1: never-seen items first (stable per-user shuffle,
+      // not insertion order), then least-recently-completed, never repeating the
+      // student's immediately-preceding item when an alternative exists. See
+      // _shared/content-selection.ts -- the client never chooses item_id itself.
+      const pickedItemId = await selectNextItem(supabase, user.id, 'bottle');
+      if (!pickedItemId) return labJson({ ok: false, error: 'No Bottle Lab item available' }, 404);
+      const created = await supabase.from('lab_assignments').insert({ user_id: user.id, lab_type: 'bottle', item_id: pickedItemId, request_key: requestKey, status: 'started', started_at: new Date().toISOString() }).select('id,item_id,status,expires_at').single();
       if (created.error) {
         const replay = await supabase.from('lab_assignments').select('id,item_id,status,expires_at').eq('user_id', user.id).eq('lab_type', 'bottle').eq('request_key', requestKey).maybeSingle();
         if (replay.error || !replay.data) return labJson({ ok: false, error: 'Unable to create assignment' }, 500);
