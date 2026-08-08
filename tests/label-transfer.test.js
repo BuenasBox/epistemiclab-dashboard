@@ -43,3 +43,17 @@ test('every task has exactly one correct_option_id that matches a real option id
     assert.ok(optionIds.includes(correctMatch[1]), `correct_option_id "${correctMatch[1]}" debe existir entre las opciones ${JSON.stringify(optionIds)}`);
   }
 });
+
+test('Priority 9 regression: pickLabelTransferTask prefers a real, triggered misconception over the item\'s own transfer task, and the item\'s own transfer task over the hardcoded default', () => {
+  // Mirrors the Bottle finding (Product Implementation Marathon): any clean session (no
+  // misconception -- the common case) always fell straight to the same hardcoded default.
+  assert.match(tasksSrc, /const itemMatch = itemTransferTaskId && LABEL_TRANSFER_TASKS\.find/);
+  assert.match(tasksSrc, /return misconceptionMatch \|\| itemMatch \|\| LABEL_TRANSFER_TASKS\.find/);
+});
+
+test('Priority 9 regression: start-label-transfer resolves the item\'s canonical transfer_task_id server-side from session_id, never trusting a client-supplied item_id', () => {
+  assert.match(startSrc, /const sessionId = typeof body\?\.session_id === 'string'/);
+  assert.match(startSrc, /from\('lab_sessions'\)\.select\('item_id'\)\.eq\('id', sessionId\)\.eq\('user_id', user\.id\)/);
+  assert.match(startSrc, /pickLabelTransferTask\(hint, itemTransferTaskId\)/);
+  assert.doesNotMatch(startSrc, /body\?\.item_id|body\.item_id/);
+});

@@ -48,7 +48,23 @@ test('every task has exactly one correct_option_id that matches a real option id
   }
 });
 
-test('pickBottleTransferTask falls back to a default task when the hint does not match any misconception', () => {
-  assert.match(tasksSrc, /const match = misconceptionHint && BOTTLE_TRANSFER_TASKS\.find/);
+test('pickBottleTransferTask falls back to a default task when neither the misconception hint nor the item transfer task match', () => {
+  assert.match(tasksSrc, /const misconceptionMatch = misconceptionHint && BOTTLE_TRANSFER_TASKS\.find/);
   assert.match(tasksSrc, /DEFAULT_TASK_ID = 'TRANSFER_BOTTLE_001'/);
+});
+
+test('Priority 9 regression: pickBottleTransferTask prefers a real, triggered misconception over the item\'s own transfer task, and the item\'s own transfer task over the hardcoded default', () => {
+  // Real bug found via Transfer Challenge variety review (Product Implementation Marathon):
+  // pickBottleTransferTask had no second-priority fallback, so any session that didn't trigger
+  // a misconception (the common case) always fell straight to DEFAULT_TASK_ID -- verified live,
+  // BOTTLE_PRO_011 completed cleanly still surfaced the unrelated "peso del vidrio" task.
+  assert.match(tasksSrc, /const itemMatch = itemTransferTaskId && BOTTLE_TRANSFER_TASKS\.find/);
+  assert.match(tasksSrc, /return misconceptionMatch \|\| itemMatch \|\| BOTTLE_TRANSFER_TASKS\.find/);
+});
+
+test('Priority 9 regression: start-bottle-transfer resolves the item\'s canonical transfer_task server-side from session_id, never trusting a client-supplied item_id', () => {
+  assert.match(startSrc, /const sessionId = typeof body\?\.session_id === 'string'/);
+  assert.match(startSrc, /from\('lab_sessions'\)\.select\('item_id'\)\.eq\('id', sessionId\)\.eq\('user_id', user\.id\)/);
+  assert.match(startSrc, /pickBottleTransferTask\(hint, itemTransferTaskId\)/);
+  assert.doesNotMatch(startSrc, /body\?\.item_id|body\.item_id/);
 });

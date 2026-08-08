@@ -141,9 +141,20 @@ export const BOTTLE_TRANSFER_TASKS: BottleTransferTask[] = [
 
 const DEFAULT_TASK_ID = 'TRANSFER_BOTTLE_001';
 
-export function pickBottleTransferTask(misconceptionHint: string | null): BottleTransferTask {
-  const match = misconceptionHint && BOTTLE_TRANSFER_TASKS.find((t) => t.misconception === misconceptionHint);
-  return match || BOTTLE_TRANSFER_TASKS.find((t) => t.id === DEFAULT_TASK_ID) || BOTTLE_TRANSFER_TASKS[0];
+// Priority 9 (Transfer Challenge variety review, Product Implementation Marathon): real bug --
+// this always fell through to the SAME hardcoded DEFAULT_TASK_ID whenever a session didn't
+// trigger a misconception, which is the common case (most sessions end without one). Every
+// student who completed any item cleanly saw the identical "peso del vidrio" transfer task,
+// regardless of what they'd just practiced -- verified live (BOTTLE_PRO_011 -> no misconception
+// -> TRANSFER_BOTTLE_001, unrelated to the item's actual topic). Each item already authors its
+// own topically-relevant transfer_task in evaluation_spec (e.g. BOTTLE_PRO_011 ->
+// TRANSFER_BOTTLE_005) -- itemTransferTaskId now fills that gap as a second-priority fallback,
+// still behind an actually-triggered misconception (more specific, reinforces the exact error
+// just made) but far ahead of the one-size-fits-all default.
+export function pickBottleTransferTask(misconceptionHint: string | null, itemTransferTaskId: string | null = null): BottleTransferTask {
+  const misconceptionMatch = misconceptionHint && BOTTLE_TRANSFER_TASKS.find((t) => t.misconception === misconceptionHint);
+  const itemMatch = itemTransferTaskId && BOTTLE_TRANSFER_TASKS.find((t) => t.id === itemTransferTaskId);
+  return misconceptionMatch || itemMatch || BOTTLE_TRANSFER_TASKS.find((t) => t.id === DEFAULT_TASK_ID) || BOTTLE_TRANSFER_TASKS[0];
 }
 
 export function getBottleTransferTask(id: string): BottleTransferTask | null {

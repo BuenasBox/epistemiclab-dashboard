@@ -85,9 +85,15 @@ export const LABEL_TRANSFER_TASKS: LabelTransferTask[] = [
 
 const DEFAULT_TASK_ID = 'TRANSFER_LABEL_001';
 
-export function pickLabelTransferTask(misconceptionHint: string | null): LabelTransferTask {
-  const match = misconceptionHint && LABEL_TRANSFER_TASKS.find((t) => t.misconception === misconceptionHint);
-  return match || LABEL_TRANSFER_TASKS.find((t) => t.id === DEFAULT_TASK_ID) || LABEL_TRANSFER_TASKS[0];
+// Mirrors the Bottle fix (Priority 9, Product Implementation Marathon): this always fell
+// through to the same hardcoded default whenever a session didn't trigger a misconception --
+// the common case. Each item already authors its own topically-relevant transfer_task_id
+// (buildRuntimeRecord() in tools/label-lab-pro-import.js) -- itemTransferTaskId fills that gap
+// as a second-priority fallback, still behind an actually-triggered misconception.
+export function pickLabelTransferTask(misconceptionHint: string | null, itemTransferTaskId: string | null = null): LabelTransferTask {
+  const misconceptionMatch = misconceptionHint && LABEL_TRANSFER_TASKS.find((t) => t.misconception === misconceptionHint);
+  const itemMatch = itemTransferTaskId && LABEL_TRANSFER_TASKS.find((t) => t.id === itemTransferTaskId);
+  return misconceptionMatch || itemMatch || LABEL_TRANSFER_TASKS.find((t) => t.id === DEFAULT_TASK_ID) || LABEL_TRANSFER_TASKS[0];
 }
 
 export function getLabelTransferTask(id: string): LabelTransferTask | null {

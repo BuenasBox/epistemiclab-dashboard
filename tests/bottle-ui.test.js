@@ -100,7 +100,10 @@ test('Bottle UI Reasoning Replay: solo se activa dentro del reveal, mobile-first
 });
 
 test('Bottle UI Transfer Challenge (Loop 5): usa las nuevas Edge Functions dedicadas, nunca decide localmente si la respuesta es correcta', () => {
-  assert.match(html, /api\('start-bottle-transfer',\{misconception_hint:firstMisconceptionHint\(\)\}\)/);
+  // Priority 9 (Transfer Challenge variety review): session_id se envía junto al misconception
+  // hint para que el servidor pueda resolver, de forma privada, el transfer_task propio del
+  // ítem practicado -- item_id en sí nunca sale del servidor.
+  assert.match(html, /api\('start-bottle-transfer',\{misconception_hint:firstMisconceptionHint\(\),session_id:state\.session\}\)/);
   assert.match(html, /api\('submit-bottle-transfer',\{task_id:task\.id,option_id:optionId\}\)/);
   // El resultado (correct/feedback) viene siempre de la respuesta del servidor (d/result), nunca
   // se compara una opción contra un valor esperado en el cliente.

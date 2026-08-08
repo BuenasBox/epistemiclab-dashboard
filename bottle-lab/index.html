@@ -216,7 +216,7 @@ function firstMisconceptionHint(){
 async function transferChallengeStart(){
   loading('Preparando reto de transferencia…');
   try{
-    var d=await api('start-bottle-transfer',{misconception_hint:firstMisconceptionHint()});
+    var d=await api('start-bottle-transfer',{misconception_hint:firstMisconceptionHint(),session_id:state.session});
     transferChallengeView(d.task,null);
   }catch(e){error('El reto de transferencia no está disponible ahora mismo.');}
 }

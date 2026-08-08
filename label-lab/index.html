@@ -191,7 +191,7 @@
   async function transferChallengeStart(){
     renderLoading('Preparando reto de transferencia…');
     try{
-      var data=await api('start-label-transfer',{misconception_hint:firstMisconceptionHint()});
+      var data=await api('start-label-transfer',{misconception_hint:firstMisconceptionHint(),session_id:state.session});
       transferChallengeView(data.task,null);
     }catch(e){renderError('El reto de transferencia no está disponible ahora mismo.');}
   }
