@@ -101,7 +101,23 @@ function mentorInterstitial(feedback,next){
 }
 async function api(path,body){if(!navigator.onLine)throw Error('OFFLINE');var token=await getAuthToken();if(!token)throw Error('NO_AUTH_SESSION');var res=await fetch(API+path,{method:'POST',cache:'no-store',headers:{Authorization:'Bearer '+token,apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await res.json().catch(function(){return{};});if(!res.ok)throw Error(data.error||'REQUEST_FAILED');return data;}
 function requestKey(){var k=sessionStorage.getItem('bottle_lab_pro_request_key');if(!k){k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);}return k;}
-async function start(){loading('Recuperando tu sesión…');try{var d=await api('start-bottle-session',{request_key:requestKey()});state.session=d.session_id;state.step=d.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'bottle-lab-pro',mode:'server',competencies:['Bottle Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')error('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')error('Estás sin conexión.');else error('La asignación no está disponible.');}}
+function newRequestKey(){var k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);return k;}
+async function beginSession(){try{var d=await api('start-bottle-session',{request_key:requestKey()});state.session=d.session_id;state.step=d.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'bottle-lab-pro',mode:'server',competencies:['Bottle Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')error('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')error('Estás sin conexión.');else error('La asignación no está disponible.');}}
+async function start(){loading('Recuperando tu sesión…');await beginSession();}
+// "Intentar otro caso" (Priority 2): previously a plain <a href="/bottle-lab/">, which did a
+// full page reload -- since requestKey() persists in sessionStorage across reloads within the
+// same tab, that reload replayed the SAME request_key, so start-bottle-session resolved the
+// already-completed assignment again (current_step already null) instead of ever starting a
+// new one. "Intentar otro caso" never actually gave you another case. Fixed by resetting
+// client state, forcing a genuinely new request_key (-> new assignment -> Content Selection
+// Engine v1 picks a fresh item, excluding the one just completed), and re-entering the flow
+// in-place, with no navigation and no dashboard detour.
+async function startAnotherCase(){
+  state.session=null;state.step=null;state.selection='';state.evidenceWeights={};state.confidence='';state.justification='';state.committed=false;state.evaluations=[];state.commitments=[];state.evidenceCatalog={};state.contradictionInterp=null;state.contradictionAction=null;state.contradictionResolvedStepId=null;state.pendingRevisionMeta=null;
+  newRequestKey();
+  loading('Preparando tu próximo caso…');
+  await beginSession();
+}
 async function submit(){
   if(state.busy)return;state.busy=true;loading('Evaluando tu razonamiento en servidor…');
   var usedIds=Object.keys(state.evidenceWeights).filter(function(id){return state.evidenceWeights[id];});
@@ -195,8 +211,9 @@ function transferChallengeView(task,result){
   var ev=(task.relevant_evidence||[]).map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
   var opts=(task.options||[]).map(function(o){return '<button class="btn btn--ghost opt" data-transfer-option="'+esc(o.id)+'" '+(result?'disabled':'')+'>'+esc(o.text)+'</button>';}).join('');
   var feedback=!result?'':'<div class="mentor '+(result.correct?'ok':'warn')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+(result.correct?'RECONOCISTE LA REGLA':'TODAVÍA NO')+'</div><p class="small mentor-text">'+esc(result.feedback)+'</p></div></div>';
-  app.innerHTML='<div class="eyebrow">Transfer Challenge</div><h1 class="serif">La misma regla, disfrazada</h1><div class="card tight"><p class="small mentor-text">'+esc(task.rule)+'</p></div><p class="small muted mt-14">'+esc(task.new_context)+'</p>'+ev+'<div class="card mt-14">'+opts+'</div>'+feedback+'<div class="flowbar">'+(result?'<a class="btn btn--shine btn--glow flex-1" href="/bottle-lab/">Intentar otro caso</a>':'')+'</div></div>';
+  app.innerHTML='<div class="eyebrow">Transfer Challenge</div><h1 class="serif">La misma regla, disfrazada</h1><div class="card tight"><p class="small mentor-text">'+esc(task.rule)+'</p></div><p class="small muted mt-14">'+esc(task.new_context)+'</p>'+ev+'<div class="card mt-14">'+opts+'</div>'+feedback+'<div class="flowbar">'+(result?'<button class="btn btn--shine btn--glow flex-1" id="another-case">Intentar otro caso</button>':'')+'</div></div>';
   app.querySelectorAll('[data-transfer-option]').forEach(function(b){b.onclick=function(){transferChallengeSubmit(task,b.dataset.transferOption);};});
+  if(result){var again=document.getElementById('another-case');if(again)again.onclick=startAnotherCase;}
 }
 async function transferChallengeSubmit(task,optionId){
   loading('Evaluando tu decisión…');
