@@ -115,7 +115,9 @@
       if(state.step.kind==='hypothesis'&&data.evaluation)state.evaluations.push(data.evaluation);
       var advance=function(){if(data.step){state.step=data.step;state.selection='';state.evidenceWeights={};state.justification='';state.confidence='';state.committed=false;stepView();}else reveal();};
       var feedback=data.evaluation&&data.evaluation.mentor_feedback;
-      if(feedback&&feedback.text)mentorInterstitial(feedback,advance);else advance();
+      // Experience polish (Loop 7): mismo filtro que Bottle -- 'confirmation' es la categoría
+      // fallback y casi todo item la cubre; sin filtrarla, Mentor interrumpía casi cada paso.
+      if(feedback&&feedback.text&&feedback.category!=='confirmation')mentorInterstitial(feedback,advance);else advance();
     }catch(e){renderError(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}
   }
   var REVEAL_MOMENTOS=['layer1','layer2','layer3','replay','layer4'];

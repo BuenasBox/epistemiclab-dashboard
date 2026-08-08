@@ -78,3 +78,8 @@ test('Label UI Transfer Challenge (Loop 5): usa las nuevas Edge Functions dedica
   assert.doesNotMatch(html, /correct_option_id/);
   assert.match(html, /result\.correct\?'ok':'warn'/);
 });
+
+test('Label UI (Loop 7 polish): Mentor no interrumpe con un interstitial para la categoría "confirmation"', () => {
+  assert.match(html, /feedback&&feedback\.text&&feedback\.category!=='confirmation'/);
+  assert.match(html, /state\.evaluations\.push\(data\.evaluation\)/);
+});

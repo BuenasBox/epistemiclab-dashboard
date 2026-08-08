@@ -12,6 +12,9 @@
 .btn:hover{ transform:translateY(-1px); }
 .btn:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
 .btn:disabled,.btn[aria-disabled="true"]{ opacity:.5; cursor:not-allowed; transform:none; }
+/* Feedback táctil inmediato: :hover no es confiable en touch (Learning Experience 2.0 - Loop 7). */
+.btn:active{ transform:translateY(0) scale(.97); transition:transform .08s ease; }
+.btn:disabled:active,.btn[aria-disabled="true"]:active{ transform:none; }
 
 .btn--shine::after{
   content:""; position:absolute; top:0; left:-70%; width:55%; height:100%;

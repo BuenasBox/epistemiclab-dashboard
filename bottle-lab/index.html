@@ -110,7 +110,12 @@ async function submit(){
     if(state.step.kind==='hypothesis'&&d.evaluation)state.evaluations.push(d.evaluation);
     var advance=function(){if(d.step){state.step=d.step;state.selection='';state.evidenceWeights={};state.confidence='';state.justification='';state.committed=false;stepView();}else reveal();};
     var feedback=d.evaluation&&d.evaluation.mentor_feedback;
-    if(feedback&&feedback.text)mentorInterstitial(feedback,advance);else advance();
+    // Experience polish (Loop 7): Mentor debe ser "poco frecuente + altamente relevante", nunca
+    // aparecer en cada paso. 'confirmation' es la categoría fallback de mentorContext() cuando
+    // nada más urgente aplica -- casi todo item la cubre, así que sin este filtro Mentor
+    // interrumpía casi cada envío con un simple "bien hecho". Se sigue registrando en
+    // evaluation.mentor_feedback (nada se pierde server-side); solo no bloquea la interfaz.
+    if(feedback&&feedback.text&&feedback.category!=='confirmation')mentorInterstitial(feedback,advance);else advance();
   }catch(e){error(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}
 }
 var REVEAL_MOMENTOS=['layer1','layer2','layer3','replay','layer4'];

@@ -107,3 +107,10 @@ test('Bottle UI Transfer Challenge: la pista de misconception viene solo de eval
   const fnBody = html.slice(html.indexOf('function firstMisconceptionHint()'), html.indexOf('async function transferChallengeStart'));
   assert.match(fnBody, /state\.evaluations\[i\]&&state\.evaluations\[i\]\.mentor&&state\.evaluations\[i\]\.mentor\.misconception_code/);
 });
+
+test('Bottle UI (Loop 7 polish): Mentor no interrumpe con un interstitial para la categoría "confirmation" -- poco frecuente, no en cada paso', () => {
+  assert.match(html, /feedback&&feedback\.text&&feedback\.category!=='confirmation'/);
+  // El dato sigue disponible server-side (evaluation.mentor_feedback) -- solo se filtra la
+  // interrupción visual, nunca se descarta la información.
+  assert.match(html, /state\.evaluations\.push\(d\.evaluation\)/);
+});
