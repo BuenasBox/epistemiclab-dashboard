@@ -12,7 +12,13 @@ const { test, expect } = require('@playwright/test');
 // never the client itself. This test drives the actual rendered pages instead.
 
 const QA_EMAIL = process.env.QA_GOLDEN_EMAIL || 'qa-golden-path@epistemiclab-qa.internal';
-const QA_PASSWORD = process.env.QA_GOLDEN_PASSWORD || 'QaGoldenPath!2026#EpistemicLab';
+// Rotated (Zero Known Material Debt closure): the previous fallback was publicly readable for
+// an unknown period via a GitHub Pages misconfiguration that served this entire repo, including
+// tests/ (see the Pages fix commit). Real-world impact was low -- this account is QA-only,
+// carries no real user data, and is excluded from every product metric by the
+// @epistemiclab-qa.internal convention alone -- but the real account's password in Supabase Auth
+// was rotated to match this value in the same session that changed the fallback here.
+const QA_PASSWORD = process.env.QA_GOLDEN_PASSWORD || 'QaGoldenRotated#2026!EpistemicLab';
 
 async function login(page, nextPath) {
   // login.js's getNextDestination() only allowlists '/admin/' and '/dashboard/'
@@ -28,13 +34,30 @@ async function login(page, nextPath) {
   await loginForm.locator('input[name="email"]').fill(QA_EMAIL);
   await loginForm.locator('input[name="password"]').fill(QA_PASSWORD);
   await loginForm.locator('button[type="submit"]').click();
-  await page.waitForURL(/\/dashboard\//, { timeout: 15000 });
-  await page.waitForLoadState('networkidle');
+  // Real bug found closing this out (Zero Known Material Debt): an unanchored regex here
+  // (/\/dashboard\//) matches the substring "/dashboard/" wherever it appears in the URL --
+  // including inside the LOGIN page's own "?next=/dashboard/" query string, before the actual
+  // post-login client-side redirect (login.js's showProfileTransition(), fired from a timeout
+  // after "Sesion iniciada correctamente") ever runs. waitForURL resolved immediately against
+  // the still-on-/login/ URL, so every following step raced the real redirect -- explaining the
+  // net::ERR_ABORTED failures this test was intermittently hitting. A URL predicate that checks
+  // the actual pathname cannot be fooled by query-string substrings the way a loose regex can.
+  await page.waitForURL((url) => url.pathname === '/dashboard/', { timeout: 15000 });
+  // Real bug found closing this out (Zero Known Material Debt): 'networkidle' never reliably
+  // fires on this site -- shared/sw-register.js registers a service worker on window.load and
+  // immediately calls registration.update(), which keeps triggering network activity Chromium
+  // never considers "idle," and the wait can outright net::ERR_ABORTED the very navigation it's
+  // attached to. Every subsequent step in this file already waits on a concrete, specific
+  // condition (waitForRecognizedScreen()'s selector polling, explicit text/URL waits) --
+  // 'networkidle' was never actually load-bearing for correctness here, only for flakiness.
+  // 'load' is the real, sufficient signal: the document and its blocking resources are in,
+  // which is all any of the code below actually depends on.
+  await page.waitForLoadState('load');
   // Login already lands on /dashboard/ (the only other allowlisted ?next= value is
   // /admin/, which this suite never targets) -- re-navigating to the exact URL
   // we're already on/mid-loading can abort in Chromium (ERR_ABORTED). Only
   // navigate onward when the real destination differs.
-  if (nextPath !== '/dashboard/') await page.goto(nextPath, { waitUntil: 'networkidle' });
+  if (nextPath !== '/dashboard/') await page.goto(nextPath, { waitUntil: 'load' });
   // The lab pages paint the public demo instantly, then asynchronously check for a
   // token and swap to the real session (see bottle-lab/index.html's bootstrap:
   // `publicDemo();(async function(){if(await getAuthToken())start();})();`). On a
@@ -42,7 +65,7 @@ async function login(page, nextPath) {
   // settling session write; one reload is enough to resolve it if so.
   if (await page.getByText('Demo pública').isVisible().catch(() => false)) {
     await page.waitForTimeout(1000);
-    await page.reload({ waitUntil: 'networkidle' });
+    await page.reload({ waitUntil: 'load' });
   }
 }
 

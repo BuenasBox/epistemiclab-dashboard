@@ -62,3 +62,28 @@ lab it expects, since Content Selection Engine v1 means that's no longer fixed.
   account's session history (which is exactly what you want if you're also
   eyeballing Content Selection Engine rotation across runs); use
   `node tools/qa-user.js cleanup-sessions golden-path` to reset it.
+
+## Known-benign console noise
+
+A `dashboard-loader.js` "No pudimos cargar el progreso en vivo" / `TypeError: Failed
+to fetch` can appear in `consoleErrors` for the Bottle/Label tests specifically
+(never the logout test). Root-caused and confirmed harmless: `login()` navigates
+away from `/dashboard/` to the lab page shortly after landing there, which cancels
+`/dashboard/`'s own in-flight background progress fetch -- exactly what happens to
+a real user who clicks through quickly. `dashboard-loader.js` already catches this
+and falls back to sample data; nothing is broken or left in a bad state. Confirmed
+by waiting for the fetch to settle before navigating away (error disappears) and by
+calling the endpoint directly (200, ~0.7s, no server-side issue at all).
+
+## Real bugs this suite itself found and fixed (Zero Known Material Debt closure)
+
+- `page.waitForURL(/\/dashboard\//)` was an unanchored regex that matched the
+  substring "/dashboard/" inside the LOGIN page's own `?next=/dashboard/` query
+  string, resolving before the real post-login redirect ever ran -- every
+  following step raced the actual navigation (intermittent `net::ERR_ABORTED`).
+  Fixed with a URL predicate that checks the actual pathname.
+- `waitUntil: 'networkidle'` never reliably settled on this site (the service
+  worker's `registration.update()` on every page load keeps triggering network
+  activity Chromium doesn't consider idle) and could itself abort the navigation
+  it was attached to. Replaced with `'load'` everywhere in this file -- every
+  subsequent step already waits on a concrete, specific condition.
