@@ -1,0 +1,52 @@
+name: Deploy GitHub Pages
+
+# Real security fix (Product Implementation Marathon): GitHub Pages was configured as
+# "legacy" branch-source deployment (source: branch=main, path=/), which publishes the
+# ENTIRE raw repository on every push -- verified live, content-bank/ (full answer keys,
+# misconception mappings, evaluation rules, reveal content), supabase/functions/_shared/*
+# (evaluator source), tests/, tools/ and docs/ were all publicly downloadable at
+# https://epistemiclab.dpdns.org/, the domain actually named as production. Classic
+# branch-source Pages only supports "/" or "/docs" as a path -- it cannot be pointed at
+# the already-correct dist/ build (see tools/build-static.js's EXCLUDED_ROOTS, which
+# already keeps every one of those directories out of dist/, exactly like the existing
+# Vercel deploy). This workflow switches Pages to Actions-based deployment: build the
+# same dist/ this repo already builds for Vercel, publish only that.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
