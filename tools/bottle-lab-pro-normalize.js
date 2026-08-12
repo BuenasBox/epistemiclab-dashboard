@@ -97,6 +97,15 @@ function buildRuntimeRecord(item) {
     item_id: item.item_id,
     lab_type: 'bottle',
     canonical_id: null,
+    // Governance gate defense-in-depth (Zero Known Material Debt, Block 1): buildImportPlan()
+    // already refuses to call buildRuntimeRecord() at all for a non-importable editorial_status
+    // (see the IMPORTABLE check before this function is invoked) -- this explicit field is a
+    // second, independent statement of the same invariant, directly on the record that reaches
+    // Supabase, instead of relying solely on the DB column's default(true). By the time this
+    // function runs the item IS confirmed importable, so this is always true here; it exists so
+    // the record itself is self-auditing (a test can assert on it without re-deriving the gate
+    // from buildImportPlan's control flow) and so a future refactor can't silently drop it.
+    is_active: true,
     content_version: item.version,
     evaluation_version: `bottle-${item.version}`,
     public_content: publicContent(item),

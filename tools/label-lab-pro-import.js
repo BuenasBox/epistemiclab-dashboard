@@ -89,6 +89,11 @@ function buildRuntimeRecord(item) {
     item_id: item.item_id,
     lab_type: 'label',
     canonical_id: item.canonical_id || null,
+    // Governance gate defense-in-depth (Zero Known Material Debt, Block 2), mirrors Bottle:
+    // publicationErrors() above already rejects a non-importable editorial_status before this
+    // function is ever called -- this is a second, explicit statement of the same invariant on
+    // the record itself, so it's self-auditing and can't silently drop out of a future refactor.
+    is_active: true,
     content_version: item.version,
     evaluation_version: `label-${item.version}`,
     public_content: { steps, learning_objectives: item.learning_objectives, difficulty: item.difficulty },
@@ -120,7 +125,24 @@ function buildImportPlan(items) {
   return { records, excluded };
 }
 
-async function importToSupabase(records) {
+// Governance gate defense-in-depth (Zero Known Material Debt, Block 2), mirrors Bottle:
+// buildImportPlan() computes `excluded` but nothing previously acted on it -- an item
+// downgraded after having been live would stay is_active=true forever. Reconciliation on
+// every --supabase run closes that.
+async function deactivateExcluded(client, excludedIds) {
+  if (!excludedIds.length) return 0;
+  const { data, error } = await client
+    .from('lab_items')
+    .update({ is_active: false })
+    .eq('lab_type', 'label')
+    .eq('is_active', true)
+    .in('item_id', excludedIds)
+    .select('item_id');
+  if (error) throw new Error(`No se pudo desactivar contenido excluido: ${error.message}`);
+  return (data || []).length;
+}
+
+async function importToSupabase(records, excluded = []) {
   const url = process.env.LABEL_LAB_SUPABASE_URL || process.env.SUPABASE_URL;
   const key = process.env.LABEL_LAB_SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) throw new Error('Faltan LABEL_LAB_SUPABASE_URL y LABEL_LAB_SUPABASE_SERVICE_ROLE_KEY');
@@ -128,7 +150,8 @@ async function importToSupabase(records) {
   const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
   const { error } = await client.from('lab_items').upsert(records, { onConflict: 'item_id' });
   if (error) throw new Error(`No se pudo importar lab_items: ${error.message}`);
-  return records.length;
+  const deactivated = await deactivateExcluded(client, excluded.map((entry) => entry.item_id));
+  return { imported: records.length, deactivated };
 }
 
 if (require.main === module) {
@@ -143,7 +166,7 @@ if (require.main === module) {
   } else if (process.argv.includes('--json')) {
     process.stdout.write(JSON.stringify(plan.records, null, 2));
   } else if (process.argv.includes('--supabase')) {
-    importToSupabase(plan.records).then((count) => console.log(`Label Lab Pro importado en Supabase: ${count} item(s)`)).catch((error) => { console.error(error.message); process.exitCode = 1; });
+    importToSupabase(plan.records, plan.excluded).then(({ imported, deactivated }) => console.log(`Label Lab Pro importado en Supabase: ${imported} item(s); ${deactivated} desactivado(s) por cambio de estado editorial`)).catch((error) => { console.error(error.message); process.exitCode = 1; });
   } else {
     console.log(`Label Lab Pro import plan passed: ${plan.records.length} importable, ${plan.excluded.length} excluded`);
   }

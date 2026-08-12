@@ -32,7 +32,31 @@ function buildImportPlan(sourceItems = ITEMS) {
   return { records, excluded };
 }
 
-async function importToSupabase(records) {
+// Governance gate defense-in-depth (Zero Known Material Debt, Block 1): real gap found --
+// buildImportPlan() computes `excluded` (items whose editorial_status fell out of IMPORTABLE)
+// but nothing ever acted on it. If an item were ever approved, imported (is_active=true), and
+// LATER downgraded (e.g. to legal_regional_review or retired) in the source, re-running the
+// importer would upsert the still-importable set and simply never touch that now-excluded
+// item_id's existing row -- it would stay is_active=true forever, silently. Reconciliation
+// closes that: any lab_items row whose item_id is in this run's `excluded` list gets
+// is_active=false, so a state change in the source is actually enforced the next time this
+// script runs against Supabase, not just assumed. Scoped to lab_type='bottle' and to ids the
+// source bank still knows about (excluded, not merely absent) -- an item's disappearance from
+// the file entirely is a different, unrelated concern (content deletion), not handled here.
+async function deactivateExcluded(client, excludedIds) {
+  if (!excludedIds.length) return 0;
+  const { data, error } = await client
+    .from('lab_items')
+    .update({ is_active: false })
+    .eq('lab_type', 'bottle')
+    .eq('is_active', true)
+    .in('item_id', excludedIds)
+    .select('item_id');
+  if (error) throw new Error(`No se pudo desactivar contenido excluido: ${error.message}`);
+  return (data || []).length;
+}
+
+async function importToSupabase(records, excluded = []) {
   const url = process.env.BOTTLE_LAB_SUPABASE_URL || process.env.SUPABASE_URL;
   const key = process.env.BOTTLE_LAB_SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) throw new Error('Faltan BOTTLE_LAB_SUPABASE_URL y BOTTLE_LAB_SUPABASE_SERVICE_ROLE_KEY');
@@ -40,14 +64,15 @@ async function importToSupabase(records) {
   const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
   const { error } = await client.from('lab_items').upsert(records, { onConflict: 'item_id' });
   if (error) throw new Error(`No se pudo importar lab_items: ${error.message}`);
-  return records.length;
+  const deactivated = await deactivateExcluded(client, excluded.map((entry) => entry.item_id));
+  return { imported: records.length, deactivated };
 }
 
 if (require.main === module) {
   try {
     const plan = buildImportPlan();
     if (process.argv.includes('--json')) process.stdout.write(JSON.stringify(plan.records, null, 2));
-    else if (process.argv.includes('--supabase')) importToSupabase(plan.records).then((count) => console.log(`Bottle Lab Pro importado en Supabase: ${count} item(s)`)).catch((error) => { console.error(error.message); process.exitCode = 1; });
+    else if (process.argv.includes('--supabase')) importToSupabase(plan.records, plan.excluded).then(({ imported, deactivated }) => console.log(`Bottle Lab Pro importado en Supabase: ${imported} item(s); ${deactivated} desactivado(s) por cambio de estado editorial`)).catch((error) => { console.error(error.message); process.exitCode = 1; });
     else console.log(`Bottle Lab Pro import plan passed: ${plan.records.length} importable, ${plan.excluded.length} excluded`);
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }
