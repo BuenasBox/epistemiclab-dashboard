@@ -39,7 +39,15 @@ const QA_EMAIL_RE = /^qa-[a-z0-9-]+@epistemiclab-qa\.internal$/;
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://hylknjjhmxsuuwbsslkr.supabase.co';
 const ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const QA_PASSWORD = process.env.QA_USER_PASSWORD || 'QaFixture!2026#EpistemicLab';
+// Rotated (Product Implementation Marathon): the previous fallback was publicly readable for
+// an unknown period via a GitHub Pages misconfiguration that served this entire repo, including
+// tools/ (see the Pages fix commit). Real-world impact was low -- QA accounts are synthetic,
+// carry no real user data, and are excluded from every product metric by the @epistemiclab-qa.
+// internal email convention alone -- but rotating a leaked credential is correct regardless of
+// exploitability. Existing QA accounts created under the old password keep working with it
+// until someone resets them explicitly; new accounts (or explicit `QA_USER_PASSWORD` overrides)
+// use this one.
+const QA_PASSWORD = process.env.QA_USER_PASSWORD || 'QaRotated#2026!EpistemicLabFixture';
 
 function qaEmail(slug) {
   const email = `qa-${slug}@epistemiclab-qa.internal`;
