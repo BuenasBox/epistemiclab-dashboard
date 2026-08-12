@@ -4,7 +4,6 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'label-lab', 'index.html'), 'utf8');
-const build = fs.readFileSync(path.join(root, 'tools', 'build-static.js'), 'utf8');
 
 test('Label UI is server-driven and does not ship the public fixture as authority', () => {
   assert.doesNotMatch(html, /label-items\.sample\.js|LABEL_GUIDED_ITEMS/);
@@ -13,7 +12,10 @@ test('Label UI is server-driven and does not ship the public fixture as authorit
   assert.match(html, /reveal-label-session/);
   assert.match(html, /cache:'no-store'/);
   assert.doesNotMatch(html, /acceptable_hypotheses|unsupported_hypotheses|evaluation_spec/);
-  assert.match(build, /label-lab\/data\/label-items\.sample\.js/);
+  // Zero Known Material Debt closure: the legacy fixture itself no longer exists anywhere in the
+  // repo (stronger guarantee than merely being excluded from the dist/ build). label-lab/index.html
+  // loads data/label-demo.public.js instead for its public demo, which is a distinct, real file.
+  assert.equal(fs.existsSync(path.join(root, 'label-lab', 'data', 'label-items.sample.js')), false);
 });
 
 test('Label UI surfaces mentor_feedback from submit-label-step without leaking evaluation internals', () => {

@@ -18,7 +18,6 @@ const reveal = read('supabase', 'functions', 'reveal-label-session', 'index.ts')
 const evaluation = require('../supabase/functions/_shared/label-evaluation.mjs');
 const importer = require('../tools/label-lab-pro-import.js');
 const labelHtml = read('label-lab', 'index.html');
-const buildStatic = read('tools', 'build-static.js');
 
 test('Label Lab Pro stores private content and immutable versioned responses', () => {
   assert.match(migration, /create table if not exists public\.lab_items/);
@@ -181,5 +180,7 @@ test('the browser route uses the protected runtime and excludes the old fixture'
   assert.match(labelHtml, /reveal-label-session/);
   assert.match(labelHtml, /cache:'no-store'/);
   assert.doesNotMatch(labelHtml, /acceptable_hypotheses|unsupported_hypotheses|evaluation_spec|reveal_content/);
-  assert.match(buildStatic, /label-lab\/data\/label-items\.sample\.js/);
+  // Zero Known Material Debt closure: the fixture no longer exists anywhere in the repo at all
+  // (stronger guarantee than being excluded from the dist/ build).
+  assert.equal(fs.existsSync(path.join(root, 'label-lab', 'data', 'label-items.sample.js')), false);
 });

@@ -4,10 +4,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'bottle-lab', 'index.html'), 'utf8');
-const build = fs.readFileSync(path.join(root, 'tools', 'build-static.js'), 'utf8');
 
 test('Bottle UI is server-driven and does not ship the public fixture as authority', () => {
   assert.doesNotMatch(html, /bottle-items\.sample\.js|BOTTLE_GUIDED_ITEMS/);
+  // Zero Known Material Debt closure: the legacy fixture itself no longer exists anywhere in the
+  // repo (stronger guarantee than merely being excluded from the dist/ build), and the public demo
+  // (bottle-lab/index.html's publicDemo()) is inline HTML that never referenced it.
+  assert.equal(fs.existsSync(path.join(root, 'bottle-lab', 'data', 'bottle-items.sample.js')), false);
   assert.match(html, /start-bottle-session/);
   assert.match(html, /submit-bottle-step/);
   assert.match(html, /reveal-bottle-session/);
@@ -21,7 +24,6 @@ test('Bottle UI is server-driven and does not ship the public fixture as authori
   // acceso dinámico a strings planos para layer1..4; 'replay' se renderiza aparte (client-only).
   assert.match(html, /REVEAL_MOMENTOS=\['layer1','layer2','layer3','replay','layer4'\]/);
   assert.doesNotMatch(html, /r\.layer1\.title|r\.layer2\.text|r\.layer4\.rule|r\[key\]\.title|r\[key\]\.text/);
-  assert.match(build, /bottle-lab\/data\/bottle-items\.sample\.js/);
 });
 
 test('Bottle UI surfaces mentor_feedback from submit-bottle-step without leaking evaluation internals', () => {

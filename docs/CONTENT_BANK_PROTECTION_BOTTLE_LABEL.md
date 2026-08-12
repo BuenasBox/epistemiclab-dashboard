@@ -1,40 +1,50 @@
 # Protección del banco de contenido: Bottle Lab y Label Lab
 
-## Estado y objetivo
+## Estado
 
-`bottle-lab/data/bottle-items.sample.js` y `label-lab/data/label-items.sample.js` son fixtures públicos y provisionales. Cuando exista un banco canónico real, esos archivos no deben sustituirse por un payload con el banco completo: cualquier dato enviado al navegador puede copiarse desde DevTools, Network, cachés o el código JavaScript.
+**Implementado y verificado en producción** (Zero Known Material Debt closure). Este documento
+era originalmente un plan escrito antes de que existiera el runtime real; los fixtures públicos
+que menciona (`bottle-lab/data/bottle-items.sample.js`, `label-lab/data/label-items.sample.js`)
+quedaron completamente sin uso una vez implementado el patrón real y fueron eliminados en esta
+sesión de cierre junto con sus `README.md` (`git log` conserva el histórico si hace falta
+consultarlos). Se conserva este documento, actualizado, como referencia del patrón realmente
+construido -- no como plan pendiente.
 
-El objetivo es replicar el límite de confianza usado por SBA y respuesta abierta en `shared/access-control.js`, `supabase/functions/get-sba-bank/` y `supabase/functions/get-or-bank/`: el cliente solicita una experiencia permitida y una Edge Function autenticada entrega únicamente el contenido necesario para el paso activo.
+## Patrón implementado
 
-## Patrón que se debe replicar
+1. El cliente resuelve la sesión y usa `shared/access-control.js` para mostrar u ocultar modos
+   según el plan. Esta comprobación es de experiencia, no de seguridad -- la barrera real está en
+   servidor (punto 2).
+2. `supabase/functions/start-bottle-session` / `start-label-session` validan el JWT con
+   `supabase.auth.getUser()`, verifican acceso real, y devuelven solo el primer paso seguro de una
+   asignación nueva. La selección de ítem la hace el Content Selection Engine v1
+   (`supabase/functions/_shared/content-selection.mjs`, `pickNextItem`), determinista y acotada a
+   `lab_items` con `is_active = true` -- nunca a la tabla completa.
+3. `supabase/functions/submit-bottle-step` / `submit-label-step` validan la asignación vigente del
+   usuario autenticado (`.eq('user_id', user.id)`), registran la respuesta, y devuelven la
+   retroalimentación del paso ya respondido más el siguiente paso seguro. El `reveal` solo se
+   entrega cuando el servidor marca la sesión como enviada -- nunca antes.
+4. La respuesta de cada paso no incluye campos `correct`, `evaluation_spec`, `reveal_content` ni
+   otros ítems del banco; están fuera de la proyección pública por construcción (ver
+   `tests/e2e/bottle-lab-pro.spec.js` / `label-lab-pro.spec.js`, que verifican en el HTML real
+   servido que ninguno de esos campos se filtra).
+5. Cada asignación tiene usuario, ítem y `expires_at`; `submit-bottle-step`/`submit-label-step`
+   rechazan una respuesta contra una asignación vencida o de otro usuario.
+6. El banco canónico (`content-bank/bottle-lab-pro/`, `content-bank/label-lab-pro/`) vive fuera del
+   cliente; solo llega a `lab_items` en Supabase vía `tools/bottle-lab-pro-import.js` /
+   `tools/label-lab-pro-import.js`, que además desactivan (`is_active = false`) cualquier ítem que
+   deje de ser `approved`/`published` en el banco fuente (`deactivateExcluded`, ver
+   `tests/governance-gate.test.js`).
+7. `service_role` solo existe en las Edge Functions (variables de entorno de Supabase), nunca en
+   HTML/JS público ni en respuestas HTTP -- confirmado por el barrido de secretos de esta sesión de
+   cierre.
 
-1. El cliente resuelve la sesión y usa `shared/access-control.js` para mostrar u ocultar modos según el plan. Esta comprobación mejora la experiencia, pero **no es una barrera de seguridad**.
-2. Una Edge Function específica valida el JWT con `supabase.auth.getUser()`, consulta el acceso real del usuario y vuelve a validar en servidor el modo y el tamaño permitido.
-3. La selección ocurre en servidor mediante una RPC o consulta sobre tablas no expuestas directamente al navegador. Debe usar asignaciones por usuario y selección aleatoria sin repetición hasta completar el ciclo, siguiendo el modelo de `get-sba-bank` y `get-or-bank`.
-4. La respuesta inicial contiene solo el ítem o paso que se va a renderizar. No incluye respuestas correctas, campos `correct`, explicaciones, `reveal`, síntesis del mentor, rúbricas ni otros ítems del banco.
-5. Cada asignación tiene usuario, ítem, ciclo, modo y vencimiento. Una respuesta solo puede evaluarse contra una asignación vigente del usuario autenticado.
-6. La evaluación ocurre en otra Edge Function o RPC protegida. El servidor compara la respuesta con el contenido canónico y devuelve únicamente la retroalimentación correspondiente al paso ya respondido. Solo al completar la actividad entrega el `reveal` autorizado.
-7. Las respuestas que contienen contenido privado usan `Cache-Control: private, no-store` y no se guardan en Service Worker, CDN ni almacenamiento local. Los errores y logs nunca incluyen contenido canónico, respuestas o rúbricas.
+## Verificación
 
-## Contrato mínimo sugerido
-
-- `start-bottle-session` / `start-label-session`: autentica, autoriza, crea la asignación y devuelve el primer paso seguro.
-- `submit-bottle-step` / `submit-label-step`: valida asignación, registra la respuesta y devuelve retroalimentación del paso más el siguiente paso seguro.
-- El identificador de asignación debe ser opaco y estar vinculado en servidor a `auth.uid()`; no se debe confiar en un `user_id`, plan, respuesta correcta o estado de avance enviado por el cliente.
-- La proyección pública debe definirse con una lista explícita de campos permitidos. No se debe devolver una fila completa y luego eliminar campos sensibles en el navegador.
-
-## Almacenamiento y permisos
-
-- Mantener el banco canónico en un esquema privado o en tablas con RLS y sin acceso directo para `anon`/`authenticated`.
-- La clave `service_role` solo puede existir en la Edge Function; nunca en HTML, JavaScript público ni respuestas HTTP.
-- Si una función privilegiada necesita omitir RLS, debe validar primero `auth.uid()`, limitar estrictamente su proyección y documentar por qué requiere ese privilegio.
-
-## Criterios de aceptación para la futura integración
-
-- Network muestra únicamente el ítem/paso activo y la retroalimentación ya desbloqueada.
-- Cambiar IDs, modos, tamaños o identificadores de asignación desde DevTools falla de forma segura.
-- Un usuario no puede leer asignaciones ni contenido de otro usuario.
-- No hay rutas públicas, source maps, fixtures de producción ni cachés que contengan el banco completo.
-- Las pruebas cubren autenticación, autorización por plan, expiración, repetición de envíos, selección sin repetición y ausencia de campos privados en cada respuesta.
-
-Esta nota no requiere ni autoriza activar funciones de pago de Supabase o Vercel.
+- Ownership cruzado probado en vivo contra producción: una sesión de otro usuario responde
+  `404 {"ok":false,"error":"Session not found"}`, sin filtrar si el recurso existe.
+- Doble envío concurrente (mismo `idempotency_key` vs. distinto) probado en vivo: nunca se procesa
+  dos veces la misma asignación.
+- El HTML servido por `/bottle-lab/` y `/label-lab/` (build real de `dist/`, no solo el repo
+  fuente) no contiene `acceptable_hypotheses`, `unsupported_hypotheses`, `evaluation_spec` ni
+  `reveal_content` -- cubierto por test automatizado en cada corrida de la suite rápida.
