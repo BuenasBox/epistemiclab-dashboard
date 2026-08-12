@@ -1,0 +1,32 @@
+name: GitHub Pages config drift check
+
+# Zero Known Material Debt closure (Priority 15): pages.yml's verify-pages-config job catches a
+# regression at the moment of a push, but a human (or another automation) can also flip Pages
+# back to legacy branch-source deployment straight from Settings > Pages with no code push at
+# all -- that path is invisible to a push-triggered workflow. This is the same assertion on a
+# daily schedule so drift with no accompanying commit still gets caught, not just silently
+# re-exposing content-bank/, supabase/functions/_shared/, tests/ and tools/ at
+# https://epistemiclab.dpdns.org/ again until someone happens to look.
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assert Pages is still Actions-deployed, not legacy branch-source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          build_type=$(gh api "repos/${{ github.repository }}/pages" --jq .build_type)
+          echo "Pages build_type: $build_type"
+          if [ "$build_type" != "workflow" ]; then
+            echo "::error::GitHub Pages build_type is '$build_type', not 'workflow'. This is the exact misconfiguration that once served the raw repo (content-bank/, supabase/functions/_shared/, tests/, tools/) publicly at the production domain. Fix it in Settings > Pages > Build and deployment > Source, set to 'GitHub Actions'."
+            exit 1
+          fi

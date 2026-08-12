@@ -50,3 +50,26 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Zero Known Material Debt closure (Priority 15): "this problem must never happen again."
+  # This alone can't stop someone from flipping Pages back to legacy branch-source deployment
+  # in the repo Settings UI (that's not something a workflow can prevent), but it does make a
+  # regression impossible to miss: every push to main re-asserts build_type == "workflow" and
+  # fails the run in bright red if it isn't. See pages-config-check.yml for the same assertion
+  # on a schedule, which also catches drift introduced with no code push at all.
+  verify-pages-config:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      pages: read
+    steps:
+      - name: Assert Pages is still Actions-deployed, not legacy branch-source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          build_type=$(gh api "repos/${{ github.repository }}/pages" --jq .build_type)
+          echo "Pages build_type: $build_type"
+          if [ "$build_type" != "workflow" ]; then
+            echo "::error::GitHub Pages build_type is '$build_type', not 'workflow'. This is the exact misconfiguration that once served the raw repo (content-bank/, supabase/functions/_shared/, tests/, tools/) publicly at the production domain. Fix it in Settings > Pages > Build and deployment > Source, set to 'GitHub Actions'."
+            exit 1
+          fi
