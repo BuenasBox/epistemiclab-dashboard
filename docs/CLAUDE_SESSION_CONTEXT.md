@@ -2,6 +2,18 @@
 
 > **Cómo usar este archivo:** si estás retomando este proyecto en un chat o proyecto nuevo, léelo completo antes de tocar código. Reemplaza el historial de conversación perdido. Actualízalo al final de cada sesión de trabajo (o al cerrar cada fase) para que el siguiente chat pueda continuar sin fricción.
 
+## 0. Bottle Lab Pro + Label Lab Pro — Generation 1: CLOSED
+
+Bottle Lab Pro: Generation 1 closed.
+Label Lab Pro: Generation 1 closed.
+
+Do not reopen for general UX/pedagogy optimization. Maintenance only unless a new generation is
+explicitly authorized. Ver el registro canónico completo (alcance, contratos congelados, gobernanza
+editorial, límites aceptados, próxima etapa nombrada) en
+[`docs/product/BOTTLE_LABEL_GENERATION_1_CLOSURE.md`](product/BOTTLE_LABEL_GENERATION_1_CLOSURE.md)
+antes de tocar cualquier archivo de `bottle-lab/`, `label-lab/`, `content-bank/bottle-lab-pro/`,
+`content-bank/label-lab-pro/`, o las Edge Functions `*-bottle-*`/`*-label-*`.
+
 ## 1. Identificadores del proyecto
 
 - Repo local: `D:\Mis Proyectos WEB\epistemiclab-dashboard` (bash-mount: `/sessions/.../mnt/epistemiclab-dashboard`)

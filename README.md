@@ -39,6 +39,7 @@ no forman parte del repositorio.
 
 - `system_state.json`: inventario generado; no se edita manualmente.
 - `docs/product/`: definición del producto y su identidad.
+- Bottle Lab Pro + Label Lab Pro Generation 1: closed — see [docs/product/BOTTLE_LABEL_GENERATION_1_CLOSURE.md](docs/product/BOTTLE_LABEL_GENERATION_1_CLOSURE.md).
 - `docs/governance/`: reglas de gobierno y cambio.
 - `docs/ACCESS_MATRIX_V1.md` y `docs/ACCESS_SESSION_CONTRACT_V1.md`: contratos de acceso.
 - `contracts/`: contratos de datos verificables.
