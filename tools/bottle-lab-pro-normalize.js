@@ -70,6 +70,11 @@ function publicContent(item) {
     })),
     learning_objectives: item.learning_objectives,
     difficulty: item.difficulty,
+    case: {
+      brief: item.case_identity || 'Expediente físico sin identificación concluyente.',
+      difficulty: item.difficulty,
+      learning_objectives: item.learning_objectives || [],
+    },
   };
 }
 

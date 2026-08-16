@@ -1,242 +1,49 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://browser.sentry-cdn.com https://js.sentry-cdn.com; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://hylknjjhmxsuuwbsslkr.supabase.co https://*.ingest.us.sentry.io https://*.sentry.io; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Botellas — EpistemicLab</title><meta name="robots" content="noindex">
-<link rel="stylesheet" href="/platform-nav.css"><link rel="stylesheet" href="/shared/epistemic-icons.css"><link rel="stylesheet" href="/shared/theme-wine.css"><link rel="stylesheet" href="/shared/theme-platform.css"><link rel="stylesheet" href="/shared/ui-buttons.css"><link rel="stylesheet" href="./bottle-lab.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script><script src="/shared/supabase-public-config.js"></script><script src="../shared/auth-token.js"></script><script src="../epistemic-profile/epistemic-profile-client.js"></script><script src="/ep-bootstrap.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://browser.sentry-cdn.com https://js.sentry-cdn.com; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://hylknjjhmxsuuwbsslkr.supabase.co https://*.ingest.us.sentry.io https://*.sentry.io; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bottle Forensics — EpistemicLab</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/platform-nav.css">
+  <link rel="stylesheet" href="/shared/epistemic-icons.css">
+  <link rel="stylesheet" href="/shared/theme-wine.css">
+  <link rel="stylesheet" href="/shared/theme-platform.css">
+  <link rel="stylesheet" href="/shared/ui-buttons.css">
+  <link rel="stylesheet" href="/shared/investigation-lab.css">
+  <link rel="stylesheet" href="./bottle-lab.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
+  <script src="/shared/supabase-public-config.js"></script>
+  <script src="/shared/auth-token.js"></script>
+  <script src="/epistemic-profile/epistemic-profile-client.js"></script>
+  <script src="/ep-bootstrap.js"></script>
 </head>
-<body><div class="wrap"><header class="topline"><div class="flex-1"></div><span class="chip gold" id="statusChip">Bottle Lab Pro</span></header><main id="app" aria-live="polite"></main><div class="note mt-24" id="networkStatus" hidden></div></div>
-<script>
-(function(){'use strict';
-var app=document.getElementById('app'),chip=document.getElementById('statusChip'),network=document.getElementById('networkStatus');
-var API=((window.WSET_SUPABASE_CONFIG||{}).url||'')+'/functions/v1/',KEY=(window.WSET_SUPABASE_CONFIG||{}).publishableKey||'';
-var state={session:null,step:null,selection:'',evidenceWeights:{},confidence:'',justification:'',committed:false,busy:false,evaluations:[],commitments:[],evidenceCatalog:{},contradictionInterp:null,contradictionAction:null,contradictionResolvedStepId:null,pendingRevisionMeta:null};
-var CONTRADICTION_INTERP={reinforces:'Refuerza',weakens:'Debilita',contradicts:'Contradice',no_change:'No cambia nada'};
-var REVISION_ACTION={maintain:'Mantener',nuance:'Matizar',revise:'Revisar'};
-var CONF_ORDER=['cannot_determine','intuition','probable','fairly_sure','certain'];
-var CONF_LABEL={cannot_determine:'No puede determinarse',intuition:'Intuyo',probable:'Probable',fairly_sure:'Bastante seguro',certain:'Seguro'};
-var KIND_LABEL={observation:'Observación',classification:'Clasificación',hypothesis:'Hipótesis'};
-var WEIGHT_ORDER=['secondary','relevant','key'];
-var WEIGHT_LABEL={secondary:'Secundaria',relevant:'Relevante',key:'Clave'};
-// Copy determinista basada en evaluation.calibration.band -- ya calculado y autorizado por
-// evaluateBottleResponse() en submit-bottle-step; nunca se recalcula en cliente.
-var CALIBRATION_LABEL={aligned:'Tu confianza estuvo alineada con lo que la evidencia permitía sostener.',overconfident:'Tu certeza excedía lo que tu propia evidencia podía sostener.',underconfident:'Tenías más evidencia disponible de la que tu confianza reflejaba.',uncertainty_correct:'Reconociste correctamente que la evidencia no permitía concluir.',evasive_uncertainty:'Declaraste "no puede determinarse" cuando la evidencia sí permitía concluir algo.'};
-function esc(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-function setNetwork(){network.hidden=navigator.onLine;network.textContent='Sin conexión. La sesión no se enviará hasta recuperar la red.';}window.addEventListener('online',setNetwork);window.addEventListener('offline',setNetwork);setNetwork();
-function loading(text){chip.textContent='Cargando sesión';app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor"></span></div><div class="state eval"><span class="d"></span>'+esc(text)+'</div></div>';}
-function error(message,login){chip.textContent='Bottle Lab Pro';app.innerHTML='<div class="card bl-narrow"><div class="card-label">No pudimos continuar</div><h1 class="serif">'+esc(message)+'</h1><p class="small muted">Tu progreso server-side no se ha marcado como completado.</p><div class="flowbar"><button class="btn btn--ghost" id="retry">Reintentar</button>'+(login?'<a class="btn btn--shine" href="/login/?next=/bottle-lab/">Iniciar sesión</a>':'')+'</div></div>';document.getElementById('retry').onclick=start;}
-function publicDemo(){chip.textContent='Demo pública · sin progreso';app.innerHTML='<div class="eyebrow">Módulo · inferencia física</div><h1 class="serif">Botellas</h1><p class="muted bl-narrow">Aprende a distinguir señales técnicas, tradición, marketing y evidencia no diagnóstica.</p><div class="grid g2"><div class="card center"><div class="bottle shape-burgundy gc-dark-green"><span class="cap"></span><span class="neck"></span><span class="body"></span><span class="lbl"></span></div></div><div class="card"><div class="card-label">Demo segura</div><p class="small">La práctica Pro evalúa observación, hipótesis, evidencia y confianza en servidor.</p><div class="state eval"><span class="d"></span>La asignación Pro requiere una cuenta activa.</div><div class="flowbar"><a class="btn btn--shine btn--glow flex-1" href="/login/?next=/bottle-lab/">Entrar para practicar</a></div></div></div>';}
-// Contradiction Moment (Loop 3): se activa cuando (a) ya existe un compromiso previo de
-// hipótesis en esta sesión y (b) el paso actual trae evidencia que el estudiante no había
-// visto antes -- ambas señales derivadas de estado ya en el cliente (historial de commitments
-// + catálogo de evidencia acumulado), sin ningún campo privado del servidor. No afirma que
-// haya contradicción real: le pregunta al estudiante qué cree que hace la evidencia nueva.
-function pendingContradiction(s){
-  var priorCommit=state.commitments[state.commitments.length-1]||null;
-  var hasChoice=(s.options||[]).length>0;
-  if(!hasChoice||!priorCommit||state.contradictionResolvedStepId===s.id)return null;
-  var newEvidence=(s.evidence||[]).filter(function(e){return !(e.id in state.evidenceCatalog);});
-  if(!newEvidence.length)return null;
-  return {priorCommit:priorCommit,newEvidence:newEvidence};
-}
-function contradictionMomentView(s,pending){
-  chip.textContent='Bottle Lab Pro · Nueva evidencia';
-  var priorCommit=pending.priorCommit;
-  var evCards=pending.newEvidence.map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
-  var interpBtns=Object.keys(CONTRADICTION_INTERP).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionInterp===k?'sel':'')+'" data-interp="'+k+'">'+CONTRADICTION_INTERP[k]+'</button>';}).join('');
-  var actionSection=!state.contradictionInterp?'':'<div class="card-label mt-24">¿Qué haces con tu hipótesis?</div><div class="mt-14">'+Object.keys(REVISION_ACTION).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionAction===k?'sel':'')+'" data-action="'+k+'">'+REVISION_ACTION[k]+'</button>';}).join('')+'</div>';
-  app.innerHTML='<div class="eyebrow">Momento de contradicción</div><h1 class="serif">Apareció evidencia nueva</h1><div class="cm-flow"><div class="cm-step"><span class="cm-lbl">Hipótesis inicial</span><p class="small">'+esc(priorCommit.hypothesis_text)+'</p></div><div class="cm-arrow" aria-hidden="true">↓</div><div class="cm-step"><span class="cm-lbl">Evidencia nueva</span>'+evCards+'</div></div><div class="card"><div class="card-label">¿Qué crees que hace esta evidencia con tu hipótesis?</div><div class="mt-14">'+interpBtns+'</div>'+actionSection+'<div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="cmContinue" '+(state.contradictionAction?'':'disabled')+'>Continuar →</button></div></div>';
-  app.querySelectorAll('[data-interp]').forEach(function(b){b.onclick=function(){state.contradictionInterp=b.dataset.interp;state.contradictionAction=null;contradictionMomentView(s,pending);};});
-  app.querySelectorAll('[data-action]').forEach(function(b){b.onclick=function(){state.contradictionAction=b.dataset.action;contradictionMomentView(s,pending);};});
-  document.getElementById('cmContinue').onclick=function(){
-    state.contradictionResolvedStepId=s.id;
-    state.pendingRevisionMeta={interpretation:state.contradictionInterp,action:state.contradictionAction,prior_hypothesis:priorCommit.hypothesis_text,new_evidence_ids:pending.newEvidence.map(function(e){return e.id;})};
-    state.contradictionInterp=null;state.contradictionAction=null;
-    stepView();
-  };
-}
-function stepView(){
-  var s=state.step;if(!s)return error('No hay un paso activo.');
-  var pending=pendingContradiction(s);
-  if(pending)return contradictionMomentView(s,pending);
-  chip.textContent='Bottle Lab Pro · '+(KIND_LABEL[s.kind]||s.kind);
-  var hasChoice=(s.options||[]).length>0;
-  var locked=hasChoice&&state.committed;
-  var opts=(s.options||[]).map(function(o){return '<button class="btn btn--ghost opt '+(state.selection===o.id?'sel':'')+(locked?' locked':'')+'" data-option="'+esc(o.id)+'" '+(locked?'disabled':'')+'>'+esc(o.text||o.id)+'</button>';}).join('');
-  (s.evidence||[]).forEach(function(e){state.evidenceCatalog[e.id]={label:e.label,value:e.value};});
-  var ev=(s.evidence||[]).map(function(e){
-    var w=state.evidenceWeights[e.id]||null;
-    var weightBtns=WEIGHT_ORDER.map(function(wt){return '<button type="button" role="radio" aria-checked="'+(w===wt?'true':'false')+'" class="wbtn '+(w===wt?'sel':'')+'" data-weight-for="'+esc(e.id)+'" data-weight="'+wt+'">'+WEIGHT_LABEL[wt]+'</button>';}).join('');
-    return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div><div class="ev-weight" role="radiogroup" aria-label="Peso que le das a '+esc(e.label)+'">'+weightBtns+'</div></div>';
-  }).join('');
-  var conf=CONF_ORDER.map(function(c){return '<button class="btn btn--ghost pillbtn '+(state.confidence===c?'sel':'')+(locked?' locked':'')+'" data-confidence="'+c+'" '+(locked?'disabled':'')+'>'+CONF_LABEL[c]+'</button>';}).join('');
-  var isRevision=Boolean(state.pendingRevisionMeta);
-  var commitBar=!hasChoice?'':(state.committed?
-    '<div class="commit-bar is-committed"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Revisión comprometida':'Hipótesis comprometida')+'</b>Esto era lo que pensabas con la información disponible en este momento. Si aparece evidencia nueva, la revisión quedará registrada aparte.</div></div>'
-    :'<div class="commit-bar'+(isRevision?' is-revision':'')+'"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Estás comprometiendo una revisión':'Todavía no has comprometido tu hipótesis')+'</b>'+(isRevision?'Tu hipótesis original queda registrada aparte -- esto es una nueva versión.':'Elige una lectura y una confianza para comprometerte.')+'</div></div>');
-  var canCommit=hasChoice&&!state.committed&&state.selection&&state.confidence;
-  var readyNoChoice=!hasChoice&&(state.confidence||state.justification);
-  var showCommitBtn=hasChoice&&!state.committed;
-  var showSendBtn=(!hasChoice&&readyNoChoice)||(hasChoice&&state.committed);
-  app.innerHTML='<div class="eyebrow">Bottle Lab Pro · '+(KIND_LABEL[s.kind]||'paso activo')+'</div><h1 class="serif">'+esc(s.prompt||s.id)+'</h1><div class="grid g2"><div><div class="card"><div class="card-label">Evidencia observada</div><p class="small muted">Para cada señal, marca qué tan relevante te parece para tu lectura -- el resto queda registrada como observada, sin peso.</p>'+ev+'</div></div><div class="card"><div class="card-label">Tu lectura</div>'+opts+'<textarea id="justification" class="opt" rows="3" placeholder="Explica qué permite y qué no permite inferir…" '+(locked?'disabled':'')+'>'+esc(state.justification)+'</textarea><div class="conf"><div class="q">¿Qué tan seguro estás?</div><div class="opts">'+conf+'</div></div>'+commitBar+'<div class="flowbar">'+(showCommitBtn?'<button class="btn btn--shine flex-1" id="commit" '+(canCommit?'':'disabled')+'>Comprometer hipótesis</button>':'<button class="btn btn--shine btn--glow flex-1" id="send" '+(showSendBtn?'':'disabled')+'>Enviar paso →</button>')+'</div></div></div>';
-  app.querySelectorAll('[data-option]').forEach(function(b){b.onclick=function(){if(locked)return;state.selection=b.dataset.option;stepView();};});
-  app.querySelectorAll('[data-weight-for]').forEach(function(b){b.onclick=function(){var id=b.dataset.weightFor,wt=b.dataset.weight;state.evidenceWeights[id]=state.evidenceWeights[id]===wt?null:wt;stepView();};});
-  app.querySelectorAll('[data-confidence]').forEach(function(b){b.onclick=function(){if(locked)return;state.confidence=b.dataset.confidence;stepView();};});
-  var ta=document.getElementById('justification');if(ta)ta.oninput=function(){state.justification=ta.value;};
-  var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){
-    state.committed=true;
-    var chosen=(s.options||[]).find(function(o){return o.id===state.selection;});
-    var snapshot={step_id:s.id,hypothesis:state.selection,hypothesis_text:chosen?chosen.text:state.selection,confidence:state.confidence,evidence_weights:Object.assign({},state.evidenceWeights),committed_at:new Date().toISOString()};
-    if(state.pendingRevisionMeta){snapshot.revision=state.pendingRevisionMeta;state.pendingRevisionMeta=null;}
-    state.commitments.push(snapshot);
-    stepView();
-  };
-  var sendBtn=document.getElementById('send');if(sendBtn)sendBtn.onclick=submit;
-}
-function mentorInterstitial(feedback,next){
-  chip.textContent='Bottle Lab Pro · Mentor';
-  app.innerHTML='<h1 class="ep-sr-only">Mensaje del Mentor</h1><div class="eyebrow">Mentor</div><div class="mentor info"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc((feedback.category||'observación').toUpperCase())+'</div><p class="small mentor-text">'+esc(feedback.text)+'</p></div></div><div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="mentorNext">Continuar →</button></div>';
-  document.getElementById('mentorNext').onclick=next;
-}
-async function api(path,body){if(!navigator.onLine)throw Error('OFFLINE');var token=await getAuthToken();if(!token)throw Error('NO_AUTH_SESSION');var res=await fetch(API+path,{method:'POST',cache:'no-store',headers:{Authorization:'Bearer '+token,apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await res.json().catch(function(){return{};});if(!res.ok)throw Error(data.error||'REQUEST_FAILED');return data;}
-function requestKey(){var k=sessionStorage.getItem('bottle_lab_pro_request_key');if(!k){k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);}return k;}
-function newRequestKey(){var k=crypto.randomUUID();sessionStorage.setItem('bottle_lab_pro_request_key',k);return k;}
-async function beginSession(){try{var d=await api('start-bottle-session',{request_key:requestKey()});state.session=d.session_id;state.step=d.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'bottle_guided',mode:'server',competencies:['Bottle Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')error('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')error('Estás sin conexión.');else error('La asignación no está disponible.');}}
-async function start(){loading('Recuperando tu sesión…');await beginSession();}
-// "Intentar otro caso" (Priority 2): previously a plain <a href="/bottle-lab/">, which did a
-// full page reload -- since requestKey() persists in sessionStorage across reloads within the
-// same tab, that reload replayed the SAME request_key, so start-bottle-session resolved the
-// already-completed assignment again (current_step already null) instead of ever starting a
-// new one. "Intentar otro caso" never actually gave you another case. Fixed by resetting
-// client state, forcing a genuinely new request_key (-> new assignment -> Content Selection
-// Engine v1 picks a fresh item, excluding the one just completed), and re-entering the flow
-// in-place, with no navigation and no dashboard detour.
-async function startAnotherCase(){
-  state.session=null;state.step=null;state.selection='';state.evidenceWeights={};state.confidence='';state.justification='';state.committed=false;state.evaluations=[];state.commitments=[];state.evidenceCatalog={};state.contradictionInterp=null;state.contradictionAction=null;state.contradictionResolvedStepId=null;state.pendingRevisionMeta=null;
-  newRequestKey();
-  loading('Preparando tu próximo caso…');
-  await beginSession();
-}
-async function submit(){
-  if(state.busy)return;state.busy=true;loading('Evaluando tu razonamiento en servidor…');
-  var usedIds=Object.keys(state.evidenceWeights).filter(function(id){return state.evidenceWeights[id];});
-  try{
-    var d=await api('submit-bottle-step',{session_id:state.session,idempotency_key:crypto.randomUUID(),step_key:state.step.id,step_kind:state.step.kind,answer:{response:state.selection||'cannot_determine',evidence_used:usedIds,evidence_weights:state.evidenceWeights,justification:state.justification,confidence:state.confidence}});
-    if(state.step.kind==='hypothesis'&&d.evaluation)state.evaluations.push(d.evaluation);
-    var advance=function(){if(d.step){state.step=d.step;state.selection='';state.evidenceWeights={};state.confidence='';state.justification='';state.committed=false;stepView();}else reveal();};
-    var feedback=d.evaluation&&d.evaluation.mentor_feedback;
-    // Experience polish (Loop 7): Mentor debe ser "poco frecuente + altamente relevante", nunca
-    // aparecer en cada paso. 'confirmation' es la categoría fallback de mentorContext() cuando
-    // nada más urgente aplica -- casi todo item la cubre, así que sin este filtro Mentor
-    // interrumpía casi cada envío con un simple "bien hecho". Se sigue registrando en
-    // evaluation.mentor_feedback (nada se pierde server-side); solo no bloquea la interfaz.
-    if(feedback&&feedback.text&&feedback.category!=='confirmation')mentorInterstitial(feedback,advance);else advance();
-  }catch(e){error(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}
-}
-var REVEAL_MOMENTOS=['layer1','layer2','layer3','replay','layer4'];
-var REVEAL_LABEL={layer1:'Qué ocurrió',layer2:'Qué pensabas',layer3:'Cómo usaste la evidencia',replay:'Cómo evolucionó tu razonamiento',layer4:'Regla transferible'};
-var revealData=null,revealStep=0;
-// El Reveal Board se construye SOLO a partir de evaluation.* ya autorizado por el servidor en
-// cada paso de hipótesis (evaluateBottleResponse en submit-bottle-step) -- nunca se recalcula
-// ni se infiere en cliente. Visible solo desde el reveal (nunca antes).
-function evidenceLabels(ids){return ids.map(function(id){var e=state.evidenceCatalog[id];return e?e.label:id;}).join(', ');}
-function buildRevealBoard(){
-  if(!state.evaluations.length)return '';
-  return state.evaluations.map(function(ev,i){
-    var wellUsed=ev.evidence.selected.filter(function(id){return ev.evidence.overweighted.indexOf(id)<0;});
-    var overweighted=ev.evidence.overweighted||[];
-    var ignored=ev.evidence.ignored||[];
-    var calib=CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.';
-    var rows='';
-    if(wellUsed.length)rows+='<div class="rb-row rb-good"><span class="rb-tag">Bien usada</span>'+esc(evidenceLabels(wellUsed))+'</div>';
-    if(overweighted.length)rows+='<div class="rb-row rb-warn"><span class="rb-tag">Sobreponderada</span>'+esc(evidenceLabels(overweighted))+'</div>';
-    if(ignored.length)rows+='<div class="rb-row rb-muted"><span class="rb-tag">Ignorada</span>'+esc(evidenceLabels(ignored))+'</div>';
-    return '<div class="reveal-board">'+(state.evaluations.length>1?'<div class="card-label">Paso de hipótesis '+(i+1)+'</div>':'')+(rows||'<p class="small muted">Sin evidencia citada en este paso.</p>')+'<p class="small mentor-text">'+esc(calib)+'</p></div>';
-  }).join('');
-}
-// Reasoning Replay (Loop 4): reconstrucción breve del camino cognitivo, exclusivamente a
-// partir de datos reales ya persistidos en cliente (state.commitments[] + state.evaluations[],
-// en el mismo orden -- cada compromiso de hipótesis produce exactamente una evaluación). No
-// reconstruye nada que no haya ocurrido; no moraliza -- describe, no juzga.
-function buildReasoningReplay(){
-  if(!state.commitments.length)return '<p class="small muted">No hubo pasos de hipótesis en esta sesión.</p>';
-  return state.commitments.map(function(c,i){
-    var ev=state.evaluations[i]||null;
-    var isRevision=Boolean(c.revision);
-    var blocks='<div class="rp-step"><span class="cm-lbl">'+(isRevision?'Revisaste tu hipótesis':i===0?'Observaste y formulaste tu hipótesis':'Nueva hipótesis')+'</span><p class="small">'+esc(c.hypothesis_text)+'</p></div>';
-    if(isRevision){
-      blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step rp-revision"><span class="cm-lbl">Evidencia nueva</span><p class="small">Interpretaste que '+esc((CONTRADICTION_INTERP[c.revision.interpretation]||'').toLowerCase())+' tu hipótesis anterior ("'+esc(c.revision.prior_hypothesis)+'") y decidiste '+esc((REVISION_ACTION[c.revision.action]||'').toLowerCase())+'la.</p></div>';
-    }
-    blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Confianza declarada</span><p class="small">'+esc(CONF_LABEL[c.confidence]||c.confidence)+'</p></div>';
-    if(ev){
-      // Priority 7/8 (Mentor value review + Reasoning Replay verification, Product Implementation
-      // Marathon): the server now also flags accidental correctness via evidence citation
-      // (mentorContext() -> mentor.error_type==='accidental_correctness', wired in Priority 5/7) --
-      // a real signal the evaluator computes, distinct from the pre-existing overconfidence-based
-      // check. Both are genuine, evaluator-authored signals (never inferred client-side): a
-      // student can reach the right conclusion while overconfident in their stated certainty, OR
-      // while citing incomplete evidence with well-calibrated confidence -- mentorContext() checks
-      // calibration first, so the two branches are mutually exclusive per step, and either one
-      // reaching the client means the server already decided this step was "right for a shaky
-      // reason." Before this, Reasoning Replay silently dropped the evidence-based case even
-      // though the Mentor interstitial had already told the student about it mid-session.
-      var overconfidentButRight=ev.result.correct&&ev.calibration.band==='overconfident';
-      var rightEvidenceIncomplete=Boolean(ev.mentor&&ev.mentor.error_type==='accidental_correctness');
-      var accidental=overconfidentButRight||rightEvidenceIncomplete;
-      var accidentalText=overconfidentButRight?'Tu conclusión coincidió con el resultado, pero tu confianza excedía lo que la evidencia sostenía -- vale la pena revisar si acertaste por la razón correcta.':'Tu conclusión coincidió con el resultado, pero la evidencia que citaste para sostenerla estaba incompleta -- vale la pena revisar si acertaste por la razón correcta.';
-      blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Resultado y calibración</span><p class="small">'+esc(CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.')+'</p>'+(accidental?'<p class="small rp-flag">'+esc(accidentalText)+'</p>':'')+'</div>';
-    }
-    return '<div class="rp-block">'+(state.commitments.length>1?'<div class="card-label">Paso de hipótesis '+(i+1)+'</div>':'')+blocks+'</div>';
-  }).join('<div class="hairline"></div>');
-}
-function revealView(){
-  var r=revealData,key=REVEAL_MOMENTOS[revealStep];
-  var progress=REVEAL_MOMENTOS.map(function(_,i){return '<span class="'+(i<=revealStep?'done':'')+'"></span>';}).join('');
-  var isLast=revealStep===REVEAL_MOMENTOS.length-1;
-  var board=key==='layer3'?buildRevealBoard():'';
-  var isReplay=key==='replay';
-  var bodyHtml=isReplay?buildReasoningReplay():'<p class="small mentor-text">'+esc(r[key])+'</p>';
-  app.innerHTML='<div class="bl-reveal"><h1 class="ep-sr-only">Reveal de tu sesión -- '+esc(REVEAL_LABEL[key])+'</h1><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc(REVEAL_LABEL[key].toUpperCase())+'</div>'+bodyHtml+'</div></div>'+board+'<div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<button class="btn btn--shine btn--glow" id="rtransfer">Reto de transferencia →</button>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
-  var prev=document.getElementById('rprev');if(prev)prev.onclick=function(){revealStep--;revealView();};
-  var next=document.getElementById('rnext');if(next)next.onclick=function(){revealStep++;revealView();};
-  var transferBtn=document.getElementById('rtransfer');if(transferBtn)transferBtn.onclick=transferChallengeStart;
-}
-// Transfer Challenge (Loop 5): microcaso corto, con la misma regla "disfrazada" en un contexto
-// nuevo. Usa un misconception ya visto legítimamente durante la sesión (evaluation.mentor.
-// misconception_code) como pista de selección -- el servidor decide qué tarea corresponde y
-// nunca envía la opción correcta antes de que el estudiante decida.
-function firstMisconceptionHint(){
-  for(var i=0;i<state.evaluations.length;i++){
-    var code=state.evaluations[i]&&state.evaluations[i].mentor&&state.evaluations[i].mentor.misconception_code;
-    if(code)return code;
-  }
-  return null;
-}
-async function transferChallengeStart(){
-  loading('Preparando reto de transferencia…');
-  try{
-    var d=await api('start-bottle-transfer',{misconception_hint:firstMisconceptionHint(),session_id:state.session});
-    transferChallengeView(d.task,null);
-  }catch(e){error('El reto de transferencia no está disponible ahora mismo.');}
-}
-function transferChallengeView(task,result){
-  chip.textContent='Bottle Lab Pro · Transferencia';
-  var ev=(task.relevant_evidence||[]).map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
-  var opts=(task.options||[]).map(function(o){return '<button class="btn btn--ghost opt" data-transfer-option="'+esc(o.id)+'" '+(result?'disabled':'')+'>'+esc(o.text)+'</button>';}).join('');
-  var feedback=!result?'':'<div class="mentor '+(result.correct?'ok':'warn')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+(result.correct?'RECONOCISTE LA REGLA':'TODAVÍA NO')+'</div><p class="small mentor-text">'+esc(result.feedback)+'</p></div></div>';
-  app.innerHTML='<div class="eyebrow">Transfer Challenge</div><h1 class="serif">La misma regla, disfrazada</h1><div class="card tight"><p class="small mentor-text">'+esc(task.rule)+'</p></div><p class="small muted mt-14">'+esc(task.new_context)+'</p>'+ev+'<div class="card mt-14">'+opts+'</div>'+feedback+'<div class="flowbar">'+(result?'<button class="btn btn--shine btn--glow flex-1" id="another-case">Intentar otro caso</button>':'')+'</div></div>';
-  app.querySelectorAll('[data-transfer-option]').forEach(function(b){b.onclick=function(){transferChallengeSubmit(task,b.dataset.transferOption);};});
-  if(result){var again=document.getElementById('another-case');if(again)again.onclick=startAnotherCase;}
-}
-async function transferChallengeSubmit(task,optionId){
-  loading('Evaluando tu decisión…');
-  try{
-    var d=await api('submit-bottle-transfer',{task_id:task.id,option_id:optionId});
-    transferChallengeView(task,d);
-  }catch(e){error('No pudimos evaluar tu decisión.');}
-}
-async function reveal(){loading('Preparando reveal autorizado…');try{var d=await api('reveal-bottle-session',{session_id:state.session});revealData=d.reveal||{};revealStep=0;window.EpistemicProfile&&window.EpistemicProfile.sessionCompleted({module:'bottle_guided',itemId:state.session});revealView();}catch(e){error('El reveal todavía no está autorizado.');}}
-publicDemo();(async function(){try{if(await getAuthToken())start();}catch(_){}})();
-})();
-</script><script src="/platform-nav.js" defer></script></body></html>
+<body class="investigation-lab investigation-lab--bottle">
+  <div class="wrap">
+    <header class="topline"><span class="chip" id="statusChip">Bottle Forensics</span></header>
+    <main id="app" aria-live="polite"></main>
+    <div class="network-note" id="networkStatus" hidden></div>
+  </div>
+  <script>
+    window.INVESTIGATION_LAB_CONFIG = {
+      lab: 'bottle',
+      route: 'bottle-lab',
+      module: 'bottle_guided',
+      title: 'Bottle Forensics',
+      shortTitle: 'Bottle Lab',
+      kicker: 'Unidad de inteligencia · Evidencia física',
+      demoBrief: 'Una botella puede sugerir mucho y demostrar muy poco. Investiga tres señales y descubre cuáles merecen sostener una conclusión.',
+      requestKey: 'bottle_lab_pro_request_key',
+      startEndpoint: 'start-bottle-session',
+      submitEndpoint: 'submit-bottle-step',
+      revealEndpoint: 'reveal-bottle-session',
+      transferStartEndpoint: 'start-bottle-transfer',
+      transferSubmitEndpoint: 'submit-bottle-transfer'
+    };
+  </script>
+  <script src="/shared/investigation-lab.js"></script>
+  <script src="/platform-nav.js" defer></script>
+</body>
+</html>

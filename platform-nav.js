@@ -11,7 +11,9 @@
     { href: '/', label: 'Inicio', match: ['/', '/index.html'] },
     { href: '/about/', label: '¿Qué es EpistemicLab?', match: ['/about'] },
     { href: '/dashboard/', label: 'Mi progreso', match: ['/dashboard'] },
-    { href: '/sat-lab/', label: 'Aprender', match: ['/bottle-lab', '/label-lab', '/sat-lab', '/adaptive-review'] },
+    { href: '/sat-lab/', label: 'Aprender', match: ['/sat-lab', '/adaptive-review'] },
+    { href: '/bottle-lab/', label: 'Bottle Forensics', match: ['/bottle-lab'] },
+    { href: '/label-lab/', label: 'Label Dossier', match: ['/label-lab'] },
     { href: '/full-simulation-v2/', label: 'Evaluarte', match: ['/full-simulation-v2', '/diagnostic-sba', '/open-response-lab', '/adaptive-session'] },
     { href: '/mentor/', label: 'Mi aprendizaje', match: ['/mentor', '/learning-loop', '/profile'] },
     { href: '/login/', label: 'Mi cuenta', match: ['/login', '/upgrade'] }
@@ -32,9 +34,9 @@
       { label: 'Entrenamiento Adaptativo', href: '/adaptive-session/' },
       { label: 'Simulacro Completo', href: '/full-simulation-v2/' }
     ]},
-    { label: 'Experiencias complementarias', submenu: [
-      { label: 'Botellas', href: '/bottle-lab/' },
-      { label: 'Etiquetas', href: '/label-lab/' }
+    { label: 'Laboratorios de investigación', submenu: [
+      { label: 'Bottle Forensics', href: '/bottle-lab/' },
+      { label: 'Label Dossier', href: '/label-lab/' }
     ]},
     { label: 'Mi aprendizaje', submenu: [
       { label: 'Mi progreso', href: '/dashboard/' },
@@ -124,7 +126,7 @@
         '</div>' +
         '<div class="pfoot-nav">' +
           '<div class="pfoot-col"><div class="pfoot-col-title">Plataforma</div><div class="pfoot-links"><a href="/">Inicio</a><a href="/about/">Acerca</a><a href="/dashboard/">Mi progreso</a></div></div>' +
-          '<div class="pfoot-col pfoot-col-exp"><div class="pfoot-col-title">Experiencias</div><div class="pfoot-links"><a href="/diagnostic-sba/">Evaluación</a><a href="/adaptive-session/">Adaptativo</a></div></div>' +
+          '<div class="pfoot-col pfoot-col-exp"><div class="pfoot-col-title">Experiencias</div><div class="pfoot-links"><a href="/bottle-lab/">Bottle Forensics</a><a href="/label-lab/">Label Dossier</a><a href="/adaptive-session/">Adaptativo</a></div></div>' +
           '<div class="pfoot-col"><div class="pfoot-col-title">Cuenta</div><div class="pfoot-links"><a href="/profile/">Mi perfil</a><a href="/upgrade/">Planes</a></div></div>' +
         '</div>' +
         '<p class="pfoot-copy">© 2026 EpistemicLab<br>Todos los derechos reservados.</p>' +

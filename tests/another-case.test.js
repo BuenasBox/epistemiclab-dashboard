@@ -7,6 +7,7 @@ const read = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
 
 const bottle = read('bottle-lab', 'index.html');
 const label = read('label-lab', 'index.html');
+const engine = read('shared', 'investigation-lab.js');
 
 // Priority 2 (Product Implementation Marathon): "Intentar otro caso" was a plain
 // <a href="/..."> full-page reload. requestKey() persists per sessionStorage across
@@ -17,30 +18,30 @@ const label = read('label-lab', 'index.html');
 for (const [name, html] of [['Bottle', bottle], ['Label', label]]) {
   test(`${name} Lab "Intentar otro caso" is an in-place transition, not a page reload`, () => {
     assert.doesNotMatch(html, /Intentar otro caso<\/a>/);
-    assert.match(html, /id="another-case">Intentar otro caso<\/button>/);
-    assert.match(html, /again\.onclick=startAnotherCase/);
+    assert.match(engine, /id="anotherCase"/);
+    assert.match(engine, /anotherCase'\)\.onclick = startAnotherCase/);
   });
 
   test(`${name} Lab startAnotherCase() forces a brand new request_key instead of reusing the persisted one`, () => {
-    assert.match(html, /function newRequestKey\(\)/);
-    assert.match(html, /async function startAnotherCase\(\)/);
-    const fn = html.slice(html.indexOf('async function startAnotherCase()'), html.indexOf('async function startAnotherCase()') + 700);
+    assert.match(engine, /function newRequestKey\(\)/);
+    assert.match(engine, /async function startAnotherCase\(\)/);
+    const fn = engine.slice(engine.indexOf('async function startAnotherCase()'), engine.indexOf('async function beginSession()'));
     assert.match(fn, /newRequestKey\(\)/);
   });
 
   test(`${name} Lab startAnotherCase() resets client-side case state before starting the next one`, () => {
-    const fn = html.slice(html.indexOf('async function startAnotherCase()'), html.indexOf('async function startAnotherCase()') + 700);
-    assert.match(fn, /state\.session=null/);
-    assert.match(fn, /state\.step=null/);
-    assert.match(fn, /state\.evaluations=\[\]/);
-    assert.match(fn, /state\.commitments=\[\]/);
+    const fn = engine.slice(engine.indexOf('async function startAnotherCase()'), engine.indexOf('async function beginSession()'));
+    assert.match(fn, /resetState\(\)/);
+    const reset = engine.slice(engine.indexOf('function resetState()'), engine.indexOf('async function startAnotherCase()'));
+    assert.match(reset, /state\.session = null/);
+    assert.match(reset, /state\.step = null/);
+    assert.match(reset, /state\.evaluations = \[\]/);
+    assert.match(reset, /state\.commitments = \[\]/);
   });
 
-  test(`${name} Lab: plain retry (error screen) still calls the unchanged start(), not startAnotherCase()`, () => {
-    // Regression guard: start()'s signature must stay parameter-less because
-    // error()'s retry button binds it directly as an event handler
-    // (`onclick=start`), which would pass the click Event as an argument.
-    assert.match(html, /onclick\s*=\s*start\s*;/);
-    assert.doesNotMatch(html, /onclick\s*=\s*startAnotherCase\s*;\s*\}[^}]*retry/);
+  test(`${name} Lab: a failed save retries the same decision instead of discarding the case`, () => {
+    assert.match(engine, /recoveryView\([^;]+, submitCurrent\)/);
+    assert.match(engine, /retryAction\.onclick = retry/);
+    assert.doesNotMatch(engine, /retryAction\.onclick = startAnotherCase/);
   });
 }

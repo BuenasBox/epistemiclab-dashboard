@@ -1,219 +1,49 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://browser.sentry-cdn.com https://js.sentry-cdn.com; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://hylknjjhmxsuuwbsslkr.supabase.co https://*.ingest.us.sentry.io https://*.sentry.io; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Etiquetas — EpistemicLab</title><meta name="robots" content="noindex">
-<link rel="stylesheet" href="/platform-nav.css"><link rel="stylesheet" href="/shared/epistemic-icons.css"><link rel="stylesheet" href="/shared/theme-wine.css"><link rel="stylesheet" href="/shared/theme-platform.css"><link rel="stylesheet" href="/shared/ui-buttons.css"><link rel="stylesheet" href="./label-lab.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
-<script src="/shared/supabase-public-config.js"></script><script src="../shared/auth-token.js"></script><script src="../epistemic-profile/epistemic-profile-client.js"></script><script src="/ep-bootstrap.js"></script><script src="./data/label-demo.public.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://browser.sentry-cdn.com https://js.sentry-cdn.com; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://hylknjjhmxsuuwbsslkr.supabase.co https://*.ingest.us.sentry.io https://*.sentry.io; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Label Dossier — EpistemicLab</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/platform-nav.css">
+  <link rel="stylesheet" href="/shared/epistemic-icons.css">
+  <link rel="stylesheet" href="/shared/theme-wine.css">
+  <link rel="stylesheet" href="/shared/theme-platform.css">
+  <link rel="stylesheet" href="/shared/ui-buttons.css">
+  <link rel="stylesheet" href="/shared/investigation-lab.css">
+  <link rel="stylesheet" href="./label-lab.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2"></script>
+  <script src="/shared/supabase-public-config.js"></script>
+  <script src="/shared/auth-token.js"></script>
+  <script src="/epistemic-profile/epistemic-profile-client.js"></script>
+  <script src="/ep-bootstrap.js"></script>
 </head>
-<body>
-<div class="wrap"><header class="topline"><div class="flex-1"></div><span class="chip gold" id="statusChip">Label Lab Pro</span></header><main id="app" aria-live="polite"></main><div class="note mt-24" id="networkStatus" hidden></div></div>
-<script>
-(function(){
-  'use strict';
-  var app=document.getElementById('app'), chip=document.getElementById('statusChip'), network=document.getElementById('networkStatus');
-  var demo=window.LABEL_DEMO_PUBLIC||{}; var state={session:null,step:null,selection:'',evidenceWeights:{},confidence:'',justification:'',committed:false,busy:false,evaluations:[],commitments:[],evidenceCatalog:{},contradictionInterp:null,contradictionAction:null,contradictionResolvedStepId:null,pendingRevisionMeta:null};
-  var CONTRADICTION_INTERP={reinforces:'Refuerza',weakens:'Debilita',contradicts:'Contradice',no_change:'No cambia nada'};
-  var REVISION_ACTION={maintain:'Mantener',nuance:'Matizar',revise:'Revisar'};
-  var API=((window.WSET_SUPABASE_CONFIG||{}).url||'https://hylknjjhmxsuuwbsslkr.supabase.co')+'/functions/v1/';
-  var KEY=(window.WSET_SUPABASE_CONFIG||{}).publishableKey||'';
-  var CONF_ORDER=['cannot_determine','intuition','probable','fairly_sure','certain'];
-  var CONF_LABEL={cannot_determine:'No puede determinarse',intuition:'Intuyo',probable:'Probable',fairly_sure:'Bastante seguro',certain:'Seguro'};
-  var KIND_LABEL={observation:'Evidencia',classification:'Clasificación',hypothesis:'Lectura'};
-  var WEIGHT_ORDER=['secondary','relevant','key'];
-  var WEIGHT_LABEL={secondary:'Contextual',relevant:'Relevante',key:'Decisiva'};
-  // evaluateLabelResponse() no distingue "sobreponderada" (a diferencia de Bottle) -- solo
-  // selected/ignored -- así que el Reveal Board de Label refleja exactamente eso, sin inventar
-  // una categoría que el servidor no calcula.
-  var CALIBRATION_LABEL={aligned:'Tu confianza estuvo alineada con lo que la evidencia permitía sostener.',overconfident:'Tu certeza excedía lo que tu propia evidencia podía sostener.',underconfident:'Tenías más evidencia disponible de la que tu confianza reflejaba.',uncertainty_correct:'Reconociste correctamente que la evidencia no permitía concluir.',evasive_uncertainty:'Declaraste "no puede determinarse" cuando la evidencia sí permitía concluir algo.'};
-  function esc(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  function labelHtml(){var l=demo.label||{};return '<div class="label-hero"><div class="est">'+esc(l.estate)+'</div><div class="nm">'+esc(l.wine)+'</div><div class="sub">'+esc(l.classification)+'</div><div class="line"></div><div class="meta">'+esc(l.region)+' · '+esc(l.vintage)+' · '+esc(l.abv)+'</div></div>';}
-  function setNetwork(){network.hidden=navigator.onLine;network.textContent='Sin conexión. La sesión no se enviará hasta recuperar la red.';}
-  window.addEventListener('online',setNetwork);window.addEventListener('offline',setNetwork);setNetwork();
-  function renderDemo(){chip.textContent='Demo pública · sin progreso';app.innerHTML='<div class="eyebrow">Módulo · inferencia documental</div><h1 class="serif">Etiquetas</h1><p class="muted bl-narrow">Aprende a separar evidencia explícita, términos regulados e inferencias que necesitan cautela.</p><div class="grid g2"><div class="card center">'+labelHtml()+'</div><div class="card"><div class="card-label">Demo segura</div><p class="small">'+esc(demo.note)+'</p><div class="state eval"><span class="d"></span> La evaluación Pro requiere una cuenta activa.</div><div class="flowbar"><a class="btn btn--shine btn--glow flex-1" href="/login/?next=/label-lab/">Entrar para practicar</a></div></div></div>';}
-  function renderLoading(text){chip.textContent='Cargando sesión';app.innerHTML='<div class="center bl-evaluating"><div class="avatar bl-avatar-lg"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div class="state eval"><span class="d"></span> '+esc(text||'Preparando Label Lab Pro…')+'</div></div>';}
-  function renderError(message,link){chip.textContent='Label Lab Pro';app.innerHTML='<div class="card bl-narrow"><div class="card-label">No pudimos continuar</div><h1 class="serif">'+esc(message)+'</h1><p class="small muted">Tu progreso server-side no se ha marcado como completado.</p><div class="flowbar"><button class="btn btn--ghost" id="retry">Reintentar</button>'+(link?'<a class="btn btn--shine" href="/login/?next=/label-lab/">Iniciar sesión</a>':'')+'</div></div>';var r=document.getElementById('retry');if(r)r.onclick=start;}
-  function pendingContradiction(s){
-    var priorCommit=state.commitments[state.commitments.length-1]||null;
-    var hasChoice=(s.options||[]).length>0;
-    if(!hasChoice||!priorCommit||state.contradictionResolvedStepId===s.id)return null;
-    var newEvidence=(s.evidence||[]).filter(function(e){return !(e.id in state.evidenceCatalog);});
-    if(!newEvidence.length)return null;
-    return {priorCommit:priorCommit,newEvidence:newEvidence};
-  }
-  function contradictionMomentView(s,pending){
-    chip.textContent='Label Lab Pro · Nueva evidencia';
-    var priorCommit=pending.priorCommit;
-    var evCards=pending.newEvidence.map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
-    var interpBtns=Object.keys(CONTRADICTION_INTERP).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionInterp===k?'sel':'')+'" data-interp="'+k+'">'+CONTRADICTION_INTERP[k]+'</button>';}).join('');
-    var actionSection=!state.contradictionInterp?'':'<div class="card-label mt-24">¿Qué haces con tu lectura?</div><div class="mt-14">'+Object.keys(REVISION_ACTION).map(function(k){return '<button class="btn btn--ghost opt '+(state.contradictionAction===k?'sel':'')+'" data-action="'+k+'">'+REVISION_ACTION[k]+'</button>';}).join('')+'</div>';
-    app.innerHTML='<div class="eyebrow">Momento de contradicción</div><h1 class="serif">Apareció evidencia nueva en el documento</h1><div class="cm-flow"><div class="cm-step"><span class="cm-lbl">Lectura inicial</span><p class="small">'+esc(priorCommit.hypothesis_text)+'</p></div><div class="cm-arrow" aria-hidden="true">↓</div><div class="cm-step"><span class="cm-lbl">Evidencia nueva</span>'+evCards+'</div></div><div class="card"><div class="card-label">¿Qué crees que hace esta evidencia con tu lectura?</div><div class="mt-14">'+interpBtns+'</div>'+actionSection+'<div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="cmContinue" '+(state.contradictionAction?'':'disabled')+'>Continuar →</button></div></div>';
-    app.querySelectorAll('[data-interp]').forEach(function(b){b.onclick=function(){state.contradictionInterp=b.getAttribute('data-interp');state.contradictionAction=null;contradictionMomentView(s,pending);};});
-    app.querySelectorAll('[data-action]').forEach(function(b){b.onclick=function(){state.contradictionAction=b.getAttribute('data-action');contradictionMomentView(s,pending);};});
-    document.getElementById('cmContinue').onclick=function(){
-      state.contradictionResolvedStepId=s.id;
-      state.pendingRevisionMeta={interpretation:state.contradictionInterp,action:state.contradictionAction,prior_hypothesis:priorCommit.hypothesis_text,new_evidence_ids:pending.newEvidence.map(function(e){return e.id;})};
-      state.contradictionInterp=null;state.contradictionAction=null;
-      stepView();
+<body class="investigation-lab investigation-lab--label">
+  <div class="wrap">
+    <header class="topline"><span class="chip" id="statusChip">Label Dossier</span></header>
+    <main id="app" aria-live="polite"></main>
+    <div class="network-note" id="networkStatus" hidden></div>
+  </div>
+  <script>
+    window.INVESTIGATION_LAB_CONFIG = {
+      lab: 'label',
+      route: 'label-lab',
+      module: 'label_guided',
+      title: 'Label Dossier',
+      shortTitle: 'Label Lab',
+      kicker: 'Archivo regulatorio · Evidencia documental',
+      demoBrief: 'Una etiqueta mezcla hechos, contexto y silencios. Coteja sus fragmentos y descubre qué puede afirmarse sin inventar información.',
+      requestKey: 'label_lab_pro_request_key',
+      startEndpoint: 'start-label-session',
+      submitEndpoint: 'submit-label-step',
+      revealEndpoint: 'reveal-label-session',
+      transferStartEndpoint: 'start-label-transfer',
+      transferSubmitEndpoint: 'submit-label-transfer'
     };
-  }
-  function stepView(){
-    var s=state.step;if(!s)return renderError('No hay un paso activo.');
-    var pending=pendingContradiction(s);
-    if(pending)return contradictionMomentView(s,pending);
-    chip.textContent='Label Lab Pro · '+(KIND_LABEL[s.kind]||s.kind);
-    var hasChoice=(s.options||[]).length>0;
-    var locked=hasChoice&&state.committed;
-    var opts=(s.options||[]).map(function(o){var id=typeof o==='string'?o:o.id;var text=typeof o==='string'?o:(o.text||o.label||o.id);return '<button class="btn btn--ghost opt '+(state.selection===id?'sel':'')+(locked?' locked':'')+'" data-option="'+esc(id)+'" '+(locked?'disabled':'')+'>'+esc(text)+'</button>';}).join('');
-    (s.evidence||[]).forEach(function(e){state.evidenceCatalog[e.id]={label:e.label,value:e.value};});
-    var evidence=(s.evidence||[]).map(function(e){
-      var w=state.evidenceWeights[e.id]||null;
-      var weightBtns=WEIGHT_ORDER.map(function(wt){return '<button type="button" role="radio" aria-checked="'+(w===wt?'true':'false')+'" class="wbtn '+(w===wt?'sel':'')+'" data-weight-for="'+esc(e.id)+'" data-weight="'+wt+'">'+WEIGHT_LABEL[wt]+'</button>';}).join('');
-      return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div><div class="ev-weight" role="radiogroup" aria-label="Peso que le das a '+esc(e.label)+'">'+weightBtns+'</div></div>';
-    }).join('');
-    var conf=CONF_ORDER.map(function(c){return '<button class="btn btn--ghost pillbtn '+(state.confidence===c?'sel':'')+(locked?' locked':'')+'" data-confidence="'+c+'" '+(locked?'disabled':'')+'>'+CONF_LABEL[c]+'</button>';}).join('');
-    var isRevision=Boolean(state.pendingRevisionMeta);
-    var commitBar=!hasChoice?'':(state.committed?
-      '<div class="commit-bar is-committed"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Revisión comprometida':'Lectura comprometida')+'</b>Esto era lo que interpretabas del documento con la evidencia disponible en este momento. Si aparece evidencia nueva, la revisión quedará registrada aparte.</div></div>'
-      :'<div class="commit-bar'+(isRevision?' is-revision':'')+'"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span><div><b>'+(isRevision?'Estás comprometiendo una revisión':'Todavía no has comprometido tu lectura')+'</b>'+(isRevision?'Tu lectura original queda registrada aparte -- esto es una nueva versión.':'Elige una interpretación y una confianza para comprometerte.')+'</div></div>');
-    var canCommit=hasChoice&&!state.committed&&state.selection&&state.confidence;
-    var readyNoChoice=!hasChoice&&(state.justification||state.confidence);
-    var showCommitBtn=hasChoice&&!state.committed;
-    var showSendBtn=(!hasChoice&&readyNoChoice)||(hasChoice&&state.committed);
-    app.innerHTML='<div class="eyebrow">Label Lab Pro · '+(KIND_LABEL[s.kind]||'paso activo')+'</div><h1 class="serif">'+esc(s.prompt||s.id)+'</h1><div class="grid g2"><div><div class="card"><div class="card-label">Evidencia editorial visible</div><p class="small muted">Esta evidencia fue entregada por el servidor para este paso; declara qué tan decisiva te parece para tu lectura.</p><div class="mt-14">'+(evidence||'<p class="small muted">Selecciona la evidencia que realmente usas.</p>')+'</div></div></div><div class="card"><div class="card-label">Tu lectura</div>'+(opts||'<textarea id="justification" class="opt" rows="5" placeholder="Escribe tu lectura sin inventar datos…" '+(locked?'disabled':'')+'>'+esc(state.justification)+'</textarea>')+'<div class="conf"><div class="q">¿Qué tan seguro estás?</div><div class="opts">'+conf+'</div></div>'+commitBar+'<div class="flowbar">'+(showCommitBtn?'<button class="btn btn--shine flex-1" id="commit" '+(canCommit?'':'disabled')+'>Comprometer lectura</button>':'<button class="btn btn--shine btn--glow flex-1" id="send" '+(showSendBtn?'':'disabled')+'>Enviar paso →</button>')+'</div></div></div>';
-    app.querySelectorAll('[data-option]').forEach(function(b){b.onclick=function(){if(locked)return;state.selection=b.getAttribute('data-option');stepView();};});
-    app.querySelectorAll('[data-weight-for]').forEach(function(b){b.onclick=function(){var id=b.getAttribute('data-weight-for'),wt=b.getAttribute('data-weight');state.evidenceWeights[id]=state.evidenceWeights[id]===wt?null:wt;stepView();};});
-    app.querySelectorAll('[data-confidence]').forEach(function(b){b.onclick=function(){if(locked)return;state.confidence=b.getAttribute('data-confidence');stepView();};});
-    var ta=document.getElementById('justification');if(ta)ta.oninput=function(){state.justification=ta.value;};
-    var commitBtn=document.getElementById('commit');if(commitBtn)commitBtn.onclick=function(){
-      state.committed=true;
-      var chosen=(s.options||[]).find(function(o){return (typeof o==='string'?o:o.id)===state.selection;});
-      var chosenText=chosen?(typeof chosen==='string'?chosen:(chosen.text||chosen.label||chosen.id)):state.selection;
-      var snapshot={step_id:s.id,hypothesis:state.selection,hypothesis_text:chosenText,confidence:state.confidence,evidence_weights:Object.assign({},state.evidenceWeights),committed_at:new Date().toISOString()};
-      if(state.pendingRevisionMeta){snapshot.revision=state.pendingRevisionMeta;state.pendingRevisionMeta=null;}
-      state.commitments.push(snapshot);
-      stepView();
-    };
-    var sendBtn=document.getElementById('send');if(sendBtn)sendBtn.onclick=submit;
-  }
-  function mentorInterstitial(feedback,next){
-    chip.textContent='Label Lab Pro · Mentor';
-    app.innerHTML='<h1 class="ep-sr-only">Mensaje del Mentor</h1><div class="eyebrow">Mentor</div><div class="mentor info"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc((feedback.category||'observación').toUpperCase())+'</div><p class="small mentor-text">'+esc(feedback.text)+'</p></div></div><div class="flowbar"><button class="btn btn--shine btn--glow flex-1" id="mentorNext">Continuar →</button></div>';
-    document.getElementById('mentorNext').onclick=next;
-  }
-  async function api(path,body){if(!navigator.onLine)throw new Error('OFFLINE');var token=await getAuthToken();if(!token)throw new Error('NO_AUTH_SESSION');var response=await fetch(API+path,{method:'POST',cache:'no-store',headers:{'Authorization':'Bearer '+token,'apikey':KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});var data=await response.json().catch(function(){return {};});if(!response.ok)throw new Error(data.error||'REQUEST_FAILED');return data;}
-  function requestKey(){var key=sessionStorage.getItem('label_lab_pro_request_key');if(!key){key=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random());sessionStorage.setItem('label_lab_pro_request_key',key);}return key;}
-  function newRequestKey(){var key=crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random();sessionStorage.setItem('label_lab_pro_request_key',key);return key;}
-  async function beginSession(){try{var data=await api('start-label-session',{request_key:requestKey()});state.session=data.session_id;state.step=data.step;window.EpistemicProfile&&window.EpistemicProfile.startSession({module:'label_guided',mode:'server',competencies:['Label Lab Pro']});stepView();}catch(e){if(e.message==='NO_AUTH_SESSION')renderError('La práctica Pro requiere iniciar sesión.',true);else if(e.message==='OFFLINE')renderError('Estás sin conexión.');else renderError('La asignación no está disponible.');}}
-  async function start(){renderLoading('Recuperando tu sesión…');await beginSession();}
-  // "Intentar otro caso" (Priority 2): see bottle-lab/index.html for the full explanation --
-  // same bug (persisted sessionStorage request_key made a page reload resume the completed
-  // session instead of starting a new one), same fix (in-place reset + forced new request_key,
-  // no navigation).
-  async function startAnotherCase(){
-    state.session=null;state.step=null;state.selection='';state.evidenceWeights={};state.confidence='';state.justification='';state.committed=false;state.evaluations=[];state.commitments=[];state.evidenceCatalog={};state.contradictionInterp=null;state.contradictionAction=null;state.contradictionResolvedStepId=null;state.pendingRevisionMeta=null;
-    newRequestKey();
-    renderLoading('Preparando tu próximo caso…');
-    await beginSession();
-  }
-  async function submit(){
-    if(state.busy)return;state.busy=true;renderLoading('Evaluando tu paso en servidor…');
-    var key=crypto.randomUUID?crypto.randomUUID():String(Date.now());
-    var usedIds=Object.keys(state.evidenceWeights).filter(function(id){return state.evidenceWeights[id];});
-    try{
-      var data=await api('submit-label-step',{session_id:state.session,idempotency_key:key,step_key:state.step.id,step_kind:state.step.kind,answer:{response:state.selection||state.justification,evidence_used:usedIds,evidence_weights:state.evidenceWeights,justification:state.justification,confidence:state.confidence}});
-      if(window.EpistemicProfile&&data.evaluation)window.EpistemicProfile.decisionMade({itemId:state.session,phaseId:state.step.id,response:data.evaluation.result.band,correctnessBand:data.evaluation.result.band,confidence:state.confidence,competency:'Label Lab Pro'});
-      if(state.step.kind==='hypothesis'&&data.evaluation)state.evaluations.push(data.evaluation);
-      var advance=function(){if(data.step){state.step=data.step;state.selection='';state.evidenceWeights={};state.justification='';state.confidence='';state.committed=false;stepView();}else reveal();};
-      var feedback=data.evaluation&&data.evaluation.mentor_feedback;
-      // Experience polish (Loop 7): mismo filtro que Bottle -- 'confirmation' es la categoría
-      // fallback y casi todo item la cubre; sin filtrarla, Mentor interrumpía casi cada paso.
-      if(feedback&&feedback.text&&feedback.category!=='confirmation')mentorInterstitial(feedback,advance);else advance();
-    }catch(e){renderError(e.message==='OFFLINE'?'Estás sin conexión.':'No pudimos guardar este paso.');}finally{state.busy=false;}
-  }
-  var REVEAL_MOMENTOS=['layer1','layer2','layer3','replay','layer4'];
-  var REVEAL_LABEL={layer1:'Qué decía la etiqueta',layer2:'Qué interpretaste',layer3:'Cómo usaste la evidencia',replay:'Cómo evolucionó tu lectura',layer4:'Regla transferible'};
-  var revealData=null,revealStep=0;
-  // Reveal Board de Label: solo selected/ignored (evaluateLabelResponse no calcula
-  // "overweighted" como Bottle) -- se muestra exactamente lo que el servidor autoriza, nunca
-  // más ni menos.
-  function evidenceLabels(ids){return ids.map(function(id){var e=state.evidenceCatalog[id];return e?e.label:id;}).join(', ');}
-  function buildRevealBoard(){
-    if(!state.evaluations.length)return '';
-    return state.evaluations.map(function(ev,i){
-      var selected=ev.evidence.selected||[],ignored=ev.evidence.ignored||[];
-      var calib=CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.';
-      var rows='';
-      if(selected.length)rows+='<div class="rb-row rb-good"><span class="rb-tag">Citada</span>'+esc(evidenceLabels(selected))+'</div>';
-      if(ignored.length)rows+='<div class="rb-row rb-muted"><span class="rb-tag">Sin citar</span>'+esc(evidenceLabels(ignored))+'</div>';
-      return '<div class="reveal-board">'+(state.evaluations.length>1?'<div class="card-label">Paso de lectura '+(i+1)+'</div>':'')+(rows||'<p class="small muted">Sin evidencia citada en este paso.</p>')+'<p class="small mentor-text">'+esc(calib)+'</p></div>';
-    }).join('');
-  }
-  // Reasoning Replay (Loop 4): reconstrucción breve, solo con datos reales ya persistidos en
-  // cliente (state.commitments[] + state.evaluations[], mismo orden). No moraliza -- describe.
-  function buildReasoningReplay(){
-    if(!state.commitments.length)return '<p class="small muted">No hubo pasos de lectura en esta sesión.</p>';
-    return state.commitments.map(function(c,i){
-      var ev=state.evaluations[i]||null;
-      var isRevision=Boolean(c.revision);
-      var blocks='<div class="rp-step"><span class="cm-lbl">'+(isRevision?'Revisaste tu lectura':i===0?'Observaste y formulaste tu lectura':'Nueva lectura')+'</span><p class="small">'+esc(c.hypothesis_text)+'</p></div>';
-      if(isRevision){
-        blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step rp-revision"><span class="cm-lbl">Evidencia nueva</span><p class="small">Interpretaste que '+esc((CONTRADICTION_INTERP[c.revision.interpretation]||'').toLowerCase())+' tu lectura anterior ("'+esc(c.revision.prior_hypothesis)+'") y decidiste '+esc((REVISION_ACTION[c.revision.action]||'').toLowerCase())+'la.</p></div>';
-      }
-      blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Confianza declarada</span><p class="small">'+esc(CONF_LABEL[c.confidence]||c.confidence)+'</p></div>';
-      if(ev){
-        var accidental=ev.result.correct&&ev.calibration.band==='overconfident';
-        blocks+='<div class="cm-arrow" aria-hidden="true">↓</div><div class="rp-step"><span class="cm-lbl">Resultado y calibración</span><p class="small">'+esc(CALIBRATION_LABEL[ev.calibration.band]||'Calibración registrada por el servidor.')+'</p>'+(accidental?'<p class="small rp-flag">Tu conclusión coincidió con el resultado, pero tu confianza excedía lo que la evidencia sostenía -- vale la pena revisar si acertaste por la razón correcta.</p>':'')+'</div>';
-      }
-      return '<div class="rp-block">'+(state.commitments.length>1?'<div class="card-label">Paso de lectura '+(i+1)+'</div>':'')+blocks+'</div>';
-    }).join('<div class="hairline"></div>');
-  }
-  function revealView(){
-    var r=revealData,key=REVEAL_MOMENTOS[revealStep];
-    var progress=REVEAL_MOMENTOS.map(function(_,i){return '<span class="'+(i<=revealStep?'done':'')+'"></span>';}).join('');
-    var isLast=revealStep===REVEAL_MOMENTOS.length-1;
-    var board=key==='layer3'?buildRevealBoard():'';
-    var isReplay=key==='replay';
-    var bodyHtml=isReplay?buildReasoningReplay():'<p class="small mentor-text">'+esc(r[key]||'Registrado.')+'</p>';
-    app.innerHTML='<div class="bl-reveal"><h1 class="ep-sr-only">Reveal de tu sesión -- '+esc((REVEAL_LABEL[key]||key))+'</h1><div class="eyebrow">Reveal autorizado por servidor · '+(revealStep+1)+'/'+REVEAL_MOMENTOS.length+'</div><div class="reveal-progress">'+progress+'</div><div class="grid g2"><div class="card center">'+labelHtml()+'</div><div class="mentor '+(revealStep===0?'ok':'info')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+esc((REVEAL_LABEL[key]||key).toUpperCase())+'</div>'+bodyHtml+'</div></div></div>'+board+'<div class="reveal-nav">'+(revealStep>0?'<button class="btn btn--ghost" id="rprev">← Anterior</button>':'<span></span>')+(isLast?'<button class="btn btn--shine btn--glow" id="rtransfer">Reto de transferencia →</button>':'<button class="btn btn--shine" id="rnext">Siguiente →</button>')+'</div></div>';
-    var prev=document.getElementById('rprev');if(prev)prev.onclick=function(){revealStep--;revealView();};
-    var next=document.getElementById('rnext');if(next)next.onclick=function(){revealStep++;revealView();};
-    var transferBtn=document.getElementById('rtransfer');if(transferBtn)transferBtn.onclick=transferChallengeStart;
-  }
-  function firstMisconceptionHint(){
-    for(var i=0;i<state.evaluations.length;i++){
-      var code=state.evaluations[i]&&state.evaluations[i].mentor&&state.evaluations[i].mentor.misconception_code;
-      if(code)return code;
-    }
-    return null;
-  }
-  async function transferChallengeStart(){
-    renderLoading('Preparando reto de transferencia…');
-    try{
-      var data=await api('start-label-transfer',{misconception_hint:firstMisconceptionHint(),session_id:state.session});
-      transferChallengeView(data.task,null);
-    }catch(e){renderError('El reto de transferencia no está disponible ahora mismo.');}
-  }
-  function transferChallengeView(task,result){
-    chip.textContent='Label Lab Pro · Transferencia';
-    var ev=(task.relevant_evidence||[]).map(function(e){return '<div class="ev-card"><div class="ev-head"><b>'+esc(e.label)+'</b><small>'+esc(e.value)+'</small></div></div>';}).join('');
-    var opts=(task.options||[]).map(function(o){return '<button class="btn btn--ghost opt" data-transfer-option="'+esc(o.id)+'" '+(result?'disabled':'')+'>'+esc(o.text)+'</button>';}).join('');
-    var feedback=!result?'':'<div class="mentor '+(result.correct?'ok':'warn')+'"><div class="avatar"><span class="ep-icon ep-icon--mentor" aria-hidden="true"></span></div><div><div class="sev">'+(result.correct?'RECONOCISTE LA REGLA':'TODAVÍA NO')+'</div><p class="small mentor-text">'+esc(result.feedback)+'</p></div></div>';
-    app.innerHTML='<div class="eyebrow">Transfer Challenge</div><h1 class="serif">La misma regla, disfrazada</h1><div class="card tight"><p class="small mentor-text">'+esc(task.rule)+'</p></div><p class="small muted mt-14">'+esc(task.new_context)+'</p>'+ev+'<div class="card mt-14">'+opts+'</div>'+feedback+'<div class="flowbar">'+(result?'<button class="btn btn--shine btn--glow flex-1" id="another-case">Intentar otro caso</button>':'')+'</div></div>';
-    app.querySelectorAll('[data-transfer-option]').forEach(function(b){b.onclick=function(){transferChallengeSubmit(task,b.getAttribute('data-transfer-option'));};});
-    if(result){var again=document.getElementById('another-case');if(again)again.onclick=startAnotherCase;}
-  }
-  async function transferChallengeSubmit(task,optionId){
-    renderLoading('Evaluando tu decisión…');
-    try{
-      var data=await api('submit-label-transfer',{task_id:task.id,option_id:optionId});
-      transferChallengeView(task,data);
-    }catch(e){renderError('No pudimos evaluar tu decisión.');}
-  }
-  async function reveal(){renderLoading('Preparando reveal autorizado…');try{var data=await api('reveal-label-session',{session_id:state.session});revealData=data.reveal||{};revealStep=0;if(window.EpistemicProfile)window.EpistemicProfile.sessionCompleted({module:'label_guided',itemId:state.session});revealView();}catch(e){renderError('El reveal todavía no está autorizado.');}}
-  renderDemo();
-  (async function(){try{var token=await getAuthToken();if(token)start();}catch(_){}})();
-})();
-</script><script src="/platform-nav.js" defer></script>
-</body></html>
+  </script>
+  <script src="/shared/investigation-lab.js"></script>
+  <script src="/platform-nav.js" defer></script>
+</body>
+</html>

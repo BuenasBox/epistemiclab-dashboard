@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
     if (['completed', 'abandoned', 'expired'].includes(session.state)) return labJson({ ok: false, error: 'Session is closed' }, 409);
     const oldKeys = Array.isArray(session.idempotency_keys) ? session.idempotency_keys : [];
     const replay = oldKeys.find((entry: any) => entry?.key === key);
-    if (replay) return labJson({ ok: true, replay: true, state: replay.state, evaluation: replay.evaluation, step: replay.step });
+    if (replay) return labJson({ ok: true, replay: true, state: replay.state, evaluation: replay.evaluation, progress: replay.progress || null, step: replay.step });
     if (session.current_step !== stepKey) return labJson({ ok: false, error: 'Step is not active' }, 409);
     const { data: item } = await supabase.from('lab_items').select('public_content,evaluation_spec,evaluation_version').eq('item_id', session.item_id).eq('lab_type', 'bottle').eq('is_active', true).maybeSingle();
     if (!item) return labJson({ ok: false, error: 'Item unavailable' }, 404);
@@ -49,7 +49,8 @@ Deno.serve(async (req) => {
     const hypotheses = body.step_kind === 'hypothesis' ? [...(session.hypotheses || []), response] : session.hypotheses || [];
     const confidence = answer.confidence ? [...(session.confidence || []), { step_key: stepKey, value: answer.confidence, recorded_at: now }] : session.confidence || [];
     const publicStep = next ? { id: next.id, kind: next.kind, prompt: next.prompt, options: next.options || [], evidence: next.evidence || null } : null;
-    const keys = [...oldKeys, { key, step_key: stepKey, state: nextState, evaluation, step: publicStep }];
+    const progress = { current: next ? index + 2 : steps.length, total: steps.length };
+    const keys = [...oldKeys, { key, step_key: stepKey, state: nextState, evaluation, step: publicStep, progress }];
     const updated = await supabase.from('lab_sessions').update({ state: nextState, current_step: next?.id || null, observations, hypotheses, confidence, idempotency_keys: keys, completed_at: nextState === 'reveal_available' ? now : null, updated_at: now }).eq('id', session.id).eq('user_id', user.id).eq('current_step', stepKey).select('id,state,current_step').single();
     if (updated.error || !updated.data) return labJson({ ok: false, error: 'Session changed; retry safely' }, 409);
     await supabase.from('lab_assignments').update({ status: nextState, completed_at: nextState === 'reveal_available' ? now : null }).eq('id', assignment.id).eq('user_id', user.id);
@@ -60,6 +61,6 @@ Deno.serve(async (req) => {
       if (response.version > 1) await recordLabEpistemicEvent(supabase, { userId: user.id, sessionId: session.id, occurredAt: now, sourceMode: 'bottle_lab_pro', eventId: `bottle:${session.id}:${key}:revision`, eventType: 'hypothesis_revised', payload: { item_id: session.item_id, revision: response.version, result_band: evaluation.result.band }, evidence: { selected: evaluation.evidence.selected }, metadata: { evaluation_version: item.evaluation_version } });
       if (evaluation.mentor.misconception_code) await recordLabEpistemicEvent(supabase, { userId: user.id, sessionId: session.id, occurredAt: now, sourceMode: 'bottle_lab_pro', eventId: `bottle:${session.id}:${key}:misconception`, eventType: 'misconception_detected', payload: { item_id: session.item_id, misconception_code: evaluation.mentor.misconception_code }, evidence: { result_band: evaluation.result.band }, metadata: { evaluation_version: item.evaluation_version } });
     }
-    return labJson({ ok: true, replay: false, state: nextState, evaluation, step: publicStep });
+    return labJson({ ok: true, replay: false, state: nextState, evaluation, progress, step: publicStep });
   } catch { return labJson({ ok: false, error: 'Unable to submit Bottle Lab step' }, 500); }
 });

@@ -19,6 +19,7 @@ const read = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
 
 const bottle = read('bottle-lab', 'index.html');
 const label = read('label-lab', 'index.html');
+const engine = read('shared', 'investigation-lab.js');
 const coreMigration = read('supabase', 'migrations', '20260620033000_epistemic_profile_core.sql');
 
 test('epistemic_events.source_experience CHECK constraint reserves bottle_guided/label_guided (not the module slugs)', () => {
@@ -30,12 +31,14 @@ test('epistemic_events.source_experience CHECK constraint reserves bottle_guided
 
 test('Bottle Lab: window.EpistemicProfile calls use the valid source_experience enum value, not the module slug', () => {
   assert.doesNotMatch(bottle, /module:'bottle-lab-pro'/);
-  assert.match(bottle, /window\.EpistemicProfile&&window\.EpistemicProfile\.startSession\(\{module:'bottle_guided'/);
-  assert.match(bottle, /window\.EpistemicProfile&&window\.EpistemicProfile\.sessionCompleted\(\{module:'bottle_guided'/);
+  assert.match(bottle, /module: 'bottle_guided'/);
+  assert.match(engine, /EpistemicProfile\.startSession\(\{ module: cfg\.module/);
+  assert.match(engine, /EpistemicProfile\.sessionCompleted\(\{ module: cfg\.module/);
 });
 
 test('Label Lab: window.EpistemicProfile calls use the valid source_experience enum value, not the module slug', () => {
   assert.doesNotMatch(label, /module:'label-lab-pro'/);
-  assert.match(label, /window\.EpistemicProfile&&window\.EpistemicProfile\.startSession\(\{module:'label_guided'/);
-  assert.match(label, /if\(window\.EpistemicProfile\)window\.EpistemicProfile\.sessionCompleted\(\{module:'label_guided'/);
+  assert.match(label, /module: 'label_guided'/);
+  assert.match(engine, /EpistemicProfile\.startSession\(\{ module: cfg\.module/);
+  assert.match(engine, /EpistemicProfile\.sessionCompleted\(\{ module: cfg\.module/);
 });

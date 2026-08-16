@@ -23,7 +23,7 @@ Deno.serve(async (req) => {
     if (['completed', 'abandoned', 'expired'].includes(session.state)) return labJson({ ok: false, error: 'Session is closed' }, 409);
     const oldKeys = Array.isArray(session.idempotency_keys) ? session.idempotency_keys : [];
     const replay = oldKeys.find((entry: any) => entry && entry.key === idempotencyKey);
-    if (replay) return labJson({ ok: true, replay: true, state: replay.state, evaluation: replay.evaluation, step: replay.step });
+    if (replay) return labJson({ ok: true, replay: true, state: replay.state, evaluation: replay.evaluation, progress: replay.progress || null, step: replay.step });
     if (session.current_step !== stepKey) return labJson({ ok: false, error: 'Step is not active' }, 409);
 
     const { data: item } = await supabase.from('lab_items').select('public_content,evaluation_spec,evaluation_version').eq('item_id', session.item_id).eq('lab_type', 'label').eq('is_active', true).maybeSingle();
@@ -57,12 +57,13 @@ Deno.serve(async (req) => {
     const observations = stepKind === 'observation' || stepKind === 'classification' ? [...(session.observations || []), response] : session.observations || [];
     const hypotheses = stepKind === 'hypothesis' ? [...(session.hypotheses || []), response] : session.hypotheses || [];
     const confidence = answer.confidence ? [...(session.confidence || []), { step_key: stepKey, value: answer.confidence, version: response.version, recorded_at: now }] : session.confidence || [];
-    const keys = [...oldKeys, { key: idempotencyKey, step_key: stepKey, state: nextState, evaluation, step: next ? { id: next.id, kind: next.kind, prompt: next.prompt, options: next.options || [], evidence: next.evidence || null } : null }];
+    const progress = { current: next ? index + 2 : steps.length, total: steps.length };
+    const keys = [...oldKeys, { key: idempotencyKey, step_key: stepKey, state: nextState, evaluation, progress, step: next ? { id: next.id, kind: next.kind, prompt: next.prompt, options: next.options || [], evidence: next.evidence || null } : null }];
     const updated = await supabase.from('lab_sessions').update({ state: nextState, current_step: next?.id || null, observations, hypotheses, confidence, idempotency_keys: keys, completed_at: nextState === 'reveal_available' ? now : null, updated_at: now }).eq('id', session.id).eq('user_id', user.id).eq('current_step', stepKey).select('id,state,current_step').single();
     if (updated.error || !updated.data) {
       const concurrent = await supabase.from('lab_sessions').select('id,state,current_step,idempotency_keys').eq('id', session.id).eq('user_id', user.id).maybeSingle();
       const concurrentReplay = (concurrent.data?.idempotency_keys || []).find((entry: any) => entry && entry.key === idempotencyKey);
-      if (concurrentReplay) return labJson({ ok: true, replay: true, state: concurrentReplay.state, evaluation: concurrentReplay.evaluation, step: concurrentReplay.step });
+      if (concurrentReplay) return labJson({ ok: true, replay: true, state: concurrentReplay.state, evaluation: concurrentReplay.evaluation, progress: concurrentReplay.progress || null, step: concurrentReplay.step });
       return labJson({ ok: false, error: 'Session changed; retry safely' }, 409);
     }
     await supabase.from('lab_assignments').update({ status: nextState, completed_at: nextState === 'reveal_available' ? now : null }).eq('id', assignment.id).eq('user_id', user.id);
@@ -97,6 +98,6 @@ Deno.serve(async (req) => {
       }
     }
 
-    return labJson({ ok: true, replay: false, state: nextState, evaluation, step: next ? { id: next.id, kind: next.kind, prompt: next.prompt, options: next.options || [], evidence: next.evidence || null } : null });
+    return labJson({ ok: true, replay: false, state: nextState, evaluation, progress, step: next ? { id: next.id, kind: next.kind, prompt: next.prompt, options: next.options || [], evidence: next.evidence || null } : null });
   } catch { return labJson({ ok: false, error: 'Unable to submit Label Lab step' }, 500); }
 });

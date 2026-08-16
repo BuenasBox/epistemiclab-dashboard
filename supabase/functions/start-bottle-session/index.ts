@@ -43,6 +43,8 @@ Deno.serve(async (req) => {
     }
     const active = item.public_content.steps.find((step: any) => step.id === session.current_step) || null;
     await recordLabEpistemicEvent(supabase, { userId: user.id, sessionId: session.id, occurredAt: new Date().toISOString(), sourceMode: 'bottle_lab_pro', eventId: `bottle:${session.id}:started`, eventType: 'session_started', payload: { item_id: session.item_id }, metadata: { lab_type: 'bottle' } });
-    return labJson({ ok: true, session_id: session.id, assignment_id: assignment.id, state: session.state, content_version: session.content_version, evaluation_version: session.evaluation_version, step: active ? { id: active.id, kind: active.kind, prompt: active.prompt, options: active.options || [], evidence: active.evidence || null } : null });
+    const steps = Array.isArray(item.public_content?.steps) ? item.public_content.steps : [];
+    const activeIndex = active ? steps.findIndex((step: any) => step.id === active.id) : -1;
+    return labJson({ ok: true, session_id: session.id, assignment_id: assignment.id, state: session.state, content_version: session.content_version, evaluation_version: session.evaluation_version, case: item.public_content?.case || null, progress: { current: activeIndex >= 0 ? activeIndex + 1 : steps.length, total: steps.length }, step: active ? { id: active.id, kind: active.kind, prompt: active.prompt, options: active.options || [], evidence: active.evidence || null } : null });
   } catch { return labJson({ ok: false, error: 'Unable to start Bottle Lab' }, 500); }
 });

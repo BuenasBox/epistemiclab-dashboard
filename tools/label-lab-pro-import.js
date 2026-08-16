@@ -37,6 +37,12 @@ function buildRuntimeRecord(item) {
   const visibleEvidence = publicEvidence(item.visible_evidence);
   const hiddenEvidence = publicEvidence(item.hidden_evidence);
   const phaseList = item.prompt_sequence || [];
+  const hypothesisOptions = [
+    ...(item.acceptable_hypotheses || []),
+    ...(item.partially_acceptable_hypotheses || []),
+    ...(item.unsupported_hypotheses || []),
+    ...(item.overprecise_conclusions || []),
+  ].map(({ id, text }) => ({ id, text }));
   // Mirrors the Bottle fix (Priority 8, Product Implementation Marathon): hidden_evidence was
   // authored (LABEL_PRO_002, LABEL_PRO_008) but never merged into any step's evidence array --
   // for LABEL_PRO_008 specifically, its second acceptable_hypotheses entry requires citing
@@ -49,7 +55,9 @@ function buildRuntimeRecord(item) {
     kind: phase === 'observe' ? 'observation' : phase === 'classify_evidence' ? 'classification' : phase === 'declare_confidence' ? 'hypothesis' : phase === 'hypothesize' ? 'hypothesis' : 'hypothesis',
     prompt: phase === 'observe' ? '¿Qué información está explícitamente presente?' : phase === 'classify_evidence' ? 'Clasifica la fuerza y función de la evidencia visible.' : phase === 'hypothesize' ? 'Formula una hipótesis y limita su alcance.' : phase === 'declare_confidence' ? 'Declara tu nivel de confianza.' : 'Justifica y revisa tu inferencia.',
     evidence: hiddenEvidence.length && index >= revealIndex ? [...visibleEvidence, ...hiddenEvidence] : visibleEvidence,
-    options: phase === 'classify_evidence' ? [...new Set((item.visible_evidence || []).map((entry) => entry.category))].map((category) => ({ id: category, text: category })) : [],
+    options: phase === 'classify_evidence'
+      ? [...new Set((item.visible_evidence || []).map((entry) => entry.category))].map((category) => ({ id: category, text: category }))
+      : (phase === 'observe' ? [] : hypothesisOptions),
     order: index,
     last: index === phases.length - 1,
   }));
@@ -96,7 +104,18 @@ function buildRuntimeRecord(item) {
     is_active: true,
     content_version: item.version,
     evaluation_version: `label-${item.version}`,
-    public_content: { steps, learning_objectives: item.learning_objectives, difficulty: item.difficulty },
+    public_content: {
+      steps,
+      learning_objectives: item.learning_objectives,
+      difficulty: item.difficulty,
+      case: {
+        brief: `Expediente documental de ${item.country || 'origen no declarado'}. Determina qué afirma realmente la etiqueta y qué permanece abierto.`,
+        country: item.country || null,
+        legal_framework: item.legal_framework || null,
+        difficulty: item.difficulty,
+        learning_objectives: item.learning_objectives || [],
+      },
+    },
     evaluation_spec: evaluationSpec,
     reveal_content: item.reveal,
   };

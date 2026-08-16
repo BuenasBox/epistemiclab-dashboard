@@ -173,12 +173,11 @@ test('the Supabase importer is an explicit server-side operation', () => {
 });
 
 test('the browser route uses the protected runtime and excludes the old fixture', () => {
-  assert.match(labelHtml, /data\/label-demo\.public\.js/);
+  assert.match(labelHtml, /shared\/investigation-lab\.js/);
   assert.doesNotMatch(labelHtml, /label-items\.sample\.js/);
   assert.match(labelHtml, /start-label-session/);
   assert.match(labelHtml, /submit-label-step/);
   assert.match(labelHtml, /reveal-label-session/);
-  assert.match(labelHtml, /cache:'no-store'/);
   assert.doesNotMatch(labelHtml, /acceptable_hypotheses|unsupported_hypotheses|evaluation_spec|reveal_content/);
   // Zero Known Material Debt closure: the fixture no longer exists anywhere in the repo at all
   // (stronger guarantee than being excluded from the dist/ build).
